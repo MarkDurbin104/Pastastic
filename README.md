@@ -157,7 +157,7 @@ from is itself part of the history.
 
 ## Provenance
 
-Written by me and my teams, across several employers and about two decades.
+Written by me and my team mates, across several employers and about two decades.
 The companies behind this work — Postal Solutions Limited and Cykor Systems —
 are both long gone.
 
