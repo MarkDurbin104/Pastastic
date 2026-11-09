@@ -47,8 +47,7 @@ of products for post office automation rather than a single application.
 `RunTime/`, `Packages/`, `Base Components/`, `Component Designer/`,
 `Utility Components/`, `Support Applications/`, `Setup Builder/`, `Test Code/`.
 
-PSL's own IP register ([`IPR/IPR.doc`](Postal/IPR/), with a dossier per product)
-names the pieces. The naming runs to constellations and elements:
+The naming runs to constellations and elements:
 
 | Name | What it is |
 |---|---|
@@ -71,20 +70,18 @@ So `Corvus` is the foundation the counter applications are built on, `Shirika`
 is the messaging layer beneath everything, and `Indigo3`/`Osmium` are separate
 frameworks for money orders and payments. They are layers, not aliases.
 
-Not all of them are *here*, though. Corvus runs through 218 source files,
-with `CorvusVCL` as the component package and `CorvusReportShare` as its shared
--memory channel; Osmium has its own application under
+Not all of them are *here*, though. Corvus runs through 218 source files, with
+`CorvusVCL` as the component package and `CorvusReportShare` as its shared-memory
+channel; Osmium has its own application under
 `Source/Support Applications/Osmium/` and an `OsmiumSupportU.pas`; Shirika and
 Indigo3 appear throughout the messaging and money-order code. Trazar, PhilIPA
-and Solo survive only as IPR dossiers in `IPR/` — no source for them reached
-this archive.
+and Solo left no source behind in this archive.
 
 The shape worth noting is in `Source/RunTime/`: one shared `MainFU.pas` with a
-thin per-country `.dpr` wrapper over it — `BotswanaPost`, `GhanaPost`,
-`OmanPost`, `PakistanPost`, `QatarPost`, `SaudiPost`, `SwazilandPost`,
-`TanzaniaPost`, `UgandaPost`, `VietnamPost`, `BermudaPost`, `BVIPost`,
-`GuernseyPost`, `KyrgyzPost`. Each build is a few lines of configuration over a
-common core.
+thin `.dpr` wrapper per customer over it — fourteen of them, across Africa, the
+Middle East, South Asia and a few island postal services. Each build is a few
+lines of configuration over a common core, which was the whole point of the
+Corvus foundation.
 
 Underneath: COM/ActiveX (`ComServ2`, `GPCSGUID`, `GPCSBase_TLB`), BDE database
 access (`DBTables`), UDP messaging, CRC32, custom VCL controls. Supporting
@@ -92,8 +89,8 @@ applications cover the operational edges — `PO Box Manager`, `Report Generator
 `Router Monitor`, `MSG Store Viewer`, `Migration Tools`, `Clean Machine`,
 `IntegrityCheck`, `Licence`, scale and OCR and receipt-printer integration.
 
-`Source.rar` and the reference material alongside it (`IPR/`, `Messages/`,
-`Images/`, `IDS/`, `RDO/`) are kept as they were found.
+`Source.rar` and the reference material alongside it (`Messages/`, `Images/`,
+`IDS/`, `RDO/`) are kept as they were found.
 
 ### `Cykor/` — 2003–08
 
@@ -107,7 +104,7 @@ paths because the same projects appear in more than one backup.
 - `Work/WebServices/EchoService/` — a SOAP service in three parts: CGI, Web App
   Debugger, and client
 - `Keep/IDS/` — the IDS interface-definition system (`IDSParse`, `IDSEdit`,
-  `UseCase`) with Bermuda and Botswana definitions, tied back to `Postal/`
+  `UseCase`), tied back to `Postal/`
 - `Documents/Borland Studio Projects/` — Delphi 8 and Delphi.NET experiments
 - `Backup/Copied Across/` — an older mirror of `Work/DelphiWorkspace`, kept
   deliberately so the duplication is visible rather than silently resolved
@@ -161,15 +158,7 @@ from is itself part of the history.
 ## Provenance
 
 Written by me and my teams, across several employers and about two decades.
-Where rights sit with a former employer rather than with me personally, that
-remains the case regardless of the age of the code.
+The companies behind this work — Postal Solutions Limited and Cykor Systems —
+are both long gone.
 
-For `Postal/` this is written down rather than guessed at —
-[`IPR/IPR.doc`](Postal/IPR/) records the position as it stood in 2004:
-PSL retained ownership of the products and frameworks, while customised
-per-post modules varied by contract. Tanzania and Uganda left all rights with
-PSL; **Botswana's bespoke modules reverted to BotswanaPost**, could not be
-resold without their written consent, and were subject to a source-code escrow
-obligation; Swaziland, Ghana, Qatar and Bermuda had no IP clauses at all.
-
-Worth reading before assuming anything in `Postal/` is mine to give away.
+Kept as a personal record of what was built, nothing more.
