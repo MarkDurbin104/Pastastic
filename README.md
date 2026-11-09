@@ -41,11 +41,43 @@ Much of this is experiment and scaffolding rather than finished work.
 
 ### `Postal/` — 2002–05
 
-The largest piece: a postal counter-automation product, built as
-Corvus / Shirika / Indigo3. `Source/` holds all 908 Pascal files, organised
-into a deliberate structure — `RunTime/`, `Packages/`, `Base Components/`,
-`Component Designer/`, `Utility Components/`, `Support Applications/`,
-`Setup Builder/`, `Test Code/`.
+The largest piece: the software of **Postal Solutions Limited (PSL)**, a family
+of products for post office automation rather than a single application.
+`Source/` holds all 908 Pascal files, organised into a deliberate structure —
+`RunTime/`, `Packages/`, `Base Components/`, `Component Designer/`,
+`Utility Components/`, `Support Applications/`, `Setup Builder/`, `Test Code/`.
+
+PSL's own IP register ([`IPR/IPR.doc`](Postal/IPR/), with a dossier per product)
+names the pieces. The naming runs to constellations and elements:
+
+| Name | What it is |
+|---|---|
+| **Corvus** | Branch counter automation — the foundation components |
+| **Shirika** | The communication infrastructure underneath all the products |
+| **Indigo3** | Money order management framework |
+| **Osmium** | Payments management framework |
+| **Trazar** | Domestic mail tracking |
+| **Pyxis** | P.O. Box management |
+| **PhilIPA** | Philatelic management |
+| **Solo** | Small office data entry |
+| **IPA** | Integrated Postal Architecture — the overarching concept |
+| **CDT** | The toolchain: code and documentation generators, test programs, dummy hardware drivers |
+
+Alongside these: IPA Central Consolidation and Central Inventory, and IPS
+Integration — the link into the UPU's international system, which is also why
+there is a `upu/` tree over in `Utils/`.
+
+So `Corvus` is the foundation the counter applications are built on, `Shirika`
+is the messaging layer beneath everything, and `Indigo3`/`Osmium` are separate
+frameworks for money orders and payments. They are layers, not aliases.
+
+Not all of them are *here*, though. Corvus runs through 218 source files,
+with `CorvusVCL` as the component package and `CorvusReportShare` as its shared
+-memory channel; Osmium has its own application under
+`Source/Support Applications/Osmium/` and an `OsmiumSupportU.pas`; Shirika and
+Indigo3 appear throughout the messaging and money-order code. Trazar, PhilIPA
+and Solo survive only as IPR dossiers in `IPR/` — no source for them reached
+this archive.
 
 The shape worth noting is in `Source/RunTime/`: one shared `MainFU.pas` with a
 thin per-country `.dpr` wrapper over it — `BotswanaPost`, `GhanaPost`,
@@ -131,3 +163,13 @@ from is itself part of the history.
 Written by me and my teams, across several employers and about two decades.
 Where rights sit with a former employer rather than with me personally, that
 remains the case regardless of the age of the code.
+
+For `Postal/` this is written down rather than guessed at —
+[`IPR/IPR.doc`](Postal/IPR/) records the position as it stood in 2004:
+PSL retained ownership of the products and frameworks, while customised
+per-post modules varied by contract. Tanzania and Uganda left all rights with
+PSL; **Botswana's bespoke modules reverted to BotswanaPost**, could not be
+resold without their written consent, and were subject to a source-code escrow
+obligation; Swaziland, Ghana, Qatar and Bermuda had no IP clauses at all.
+
+Worth reading before assuming anything in `Postal/` is mine to give away.
