@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+	xmlns:cf="com.cykorsystems.CoverFlow.*"
+	backgroundGradientColors="[#EFF5F6, #19233B]" 
+	pageTitle="Cykor Systems Limited"	
+	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off" 
+	creationComplete="onCreationComplete(event);"
+	resize="onResize(event);"
+	xmlns:screens="screens.*"> 
+<mx:Script>
+	<![CDATA[
+			public var testingScreen:int=-1;
+			private var fixedScale:Boolean=false;
+
+			private function toggleFixedScale():void {
+				fixedScale=!fixedScale;
+				onResize(null);				
+			}
+			private function onCreationComplete(event:Event):void {
+				onResize(event);
+				if (testingScreen != -1) CFCanv.position=testingScreen;
+//				fingerButton.visible=(CFCanv.position != 0) ;
+			}
+			private function onResize(event:Event):void 	{
+				if (scaleRegion !=null) {
+					if (fixedScale) {
+						verticalScrollPolicy="auto";
+						horizontalScrollPolicy="auto";
+						scaleRegion.scaleX=1024/1024; //mailScreen.mailScreenWidth;
+						scaleRegion.scaleY=768/768; //mailScreen.mailScreenHeight;
+					} else {
+						verticalScrollPolicy="off";
+						horizontalScrollPolicy="off";
+						scaleRegion.scaleX=width/1024;//mailScreen.mailScreenWidth;
+						scaleRegion.scaleY=height/768;//mailScreen.mailScreenHeight;
+					}
+				}
+			}
+			private function onSlideChanged(event:Event):void {
+				if (CFCanv.position==0) {
+//					fingerButton.visible=false;
+				}
+			}
+
+	]]>
+	</mx:Script>
+	<mx:Canvas id="scaleRegion" verticalScrollPolicy="off" horizontalScrollPolicy="off" height="768" width="1024">
+		<mx:Canvas id="displayOn" height="100%" width="100%"/>
+		<cf:CoverFlowCanvas change="onSlideChanged(event);" id="CFCanv" displayOn="{displayOn}" fingerButton="{fingerButton}" >
+		<screens:Splash label="Home Page;Home"/>
+		<mx:Canvas id="canv2" width="100%" height="100%"	backgroundColor="#EFF5F6" label="News and Events;News"/>
+		<screens:Splash label="Products and Services;Services"/>
+		<mx:Canvas id="canv3" width="100%" height="100%"	backgroundColor="#EFF5F6" label="The People and Experience of Cykor Systems;About Us"/>
+		<screens:Splash label="How to get in touch;Contact"/>
+		</cf:CoverFlowCanvas>
+		<mx:Image id="fingerButton" source="@Embed(source='resources/graphics/fingerbutton.png')" visible="true" bottom="0"/>
+	</mx:Canvas>
+
+</mx:Application>

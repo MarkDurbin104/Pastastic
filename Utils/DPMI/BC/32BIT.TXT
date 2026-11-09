@@ -1,0 +1,140 @@
+Why can't I use Borland C++ 4.0 in 32 bit DOS protected mode?  Well 
+with these few steps now you can!!
+
+You will need to have access to the following  files, these are all contained 
+on the CD version of Borland C++ 4.0
+	
+	bc4rtl\crtl386\win32\clib\errormsg.c
+	bc4\bin\32rtm.exe
+	bc4\bin\32dpmivm.ovl
+	bc4\bin\bcc32.exe
+	bc4\bin\tlink32.exe
+	bc4\bin\tlib.exe
+	bc4\lib\cw32.lib
+
+Borland C++ 4.0 is shipped with a DOS extender that can run 32 bit DOS 
+protected mode programs by following these steps. The program fixup.exe 
+is a 16 bit real mode program that automates steps 1 and 2 for you.  
+
+1 There is a stub program that is normally put at the beginning of all 
+window files and it just comes back with the error message "This program 
+will not run in DOS.".  The programs bcc32.exe, tlink32.exe and tlib.exe 
+and others have a different stub on them that call 32rtm.exe to run them in 
+DOS protected mode.  First we need to extract this stub program.  
+
+2.  After compiling with this new stub program, I kept getting the error 
+message "program will not run under DOS" from 32rtm.exe.  Well I looked 
+and looked but couldn't find out what the program needed.  So I finally 
+found in 32rtm.exe that Borland had put some sort of checksum block 
+somewhere in the file.  I couldn't for the life of me figure out where they 
+had put it.  So I ended up patching the 32rtm.exe file to not expect this 
+"magic block"
+
+3.  I ran into a couple of errors trying to run the program that I tracked 
+down to the errormsg.c file.  This program was a little hard to try and 
+recompile. Get the ntbc.h file from the bc4rtl\crtl386\win32\rtlinc directory. 
+You will also need the file dosexcptn.h from the bc4rtl\rtlapi directory.  
+You should place all these files in the same directory, since I didn't want to 
+add that many path names to the includes directory for bcc32.exe.  Since 
+this piece of code is Copyright by Borland I will describe where to delete, 
+since I can't actually include any of there code. Now starting with the line:
+
+extern unsigned char __isGUI
+remove all lines to the comment header that describes _ErrorMessage
+<------- delete to here -------->
+/*--------------------------------------------------------------------------------
+Name:		_ErrorMessage
+
+Also delete the statements that are included in the if statement
+
+<delete all this>	if (__isGUI)
+<delete all this>		{
+<delete all this>		...
+<delete all this>		...
+<delete all this>		} else
+<delete all this>		{
+<KEEP THIS PART>...
+<KEEP THIS PART>...
+<delete all this>		}
+
+
+Now compile the program with the following:
+	bcc32 /v /c -I. errormsg.c
+
+make sure you have configured the bcc32.cfg file to specify the correct 
+paths to the
+Borland C++ include directory and Lib directory.
+
+Now we have to replace it in the library :
+	first make a copy of the library
+	copy bc4\lib\cw32.lib <destination> where destination is a working 
+directory.
+	tlib cw32.lib +- errormsg.obj
+
+
+4.  Compile the program as a 32 bit Windows console application.  
+	Required parameters are /Tpe = create protected mode 32 bit exe 
+file
+				  /ap = create win32 console application
+
+	You will need to link with the startup file c0x32.obj and the 
+libraries cw32.lib & 
+	import32.lib.
+
+The module definition file should look similar to the following
+
+NAME         test32 WINDOWCOMPAT
+
+DESCRIPTION 'Test 32 bit program'
+
+STUB 	'STUB32.EXE'
+
+IMPORTS	
+	ntdll.RtlUnwind
+
+CODE         PRELOAD EXECUTEREAD
+DATA         PRELOAD READWRITE
+
+EXETYPE      WINDOWS
+
+HEAPSIZE     128
+STACKSIZE    8192
+
+
+
+Voila' the program ran in 32 bit protected mode.
+
+That's all there is to it. :-}
+
+There are functions that are not supported by the 32 bit run time manager.  
+If you get an error saying that XXXXX is not supported in the DLL then 
+the routine you use probably won't work.  You'll have to experiment to find 
+out which ones will.  If you want to debug these programs.  My guess is 
+you'll have to do it with windows NT and td32.exe since it won't run under 
+DOS.  I haven't tested this yet so I don't know if this will work.
+
+SoapBox:
+	I am really baffled that Borland didn't actually try to make Borland 
+C++ version 4.0 capable of  making 32 bit DOS protected mode programs.  
+They have included all the right tools for the job, but then go and cripple it 
+so nobody can use it.  I am a game programmer and really have liked 
+Borland C since it came out, before that I was a Borland Pascal user.  As a 
+game programmer, we cannot afford the overhead of windows or any other 
+GUI based product.  These hacks could have been easily implemented by 
+Borland for all of us to enjoy 32 bit DOS protected mode programming.  
+Most of the programmers that I know in my industry have started using 32 
+bit DOS protected mode,  Of course they have mostly switched to 
+WatComm C++ for their development tools.  This really pains me, since 
+Turbo Debugger is the best debugger, that has ever been invented.  Maybe 
+Borland will find it in their heart to release a version for 32 bit DOS 
+Protect mode that would include td32.exe as a DOS program and not a 
+Windows NT program.  Well anyway my times over and I'm getting kicked 
+off my Soap box.
+
+
+					Sincerely,
+
+					Kenneth L. Hurley
+					Internet:  kenh@futurescape.com
+					CIS ID: 71334,1613
+

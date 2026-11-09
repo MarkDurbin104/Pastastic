@@ -1,0 +1,4 @@
+-+gpamain.obj  -+config.obj   -+control.obj  -+actionc.obj  -+function.obj &
+-+dst.obj      -+money.obj    -+arith.obj    -+global.obj   -+actions.obj  &
+-+lang.obj     -+message.obj  -+calc.obj     -+translog.obj -+formhand.obj &
+-+formproc.obj -+menuproc.obj -+tabproc.obj  -+fldproc.obj  -+repproc.obj  

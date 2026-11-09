@@ -1,0 +1,69 @@
+Dear Harry,
+
+With reference to your letter of 13 June 1991, the  screen printing
+utilities were developed by a UNISYS consultant, Paul Encarnacion.
+He developed these programs while working for iT on the ECCO+ project
+for the printing of some screens for use in their design/specification
+documents.
+
+I am sorry that Steve Warwick has disowned this software because of a
+copyright notice that suggests it is UNISYS' property.  I am sure that,
+in different circumstances, he could use the argument that since it was
+developed during work for iT, then it belongs to them.  I can only assume
+that his staff are busy with the development of the ECCO+ software, and
+do not have the time to devote to this type of work.  The software was
+designed to be flexible and works with the configuration that was required
+at the time that it was developed.
+
+Put simply, the screen printing software comprises two programs.
+
+1. The first is a memory resident screen capture program.  It is loaded by
+   running it for the first time.  It is invoked when required by the
+   pressing of preset key combination. When invoked it saves the current
+   screen display to a file on the disk.  The key combination used is <CTRL>
+   and <LEFT-SHIFT>.  This combination is defined in the source code (written
+   in assembler) and is trivial to modify.  This key combination was chosen
+   because at the time the ECCO+ keyboard did not exist and the ECCO+ CT and
+   BOP software did not exist.  The program was used to capture simulation
+   screens on a development machine using a standard PC keyboard.
+
+2. The second is the printing program.  It was designed to take a screen
+   captured by the first program and print it on a HP laserjet printer.
+   The program is specific to an HP laserjet printer.  The reason for this
+   is that this particular printer is the one that was being used by the
+   iT ECCO+ software team and produces high quality output.  A font file is
+   used which allows the printed screen characters to look as similar to
+   those on the screen display as possible.
+
+Given this description of the programs, it is obvious that the capture program
+should be changed if the capturing of live CT ECCO+ screens is required.  This
+would involve modifying the keystroke combination to something that is sensible
+for a CT keyboard.  It may be necessary to have separate capture programs for
+CT and BOP.
+
+The printing of saved capture screens is dependent on what printer the screen
+is to be printed on.  A new program would be required to print these on the
+BOP printer.
+
+In my opinion, the best way to proceed is this:
+
+1. keep the existing capture program for use with the BOP;
+2. produce a version of the capture program for use with the CT;
+3. use the existing print program with iT's HP laserjet printer.
+
+In this way, the time and cost involved would be minimal.
+
+
+
+
+Regards
+
+
+
+John Englezou
+Technical Consultant (UNISYS)
+ 
+
+
+
+

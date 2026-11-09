@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="247" height="660" 
+	backgroundImage="@Embed(source='embedded/InputBG.png',scaleGridLeft='15',scaleGridTop='34',scaleGridRight='16',scaleGridBottom='35')"
+	backgroundSize="100%"
+	horizontalScrollPolicy="off" verticalScrollPolicy="off" xmlns:slides="com.proiam.slides.*" >
+	<mx:states>
+		<mx:State name="Alternate">
+			<mx:SetStyle name="backgroundImage">
+				<mx:value>@Embed(source='embedded/InputBG2.png',scaleGridLeft='9',scaleGridTop='7',scaleGridRight='11',scaleGridBottom='44')</mx:value>
+			</mx:SetStyle>
+			<mx:RemoveChild target="{title}"/>
+			<mx:SetProperty name="height" value="630"/>
+			<mx:SetProperty target="{buttonGroup}" name="y" value="6"/>
+			<mx:SetStyle target="{text1}" name="color" value="#FFFFFF"/>
+			<mx:SetStyle target="{text2}" name="color" value="#FFFFFF"/>
+		</mx:State>
+		<mx:State name="NoOneTouch" basedOn="Alternate">
+			<mx:RemoveChild target="{text2}"/>
+			<mx:RemoveChild target="{valinputkey1}"/>
+			<mx:RemoveChild target="{valinputkey2}"/>
+			<mx:RemoveChild target="{valinputkey3}"/>
+			<mx:RemoveChild target="{valinputkey6}"/>
+			<mx:RemoveChild target="{valinputkey5}"/>
+			<mx:RemoveChild target="{valinputkey4}"/>
+			<mx:SetProperty target="{buttonGroup}" name="height" value="428"/>
+			<mx:SetProperty name="height" value="442"/>
+			<mx:RemoveChild target="{image1}"/>
+			<mx:SetProperty target="{text1}" name="width" value="233"/>
+			<mx:SetProperty target="{text1}" name="x" value="10"/>
+			<mx:SetProperty target="{text1}" name="text" value="Please enter amount:"/>
+			<mx:SetProperty target="{text1}" name="height" value="23"/>
+			<mx:SetProperty target="{numinputkey1}" name="y" value="88"/>
+			<mx:SetProperty target="{numinputkey2}" name="y" value="88"/>
+			<mx:SetProperty target="{canvas1}" name="y" value="27"/>
+			<mx:SetProperty target="{numinputkey3}" name="y" value="88"/>
+			<mx:SetProperty target="{numinputkey4}" name="y" value="155"/>
+			<mx:SetProperty target="{numinputkey5}" name="y" value="155"/>
+			<mx:SetProperty target="{numinputkey6}" name="y" value="155"/>
+			<mx:SetProperty target="{numinputkey7}" name="y" value="222"/>
+			<mx:SetProperty target="{numinputkey8}" name="y" value="222"/>
+			<mx:SetProperty target="{numinputkey9}" name="y" value="222"/>
+			<mx:SetProperty target="{numinputkey10}" name="y" value="289"/>
+			<mx:SetProperty target="{numinputkey11}" name="y" value="289"/>
+			<mx:SetProperty target="{numinputkey12}" name="y" value="289"/>
+			<mx:SetProperty target="{canvas2}" name="y" value="360"/>
+			<mx:SetProperty target="{canvas3}" name="y" value="360"/>
+		</mx:State>
+	</mx:states>
+	<mx:Metadata>
+    [Event(name="okClicked", type="flash.events.Event")]
+    [Event(name="cancelClicked", type="flash.events.Event")]
+	</mx:Metadata>
+	<mx:Script>
+		<![CDATA[
+			
+			private function okClick(event:MouseEvent):void {
+				dispatchEvent(new Event("okClicked"));
+			}
+			private function cancelClick(event:MouseEvent):void {
+				dispatchEvent(new Event("cancelClicked"));
+			}
+			private var _cV:String="0";
+			
+			[Bindable]
+			public function get cV():String {
+				if (currentState=="NoOneTouch") {
+					var oStr:String=_cV;
+					while (oStr.length < 3) oStr="0"+oStr;
+					var len:int=oStr.length;
+					return(oStr.slice(0,len-2)+'.'+oStr.slice(len-2));
+				}	
+				return(_cV+'.00');
+			}
+			public function set cV(value:String):void {
+				var dotPos:int=-1;
+				for (var i:int=0;i<value.length;i++) {
+					if (value.charAt(i) == '.')	{
+						dotPos=i;
+						break;
+					}
+				}
+				if (dotPos==-1) {
+					_cV=value;
+				} else {
+					if (currentState=="NoOneTouch") {
+						_cV=value.slice(0,dotPos)+value.slice(dotPos+1);
+					} else {
+						_cV=value.slice(0,dotPos);
+					}
+				}
+			}
+			private function processKey(event:MouseEvent):void {
+				var key:String=NumInputKey(event.currentTarget).key.slice(0,1);
+				
+				if (_cV=="0") _cV="";
+				
+				var len:int=_cV.length;
+				
+				if (key == 'x') {
+					 if (len > 0) _cV=_cV.slice(0,len-1);
+				} else if (((currentState!="NoOneTouch")&&(len <4))||(len < 6)) {
+					_cV+=key;
+				}
+				if (_cV=="") _cV="0";
+				curValue.text=cV;
+			}
+			private function valClick(event:MouseEvent):void {
+				cV=String(ValInputKey(event.currentTarget).value);
+				okClick(event);
+			}
+		]]>
+	</mx:Script>
+	<mx:Label id="title" y="6" text="Additional information" fontFamily="Tahoma" fontSize="13" fontWeight="bold" color="#FFFFFF" x="6" width="223" />
+	<mx:Canvas id="buttonGroup" x="0" y="36" width="247" height="614">
+		<mx:Canvas x="10" y="60" width="226" height="52" borderStyle="solid" cornerRadius="8" borderColor="#8FC2D9" backgroundColor="#004663" borderThickness="1" id="canvas1">
+			<mx:Label  id="curValue" x="25" y="0" text="{cV}" color="#FFFFFF" fontSize="36" width="189" textAlign="right"/>
+			<mx:Label  id="currency" x="8" y="3" text="$" color="#FFFFFF" fontSize="21" width="28"/>
+		</mx:Canvas>
+		<slides:NumInputKey x="10" y="121" key="1" click="processKey(event)" id="numinputkey1"/>
+		<slides:NumInputKey x="87" y="121" key="2" click="processKey(event)" id="numinputkey2"/>
+		<slides:NumInputKey x="164" y="121" key="3" click="processKey(event)" id="numinputkey3"/>
+		<slides:NumInputKey x="10" y="188" key="4" click="processKey(event)" id="numinputkey4"/>
+		<slides:NumInputKey x="87" y="188" key="5" click="processKey(event)" id="numinputkey5"/>
+		<slides:NumInputKey x="164" y="188" key="6" click="processKey(event)" id="numinputkey6"/>
+		<slides:NumInputKey x="10" y="255" key="7" click="processKey(event)" id="numinputkey7"/>
+		<slides:NumInputKey x="87" y="255" key="8" click="processKey(event)" id="numinputkey8"/>
+		<slides:NumInputKey x="164" y="255" key="9" click="processKey(event)" id="numinputkey9"/>
+		<slides:NumInputKey x="10" y="322" key="00" click="processKey(event); processKey(event)" id="numinputkey10"/>
+		<slides:NumInputKey x="87" y="322" key="0" click="processKey(event)" id="numinputkey11"/>
+		<slides:NumInputKey x="164" y="322" key="x" click="processKey(event)" id="numinputkey12"/>
+		<mx:Canvas x="29" y="393" width="85" height="58" backgroundImage="@Embed('embedded/SelectedCardButtonOK.png')" click="okClick(event);" id="canvas2"/>
+		<mx:Canvas x="128" y="393" width="85" height="58" backgroundImage="@Embed('embedded/SelectedCardButtonCancel.png')" click="cancelClick(event);" id="canvas3"/>
+		<slides:ValInputKey x="10" y="484" value="50" click="valClick(event);" id="valinputkey1"/>
+		<slides:ValInputKey x="87" y="484" value="100" click="valClick(event);" id="valinputkey2"/>
+		<slides:ValInputKey x="164" y="484" value="200" click="valClick(event);" id="valinputkey3"/>
+		<slides:ValInputKey x="10" y="552" value="300" click="valClick(event);" id="valinputkey4"/>
+		<slides:ValInputKey x="87" y="552" value="400" click="valClick(event);" id="valinputkey5"/>
+		<slides:ValInputKey x="164" y="552" value="500" click="valClick(event);" id="valinputkey6"/>
+		<mx:Image x="13" y="5" source="@Embed(source='embedded/Insurance.png')" id="image1"/>
+		<mx:Text x="110" y="3" text="Please enter&#xa;insured value:" color="#004663" fontSize="13" fontWeight="bold" id="text1" width="133" height="52"/>
+		<mx:Text x="10" y="459" text="Or select a one touch value:" color="#004663" fontSize="14" fontWeight="bold" id="text2"/>
+	</mx:Canvas>
+</mx:Canvas>

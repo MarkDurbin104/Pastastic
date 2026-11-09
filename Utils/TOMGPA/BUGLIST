@@ -1,0 +1,47 @@
+85	04/08/94	40894	RESTORE	Temp.Work around	MARK 
+			Answer of  N at Restore - Continue? throws user out 	implemented 19/10	
+			to DOS		
+					
+109	12/08/94	120894	REPORT DSS GIROCHEQUES PAID	OPEN	TONY / MARK
+			1. Batch totals should be 50 per column (SPEC)		Item 1 ? GPAD problem - 
+			2. Batch totals incorrectly displayed.		(Discuss with Mark)
+			3. Weekly list - should have total number of dockets 		
+			    paid		
+			4. Weekly list - Pagination		
+
+118	26/08/94	16.1	CALENDAR	OPEN	MARK
+			1. Requires more on screen help (POCL to spec)		
+					
+125	13/10/94	V67.13	CALCULATOR	OPEN	MARK
+			1. Requires more on screen help (POCL to spec)		
+					
+126	13/10/94	V67.13	TRANSACTION LOG	OPEN	MARK / TONY
+			1. Previous weeks data not available on screen or		(Runcopy command)
+			    print.		
+					
+128	13/10/94	V67.13	TOTALLING ON TXN ENTRY SCREENS	OPEN	MARK
+			1. Total not always updated correctly - requires screen		
+			     refresh. (E.G. Rems in / out)		
+					
+129	13/10/94	V67.13	TRANSACTION DELETION	OPEN	MARK
+			"1. If a transaction is deleted, screen not correctly"		
+			    refreshed. 		
+					
+132	13/10/94	V67.13	SCREENS DISPLAYED DURING FAST PATHS	OPEN 	MARK
+			Path screens displayed if a fast path key is used.		
+					
+141	14/10/94	V67.13	HELP DESK PASSWORD OVER RIDE FACILITY	Fixed 21/10	MARK
+			Complete but not in V67.13		
+
+142	19/10/94	V67.13	BACK UP AFTER CASH ACCOUNT	OPEN	MARK
+			"Application ""freezes"" if C/A is processed and BACKUP "		
+			"selected as next activity. ""Freezes at press of enter key"""		
+
+143	19/10/94	V67.13	PRINTER COMMAND IGNORED IF OFF LINE	OPEN	MARK
+			Print Command is ignored if printer off-line when a print 		
+			is requested.		
+
+144	21/10/94	V67.13	CASH LOCKED UP	OPEN	MARK /TOM
+			Problems with two tables		GPAD FAULT
+
+

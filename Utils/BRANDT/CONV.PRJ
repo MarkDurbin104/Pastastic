@@ -1,0 +1,8 @@
+conv.c (convhpgl.h)
+lansintr.c (convhpgl.h)
+calcu.c (convhpgl.h)
+getvals.c (convhpgl.h)
+setchr.c (convhpgl.h)
+setdef.c (convhpgl.h)
+comms.c (convhpgl.h)
+

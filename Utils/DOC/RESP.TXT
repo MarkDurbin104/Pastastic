@@ -1,0 +1,17 @@
+6.1.2 The BOP can initiate communication via semaphores in pipes.
+5.6.1 I 1992 Mark Durbin & John Englezou set up LAN performance/resilience 
+      tests
+      With only one CT in circuit our tests show a through-put 
+      of 170792 bits/sec (21349 bytes/second)
+
+      With one CT in pass-through mode in circuit between CT and BOP
+      our tests show a through-put of 169040 bits/sec (21130 bytes/second)
+
+      With twenty one CT's in pass-through mode in circuit between CT and BOP
+      our tests show a through-put of 134000 bits/sec (16750 bytes/second)
+
+      The only reason I can see for the difference between iT's results and 
+      those obtained by us, is that in the tests performed by iT 
+      LANSAT.SYS & LANSERVE.COM had not had the RETRY-TIMEOUT & RETRY-COUNT
+      valuse set to appropriate values.
+

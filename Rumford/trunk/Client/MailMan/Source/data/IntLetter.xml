@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<diagram>
+  <elements definedIn="serviceSymbols.xml">
+    <input InText="POSTCARD" 										x="210" y="90" 	name="PostCard" 			style="Input"/>
+    <input InText="LETTER" 											x="210" y="140" name="Letter" 				style="Input"/>
+    <input InText="FLAT" 												x="210" y="190" name="Flat" 					style="Input"/>
+    <input InText="COUNTRY" 										x="210" y="285" name="Country" 			style="Input"/>
+    <input InText="WEIGHT" 											x="210" y="385" name="Weight" 				style="Input"/>
+    <gate GateType="" 													x="400" y="130" name="ORGate" 			style="ORGate"/>
+    <lookup LookText="Zone&#xa;LookUp" 					x="400" y="265" name="Zone" 				style="LookUp"/>
+    <lookup LookText="Int. Letter&#xa;LookUp" 			x="400" y="365" name="LetterLookup"	style="LookUp"/>
+    <fee FeeText="STANDARD FEE" 								x="380" y="480" name="StandardFee" 	style="Fee"/>
+    <gate GateType="" 													x="590" y="275" name="ANDGate" 			style="ANDGate"/>
+    <service ServiceTitle="International&#xa;Letter" 	x="700" y="250" name="IntLetter" 			style="PrimaryService"/>
+
+	<link from="PostCard" 	to="ORGate" 	> <point x="330" y="110" /> <point x="375" y="110" /><point x="375" y="145" /><point x="400" y="145" /> </link>
+	<link from="Letter" 	to="ORGate" 	> <point x="330" y="160" /> <point x="400" y="160" /> </link>
+	<link from="Flat" 	to="ORGate" 	> <point x="330" y="210" /> <point x="375" y="210" /><point x="375" y="175" /><point x="400" y="175" /> </link>
+
+	<link from="Country" 	to="Zone" 	> <point x="330" y="305" /> <point x="400" y="305" /> </link>
+	<link from="Weight" 	to="LetterLookup" 	> <point x="330" y="405" /> <point x="400" y="405" /> </link>
+	<link from="Zone" 	to="LetterLookup" 	> <point x="440" y="325" /> <point x="440" y="385" /> </link>
+	<link from="LetterLookup" 	to="StandardFee" 	> <point x="440" y="425" /> <point x="440" y="480" /> </link>
+
+	<link from="ORGate" 	to="ANDGate" 	> <point x="460" y="160" /> <point x="525" y="160" /><point x="525" y="290" /><point x="590" y="290" /> </link>
+	<link from="Zone" 	to="ANDGate" 	> <point x="480" y="305" /> <point x="590" y="305" /> </link>
+	<link from="ORGate" 	to="ANDGate" 	> <point x="480" y="405" /> <point x="525" y="405" /><point x="525" y="320" /><point x="590" y="320" /> </link>
+
+	<link from="ANDGate" 	to="IntLetter" 	> <point x="650" y="305" /> <point x="700" y="305" /> </link>
+
+  </elements>
+</diagram>

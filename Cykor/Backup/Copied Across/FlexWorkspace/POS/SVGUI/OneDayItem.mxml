@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg:ReSizeCanvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:svg="SVGUI.*"
+	width="130" height="103"
+	backgroundImage="@Embed(source='svg_graphics/ItemButton.svg')" 
+	backgroundSize="100%"
+	creationComplete="createEffect(event);"
+	styleName="normalItem">
+	 
+	<mx:Script>
+        <![CDATA[
+        
+            import flash.events.Event;
+            import mx.effects.Zoom;
+
+        	private var _caption:String;
+            
+            [Bindable]
+            [Inspectable(defaultValue="")]
+            public function get caption():String
+            {
+            	return _caption;
+            }
+            public function set caption(value:String):void
+            {
+            	_caption=value;
+            }
+        	
+            private function createEffect(eventObj:Event):void {
+                // Define a new Zoom effect.
+                var zoomOver:Zoom = new Zoom();
+                zoomOver.duration = 20; 
+                zoomOver.zoomHeightTo = 1.05; 
+                zoomOver.zoomWidthTo = 1.05; 
+                var zoomOut:Zoom = new Zoom();
+                zoomOut.duration =200; 
+                zoomOut.zoomHeightTo = 1; 
+                zoomOut.zoomWidthTo = 1; 
+                
+                setStyle("rollOverEffect", zoomOver); 
+                setStyle("rollOutEffect", zoomOut); 
+            } 
+        ]]>
+    </mx:Script>
+    	
+	<mx:Text text="{caption}" width="89%"
+    	horizontalCenter="0"  verticalCenter="0" selectable="false" styleName="embVerdanaStyle"/>	
+</svg:ReSizeCanvas>

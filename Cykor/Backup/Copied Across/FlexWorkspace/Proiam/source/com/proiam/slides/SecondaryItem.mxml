@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="130" height="103"
+	creationComplete="createEffect(event);"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	styleName="secondaryItem" xmlns:filters="flash.filters.*">
+	<mx:Script>
+        <![CDATA[
+        	import com.cykorsystems.utils.Configuration;
+        	import com.proiam.mails.MailService;
+        
+            import flash.events.Event;
+            import mx.effects.Zoom;
+            
+            [Bindable]
+        	private var scale:Number=1;
+			public var service:MailService=null;
+            [Bindable]
+        	public var caption:String="";
+        	[Bindable]
+        	public  var price:String="";
+        	[Bindable]
+        	public  var iconSource:Object=null;
+        	
+        	private var _available:Boolean=true;
+            [Bindable]
+            [Inspectable(defaultValue=true)]
+            public function get available():Boolean
+            {
+            	return _available;
+            }
+            public function set available(value:Boolean):void
+            {
+            	_available=value;
+            	if (Configuration.useCrossesOnSecondary) {
+	            	if (_available) cross.visible=false; else cross.visible=true;
+            	} else {
+	            	if (_available) scale=1; else scale=0.7;
+            	}
+            }
+            
+        	private var _highlight:Boolean=false;
+            [Bindable]
+            [Inspectable(defaultValue=false)]
+            public function get highlight():Boolean
+            {
+            	return _highlight;
+            }
+            public function set highlight(value:Boolean):void
+            {
+            	_highlight=value;
+            	if (highlight) {
+            		minitick.visible=true;
+            	} else {
+            		minitick.visible=false;
+            	}
+            }
+            
+        	private var _inspecting:Boolean=false;
+            [Bindable]
+            public function get inspecting():Boolean
+            {
+            	return _inspecting;
+            }
+            public function set inspecting(value:Boolean):void
+            {
+            	_inspecting=value;
+            	if (_inspecting) {
+	            	scale=1;
+            		width=300; height=130;
+            		outerText.text="This service conflicts with another secondary service you have selected, press [Confirm] to replace that service with this one";
+            		oCanvas.width=300;
+            		oCanvas.height=130;
+            	} else {
+	            	available=!_available;
+	            	available=!_available;
+            		outerText.text="";
+            		oCanvas.width=130;
+            		oCanvas.height=103;
+            		width=130; height=103;
+            	}
+            }
+
+            private function createEffect(eventObj:Event):void {
+                return;
+                // Define a new Zoom effect.
+                var zoomOver:Zoom = new Zoom();
+                zoomOver.duration = 20; 
+                zoomOver.zoomHeightTo = 1; 
+                zoomOver.zoomWidthTo = 1; 
+                var zoomOut:Zoom = new Zoom();
+                zoomOut.duration =200; 
+                zoomOut.zoomHeightTo = 1; 
+                zoomOut.zoomWidthTo = 1; 
+                
+                setStyle("rollOverEffect", zoomOver); 
+                setStyle("rollOutEffect", zoomOut); 
+            } 
+            public function CancelClick(event:Event):void {
+            	inspecting=false;
+            	event.stopPropagation();
+            }
+            public function ConfirmlClick(event:Event):void {
+            	inspecting=false;
+            }
+        ]]>
+    </mx:Script>
+	<mx:Text visible="{scale!=1}" text="Not avaiable with remaining services" width="130" selectable="false" styleName="embVerdanaStyle" top="0" textAlign="center" left="0" fontSize="9" color="#27726B" />		
+    <mx:Canvas id="inner" horizontalCenter="0" bottom="0" width="130" height="103" scaleX="1" scaleY="{scale}" 
+							backgroundImage="@Embed(source='embedded/GreenItemButton.svg')" 
+						 	backgroundSize="100%"  visible="{!inspecting}"
+							verticalScrollPolicy="off" horizontalScrollPolicy="off"
+    	>
+		<mx:Text text="{price}" bottom="6" textAlign="right" styleName="embVerdanaStyle" color="#000000" left="9" width="115"/>
+		<mx:Text text="{caption}" width="85%" selectable="false" styleName="embVerdanaStyle" top="8" textAlign="left" left="8"/>		
+		<mx:Image id="tick" bottom="30" source="@Embed(source='embedded/Tick.png')" scaleContent="false" height="36"  right="10" width="25" visible="false" />
+		<mx:Image id="cross" bottom="30" source="@Embed(source='embedded/Cross.png')" scaleContent="false" height="36"  right="10" width="25" visible="false" />
+		<mx:Image source="{iconSource}" left="10" width="85%" height="32" scaleContent="true" alpha="0.75" bottom="25"/>
+		<mx:Image id="minitick" bottom="10" left="10" source="@Embed(source='embedded/Tick.png')" scaleContent="true" height="16" visible="false" />
+		<mx:filters>
+			<filters:DropShadowFilter id="shadow" angle="45" alpha="0.1" distance="4" blurX="0" blurY="0" />
+		</mx:filters>
+    </mx:Canvas>
+    <mx:Canvas id="oCanvas" horizontalCenter="0" bottom="0" width="130" height="103"  
+							backgroundImage="@Embed(source='embedded/InspectedButton.png')" 
+						 	backgroundSize="100%"  visible="{inspecting}"
+							verticalScrollPolicy="off" horizontalScrollPolicy="off"
+    	>
+		<mx:Text text="{caption}" width="85%" selectable="false" styleName="embVerdanaStyle" top="8" textAlign="left" left="8"/>		
+		<mx:Text id="outerText" x="10" y="25" fontFamily="Verdana" fontSize="10" width="{inspecting?280:50}" text="test"/>
+		<mx:Button label="Confirm" bottom="10" left="10" width="120" height="50" />
+		<mx:Button label="Cancel" bottom="10" height="50" right="10" width="120" click="CancelClick(event);"/>
+    </mx:Canvas>
+</mx:Canvas>

@@ -1,0 +1,32 @@
+POPTS=-Lp -AL -DDOSX286
+WOPTS=-W4
+
+all: big.exe dosmem.exe memtest.exe memtest2.exe vidtest.exe keys.exe hello.exe
+
+big.exe: BIG.C
+	cl -f- $(POPTS) $(WOPTS) big.c
+	bind286 big
+
+dosmem.exe: DOSMEM.C
+	cl $(POPTS) $(WOPTS) dosmem.c
+	bind286 dosmem
+
+memtest.exe: MEMTEST.C
+	cl $(POPTS) $(WOPTS) memtest.c
+	bind286 memtest
+
+memtest2.exe: MEMTEST2.CPP
+	cl $(POPTS) $(WOPTS) memtest2.cpp
+	bind286 memtest2
+
+vidtest.exe: VIDTEST.C FULLSCRN.C FULLSCRN.H
+	cl $(POPTS) $(WOPTS) -I..\inc vidtest.c fullscrn.c
+	bind286 vidtest
+
+keys.exe: KEYS.C
+	cl $(POPTS) $(WOPTS) -I..\inc keys.c
+	bind286 keys
+
+hello.exe: HELLO.C
+	cl $(POPTS) $(WOPTS) hello.c
+	bind286 hello

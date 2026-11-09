@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OneDayBase xmlns="*" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	horizontalScrollPolicy="off" verticalScrollPolicy="off"
+	xmlns:filters="flash.filters.*" 
+	creationComplete="createEffect(event);"
+	width="198" height="205"
+	styleName="normalItem">
+	<mx:Image source="{iconSource}" left="0" top="0" width="198" height="205" scaleContent="true" />
+	<mx:Text text="{price}" textAlign="right" color="#002281" width="100%" fontFamily="Tahoma" bottom="12" fontSize="20" right="17" fontStyle="normal" fontWeight="bold"/>
+</OneDayBase>

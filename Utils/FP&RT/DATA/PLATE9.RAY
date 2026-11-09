@@ -1,0 +1,158 @@
+{   ษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+    บ                                                               บ
+    บ                  Pictures of quadric shapes                   บ
+    บ                                                               บ
+    บ                By Roger T. Stevens - 6/17/90                  บ
+    บ                                                               บ
+    ศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+}
+
+FILE_NAME = SHAPES.RAW
+
+{  PATTERNS USED}
+
+PATTERN ( x_size = 80,                 { CHECKERED GROUND }
+          y_size = 80,
+          name   = CHECK,
+          RECTANGLE (
+            start_x = 0,
+            start_y = 0,
+            end_x   = 40,
+            end_y   = 40,
+            diff    = (.75, .25, .75),
+            dither  = 0,
+          )
+          RECTANGLE (
+            start_x = 40,
+            start_y = 40,
+            end_x   = 80,
+            end_y   = 80,
+            diff    = (.75, .25, .75),
+            dither  = 0,
+          )
+        )
+
+PARALLELOGRAM ( loc  = (  -10000, 0,  -10000),
+                v1   = (20000, 0,    0),
+                v2   = (  0, 0, 20000),
+                diff = (  1, 1, .75),
+                dither  = 0,
+                pattern = CHECK
+                xmult = 2
+                ymult = 2
+              )
+
+BEGIN_BBOX
+	QUADRATIC 		(loc= (230, 60, -100)   {elliptic cone - cyan}
+                a       = 2500, b  = -625, c  = 2500,
+                d       = 0,
+                xmin    = -25, xmax = 25,
+                ymin    = -50,   ymax = 50,
+                zmin    = -25, zmax = 25,
+                diff    = (0, 1.0, 1.0),
+              )
+END_BBOX
+
+BEGIN_BBOX
+	QUADRATIC 		(loc= (300, 0, -55)   {cylinder - green}
+                a       = 1, b  = 0, c  = 1,
+                d       = 300,
+                xmin    = -18, xmax = 18,
+                ymin    = 0,   ymax = 60,
+                zmin    = -18, zmax = 18,
+                diff    = (0, 1.0, 0),
+              )
+
+END_BBOX
+
+BEGIN_BBOX
+	QUADRATIC 		(loc= (220, 60, 25)    {elliptic paraboloid - purple}
+                a       = 60, e  = -60, c  = 60,
+                d       = 0,
+                xmin    = -20, xmax = 20,
+                ymin    = -40,   ymax = 60,
+                zmin    = -20, zmax = 20,
+                diff    = (1.0, 0, 1.0),
+              )
+
+END_BBOX
+
+BEGIN_BBOX
+	QUADRATIC 		(loc= (160, 30, -35)   {hyperbolic paraboloid - blue}
+                a       = 2, e  = -10, c  = -2,
+                d       = 0,
+                xmin    = -15, xmax = 15,
+                ymin    = -25,   ymax = 40,
+                zmin    = -15, zmax = 15,
+                diff    = (0, 0, 1.0),
+              )
+
+
+END_BBOX
+
+BEGIN_BBOX
+	QUADRATIC 		(loc= (230, 60, 90)   {hyperboloid of one sheet - orange}
+                a       = 1, b  = -1, c  = 1,  
+	            d       = 300,
+                xmin    = -25, xmax = 25,
+                ymin    = -60,   ymax = 60,
+                zmin    = -25, zmax = 25,
+                diff    = (1.0, 0.5, 0),
+              )
+
+END_BBOX
+
+BEGIN_BBOX
+	QUADRATIC 	{	(loc= (500, 60, 30)   hyperboloid of two sheets - red}
+                	(loc= (200, 80, 0) 
+				a       = -5, b  = -7, c  = 3,
+{               d       = 700,  }
+				d = 200
+                xmin    = -22, xmax = 22,
+                ymin    = -60,   ymax = 60,
+                zmin    = -22, zmax = 22,
+                diff    = (1, 0, 0),
+              )
+
+
+END_BBOX
+
+BEGIN_BBOX
+	QUADRATIC 		(loc= (130, 30, 35) {ellipsoid - white}
+                a       = 8, b  = 4, c  = 1,
+                d       = 500,
+                xmin    = -25, xmax = 25,
+                ymin    = -40,   ymax = 60,
+                zmin    = -25, zmax = 25,
+                diff    = (1.0, 1.0, 1.0),
+              )
+END_BBOX
+
+
+OBSERVER ( loc    = (-20 , 70, -80)
+           lookat = (200, 50, -15)
+         )
+{ ** A lamp ** }
+LAMP ( loc = (120, 400, -50),
+       radius = 5,
+       dist = 250
+     )
+LAMP ( loc = (-200, 450, 140)
+       radius = 5,
+       dist = 220
+     )
+LAMP ( loc = (-200, 200, 140)
+       radius = 5,
+       dist = 220
+     )
+SKY  ( horiz  = (0, .4, .8),
+       zenith = (0, .4, .9),
+       dither = 1
+     )
+XRES = 320
+YRES = 200
+
+FOC_LENGTH = 65
+
+
+

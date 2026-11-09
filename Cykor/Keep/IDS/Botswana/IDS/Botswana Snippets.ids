@@ -1,0 +1,2588 @@
+//******************************************************************************************//
+//*                                                                                        *//
+//*                   Code Snippets for Botswana Postal Service                            *//
+//*                                                                                        *//
+//*                                                                                        *//
+//******************************************************************************************//
+Snippets
+{
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  CalcChangeVars { InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+                   CodeBlock     { [*
+                                      var
+                                         Amount:Currency;
+                                         Cng   :Currency;
+                                         Total :Currency;
+                                    *] }
+                  }
+//
+//------------------------------------------------------------------------------------------
+//
+
+   CalcChange {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+          AmountPaid.Hint:='Amount to pay: '+CurrToStrF(ApplyRounding(BaseProduct.CurrentTxnTotal),ffNumber,2);
+          if StrToInt(BaseProduct.UIEventSink.ReferenceData('ClerkLevel')) >= 2 then
+          begin
+             if AmountPaid.Text = '' then
+                AmountPaid.Text:=CurrToStrF(ApplyRounding(BaseProduct.CurrentTxnTotal),ffNumber,2);
+          end;
+          if AmountPaid.Text = '' then
+             Result:=False
+          else
+             Result:=True;
+          if (ApplyRounding(BaseProduct.CurrentTxnTotal) <> BaseProduct.CurrentTxnTotal) then
+          begin
+             Thebe5Adjustment.Ignore:=False;
+             Thebe5Adjustment.Text:=CurrToStrF(ApplyRounding(BaseProduct.CurrentTxnTotal) - BaseProduct.CurrentTxnTotal,ffNumber,2);
+          end
+          else
+             Thebe5Adjustment.Ignore:=True;
+
+            Total :=ApplyRounding(BaseProduct.CurrentTxnTotal);
+          Amount:=StrToCurrDef(AmountPaid.Text,0);
+          Cng   :=Amount-Total;
+          if Cng > 0 then
+              Change.Text:=CurrToStrF(Cng,ffNumber,2)
+           else
+              Change.Text:='0.00';
+      *]
+      }
+   }
+//
+//------------------------------------------------------------------------------------------
+//
+
+   LogNegativeCash {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         if TxnLog.Total < 0 then
+         begin
+            ProdForm.AmountPaid.Text := CurrToStrF(ApplyRounding(TxnLog.Total), ffNumber, 2 ) ;
+            ProdForm.Validate;
+            ProdForm.AmountPaid.Text := CurrToStrF(ApplyRounding(TxnLog.Total), ffNumber, 2 ) ;
+            UIEventSink.Restore ;
+         end ;
+      *]
+      }
+   }
+
+   LogCash5ThebeVars {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+       [*
+               var
+               ThebeAdjustmentPLU:Integer;
+       *]
+     }
+   }
+
+   LogCash {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         FUIEventSink.OpenCashDrawer;
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                               0-StrToCurrDef(ProdForm.AmountPaid.Text,0),
+                               0-StrToCurrDef(ProdForm.AmountPaid.Text,0),
+                               Get_Description,'',{PProgID}'Product.Cash',
+                               Enumerate(ProdForm));
+         Inc(Index);
+
+         ThebeAdjustmentPLU := 0;
+         if StrToCurrDef(ProdForm.Thebe5Adjustment.Text,0) <> 0 then
+         begin
+
+                             //  Check the 5 thebe adjustment in relation to a receipt or a payment
+                             //  and set the PLU accordingly.
+                             //  This is needed for the Cash Account
+
+            if StrToCurrDef(ProdForm.Amountpaid.Text, 0) > 0 then        // "Receipt" type product
+            begin
+               if StrToCurrDef(ProdForm.Thebe5Adjustment.Text,0) >0 then
+                  ThebeAdjustmentPLU := 1000001 // Receipt
+               else // <0
+                  ThebeAdjustmentPLU := 1000002; // Payment
+            end;
+            if StrToCurrDef(ProdForm.Amountpaid.Text, 0) < 0 then       // "Payment" type product
+            begin
+               if StrToCurrDef(ProdForm.Thebe5Adjustment.Text,0) >0 then
+                  ThebeAdjustmentPLU := 1000004  // Payment
+               else // <0
+                  ThebeAdjustmentPLU := 1000003;  // Receipt
+            end;
+
+            TxnLog.LogTransaction( Index
+                                  ,FQuantity
+                                  ,ThebeAdjustmentPLU
+                                  ,StrToCurrDef(ProdForm.Thebe5Adjustment.Text,0)
+                                  ,StrToCurrDef(ProdForm.Thebe5Adjustment.Text,0)
+                                  ,'5 Thebe Adjustment'
+                                  ,''
+                                  ,{PProgID}'Product.Thebe5Adj'
+                                  ,Enumerate(ProdForm));
+            Inc(Index);
+         end ;
+
+          if StrToCurrDef(ProdForm.Change.Text,0) > 0 then
+         begin
+            TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                                  StrToCurrDef(ProdForm.Change.Text,0),
+                                  StrToCurrDef(ProdForm.Change.Text,0),
+                                  ProdForm.Change.PromptLabel.Caption,
+                                  '',{PProgID}'Product.Cash','Change');
+            Inc(Index);
+         end;
+      *]
+      }
+   }
+//
+//------------------------------------------------------------------------------------------
+//                                 Snippets for Stamp Sales
+//------------------------------------------------------------------------------------------
+//
+
+
+   StampValidateVars {
+      InsertBetween { '{PublicVarStart}','{PublicVarEnd}' }
+      CodeBlock {
+      [*
+         TotalRequired:String;
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+  StampValidate {
+    InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+    CodeBlock {
+    [*
+      Result := SufficientStockLeft(StampsList.Items,CurrentLine);
+      If not Result then
+      begin
+        StampsList.ErrorText := 'Stamps not available';
+      end;
+
+      if TotalRequired <> '' then
+      begin
+        StampsList.Hint:='Enter Desired Quantities against each item^Total Value so far P'+TotalStockValue(StampsList.Items)+' , Postage Required P'+TotalRequired;
+        If Result //stamps available but not selected
+        and (StrToCurrDef(TotalStockValue(StampsList.Items),0) < StrToCurrDef(TotalRequired,999999)) then
+        begin
+          StampsList.ErrorText := 'Insufficient Stamps Selected^Total Value so far P'+TotalStockValue(StampsList.Items)+' , Postage Required P'+TotalRequired;
+          Result := False;
+        end;
+      end
+      else
+        StampsList.Hint:='Enter Desired Quantities against each item^Total Value so far P'+TotalStockValue(StampsList.Items);
+    *]
+    }
+  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   StampSwapVars {
+      InsertBetween { '{PrivVarDecStart}','{PrivVarDecEnd}' }
+      CodeBlock {
+      [*
+         BeenCancelled:Boolean;
+         ProductName:String;
+         ProductData:String;
+         ButtonStates:String;
+         CanExit:Boolean;
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   StampFillList {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         CanExit:=True;
+         BeenCancelled:=False;
+         ProdForm.TotalRequired:='';
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.StampsList,UIEventSink.User,'Stamps') then
+            begin
+               ProdForm.StampsList.Clear;
+               ProdForm.StampsList.Text:='No Stock Available';
+            end;
+         end;
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   StampEnableComplete {
+      InsertBetween { '{EnableCompleteStart}','{EnableCompleteEnd}' }
+      CodeBlock {
+      [*
+         if Value then
+         begin
+            if CanExit then
+               FUIEventSink.DisplayItemInfo(Self,0,'',ResItem00,0,0,False,False)
+            else
+               FUIEventSink.DisplayItemInfo(Self,0,'',ResItem00,0,0,True,False);
+         end
+         else
+            FUIEventSink.DisplayItemInfo(Self,0,'','',0,0,True,False);
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   StampSwapTo {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+         if Name = ResItem00 then
+         begin
+            CanExit:=True;
+            if BeenCancelled then
+               FUIEventSink.SwapTo(ProductName,#8+'Stay'+#8+ProductData+#8+ButtonStates+#8)
+            else
+               FUIEventSink.SwapTo(ProductName,#8+'Exit'+#8+ProductData+#8+ButtonStates+#8+ProdForm.StampsList.Items.CommaText);
+            Exit;
+         end;
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   StampOverrideDec {
+      InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+      CodeBlock {
+      [*
+         procedure TriggerStatusDevice0(Value:String); override;
+         function Get_CanTerminate:WordBool; override;
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  StampOverrideDef {
+    InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+    CodeBlock {
+    [*
+      procedure {PClass}TStampsProduct.TriggerStatusDevice0(Value:String);
+      var
+        SL            : TPackStringList;
+        BulkQuantity  : Integer;
+      begin
+        SL            := TPackStringList.Create;
+        SL.PackText   := Value;
+        ProductName   := SL[1];
+        ProductData   := SL[2];
+        If SL.Count > 3 then ButtonStates :=  SL[3];
+        BulkQuantity  := 1;
+        If SL.Count > 4 then BulkQuantity :=  StrToIntDef(SL[4],1);
+
+        CanExit :=False;
+        BeenCancelled :=False;
+        //CalcStockDenoms(ProdForm.StampsList.Items,StrToCurrDef(SL[0],0));
+        CalcMultiStockDenoms(ProdForm.StampsList.Items, StrToCurrDef(SL[0],0), BulkQuantity);
+        ProdForm.TotalRequired := CurrToStrF(StrToCurrDef(SL[0],0) * BulkQuantity, ffNumber, CurrencyDecimals);
+        if ProdForm.Validate then
+          FUIEventSink.DisplayItemInfo(Self,0,'',ResItem00,0,0,True,False)
+        else
+          FUIEventSink.DisplayItemInfo(Self,0,'','',0,0,True,False);
+        FUIEventSink.DataChanged(Self,ProdForm.StampsList.LineEditData,False);
+        SL.Free;
+      end;
+
+      function {PClass}TStampsProduct.Get_CanTerminate:WordBool;
+      begin
+        Result:=CanExit;
+        BeenCancelled:=True;
+        if not CanExit then
+        begin
+          CanExit:=True;
+          FUIEventSink.SwapTo(ProductName,#8+'Stay'+#8+ProductData+#8+ButtonStates+#8);
+        end;
+      end;
+      *]
+      }
+   }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   StartOfDayPVar {
+      InsertBetween { '{PrivVarDecStart}','{PrivVarDecEnd}' }
+      CodeBlock {
+      [*
+         JustExit:Boolean;
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   StartOfDayEVar {
+      InsertBetween { '{ExecuteVarStart}','{ExecuteVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            SL:TPackStringList;
+            Period:IPeriod;
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   StartOfDayCVar {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            Period:IPeriod;
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   StartOfDayComp {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         if not JustExit then
+         begin
+            Period:=CreatePeriod;
+            if Period <> nil then
+            begin
+               Period.StartOfDay(UIEventSink.User);
+               Period:=nil;
+            end;
+         end;
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   StartOfDayExec {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         JustExit:=False;
+         Period:=CreatePeriod;
+         if Period <> nil then
+         begin
+            if Period.GetCurrentPeriod(UIEventSink.User) = GetTodayasPeriod then
+            begin
+               JustExit:=True;
+               Period:=nil;
+               UIEventSink.Restore;
+               Exit;
+            end  
+            else
+            begin
+               SL:=TPackStringList.Create;
+               SL.PackText:=Period.GetStartOfDayValues(UIEventSink.User);
+               if SL.Count > 1 then
+               begin
+                  ProdForm.StartCashLabel.Caption :='Start Cash ('+SL[0]+')';
+                  ProdForm.StartStockLabel.Caption:='Start Stock ('+SL[1]+')';
+               end;
+               SL.Free;
+               Period:=nil;
+            end
+         end;
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//   EndOfDayVar {
+//      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+//      CodeBlock {
+//      [*
+//         var
+//            Period:IPeriod;
+//      *]
+//      }
+//   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//   EndOfDayExec {
+//      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+//      CodeBlock {
+//      [*
+//         //FUIEventSink := UIEventSink;
+//         if FUIEventSink.User <> 'Supervisor' then
+//            TxnReport('EODBalance','','',stSummary,'');
+//
+//         //FUIEventSink := nil ;
+//         Period:=CreatePeriod;
+//         if Period <> nil then
+//         begin
+//            Period.EndOfDay(UIEventSink.User);
+//            Period:=nil;
+//         end;
+//         //UIEventSink.Restore;
+//      *]
+//      }
+//   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   MailItemSwapVar {
+      InsertBetween { '{PrivVarDecStart}','{PrivVarDecEnd}' }
+      CodeBlock {
+      [*
+         SwapData:String;
+      *]
+      }
+   }
+
+   MailItemLogVars {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            List:TDomainCombo;
+      *]
+      }
+   }
+
+   DeliveryItemLogVars {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            List:TDomainCombo;
+            CountryOrg:String;
+            CustomerName:String;
+            CustID_Delivery:String;
+      *]
+      }
+   }
+
+   MailItemPreLog {
+      InsertBetween { '{PreLogTransactionStart}','{PreLogTransactionEnd}' }
+      CodeBlock {
+      [*
+         if SwapData <> '' then
+              TxnLog.SubLogVisible:=True;
+      *]
+      }
+   }
+
+   //MailItemPreLog {
+   //   InsertBetween { '{PreLogTransactionStart}','{PreLogTransactionEnd}' }
+   //   CodeBlock {
+   //   [*
+   //      try
+   //         If JustExit then //cancel from swapto stamps
+   //         begin
+   //           TerminateExecute(TxnLog);
+   //           Exit;
+   //         end;
+   //         if SwapData <> '' then
+   //            TxnLog.SubLogVisible:=True
+   //         else
+   //            TxnLog.SubLogVisible:=False;
+   //      except
+   //         //on E:Exception do ShowMessage(E.Message);
+   //      end;
+   //
+   //   *]
+   //   }
+   //}
+
+   MailItemLogStamps {
+      InsertBetween { '{PostLogTransactionStart}','{PostLogTransactionEnd}' }
+      CodeBlock {
+      [*
+         try
+
+            TxnLog.SubLogVisible:=False;
+            if SwapData <> '' then
+            begin
+
+               List:=TDomainCombo.Create(nil);
+               ProdForm.InsertControl(List);
+               List.AssociatedProgId :='Log';
+               List.Items.CommaText:=SwapData;
+               SwapData:='';
+               IndentStampLog:=Index;
+               LogStock(TxnLog,List);
+               IndentStampLog:=0;
+               ProdForm.RemoveControl(List);
+               List.Free;
+            end;
+         except
+            on E:Exception do ShowMessage(E.Message);
+         end;
+      *]
+      }
+   }
+
+
+
+   MailItemLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+         if ProdForm.FindComponent('BulkQuantity') <> nil then
+         begin
+            if StrToIntDef(TDomainEdit( ProdForm.FindComponent('BulkQuantity')).Text,0) < 1 then
+               TDomainEdit( ProdForm.FindComponent('BulkQuantity')).Text:='1';
+               FQuantity:=StrToIntDef( TDomainEdit(ProdForm.FindComponent('BulkQuantity')).Text,1)
+         end 
+         else
+            FQuantity:=1;
+
+         FUIEventSink.ReferenceData('SET(Quantity,'+IntToStr(FQuantity)+')');
+
+         if ProdForm.FindComponent('StandardFee') <> nil then
+         begin
+             TxnLog.LogTransaction(
+                      Index,
+                      FQuantity, // Quantity
+                      Get_PLU, // PLU
+                      FQuantity*StrToCurrDef(TDomainEdit( ProdForm.FindComponent('StandardFee')).Text,0), // Value
+                      StrToCurrDef(TDomainEdit( ProdForm.FindComponent('StandardFee')).Text,0), // Price
+                      Get_Description, // Description
+                      ProdForm.Weight.Text+' '+'g', // Additional Info
+                      Get_ProgramID, // ProgID
+                      Enumerate(ProdForm));  // Domain Info
+             Inc(Index);
+         end
+         else if ProdForm.FindComponent('IndividualFee') <> nil then
+         begin
+             TxnLog.LogTransaction(
+                      Index,
+                      FQuantity, // Quantity
+                      Get_PLU, // PLU
+                      FQuantity*StrToCurrDef(TDomainEdit( ProdForm.FindComponent('IndividualFee')).Text,0), // Value
+                      StrToCurrDef(TDomainEdit( ProdForm.FindComponent('IndividualFee')).Text,0), // Price
+                      Get_Description, // Description
+                      ProdForm.Weight.Text+' '+'g', // Additional Info
+                      Get_ProgramID, // ProgID
+                      Enumerate(ProdForm));  // Domain Info
+             Inc(Index);
+          end ;
+          if ProdForm.FindComponent('CustomerName') <> nil then
+          begin
+             TxnLog.LogTransaction(
+                      Index,
+                      1, // Quantity
+                      Get_PLU, // PLU
+                      0, // Value
+                      0, // Price
+                      'Customer Name -', // Description
+                      TDomainEdit( ProdForm.FindComponent('CustomerName')).Text, // Additional Info
+                      Get_ProgramID, // ProgID
+                      Enumerate(ProdForm));  // Domain Info
+             Inc(Index);
+
+          end;
+          //if ProdForm.FindComponent('CustomerAddress') <> nil then
+          //begin
+          //   TxnLog.LogTransaction(
+          //            Index,
+          //            1, // Quantity
+          //            Get_PLU, // PLU
+          //            0, // Value
+          //            0, // Price
+          //            'Customer Address -', // Description
+          //            TDomainEdit( ProdForm.FindComponent('CustomerAddress')).Text, // Additional Info
+          //            Get_ProgramID, // ProgID
+          //            Enumerate(ProdForm));  // Domain Info
+          //   Inc(Index);
+          //end;
+          if ProdForm.FindComponent('AddresseeName') <> nil then
+          begin
+             TxnLog.LogTransaction(
+                      Index,
+                      FQuantity, // Quantity
+                      Get_PLU, // PLU
+                      0, // Value
+                      0, // Price
+                      'Recipient Name -', // Description
+                      TDomainEdit( ProdForm.FindComponent('AddresseeName')).Text, // Additional Info
+                      Get_ProgramID, // ProgID
+                      Enumerate(ProdForm));  // Domain Info
+             Inc(Index);
+
+          end;
+          if ProdForm.FindComponent('ParcelNumber') <> nil then
+             begin
+                TxnLog.LogTransaction(
+                         Index,
+                         FQuantity, // Quantity
+                         Get_PLU, // PLU
+                         0, // Value
+                         0, // Price
+                         'Parcel Number -', // Description
+                         TDomainEdit( ProdForm.FindComponent('ParcelNumber')).Text, // Additional Info
+                         Get_ProgramID, // ProgID
+                         Enumerate(ProdForm));  // Domain Info
+                Inc(Index);
+             end;
+      if ProdForm.FindComponent('MailSurDestination') <> nil then
+      begin
+             TxnLog.LogTransaction(
+                    Index,
+                    1, // Quantity
+                    Get_PLU, // PLU
+                    0, // Value
+                    0, // Price
+                    'To', // Description
+                    TDomainCombo(ProdForm.FindComponent('MailSurDestination')).Text, // Additional Info
+                    Get_ProgramID, // ProgID
+                    ''); // Domain Info
+              Inc(Index);
+          end
+          else
+          if ProdForm.FindComponent('MailAirDestination') <> nil then
+          begin
+             TxnLog.LogTransaction(
+                    Index,
+                    1, // Quantity
+                    Get_PLU, // PLU
+                    0, // Value
+                    0, // Price
+                    'To', // Description
+                    TDomainCombo(ProdForm.FindComponent('MailAirDestination')).Text, // Additional Info
+                    Get_ProgramID, // ProgID
+                    ''); // Domain Info
+              Inc(Index);
+          end
+          else if ProdForm.FindComponent('ParAirDestination') <> nil then
+          begin
+             TxnLog.LogTransaction(
+                    Index,
+                    1, // Quantity
+                    Get_PLU, // PLU
+                    0, // Value
+                    0, // Price
+                    'To', // Description
+                    TDomainCombo(ProdForm.FindComponent('ParAirDestination')).Text, // Additional Info
+                    Get_ProgramID, // ProgID
+                    ''); // Domain Info
+              Inc(Index);
+          end
+          else if ProdForm.FindComponent('ParSurDestination') <> nil then
+          begin
+             TxnLog.LogTransaction(
+                    Index,
+                    1, // Quantity
+                    Get_PLU, // PLU
+                    0, // Value
+                    0, // Price
+                    'To', // Description
+                    TDomainCombo(ProdForm.FindComponent('ParSurDestination')).Text, // Additional Info
+                    Get_ProgramID, // ProgID
+                    ''); // Domain Info
+              Inc(Index);
+          end ;
+
+         if ( ProdForm.FindComponent('DiscountBulk') <> nil ) and
+            ( StrToCurrDef( TDomainEdit(ProdForm.FindComponent('DiscountBulk')).Text,0) <> 0 ) then
+          begin
+             TxnLog.LogTransaction(
+                    Index,
+                    1, // Quantity
+                    Get_PLU, // PLU
+                    StrToCurrDef( TDomainEdit(ProdForm.FindComponent('DiscountBulk')).Text,0), // Value
+                    StrToCurrDef( TDomainEdit(ProdForm.FindComponent('DiscountBulk')).Text,0), // Price
+                    'Discount', // Description
+                    '', // Additional Info
+                    Get_ProgramID, // ProgID
+                    ''); // Domain Info
+              Inc(Index);
+          end;
+
+         if ( ProdForm.FindComponent('PostOffice') <> nil ) then
+            if not ( TDomainCombo(ProdForm.FindComponent('PostOffice')).ignore ) then
+            begin
+               TxnLog.LogTransaction(
+                      Index,
+                      1, // Quantity
+                      Get_PLU, // PLU
+                      0, // Value
+                      0, // Price
+                      'Post Office ', // Description
+                      TDomainCombo(ProdForm.FindComponent('PostOffice')).Text, // Additional Info
+                      Get_ProgramID, // ProgID
+                      ''); // Domain Info
+                Inc(Index);
+            end;
+
+
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+
+         FUIEventSink.ReferenceData('SET(Quantity,1)');
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   LogTranVars {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            Value:Currency;
+            SL:TStringList;
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   LogTranVar {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            SL:TStringList;
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   //PrePayStampsVALVar {
+   //   InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+   //   CodeBlock {
+   //   [*
+   //      var
+   //         TotalValue:Real;
+   //   *]
+   //   }
+   //}
+
+
+   PrePayStampsVAL {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         Result:=CheckMaskEdits(Self);
+         if not Result then
+           MoveFocusTo(PrePaidStampValue);
+
+         if (StrToCurrDef(PrePaidStampValue.Text, 0) > 0) then
+         begin
+           //result := (Trunc( StrToCurrDef(PrePaidStampValue.Text,0)*100 ) Mod 5) = 0  ;
+           PrePaidStampValue.Text:=CurrToStrF(0 - StrToCurrDef(PrePaidStampValue.Text, 0),ffNumber,2);
+         end ;
+
+         BaseProduct.UIEventSink.ReferenceData('SET(PrePayStampsFee,'+PrePaidStampValue.Text+')');
+
+      *]
+      }
+   }
+
+   PrePayStampsLOG {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+        TxnLog.LogTransaction(
+               Index,
+               1, // Quantity
+               Get_PLU, // PLU
+               StrToCurrDef(ProdForm.PrePaidStampValue.Text,0), // Value
+               StrToCurrDef(ProdForm.PrePaidStampValue.Text,0), // Price
+               Get_Description, // Description
+               CurrToStrF(Abs(StrToCurrDef(ProdForm.PrePaidStampValue.Text,0)),ffNumber,2),
+               Get_ProgramID, // ProgID
+               Enumerate(ProdForm)); // Domain Info
+        Inc(Index);
+        if CombineList <> nil then
+           CombineList.LogTransactions(Index,TxnLog);
+    *]
+    }
+  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  //GovBulkValVars { InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+  //                 CodeBlock     { [*
+  //                                    var
+  //                                     N : integer ;
+  //                                  *] }
+  //                }
+//
+//------------------------------------------------------------------------------------------
+//
+
+  // GovBulkPreValVars {
+  //    InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+  //    CodeBlock {
+  //    [*
+  //
+  //       try
+  //
+  //          if ( FirstRegBulkNumber.Text <> '' ) and
+  //             ( LastRegBulkNumber.Text = '' ) and
+  //             ( BulkQuantity.Text <> '' ) then
+  //          begin
+  //             N := StrToInt( FirstRegBulkNumber.Text )  ;
+  //             Inc( n, StrToInt( BulkQuantity.Text )-1)    ;
+  //             LastRegBulkNumber.Text := IntToStr( n )   ;
+  //          end ;
+  //
+  //       except
+  //       end ;
+  //
+  //    *]
+  //    }
+  // }
+  //
+  // GovBulkPosValVars {
+  //    InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+  //    CodeBlock {
+  //    [*
+  //
+  //     try
+  //        if Result then
+  //            if (StrToInt( FirstRegBulkNumber.Text ) + StrToInt( BulkQuantity.Text )-1) >
+  //               StrToInt( LastRegBulkNumber.Text ) then
+  //                Result := FALSE ;
+  //     except
+  //        result := FALSE ;
+  //     end ;
+  //
+  //
+  //    *]
+  //    }
+  // }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+	ChequeProdFormCreated {
+    InsertBetween { '{ProdFormCreatedStart}','{ProdFormCreatedEnd}' }
+    CodeBlock {
+    [*
+    	ProdForm.TxnLog := TxnLog;
+			ProdForm.TotalToPay.Text:=CurrToStrF(CurrentTxnTotal,ffNumber,2);
+
+    *]
+    }
+  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+	ChequeFormVars {
+    InsertBetween { '{PublicVarStart}','{PublicVarEnd}' }
+    CodeBlock {
+    [*
+			TxnLog : ITransactionLog;
+    *]
+    }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+	ChequeValidVars {
+    InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+    CodeBlock {
+    [*
+    	var
+      	Chg										: System.Currency;
+        CashPaid							: System.Currency;
+        TxnLogIndex 					: Integer;
+        TxnLogPackStringList	: TPackStringList;
+        TxnLinePackStringList	: TPackStringList;
+    *]
+    }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+	ValidCheque {
+  	InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+    CodeBlock {
+    [*
+      if AmountPaid.Text = '' then
+         AmountPaid.Text:=CurrToStrF(BaseProduct.CurrentTxnTotal,ffNumber,2);
+			Result := False;
+      ClearFocus(ProdForm);
+//--------------------------------------------------------------
+      //calc cash paid in customer session
+      CashPaid := 0;
+      If TxnLog = nil then Exit;
+      Result := True;
+      TxnLogPackStringList 	:= TPackStringList.Create;
+      TxnLinePackStringList := TPackStringList.Create;
+      try
+        //grab on-screen txnlog
+        TxnLogPackStringList.PackText := TxnLog.Contents;
+
+        //go back through txns
+        For TxnLogIndex := TxnLog.ItemCount -1  downto 0 do
+        begin
+          //grab txnline
+          TxnLinePackStringList.PackText :=TxnLogPackStringList.Strings[TxnLogIndex];
+          //add custom duty value
+          If (TxnLinePackStringList.Count > 7)
+          and ((TxnLinePackStringList[7] = 'Product.Cash'    )
+          or   (TxnLinePackStringList[7] = 'Product.Currency')) then
+            CashPaid := CashPaid + StrToCurrDef(TxnLinePackStringList[4],0);
+        end;
+        //nb cashpaid is -ve
+
+      finally
+        TxnLinePackStringList.Free;
+        TxnLogPackStringList.Free;
+      end;
+//--------------------------------------------------------------------
+
+      if (StrToCurrDef(AmountPaid.Text,0) > BaseProduct.CurrentTxnTotal - CashPaid) then
+      begin
+         MoveFocusTo(AmountPaid);
+         Result:=False;
+      end
+      else if (AccountNumber.Text = '') then
+      begin
+         MoveFocusTo(AccountNumber);
+         Result:=False;
+      end
+      else if (ChequeNumber.Text = '') then
+      begin
+         MoveFocusTo(ChequeNumber);
+         Result:=False;
+      end
+      else
+      begin
+					Chg   := StrToCurrDef(AmountPaid.Text,0) - BaseProduct.CurrentTxnTotal;
+          if Chg > 0 then
+              Change.Text:=CurrToStrF(Chg,ffNumber,2)
+           else
+              Change.Text:='0.00';
+      end;
+    *]
+     }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   LogChequeVars {
+   		InsertBetween { '{LogTransactionVarStart}', '{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+      	var
+            SL : TPackStringList;
+  				SLCommaText : String;
+            Stock:IStock;
+      *]
+      }
+   }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   LogCheque {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+      //Endorse Cheque-----------------------------------------------------------------------
+          SL:=TPackStringList.Create;
+          try
+            SL.Add('                                   BotswanaPost');
+            SL.Add('                                   ' + DateTimeToStr(Now));
+            SL.Add('                                   ' + 'Amount Paid : ' + ' P' + ProdForm.AmountPaid.Text);
+            SL.Add('                                   ' + 'Clerk : ' + FUIEventSink.User );
+            SL.Add('                                   '
+                    + Format(
+                    				'%5.5d%2.2d%7.7d',
+				            				[
+                            	StrToIntDef(GetGPCSRegString('OfficeInfo', 'Office ID','0'),0),
+										StrToIntDef(GetGPCSRegString('Workstation', 'Ident', '0'),0),
+                              StrToIntDef(GetGPCSRegString('Counters\Customer Session', 'CurrentValue','0'),0)
+                            ]
+                    )
+            );
+            FUIEventSink.DisplayInstructions(isBMPRightText,
+                                            'Insert the Cheque into the slip printer, until the green light comes on',
+                                            'Insert Receipt');
+            SLCommaText := SL.CommaText;
+            SL.Free;
+            If not FUIEventSink.Endorse(0,0,0,SLCommaText) then
+            begin
+              FUIEventSink.DisplayInstructions(isRestore,'','');
+              TerminateExecute(TxnLog);
+              Exit;	//failed to ensdorse
+            end;
+            FUIEventSink.DisplayInstructions(isRestore,'','');
+          finally
+          end;
+       //---------------------------------------------------------------------
+          TxnLog.LogTransaction( Index
+                                ,FQuantity
+                                ,Get_PLU
+                                ,0-StrToCurrDef(ProdForm.AmountPaid.Text,0)
+                                ,0-StrToCurrDef(ProdForm.AmountPaid.Text,0)
+                                ,Get_Description
+                                ,''
+                                ,{PProgID}'Product.Cheque'
+                                ,Enumerate(ProdForm));
+          Inc(Index);
+          TxnLog.LogTransaction( Index
+                                ,FQuantity
+                                ,Get_PLU
+                                ,0
+                                ,0
+                                ,'Account Number :'
+                                ,ProdForm.AccountNumber.Text
+                                ,{PProgID}'Product.Cheque'
+                                ,Enumerate(ProdForm));
+          Inc(Index);
+          TxnLog.LogTransaction( Index
+                                ,FQuantity
+                                ,Get_PLU
+                                ,0
+                                ,0
+                                ,'Cheque Number :'
+                                ,ProdForm.ChequeNumber.Text
+                                ,{PProgID}'Product.Cheque'
+                                ,Enumerate(ProdForm));
+          Inc(Index);
+          if StrToCurrDef(ProdForm.Change.Text,0) > 0 then
+          begin
+            TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                                  StrToCurrDef(ProdForm.Change.Text,0),
+                                  StrToCurrDef(ProdForm.Change.Text,0),
+                                  ProdForm.Change.PromptLabel.Caption,
+                                  '',{PProgID}'Product.Cheque','Change');
+            Inc(Index);
+          end;
+
+
+         Stock:=CreateStock;
+         TxnLog.WriteTransaction('StockUsed'
+                                ,0
+                                ,-Trunc((StrToCurrDef(ProdForm.AmountPaid.Text,0))*100)
+                                ,6100000
+                                ,0.01
+                                ,0.01
+                                ,'Cheques'
+                                ,''
+                                ,'Product.Cheque'
+                                ,'');
+
+         try
+            Stock.AdjustStockLevel(TxnLog.User
+                                  ,'*Cheques'
+                                  ,-Trunc((StrToCurrDef(ProdForm.AmountPaid.Text,0))*100));
+         except
+            // Error in Stock
+         end;
+         Stock := nil ;
+
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+
+          FUIEventSink.OpenCashDrawer;
+      *]
+      }
+   }
+
+
+//   NationalSavingPayLog    {
+//      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+//      CodeBlock {
+//      [*
+//         FUIEventSink.OpenCashDrawer;
+//         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+//                               0-StrToCurrDef(ProdForm.AmountPaidTotal.Text,0),
+//                               0-StrToCurrDef(ProdForm.AmountPaidTotal.Text,0),
+//                               Get_Description,'',{PProgID}'Product.Cash',
+//                               Enumerate(ProdForm));
+//         Inc(Index);
+//
+//      *]
+//      }
+//   }
+
+	ValidVarChangeMaskReg {
+   InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+       CodeBlock {
+      [*
+         var
+            International : boolean ;
+      *]
+      }
+   }
+
+
+	ValidChangeMaskLetterReg {
+  	InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+    CodeBlock {
+       [*
+
+        International := TRUE ;
+        if FindComponent('MailAirDestination') <> nil then
+        begin
+          International := Not( UpperCase( TDomainCombo(FindComponent('MailAirDestination')).Text) = 'BOTSWANA' );
+        end;
+        if FindComponent('MailSurDestination') <> nil then
+        begin
+          International := Not( UpperCase( TDomainCombo(FindComponent('MailSurDestination')).Text ) = 'BOTSWANA' );
+        end;
+
+        if International then
+        begin
+          IntLetterRegFirstID.Validation := 'Mask(Rx@xxxxxxxxxx)' ;
+          IntLetterRegLastID.Validation  := 'Mask(Rx@xxxxxxxxxx)'  ;
+          PostOffice.ignore := true ;
+        end
+        else
+        begin
+          PostOffice.ignore := false ;
+          IntLetterRegFirstID.Validation := 'Mask(Rx@xxxxxxxxxx)' ;
+          IntLetterRegLastID.Validation  := 'Mask(Rx@xxxxxxxxxx)'  ;
+        end ;
+
+        if (StrToIntDef(BulkQuantity.Text,1) > 1) then
+        begin
+           IntRecipientName.Ignore:=true;
+           if ((CurrentFieldName <> 'IntLetterRegLastID' ) or (CurrentFieldName = 'IntLetterRegLastID') and (IntLetterRegLastID.Text = '' ))
+               and (IntLetterRegFirstID.Text <> '')  then
+              IntLetterRegLastID.Text:=BaseProduct.CalcIDRange(IntLetterRegFirstID.Text,StrToIntDef(BulkQuantity.Text,1)-1);
+           IntLetterRegLastID.Ignore:=False;
+        end
+        else
+        begin
+           IntLetterRegLastID.Ignore:=True;
+           IntRecipientName.Ignore:=false;
+        end;
+
+        Result := True ;
+//        if not IntLetterRegFirstID.Ignore then
+//          Result := BaseProduct.CheckRegSum( IntLetterRegFirstID.Text ) ;
+
+//        if Result and not IntLetterRegLastID.Ignore then
+//           Result := ( BaseProduct.CheckRegSum( IntLetterRegLastID.Text ) and
+//                       BaseProduct.ChequeIDRange( IntLetterRegFirstID.Text, IntLetterRegLastID.Text, StrToIntDef(BulkQuantity.Text,0) ) );
+
+      *]
+   }
+   }
+
+	ValidChangeMaskFrankReg {
+  	InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+    CodeBlock {
+       [*
+
+        International := TRUE ;
+        if FindComponent('MailAirDestination') <> nil then
+        begin
+          International := Not( UpperCase( TDomainCombo(FindComponent('MailAirDestination')).Text) = 'BOTSWANA' );
+        end;
+        if FindComponent('MailSurDestination') <> nil then
+        begin
+          International := Not( UpperCase( TDomainCombo(FindComponent('MailSurDestination')).Text ) = 'BOTSWANA' );
+        end;
+
+        if International then
+        begin
+          IntFrankRegFirstID.Validation := 'Mask(Rx@xxxxxxxxxx)' ;
+          IntFrankRegLastID.Validation  := 'Mask(Rx@xxxxxxxxxx)'  ;
+          PostOffice.Ignore := true ;
+        end
+        else
+        begin
+          IntFrankRegFirstID.Validation := 'Mask(Rx@xxxxxxxxxx)' ;
+          IntFrankRegLastID.Validation  := 'Mask(Rx@xxxxxxxxxx)'  ;
+          PostOffice.Ignore := false ;
+        end ;
+
+        if (StrToIntDef(BulkQuantity.Text,1) > 1) then
+        begin
+           IntRecipientName.Ignore:=true;
+           if ((CurrentFieldName <> 'IntFrankRegLastID' ) or (CurrentFieldName = 'IntFrankRegLastID') and (IntFrankRegLastID.Text = '' ))
+               and (IntFrankRegFirstID.Text <> '')  then
+              IntFrankRegLastID.Text:=BaseProduct.CalcIDRange(IntFrankRegFirstID.Text,StrToIntDef(BulkQuantity.Text,1)-1);
+           IntFrankRegLastID.Ignore:=False;
+        end
+        else
+        begin
+           IntFrankRegLastID.Ignore:=True;
+           IntRecipientName.Ignore:=false;
+        end;
+
+        Result := True ;
+//        if not IntFrankRegFirstID.Ignore then
+//           Result := BaseProduct.CheckRegSum( IntFrankRegFirstID.Text ) ;
+
+//        if Result and not IntFrankRegLastID.Ignore then
+//           Result := ( BaseProduct.CheckRegSum( IntFrankRegLastID.Text ) and
+//                       BaseProduct.ChequeIDRange( IntFrankRegFirstID.Text, IntFrankRegLastID.Text, StrToIntDef(BulkQuantity.Text,0) ) );
+
+      *]
+   }
+   }
+
+
+	ValidChangeMaskAerogrammeReg {
+  	InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+    CodeBlock {
+       [*
+
+        International := TRUE ;
+        if FindComponent('MailAirDestination') <> nil then
+        begin
+          International := Not( UpperCase( TDomainCombo(FindComponent('MailAirDestination')).Text) = 'BOTSWANA' );
+        end;
+        if FindComponent('MailSurDestination') <> nil then
+        begin
+          International := Not( UpperCase( TDomainCombo(FindComponent('MailSurDestination')).Text ) = 'BOTSWANA' );
+        end;
+
+
+        if International then
+        begin
+          IntAerogrammeRegFirstID.Validation := 'Mask(Rx@xxxxxxxxxx)' ;
+          IntAerogrammeRegLastID.Validation  := 'Mask(Rx@xxxxxxxxxx)'  ;
+        end
+        else
+        begin
+          IntAerogrammeRegFirstID.Validation := 'Mask(Rx@xxxxxxxxxx)';
+          IntAerogrammeRegLastID.Validation  := 'Mask(Rx@xxxxxxxxxx)' ;
+        end;
+
+        if (StrToIntDef(BulkQuantity.Text,1) > 1) then
+        begin
+           if ((CurrentFieldName <> 'IntAerogrammeRegLastID' ) or (CurrentFieldName = 'IntAerogrammeRegLastID') and (IntAerogrammeRegLastID.Text = '' ))
+               and (IntAerogrammeRegFirstID.Text <> '') then
+              IntAerogrammeRegLastID.Text:=BaseProduct.CalcIDRange(IntAerogrammeRegFirstID.Text,StrToIntDef(BulkQuantity.Text,1)-1);
+           IntAerogrammeRegLastID.Ignore:=False;
+        end
+        else
+        begin
+           IntAerogrammeRegLastID.Ignore:=True;
+        end;
+
+        Result := True ;
+//        if not IntAerogrammeRegFirstID.Ignore then
+//           Result := BaseProduct.CheckRegSum( IntAerogrammeRegFirstID.Text ) ;
+
+//        if Result and not IntAerogrammeRegLastID.Ignore then
+//           Result := ( BaseProduct.CheckRegSum( IntAerogrammeRegLastID.Text ) and
+//                    BaseProduct.ChequeIDRange( IntAerogrammeRegFirstID.Text, IntAerogrammeRegLastID.Text, StrToIntDef(BulkQuantity.Text,0) ) );
+
+
+      *]
+   }
+   }
+
+
+	ValidChangeMaskPostCardReg {
+  	InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+    CodeBlock {
+       [*
+
+        International := TRUE ;
+        if FindComponent('MailAirDestination') <> nil then
+        begin
+          International := Not( UpperCase( TDomainCombo(FindComponent('MailAirDestination')).Text) = 'BOTSWANA' );
+        end;
+        if FindComponent('MailSurDestination') <> nil then
+        begin
+          International := Not( UpperCase( TDomainCombo(FindComponent('MailSurDestination')).Text ) = 'BOTSWANA' );
+        end;
+
+
+        if International then
+        begin
+          IntPostCardRegFirstID.Validation := 'Mask(Rx@xxxxxxxxxx)' ;
+          IntPostCardRegLastID.Validation  := 'Mask(Rx@xxxxxxxxxx)'  ;
+        end
+        else
+        begin
+          IntPostCardRegFirstID.Validation := 'Mask(Rx@xxxxxxxxxx)';
+          IntPostCardRegLastID.Validation  := 'Mask(Rx@xxxxxxxxxx)' ;
+        end;
+
+        if (StrToIntDef(BulkQuantity.Text,1) > 1) then
+        begin
+           if ((CurrentFieldName <> 'IntPostCardRegLastID' ) or (CurrentFieldName = 'IntPostCardRegLastID') and (IntPostCardRegLastID.Text = '' ))
+               and (IntPostCardRegFirstID.Text <> '') then
+              IntPostCardRegLastID.Text:=BaseProduct.CalcIDRange(IntPostCardRegFirstID.Text,StrToIntDef(BulkQuantity.Text,1)-1);
+           IntPostCardRegLastID.Ignore:=False;
+        end
+        else
+        begin
+           IntPostCardRegLastID.Ignore:=True;
+        end;
+
+        Result := True ;
+//        if not IntPostCardRegFirstID.Ignore then
+//           Result := BaseProduct.CheckRegSum( IntPostCardRegFirstID.Text ) ;
+
+//        if Result and not IntPostCardRegLastID.Ignore then
+//           Result := ( BaseProduct.CheckRegSum( IntPostCardRegLastID.Text ) and
+//                    BaseProduct.ChequeIDRange( IntPostCardRegFirstID.Text, IntPostCardRegLastID.Text, StrToIntDef(BulkQuantity.Text,0) ) );
+
+
+      *]
+   }
+   }
+
+	ValidChangeMaskPrintedPaperReg {
+  	InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+    CodeBlock {
+       [*
+
+        International := TRUE ;
+        if FindComponent('MailAirDestination') <> nil then
+        begin
+          International := Not( UpperCase( TDomainCombo(FindComponent('MailAirDestination')).Text) = 'BOTSWANA' );
+        end;
+        if FindComponent('MailSurDestination') <> nil then
+        begin
+          International := Not( UpperCase( TDomainCombo(FindComponent('MailSurDestination')).Text ) = 'BOTSWANA' );
+        end;
+
+        if International then
+        begin
+          IntPrintedPaperRegFirstID.Validation := 'Mask(Rx@xxxxxxxxxx)'  ;
+          IntPrintedPaperRegLastID.Validation := 'Mask(Rx@xxxxxxxxxx)'  ;
+        end
+        else
+        begin
+          IntPrintedPaperRegFirstID.Validation := 'Mask(Rx@xxxxxxxxxx)';
+          IntPrintedPaperRegLastID.Validation  := 'Mask(Rx@xxxxxxxxxx)' ;
+        end ;
+
+        if (StrToIntDef(BulkQuantity.Text,1) > 1) then
+        begin
+           if ((CurrentFieldName <> 'IntPrintedPaperRegLastID' ) or (CurrentFieldName = 'IntPrintedPaperRegLastID') and (IntPrintedPaperRegLastID.Text = '' ))
+               and (IntPrintedPaperRegFirstID.Text <> '') then
+              IntPrintedPaperRegLastID.Text:=BaseProduct.CalcIDRange(IntPrintedPaperRegFirstID.Text,StrToIntDef(BulkQuantity.Text,1)-1);
+           IntPrintedPaperRegLastID.Ignore:=False;
+        end
+        else
+        begin
+           IntPrintedPaperRegLastID.Ignore:=True;
+        end;
+
+        Result := True ;
+//        if not IntPrintedPaperRegFirstID.Ignore then
+//           Result := BaseProduct.CheckRegSum( IntPrintedPaperRegFirstID.Text ) ;
+
+//        if Result and not IntPrintedPaperRegLastID.Ignore then
+//           Result := ( BaseProduct.CheckRegSum( IntPrintedPaperRegLastID.Text ) and
+//                    BaseProduct.ChequeIDRange( IntPrintedPaperRegFirstID.Text, IntPrintedPaperRegLastID.Text, StrToIntDef(BulkQuantity.Text,0) ) );
+
+      *]
+   }
+   }
+
+
+	ValidChangeMaskSmallPacketReg {
+  	InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+    CodeBlock {
+       [*
+
+
+        International := TRUE ;
+        if FindComponent('MailAirDestination') <> nil then
+        begin
+          International := Not( UpperCase( TDomainCombo(FindComponent('MailAirDestination')).Text) = 'BOTSWANA' );
+        end;
+        if FindComponent('MailSurDestination') <> nil then
+        begin
+          International := Not( UpperCase( TDomainCombo(FindComponent('MailSurDestination')).Text ) = 'BOTSWANA' );
+        end;
+
+
+        if International then
+        begin
+          IntSmallPacketRegFirstID.Validation   := 'Mask(Rx@xxxxxxxxxx)' ;
+          IntSmallPacketRegLastID.Validation    := 'Mask(Rx@xxxxxxxxxx)'  ;
+          PostOffice.Ignore:= true ;
+        end
+        else
+        begin
+          IntSmallPacketRegFirstID.Validation := 'Mask(Rx@xxxxxxxxxx)';
+          IntSmallPacketRegLastID.Validation  := 'Mask(Rx@xxxxxxxxxx)' ;
+          PostOffice.Ignore:= false ;
+        end;
+
+        if (StrToIntDef(BulkQuantity.Text,1) > 1)  then
+        begin
+           IntRecipientName.Ignore:=true;
+           if ((CurrentFieldName <> 'IntSmallPacketRegLastID' ) or (CurrentFieldName = 'IntSmallPacketRegLastID') and (IntSmallPacketRegLastID.Text = '' ))
+               and (IntSmallPacketRegFirstID.Text <> '') then
+              IntSmallPacketRegLastID.Text:=BaseProduct.CalcIDRange(IntSmallPacketRegFirstID.Text,StrToIntDef(BulkQuantity.Text,1)-1);
+
+           IntSmallPacketRegLastID.Ignore:=False;
+        end
+        else
+        begin
+           IntSmallPacketRegLastID.Ignore:=True;
+           IntRecipientName.Ignore:=false;
+        end;
+
+        Result := True ;
+//        if not IntSmallPacketRegFirstID.Ignore then
+//          Result := BaseProduct.CheckRegSum( IntSmallPacketRegFirstID.Text ) ;
+
+//        if Result and not IntSmallPacketRegLastID.Ignore then
+//           Result := ( BaseProduct.CheckRegSum( IntSmallPacketRegLastID.Text ) and
+//                    BaseProduct.ChequeIDRange( IntSmallPacketRegFirstID.Text, IntSmallPacketRegLastID.Text, StrToIntDef(BulkQuantity.Text,0) ) );
+
+      *]
+   }
+   }
+
+
+	ValidMaskReg {
+  	InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+    CodeBlock {
+       [*
+         if Result then
+            Result:=CheckMaskEdits(Self);
+      *]
+      }
+   }
+
+
+   RegLogStart {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+        if ProdForm.FindComponent('IntLetterRegFirstID') <> nil then
+         begin
+            TxnLog.LogTransaction(
+                   Index,
+                   FQuantity, // Quantity
+                   Get_PLU, // PLU
+                   FQuantity*StrToCurrDef(TDomainEdit(ProdForm.FindComponent('RegFee')).Text,0), // Value
+                   StrToCurrDef(TDomainEdit(ProdForm.FindComponent('RegFee')).Text,0), // Price
+                   Get_Description, // Description
+                   '', // Additional Info
+                   Get_ProgramID, // ProgID
+                   Enumerate(ProdForm)); // Domain Info
+             Inc(Index);
+           if StrToIntDef(ProdForm.BulkQuantity.Text,1) = 1 then
+              TxnLog.LogTransaction(
+                     Index,
+                     1, // Quantity
+                     Get_PLU, // PLU
+                     0, // Value
+                     0, // Price
+                     'ID '+' '+TDomainEdit(ProdForm.FindComponent('IntLetterRegFirstID')).Text, // Description
+                     '', // Additional Info
+                     Get_ProgramID, // ProgID
+                     Enumerate(ProdForm)) // Domain Info
+            else
+              TxnLog.LogTransaction(
+                     Index,
+                     1, // Quantity
+                     Get_PLU, // PLU
+                     0, // Value
+                     0, // Price
+                     'ID'+' '+TDomainEdit(ProdForm.FindComponent('IntLetterRegFirstID')).Text, // Description
+                     ' - '+TDomainEdit(ProdForm.FindComponent('IntLetterRegLastID')).Text, // Additional Info
+                     Get_ProgramID, // ProgID
+                     Enumerate(ProdForm)); // Domain Info
+
+            Inc(Index);
+         end ;
+
+
+        if ProdForm.FindComponent('IntFrankRegFirstID') <> nil then
+         begin
+            TxnLog.LogTransaction(
+                   Index,
+                   1, // Quantity
+                   Get_PLU, // PLU
+                   0, // Value
+                   0, // Price
+                   Get_Description, // Description
+                   '', // Additional Info
+                   Get_ProgramID, // ProgID
+                   Enumerate(ProdForm)); // Domain Info
+             Inc(Index);
+           if StrToIntDef(ProdForm.BulkQuantity.Text,1) = 1 then
+              TxnLog.LogTransaction(
+                     Index,
+                     1, // Quantity
+                     Get_PLU, // PLU
+                     0, // Value
+                     0, // Price
+                     'ID '+' '+TDomainEdit(ProdForm.FindComponent('IntFrankRegFirstID')).Text, // Description
+                     '', // Additional Info
+                     Get_ProgramID, // ProgID
+                     Enumerate(ProdForm)) // Domain Info
+            else
+              TxnLog.LogTransaction(
+                     Index,
+                     1, // Quantity
+                     Get_PLU, // PLU
+                     0, // Value
+                     0, // Price
+                     'ID'+' '+TDomainEdit(ProdForm.FindComponent('IntFrankRegFirstID')).Text, // Description
+                     ' - '+TDomainEdit(ProdForm.FindComponent('IntFrankRegLastID')).Text, // Additional Info
+                     Get_ProgramID, // ProgID
+                     Enumerate(ProdForm)); // Domain Info
+
+            Inc(Index);
+         end ;
+
+
+        if ProdForm.FindComponent('IntAerogrammeRegFirstID') <> nil then
+         begin
+            TxnLog.LogTransaction(
+                   Index,
+                   FQuantity, // Quantity
+                   Get_PLU, // PLU
+                   FQuantity*StrToCurrDef(TDomainEdit(ProdForm.FindComponent('RegFee')).Text,0), // Value
+                   StrToCurrDef(TDomainEdit(ProdForm.FindComponent('RegFee')).Text,0), // Price
+                   Get_Description, // Description
+                   '', // Additional Info
+                   Get_ProgramID, // ProgID
+                   Enumerate(ProdForm)); // Domain Info
+             Inc(Index);
+           if StrToIntDef(ProdForm.BulkQuantity.Text,1) = 1 then
+              TxnLog.LogTransaction(
+                     Index,
+                     1, // Quantity
+                     Get_PLU, // PLU
+                     0, // Value
+                     0, // Price
+                     'ID '+' '+TDomainEdit(ProdForm.FindComponent('IntAerogrammeRegFirstID')).Text, // Description
+                     '', // Additional Info
+                     Get_ProgramID, // ProgID
+                     Enumerate(ProdForm)) // Domain Info
+            else
+              TxnLog.LogTransaction(
+                     Index,
+                     1, // Quantity
+                     Get_PLU, // PLU
+                     0, // Value
+                     0, // Price
+                     'ID'+' '+TDomainEdit(ProdForm.FindComponent('IntAerogrammeRegFirstID')).Text, // Description
+                     ' - '+TDomainEdit(ProdForm.FindComponent('IntAerogrammeRegLastID')).Text, // Additional Info
+                     Get_ProgramID, // ProgID
+                     Enumerate(ProdForm)); // Domain Info
+
+            Inc(Index);
+         end ;
+
+
+        if ProdForm.FindComponent('IntPostCardRegFirstID') <> nil then
+         begin
+            TxnLog.LogTransaction(
+                   Index,
+                   FQuantity, // Quantity
+                   Get_PLU, // PLU
+                   FQuantity*StrToCurrDef(TDomainEdit(ProdForm.FindComponent('RegFee')).Text,0), // Value
+                   StrToCurrDef(TDomainEdit(ProdForm.FindComponent('RegFee')).Text,0), // Price
+                   Get_Description, // Description
+                   '', // Additional Info
+                   Get_ProgramID, // ProgID
+                   Enumerate(ProdForm)); // Domain Info
+             Inc(Index);
+           if StrToIntDef(ProdForm.BulkQuantity.Text,1) = 1 then
+              TxnLog.LogTransaction(
+                     Index,
+                     1, // Quantity
+                     Get_PLU, // PLU
+                     0, // Value
+                     0, // Price
+                     'ID '+' '+TDomainEdit(ProdForm.FindComponent('IntPostCardRegFirstID')).Text, // Description
+                     '', // Additional Info
+                     Get_ProgramID, // ProgID
+                     Enumerate(ProdForm)) // Domain Info
+            else
+              TxnLog.LogTransaction(
+                     Index,
+                     1, // Quantity
+                     Get_PLU, // PLU
+                     0, // Value
+                     0, // Price
+                     'ID'+' '+TDomainEdit(ProdForm.FindComponent('IntPostCardRegFirstID')).Text, // Description
+                     ' - '+TDomainEdit(ProdForm.FindComponent('IntPostCardRegLastID')).Text, // Additional Info
+                     Get_ProgramID, // ProgID
+                     Enumerate(ProdForm)); // Domain Info
+
+            Inc(Index);
+         end ;
+
+        if ProdForm.FindComponent('IntPrintedPaperRegFirstID') <> nil then
+         begin
+            TxnLog.LogTransaction(
+                   Index,
+                   FQuantity, // Quantity
+                   Get_PLU, // PLU
+                   FQuantity*StrToCurrDef(TDomainEdit(ProdForm.FindComponent('RegFee')).Text,0), // Value
+                   StrToCurrDef(TDomainEdit(ProdForm.FindComponent('RegFee')).Text,0), // Price
+                   Get_Description, // Description
+                   '', // Additional Info
+                   Get_ProgramID, // ProgID
+                   Enumerate(ProdForm)); // Domain Info
+             Inc(Index);
+           if StrToIntDef(ProdForm.BulkQuantity.Text,1) = 1 then
+              TxnLog.LogTransaction(
+                     Index,
+                     1, // Quantity
+                     Get_PLU, // PLU
+                     0, // Value
+                     0, // Price
+                     'ID '+' '+TDomainEdit(ProdForm.FindComponent('IntPrintedPaperRegFirstID')).Text, // Description
+                     '', // Additional Info
+                     Get_ProgramID, // ProgID
+                     Enumerate(ProdForm)) // Domain Info
+            else
+              TxnLog.LogTransaction(
+                     Index,
+                     1, // Quantity
+                     Get_PLU, // PLU
+                     0, // Value
+                     0, // Price
+                     'ID'+' '+TDomainEdit(ProdForm.FindComponent('IntPrintedPaperRegFirstID')).Text, // Description
+                     ' - '+TDomainEdit(ProdForm.FindComponent('IntPrintedPaperRegLastID')).Text, // Additional Info
+                     Get_ProgramID, // ProgID
+                     Enumerate(ProdForm)); // Domain Info
+
+            Inc(Index);
+         end ;
+
+        if ProdForm.FindComponent('IntSmallPacketRegFirstID') <> nil then
+         begin
+            TxnLog.LogTransaction(
+                   Index,
+                   FQuantity, // Quantity
+                   Get_PLU, // PLU
+                   FQuantity*StrToCurrDef(TDomainEdit(ProdForm.FindComponent('RegFee')).Text,0), // Value
+                   StrToCurrDef(TDomainEdit(ProdForm.FindComponent('RegFee')).Text,0), // Price
+                   Get_Description, // Description
+                   '', // Additional Info
+                   Get_ProgramID, // ProgID
+                   Enumerate(ProdForm)); // Domain Info
+             Inc(Index);
+           if StrToIntDef(ProdForm.BulkQuantity.Text,1) = 1 then
+              TxnLog.LogTransaction(
+                     Index,
+                     1, // Quantity
+                     Get_PLU, // PLU
+                     0, // Value
+                     0, // Price
+                     'ID '+' '+TDomainEdit(ProdForm.FindComponent('IntSmallPacketRegFirstID')).Text, // Description
+                     '', // Additional Info
+                     Get_ProgramID, // ProgID
+                     Enumerate(ProdForm)) // Domain Info
+            else
+              TxnLog.LogTransaction(
+                     Index,
+                     1, // Quantity
+                     Get_PLU, // PLU
+                     0, // Value
+                     0, // Price
+                     'ID'+' '+TDomainEdit(ProdForm.FindComponent('IntSmallPacketRegFirstID')).Text, // Description
+                     ' - '+TDomainEdit(ProdForm.FindComponent('IntSmallPacketRegLastID')).Text, // Additional Info
+                     Get_ProgramID, // ProgID
+                     Enumerate(ProdForm)); // Domain Info
+
+            Inc(Index);
+         end ;
+
+        if ProdForm.FindComponent('PostOffice') <> nil then
+           if not TDomainEdit(ProdForm.FindComponent('PostOffice')).ignore then
+           begin
+                 TxnLog.LogTransaction(
+                        Index,
+                        1, // Quantity
+                        Get_PLU, // PLU
+                        0, // Value
+                        0, // Price
+                        'Post Office ', // Description
+                        TDomainEdit(ProdForm.FindComponent('PostOffice')).Text, // Additional Info
+                        Get_ProgramID, // ProgID
+                        Enumerate(ProdForm)); // Domain Info
+
+               Inc(Index);
+           end ;
+
+        if not ProdForm.IntRecipientName.ignore then
+        begin
+              TxnLog.LogTransaction(
+                     Index,
+                     1, // Quantity
+                     Get_PLU, // PLU
+                     0, // Value
+                     0, // Price
+                     'Recipient Name ', // Description
+                     ProdForm.IntRecipientName.Text, // Additional Info
+                     Get_ProgramID, // ProgID
+                     Enumerate(ProdForm)); // Domain Info
+
+            Inc(Index);
+        end ;
+
+
+
+
+
+
+        if CombineList <> nil then
+           CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+
+   DisableExpressExecute {
+      InsertBetween { '{SetProgStart}','{SetProgEnd}' }
+      CodeBlock {
+      [*
+      if ProdForm.FindComponent('IntExpressDestination') <> nil then
+         TDomainCombo( ProdForm.FindComponent('IntExpressDestination')).Ignore := TRUE ;
+
+      *]
+      }
+   }
+
+  BulkTotalPOSTEXEC {
+    InsertBetween { '{PostExecuteStart}','{PostExecuteEnd}' }
+    CodeBlock {
+    [*
+      //move bulk total to bottom of domains
+      ProdForm.BulkTotal.TabOrder := ProdForm.TotalFee.TabOrder + 1;
+    *]
+    }
+  }
+
+  BulkTotalPOSTVAL {
+    InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+    CodeBlock {[*
+      BaseProduct.GetFormData(self);
+      BulkTotal.text  := CurrToStrF( StrToIntDef(BulkQuantity.text,0)
+                                      * StrToCurrDef(TotalFee.Text,0),ffNumber, CurrencyDecimals);
+    *]}
+  }
+
+  ParcelMailSWAPTO {
+    InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+
+         if (Name = 'Product.Stamps') then
+         begin
+
+            if (CombineList.IndexOf('Product.PrePaidStamps') >= 0) and
+               CombineList.IsEnabled('Product.PrePaidStamps') then
+               if ( StrToCurrDef( ProdForm.TotalFee.Text,0 ) <= 0 ) then
+                  ValidateOK := False
+               else
+                  ValidateOK := (Trunc( StrToCurrDef(ProdForm.TotalFee.Text,0)*100 ) Mod 5) = 0  ;
+
+            if ValidateOK and (FindTotalField(ProdForm) <> nil) then
+               FUIEventSink.SwapTo(Name,#8+TotalWithoutAdvDel(ProdForm)+#8+Get_ProgramID+#8+GetFormData(ProdForm)+#8+CombineList.ButtonFlags)
+            else
+            begin
+               FUIEventSink.DisplayItemInfo(Self,Index,'','',0,BUTTON_ENABLED_UP,False,False);
+               FlagComplete(ProdForm.Validate);
+            end ;
+
+            Exit;
+
+         end;
+
+      *]
+    }
+  }
+
+
+  MailSWAPTO {
+    InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+
+      GranTotal := StrToCurrDef( ProdForm.TotalFee.Text,0 )*StrToIntDef(ProdForm.BulkQuantity.Text,0);
+      if (Name = 'Product.Stamps') then
+      begin
+
+         if (CombineList.IndexOf('Product.PrePaidStamps') >= 0) and
+            CombineList.IsEnabled('Product.PrePaidStamps') then
+            if ( StrToCurrDef( ProdForm.TotalFee.Text,0 ) <= 0 ) then
+               ValidateOK := False
+            else
+               ValidateOK := (Trunc( StrToCurrDef(ProdForm.TotalFee.Text,0)*100 ) Mod 5) = 0  ;
+
+            //pass bulk quantity to swapto
+            if ValidateOK and (FindTotalField(ProdForm) <> nil) then
+               FUIEventSink.SwapTo(Name,
+                                    #8+ProdForm.TotalFee.Text+
+                                    #8+Get_ProgramID+
+                                    #8+GetFormData(ProdForm)+
+                                    #8+CombineList.ButtonFlags+
+                                    #8+ProdForm.BulkQuantity.Text)
+              //FUIEventSink.SwapTo(ProductName,#8+'Exit'+#8+ProductData+#8+ButtonStates+#8+ProdForm.StampsList.Items.CommaText+#8+ProdForm.BulkMailQuantity.Text);
+            else
+            begin
+               FUIEventSink.DisplayItemInfo(Self,Index,'','',0,BUTTON_ENABLED_UP,False,False);
+               FlagComplete(ProdForm.Validate);
+            end ;
+
+            exit;
+      end;
+
+      *]
+    }
+  }
+
+  AirLetterNOTIFYVAR {
+    InsertBetween { '{NotifyVarStart}','{NotifyVarEnd}' }
+      CodeBlock {
+      [*
+         TotalFee,
+         PrePayVal,
+         IRCVal    : Currency;
+      *]
+    }
+  }
+
+  AirLetterSWAPTO {
+    InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+         GranTotal := StrToCurrDef( ProdForm.TotalFee.Text,0 )*StrToIntDef(ProdForm.BulkQuantity.Text,0);
+         if (Name = 'Product.Stamps') then
+         begin
+            if (CombineList.IndexOf('Product.PrePaidStamps') >= 0) and
+               CombineList.IsEnabled('Product.PrePaidStamps') then
+            begin
+               TotalFee :=StrToCurrDef(ProdForm.TotalFee.Text,-100);
+               PrePayVal:=StrToCurrDef(FUIEventSink.ReferenceData('GET(PrePayStampsFee)'),0);
+               IRCVal   :=StrToCurrDef(FUIEventSink.ReferenceData('GET(IRCValue)'),0);
+               if CombineList.IsSelected('Product.PrePaidStamps')=FALSE then
+                 PrePayVal:=0;
+               if CombineList.IsSelected('Product.AirLetterRedeemIRC')=FALSE then
+                 IRCVal:=0;
+               if (StrToCurrDef(ProdForm.TotalFee.Text,0) <= 0) or
+                  (abs(PrePayVal + IRCVal) > (TotalFee + abs(PrePayVal))) then
+                  ValidateOK := False
+               else
+                  ValidateOK := (Trunc( StrToCurrDef(ProdForm.TotalFee.Text,0)*100 ) Mod 5) = 0;
+            end;
+            //pass bulk quantity to swapto
+            if ValidateOK and (FindTotalField(ProdForm) <> nil) then
+               FUIEventSink.SwapTo(Name,
+                                    #8+ProdForm.TotalFee.Text+
+                                    #8+Get_ProgramID+
+                                    #8+GetFormData(ProdForm)+
+                                    #8+CombineList.ButtonFlags+
+                                    #8+ProdForm.BulkQuantity.Text)
+            else
+            begin
+               FUIEventSink.DisplayItemInfo(Self,Index,'','',0,BUTTON_ENABLED_UP,False,False);
+               FlagComplete(ProdForm.Validate);
+            end;
+
+            exit;
+         end;
+      *]
+    }
+  }
+
+  DeliverySWAPTO {
+    InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+      MutualAction( Name, 'CustomsDutySA,CustomsDutyBotswana,CustomsDutySANoHandling,CustomsDutyBotswanaNoHandling', [maDeSelect] ) ;
+
+      //if Name = 'Product.CustomsDutyBotswana' then
+      //   if CombineList.IsSelected('Product.CustomsDutySA') and
+      //      CombineList.IsEnabled('Product.CustomsDutySA') then
+      //      CombineList.ForceDeSelect('Product.CustomsDutySA');
+
+      //if Name = 'Product.CustomsDutySA' then
+      //   if CombineList.IsSelected('Product.CustomsDutyBotswana') and
+      //      CombineList.IsEnabled('Product.CustomsDutyBotswana') then
+      //      CombineList.ForceDeSelect('Product.CustomsDutyBotswana');
+
+      if (Name = 'Product.Stamps') then
+      begin
+        //pass bulk quantity to swapto
+        if ValidateOK and (FindTotalField(ProdForm) <> nil) then
+           FUIEventSink.SwapTo(Name,
+                                 #8+ProdForm.StampFee.Text+
+                                 #8+Get_ProgramID+
+                                 #8+GetFormData(ProdForm)+
+                                 #8+CombineList.ButtonFlags+
+                                 #8+'1')
+
+        else
+           FUIEventSink.DisplayItemInfo(Self,Index,'','',0,BUTTON_ENABLED_UP,False,False);
+        Exit;
+      end;
+      *]
+    }
+  }
+
+
+
+  BulkNotifyChild {
+    InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+    CodeBlock {
+    [*
+      // Happened Opposite because it receives the event before changing
+      if  ( ProdForm.IndividualFee.Text <> 'Invalid' ) then
+      begin
+        if ( StrToIntDef( ProdForm.BulkQuantity.Text, 0 ) < 500 ) then
+        begin
+         ProdForm.DiscountBulk.Text := '0.00' ;
+        end
+        else
+        begin
+          if ( ProdForm.IndividualFee.Text <> '' ) and (ProdForm.BulkQuantity.Text<> '') then
+            if not ProdForm.BaseProduct.CombineList.IsSelected('Product.Sorted') then // will change to Selected
+              ProdForm.DiscountBulk.Text := CurrToStrF( -( StrToCurr(ProdForm.IndividualFee.Text)*
+                                                           StrToCurr(ProdForm.BulkQuantity.Text) *
+                                                           (5/100)
+                                                            ),ffNumber,2)
+
+            else
+               //ProdForm.DiscountBulk.Text := CurrToStrF( -( StrToCurr(ProdForm.IndividualFee.Text)*
+               //                                             StrToCurr(ProdForm.BulkQuantity.Text) *
+               //                                             (2/100)
+               //                                             ),ffNumber,2) ;
+               ProdForm.DiscountBulk.Text := '0.00';  // no discount for unsorted as from 1 May 2004
+            end ;
+        end;
+        //FlagComplete(ProdForm.Validate);
+        MutualAction( Name, 'Sorted,UnSorted', [maDeSelect] ) ;        
+        FUIEventSink.DataChanged(Self,GetFormData(ProdForm),not ValidateOK);
+      *]
+    }
+  }
+
+   DisableParcelExecute {
+      InsertBetween { '{SetProgStart}','{SetProgEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.ParcelInsurance.Ignore := TRUE ;
+         ProdForm.ParcelExpress.Ignore := TRUE ;
+      *]
+      }
+   }
+
+   BagNewRentalLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+         if ProdForm.FindComponent('NumberYears') <> nil then
+            FQuantity:=StrToIntDef( TDomainEdit(ProdForm.FindComponent('NumberYears')).Text,1)
+         else
+            FQuantity:=1;
+
+         if ProdForm.FindComponent('PrivBagPurchase') <> nil then
+         begin
+            TxnLog.LogTransaction(
+                   Index,
+                   1, // Quantity
+                   Get_PLU, // PLU
+                   FQuantity*StrToCurrDef(TDomainEdit(ProdForm.FindComponent('PrivBagPurchase')).Text,0), // Value
+                   StrToCurrDef(TDomainEdit(ProdForm.FindComponent('PrivBagPurchase')).Text,0), // Price
+                   Get_Description, // Description
+                   '', // Additional Info
+                   Get_ProgramID, // ProgID
+                   Enumerate(ProdForm)); // Domain Info
+             Inc(Index);
+         end ;
+
+         if ProdForm.FindComponent('PrivBagAnnualRentFee') <> nil then
+         begin
+            TxnLog.LogTransaction(
+                   Index,
+                   FQuantity, // Quantity
+                   030000030, // PLU
+                   FQuantity*StrToCurrDef(TDomainEdit(ProdForm.FindComponent('PrivBagAnnualRentFee')).Text,0), // Value
+                   StrToCurrDef(TDomainEdit(ProdForm.FindComponent('PrivBagAnnualRentFee')).Text,0), // Price
+                   'Private Bag - Annual Rent', // Description
+                   '', // Additional Info
+                   Get_ProgramID, // ProgID
+                   Enumerate(ProdForm)); // Domain Info
+             Inc(Index);
+         end  ;
+
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                030000030, // PLU
+                0, // Value
+                0, // Price
+                'Bag Number ', // Description
+                ProdForm.PrivBagNumber.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                030000030, // PLU
+                0, // Value
+                0, // Price
+                'Location -', // Description
+                ProdForm.PostOffice.Text, // Additional Info
+                Get_ProgramID, // ProgID
+                ''); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                030000030, // PLU
+                0, // Value
+                0, // Price
+                'Customer Name -', // Description
+                ProdForm.CustomerName.Text, // Additional Info
+                Get_ProgramID, // ProgID
+                ''); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                030000030, // PLU
+                0, // Value
+                0, // Price
+                'Customer Telephone no. -', // Description
+                ProdForm.CustomerTelNo.Text, // Additional Info
+                Get_ProgramID, // ProgID
+                ''); // Domain Info
+          Inc(Index);
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+
+      *]
+      }
+   }
+
+
+   DisableComple {
+      InsertBetween { '{EnableCompleteStart}','{EnableCompleteEnd}' }
+      CodeBlock {
+      [*
+         if Value and (CombineList.IsSelected('Product.PrePaidStamps') and (StrToCurrDef(ProdForm.TotalFee.Text,0)=0)) then
+            FUIEventSink.DisplayItemInfo(Self,0,'','Complete',0,0,False,False)
+         else
+            FUIEventSink.DisplayItemInfo(Self,0,'','',0,0,True,False);
+      *]
+      }
+   }
+
+   DeliveryDisableComple {
+      InsertBetween { '{EnableCompleteStart}','{EnableCompleteEnd}' }
+      CodeBlock {
+      [*
+         if Value and ( StrToCurrDef( ProdForm.StampFee.Text, 0 ) = 0 ) then
+            FUIEventSink.DisplayItemInfo(Self,0,'','Complete',0,0,False,False)
+         else
+            FUIEventSink.DisplayItemInfo(Self,0,'','',0,0,True,False);
+      *]
+      }
+   }
+
+   ValidateSetRegisterPOOC {
+       InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+       CodeBlock {
+       [*
+          RegisterPOOCFee.Text := CurrToStrF( prodform.baseproduct.get_unitprice, ffNumber, 2 ) ;
+          BaseProduct.UIEventSink.ReferenceData('SET(RegisterPOOCFee,'+RegisterPOOCFee.Text+')');
+       *]
+       }
+     }
+
+   ValidateSetInsufficentPst {
+       InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+       CodeBlock {
+       [*
+          BaseProduct.UIEventSink.ReferenceData('SET(InsufficentPstFee,'+InsufficentPstFee.Text+')');
+       *]
+       }
+     }
+
+//   ValidateSetCustomsHandCharge {
+//       InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+//       CodeBlock {
+//       [*
+//          CustomsHandChargeFee.Text := CurrToStrF( prodform.baseproduct.get_unitprice, ffNumber, 2 ) ;
+//          BaseProduct.UIEventSink.ReferenceData('SET(CustomsDutyFee,'+CustomsDutyFee.Text+')');
+//          BaseProduct.UIEventSink.ReferenceData('SET(CustomsHandChargeFee,'+CustomsHandChargeFee.Text+')');
+//       *]
+//       }
+//     }
+
+   ValidateSetCustomsDutyBotswana {
+       InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+       CodeBlock {
+       [*
+          CustomsHandChargeFee.Text := CurrToStrF( prodform.baseproduct.get_unitprice, ffNumber, 2 ) ;
+          BaseProduct.UIEventSink.ReferenceData('SET(CustomsDutyBotswanaFee,'+CustomsDutyFee.Text+')');
+          BaseProduct.UIEventSink.ReferenceData('SET(CustomsHandChargeFee,'+CustomsHandChargeFee.Text+')');
+       *]
+       }
+     }
+
+   ValidateSetCustomsDutySA {
+       InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+       CodeBlock {
+       [*
+          CustomsHandChargeFee.Text := CurrToStrF( prodform.baseproduct.get_unitprice, ffNumber, 2 ) ;
+          BaseProduct.UIEventSink.ReferenceData('SET(CustomsDutySAFee,'+CustomsDutyFee.Text+')');
+          BaseProduct.UIEventSink.ReferenceData('SET(CustomsHandChargeFee,'+CustomsHandChargeFee.Text+')');
+       *]
+       }
+     }
+
+   ValidateSetCustomsDutyBotswanaNoHandling {
+       InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+       CodeBlock {
+       [*
+          BaseProduct.UIEventSink.ReferenceData('SET(CustomsDutyBotswanaFee,'+CustomsDutyFee.Text+')');
+       *]
+       }
+     }
+
+   ValidateSetCustomsDutySANoHandling {
+       InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+       CodeBlock {
+       [*
+          BaseProduct.UIEventSink.ReferenceData('SET(CustomsDutySAFee,'+CustomsDutyFee.Text+')');
+       *]
+       }
+     }
+
+
+   ValidateVarSetDemurrageOnParcel {
+       InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+       CodeBlock {
+       [*
+         var
+            NumDays : integer ;
+       *]
+       }
+     }
+   ValidateSetDemurrageOnParcel {
+       InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+       CodeBlock {
+       [*
+
+          if Result then
+            try
+               NumDays:= Trunc( Date - StrToDate( DateArrival.Text ) );
+               NumberDays.Text := IntToStr( NumDays );
+               if NumDays > 30 then
+                  DemurrageOnParcelFee.Text := CurrToStrF( (NumDays-30)*1.70, ffNumber, 2 )
+               else
+                  DemurrageOnParcelFee.Text := '0.00';
+
+            except
+            end ;
+
+          BaseProduct.UIEventSink.ReferenceData('SET(DemurrageOnParcelFee,'+DemurrageOnParcelFee.Text+')');
+       *]
+       }
+     }
+
+   ExecVARVendorSales {
+       InsertBetween { '{ExecuteVarStart}','{ExecuteVarEnd}' }
+       CodeBlock {
+       [*
+          var
+            TempStock:String;
+            AnyStockAvailable,
+            StockAvailable:Boolean;
+            StockGroups:TStringList;
+            i:Integer;
+       *]
+       }
+     }
+
+   ExecVendorSales {
+       InsertBetween { '{IsListStart}','{IsListEnd}' }
+       CodeBlock {
+       [*
+          if UIEventSink <> nil then
+          begin
+            StockGroups:=TStringList.Create;
+            StockGroups.CommaText:='"PostalOrd","Retail","*PhilOther","*YearPack","*SouvSheet","*FDCover"';
+            AnyStockAvailable:=FALSE;
+            for i:=0 to StockGroups.Count-1 do
+            begin
+               StockAvailable:=GetAvailableStock(ProdForm.VendorRetailList,UIEventSink.User,StockGroups.Strings[i]);
+               AnyStockAvailable:=AnyStockAvailable or StockAvailable;
+               if ProdForm.VendorRetailList.Items.CommaText <> '' then
+               begin
+                  if TempStock = '' then // dont join 1st string
+                    TempStock:=ProdForm.VendorRetailList.Items.CommaText
+                  else
+                    TempStock:=TempStock + ',' + ProdForm.VendorRetailList.Items.CommaText;
+               end;
+            end;
+            ProdForm.VendorRetailList.Items.CommaText:=TempStock;
+            StockGroups.Free;
+            if not AnyStockAvailable then
+            begin
+               ProdForm.VendorRetailList.Clear;
+               ProdForm.VendorRetailList.Text:='No Stock Available';
+            end
+          end;
+       *]
+       }
+     }
+
+   ExecVARVendorStampSales {
+       InsertBetween { '{ExecuteVarStart}','{ExecuteVarEnd}' }
+       CodeBlock {
+       [*
+//          var
+//             TempStock:String;
+       *]
+       }
+     }
+
+   ExecVendorStampSales {
+       InsertBetween { '{IsListStart}','{IsListEnd}' }
+       CodeBlock {
+       [*
+          if UIEventSink <> nil then
+          begin
+//             GetAvailableStock(ProdForm.VendorRetailList,UIEventSink.User,'Stamps');
+//             TempStock := ProdForm.VendorRetailList.Items.CommaText;
+             if not GetAvailableStock(ProdForm.VendorRetailList,UIEventSink.User,'Stamps') then
+             begin
+                ProdForm.VendorRetailList.Clear;
+                ProdForm.VendorRetailList.Text:='No Stock Available';
+             end;
+//             else
+  //              ProdForm.VendorRetailList.Items.CommaText :=  TempStock + ',' + ProdForm.VendorRetailList.Items.CommaText;
+          end;
+       *]
+       }
+     }
+
+   LogVendorStampSales {
+       InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+       CodeBlock {
+       [*
+          LogStock(TxnLog,ProdForm.VendorRetailList);
+          TxnLog.LogTransaction(
+                   0, // Index
+                   FQuantity, // Quantity
+                   Get_PLU, // PLU
+                   0-(Round((StrToCurrDef(TotalStockValue(ProdForm.VendorRetailList.Items),0) * 0.05) * 100) / 100), // Value
+                   0-(Round((StrToCurrDef(TotalStockValue(ProdForm.VendorRetailList.Items),0) * 0.05) * 100) / 100), // Price
+                   'Vendor Discount - 5%', // Description
+                   '', // Additional Info
+                   Get_ProgramID, // ProgID
+                   Enumerate(ProdForm));  // Domain Info
+          Inc(Index);
+       *]
+       }
+     }
+
+   ValidateSetCODTradeCharge {
+       InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+       CodeBlock {
+       [*
+          if UpperCase( MailCODOrigin.Text ) = 'BOTSWANA' then
+          begin
+             CODHandChargeFee.Ignore := True ;
+             CODHandChargeFee.Text := '0';
+             BaseProduct.UIEventSink.ReferenceData('SET(CODHandChargeFee,'+CODHandChargeFee.Text+')');
+             BaseProduct.UIEventSink.ReferenceData('SET(CODTradeChargeFee,'+CODTradeChargeFee.Text+')');
+          end
+          else
+          begin
+             CODHandChargeFee.Ignore := False ;
+             CODHandChargeFee.Text := CurrToStrF( prodform.baseproduct.get_unitprice, ffNumber, 2 ) ;
+             BaseProduct.UIEventSink.ReferenceData('SET(CODHandChargeFee,'+CODHandChargeFee.Text+')');
+             BaseProduct.UIEventSink.ReferenceData('SET(CODTradeChargeFee,'+CODTradeChargeFee.Text+')');
+          end ;
+       *]
+       }
+     }
+
+   DeliveryItemPreLog {
+      InsertBetween { '{PreLogTransactionStart}','{PreLogTransactionEnd}' }
+      CodeBlock {
+      [*
+         if StrToCurrDef( ProdForm.CashFee.Text, 0 ) > 0 then
+         begin
+                TxnLog.SubLogVisible:=False;
+                TxnLog.LogTransaction(
+                         Index,
+                         FQuantity, // Quantity
+                         Get_PLU, // PLU
+                         0, // Value
+                         0, // Price
+                         Get_Description, // Description
+                         '', // Additional Info
+                         Get_ProgramID, // ProgID
+                         Enumerate(ProdForm));  // Domain Info
+                Inc(Index);
+
+               CustomerName:='';
+               if ProdForm.FindComponent('CustomerName') <> nil then
+                  if not TDomainEdit( ProdForm.FindComponent('CustomerName')).Ignore then
+                   CustomerName:= TDomainEdit( ProdForm.FindComponent('CustomerName')).Text ;
+
+                if (CustomerName <> '') then
+                begin
+                   TxnLog.LogTransaction(
+                            Index,
+                            FQuantity, // Quantity
+                            Get_PLU, // PLU
+                            0, // Value
+                            0, // Price
+                            'Customer Name', // Description
+                            CustomerName, // Additional Info
+                            Get_ProgramID, // ProgID
+                            Enumerate(ProdForm));  // Domain Info
+                   Inc(Index);
+                end ;
+
+               CustID_Delivery:='';
+               if ProdForm.FindComponent('CustID_Delivery') <> nil then
+                  if not TDomainEdit( ProdForm.FindComponent('CustID_Delivery')).Ignore then
+                   CustID_Delivery:= TDomainEdit( ProdForm.FindComponent('CustID_Delivery')).Text ;
+
+
+                if (CustID_Delivery <> '') then
+                begin
+                   TxnLog.LogTransaction(
+                            Index,
+                            FQuantity, // Quantity
+                            Get_PLU, // PLU
+                            0, // Value
+                            0, // Price
+                            'Identity Number', // Description
+                            CustID_Delivery, // Additional Info
+                            Get_ProgramID, // ProgID
+                            Enumerate(ProdForm));  // Domain Info
+                   Inc(Index);
+                end ;
+
+                if ProdForm.FindComponent('MailSurOrigin') <> nil then CountryOrg := TDomainEdit( ProdForm.FindComponent('MailSurOrigin')).Text ;
+                if ProdForm.FindComponent('MailAirOrigin') <> nil then CountryOrg := TDomainCombo( ProdForm.FindComponent('MailAirOrigin')).Text ;
+                if ProdForm.FindComponent('MailCODOrigin') <> nil then CountryOrg := TDomainCombo( ProdForm.FindComponent('MailCODOrigin')).Text ;                
+
+                TxnLog.LogTransaction(
+                         Index,
+                         FQuantity, // Quantity
+                         Get_PLU, // PLU
+                         0, // Value
+                         0, // Price
+                         'Country', // Description
+                         CountryOrg, // Additional Info
+                         Get_ProgramID, // ProgID
+                         Enumerate(ProdForm));  // Domain Info
+                Inc(Index);
+
+
+                if CombineList <> nil then
+                   CombineList.LogTransactions(Index,TxnLog);
+
+         end ;
+
+
+       *]
+       }
+     }
+
+   EmptyItemPreLog {
+      InsertBetween { '{PreLogTransactionStart}','{PreLogTransactionEnd}' }
+      CodeBlock {
+      [*
+       *]
+       }
+     }
+
+   CustomerVoucherLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                Get_PLU, // PLU
+                FQuantity*(-StrToCurrDef(ProdForm.AmountPaid.Text,0)), // Value
+                -StrToCurrDef(ProdForm.AmountPaid.Text,0), // Price
+                Get_Description, // Description
+                '', // Additional Info
+                Get_ProgramID, // ProgID
+                Enumerate(ProdForm)); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Voucher Reference - ', // Description
+                ProdForm.VoucherReference.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Reason for Refund - ', // Description
+                ProdForm.ReasonforRefund.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+       *]
+       }
+     }
+
+
+//  MailStampTriggerVar {
+//      InsertBetween { '{TriggerStatusDevice0VarStart}','{TriggerStatusDevice0VarEnd}' }
+//      CodeBlock {
+//      [*
+//         SL:TPackStringList;
+//         I:Integer;
+//         PrePayStampsFee:Currency;
+//
+//
+//       *]
+//       }
+//     }
+
+   MailStampTrigger {
+      InsertBetween { '{TriggerStatusDevice0Start}','{TriggerStatusDevice0End}' }
+      CodeBlock {
+      [*
+        SL:=TPackStringList.Create;
+        SL.PackText:=Value;
+        CombineList.ButtonFlags:=SL[2];
+        SetFormData(SL[1],ProdForm);
+        SwapData:='';
+        if SL.Count > 3 then SwapData:=SL[3];
+
+        for I:=1 to Length(SL[2]) do
+           if SL[2][I] = '1' then
+              FUIEventSink.DisplayItemInfo(Self,I,'','',0,BUTTON_ENABLED_DOWN,False,False);
+        FlagComplete(ProdForm.Validate);
+
+        //if StrToIntDef(ProdForm.BulkQuantity.Text,0) > 1 then
+        // begin
+        //   PrePayStampsFee:=0;
+        // end
+        // else
+        // begin
+        //   PrePayStampsFee := StrToCurrDef( FUIEventSink.ReferenceData('GET(PrePayStampsFee)'), 0 ) ;
+        // end ;
+
+       if ( SL[0] = 'Exit' ) and
+          (CurrToStrF(GranTotal,ffNumber,2)=CurrToStrF(TotalStockSelected( SwapData ), ffNumber, 2))  then
+          //(CurrToStrF(GranTotal+PrePayStampsFee,ffNumber,2)=CurrToStrF(TotalStockSelected( SwapData ), ffNumber, 2))  then
+        begin
+           UIEventSink.Restore
+        end
+        else
+        begin
+            FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+        end;
+        SL.Free;
+
+       *]
+       }
+     }
+
+   GranVarAU {
+      InsertBetween { '{VarAUStart}','{VarAUEnd}' }
+      CodeBlock {
+      [*
+         var
+            GranTotal:Currency;
+
+       *]
+       }
+     }
+
+
+
+}
+
+
+
+

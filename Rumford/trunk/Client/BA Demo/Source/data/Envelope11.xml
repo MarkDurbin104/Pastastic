@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vuitResult>
+	<status>OK</status>
+	<image>EnvelopeScan11.jpg</image>
+	<physicalAttributes>
+		<weight>15</weight>
+		<length>13.8</length>
+		<width>11.5</width>
+		<height>4.2</height>
+		<units>US</units>
+	</physicalAttributes>
+	<postage/>
+	<services>
+		<service>
+			<imageLocation>1368, 1074</imageLocation>
+			<serviceCode><![CDATA[CP780790030US]]></serviceCode>
+		</service>
+	</services>
+	<destination>
+		<zipCode>EC1V 9HQ</zipCode>
+		<country>GREAT BRITAIN</country>
+		<rawString></rawString>
+		<imageLocation>969, 876, 1212, 1035</imageLocation>
+		<address>
+			<name>Esther Chalfin</name>
+			<line1>148 Old Street</line1>
+			<line2></line2>
+			<line3></line3>
+			<city>LONDON</city>
+			<state></state>
+			<zip>EC1V 9HQ</zip>
+			<telephone></telephone>
+			<email></email>
+		</address>
+	</destination>
+	<origin>
+		<zipCode>33428</zipCode>
+		<country>USA</country>
+		<rawString></rawString>
+		<imageLocation>249, 123, 555, 249</imageLocation>
+		<address>
+			<name>Norbert Gesundrik</name>
+			<line1>Blackdust Design</line1>
+			<line2>99 Balloon Ave</line2>
+			<line3></line3>
+			<city>Boca Raton</city>
+			<state>FL</state>
+			<zip>33428</zip>
+			<telephone></telephone>
+			<email></email>
+		</address>
+	</origin>
+</vuitResult>

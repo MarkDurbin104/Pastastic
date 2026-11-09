@@ -1,0 +1,28 @@
+Borland C++ 4.5 Copyright (c) 1987, 1994 Borland International
+vector.c:
+Warning vector.c 113: Conversion may lose significant digits in function drawfeats
+Warning vector.c 114: Conversion may lose significant digits in function drawfeats
+Warning vector.c 115: Conversion may lose significant digits in function drawfeats
+Warning vector.c 156: 'fill' is declared but never used in function drawfeats
+Warning vector.c 156: 'tmp' is declared but never used in function drawfeats
+Warning vector.c 197: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 198: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 200: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 200: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 202: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 202: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 204: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 204: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 206: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 206: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 208: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 208: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 210: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 210: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 212: Conversion may lose significant digits in function get_feature_info
+Warning vector.c 261: Conversion may lose significant digits in function get_duct_info
+Warning vector.c 270: Conversion may lose significant digits in function get_duct_info
+Warning vector.c 271: Conversion may lose significant digits in function get_duct_info
+Warning vector.c 272: Conversion may lose significant digits in function get_duct_info
+Warning vector.c 273: Conversion may lose significant digits in function get_duct_info
+Warning vector.c 299: 'b' is declared but never used in function list_features

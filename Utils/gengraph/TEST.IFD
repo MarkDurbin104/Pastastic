@@ -1,0 +1,39 @@
+The IFD (Input Format Data) file structure currently consists of 8 data structures, these refer to the data attributes required for the BFT generated diagram for the following entities:
+
+Nap, Fibre Bundle, Fibre Bundle Part, BFT, BFT Blocked Tubes, BFT Equipment, BFT Tubes and BFT Section.
+
+The attributes defined for each are only those required for a BFT diagram and will need to be extended for other diagrams.  Their will be other entities added to the file definition as required by other diagrams.
+
+The format of each record is very rigid and is not checked by GENGRAPH.EXE if it is not followed exactly, the results will be spurious.
+
+The format of each entity follows the convention
+
+Single Character identifier
+'$' symbol
+1st attribute
+'$' symbol
+2nd attribute
+'$' symbol
+Nth attribute
+Carriage Return (0Dh)
+Line Feed (0Ah)
+
+
+Entity - NETWORK_ACCESS_POINT
+Single Character Identifier N
+	N$1$F$TU$T0001
+Fibre Bundle
+	F$50$8$1
+Fibre Bundle Part
+	P$19$100$1
+BFT
+	B$04$BFT4$ON
+BFT Blocked Tubes
+	U$14$5
+BFT Equipment
+	E$10$1$11$2$2
+BFT Tubes
+	T$BFT 7 PVC MK 2 5/3.5$7
+BFT Section
+	S$1$2$0$0$BFT 2 PE MK 2 5/3.5$BFT1$10$120
+

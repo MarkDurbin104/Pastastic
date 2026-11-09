@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<scxml version="1.0" >
+	<state id="S1" x="10" y="10" width="100" height="100">
+		<onentry> 
+			<assign name="X" expr="X--"/>
+		</onentry>
+		<transition event="Event1" fromX="110" fromY="70" toX="210" toY="70" relTextX="20" relTextY="-20" textWidth="80" textHeight="16" >
+			<target next="S2"/>
+		</transition>
+	</state>
+	<state id="S2" x="210" y="10" width="100" height="100">
+		<transition event="Event2" fromX="210" fromY="30" toX="110" toY="30" relTextX="20" relTextY="-20" textWidth="80" textHeight="16" >
+			<target next="S1" cond= "X &gt; 0"/>
+		</transition>
+		<transition event="Event2" fromX="310" fromY="50" toX="410" toY="50" relTextX="20" relTextY="-20" textWidth="80" textHeight="16" >
+			<target next="S3" cond ="X &gt; 0"/>
+		</transition>
+		<onexit> 
+			<assign name="X" expr="X--"/>
+		</onexit>    
+	</state> 
+	<state id="S3" x="410" y="10" width="100" height="100">
+		<onentry> 
+			<assign name="X" expr="X++"/>
+		</onentry>
+		<onexit> 
+			<assign name="Y" expr="0"/>
+		</onexit>       
+	</state>
+</scxml>

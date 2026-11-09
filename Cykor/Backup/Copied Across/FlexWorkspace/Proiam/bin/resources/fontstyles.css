@@ -1,0 +1,136 @@
+.dayButton {
+	font-family:Verdana;
+	font-size:15;
+	font-weight:bold;
+	color: #FFFFFF;
+	text-align:center;
+}
+.normalItem {
+	font-family:Verdana;
+	font-size:14;
+	font-weight:bold;
+	color: #2F4D55;
+	text-align:center;
+}
+.lockedItem {
+	font-family:Verdana;
+	font-size:12;
+	font-weight:bold;
+	color: #FF5524;
+	text-align:center;
+}
+.secondaryItem {
+	font-family:Verdana;
+	font-size:14;
+	font-weight:bold;
+	color: #27726B;
+	text-align:center;
+}
+.embVerdanaStyle {
+	fontFamily:embVerdana;
+}
+.embVerdanaNormalStyle {
+	fontFamily:embVerdanaNormal;
+}
+.accordianItem {
+	backgroundColor:#ECF6ED;
+}
+.input {
+	font-weight: bold;
+	color: #214134;
+	font-size: 28;	
+	backgroundColor: #ECF6ED;
+}
+.VHeaderAccordion {
+   headerHeight: 50;
+   vertical-gap: 2;
+   background-alpha:0;
+   open-duration:250;
+   border-style:none;
+   padding-bottom:5;
+   color:#CEE3D1;
+   backgroundColor:#CEE3D1;
+   header-style-name: gradientHeader;
+}
+.VAccordion {
+   headerHeight: 30;
+   vertical-gap: 2;
+   background-alpha:0;
+   open-duration:250;
+   border-style:none;
+   padding-bottom:5;
+   color:#CEE3D1;
+   backgroundColor:#CEE3D1;
+   header-style-name: gradientHeader;
+}
+
+.gradientHeader {
+    upSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+    overSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+    downSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+    disabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+    selectedUpSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+    selectedOverSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+    selectedDownSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+    selectedDisabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+    font-family:Arial;
+    cornerRadii: 0, 0, 10, 10;
+    borderColors: #CEE3D1, #CEE3D1;
+    overBorderColors: #CEE3D1, #CEE3D1;
+    selectedBorderColors: #CEE3D1, #CEE3D1;
+    borderThickness: 0;
+    focusThickness:0;
+    borderAlpha: 1;
+    fillColors: #CEE3D1, #CEE3D1;
+    fillAlphas: 1, 1;
+    fillColorRatios: 0, 255;
+    overFillColors: #CEE3D1, #CEE3D1;
+    overFillAlphas: 1, 1;
+    overFillColorRatios: 0, 169;
+    selectedFillColors: #ECF6ED, #CEE3D1;
+    selectedFillAlphas: 1,1;
+    selectedFillColorRatios: 64, 192;
+}
+
+.Panel {
+   borderStyle: solid;
+   borderColor: #ABD6C8;
+   corner-radius:12;
+   borderAlpha: 1;
+   roundedBottomCorners: true;
+   headerHeight: 40;
+   highlightAlphas: 0, 0;
+   headerColors: #ECF6ED,#ECF6ED;
+   backgroundColor:#CEE3D1;
+   titleStyleName: "mypanelTitle";
+   border-thickness-left:1;
+   border-thickness-right:1;
+   border-thickness-top:0;
+   border-thickness-bottom:-5;
+    
+   border-thickness:6;   
+}
+.mypanelTitle {
+   color: #496384;
+   fontSize: 18;
+   fontWeight:bold;
+}
+.mainBox {
+	padding-top:0;
+	padding-left:10;
+	padding-right:10;
+	vertical-gap:0;	
+}
+
+.title {
+	font-weight: bold;
+	color: #496384;
+	font-size: 16;	
+}
+
+.description {
+	font-weight: bold;
+	color: #214134;
+	font-size: 16;	
+}
+

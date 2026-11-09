@@ -1,0 +1,176 @@
+
+Function	DoPolyErase
+
+Synopsis	Erase the polygon by rectangular region
+
+Prototype	BOOL DoPolyErase(XYPOINT *poly,int numply,int increment);
+
+Module	ERASEPLY.C
+
+Description	Erase the polygon by passing over each point in the polygon in the  direction top to bottom and marking all the intersecting blocks for deletion once the entire polygon has been covered, any adjacent rectangles of the same width are merged. 
+
+Passed	XYPOINT *poly  - The polygon points
+	int numply  - The number of points in the polygon
+	int increment  - The minimum height of each rectangle
+
+Return Value	BOOL  - always TRUE
+
+Called By	erase_polygon.
+
+Calls	GetUpLowBounds, GetPointsofIntersection, YAdjRect, EraseRect.
+
+See Also	EraseRect, erase_polygon, GetAngle, GetPointsofIntersection, GetUpLowBounds, Imcmp, YAdjRect.
+
+
+Function	EraseRect
+
+Synopsis	Call the GMLI erase_region command for each rectangle in the list
+
+Prototype	void EraseRect(PLIST *p);
+
+Module	ERASEPLY.C
+
+Description	Call the GMLI erase_region command for each rectangle in the list, as each region is erased free the memory associated with the rectangle's list entry 
+
+Passed	PLIST *p  - The first element in the rectangle point list
+
+Return Value	None
+
+Modifies	p 
+
+Called By	DoPolyErase.
+
+See Also	DoPolyErase, erase_polygon, GetAngle, GetPointsofIntersection, GetUpLowBounds, Imcmp, YAdjRect.
+
+
+Function	erase_polygon
+
+Synopsis	erase a polygon using rectangular regions - called by GML
+
+Prototype	BOOL erase_polygon(void);
+
+Module	ERASEPLY.C
+
+Description	This function is called repeatedly to collect arguments off the command line from GMLI on the first call the three parameters "add" the number of polygons and the increment size should be passed. On subsequent  calls the parameters should be the X and Y co-ordinates of one point in the polygon.  When all the points have been collected this function then calls DoPolyErase to do the work and then it frees the memory allocated  for the polygon points and returns FALSE. Any failure will also return FALSE 
+
+Return Value	BOOL  - TRUE if more parameters are required else FALSE
+
+Modifies	numpolypoint currentpolypoint 
+
+Calls	DoPolyErase.
+
+See Also	DoPolyErase, EraseRect, GetAngle, GetPointsofIntersection, GetUpLowBounds, Imcmp, YAdjRect.
+
+
+Function	GetAngle
+
+Synopsis	Get the angle between two points
+
+Prototype	double GetAngle(NUMB x,NUMB y,XYPOINT *b);
+
+Module	ERASEPLY.C
+
+Description	Get the angle between two points 
+
+Passed	NUMB x  - The X coordinate of the first point
+	NUMB y  - The Y coordinate of the first point
+	XYPOINT *b  - The second point
+
+Return Value	double  - The angle between the two points
+
+Called By	GetPointsofIntersection.
+
+See Also	DoPolyErase, EraseRect, erase_polygon, GetPointsofIntersection, GetUpLowBounds, Imcmp, YAdjRect.
+
+
+Function	GetPointsofIntersection
+
+Synopsis	Get all the points along a line that are intersected by the polygon
+
+Prototype	NUMB *GetPointsofIntersection(NUMB y,XYPOINT *poly,int numply);
+
+Module	ERASEPLY.C
+
+Description	Get all the points along a line that are intersected by the polygon, returning a list sorted from left to right 
+
+Passed	NUMB y  - The Y co-ordinate if the line
+	XYPOINT *poly  - The polygon points
+	int numply  - The number of points in the polygon
+
+Return Value	NUMB *  - a sorted list of points, (-1) indicating the end of the list             
+
+Modifies	poly 
+
+Called By	DoPolyErase.
+
+Calls	GetAngle, Imcmp.
+
+See Also	DoPolyErase, EraseRect, erase_polygon, GetAngle, GetUpLowBounds, Imcmp, YAdjRect.
+
+
+Function	GetUpLowBounds
+
+Synopsis	Get the upper and lower bounds of the polygon
+
+Prototype	void GetUpLowBounds(NUMB *y,NUMB *y1,XYPOINT *poly,int numply);
+
+Module	ERASEPLY.C
+
+Description	Get the upper and lower bounds of the polygon 
+
+Passed	NUMB *y  - The address of returned top Y co-ordinate
+	NUMB *y1  - The address of returned bottom Y co-ordinate
+	XYPOINT *poly  - The polygon points
+	int numply  - The number of points in the polygon
+
+Return Value	None
+
+Modifies	y1 poly y 
+
+Called By	DoPolyErase.
+
+See Also	DoPolyErase, EraseRect, erase_polygon, GetAngle, GetPointsofIntersection, Imcmp, YAdjRect.
+
+
+Function	Imcmp
+
+Synopsis	Integer compare function for qsort()
+
+Prototype	int Imcmp(NUMB *a,NUMB *b);
+
+Module	ERASEPLY.C
+
+Description	Integer compare function for qsort() 
+
+Passed	NUMB *a  - The address of the first integer
+	NUMB *b  - The address of the second integer
+
+Return Value	int  - a<b - (-1) a==b - 0 a>b - 1
+
+Called By	GetPointsofIntersection.
+
+See Also	DoPolyErase, EraseRect, erase_polygon, GetAngle, GetPointsofIntersection, GetUpLowBounds, YAdjRect.
+
+
+Function	YAdjRect
+
+Synopsis	Merge two adjacent rectangles of the same height
+
+Prototype	BOOL YAdjRect(PLIST *p,PLIST *l);
+
+Module	ERASEPLY.C
+
+Description	Merge two adjacent rectangles of the same height 
+
+Passed	PLIST *p  - The Current rectangle
+	PLIST *l  - The list of all rectangles
+
+Return Value	BOOL  - TRUE if the rectangle was merged with an adjacent one
+
+Modifies	l p 
+
+Called By	DoPolyErase.
+
+See Also	DoPolyErase, EraseRect, erase_polygon, GetAngle, GetPointsofIntersection, GetUpLowBounds, Imcmp.
+
+

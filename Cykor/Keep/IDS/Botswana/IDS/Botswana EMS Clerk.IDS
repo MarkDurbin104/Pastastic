@@ -1,0 +1,910 @@
+Users {
+   //EMSClerk {
+   //   Items {
+   //      'Group.EMSMain'
+   //      'Group.EMSAdmin'
+   //      'Group.EMSReports'
+   //      'Group.EMSFaxCol'
+   //      'Group.EMSFaxDly'
+   //      'Group.EMSFaxOwn'
+   //      'Group.EMSMOP'
+   //   }
+   //}
+   EMSSuper {
+      Items {
+         'Group.EMSSuperMain'
+         'Group.EMSMethodsOfPayment'
+      }
+   }
+}
+
+Groups {
+
+   EMSMethodsOfPayment {
+     BitMap  { '..\images\P_StartOfDay.bmp'   }
+     Title { 'Methods of Payment' }
+     Items {
+       'Product.Cash'
+       'Receipt'
+       'End Customer'
+       'Exit'
+       'Product.Cheque'
+       'Product.AccountPay'
+       'Product.AccountGOVPay'
+     }
+   }
+
+   EMSSuperMain {
+      Title { 'EMS Supervisor Menu' }
+      Prompt { 'Select a Service or Menu' }
+      Hint { 'Select a service by pressing a Function Key^or by using the arrow keys and pressing [ENTER]' }
+      Bitmap { '..\images\SmallLogo.bmp' }
+      Items {
+         'Product.AddModCust'
+         'Product.DelCust'
+         'Product.CustStatement'
+         //'Product.CustInvoice'
+         'Product.CustTransact'
+         'Product.StartOfDay'
+         'Exit'
+         'Shutdown WorkStation'
+         'Group.EMSMethodsOfPayment'
+      }
+   }
+//   EMSMain {
+//     Caption { 'Tanzania Post Corporation - EMS' }
+//     BitMap { '..\IMAGES\G_CMain.bmp' }
+//     Title        { 'Tanzania Post Corporation - EMS' }
+//     Prompt       { 'Select a Menu Item:' }
+//     Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+//     Items {
+//        'Group.EMSFaxCol'
+//        'Group.EMSFaxDly'
+//        'Group.EMSFaxOwn'
+//        'Product.IntEMSFax'
+//        'Product.IntEMSDoc'
+//        'Product.IntEMSPar'
+//        'Product.DomEMS'
+//        'Group.EMSMOP'
+//        'Group.EMSAdmin'
+//     }
+//   }
+//   EMSMOP {
+//     Caption { 'Method of Payment' }
+//     BitMap {  '..\IMAGES\P_Cash.bmp' }
+//     Title        { 'Method of Payment' }
+//     Prompt       { 'Select a Menu Item:' }
+//     Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+//     Items {
+//        'Product.Cash'
+//        'Product.AccountPay'
+//        'Receipt'
+//     }
+//   }
+//   EMSFaxCol {
+//     Caption { 'EMS Fax Collect' }
+//     BitMap { '..\IMAGES\G_EMSFaxCol.bmp' }
+//     Title        { 'EMS Fax Collect' }
+//     Prompt       { 'Select a Menu Item:' }
+//     Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+//     Items {
+//        'Product.EMSFaxCol'
+//        'Product.EMSFaxColTrn'
+//     }
+//   }
+//
+//   EMSFaxDly {
+//     Caption { 'EMS Fax Delivery' }
+//     BitMap { '..\IMAGES\G_EMSFaxDly.bmp' }
+//     Title        { 'EMS Fax Delivery' }
+//     Prompt       { 'Select a Menu Item:' }
+//     Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+//     Items {
+//        'Product.EMSFaxDly'
+//        'Product.EMSFaxDlyTrn'
+//     }
+//   }
+//
+//   EMSFaxOwn {
+//     Caption { 'EMS Fax Own' }
+//     BitMap { '..\IMAGES\G_EMSFaxOwn.bmp' }
+//     Title        { 'EMS Fax Own' }
+//     Prompt       { 'Select a Menu Item:' }
+//     Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+//     Items {
+//        'Product.EMSFaxOwn'
+//        'Product.EMSFaxOwnTrn'
+//     }
+//   }
+//
+//   EMSAdmin {
+//     Caption { 'Administration' }
+//     BitMap { '..\IMAGES\G_ClerkAdmin.bmp' }
+//     Title        { 'Administration' }
+//     Prompt       { 'Select a Menu Item:' }
+//     Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+//     Items {
+//        'Product.StartOfDay'
+//        'Product.TrialBalance'
+//        'Product.Balance'
+//        'Cancel Customer'
+//        'Group.EMSReports'
+//        'End Customer'
+//        'Exit'
+//        'Shutdown Workstation'
+//     }
+//   }
+//   EMSReports {
+//     Caption { 'Reports and Stock' }
+//     BitMap { '..\IMAGES\G_SuperReports.bmp' }
+//     Title        { 'Reports' }
+//     Prompt       { 'Select a Menu Item:' }
+//     Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+//     Items {
+//        'Product.EMSReport'
+//        'Product.ClerkCA'
+//        'Product.ReturnPrint'
+//        'Product.OrderPrint'
+//        'Product.ViewStock'
+//        'Product.DeclareCash'
+//        'Product.OrderCash'
+//        'Product.ReturnCash'
+//     }
+//   }
+}
+
+
+
+Products {
+
+
+   BaseEMSSuper {
+                 DontBuild
+                 SubGroup { 'EMS Super' }
+                }
+
+   AccountPay {
+      BasedOn { BaseServices }
+      BitMap {  '..\IMAGES\P_Refunds.bmp' }
+      Caption      { 'Charge To Account - EMS' }
+      Description  { 'Charge To Account - EMS' }
+      Title        { 'Charge To Account - EMS' }
+      PLU          { PLU_AccPay }
+      Domains {
+         ShowAmount
+         PaymentDescription
+         CustomerList
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         UtilsUses
+         CustomerPayFill
+         CustomerPayLog
+         CustomerPayExecVars
+      }
+      //PLU { PLU_AccountPay }
+   }
+
+   AccountPayment {
+      BasedOn { BaseServices }
+      BitMap {  '..\IMAGES\P_Refunds.bmp' }
+      Caption      { 'Account Payment - EMS' }
+      Description  { 'Account Payment - EMS' }
+      Title        { 'Account Payment - EMS' }
+      PLU          { PLU_AccPayment }
+      Domains {
+         Amount
+         CustomerList
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         UtilsUses
+         CustomerPaymentFill
+         CustomerPaymentLog
+         CustomerPayExecVars
+      }
+ 
+   }
+
+   AddModCust {
+      BasedOn{ BaseEMSSuper }
+      Caption { 'Add/Modify EMS Customer' }
+      Bitmap { '..\images\P_AddModStockItem.bmp' }
+      Description  { 'Add/Modify EMS Customer' }
+      Title        { 'Add/Modify EMS Customer' }
+      Domains {
+         CustomerList
+         CustomerName
+         CustomerType
+         CustomerNumber
+         CustomerAdd1
+         CustomerAdd2
+         CustomerPOBox
+         CustomerTelNo
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         CustomerListFill
+         CustomerListDec
+         CustomerListDef
+         CustomerListUses
+         CustomerListVars
+         CustomerListLog
+      }
+      PLU { PLU_AddModCust }
+   }
+
+   DelCust {
+      BasedOn{ BaseEMSSuper }
+      Caption { 'Delete EMS Customer' }
+      Bitmap { '..\images\P_DelStockItem.bmp' }
+      Description  { 'Permanently Delete EMS Customer' }
+      Title        { 'Permanently Delete EMS Customer' }
+      Domains {
+               CustomerType
+               CustomerList
+               }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         DelCustomerFill
+         CustomerListUses
+         CustomerListVars
+         CustomerDelLog
+         CustomerDelDec
+         CustomerDelDef
+      }
+      PLU { PLU_DelCust }
+   }
+
+   CustStatement {
+      BasedOn{ BaseEMSSuper }
+      Caption { 'EMS Customer Statement' }
+      BitMap {  '..\IMAGES\P_MOReport.bmp' }
+      Description  { 'EMS Customer Statement' }
+      Title        { 'EMS Customer Statement' }
+      Domains {
+         CustomerType
+         CustomerList
+         StartDomainEdit
+         EndDomainEdit
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         CustomerTxnFill
+         CustomerListUses
+         CustomerStmtLogVars
+         CustomerStmtLog
+      }
+      PLU { PLU_CustStatement }
+   }
+
+   CustInvoice {
+      BasedOn{ BaseEMSSuper }
+      Caption { 'Print EMS Customer Invoice' }
+      BitMap {  '..\IMAGES\P_MOReport.bmp' }
+      Description  { 'Print EMS Customer Invoice' }
+      Title        { 'Print EMS Customer Invoice' }
+      Domains {
+         CustomerType
+         CustomerList
+         StartDomainEdit
+         EndDomainEdit
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         CustomerTxnFill
+         CustomerListUses
+      }
+      PLU { PLU_CustInvoice }
+   }
+
+   CustTransact {
+      BasedOn{ BaseEMSSuper }
+      Caption { 'EMS Customer Transaction' }
+      BitMap {  '..\IMAGES\P_MOReport.bmp' }
+      Description  { 'EMS Customer Transaction' }
+      Title        { 'EMS Customer Transaction' }
+      Domains {
+         CustomerType
+         CustomerList
+         TransactionType
+         Amount
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         CustomerTxnFill
+         CustomerListUses
+         CustomerTxnLog
+      }
+      PLU { PLU_CustTransact }
+   }
+
+//   EMSReport {
+//      SubGroup { EMS }
+//      Caption { 'EMS Report' }
+//      BitMap {  '..\IMAGES\MOReport.bmp' }
+//      Description  { 'EMS Report' }
+//      Title        { 'EMS Report' }
+//      Prompt       { 'EMS Report' }
+//      Hint         { 'EMS Report' }
+//      PLU          { PLU_FullBalance }
+//      Domains {
+//         StartDomainEdit
+//         EndDomainEdit
+//      }
+//      Items {
+//         'Complete'
+//      }
+//      Snippets { ExternalFuncUses, LogClientReturnsVars, LogEMSReport }
+//   }
+
+}
+Snippets {
+
+//   LogEMSReport {
+//      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+//      CodeBlock {
+//      [*
+//         ResultCR := EMSReportData( ProdForm.StartDomainEdit.Text , ProdForm.EndDomainEdit.Text,
+//                                   FUIEventSink.User, IntToStr(FUIEventSink.Office), FALSE );
+//         try
+//            ReceiptPrinter:=FUIEventSink.GetComponentReference(GUIDToString(Class_ReceiptDevice)) as IDevice;
+//            ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+//            ReceiptPrinter.WriteDevice(dcList5Data,ResultCR,1);
+//            ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+//         finally
+//            ReceiptPrinter := nil;
+//         end ;
+//      *]
+//      }
+//   }
+
+
+   DelCustomerFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.CustomerType.Ignore:=True;
+         ProdForm.CustomerList.Ignore:=False;
+         FUIEventSink := UIEventSink ;
+         Prodform.CustomerList.Items.CommaText:=TCustomers.ListNamesInGroups( ProdForm.CustomerType.items.CommaText );
+         FUIEventSink := nil ;
+      *]
+      }
+   }
+   CustomerListFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.CustomerList   .Ignore:=False;
+         ProdForm.CustomerName   .Ignore:=True;
+         ProdForm.CustomerType   .Ignore:=True;
+         ProdForm.CustomerNumber .Ignore:=True;
+         ProdForm.CustomerAdd1   .Ignore:=True;
+         ProdForm.CustomerAdd2   .Ignore:=True;
+         ProdForm.CustomerPOBox  .Ignore:=True;
+         ProdForm.CustomerTelNo  .Ignore:=True;
+         FUIEventSink := UIEventSink ;
+         ProdForm.CustomerList.Items.CommaText:=TCustomers.ListNamesInGroups( '' );
+         ProdForm.CustomerList.Items.Insert(0,'New Customer');
+         FUIEventSink := nil ;
+      *]
+      }
+   }
+   CustomerTxnFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.CustomerType.Ignore:=True;
+         FUIEventSink := UIEventSink ;
+         //ProdForm.CustomerList.Items.CommaText:= TCustomers.ListNames;
+         Prodform.CustomerList.Items.CommaText:=TCustomers.ListNamesInGroups( ProdForm.CustomerType.items.CommaText );
+         FUIEventSink := nil ;
+      *]
+      }
+   }
+   CustomerDelLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+         DelCustDetails;
+         CustList:=TPackStringList.Create;
+         //CustList.CommaText:=TCustomers.ListNames;
+         CustList.CommaText:=TCustomers.ListNamesInGroups( ProdForm.CustomerType.items.CommaText );
+         TxnLog.WriteTransaction('*ListUpdt',0,0,0,0,0,'Customer',CustList.PackText,'EMS','');
+         CustList.Free;
+      *]
+      }
+   }
+   CustomerStmtLogVars {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            SL:TPackStringList;
+      *]
+      }
+   }
+   CustomerStmtLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         SL:=TPackStringList.Create;
+         SL.PackText:=
+            TCustomers.CustomerTypeStatement('Customer Transaction Statement',
+                                         ProdForm.CustomerList   .Text,
+                                         ProdForm.CustomerType.Items.CommaText,
+                                         ProdForm.StartDomainEdit.Text,
+                                         ProdForm.EndDomainEdit  .Text);
+         PrintReport(SL);
+         SL.Free;
+      *]
+      }
+   }
+   CustomerTxnLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+      if ProdForm.TransactionType.Text = 'Credit' then
+      begin
+         TCustomers.CustomerTypeTransaction(
+                       ProdForm.CustomerList.Text,
+                       ProdForm.CustomerType.Items.CommaText,
+                       ProdForm.TransactionType.Text,StrToCurrDef(ProdForm.Amount.Text,0));
+      end
+      else
+      begin
+         TCustomers.CustomerTypeTransaction(
+                       ProdForm.CustomerList.Text,
+                       ProdForm.CustomerType.Items.CommaText,
+                       ProdForm.TransactionType.Text,0-StrToCurrDef(ProdForm.Amount.Text,0));
+      end;
+
+         TxnLog.LogTransaction( Index
+                               ,FQuantity
+                               ,Get_PLU
+                               ,StrToCurrDef(ProdForm.Amount.Text,0)
+                               ,StrToCurrDef(ProdForm.Amount.Text,0)
+                               ,Get_Description
+                               ,''
+                               ,Get_ProgramID
+                               ,Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.LogTransaction(Index,
+                               FQuantity,
+                               Get_PLU,
+                               0, 0,
+                               'Customer Type - ', // Description
+                               ProdForm.CustomerType.Text,
+                               Get_ProgramID, // ProgID
+                               Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.LogTransaction(Index,
+                               FQuantity,
+                               Get_PLU,
+                               0, 0,
+                               'Customer - ', // Description
+                               ProdForm.CustomerList.Text,
+                               Get_ProgramID, // ProgID
+                               Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.LogTransaction(Index,
+                               FQuantity,
+                               Get_PLU,
+                               0, 0,
+                               'Transaction type - ', // Description
+                               ProdForm.TransactionType.Text,
+                               Get_ProgramID, // ProgID
+                               Enumerate(ProdForm));
+ 
+       if CombineList <> nil then
+          CombineList.LogTransactions(Index,TxnLog);
+
+      *]
+      }
+   }
+
+   CustomerListLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         if ProdForm.CustomerName.Text <> '' then
+         begin
+            SaveCustDetails;
+            CustList:=TPackStringList.Create;
+
+            CustList.CommaText:=TCustomers.ListNamesInGroups(ProdForm.CustomerType.items.CommaText);
+            TxnLog.WriteTransaction('*ListUpdt',0,0,0,0,0,'Customer',CustList.PackText,'EMS','');
+            CustList.Free;
+         end;
+      *]
+      }
+   }
+   CustomerListDec {
+     InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+     CodeBlock {
+       [*
+          procedure TriggerBarCode(Value:String); override;
+          procedure SaveCustDetails;
+       *]
+     }
+   }
+   CustomerListDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+          procedure {PClass}TAddModCustProduct.SaveCustDetails;
+          begin
+             if NewCustomer then
+             begin
+                TCustomers.CreateTables(False);
+                CustDet:=TCustomerDetails.Create;
+                CustDet.Identifier:=-1;
+             end;
+             CustDet.CustName    :=ProdForm.CustomerName   .Text;
+             CustDet.CustType    :=ProdForm.CustomerType   .Text;
+             CustDet.CustNumber  :=ProdForm.CustomerNumber .Text;
+             CustDet.CustAddress1:=ProdForm.CustomerAdd1   .Text;
+             CustDet.CustAddress2:=ProdForm.CustomerAdd2   .Text;
+             CustDet.CustPOBox   :=ProdForm.CustomerPOBox  .Text;
+             CustDet.CustTelNo   :=ProdForm.CustomerTelNo  .Text;
+             TCustomers.SetCustomerDetailsInGroups(CustDet,ProdForm.CustomerType.Items.commatext);//SetCustomerDetails(CustDet);
+             CustDet.Free;
+          end;
+          procedure {PClass}TAddModCustProduct.TriggerBarCode(Value:String);
+          var
+            P :integer;
+            CustName,CustType:String ;
+          begin
+             ProdForm.CustomerList   .Ignore:=True;
+             ProdForm.CustomerName   .Ignore:=False;
+             ProdForm.CustomerType   .Ignore:=False;
+             ProdForm.CustomerNumber .Ignore:=False;
+             ProdForm.CustomerAdd1   .Ignore:=False;
+             ProdForm.CustomerAdd2   .Ignore:=False;
+             ProdForm.CustomerPOBox  .Ignore:=False;
+             ProdForm.CustomerTelNo  .Ignore:=False;
+             ProdForm.CustomerList.ItemIndex:=ProdForm.CustomerList.Items.IndexOf(Value);
+             if Value = 'New Customer' then
+             begin
+                NewCustomer:=True;
+                ProdForm.CustomerName   .Text:='';
+                ProdForm.CustomerType   .Text:='';
+                ProdForm.CustomerNumber .Text:='';
+                ProdForm.CustomerAdd1   .Text:='';
+                ProdForm.CustomerAdd2   .Text:='';
+                ProdForm.CustomerPOBox  .Text:='';
+                ProdForm.CustomerTelNo  .Text:='';
+             end
+             else
+             begin
+                NewCustomer:=False;
+                P:=Pos('  -  ',Value);
+                CustType:=Copy( Value, 0, p-1);
+                CustName:=Copy( Value, p+5, 999);
+
+                CustDet:=TCustomers.GetCustomerTypeDetails(CustName,'"'+CustType+'"',False);
+                ProdForm.CustomerName   .Text:=CustDet.CustName    ;
+                ProdForm.CustomerType   .Text:=CustDet.CustType    ;
+                ProdForm.CustomerNumber .Text:=CustDet.CustNumber  ;
+                ProdForm.CustomerAdd1   .Text:=CustDet.CustAddress1;
+                ProdForm.CustomerAdd2   .Text:=CustDet.CustAddress2;
+                ProdForm.CustomerPOBox  .Text:=CustDet.CustPOBox   ;
+                ProdForm.CustomerTelNo  .Text:=CustDet.CustTelNo   ;
+             end;
+             MoveFocusTo(ProdForm.CustomerName);
+             FlagComplete(ProdForm.Validate);
+             FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+          end;
+
+       *]
+     }
+   }
+   CustomerDelDec {
+     InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+     CodeBlock {
+       [*
+          procedure TriggerBarCode(Value:String); override;
+          procedure DelCustDetails;
+       *]
+     }
+   }
+   CustomerDelDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+          procedure {PClass}TDelCustProduct.DelCustDetails;
+          var
+            I:Integer;
+          begin
+             for I:=0 to ProdForm.CustomerList.Items.Count-1 do
+             begin
+                if Copy(ProdForm.CustomerList.Items[I],Length(ProdForm.CustomerList.Items[I])-9,10) =' <- DELETE' then
+                   TCustomers.DelCustomerTypeDetails(
+                        Copy(ProdForm.CustomerList.Items[I],1,Length(ProdForm.CustomerList.Items[I])-10),
+                        ProdForm.CustomerType.items.CommaText
+                        );
+             end;
+          end;
+          procedure {PClass}TDelCustProduct.TriggerBarCode(Value:String);
+          begin
+             if Copy(Value,Length(Value)-9,10) =' <- DELETE' then
+             begin
+                ProdForm.CustomerList.Items[ProdForm.CustomerList.Items.IndexOf(Value)]:=Copy(Value,1,Length(Value)-10);
+             end
+             else
+             begin
+                ProdForm.CustomerList.Items[ProdForm.CustomerList.Items.IndexOf(Value)]:=Value+' <- DELETE';
+             end;
+             FlagComplete(True);
+             FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+          end;
+       *]
+     }
+   }
+
+  UtilsUses {
+    InsertBetween { '{AutoUsesStart}','{AutoUsesEnd}' }
+    CodeBlock {
+    [*
+      Utils,
+    *]
+    }
+  }
+
+   CustomerListUses {
+      InsertBetween { '{AutoUsesStart}','{AutoUsesEnd}' }
+      CodeBlock {
+      [*
+         CustomerListU,
+      *]
+      }
+   }
+   CustomerListVars {
+      InsertBetween { '{PublVarDecStart}','{PublVarDecEnd}' }
+      CodeBlock {
+      [*
+         CustDet:TCustomerDetails;
+         NewCustomer:Boolean;
+         CustList:TPackStringList;
+      *]
+      }
+   }
+   CustomerFillEMS {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         SL:=TPackStringList.Create;
+         SL.PackText:=GetLocalList('Customer','EMS');
+         ProdForm.CustomerList.Items.Text:=SL.Text;
+         SL.Free;
+      *]
+      }
+   }
+
+  EMSContractSetLastCustomer {
+    InsertBetween { '{PostLogTransactionStart}','{PostLogTransactionEnd}' }
+    CodeBlock {
+    [*
+       SetRecentValues(ProdForm.CustomerList, 'Text');
+    *]
+    }
+  }
+
+   CustomerPayFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         SL:=TPackStringList.Create;
+         SL.PackText:=GetLocalList('Customer','EMS');
+         ProdForm.CustomerList.Items.Text:=SL.Text;
+         ProdForm.ShowAmount.Text:=CurrToStrF(CurrentTxnTotal,ffNumber,2);
+         GetRecentValues(ProdForm.CustomerList, 'Text');
+         SL.Free;
+      *]
+      }
+   }
+   CustomerPaymentFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         SL:=TPackStringList.Create;
+         SL.PackText:=GetLocalList('Customer','EMS');
+         ProdForm.CustomerList.Items.Text:=SL.Text;
+         ProdForm.Amount.Text:=CurrToStrF(CurrentTxnTotal,ffNumber,2);
+         GetRecentValues(ProdForm.CustomerList, 'Text');
+         SL.Free;
+      *]
+      }
+   }
+
+
+   CustomerPayLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                               0-StrToCurrDef(ProdForm.ShowAmount.Text,0),
+                               0-StrToCurrDef(ProdForm.ShowAmount.Text,0),
+                               Get_Description,
+                               '',
+                               '',
+                               Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                               0, 0,
+                               ProdForm.CustomerList.Text,
+                               '',
+                               '',
+                               Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.WriteTransaction('Account',0,0,0,
+                               0-StrToCurrDef(ProdForm.ShowAmount.Text,0),
+                               0-StrToCurrDef(ProdForm.ShowAmount.Text,0),
+                               ProdForm.CustomerList.Text,'Payment for Services','','');
+      *]
+      }
+   }
+
+   CustomerPaymentLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                               StrToCurrDef(ProdForm.Amount.Text,0),
+                               StrToCurrDef(ProdForm.Amount.Text,0),
+                               Get_Description,
+                               '',
+                               '',
+                               Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                               0, 0,
+                               ProdForm.CustomerList.Text,
+                               '',
+                               '',
+                               Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.WriteTransaction('Account',0,0,0,
+                               StrToCurrDef(ProdForm.Amount.Text,0),
+                               StrToCurrDef(ProdForm.Amount.Text,0),
+                               ProdForm.CustomerList.Text,'Account Paid','','');
+      *]
+      }
+   }
+
+   CustomerPayExecVars {
+      InsertBetween { '{ExecuteVarStart}','{ExecuteVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            SL:TPackStringList;
+      *]
+      }
+   }
+}
+
+// -----------------------------------------------------------------------------
+
+Domains
+{
+
+   ShowAmount {
+      Title  { 'Amount' }
+      Prompt { 'Amount' }
+   }
+
+   CustomerList {
+      Title  { 'Customer Name' }
+      Prompt { 'Customer Name' }
+      Hint   { 'Select a Customer from the list' }
+      Error  { 'Select a Customer from the list' }
+      Format {
+         PickList  { '' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   CustomerType {
+      Title  { 'Customer Type' }
+      Prompt { 'Customer Type' }
+      Hint   { 'Select the Customer Type' }
+      Error  { 'Select the Customer Type' }
+      Format {
+         PickList  { 'PickList.CustomerType' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   CustomerNumber {
+      Title  { 'Customer Number' }
+      Prompt { 'Customer Number' }
+      Hint   { 'Enter the Customer Number' }
+      Error  { 'Enter a Valid Customer Number' }
+      Format { Mask { 'xxxxxxxxxxxxxxxxxxxx' }  }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   CustomerAdd1 {
+      Title  { 'Customer Address' }
+      Prompt { 'Customer Address' }
+      Hint   { 'Enter the Customer''s Address' }
+      Error  { 'Enter a Valid Customer''s Address' }
+      Format { Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }  }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   CustomerAdd2 {
+      Title  { 'Customer Address' }
+      Prompt { 'Customer Address' }
+      Hint   { 'Enter the Customer''s Address' }
+      Error  { 'Enter a Valid Customer''s Address' }
+      Format { Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }  }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   CustomerPOBox {
+      Title  { 'Customer P.O. Box' }
+      Prompt { 'Customer P.O. Box' }
+      Hint   { 'Enter the Customer''s POBox' }
+      Error  { 'Enter a Valid Customer''s POBox' }
+      Format { Mask { 'xxxxxxxxxxxxxxxxxxxx' }  }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   TransactionType {
+      Title  { 'Transaction Type' }
+      Prompt { 'Transaction Type' }
+      Hint   { 'Please Select a Transaction Type by Pressing Enter' }
+      Error  { 'Please Select a Transaction Type' }
+      Format {
+         PickList  { 'PickList.TransactionType' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+}
+
+
+PickLists {
+
+   CustomerType {
+     CREDIT { 'EMS Credit/Billing Customer' }
+     PREPAY { 'EMS Pre-Pay Customer'        }
+   }
+
+   TransactionType {
+     CREDIT { 'Credit' }
+     DEBIT  { 'Debit'  }
+   }
+
+}
+

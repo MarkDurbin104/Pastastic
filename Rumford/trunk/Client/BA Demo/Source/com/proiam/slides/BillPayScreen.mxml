@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
+	label="Bill Pay Screen" 
+	width="100%" height="100%" 
+	creationComplete="onCreationComplete(event)"
+	verticalScrollPolicy="off" xmlns:slides="com.proiam.slides.*" fontFamily="Tahoma" fontWeight="bold" fontSize="14">
+	<mx:Metadata>
+        [Event(name="nextClicked", type="flash.events.Event")]
+        [Event(name="originChange", type="flash.events.Event")]
+        [Event(name="destinationChange", type="flash.events.Event")]
+        [Event(name="contactChange", type="flash.events.Event")]
+        [Event(name="infoClicked", type="flash.events.Event")]
+        [Event(name="showShoppingBasket", type="flash.events.Event")]
+    </mx:Metadata>
+    <mx:Script>
+    	<![CDATA[
+    		import com.cykorsystems.utils.usdFormatter;
+    		import com.proiam.base.ImageSnapshot;
+    		import mx.utils.Base64Decoder;
+    		import com.proiam.mails.ItemData;
+    		
+            public var invoiceData:ItemData=null;
+            public var lastImageFile:String="";
+			public var receiptItem:ReceiptItem=null;
+			private var imageScale:Number=0;
+			
+			private function addToBasket(event:Event):void {
+				var formatter:usdFormatter=new usdFormatter;
+				receiptItem=new ReceiptItem;
+				var secList:Array=new Array();
+				secList.push({caption:invoiceData.payee});
+				secList.push({caption:"Account Number",price:invoiceData.accountNumber.number});
+				secList.push({caption:"Invoice Number",price:invoiceData.invoiceNumber.number});
+				receiptItem.items=secList;
+				receiptItem.price=formatter.format(Number(inputPanel.cV));
+				receiptItem.title="Bill Payment";
+				receiptItem.totalPrice=receiptItem.price;
+				receiptItem.totalPriceValue=Number(inputPanel.cV);
+				dispatchEvent(new Event("showShoppingBasket"));
+			}
+    		
+    		private function okClicked(event:Event):void {
+    			addToBasket(event);
+    		}
+    		private function onCreationComplete(event:Event):void {
+    			//itemDataView.addEventListener("nextClicked",fireNextClicked);
+    			//itemDataView.addEventListener("originChange",fireOriginChange);
+    			//itemDataView.addEventListener("destinationChange",fireDestinationChange);
+    			//itemDataView.addEventListener("contactChange",fireContactChange);
+    			//itemDataView.addEventListener("infoClicked",fireInfoClicked);
+    		}
+			private function fireNextClicked(event:MouseEvent):void {
+				//if (itemDataView.currentState == null)
+                //	dispatchEvent(new Event("nextClicked"));
+            }
+			private function fireOriginChange(event:Event):void {
+				//if (itemDataView.currentState == null)
+    	        //    dispatchEvent(new Event("originChange"));
+            }
+			private function fireDestinationChange(event:Event):void {
+				//if (itemDataView.currentState == null)
+	            //    dispatchEvent(new Event("destinationChange"));
+            }
+			private function fireContactChange(event:Event):void {
+				//if (itemDataView.currentState == null)
+               // 	dispatchEvent(new Event("contactChange"));
+            }
+			private function fireInfoClicked(event:Event):void {
+				//if (itemDataView.currentState == null)
+	                dispatchEvent(new Event("infoClicked"));
+            }
+            
+            // populate fields on screen for a bill payment from incoming XML within ItemData
+			public function SetItemData(value:ItemData):Boolean {
+				var result:Boolean=true; 
+				invoiceData=value
+				
+			    if (value != null) {
+			    	detailsBox.text=invoiceData.addressee.asText();
+			    	detailsBox.text+="\n\n"+invoiceData.accountNumber.number;
+			    	detailsBox.text+="\n"+invoiceData.invoiceNumber.number;
+			    	detailsBox.text+="\n\n"+invoiceData.amount.value;
+			    	detailsBox.text+="\n\n"+invoiceData.payee;
+			    	
+			    	inputPanel.cV=String(int(Number(invoiceData.amount.value)*100));  // defaults to full amount due
+			    	
+					if (invoiceData.imageFile.length > 255) { // then imagefile is a MIME else is a filename
+						try { 
+							// decode MIME
+							var s:String=invoiceData.imageFile;
+							if (s.indexOf("base64") > 0) {
+								s=s.slice(s.indexOf("base64")+6); // remove: "MIME-Version: 1.0	Content-Type: image/jpeg	Content-Transfer-Encoding: base64"
+							}
+			                var byteArr:ByteArray;
+			                var base64Dec:Base64Decoder = new Base64Decoder();
+			                base64Dec.decode(s);
+			                byteArr = base64Dec.toByteArray();
+					    	itemImage.addEventListener(Event.COMPLETE,imageLoaded);
+			                itemImage.load(byteArr);
+				    		lastImageFile="";
+//			                imageLoaded(null);
+		    			}	catch (error:Error) {
+		    				// display empty jpg - failed decode
+						    itemOverImage.graphics.clear();
+					    	itemImage.addEventListener(Event.COMPLETE,imageLoaded);
+							itemImage.source="data/Empty.jpg"; 
+				    		lastImageFile="";
+		                }
+					} else  { 
+						// is a filename
+						if (value.local) {
+							// load from  local data/...
+						    itemOverImage.graphics.clear();
+					    	itemImage.addEventListener(Event.COMPLETE,imageLoaded);
+					    	if (itemImage.source=="data/"+invoiceData.imageFile)
+					    		drawBoxes();
+					    	itemImage.source="data/"+invoiceData.imageFile;
+				    		lastImageFile="";
+						} else {
+							// load from remote machine
+							var unique:int=new Date().getTime();
+							if (invoiceData.imageFile == "") {
+								// display a blank image
+							    itemOverImage.graphics.clear();
+						    	itemImage.addEventListener(Event.COMPLETE,imageLoaded);
+					    		lastImageFile=invoiceData.imageFile;
+								itemImage.source="data/Empty.jpg"; 
+							}	else	if (invoiceData.imageFile != lastImageFile) { 
+								// get image via http
+							    itemOverImage.graphics.clear();
+						    	itemImage.addEventListener(Event.COMPLETE,imageLoaded);
+					    		itemImage.source="http://"+value.IPAddress+":8000//"+invoiceData.imageFile+"?unique="+unique;
+					    		lastImageFile=invoiceData.imageFile;
+					    		value.imageFileProcessed=true;
+					  		}
+						}
+					}
+				} else {  // value == null
+				    itemOverImage.graphics.clear();
+				    detailsBox.text="";
+				}
+				return result;
+			}
+			
+			// called once image has been transferred/loaded
+			private function imageLoaded(event:Event):void {
+			    drawBoxes();
+			}
+			
+			// draws highlighting elipses on image display
+			private function drawBoxes():void {
+			    itemOverImage.graphics.clear();
+			    if (currentState != "Paper") {
+			    	try {
+						if ((invoiceData!=null)&&(invoiceData.imageFile != "")) {
+							imageScale=itemImage.height/Math.max(itemImage.measuredHeight,itemImage.contentHeight);
+						    itemOverImage.graphics.lineStyle(2,0x0000C0);//0xB2D2C7);
+
+						    var inRect:Rectangle=invoiceData.addressee.inRect;
+						    if ((inRect.left != inRect.right) && (inRect.top != inRect.bottom))  
+							    itemOverImage.graphics.drawEllipse	((inRect.left-(inRect.width*0.15))*imageScale,(inRect.top-(inRect.height*0.15))*imageScale,
+							    																		inRect.width*1.3*imageScale,inRect.height*1.3*imageScale);
+						    inRect=invoiceData.amount.inRect;
+						    if ((inRect.left != inRect.right) && (inRect.top != inRect.bottom))  
+							    itemOverImage.graphics.drawEllipse	((inRect.left-(inRect.width*0.15))*imageScale,(inRect.top-(inRect.height*0.15))*imageScale,
+								    																	inRect.width*1.3*imageScale,inRect.height*1.3*imageScale);
+						    inRect=invoiceData.accountNumber.inRect;
+						    if ((inRect.left != inRect.right) && (inRect.top != inRect.bottom))  
+							    itemOverImage.graphics.drawEllipse	((inRect.left-(inRect.width*0.15))*imageScale,(inRect.top-(inRect.height*0.15))*imageScale,
+								    																	inRect.width*1.3*imageScale,inRect.height*1.3*imageScale);
+						    inRect=invoiceData.invoiceNumber.inRect;
+						    if ((inRect.left != inRect.right) && (inRect.top != inRect.bottom))  
+							    itemOverImage.graphics.drawEllipse	((inRect.left-(inRect.width*0.15))*imageScale,(inRect.top-(inRect.height*0.15))*imageScale,
+								    																	inRect.width*1.3*imageScale,inRect.height*1.3*imageScale);
+						}
+			    	} catch (error:Error) {
+						trace(error.message);
+					}
+			 	}
+			}
+            public function onImageClick(event:Event):void {
+           		fireInfoClicked(event);
+            }
+    		
+    	]]>
+    </mx:Script>
+	<mx:Canvas top="80" width="1024" height="688" backgroundColor="#E5F2E0">
+		<mx:Canvas x="65" y="3" width="490" height="680" backgroundColor="#FFFFFF" borderStyle="solid" borderColor="#FFFFFF" cornerRadius="5">
+			<mx:Canvas width="482" height="672" x="3" y="3" borderColor="#B2D2C7" borderStyle="solid" borderThickness="2">
+		 	 	<mx:Image x="0" y="0" width="100%" height="100%" id="itemImage" scaleContent="true"/>
+		 	 	<mx:Canvas x="0" y="0" width="100%" height="100%" id="itemOverImage" click="onImageClick(event);"/>				
+			</mx:Canvas>
+		</mx:Canvas>
+		<slides:InvoiceButton id="detailsBox"  x="634" y="10"  title="Bill Payment Details" catagory="Name:&#xa;Address:&#xa;&#xa;&#xa;&#xa;Account:&#xa;Invoice:&#xa;&#xa;Amount:&#xa;&#xa;Payee:" text="MR R BINDER&#xa;UPMARTON&#xa;BANBURYSHIRE&#xa;UNITED KINGDOM&#xa;OD15 5SM&#xa;CSH407272&#xa;6751351&#xa;&#xa;£164.35"/>
+		<slides:NumInput id="inputPanel" x="662" y="236" currentState="NoOneTouch" okClicked="okClicked(event)">
+		</slides:NumInput>
+		<mx:Button x="949" y="11" label="Demo" fontWeight="normal" click="fireInfoClicked(event);"/>
+	</mx:Canvas>
+
+</mx:Canvas>

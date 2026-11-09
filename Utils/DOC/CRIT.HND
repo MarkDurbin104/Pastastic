@@ -1,0 +1,44 @@
+
+
+        From    Mark Durbin. (Unisys Ltd.)
+        To      John Evans   (I.T.)
+        Date    4th June 1991
+        Subject Critical Error Handlers.
+
+
+
+    John,
+
+        I thought I would clear up a few points about critical 
+        error handlers.
+
+
+        There are four possible return values from a critical error 
+        handler :
+
+        Abort   -       Return to the operating system
+
+        Retry   -       Try again from the same position
+
+        Ignore  -       Ignore this error and try the next operation
+
+        Fail    -       Return an error to the calling application
+
+        The standard PC-MOS/DOS printer critical error handlers will
+        give the options to Abort Retry or Ignore.  This error is 
+        generated and operated upon by the operating system NOT the 
+        printer driver.
+        
+        This is why there is an installable handler within the VM 
+        sub-system.  Once the handler is installed it will always
+        return Fail,  thereby letting the application cope with
+        the error in a context sensitive way.  This error handler
+        can be modified to offer any or all of the above four
+        options.
+
+        Please don't hesitate to contact me if this is not clear.
+
+            Regards,
+
+                Mark.
+

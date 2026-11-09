@@ -1,0 +1,89 @@
+#v001>dgshds 
+#pchd>stdafx.h
+#ssys>tools=
++Ctools==
+-Ie:\src\cppc&a\tools=$ROSECPP_SOURCE\src\cppc&a\tools
++X!h=.cnh
++X*cxx=.cnx
+#dlft>Simple
+#dpfx>$DATA\
+#dsfx>
+#xnam>FirstLook
+#xopt> `+Kf1` `+Kt0..1` `+PcC++` `+cdReverse Engineered` `+tt%c` `+vv4.0` -ClMBd -CtNdM -Cu? -EnMAd -JhMd -JsMd -MbB -Mcy -MtMA -Nn@ -ScS -Ses -TdMAd -TiMd -TpMBd -cBbefghjz -cCegjklmrtvw -cDe -dNMA -dSA -dUMA -dnMA -dsA -duMA -hSMLdq -hsMLdq -mtMA
+#xddd>$DESIGN/%f.mdl
+#dt2p>t2_
+#[flf>Pathname
+#|sky>~O~Q~R~]
+#|hky>~Q~X
+#|dky>~O\~Q~R~I~Z~I~S~U~ICt=~[~ISs=~\~Y~V    ~X
+#]flf>
+#[flf>Directory
+#|sky>~O~Q~R~]
+#|hky>~O~Q~X
+#|dky>~O (#)~Y ~I~Q~R~I~Z~I~S~U~ICt=~[~ISs=~\~Y~V~I    ~X   
+#]flf>
+#[flf>Simple Name
+#|sky>~Q~R~O~]
+#|hky>~Q~X
+#|dky>~Q~R~I~Z~I~S~U~ICt=~[~ISs=~\~I~O~Y~V    ~X
+#]flf>
+#[flf>Status
+#|sky>~S~Q~R~O~]
+#|hky>~S~Q~X
+#|dky>~S (#)~Y~U~I~Q~R~I~Z~ICt=~[~ISs=~\~I~O~Y ~I~V    ~X
+#]flf>
+#[flf>Errors
+#|sky>~U~S~Q~R~O~]
+#|hky>~S~Q~X
+#|dky>~U~S (#)~Y ~I~U~I~Q~R~I~Z~ICt=~[~ISs=~\~I~O~Y ~I ~I~V    ~X
+#]flf>
+#[flf>Type
+#|sky>~Z~O~Q~R~U~S~]
+#|hky>~Z~O~Q~X
+#|dky>~Z (#)~Y ~I~O (#)~Y ~I ~I~Q~R~I~S~U~ICt=~[~ISs=~\~Y ~I ~I~V    ~X
+#]flf>
+#[flf>Category
+#|sky>~[~Q~R~O~]
+#|hky>~[~Q~X
+#|dky>~[ (#)~Y ~I~U~I~Q~R~I~Z~I~S~ISs=~\~I~O~Y ~I ~I~V    ~X
+#]flf>
+#[flf>Extension
+#|sky>~R~O~Q~]
+#|hky>~R~O~Q~X
+#|dky>~R (#)~Y ~I~O (#)~Y ~I ~I~Q~R~I~S~U~I~Z~ICt=~[~Y ~I ~I~V    ~X
+#]flf>
+#[flf>Subsystem
+#|sky>~\~Q~R~O~]
+#|hky>~\~Q~X
+#|dky>~\ (#)~Y ~I~U~I~Q~R~I~Z~I~S~ICt=~[~I~O~Y ~I ~I~V    ~X
+#]flf>
+#[lyt>Export
+#|ste>1 472 439
+#|brs> 24 83 267 367 270 337 0 0 0 0 0hThvLvCShvRDF
+#|flf>Directory
+#]lyt>
+#[lyt>Files Only
+#|ste>1 445 419
+#|brs> 20 0 0 0 0 0 0 0 0 0 0hTF
+#|flf>Pathname
+#]lyt>
+#[lyt>Full
+#|ste>1 472 483
+#|brs> 24 145 84 268 369 357 205 287 169 328 0hThhvBvCSvLEhvvDUIhRF
+#|flf>Pathname
+#]lyt>
+#[lyt>Simple
+#|ste>1 499 453
+#|brs> 24 83 377 106 0 0 0 0 0 0 0hThvLEhBF
+#|flf>Directory
+#]lyt>
++Ctools
+#ssys>tools
+e:\src\cppc&a\tools\boolean.h
+e:\src\cppc&a\tools\err_rptr.cxx
+e:\src\cppc&a\tools\err_rptr.h
+e:\src\cppc&a\tools\randgen.cxx
+e:\src\cppc&a\tools\randgen.h
+e:\src\cppc&a\tools\str.cxx
+e:\src\cppc&a\tools\str.h
+e:\src\cppc&a\tools\switch.h

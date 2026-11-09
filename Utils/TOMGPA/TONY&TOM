@@ -1,0 +1,62 @@
+Hi,
+
+
+        I have looked at both CAPENDYR.DAT and CAPDEC.DAT. 
+------------------------------------------------------------------------------
+In CAPENDYR.DAT the action Convtotl Tony was having the problem that he 
+couldn't delete transactions while searching through the table.  I have 
+written a 'C' action called DELOPROD (DELete Old PRODucts) to replace the
+section of code :-
+
+    V[0] = FREC                                :search type
+    if(stsrchp(catotal,1,V[0]))                :delete old products
+    {
+        SETDSKEY(caprod,catotal.category,catotal.type,catotal.code)
+                                            :search for each product
+        if(!stsrchp(caprod,3,FREC))            :must be an old product
+        {
+:errline("Convtotl:Del:CTC" S+ catotal.category S+ catotal.type S+ catotal.code,9)
+            stdelrec("catotal")                :delete old product total line
+            V[0] = FREC                        :restart search from top
+        }
+        else                                :found the product
+        {
+            V[0] = NREC
+        }
+    }
+
+it should now be :-
+
+    catotal.id=1                : week 1
+    BLDSLIST(catotal,1,1)       : select records
+    DELOPROD                    : delete records with no "caprod" entry
+
+I think the data I took from Tony's machine had already been set to 95/96
+so I couldn't test this code, but it should work!
+
+------------------------------------------------------------------------------
+In CAPDEC.DAT I modified the code for group changes in Decgrpa so that it 
+finds the record in catotal with (WEEK, USER, "PA", "PEAL", OLD code), 
+decreases the values of quantity, assoc1 & amount by those in catxn and then 
+finds the record in catotal with (WEEK, USER, "PA", "PEAL", NEW code), and 
+increases the values of quantity, assoc1 & amount by those in catxn.
+
+If I understand the use of the catotal record correctly then these records 
+should be changed whenever any of the fields in catxn are modified, not just
+the group?  You will need to check this with Pam and if so, add this code to
+ALL the validation actions in CAPDEC.DAT i.e. Decgrp, Decqty, Decrate, 
+Decamt, Decassoc, Decqtya, Decassoa & Decratea.
+
+The code change I have made here ONLY works with sorted P&A group changes!
+because I have used "PA" & "PEAL".  If it needs to work for the other double 
+entry checks you will need to set these to other values. I don't know what
+the other values are, or where to find them, so I'm afraid it's up to you!
+
+I hope this is clear (Call me if not)
+
+
+Regards,
+
+        Mark.
+
+

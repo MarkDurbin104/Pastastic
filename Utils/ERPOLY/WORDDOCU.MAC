@@ -1,0 +1,81 @@
+Sub MAIN
+FilePageSetup .Tab = "3", .PaperSize = "9", .TopMargin = "1" + Chr$(34), .BottomMargin = "1" + Chr$(34), .LeftMargin = "1.5" + Chr$(34), .RightMargin = "0.5" + Chr$(34), .Gutter = "0" + Chr$(34), .PageWidth = "8.27" + Chr$(34), .PageHeight = "11.69" + Chr$(34), .Orientation = 0, .FirstPage = 0, .OtherPages = 0, .VertAlign = 0, .ApplyPropsTo = 4, .FacingPages = 0, .HeaderDistance = "0.8" + Chr$(34), .FooterDistance = "0.8" + Chr$(34), .SectionStart = 2, .OddAndEvenPages = 0, .DifferentFirstPage = 1, .Endnotes = 0, .LineNum = 0, .StartingNum = "", .FromText = "", .CountBy = "0", .NumMode = -1
+RightPara
+Insert "UNISYS"
+InsertPara
+Insert "22 Southwark Bridge Road"
+InsertPara
+Insert "London  SE1 9HB"
+LineUp 2
+StartOfLine 1
+Font "Times New Roman"
+FormatFont .Points = "36", .Underline = 0, .Color = 6, .Strikethrough = 0, .Superscript = 0, .Subscript = 0, .Hidden = 0, .SmallCaps = 0, .AllCaps = 0, .Spacing = "0 pt", .Position = "0 pt", .Kerning = 0, .KerningMin = "", .Tab = "0", .Font = "Unisys", .Bold = 0, .Italic = 0, .Outline = 0, .Shadow = 0
+LineDown 3
+InsertPara
+LeftPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+CenterPara
+Insert "'C' Programmers Reference"
+InsertPara
+Insert "for"
+InsertPara
+Insert "TITLE"
+CharLeft 5, 1
+LineUp 2, 1
+StartOfLine 1
+FontSize 20
+LineDown 1
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+LeftPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+FontSize 8
+Insert "Author "
+InsertDateTime .DateTimePic = "d MMMM, yyyy", .InsertAsField = 0
+InsertPara
+FontSize 12
+InsertBreak .Type = 0
+ViewHeader
+ShowPrevHeaderFooter
+ShowNextHeaderFooter
+FontSize 8
+Font "Arial"
+Insert "'C' Programmers Reference" + Chr$(9) + "TITLE" + Chr$(9) + "Page"
+InsertPageField
+CharLeft 1, 1
+FontSize 8
+Font "Arial"
+CharLeft 1
+Insert " "
+GoToHeaderFooter
+Insert "UNISYS" + Chr$(9) + "confidential" + Chr$(9)
+InsertDateField
+StartOfLine 1
+MoveToolbar "Formatting", 1, -2, 28
+Font "Arial"
+FontSize 8
+StartOfLine
+CharRight 6, 1
+FormatFont .Points = "14", .Underline = 0, .Color = 6, .Strikethrough = 0, .Superscript = 0, .Subscript = 0, .Hidden = 0, .SmallCaps = 0, .AllCaps = 0, .Spacing = "0 pt", .Position = "0 pt", .Kerning = 0, .KerningMin = "", .Tab = "0", .Font = "Unisys", .Bold = 0, .Italic = 0, .Outline = 0, .Shadow = 0
+CloseViewHeaderFooter
+

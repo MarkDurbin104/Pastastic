@@ -1,0 +1,791 @@
+SETUP.TXT
+=========
+
+¤@¤A¤B¤C¤D¤E¤F É@ÉAÉBÉCÉDÉEÉF
+¥@¥A¥B¥C¥D¥E¥F Ê@ÊAÊBÊCÊDÊEÊF
+¦@¦A¦B¦C¦D¦E¦F Ë@ËAËBËCËDËEËF
+§@§A§B§C§D§E§F Ì@ÌAÌBÌCÌDÌEÌF
+
+¤¡   É¡
+
+¤¡¤¢¤£¤¤¤¥¤¦¤§ É¡É¢É£É¤É¥É¦É§
+¥¡¥¢¥£¥¤¥¥¥¦¥§ Ê¡Ê¢Ê£Ê¤Ê¥Ê¦Ê§
+¦¡¦¢¦£¦¤¦¥¦¦¦§ Ë¡Ë¢Ë£Ë¤Ë¥Ë¦Ë§
+§¡§¢§£§¤§¥§¦§§ Ì¡Ì¢Ì£Ì¤Ì¥Ì¦Ì§
+
+¥»ÀÉ¤º®e²[»\¨âÃþªº¸ê°T¡G°õ¦æ Windows 
+¤¤¤åª©³]©wµ{¦¡®É¥i¯à¹J¨ìªº°ÝÃD¡A¥H¤Î¦b
+ Windows ©Î Windows ³]©wµ{¦¡°õ¦æ®É¦pª
+G¨Ï¥Î²×¤î¤Î±`¾nµ{¦¡ (terminate-and-stay
+-resident¡ATSR) ©ÎÅX°Êµ{¦¡®É·|µo¥Íªº°Ý
+ÃD¡C¦pªG±z¨Ï¥Î±`¾nµ{¦¡¡A©Î¬O¦b³]©w 
+Windows 3.1 ª©®É¹J¨ì°ÝÃD¡A½Ð¾\Åª³o¥÷¤å¥
+ó«á¦A­«·s°õ¦æ³]©wµ{¦¡¡C
+
+³]©wª`·N¨Æ¶µ
+============
+¬Y¨Ç¯S©wªº¨t²Î²ÕºA¥i¯à·|¨Ï³]©wµ{¦¡µLªk¦
+¨¥\¦a¦w¸Ë Windows ¤¤¤åª©¡C¥»¸`ªº¤º®e´N¬
+O°Q½×³o¨Ç°ÝÃD¡A¨Ã´£¥X¨C¤@­Ó°ÝÃDªº¸Ñ¨M¤è
+¦¡¡C
+
+¦pªG±z¨Ï¥Î¦b¦¹¦C¥XªºµwÅé©Î³nÅé²£«~¡A½Ð¦b°õ¦æ³]©wµ{¦¡¤§«e
+¡A¿í´`¦¹³B©Ò´£ªº«ØÄ³¡C
+
+MS-DOS ¿Ã¹õÀx¦s¾¹
+-----------------
+¦pªG±z¨Ï¥Î MS-DOS ¿Ã¹õ°±·²¸Ë¸m¡A¦b°õ¦æ³]©wµ{¦¡¤§«eÀ³¸Ó¥ý°±¥Î¡C¦b°õ¦æ³]©w®É¡A³o
+¨Ç¿Ã¹õ°±·²¸Ë¸m¥i¯à·|³y¦¨°ÝÃD¡C
+
+°õ¦æ MS-DOS 5.0 ¨Ã¨ã¦³ EGA ©Î VGA ªº COMPAQ ¹q¸£
+------------------------------------------------
+¦pªG±z¨Ï¥Î Microsoft MS-DOS 5.0 ªº¤É¯Åª©¡A½ÐÀË¬d±zªº CONFIG.SYS ÀÉ®×¡A½T©w
+¨ä¤¤ªºÅX°Êµ{¦¡¬O¨Ì·Ó¤U¦C¶¶§Ç¥X²{¡G
+
+    HIMEM.SYS
+    EMM386.EXE
+    ANSI.SYS
+
+ª`·N¡G¦pªG±z¨Ï¥Î MS-DOS 5.0 ªº COMPAQ ª©¥»¡AHIMEM.EXE ·|¨ú¥N HIMEM.SYS¡A
+      ¦Ó CEMM.EXE ·|¨ú¥N EMM386.EXE¡C
+
+¦pªG ANSI.SYS ¦b HIMEM.SYS ©Î EMM386.EXE ¤§«e¸ü¤J (©Î¬O¦b HIMEM.EXE ©M
+CEMM.EXE ¤§«e¸ü¤J¡A¦pªG±z¨Ï¥Îªº¬O COMPAQ MS-DOS 5.0 ª©)¡A³]©wµ{¦¡¥i¯à¦b
+Windows ©|¥¼¦w¸Ë§¹¦¨¤§«e´N·|­«·s±Ò°Ê¨t²Î¡C¦¹¥~¡A¦pªG±z¨Ï¥Î DOS=HIGH,UMB
+«ü¥O¦æ§â MS-DOS ¸ü¤J¤W°O¾ÐÅé¡A¨º»ò¦b ANSI.SYS ¤§«e¸ü¤J EMM386.EXE (©Î
+CEMM.EXE) ¥i¥H¦b COMPAQ ¹q¸£¤WÄË¥X³Ì¤jªº¤W°O¾ÐÅéªÅ¶¡¡C
+
+AT&T Safari ¹q¸£
+----------------
+¦pªG±z¨Ï¥Îªº¬O AT&T Safari ¹q¸£¡A¨t²Î¤W´NµLªk¦P®É«O¦³¨âª© Windows (3.0 ª©
+©M 3.1ª©)¡C±z¥²¶·§â 3.0 ª©¤É¯Å¡C¦pªG±z§â Windows 3.1 ª©¦w¸Ë¦b¥¦¦Û¤vªº¥Ø¿ý
+¸Ì¡AWindows ¤£·|¨Ï¥Î¦b Safari ¹q¸£¤W°õ¦æ Windows ®É©Ò»Ýªº¯S®íÅX°Êµ{¦¡¡C
+
+¨Ï¥Î TIGA Åã¥Ü¾¹ÅX°Êµ{¦¡
+------------------------
+¦pªG±z¨Ï¥Î TIGA Åã¥Ü¾¹ÅX°Êµ{¦¡¡A¦b°õ¦æ Windows ªº¤É¯Å³]©wµ{¦¡«e¡A±z¥²¶·¥H
+¤H¤u¤è¦¡¸ü¤J TIGACD.EXE MS-DOS ÅX°Êµ{¦¡¡C§_«h¡AWindows µLªk§â±zªº¨t²Î¤É¯Å¡C
+
+¦¨¥\¦a³]©w¦n Windows ¤§«á¡A¦b¥H 386 ¼W±j¼Ò¦¡°õ¦æ Windows ®É¡A±z¥i¥H±q
+WINSTART.BAT ÀÉ®×¸ü¤J TIGACD.EXE¡A¥H¼W¥[«D Windows À³¥Îµ{¦¡¥i¥Îªº¶Ç²Î
+°O¾ÐÅé¼Æ¶q¡CWINSTART.BAT ÀÉ®×¥u¯à¥H 386 ¼W±j¼Ò¦¡°õ¦æ¡C¦pªG±z·Q°õ¦æ¼Ð·Ç
+¼Ò¦¡ªº Windows¡A±z¥²¶·¥H¤H¤u¤è¦¡¸ü¤J TIGACD.EXE¡C¦p»Ý§ó¦h¸ê°T¡A½Ð°Ñ¾\
+README.WRI ½u¤W¤å¥ó¡C
+
+©M Windows 3.1 ª©¤£¬Û®eªºÅã¥Ü¾¹
+-------------------------------
+¬Y¨ÇÅã¥Ü°t±µ¾¹¦b Windows 3.1 ª©¤U¥i¯à·|³y¦¨°ÝÃD¡C³ÌÄY­«ªº°ÝÃD¬O¦b°õ¦æ
+Windows ³]©w®É¨t²Î·í¾÷¡C¦pªG¹J¨ì³oºØ±¡§Î¡A½Ð°õ¦æ¡u¦Û©w³]©w¡v¡AµM«á¿ï¨ú
+¤@­Ó Windows 3.1 ª©´£¨Ñªº¼Ð·ÇÅã¥Ü¾¹Ãþ«¬¡A¦p VGA¡C
+
+¨Ï¥Î¨ä¥LªºÅã¥Ü¾¹ÅX°Êµ{¦¡®É¡AWindows ¥i¯à¥i¥H¦w¸Ë¦¨¥\¡A¦ý TrueType ¦r§Î
+¥i¯àµLªk¥¿½T¦aÅã¥Ü¦b¿Ã¹õ¤W¡CWindows ÅX°Êµ{¦¡®w¸Ì¥i¯à¦³§ó·s¹LªºÅX°Êµ{¦¡¡A
+©Î¬O¦VÅã¥Ü¾¹¸g¾P°Ó©Î»s³y°Ó¬¢¸ß¡C¦p»Ý¨ú±o Windows ÅX°Êµ{¦¡®wªº¸ê°T¡A½Ð°Ñ¾\
+¡uMicrosoft Windows ¤¤¤åª©¤Jªù«ü«n¡v¡C
+
+¥H¤UªºÅã¥Ü°t±µ¾¹¥i¯à³y¦¨°ÝÃD¡G
+
+- ATI Graphics Ultra ©M Vantage
+
+  ª`·N¡G³o¨Ç°t±µ¾¹©M 8514/a ¬Û®e¡A¨Ã¥B¦b©M Windows 3.1 ª©´£¨Ñªº 8514/a
+        ÅX°Êµ{¦¡·f°t¨Ï¥Î®É¥i¥H°õ¦æ¦a«Ü¦n¡C
+
+- ©Ò¦³ Graphic Software Systems ¥X«~ªº DGIS (ª½±µ¹Ï§Î¤¶­±¼Ð·Ç) Åã¥Ü°t±µ¾¹¡A
+  ¥]¬A¥H¤U¶µ¥Ø¡G
+        NEC MultiSynch Graphics Engine (MGE)
+        Zenith Z-649
+        HP IGC-10, IGC-20
+        GSS 1000 ¨t¦C
+
+  ª`·N¡G¦³¨Ç DGIS °t±µ¾¹©M TIGA ¬Û®e¡A¨Ã¥B¦pªG¾A·íªº»P TIGCAD.EXE MS-DOS
+        ÅX°Êµ{¦¡©M Windows 3.1 ª©´£¨Ñªº TIGA ÅX°Êµ{¦¡¤@°_¨Ï¥Î®É¡A¥i¥H°õ¦æ
+        ±o«Ü¦n¡C
+
+- HP Ultra VGA
+
+- IBM ¼v¹³°t±µ¾¹/A
+
+- Matrox MG ¨t¦C/M-WIN ¨t¦C
+
+- Palettized VGA¡B640x480¡B16 ¦â (Windows ¦h´CÅé©µ¦ù¥\¯à 1.0 ª©´£¨Ñ)
+
+- Radius SVGA MultiView
+
+- ©Ò¦³ Appian ¤½¥q¥X«~ªº RGDI (Renaissance Graphics Device Interface¡A
+  ´_¿³¹Ï§Î³]³Æ¤¶­±) Åã¥Ü°t±µ¾¹¡A¥]¬A¥H¤U¶µ¥Ø¡G
+        Appian Rendition II¡BIIe¡BII/XE ©M III
+        Appian GV1024
+        Decpc 433
+
+- ©Ò¦³ªº S3 °t±µ¾¹¡A¥]¬A¥H¤U¶µ¥Ø¡G
+        Orchid Fahrenheit 1280
+        STB WIND/X
+        Diamond Stealth VRAM
+
+
+¨Ï¥Î STACKER
+------------
+¦pªG¨Ï¥Î Stacker À£ÁYµwºÐ¡A¦b³]©w Windows ¤§«e¥²¶·¥ý°õ¦æ¬Y¨Ç¨BÆJ¡C
+
+¡½­Y­n¦b Windows ¨Ï¥Î¥æ´«ÀÉ¡A¥²¶·§â¥æ´«ÀÉ¦w¸Ë¦b¥¼À£ÁYªººÏºÐ¾÷¤W¡C¦b³]©w
+  °ïÅ|¾¹®É¦Ü¤Ö¥i¥H¯d¤U 100 ¸U¦ì¤¸²Õ (MB) ¤j¤pªº¥¼À£ÁYºÏºÐªÅ¶¡¡A¥HÀx¦s¨t²Î
+  ÀÉ®×¡C­Y­n¯d¤U¨¬°÷ªºªÅ¶¡µ¹¥æ´«ÀÉ¡A¥¼À£ÁYªººÏºÐªÅ¶¡³Ì¦n¬O¨t²Î°O¾ÐÅéªº¨â­¿¡C
+  ¨Ò¦p¡A¨t²Î­Y¦³ 4 MB ªº°O¾ÐÅé¡A¦Ü¤Ö­n¯d¤U 8 MB ªº¥¼À£ÁYºÏºÐªÅ¶¡¡C
+
+  ¦pªG°ïÅ|¾¹¤w¸g¦w¸Ë¦b¨t²Î¤W¡A¦ý¬O¨S¦³¨¬°÷ªº¥¼À£ÁYªÅ¶¡¨Ñ¥æ´«ÀÉ¨Ï¥Î¡A±z¥i¥H
+  °õ¦æ°ïÅ|¾¹´£¨Ñªº STAC ¤½¥Îµ{¦¡¨Ó¼W¥[¥¼À£ÁYªººÏºÐªÅ¶¡¡C¦p»Ý§ó¦h¸ê°T¡A½Ð
+  °Ñ¾\°ïÅ|¾¹¤å¥ó¡C
+
+¡½¦pªG±z¨Ï¥Îªº¬O°ïÅ|¾¹ 2.0 ª©©Î§ó·sªºª©¥»¡AWindows ³]©wµ{¦¡·|­×§ï±zªº
+  CONFIG.SYS©M AUTOEXEC.BAT ÀÉ®×¡C¦b³]©wµ{¦¡§¹¦¨­×§ï¤§«á¡AWindows ³]©w³¡¤À
+  ªºµ²§À·|Åã¥Ü°T®§¡A³qª¾±z§@¤F¨º¨Ç­×§ï¡C¦pªG±z´¿¸g¨Ï¥Î°ïÅ|¾¹½Õ´«±Ò°ÊºÏºÐ¾÷¡A
+  ­«·s±Ò°Ê¨t²Î®É¡A°ïÅ|¾¹·|¸ß°Ý±z¬O§_­n§ó·s¬°·sª©ªº CONFIG.SYS ©Î
+  AUTOEXEC.BAT ÀÉ®×¡C§Ú­Ì«ØÄ³±z§ó·s¡C
+
+  ¦pªG±z¨Ï¥Îªº¬O 2.0 ª©¥H«eªº°ïÅ|¾¹¡A±z¥i¯à»Ý­n¦Û¦æ­×§ï CONFIG.SYS ©M
+  AUTOEXEC.BATÀÉ®×¡C¦p»Ý§ó¦h¸ê°T¡A½Ð°Ñ¾\¥»±ø¥Ø¤§«áªº¡u¦Û¦æ­×§ï CONFIG.SYS
+  ©M AUTOEXEC.BAT ÀÉ®×¡v¡C
+
+¡½­Y­nÀò±o³Ì¨Î®Ä¯à¡A½Ð¤£­n¨Ï¥Î SMARTDrive ¹ï¤wÀ£ÁYªººÏºÐ¾÷°õ¦æ§Ö¨ú (cache)¡C±z¥u
+  ­n¹ï¥¼À£ÁYªººÏºÐ¾÷°õ¦æ§Ö¨ú§Y¥i¡C±z¥i¥H¦b CONFIG.SYS ÀÉ®×¤ºªº SMARTDRV.EXE
+  «ü¥O¦æ¤W¥]§t¿ï¶µ¡A¥H«ü©w­n°õ¦æ§Ö¨úªººÏºÐ¾÷¡C
+
+  ¨Ò¦p¡A¦pªG°ïÅ|¾¹ªº¥æ´«¤½¥Îµ{¦¡½Õ´«¤F C ©M D ºÏºÐ¾÷¡A¨Ï C ºÏºÐ¾÷ÅÜ¦¨À£ÁY
+  ºÏºÐ¡A¦Ó D ºÏºÐ¾÷¤£À£ÁY¡A±z¥²¶·§â¤U¦C³o¦æ¥]§t¦b CONFIG.SYS ÀÉ®×¸Ì¡G
+
+        device=\windows\smartdrv.exe C- D+
+
+­Y»Ý§ó¦h¦³Ãö¥æ´«ÀÉ©M¨Ï¥Î SMARTDrive ªº¸ê°T¡A½Ð°Ñ¾\¡uMicrosoft Windows ¤¤¤åª©¨Ï¥Î
+¤â¥U¡v²Ä 14 ³¹¡uWindows ³Ì¨Î¤Æ¡v¡C
+
+¦Û¦æ­×§ï CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×
+----------------------------------------
+¦b¦w¸Ë Windows ®É¡A³]©wµ{¦¡³q±`·|§â HIMEM.SYS¡BSMARTDRV.EXE ©M EMM386.EXE
+ÀÉ®×¸m©ó Windows ¥Ø¿ý©³¤U¡C¦pªG±zªº¹q¸£¦b±Ò°Ê®ÉµLªk¨ú±o Windows ¥Ø¿ý©Ò¦bªº
+ºÏºÐ (¨Ò¦p Windows ¥Ø¿ý¦ì©ó©â´«¦¡µwºÐ©Î«D¥»¦aºÏºÐ¤W)¡A©Î¬O³]©wµ{¦¡°»´ú¥X
+¤U¦C¥ô¦ó¤@ºØª¬ªp®É¡A³]©wµ{¦¡´N¤£·|­×§ï CONFIG.SYS ©Î AUTOEXEC.BAT ÀÉ®×¡G
+
+- ±Ò°ÊºÏºÐ¾÷¸gºÏºÐÀ£ÁY¤½¥Îµ{¦¡­×§ï¹L¡C
+
+- CONFIG.SYS ÀÉ®×°Ñ¦Ò¨ì°Ï¬q³]³ÆÅX°Êµ{¦¡¡C
+
+- µwºÐ¤W¨S¦³¨¬°÷ªºªÅ¶¡¥i½Æ»sÀÉ®×¡C
+
+- ÀÉ®×¤w¸g¦w¸Ë¦b¨t²Î¤W¡A³]©wµ{¦¡µLªk§ï¼g (¦]¬°¥L­Ì¬O°ßÅªÀÉ®×)¡C
+
+³]©wµ{¦¡·|§â´£Ä³ªºÅÜ§ó¼g¤J CONFIG.WIN ©M AUTOEXEC.WIN ÀÉ®×©Î¬O¼g¤J
+CONFIG.00x ©M AUTOEXEC.00x ÀÉ®×¡C¦¹®É¡AHIMEM.SYS¡BSMARTDRV.EXE ©M
+EMM386.EXE ÀÉ®×¥²¶·²¾¨ì¹q¸£±Ò°Ê®É¥i¥H¨Ï¥ÎªººÏºÐ¾÷¤W¡F
+©Î¬O¨Ï¥Î¤å¦r½s¿èµ{¦¡­×§ï CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×¡A¨Ï©Ò¦³°Ñ¦Ò¨ì
+HIMEM.SYS¡BSMARTDRV.EXE ©M EMM386.EXE ªº¦a¤è³£¥X²{¦b device= ³o­Ó«ü¥O¦æ¤§«á
+(¥Î¨Ó¸ü¤JºÏºÐ¾÷ÅX°Êµ{¦¡)¡C½Ð°Ñ¦Ò CONFIG.WIN ©M AUTOEXEC.WIN ÀÉ®×©Î¬O°Ñ¦Ò
+CONFIG.00x©M AUTOEXEC.00x ÀÉ®×¦³Ãö´£Ä³ÅÜ§óªº³¡¤À¡C
+
+¦b PS/2 75 «¬©Î 90 «¬¤W³]©w XGA
+-------------------------------
+¦pªG±zªº PS/2 75 «¬©Î 90 «¬°t³Æ¦³ XGA¡AWindows ³]©wµ{¦¡·|§âÅã¥Ü°t±µ¾¹°t¸m
+¬°640x480 ¸ÑªR«×©M 16 ºØ¦â±m¡C¦b³]©w®É½Ð¤£­n§ïÅÜ¦¹ºØ²ÕºA¡C³]©w Windows ®É
+­Y«ü©w¤£¦Pªº XGA ²ÕºA¡A·|¨Ï³]©w¥¢±Ñ¡C
+
+¦¨¥\¦a¦w¸Ë¦n Windows ¥H«á¡A±z¥i¥H§â XGA ³]©w¦¨¤£¦Pªº¸ÑªR«×©Î 256 ºØ¦â±m
+(¦pªG±zªºÅã¥Ü¾¹¦³¤ä´©ªº¸Ü)¡C¦p»Ý­n«ü©w¤£¦P²ÕºAªº¸ê°T¡A½Ð°Ñ¾\ README.WRI
+½u¤W¤å¥óªº¡uIBM XGA¡v±ø¥Ø¡C
+
+¦pªG PS/2 75 «¬¤W¨Ï¥Îªº¬O¹q¼ß¦¡¿Ã¹õ¡A½Ð°t¸m¦¨ 16 ºØ¦â±m©M 640x480 ¸ÑªR«×ªº
+²ÕºA¡C§ïÅÜ¦¹ºØ²ÕºA¡A·|¨Ï±Ò°Ê Windows ®É¦^¨ì MS-DOS ¼Ò¦¡¡C
+
+§ï¥¿¡uÀô¹ÒªÅ¶¡¤£¨¬¡v¿ù»~°T®§
+----------------------------
+¦pªG¦b±Ò°Ê Windows ®É¦¬¨ì¡uÀô¹ÒªÅ¶¡¤£¨¬¡v³o­Ó°T®§¡A±z¥i¥H¡G
+
+¡½¦b CONFIG.SYS ÀÉ®×¸Ì¥[¤J SHELL= ³o¦æ«ü¥O¡A¥H¥[¤jÀô¹ÒªÅ¶¡¡C¦p»Ý SHELL
+  «ü¥O¥H¤Î¦p¦ó­×§ï CONFIG.SYS ÀÉ®×ªº¸ê°T¡A½Ð°Ñ¾\ MS-DOS ¤å¥ó¡C
+
+¡½§â AUTOEXEC.BAT ÀÉ®×¸Ìªº SET «ü¥O²¾¨ìÀÉ®×¶}ÀY¡A¨Ï³o¨Ç«ü¥O¯à¦b¸ü¤J²×¤î
+  ¤Î±`¾nµ{¦¡(terminate-and-stay-resident¡ATSR) ©ÎÅX°Êµ{¦¡ (¦p SMARTDrive)
+  ªº«ü¥O¤§«e³Q°õ¦æ¡C
+
+¦pªG Windows ³]©wµ{¦¡µLªk°»´ú¥X±zªººô¸ô
+---------------------------------------
+¦pªG¤w¸g¦w¸Ë¦nºô¸ô¡A¦ý³]©wµ{¦¡¦b¨t²Î¸ê°T¿Ã¹õ¤WÅã¥Ü¥X¡uµLºô¸ô¡v¡A´Nªí¥Ü
+³]©wµ{¦¡µLªk°»´ú¥X±zªººô¸ô¡C­Y­nÅý³]©wµ{¦¡°»´ú¥X¬Y¨Çºô¸ô¡A¨º»ò§t¦³ºô¸ô
+µ{¦¡ÀÉ®×ªº¥Ø¿ý¥²¶·¦b¸ô®|¸Ì«ü©ú¡C
+
+³o­Ó°ÝÃD·|µo¥Í¦b¤U¦Cºô¸ô¡G3Share¡B3Open¡BLAN Manager ©M MSNet¡C¦pªG¸ô®|
+¨S¦³¥]§tºô¸ôÀÉ®×©Ò¦bªº¥Ø¿ý¡A±z¥i¥H¡G
+
+¡½¦b AUTOEXEC.BAT ÀÉ®×ªº PATH «ü¥O¦æ¥[¤J³o­Ó¥Ø¿ýªº¦WºÙ¡C
+
+¡½°õ¦æ¡u¦Û©w³]©w¡v¨Ã¥B¦b¨t²Î¸ê°T¿Ã¹õ¤W«ü¥Xºô¸ôªº§¹¾ã¸ô®|¡C
+
+¦b Windows 3.1 ª©¤U¨Ï¥Î²×¤î¤Î±`¾nµ{¦¡©MÅX°Êµ{¦¡
+===============================================
+¥»¤å¥ó¤ºªº¡uµ{¦¡¦Cªí¡v³o¸`¥]§t¤F°õ¦æ Windows 3.1 ª©®É·|³y¦¨°ÝÃDªº¤@¨Ç²×¤î¤Î
+±`¾n (terminate-and-stay-resident¡ATSR) µ{¦¡©MÅX°Êµ{¦¡¡C±z·|¹J¨ìªº°ÝÃD¥]¬A
+¨t²Î·í¾÷©Î¬O¿Ã¹õ¤WÅã¥Üªº°T®§¿ù»~¡C¦b¬Y¨Ç±¡ªp¤U¡A±z¥i¥H±Ä¨ú¯S®íªº¨BÆJ¸Ñ¨M
+³o¨Ç°ÝÃD¡C
+
+¦b³]©w Windows 3.1 ª©®É¡AWindows ³]©wµ{¦¡°£¤F·|±½´y°O¾ÐÅé§ä¥X°õ¦æ¤¤ªº TSR
+¤§¥~¡AÁÙ·|¦b AUTOEXEC.BAT ©M CONFIG.SYS ÀÉ®×¸Ì§ä´M°Ñ¦Ò¨ì TSR µ{¦¡©MÅX°Êµ{¦¡
+±Ò°Êªº¦a¤è¡C¦pªG³]©wµ{¦¡§ä¨ì¦b°õ¦æ Windows 3.1 ª©®É¤wª¾·|³y¦¨°ÝÃDªº TSR
+µ{¦¡¡A¥¦·|Åã¥Ü¥X°T®§¡A¦V±z¸ß°Ý¬O§_­nÄ~Äò©Î°h¥X³]©wµ{¦¡¡C
+
+¦pªG±z¦¬¨ì³o¼Ëªº°T®§¡A½Ð±Ä¨ú¥H¤U°Ê§@¡G
+
+1. ¦b¥»¤å¥óªº¡uµ{¦¡¦Cªí¡v³o¸`§ä¥X±zªº±`¾nµ{¦¡¡AµM«á§Q¥Î´£¨Ñªº¸ê°T¨M©w±z¹J¨ì
+   ªºª¬ªp¬O§_·|¨Ï³]©wµ{¦¡µLªk¦¨¥\¦a¦w¸Ë Windows 3.1 ª©¡C
+
+2. ¦pªG³o¨Çª¬ªp¨Ã¤£·|¼vÅT Windows ªº³]©w¡A±z¥i¥H¨Ì·Ó¿Ã¹õ¤W¥X²{ªº«ü¥ÜÄ~Äò
+   ¦w¸Ë Windows 3.1 ª©¡C
+
+   ¦pªG³o¨Çª¬ªp·|¼vÅT Windows ªº³]©w¡A¦Ó¥B¾É­P Windows µLªk¦w¸Ë¦b±zªº¹q¸£¤W¡A
+   ½Ð¨Ì·Ó¿Ã¹õ¤W¥X²{ªº«ü¥Ü°h¥X³]©wµ{¦¡¡AµM«á§¹¦¨¤U¦C¨BÆJ¡C
+
+3. °h¥X TSR¡A¨Ã¥B±q AUTOEXEC.BAT ©M CONFIG.SYS ÀÉ®×²¾¥h©Ò¦³°Ñ¦Ò¨ì¸Ó TSR ªº
+   ³¡¥÷¡C¸Ô²Ó¸ê°T½Ð°Ñ¾\¸Ó TSR ¤å¥ó¡C
+
+4. ­«·s±Ò°Ê¹q¸£¡C
+
+5. ­«·s°õ¦æ Windows ³]©wµ{¦¡¡C
+
+Windows ¦w¸Ë¦¨¥\¤§«á¡A±z¥i¥HÁÙ­ì TSR¡C
+
+³]©wµ{¦¡¨Ã¨S¦³¿ìªk¤@¤@°»´ú¥X¡uµ{¦¡¦Cªí¡v¦C¥Xªº©Ò¦³ TSR ©ÎÅX°Êµ{¦¡¡C³]©wµ{¦¡
+¯à°÷°»´ú¥Xªº TSR ©MÅX°Êµ{¦¡¦C©ó SETUP.INF ÀÉ®×ªº incomptsr1 ©M incomptsr2
+©³¤U¡C
+
+µ{¦¡¦Cªí
+========
+¥»¸`»¡©ú´ú¸Õ®Éµo²{ Windows 3.1 ª©©M¬Y¨Ç TSR ¤@°_¨Ï¥Î®É¡A¥i¯àµo¥Íªº¤@¨Ç°ÝÃD¡C¦¹³B
+©Ò´y­zªº°ÝÃD¨Ã¥¼²[»\©Ò¦³¥i¯à·|µo¥Íªº°ÝÃD¡C
+
+386MAX
+------
+386MAX ¤å¥ó«ØÄ³ EXT °Ñ¼Æ¤£­n³]©w¦¨§C©ó 64¡C¦pªG³o­Ó°Ñ¼Æ³]©w¬° 0¡AWindows
+³]©wµ{¦¡©M¼Ð·Ç¼Ò¦¡ªº Windows ´NµLªk°õ¦æ¡C
+
+½Ð°Ñ¾\ README.WRI ½u¤W¤å¥ó¸Ì¦³Ãö¦b Windows 3.1 ª©°õ¦æ 386MAX ªº¸Ô²Ó¸ê°T¡C
+
+386MAX ºÏºÐ§Ö¨ú¤½¥Îµ{¦¡ (QCACHE.EXE)
+------------------------------------
+½Ð¤£­n¦P®É¨Ï¥Î³o­ÓºÏºÐ§Ö³t¦s¨úµ{¦¡©M SMARTDrive µ{¦¡¡A¦]¬°¨S¦³²z¥Ñ¦b°õ¦æ
+Windows ®É¨Ï¥Î¨â­ÓºÏºÐ§Ö³t¦s¨úµ{¦¡¡C§Ú­Ì«ØÄ³±z¨Ï¥Î©M Windows 3.1 ª©¤@°_
+¦w¸Ëªº SMARTDriveµ{¦¡¡C
+
+All Charge 386 3.1 ª©
+---------------------
+ALLEMM4.SYS ¬O¤@­Ó°O¾ÐÅéºÞ²z­û¡A¦b°õ¦æ Windows ³]©wµ{¦¡©M Windows 3.1 ª©®É
+³£·|¥X²{°ÝÃD¡C¦pªG¦b Windows ©³¤U°õ¦æ³o­Óµ{¦¡®É¤]¹J¨ì°ÝÃD¡A§Ú­Ì«ØÄ³±z§ï¥Î
+Windows 3.1 ª©´£¨Ñªº EMM386.EXE ©M HIMEM.SYS ¨ÓºÞ²z°O¾ÐÅé¡C
+
+Anarkey 4.00 ª©
+---------------
+¦b¬Y¨Ç°O¾ÐÅé²ÕºA¤U¡A¦pªG¦b Windows 3.1 ª©ªº 386 ¼W±j¼Ò¦¡®É¨Ï¥Î Anarkey 4.00
+ª©¡A¥i¯à·|¾É­PµLªk¹w´Áªº¨t²Î·í¾÷²{¶H¡C¦b·¥¤Ö¼Æªº±¡ªp¤U¡A³o­Óµ{¦¡¤]¥i¯à·l·´
+µwºÐ¸Ìªº¸ê®Æ¡C¦¹¥~¡A¦b°õ¦æ³o­Óµ{¦¡®É¡AWindows 3.1 ª©¥i¯àµLªk±Ò°Ê¡C
+
+½Ð¤£­n¦b Anarkey 4.00 ª©°õ¦æ®É¡A¥H 386 ¼W±j¼Ò¦¡°õ¦æ Windows 3.1 ª©¡C¦ý¬O
+4.01 ª©¥i¯à¨S¦³³o¨Ç°ÝÃD¡C½Ð¬¢¸ß Moderne Software ¦³Ãö§K¶O¤É¯Å¨ì Anarkey
+4.01 ªº¸ê°T¡C
+
+Anarkey 4.01 ª©
+---------------
+¦pªG¦b±Ò°Ê¼Ð·Ç¼Ò¦¡ªº Windows ¤§«e¸ü¤J Anarkey 4.01 ª©¡A±z´NµLªk¦b Windows
+±Ò°Êªº¥ô¦ó MS-DOS ¼Ò¦¡¤U¨Ï¥Î Anarkey¡C¦¹®É¡A§Ú­Ì«ØÄ³±zµø»Ý­n±q¨C­Ó MS-DOS
+¼Ò¦¡¸ü¤J Anarkey¡C
+
+½Ð¤£­n¦b±Ò°Ê Windows 386 ¼W±j¼Ò¦¡¤§«e§â Anarkey ¸ü¤J°ª°O¾ÐÅé¡C§_«h¡A·í±z
+¹Á¸Õ±Ò°Ê¬Y­ÓÀ³¥Îµ{¦¡®É¡A¨t²Î¥i¯à·|·í±¼¡C
+
+APPEND (MS-DOS)
+---------------
+½Ð¤£­n¦P®É¨Ï¥Î Windows 3.1 ª©©M APPEND ¤½¥Îµ{¦¡¡C§_«h Windows ©M Windows
+À³¥Îµ{¦¡µLªk´À¦Û¤v©Ò¨Ï¥ÎªºÀÉ®×«Ø¥ß¦³®Ä¸ô®| (WFP) ªº¦WºÙ¡C(WFP ¬OÀÉ®×ªº§¹¾ã
+¦WºÙ¡A¥]¬AºÏºÐ¾÷¥N½X©M±q¥D¥Ø¿ý¶}©lªº§¹¾ã¸ô®|¡C)
+
+ASP ¾ã¦X¤u¨ã½c 3.7 ª©
+---------------------
+³o¶µ²£«~¬O¨¾¤î¯f¬rªºµ{¦¡¡A·|¦b°õ¦æ Windows ³]©wµ{¦¡®É¤Þµo¤@¨Ç°ÝÃD¡A¥]¬A¨t²Î
+·í¾÷¡B¨t²Î¦Û¦æ­«·s±Ò°Ê¥H¤ÎÁä½LµLªk¨Ï¥Îµ¥±¡§Î¡C¦b³]©w Windows 3.1 ª©¤§«e¡A
+±zÀ³¸Ó¥ýÃö±¼¤u¨ã½c¤ºªº«OÅ@±¹¬I¡C¦³Ãö¦p¦ó¾Þ§@ªº¸ê°T¡A½Ð°Ñ¾\ ASP ¾ã¦X¤å¥ó¡C
+
+ª`·N¡G³]©w Windows ¬OÄÝ©ó¨t²ÎºÞ²z¤è­±ªº¤u§@¡CASP ¾ã¦X¤u¨ã½c¤å¥ó«ü¥Ü±z¦b
+      °õ¦æ¦¹Ãþ¨t²ÎºÞ²z§@·~®ÉÀ³¸ÓÃö±¼«OÅ@±¹¬I¡C
+
+Autocon 2.0e ª©
+---------------
+¦b±Ò°Ê¨t²Î®É¡AAutocon ¯àÅý±z¬D¿ï¦h¹F 50 ºØ¤£¦Pªº²ÕºA¡C¥Lªº¤èªk¬O·í±z±q
+AUTOCON¸Ì­±­«·s±Ò°Ê¨t²Î®É¡AAutocon ·|®Ú¾Ú¸ê®Æ®w (AUTOCON.DAT) ¸Ìªº¸ê°T­×§ï
+CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×¡C
+
+Windows ³]©wµ{¦¡¥u·|­×§ï CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×ªº²Ä¤@­Ó³¡¤À¡C¦pªG
+±z·Q¥H¯S©wªº²ÕºA³]©w Windows¡A¥²¶·°õ¦æ Autocon¡AµM«á¥H¤H¤u¤è¦¡¦b¸ê®Æ®w¸Ì
+½s­×©Ò»Ýªº²ÕºA¡C½Ð¦b³]©w Windows ¤§«á°õ¦æ³o­Ó¨BÆJ¡AµM«á±q Autocon ¸Ì­±­«·s
+±Ò°Ê¨t²Î¡A©Ò§@ªºÅÜ§ó¤~·|¥Í®Ä¡C¦p»Ý§ó¦h¸ê°T¡A½Ð°Ñ¾\ Autocon ¤å¥ó¡C
+
+Bootcon 1.60 ª©
+---------------
+±z¥i¥H¨Ï¥Î Bootcon ¦b±zªº CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×¤ººûÅ@¦UºØ¤£¦Pªº
+¨t²Î²ÕºA¸ê°T¡C¦p¦¹¡A¦b¨t²Î±Ò°Ê®É¡A´N¥i¥H±q¿ï¾Üªí¤¤¬D¿ï©Ò»Ýªº²ÕºA¡C
+
+Windows ³]©wµ{¦¡¥u·|­×§ï CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×ªº²Ä¤@­Ó³¡¤À¡C¦b
+¦w¸Ë¦n Windows ¥H«á¡A±z¥²¶·½s¿è³o¨ÇÀÉ®×¸Ì¥]§t±z·Q¨Ï¥Îªº²ÕºAªº³¡¤À¡C¦p»Ý
+§ó¦h¸ê°T¡A½Ð°Ñ¾\ Bootcon ¤å¥ó¡C
+
+BOOT.SYS
+---------
+±z¥i¥H¨Ï¥Î BOOT.SYS ¦b±zªº CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×¤ººûÅ@¦UºØ¤£¦Pªº
+¨t²Î²ÕºA¸ê°T¡C¦p¦¹¡A¦b¨t²Î±Ò°Ê®É¡A´N¥i¥H±q¿ï¾Üªí¤¤¬D¿ï©Ò»Ýªº²ÕºA¡C
+
+Windows ³]©wµ{¦¡¥u·|­×§ï CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×ªº²Ä¤@­Ó³¡¤À¡C¦b
+¦w¸Ë¦n Windows ¥H«á¡A±z¥²¶·½s¿è³o¨ÇÀÉ®×¸Ì¥]§t±z·Q¨Ï¥Îªº²ÕºAªº³¡¤À¡C¦p»Ý
+§ó¦h¸ê°T¡A½Ð°Ñ¾\ BOOT.SYS ¤å¥ó¡C
+
+CACHE.EXE ºÏºÐ§Ö¨úµ{¦¡
+----------------------
+½Ð¤£­n¦b°õ¦æ Windows 3.1 ª©®É¡A¦P®É¨Ï¥Î¨â­ÓºÏºÐ§Ö¨úµ{¦¡¡C§Ú­Ì«ØÄ³±z¨Ï¥Î
+Windows 3.1 ª©´£¨Ñªº SMARTDrive¡AµM«á§R°£ CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×
+¤º©Ò¦³·|°õ¦æ¨ä¥LºÏºÐ§Ö¨úµ{¦¡ªº«ü¥O¦æ¡C(¦pªG°»´ú¥X CACHE.EXE¡A³]©wµ{¦¡·|§R°£
+CONFIG.SYS ÀÉ®×¸Ìªº CACHE.EXE «ü¥O¦æ¡C)
+
+CACHE.SYS ºÏºÐ§Ö¨úµ{¦¡
+----------------------
+³o­ÓºÏºÐ§Ö¨úµ{¦¡µLªk©M SMARTDrive ¤@°_¨Ï¥Î¡C§Ú­Ì«ØÄ³±z¨Ï¥Î Windows 3.1 ª©
+´£¨Ñªº SMARTDrive¡AµM«á§R°£ CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×¤º©Ò¦³·|°õ¦æ¨ä¥L
+ºÏºÐ§Ö¨úµ{¦¡ªº«ü¥O¦æ¡C(¦pªG°»´ú¥X CACHE.SYS¡A³]©wµ{¦¡·|§R°£ CONFIG.SYS ÀÉ®×
+¸Ìªº CACHE.SYS «ü¥O¦æ¡C)
+
+CED 1.0e ª©
+-----------
+Windows 3.1 ª©©M CED ·f°t¨Ï¥Î®É·|¦³°ÝÃD¡A¨Ò¦p¨t²Î·í¾÷¡C§Ú­Ì«ØÄ³±z¤£­n¦P®É
+¨Ï¥Î Windows 3.1 ª©©M CED¡C
+
+Central Point Anti-Virus 1.1 ª© (VSAFE.COM/VSAFE.SYS)
+-----------------------------------------------------
+¦b¦w¸Ë Windows 3.1 ª©®É¡A½Ð¤£­n¸ü¤J VSAFE.COM/VSAFE.SYS¡C§_«h¡A³]©wµ{¦¡¥i¯à
+µLªk¥¿±`¦a°õ¦æ¡C¦w¸Ë¦n Windows 3.1 ª©¤§«á´N¥i¥H¸ü¤J VSAFE¡C
+
+¥Ñ©ó Windows ¨Ï¥ÎºÏºÐ¨Ó°õ¦æ°O¾ÐÅé¥æ´«¡A¦]¦¹¦b°õ¦æ Windows ®ÉÀ³¸ÓÃö±¼ VSAFE
+ªºµwºÐ¨¾¼g«OÅ@¿ï¶µ¡C¦p»Ý§ó¦h¸ê°T¡A½Ð°Ñ¾\ Central Point Anti-Virus ¤å¥ó¡C
+
+CMDEDIT.COM 2.0 ª© (¤é´Á¬° 12-6-91 ªºª©¥»)
+------------------------------------------
+¦pªG³o­Ó«ü¥O¦æ½s¿èµ{¦¡¦b±Ò°Ê Windows ¤§«e¸ü¤J¡A¦b¥H 386 ¼W±j¼Ò¦¡°õ¦æ¦h­Ó
+MS-DOS ¼Ò¦¡®É¡A¥i¯à·|¤Þ°_¡u¤@¯ë«OÅ@¿ù»~¡v¡C¦Ó¦b¥H¼Ð·Ç¼Ò¦¡°õ¦æ Windows ®É¡A
+¤]µLªk±q Windows ªº MS-DOS ¼Ò¦¡¤U¸ü¤J³o­Óµ{¦¡¡C
+
+Cubit 3.01 ª©
+-------------
+Windows 3.1 ª©·f°t Cubit ¨Ï¥Î®É¡A½Ð¤£­nÀ£ÁY Windows SYSTEM ¥Ø¿ý©Î¥ô¦ó¤@­Ó±q
+CONFIG.SYS ¸ü¤JªºÀÉ®×¡CÀ£ÁY³o¨ÇÀÉ®×¥i¯à·|µo¥Í°ÝÃD¡C
+
+¦b§â Windows ¤É¯Å¨ì 3.1 ª©¤§«e¡A½Ð½T©wµwºÐ¤ºªºÂÂª© Windows ¥¼¸gÀ£ÁY¡CWindows 3.1
+ª©¦w¸Ë¦n¤§«á¡A¥i¥H­«·sÀ£ÁYÀÉ®×¡C
+
+Data Physician Plus 2.0 ª© (VirALERT)
+-------------------------------------
+§Ú­Ì«ØÄ³±z¦b VirALERT °õ¦æªº®É­Ô¡A¤£­n¦w¸Ë Windows¡C§_«h¦b°õ¦æ Windows ³]©w
+µ{¦¡®É¡AVirALERT ¨C¹j´X¬í´N·|Åã¥ÜÄµ§i°T®§¡C
+
+¦w¸Ë¦n Windows ¤§«á´N¥i¥H°õ¦æ VirALERT¡C½Ð«ö ALT+V Åã¥Ü VirALERT ¿ï¾Üªí¡C
+±z¥i¥H¨Ï¥Î³o¥÷¿ï¾Üªí¤Wªº«ü¥O¨Ó§í¨î©Î±Ò°Ê VirALERT¡C
+
+DOSCUE.COM «ü¥O¦æ½s¿èµ{¦¡
+-------------------------
+DOSCUE «ü¥O¦æ½s¿èµ{¦¡©M Windows 3.1 ª©·f°t¨Ï¥Î®É¡A·|²£¥ÍµLªk·N®Æªºµ²ªG¡C
+§Ú­Ì«ØÄ³±z¤£­n¦P®É¨Ï¥Î Windows 3.1 ª©©M³o­Ó½s¿èµ{¦¡¡C
+
+Doubledisk 2.5 ª©
+-----------------
+¦pªG Doubledisk ©M Windows 3.1 ª©¤@°_¨Ï¥Î¡AWindows 3.1 ª©¥i¯à·|¸Õ¹Ï¥h¦s¨ú
+¡uµêÀÀ¡vºÏºÐ¾÷¡C¨Ï¥Î Doubledisk «Ø¥ßÀ£ÁYºÏºÐ¾÷®É·|²£¥ÍµêÀÀºÏºÐ¾÷¡C¨Ò¦p¡A
+¦pªG¹q¸£¤W¦³ A¡BB ©M C ºÏºÐ¾÷¡A·í±z¨Ï¥Î Doubledisk «Ø¥ß F ºÏºÐ¾÷®É¡AWindows
+3.1 ª© (¥H¤Î MS-DOS)·|§â D ©M E ºÏºÐ¾÷·í¦¨¦³®ÄªººÏºÐ¾÷¡A§Y¨Ï¥L­Ì¨Ã¤£¦s¦b¡C
+±z¥i¥H¨Ï¥Î DRVOFF ¤½¥Îµ{¦¡¨Ó¨¾¤î Windows »{±oµêÀÀºÏºÐ¾÷¡C½Ð¦V Vertisoft
+­qÁÊ¤@¥÷ DRVOFF ¤½¥Îµ{¦¡¡C
+
+FASTOPEN (MS-DOS)
+-----------------
+FASTOPEN ¬O¤@­Ó RAM ±`¾nµ{¦¡¡C¦pªG FASTOPEN ©MºÏºÐ¾ã¦X°Ï¬q (disk
+de-fragmenting)µ{¦¡¤@°_¨Ï¥Î¡A¥i¯à·|µo¥ÍÀÉ®×°t¸mªí (FAT) ¤è­±ªº°ÝÃD¡C¦b
+°O¾ÐÅé®e¶q°¾§Cªº±¡ªp¤U¡A±z¥i¯à»Ý­n²¾¥h FASTOPEN¡AWindows 3.1 ª©¤~¯à¥¿±`°õ¦æ¡C
+
+Flash ºÏºÐ§Ö³t¦s¨úµ{¦¡ (FLASH.EXE)
+----------------------------------
+½Ð¤£­n¦P®É¨Ï¥Î³o­ÓºÏºÐ§Ö³t¦s¨úµ{¦¡©M SMARTDrive¡A¦]¬°¨S¦³²z¥Ñ¦b°õ¦æ Windows
+®É¨Ï¥Î¨â­ÓºÏºÐ§Ö³t¦s¨úµ{¦¡¡C§Ú­Ì«ØÄ³±z¨Ï¥Î©M Windows 3.1 ª©¤@°_¦w¸Ëªº
+SMARTDrive¡C
+
+Graphics (MS-DOS)
+-----------------
+¦b Windows ªº MS-DOS ¼Ò¦¡¤U¸ü¤J Graphics ¥i¯à·|¦b¦C¦L®É³y¦¨¤@¨ÇÃø¥H¹w®Æªº
+µ²ªG¡C¨Ï¥Î¤¤ªº MS-DOS ¼Ò¦¡·|§â¥¦ªº¿é¥X°e©¹¦Lªí¾÷¡C¦Ó¦b¤£¦Pªº MS-DOS ¼Ò¦¡¤§¶¡¤Á´«¡A·|¨Ï
+¦C¦L¤u§@²VÂø¦b¤@°_¡C
+
+HPEMM386.SYS ©M HPEMM486.SYS
+----------------------------
+¥H 386 ¼W±j¼Ò¦¡°õ¦æ Windows ®É¡A³o¨Ç expanded °O¾ÐÅéºÞ²z­û©M Windows ¤£
+¬Û®e¡C¦pªG±z¥´ºâ¥H 386 ¼W±j¼Ò¦¡°õ¦æ Windows¡A§Ú­Ì«ØÄ³±z§ï¥Î EMM386.EXE
+¨ÓºÞ²z°O¾ÐÅé¡C
+
+HPMM.SYS -HP °O¾ÐÅéºÞ²z­û
+-------------------------
+¦b°õ¦æ HPMM.SYS ®ÉµLªk¦w¸Ë Windows 3.1 ª©¡A¤]µLªk¥H¼Ð·Ç¼Ò¦¡°õ¦æ Windows 3.1
+ª©¡C¦b³]©w Windows 3.1 ª©¤§«e¡AÀ³¸Ó¥ý§R°£ CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×
+¸Ì©Ò¦³·|°õ¦æ HPMM.SYS ªº«ü¥O¦æ¡C
+
+Hyperdisk §Ö³t¦s¨úµ{¦¡
+----------------------
+½Ð¤£­n¦P®É¨Ï¥Î³o­ÓºÏºÐ§Ö³t¦s¨úµ{¦¡©M SMARTDrive¡A¦]¬°¨S¦³²z¥Ñ¦b°õ¦æ Windows
+®É¨Ï¥Î¨â­ÓºÏºÐ§Ö³t¦s¨úµ{¦¡¡C§Ú­Ì«ØÄ³±z¨Ï¥Î©M Windows 3.1 ª©¤@°_¦w¸Ëªº SMARTDrive¡C
+
+IBM VDISK.SYS (RAM ºÏºÐµ{¦¡)
+----------------------------
+VDISK.SYS ©M Windows ¤£¬Û®e¡A¦]¬°«eªÌ¦û¾Ú¤F°õ¦æ Windows ®É©Ò»Ýªº extended
+°O¾ÐÅé¡C³o­Ó¤½¥Îµ{¦¡·|¨Ï©Ò¦³©M XMS ¬Û®eªº°O¾ÐÅéºÞ²z­ûµLªk¸ü¤J¡C
+
+IEMM.SYS °O¾ÐÅéºÞ²z­û
+---------------------
+IEMM.SYS °O¾ÐÅéºÞ²z­û©M Windows ¤£¬Û®e¡C§Ú­Ì«ØÄ³±z§R°£ CONFIG.SYS ©M
+AUTOEXEC.BAT ÀÉ®×¸Ì©Ò¦³°Ñ¦Ò¨ì IEMM.SYS ªº¦a¤è¡AµM«á§ï¥Î Windows 3.1 ª©´£¨Ñ
+ªº EMM396.EXE ¨ÓºÞ²z°O¾ÐÅé¡C
+
+ICACHE.SYS ºÏºÐ§Ö³t¦s¨úµ{¦¡
+---------------------------
+½Ð¤£­n¦b°õ¦æ Windows 3.1 ª©®É¡A¦P®É¨Ï¥Î¨â­ÓºÏºÐ§Ö³t¦s¨úµ{¦¡¡C§Ú­Ì«ØÄ³±z¨Ï¥Î
+Windows 3.1 ª©´£¨Ñªº SMARTDrive¡AµM«á§R°£ CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×¤º
+©Ò¦³·|°õ¦æ¨ä¥LºÏºÐ§Ö³t¦s¨úµ{¦¡ªº«ü¥O¦æ¡C(¦pªG°»´ú¥X ICACHE.SYS¡A³]©wµ{¦¡·|
+§R°£ CONFIG.SYS ÀÉ®×¸Ìªº ICACHE.SYS «ü¥O¦æ¡C)
+
+IBMCACHE.SYS ºÏºÐ§Ö¨úµ{¦¡
+-------------------------
+½Ð¤£­n¦b°õ¦æ Windows 3.1 ª©®É¡A¦P®É¨Ï¥Î¨â­ÓºÏºÐ§Ö³t¦s¨úµ{¦¡¡C§Ú­Ì«ØÄ³±z¨Ï¥Î
+Windows 3.1 ª©´£¨Ñªº SMARTDrive¡AµM«á§R°£ CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×¤º
+©Ò¦³·|°õ¦æ¨ä¥LºÏºÐ§Ö¨úµ{¦¡ªº«ü¥O¦æ¡C(¦pªG°»´ú¥X IBMCACHE.SYS¡A³]©wµ{¦¡·|§R°£
+CONFIG.SYS ÀÉ®×¸Ìªº IBMCACHE.SYS «ü¥O¦æ¡C)
+
+Intel expanded °O¾ÐÅé¼ÒÀÀ¾¹ (ILIM386.SYS)
+-----------------------------------------
+Intel Inboard/386 ²£«~©Òªþªº ILIM386.SYS expanded °O¾ÐÅé¼ÒÀÀ¾¹©M Windows 3.1
+ª©¤£¬Û®e¡C§Ú­Ì«ØÄ³±z¦b³]©w Windows 3.1 ª©¤§«e¡A¥ý§R°£ CONFIG.SYS ©M
+AUTOEXEC.BAT ÀÉ®×¸Ì©Ò¦³¦³Ãö³o­Ó¼ÒÀÀ¾¹ªº«ü¥O¡C
+
+JOIN (MS-DOS)
+-------------
+¦b°õ¦æ Windows 3.1 ª©®É¡A½Ð¤£­n·s¼W©Î§R°£¡u¥[¤Jªº¡v(joined) ºÏºÐ¾÷¡C¦pªG±z
+¦b±Ò°Ê Windows 3.1 ª©¤§«e¨Ï¥Î JOIN «ü¥O¡A¦Ó¥B¤£¦b Windows ªº MS-DOS ¼Ò¦¡¤U
+§ïÅÜ¥[¤JªººÏºÐ¾÷ªºª¬ºA¡AWindows 3.1 ª©´N¥i¥H¥¿±`¹B§@¡C¦pªG±z¥´ºâ°õ¦æ
+Windows¡A§Ú­Ì«ØÄ³±z®Ú¥»¤£­n¨Ï¥Î¥[¤JªººÏºÐ¾÷¡C
+
+Artisoft ¥X«~ªº KBFLOW TSR
+--------------------------
+¦pªG¦b±Ò°Ê Windows 3.1 ª©¤§«e¸ü¤J Artisoft ¥X«~ªº KBFLOW TSR ¤½¥Îµ{¦¡¡A¨t²Î
+¥i¯à·|¦b±Ò°Ê Windows ®É©Î¬O¦b Windows ¸Ì¨Ï¥Î MS-DOS ¼Ò¦¡®É·í¾÷¡C
+
+KEYB.COM (MS-DOS)
+-----------------
+¦pªG±z¨Ï¥Î«ü¥O¦æ¿ï¶µ¨Ó¸ü¤J KEYB.COM¡A§Ú­Ì«ØÄ³±z¦b±Ò°Ê Windows ¤§«e´N§â¥¦¸ü¤J
+¡C¸ü¤J KEYB.COM ¤§«á¡A±z¥i¥HÀH®É¦b Windows ªº MS-DOS ¼Ò¦¡¤U§ïÅÜÁä½L²ÕºA¡C
+¦pªG¤£¦b±Ò°Ê Windows ¤§«e¸ü¤J KEYB.COM¡A¦b MS-DOS ¼Ò¦¡¨Ï¥Î¥]§t¿ï¶µªº KEYB
+«ü¥O¥i¯à·|µo¥Í°ÝÃD¡C¤£¹L¡A±z¥i¥H¨Ï¥Î¨S¦³¥ô¦ó¿ï¶µªº KEYB «ü¥O¨ÓÅã¥Ü¤º½X­¶ªº
+¸ê°T¡C
+
+Lansight 2.0 ª©
+---------------
+Lansight ¤½¥Îµ{¦¡¬O¥Î¨Ó±±¨î©MºÊµø¨ä¥L³s±µ¨ì Novell ºô¸ôªº¤u§@¯¸¡C¦b¬Y¨Ç±¡ªp
+¤U¡ALansight 2.0 ª©¥i¯à·|¨Ï°õ¦æ Windows 3.1 ª©ªº¤u§@¯¸·í¾÷¡C
+
+Lasertool ±±¨î¥x 2.2 ª©
+-----------------------
+¦pªG±z±q Windows 3.1 ª©¸ü¤J Lasertool ±±¨î¥x 2.2 ª© (PCPANEL.EXE)¡A¨t²Î¥i¯à
+·|·í¾÷¡C¦pªG±z¬O¦b±Ò°Ê Windows ¤§«e¸ü¤J¡A³o­Óµ{¦¡´N¥i¥H¥¿±`¹B§@¡C
+
+Le Menu 1.0 ª©
+--------------
+¦pªG Le Menu 1.0 ª©©M Windows 3.1 ª©¤@°_¨Ï¥Î¡A¦b±z±q Windows ¸Ì±Ò°Ê MS-DOS
+¼Ò¦¡®É¡APATH¡BPROMPT ©M WINDIR ¤§ÃþªºÀô¹Ò¸ê°T¥i¯à·|®ø¥¢¡C¦pªG±z·Q¨Ï¥Î
+Le Menu ¿ï¾Üªí«ü¥O¨Ó±Ò°Ê Windows 3.1 ª©¡A§Ú­Ì«ØÄ³±z§â Windows 3.1 ª©ªº±Ò°Ê
+«ü¥O³]©w¬°§å¦¸ÀÉ®×¿ï¾Üªí«ü¥O¡A¥H«KÅý COMMAND.COM ¦b Windows 3.1 ª©±Ò°Ê¤§«e
+¸ü¤J¡C¦p»Ý§ó¦h¸ê°T¡A½Ð°Ñ¾\ Le Menu ¤å¥ó¡C
+
+LOCKIT 3.3 ª© (PC Vault¡ASecure It)
+-----------------------------------
+³o¨Çµ{¦¡ªº 3.3 ª©·|§R°£ WIN.INI ÀÉ®× load= «ü¥O¦æ¸ÌªºªÅ®æ¡C·sªºª©¥»¥i¯à·|
+§ï¥¿³o­Ó°ÝÃD¡C
+
+Logitech ·Æ¹«³nÅé 5.0/6.0 ª© (CLICK¡ALOGIMENU)
+----------------------------------------------
+¦pªG±z·Q¦b Windows ªº¬Y­Ó MS-DOS ¼Ò¦¡¤U¨Ï¥Î CLICK ©M LOGIMENU¡A±z¥²¶·±q³o­Ó
+MS-DOS ¼Ò¦¡¸ü¤J TSR¡A§Y¨Ï±z¦b±Ò°Ê Windows ¤§«e´N¤w¸g¸ü¤J³o¨Ç TSR¡C¦Ó¦b±z
+°h¥X Windows ®É¡A§Y¨Ï±z¤w¸g¦b Windows ªº MS-DOS ¼Ò¦¡¤U¸ü¤J³o¨Ç TSR¡A±z¤´µM
+­n§â¥L­Ì­«·s¸ü¤J¡A¨Ï¥L­Ì¯à°÷¦b Windows ¤§¥~ªº MS-DOS ¼Ò¦¡¤U¥¿±`¹B§@¡C
+
+Mace ºÏºÐ§Ö³t¦s¨úµ{¦¡ (MCACHE.SYS)
+----------------------------------
+³o­ÓºÏºÐ§Ö¨úµ{¦¡µLªk©M SMARTDrive ¤@°_¨Ï¥Î¡C§Ú­Ì«ØÄ³±z¨Ï¥Î Windows 3.1 ª©
+´£¨Ñªº SMARTDrive¡AµM«á§R°£ CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×¤º©Ò¦³·|°õ¦æ¨ä¥L
+ºÏºÐ§Ö³t¦s¨úµ{¦¡ªº«ü¥O¦æ¡C(¦pªG°»´ú¥X Mace¡A³]©wµ{¦¡·|§R°£ CONFIG.SYS
+ÀÉ®×¸Ìªº Mace «ü¥O¦æ¡C)
+
+Maximizer °O¾ÐÅéºÞ²z­û (MAXIMIZE.COM)
+-------------------------------------
+¦pªG±z¥¿¦b¨Ï¥Î Maximizer °O¾ÐÅéºÞ²z­û¡A±z¥i¯àµLªk¦w¸Ë©Î±Ò°Ê Windows¡C½Ð½T©w
+±z¦b°õ¦æ Windows 3.1 ª©®É¥u¨Ï¥Î¤@­Ó°O¾ÐÅéºÞ²z­û¡C§Ú­Ì«ØÄ³±z§ï¥Î©M Windows
+3.1 ª©¤@°_¦w¸Ëªº HIMEM.SYS ©M EMM386.EXE ¨ÓºÞ²z°O¾ÐÅé¡C
+
+MIRROR (MS-DOS)
+---------------
+¦pªG¨Ï¥Î¡u°õ¦æ¡v«ü¥O±q¼Ð·Ç¼Ò¦¡ªº Windows 3.1 ª©¸ü¤J MIRROR¡A±z´NµLªk¨Ï¥Î
+MIRROR /U «ü¥O§â MIRROR ±q°O¾ÐÅé§R°£¡C¦¹®É·|¥X²{¿ù»~°T®§¡C
+
+NDOSEDIT.COM (¤é´Á¬° 1-1-84 ªºª©¥»)
+-----------------------------------
+¦b¸ü¤J³o­Ó«ü¥O¦æ½s¿èµ{¦¡®É¡A¥i¯à·|¹J¨ì°ÝÃD¡C¦Ó¦b°õ¦æ Windows 3.1 ª©®É¡A
+¥¦¤]¥i¯à²£¥ÍµLªk¹w´Áªºµ²ªG¡C
+
+NetRoom °O¾ÐÅéºÞ²z­û (RM386.SYS)
+
+--------------------------------
+¦pªG¨Ï¥ÎÂÂª©ªº NetRoom¡A¦b³]©w Windows ®É¥i¯à·|¦³°ÝÃD¡C½Ð¦V Helix Software
+¬¢¸ß·sª©ªº NetRoom¡C
+
+Newspace 1.07 ª©
+----------------
+³o­ÓºÏºÐÀ£ÁYµ{¦¡©M Windows 3.1 ª©¤£¬Û®e¡A¦]¦¹·|³y¦¨³\¦h°ÝÃD¡C
+
+Norton Anti-Virus 1.0 ª©
+------------------------
+¦pªG±z¦b³]©w Windows ¤§«e¸ü¤J Anti-Virus 1.0 ª©¡A³]©wµ{¦¡¥i¯àµLªk°õ¦æ¡C§Ú­Ì
+«ØÄ³±z¦V Symantec ¬¢¸ß³o­Óµ{¦¡³Ì·sªºª©¥»¡C
+
+Norton Desktop for Windows (EP.EXE)
+-----------------------------------
+¦pªG¸ê®Æ¦^´_µ{¦¡ Erase Protect (EP.EXE) ¤w¸g±q AUTOEXEC.BAT ÀÉ®×¸ü¤J¡A¦b³]©w
+Windows 3.1 ª©®É­n¥ý°±¥Î³o­Óµ{¦¡¡A¤×¨ä¬O±qÂÂª©ªº Windows ¤É¯Å¨ì·sª©ªº
+Windows ªº®É­Ô¡CErase Protect ·|¸Õ¹Ï«O¦s©Ò¦³³Q§R°£ªºÀÉ®×¡A³o¼Ë¥i¯à³y¦¨±z¦b
+°õ¦æ³]©wµ{¦¡®É¡Aµo¥ÍºÏºÐªÅ¶¡¤£¨¬ªº±¡ªp¡C
+
+§Ú­Ì«ØÄ³±z¨Ï¥Î¥Ã¤[¥æ´«ÀÉ¨Ó°õ¦æ Erase Protect¡A¦Ó¤£­n¨Ï¥Î¼È®É©Êªº¥æ´«ÀÉ¡C
+¦pªG±z¨Ï¥Î¼È®É¥æ´«ÀÉ¡A¨ã¦³ .TMP ©Î .SWP °ÆÀÉ¦WªºÀÉ®×´N¤£­n³]©w§R°£«OÅ@¡C
+
+Norton ¤½¥Îµ{¦¡ 5.0 ª© (DISKREET¡BNCACHE)
+-----------------------------------------
+³o­Óµ{¦¡©M Windows 3.1 ª©¤£¬Û®e¡A¥i¯à·|¾É­P¨t²Î·í¾÷¡C§Ú­Ì«ØÄ³±z§â Norton
+¤½¥Îµ{¦¡¤É¯Å¬°³Ì·sª©¡A¥HÁ×§Kµo¥Í³o­Ó°ÝÃD¡C
+
+Norton ¤½¥Îµ{¦¡ 6.01 ª© (NCACHE)
+--------------------------------
+¬Y¨Ç NCACHE ª©¥»¥i¯à·|³y¦¨ Windows 3.1 ª©µLªk³]©w©Î±Ò°Ê¡C¦b¥H¼Ð·Ç¼Ò¦¡°õ¦æ
+Windows ®É¡A¨t²Î¥i¯à·|·í¾÷¡A¤×¨ä¬O§â NCACHE ³]©w¬° EMS §Ö¨ú°O¾ÐÅéªº®É­Ô¡C
+§Ú­Ì¨Ã¤£¹ªÀy±z§â NCACHE ³]©w¬° EMS §Ö¨ú°O¾ÐÅé¡C§â NCACHE ³]©w¬° XMS §Ö¨ú
+°O¾ÐÅé¥i¯à¥i¥H¸Ñ¨M³o­Ó°ÝÃD¡C
+
+¨Ï¥Î NCACHE ®É¥i¯àÁÙ·|¹J¨ì¨ä¥L°ÝÃD¡C·sªºª©¥»¥i¯à·|§ï¥¿³o¨Ç°ÝÃD¡C­Y­n§ó·s
+NCACHE ªºª©¥»¡A½Ð¬¢¸ß Symantec ¤½¥q¡C¦b§ó·s NCACHE ¤§«e¡A±z¥i¥H¨Ï¥Î Windows
+3.1 ª©ÀHªþªº SMARTDrive µ{¦¡¡C
+
+Norton ¤½¥Îµ{¦¡ 6.01 ª© (DISKMON)
+---------------------------------
+§Ú­Ì«ØÄ³±z¤£­n¦P®É¨Ï¥Î DISKMON 6.01 ª©©M Windows 3.1 ª©¡C
+
+PCED 2.00 ª©
+------------
+½Ð¤£­n§â«ü¥O¦æ½s¿èµ{¦¡ PCED ¸ü¤J°ª°O¾ÐÅé¡C§â¥¦¸ü¤J°ª°O¾ÐÅé¥i¯à·|²£¥ÍµLªk
+¹w®Æªºµ²ªG¡A¨Ò¦p¥H 386 ¼W±j¼Ò¦¡°õ¦æ Windows ®É¡A·|³y¦¨¨t²Î·í¾÷¡C¦pªG±z¦b
+±Ò°Ê Windows ¤§«e¸ü¤J³o­Óµ{¦¡¡A·í Windows ¥H¼Ð·Ç¼Ò¦¡°õ¦æ®É¡A³o­Óµ{¦¡¥i¯à
+µLªk¨Ï¥Î¡C
+
+PCKEY.EXE (MultiSoft Áä½L¼W±j¾¹©M«ü¥O¦C°ïÅ|)
+--------------------------------------------
+¦P®É°õ¦æ¦h­Ó«D Windows À³¥Îµ{¦¡®É¡APCKEY.EXE ¥i¯àµLªk¦b Windows 3.1 ª©©³¤U
+¥¿±`¹B§@¡C§Ú­Ì«ØÄ³±z¦b±Ò°Ê Windows ¤§«e¥ý¥Ñ°O¾ÐÅé¨ø°£ PCKEY.EXE¡C
+
+PC-Kwik ºÏºÐ¥[³t¾¹
+------------------
+¦pªG±z¦b Windows ªº 386 ¼W±j¼Ò¦¡¤U¨Ï¥Î PC-Kwik¡A½Ð½T©w±z¨Ï¥Îªº¬O PC-Kwik
+3.55 ª©©Î§ó·sªºª©¥»¡A¦Ó¥B PC-Kwik ¥²¶·¦b extended °O¾ÐÅé¤º¡A¦Ó¤£¬O¦b
+expanded °O¾ÐÅé¤º¡C¦p»Ý PC-Kwik ªº§ó·sª©¡A½Ð¬¢¸ß MultiSoft ¤½¥q¡C
+
+PC-Kwik ºÏºÐ§Ö³t¦s¨úµ{¦¡ (PC-KWIK.EXE)
+--------------------------------------
+½Ð¤£­n¦P®É¨Ï¥Î³o­ÓºÏºÐ§Ö³t¦s¨úµ{¦¡©M SMARTDrive¡A¦]¬°¨S¦³²z¥Ñ¦b°õ¦æ Windows
+®É¨Ï¥Î¨â­ÓºÏºÐ§Ö³t¦s¨úµ{¦¡¡C§Ú­Ì«ØÄ³±z¨Ï¥Î Windows 3.1 ª©´£¨Ñªº SMARTDrive
+µ{¦¡¡C
+
+PC-Kwik 1.59 ª© (PCK.EXE¡BPSKSCRN.EXE¡BPCKEY.COM)
+-------------------------------------------------
+¦pªG¦b³]©w Windows ¤§«e¸ü¤J PC-KWIK 1.59 ª©¡A³]©wµ{¦¡µLªk°õ¦æ¡CPC-KWIK 2.0
+ª©¥i¯à¨S¦³³o­Ó°ÝÃD¡C
+
+PCSXMAEM.SYS ¤½¥Îµ{¦¡
+---------------------
+³o­Ó¤½¥Îµ{¦¡©M Windows ¤£¬Û®e¡C±zÀ³¸Ó¦b³]©w©Î±Ò°Ê Windows 3.1 ª©¤§«e¡A§R°£
+CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×¸Ì©Ò¦³°Ñ¦Ò¨ì³o­Óµ{¦¡ªº¦a¤è¡CPCSXMAEM.SYS ©M
+XMAEM.SYS Ãþ¦ü¡C¥¦´«¤F¤@­Ó¦WºÙ¡A¦Ó¥B§@¹L¨Ç·Lªº­×§ï¡C²{¦³ªº IBM PC/3270
+¼ÒÀÀ¾¹ª©¥»ªþ¦³ PCSXMAEM.SYS¡C
+
+PCSX2EMS.SYS
+------------
+¦pªG¦b¸Ë¦³ XMA ªOªº¹q¸£¤W¸ü¤J PCSX2EMS.SYS¡AWindows ¥i¥H¥¿½T¦a°õ¦æ¡C°£¦¹
+¤§¥~¡A³o­Óµ{¦¡©M Windows ¤£¬Û®e¡CIBM PC/3270 ¼ÒÀÀ¾¹ªþ¦³ PCSX2EMS.SYS¡C
+
+PC Tools Deluxe 7.1 ª© (DATAMON)
+--------------------------------
+¦pªG±z¨Ï¥Î \SENTRY+ ¿ï¶µ¸ü¤J PC Tools DATAMON¡A¦bºÏºÐªÅ¶¡©Ò³Ñ¤£¦h®É¡A³]©w
+µ{¦¡¥i¯àµLªk°õ¦æ¡C¦b¸ü¤J DATAMON ®É¡A½Ð¤£­n¨Ï¥Î \SENTRY+ ¿ï¶µ¡C
+
+½Ð¤£­n¦b¸ü¤J SMARTDrive ¤§«á¸ü¤J DATAMON¡C¦pªG DATAMON ¦b SMARTDrive ¤§«á
+¸ü¤J¡A¨t²Î¥i¯à·|·í¾÷¡C½Ð°Ñ¾\ PC Tools ¤å¥ó¤¤¦³Ãö¦p¦ó¨ø°£ DATAMON ªº¸ê°T¡C
+
+PC Tools Deluxe 6.0 ª© (DESKTOP)
+--------------------------------
+¦pªG±z¹Á¸Õ±q¥H¼Ð·Ç¼Ò¦¡°õ¦æªº Windows ªº MS-DOS ¼Ò¦¡¤U±Ò°Ê PC Tools¡A¨t²Î
+¥i¯à·|·í¾÷¡C¦b¼W±j¼Ò¦¡¤U¡A¨t²Î¥i¯à·|¦Û¤v­«·s±Ò°Ê¡C¦b Windows ªº MS-DOS
+¼Ò¦¡¤U¨Ï¥Î MS-DOS«ü¥O¡A¤]¥i¯àµo¥Í³o¨Ç°ÝÃD¡C
+
+PC Tools 7.0 ª©¨S¦³³o¨Ç°ÝÃD¡C¤£¹L¡A¦pªG¦b Windows 3.1 ª©±Ò°Ê¤§«e¸ü¤J
+DESKTOP¡A´N¤£­n¦b MS-DOS ¼Ò¦¡¤U¸ü¤J DESKTOP¡C§_«h¡A¨t²Î¥i¯à·|¦b±zÂ÷¶}
+Windows ®É·í¾÷¡C§Ú­Ì«ØÄ³±z±q Windows 3.1 ª©´£¨Ñªº PIF °õ¦æ DESKTOP¡C
+
+PC Tools Deluxe 7.1 ª© (VDEFEND)
+--------------------------------
+¦pªG¦b°õ¦æ³]©wµ{¦¡¤§«e¸ü¤J VDEFEND¡A³]©wµ{¦¡¥i¯àµLªk¥¿±`¹B§@¡C½Ð¦b Windows
+3.1 ª©³]©w§¹¦¨¥H«á¸ü¤J VDEFEND¡C
+
+PC Tools ºÏºÐ§Ö³t¦s¨úµ{¦¡ (PC-CACHE.COM)
+----------------------------------------
+½Ð¤£­n¦P®É¨Ï¥Î³o­ÓºÏºÐ§Ö³t¦s¨úµ{¦¡©M SMARTDrive¡A¦]¬°¨S¦³²z¥Ñ¦b°õ¦æ Windows
+®É¨Ï¥Î¨â­ÓºÏºÐ§Ö³t¦s¨úµ{¦¡¡C§Ú­Ì«ØÄ³±z¨Ï¥Î©M Windows 3.1 ª©¤@°_¦w¸Ëªº
+SMARTDrive µ{¦¡¡C
+
+PRINT (MS-DOS)
+--------------
+¦pªG±z¥¿¦bºô¸ô¦Lªí¾÷¤W¦C¦L³\¦h¤j¤å¥ó¡A¦¹®É¦pªG±qºô¸ô°õ¦æ Windows¡A¨t²Î¥i¯à
+¦b³]©wµ{¦¡«Ø¥ßµ{¦¡ºÞ²z­û¸s²Õ®É·í¾÷¡C
+
+Printer Assist 4.20 ª©
+----------------------
+Printer Assist ¬O¤@­Ó TSR¡A¯àÅý±z¦b Netware 286 ©Î 386 ¨t²Î¤W©M¨ä¥L¤u§@¯¸
+¦@¥Î¤u§@¯¸¦Lªí¾÷¡C·í³o­Óµ{¦¡¸ü¤J®É¡A¬Y¨Ç Windows À³¥Îµ{¦¡ (¦p Microsoft
+Word for Windows) ·|¦b¥¿½Tªº¿é¥X¤¤§¨ÂøÂX¥R¦r¤¸¡C
+
+PYRO!  1.0 ª©
+-------------
+¦pªG¦b Windows 3.1 ª©±Ò°Ê¤§«e¸ü¤J³o­Ó¿Ã¹õ°±·²¸Ë¸m¡A¦b³o­Ó¿Ã¹õ°±·²¸Ë¸m¾¹
+¥X²{¤§«á¡A´NµLªkÁÙ­ì Windows 3.1 ª©ªº¿Ã¹õ¡C
+
+QMAPS °O¾ÐÅéºÞ²z­û 5.16 ª©
+--------------------------
+¦pªG±z¨Ï¥Î QMAPS °O¾ÐÅéºÞ²z­û¡AWindows ¥i¯àµLªk¦w¸Ë©Î±Ò°Ê¡C·sªºª©¥»¨S¦³
+³o¨Ç°ÝÃD¡C¦p»Ý QMAPS ªº§ó·sª©¥»¡A½Ð¬¢¸ß Quadtel¡C¦b§ó·s QMAPS ¤§«e¡A±z¥i¥H
+¨Ï¥Î Windows 3.1 ª©´£¨Ñªº HIMEM.SYS ©M EMM386.SYS ¨ÓºÞ²z°O¾ÐÅé¡C
+
+RAMTYPE.SYS -AST RAMpage! ªO
+----------------------------
+RAMTYPE.SYS ÅX°Êµ{¦¡©M Windows ¤£¬Û®e¡C§Ú­Ì«ØÄ³±z¦b³]©w Windows 3.1 ª©¤§«e
+²¾°£³o­ÓÅX°Êµ{¦¡¡C¦pªG±z±q CONFIG.SYS ÀÉ®×¸ü¤J³o­ÓÅX°Êµ{¦¡¡A½Ð¨Ì·Ó¤U¦C¤è¦¡
+§âÅX°Êµ{¦¡ªº«ü¥O¦æÅÜ¬°µù¸Ñ¡G
+
+        rem RAMTYPE.SYS
+
+¨S¦³ RAMTYPE.SYS ®É¡AWindows 3.1 ª©¥i¥H¥¿½T°õ¦æ¡C¤£¹L¡A¨ä¥L¨Ì¿à RAMTYPE.SYS
+ªºÅX°Êµ{¦¡´N¤£·|¸ü¤J¡A¦Ó¥BÀ³¥Îµ{¦¡¤]µLªk¨Ï¥Î¨t²Î¤Wªº expanded °O¾ÐÅé¡C
+
+¦b Windows ³]©w§¹¦¨¥H«á¡A±z´N¥i¥H°õ¦æ 1.2 ª©©Î§ó·sª©ªº RAMTYPE.SYS ¨Ó°t¦X
+Windows ¨Ï¥Î¡C¦pªG±z¦b IBM PS/2 ©Î·L³q¹D¬[ºcªº¹q¸£¤W¨Ï¥Î¦­´Áªºª©¥»¡A¦Ó¥B
+RAMpage! ªO°t¸m¬°¨ã¦³ expanded ©M extended °O¾ÐÅé¡A¨º»ò±z´N»Ý­n¦b Windows
+³]©w§¹¦¨¤§«á¡A§â AST RAMTYPE.SYS ÅX°Êµ{¦¡¤É¯Å¡C¦P®É¡A±z¤]¥²¶·§R°£
+CONFIG.SYS ÀÉ®×¸Ìªº"rem" «ü¥O¡A¨Ï RAMTYPE.SYS ¥i¥H¥¿±`¸ü¤J¡C
+
+Secretdisk II ºÏºÐ§Ö³t¦s¨úµ{¦¡ (FAST512.SYS)
+--------------------------------------------
+³o­ÓºÏºÐ§Ö¨úµ{¦¡µLªk©M SMARTDrive ¤@°_¨Ï¥Î¡C§Ú­Ì«ØÄ³±z¨Ï¥Î Windows 3.1 ª©
+´£¨Ñªº SMARTDrive¡AµM«á§R°£ CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×¤º©Ò¦³·|°õ¦æ
+¨ä¥LºÏºÐ§Ö³t¦s¨úµ{¦¡ªº«ü¥O¦æ¡C(¦pªG°»´ú¥X³o­Ó¤½¥Îµ{¦¡¡A³]©wµ{¦¡·|§R°£
+CONFIG.SYS ÀÉ®×¸Ì³o­Óµ{¦¡ªº«ü¥O¦æ¡C)
+
+SideKick 1.0 ª©©M 2.0 ª©¥H¤Î SideKick Plus
+------------------------------------------
+·í±z¦b Windows 3.1 ª©©³¤U§â SideKick ·í§@ TSR °õ¦æ®É¡A¥i¯à·|µo¥Í¦UºØ°ÝÃD¡C
+§Ú­Ì«ØÄ³±z¨Ï¥Î PIF §â SideKick ·í¦¨¤@­Ó«D Windows À³¥Îµ{¦¡°õ¦æ¡A¦Ó¤£­n§â¥¦
+·í§@ TSR ¸ü¤J¡C
+
+SoftIce °£¿ùµ{¦¡
+----------------
+¦pªG¤w¸g¸ü¤J SoftIce¡A³]©wµ{¦¡±NµLªk±Ò°Ê Windows ªº³¡¤À¡C§Ú­Ì«ØÄ³±z¦b³]©w
+Windows 3.1 ª©¤§«e¥ý¨ø°£ SoftIce¡C
+
+SpeedFXR
+--------
+¦pªG³o­Óµ{¦¡·í§@ TSR °õ¦æ¡A¥¦©M Windows 3.1 ª©¤£¬Û®e¡CSpeedFXR ¹Á¸Õ¥[§Ö³n¦¡
+ºÏºÐ¾÷ªº³t«×¡A¦ý¬O«o·|¦b³oºØª¬ªp¤U²£¥Í¤Ï®ÄªG¡A¦ÓÅý³t«×ÅÜºC¡C­Y­nÀò±o³Ì¨Î
+µ²ªG¡A½Ð¦b¸ü¤J SpeedFXR ®É¨Ï¥Î -X ¿ï¶µ¡C¦p¦¹¡ASpeedFXR ¤~¤£·|¯d¦b°O¾ÐÅé¤º¡A
+¼vÅT¤F³n¦¡ºÏºÐ¾÷ªº³t«×¡C
+
+SUBST (MS-DOS)
+--------------
+¦b°õ¦æ Windows 3.1 ª©®É¡A½Ð¤£­n·s¼W©Î§R°£¡u¨ú¥Nªº¡v(substituted) ºÏºÐ¾÷¡C
+¦pªG¦b±Ò°Ê Windows ¤§«e¨Ï¥Î SUBST «ü¥O¡A¦Ó¥B¤£¦b Windows ªº MS-DOS ¼Ò¦¡¤U
+§ïÅÜ¨ú¥NªººÏºÐ¾÷ªºª¬ºA¡AWindows 3.1 ª©´N¥i¥H¥¿±`¹B§@¡C
+
+Super PC-Kwik ºÏºÐ§Ö³t¦s¨úµ{¦¡ (SUPERPCK.EXE)
+---------------------------------------------
+½Ð¤£­n¦P®É¨Ï¥Î³o­ÓºÏºÐ§Ö³t¦s¨úµ{¦¡©M SMARTDrive¡A¦]¬°¨S¦³²z¥Ñ¦b°õ¦æ Windows
+®É¨Ï¥Î¨â­ÓºÏºÐ§Ö³t¦s¨úµ{¦¡¡C§Ú­Ì«ØÄ³±z¨Ï¥Î©M Windows 3.1 ª©¤@°_¦w¸Ëªº
+SMARTDrive µ{¦¡¡C
+
+Trantor T100 ¥D°t±µ¾¹ÅX°Êµ{¦¡ (TSCSI.SYS)
+-----------------------------------------
+(SCSI µwºÐ¾÷) - ¦pªG±z¨Ï¥Î Trantor T100 ÅX°Êµ{¦¡ (TSCSI.SYS)¡A½Ð¨Ï¥Î 4.33d
+©Î§ó°ªªºª©¥»¡C¦­´Áªºª©¥»·|§â SCSI µwºÐ¾÷»{©w¬°©â´«¦¡ºÏºÐ¾÷¡C³o¼Ë¦b¨Ï¥ÎÀÉ®×
+ºÞ²z­û®É¥i¯à·|µo¥Í°ÝÃD¡C¨Ò¦p¦b®æ¦¡¤ÆºÏºÐ¾÷®É¨t²Î·|·í¾÷¡A©Î¬O¦b§R°£ÀÉ®×®É·|
+²£¥ÍµLªk¹wª¾ªºµ²ªG¡C¦p»Ý§ó·sª©ªºÅX°Êµ{¦¡¡A½Ð¬¢¸ß Trantor Systems ¤½¥q¡C
+
+UMB PRO 1.07 ª©
+---------------
+¦pªG UMB PRO ¥¿¦b°õ¦æ¡A±z¥i¯à·|¦b°õ¦æ Windows ªº¼Ð·Ç¼Ò¦¡®É¹J¨ì°ÝÃD¡C¦b¬Y¨Ç
+±¡ªp¤U¡A¨t²Î·|·í¾÷¡C½Ð½T©w Windows 3.1 ª©¥u¨Ï¥Î¤@­Ó°O¾ÐÅéºÞ²z­û¡C§Ú­Ì«ØÄ³
+±z§ï¥Î©M Windows 3.1 ª©¤@°_¦w¸Ëªº HIMEM.SYS ©M EMM386.EXE ¨ÓºÞ²z°O¾ÐÅé¡C
+
+Vaccine
+-------
+¦pªG¤w¸g¸ü¤J Vaccine¡A³]©wµ{¦¡µLªk­×§ï CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×¡C±z
+À³¸Ó¦b³]©w Windows 3.1 ª©¤§«e¥ý¨ø°£ Vaccine¡C¦¹¥~¡A¦pªG¦b¸ü¤J Vaccine ®É
+°õ¦æ Windows¡A¤]·|µo¥Í¹q¸£µo¥X¹ÍÁn¤§Ãþªº°ÝÃD¡C
+
+VIREX-PC 1.11 ª©
+----------------
+¦pªG¤w¸g¸ü¤J VIREXPC.COM¡AWindows ³]©wµ{¦¡©M Windows 3.1 ª©¦b KRNL386.EXE
+°õ¦æ¼g¤J°Ê§@®É·|¥¢±Ñ¡C¦P®É¡A¦b²Ä¤@¦¸¸ü¤J Windows 3.1 ª©®É¥i¯à·|¦^¨ì MS-DOS
+¼Ò¦¡¡C
+
+Virus Prevention Plus 5.0 ª©
+----------------------------
+¦pªG¤w¸g¸ü¤J Virus Prevention Plus 5.0 ª©¡AWindows 3.1 ª©¥i¯àµLªk¦w¸Ë¦¨¥\¡C
+¦P®É¦b¥H 386 ¼W±j¼Ò¦¡°õ¦æ Windows 3.1 ª©®É¡A¤]¥i¯àµo¥Í°ÝÃD¡CÁä½LÂê©wµ{¦¡
+¥i¯à·|¾É­P Windows µLªk¦¨¥\¦a°õ¦æ¡C
+
+Virusafe 4.0 ª©
+---------------
+¦pªG³o­Óµ{¦¡·í§@ TSR ¸ü¤J¡A³]©wµ{¦¡¦b³]©w Windows 3.1 ª©®É¥i¯à·|¥¢±Ñ¡C§Ú­Ì
+«ØÄ³±z¨Ï¥Î/C-¿ï¶µ¸ü¤J Virusafe¡C³o­Ó¿ï¶µ·|Ãö±¼ Virusafe ´£¨Ñªº°O¾ÐÅéÅÜ§ó
+°»´ú¥\¯à¡C4.5ª©·|§ï¥¿³o­Ó°ÝÃD¡C¦p»Ý§ó¦h¸ê®Æ¡A½Ð°Ñ¾\ Virusafe ¤å¥ó¡C
+
+XGAAIDOS.SYS
+------------
+¦pªG¸ü¤J XGAAIDOS.SYS¡A¨º»ò·í±z¨Ï¥Î WIN /s ¿ï¶µ¥H¼Ð·Ç¼Ò¦¡±Ò°Ê Windows 3.1
+ª©¡A¦bÅã¥Ü¶}ÀYµe­±®É¡AWindows ´N·|·í±¼¡C
+
+XMAEM.SYS
+---------
+XMAEM.SYS ¬O¤@­Ó¨Ï extended °O¾ÐÅé¥i¥H¼ÒÀÀ XMA ¥\¯àªº¸Ë¸m¡C³o­Ó¤½¥Îµ{¦¡©M
+Windows 3.1 ª©¤£¬Û®e¡C§Ú­Ì«ØÄ³±z¦b³]©w©Î°õ¦æ Windows 3.1 ª©¤§«e¡A¥ý§R°£
+CONFIG.SYS ©M AUTOEXEC.BAT ÀÉ®×¸Ì©Ò¦³¥Î¨ì XMAEM.SYS ªº¦a¤è¡CXMAEM.SYS ¬O
+IBM DOS 4.0 ª©©Ò´£¨Ñªº¡C
+
+XMA2EMS.SYS
+-----------
+¦pªG¦b¸Ë¦³ XMA ªOªº¹q¸£¤W¸ü¤J XMA2EMS.SYS¡AWindows ¥i¥H¥¿½T¦a°õ¦æ¡C§_«h¡A
+³o­Óµ{¦¡©M Windows ¤£¬Û®e¡CXMA2EMS.SYS ¬O IBM DOS 4.0 ª©©Ò´£¨Ñªº¡C
+
+

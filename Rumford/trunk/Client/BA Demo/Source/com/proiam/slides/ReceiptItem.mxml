@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="240" height="80" 
+	backgroundImage="@Embed(source='embedded/ReceiptItem.png')" backgroundSize="100%" xmlns:slides="com.proiam.slides.*">
+	
+	<mx:Script>
+		<![CDATA[
+			import com.proiam.mails.ItemData;
+			[Bindable]
+			public var title:String="Item";
+			[Bindable]
+			public var price:String="$0.00";
+			[Bindable]
+			public var totalPrice:String="$0.00";
+			[Bindable]
+			public var totalPriceValue:Number=0;
+			[Bindable]
+			public var items:Array=null;
+			[Bindable]
+			public var destination:String="";
+
+			public var itemData:ItemData=null;
+			public var tariffData:String="";
+			public var validDestAddress:Boolean=true
+			public var validOriginAddress:Boolean=true;
+			public var itemImageSource:Object=null;
+			
+			private function itemSelected(event:Event):void {
+				
+			}
+			private function itemDeSelected(event:Event):void {
+				
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:states>
+		<mx:State name="selected" enterState="itemSelected(event)" exitState="itemDeSelected(event)">
+			<mx:SetStyle name="backgroundImage"/>
+			<mx:SetProperty name="height" value="{itemList.items==null?80:itemList.items.length*15+66}"/>
+			<mx:SetStyle target="{label1}" name="verticalCenter" value="{itemList.items==null?0:''}"/>
+			<mx:SetStyle target="{label1}" name="top" value="{itemList.items==null?'':6}"/>
+			<mx:SetStyle target="{label2}" name="verticalCenter" value="{itemList.items==null?0:''}"/>
+			<mx:SetStyle target="{label2}" name="bottom" value="{itemList.items==null?'':6}"/>
+			<mx:AddChild position="lastChild">
+				<slides:SelectedList id="itemList" x="10" width="220" top="30" bottom="30" items="{items}"
+					fontFamily="Tahoma" fontSize="12" color="#346D88" fontWeight="bold"	verticalScrollPolicy="off" horizontalScrollPolicy="off" />
+			</mx:AddChild>
+			<mx:AddChild position="lastChild">
+				<mx:Label text="{price}" width="210" fontFamily="Tahoma" fontSize="14" fontWeight="bold" right="10" textAlign="right" color="#346D88" id="label0" height="23" top="6" visible="{itemList.items!=null}"/>
+			</mx:AddChild>
+			<mx:SetStyle name="backgroundColor" value="#FFFFFF"/>
+			<mx:SetStyle name="borderStyle" value="solid"/>
+			<mx:SetStyle name="borderColor" value="#FFFFFF"/>
+			<mx:SetStyle name="cornerRadius" value="15"/>
+			<mx:SetProperty target="{label3}" name="visible" value="false"/>
+		</mx:State>
+	</mx:states>
+	<mx:Label text="{title}" verticalCenter="0" left="10" width="210" fontFamily="Tahoma" fontSize="14" fontWeight="bold" color="#346D88" id="label1"/>
+	<mx:Label text="{totalPrice}" verticalCenter="0" width="210" fontFamily="Tahoma" fontSize="14" fontWeight="bold" right="10" textAlign="right" color="#346D88" id="label2"/>
+	<mx:Label text="{destination}" verticalCenter="20" left="10" width="210" fontFamily="Tahoma" fontSize="14" fontWeight="bold" color="#346D88" id="label3"/>
+</mx:Canvas>

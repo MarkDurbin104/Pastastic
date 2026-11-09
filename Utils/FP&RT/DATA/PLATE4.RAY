@@ -1,0 +1,216 @@
+{   ษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+    บ                                                               บ
+    บ             Picture of spheres and a brick wall               บ
+    บ                                                               บ
+    บ                By Roger T. Stevens - 12/31/89                 บ
+    บ                                                               บ
+    ศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+}
+
+FILE_NAME = WSphere.RAW
+
+{  PATTERNS USED}
+
+PATTERN ( x_size = 60,                 { CHECKERED GROUND }
+          y_size = 60,
+          name   = CHECK,
+          RECTANGLE (
+            start_x = 0,
+            start_y = 0,
+            end_x   = 40,
+            end_y   = 40,
+            diff    = (.1,1.0,.4),
+            dither  = 0,
+          )
+          RECTANGLE (
+            start_x = 40,
+            start_y = 40,
+            end_x   = 80,
+            end_y   = 80,
+            diff    = (.1,1.0,.1),
+            dither  = 0,
+          )
+        )
+PATTERN ( x_size = 80,                    { PATTERN FOR BRICKS }
+          y_size = 50,
+          name   = BRICK,
+          RECTANGLE (                     { 1st half brick 1 }
+            start_x = 0, start_y = 2,
+            end_x   = 18, end_y   = 23,
+            diff    = (1.00, .20, .20);
+            dither  = 0,
+          )
+          RECTANGLE (                     { 2nd half brick 1 }
+            start_x = 62, start_y = 2,
+            end_x   = 80, end_y   = 23,
+            diff    = (1.00, .24, .20);
+            dither  = 2,
+          )
+          RECTANGLE (                     { brick 2 }
+            start_x = 22, start_y = 2,
+            end_x   = 58, end_y   = 23,
+            diff    = (.80, .20, .20);
+            dither  = 0,
+          )
+          RECTANGLE (                     { brick 3 }
+            start_x = 2, start_y = 27,
+            end_x   = 38, end_y   = 48,
+            diff    = (.85, .35, .10);
+            dither  = 0,
+          )
+          RECTANGLE (                     { brick 4 }
+            start_x = 42, start_y = 27,
+            end_x   = 78, end_y   = 48,
+            diff    = (.70, .25, .20);
+            dither  = 0,
+          )
+        )
+{ *********************  OBJECTS  ********************* }
+{ ** ground ** }
+PARALLELOGRAM ( loc  = (  -10000, 0,  -10000),
+                v1   = (20000, 0,    0),
+                v2   = (  0, 0, 20000),
+                diff = (  .8, .8, 0),
+                dither  = 0,
+                pattern = CHECK
+                xmult = 2
+                ymult = 2
+              )
+
+BEGIN_BBOX
+    BEGIN_BBOX
+        SPHERE ( loc = (210, 55, -80),
+                 radius = 40,
+                 diff = (.5, .3, .5),
+                 xmult   = 1.5,
+                 ymult   = 1.5
+				 mirror = (.9, .9, .9)
+               )
+        QUADRATIC ( loc = (210, 0, -80),
+                    a    = 1,
+                    b    = 0,
+                    c    = 1,
+                    d    = 150,
+                    xmin = -13,
+                    xmax = 13,
+                    ymin = 0,
+                    ymax = 50,
+                    zmin = -13,
+                    zmax = 13,
+                    diff = (.1, .1, .1),
+                    mirror = (.8, .8, .8)
+	)
+    END_BBOX
+
+    BEGIN_BBOX
+        SPHERE ( loc      = (200, 90, 70),
+                 radius   = 35,
+                 diff     = (.3, .5, .9),
+                 amb      = (.32, .32, .32),
+                 reflect  = .60
+                 sreflect = 20
+                 xmult   = 1.0,
+                 ymult   = 1.0
+               )
+        QUADRATIC ( loc = (200, 0, 70),
+                    a    = 1,
+                    b    = 0,
+                    c    = 1,
+                    d    = 150,
+                    xmin = -13,
+                    xmax = 13,
+                    ymin = 0,
+                    ymax = 90,
+                    zmin = -13,
+                    zmax = 13,
+                    diff = (.1, .1, .1),
+                    mirror = (.8, .8, .8)
+                  )
+    END_BBOX
+END_BBOX
+
+BEGIN_BBOX
+    { ** a small brick wall ** }
+    PARALLELOGRAM ( loc = (150, 00, -15),
+                    v1  = (0, 0, 30),
+                    v2  = (0, 60, 0)
+                    diff = (1, 1, 1),
+                    pattern = BRICK
+                    xmult = .5,
+                    ymult = .5
+                  )
+    PARALLELOGRAM ( loc = (150, 00, -15),
+                    v1  = (150, 0, 0),
+                    v2  = (0, 60, 0)
+                    diff = (1, 1, 1),
+                    pattern = BRICK
+                    xmult = .5,
+                    ymult = .5
+                  )
+    PARALLELOGRAM ( loc = (150, 00, 15),
+                    v1  = (150, 0, 0),
+                    v2  = (0, 60, 0)
+                    diff = (1, 1, 1),
+                    pattern = BRICK
+                    xmult = .5,
+                    ymult = .5
+                  )
+   PARALLELOGRAM ( loc = (150, 60, -15),
+                    v1  = (0, 0, 30),
+                    v2  = (150, 0, 0)
+                    diff = (1, 1, 1),
+                    pattern = BRICK
+                    xmult = .5,
+                    ymult = .5
+                  )
+END_BBOX
+
+BEGIN_BBOX
+
+    PARALLELOGRAM ( loc = (200, 60, -15),
+                    v1  = (0, 0, 30),
+                    v2  = (0, 60, 0)
+                    diff = (1, 1, 1),
+                    pattern = BRICK
+                    xmult = .5,
+                    ymult = .5
+                  )
+    PARALLELOGRAM ( loc = (200, 60, -15),
+                    v1  = (50, 0, 0),
+                    v2  = (0, 60, 0)
+                    diff = (1, 1, 1),
+                    pattern = BRICK
+                    xmult = .5,
+                    ymult = .5
+                  )
+    PARALLELOGRAM ( loc = (200, 60, 15),
+                    v1  = (50, 0, 0),
+                    v2  = (0, 60, 0)
+                    diff = (1, 1, 1),
+                    pattern = BRICK
+                    xmult = .5,
+                    ymult = .5
+                  )
+END_BBOX
+
+{ ** An observer ** }
+OBSERVER ( loc    = (-20 , 70, -40),
+           lookat = (200, 50, 0)
+         )
+{ ** A lamp ** }
+LAMP ( loc = (120, 120, -50),
+       radius = 5,
+       dist = 80
+     )
+LAMP ( loc = (120, 150, 80),
+       radius = 5,
+       dist = 70
+     )
+SKY  ( horiz  = (0, .4, .6),
+       zenith = (0, .4, .6),
+       dither = 1
+     )
+XRES = 320
+YRES = 200
+
+FOC_LENGTH = 80

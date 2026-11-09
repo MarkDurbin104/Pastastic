@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%"
+	creationComplete="dg.dataProvider=hints">
+	
+	<mx:Script>
+		<![CDATA[
+			
+			private var hints = 
+			[
+			{name: "CREATE TABLE", syntax:
+				"CREATE TABLE EMPLOYEE\n" +
+				"    (EMPLOYEE_ID INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+				"    FIRST_NAME VARCHAR(30),\n" +
+				"    LAST_NAME VARCHAR(30))"},
+			{name: "INSERT", syntax:
+				'INSERT INTO EMPLOYEE\n' + 
+				'	  (FIRST_NAME, LAST_NAME)\n' +
+				'  VALUES\n' +
+				'     ("John", "Smith")'},
+			{name: "SELECT", syntax:
+				'SELECT * FROM EMPLOYEE'},
+			{name: "UPDATE", syntax:
+				'UPDATE EMPLOYEE\n' + 
+				'	  SET FIRST_NAME="Jane", LAST_NAME="Doe"\n' +
+				'  WHERE EMPLOYEE_ID=1'},
+			{name: "DELETE", syntax:
+				'DELETE FROM EMPLOYEE WHERE EMPLOYEE_ID=1'},
+			{name: "DROP TABLE", syntax:
+				'DROP TABLE EMPLOYEE'}
+			];
+			
+		]]>
+	</mx:Script>
+	
+	<mx:DataGrid id="dg" width="100%" height="100%" dragEnabled="true">
+		<mx:columns>
+			<mx:DataGridColumn dataField="name" headerText="Statements"/>
+		</mx:columns>
+	</mx:DataGrid>
+	
+</mx:Canvas>

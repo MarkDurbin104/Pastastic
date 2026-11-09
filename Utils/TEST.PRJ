@@ -1,0 +1,26 @@
+PROJECT
+	E:\SRC\DOCU2\INTERP.C
+		add_call
+		add_dtype
+		append_dtype
+		check_line
+		emptyds
+		extract_tokens
+		find_dtype
+		FuncCode
+		FuncNames
+		genoutput
+		getfblk
+		LibMain
+		loadfile
+		parse_directive
+		PasToCStr
+		rem_dtype
+		ret_dname
+		save_line
+		setup
+		WEP
+	E:\SRC\REGION.C
+		main
+	E:\SRC\TMP.C
+		main

@@ -1,0 +1,200 @@
+      1090    1009503 BFTNIKI1             PC                                   
+         1009495     1009505            BFT 1                    2         77   
+         1995                                                                   
+CONNECT BFT                                                                     
+                                                                                
+                                                                                
+         0    1009360 BFTPAUL1             EX            1009346                
+                                1009377 BFT 4                Y   2        117   
+         1995                                                                   
+SECTION 1 FOR PAUL                                                              
+                                                                                
+                                                                                
+         0    1009394 BFT3                 EX                                   
+
+                     1009403    1009405 BFT 7                    2         85   
+         1995                                                                   
+EMPTY BFT                                                                       
+                                                                                
+                                                                                
+         0    1009361 BFTPAUL1             EX                                   
+         1009345     1009377            BFT 4 PVC MK 2 5/3.5   Y 2         85   
+         1995                                                                   
+2ND SECTION                                                                     
+                                                                                
+                                                                                
+         0    1009431 BFTNIKI1             PA            1009423                
+         1009424                        BFT 1                    2         73   
+
+         1995                                                                   
+CONNECT                                                                         
+           -1090                                                                
+                                                                                
+      1090    1009431 BFTNIKI1             PA            1009423                
+         1009424                        BFT 1                    2         73   
+         1995                                                                   
+CONNECT                                                                         
+                                                                                
+                                                                                
+         0    1009437 BFT5                 EX            1009346                
+                                1009439 BFT 7 PE MK 1 8/6    Y   2        117   
+         1995                                                                   
+
+FOR SPLIT                                                                       
+                                                                                
+                                                                                
+         0    1009503 BFTNIKI1             EX            1009494                
+         1009495                        BFT 1                    2         77   
+         1995                                                                   
+CONNECT BFT                                                                     
+            1090                                                                
+                                                                                
+         0    1009438 BFT5                 EX                                   
+         1009345     1009439            BFT 7 PE MK 1 8/6      Y 2         85   
+         1995                                                                   
+FOR SPLIT                                                                       
+
+                                                                                
+                                                                                
+         0    1009534 BFTNIKI2             PA            1009331                
+         1009507                        BFT 2                  Y 2         94   
+         1995                                                                   
+CONNECT 3                                                                       
+           -1096                                                                
+                                                                                
+      1096    1009534 BFTNIKI2             PA            1009417                
+                                1009535 BFT 2                Y   2         94   
+         1995                                                                   
+CONNECT 3                                                                       
+                                                                                
+
+                                                                                
+         0    1009574 BFT6                 PA            1009566                
+         1009346                        BFT 7 PVC MK 2 5/3.5 Y Y 2        242   
+         1995                                                                   
+DFGHDFGHDFGH                                                                    
+           -1098                                                                
+                                                                                
+      1098    1009574 BFT6                 PA            1009566                
+         1009346                        BFT 7 PVC MK 2 5/3.5 Y Y 2        242   
+         1995                                                                   
+DFGHDFGHDFGH                                                                    
+                                                                                
+                                                                                
+
+      1090    1009767 BFTNIKI1             PC            1009589                
+         1009590                        BFT 1                Y Y          101   
+         1995                                                                   
+2.47                                                                            
+                                                                                
+                                                                                
+         0    1009767 BFTNIKI1             EX            1009589                
+         1009590                        BFT 1                Y Y 2        101   
+         1995                                                                   
+2.47                                                                            
+            1090                                                                
+                                                                                
+         0    1009940 BFTNIKI              PA                                   
+
+                     1009938    1009939 BFT 2                Y Y 2         68   
+         1995                                                                   
+DISCONNECT                                                                      
+           -1105                                                                
+                                                                                
+      1105    1009940 BFTNIKI              PA                                   
+                     1009938    1009939 BFT 2                Y Y 2         68   
+         1995                                                                   
+DISCONNECT                                                                      
+                                                                                
+                                                                                
+         0    1009943 BFTNIKI              PA            1009591                
+         1009933                        BFT 4 PVC MK 1 8/6   Y Y 2         68   
+
+         1995                                                                   
+FIBRE                                                                           
+           -1105                                                                
+                                                                                
+      1105    1009943 BFTNIKI              PA            1009591                
+         1009933                        BFT 4 PVC MK 1 8/6   Y Y 2         68   
+         1995                                                                   
+FIBRE                                                                           
+                                                                                
+                                                                                
+         0    1009966 BFTNIKI2             PA            1009954                
+         1009955                        BFT 2                Y Y 2         70   
+         1995                                                                   
+
+FIOBRE                                                                          
+           -1105                                                                
+                                                                                
+      1105    1009966 BFTNIKI2             PA            1009954                
+         1009955                        BFT 2                Y Y 2         70   
+         1995                                                                   
+FIOBRE                                                                          
+                                                                                
+                                                                                
+         0    1016210 BFT3010              PA            1016202                
+         1000515                        BFT 4                    2         52   
+         1995                                                                   
+XX                                                                              
+
+           -1136                                                                
+                                                                                
+      1136    1016210 BFT3010              PA            1016202                
+         1000515                        BFT 4                    2         52   
+         1995                                                                   
+XX                                                                              
+                                                                                
+                                                                                
+         0    1016215 BFT302               PA            1016202                
+         1000515                        BFT 4                    2         52   
+         1995                                                                   
+X                                                                               
+           -1136                                                                
+
+                                                                                
+      1136    1016215 BFT302               PA            1016202                
+         1000515                        BFT 4                    2         52   
+         1995                                                                   
+X                                                                               
+                                                                                
+                                                                                
+         0    1016278 BFT AAA              PA            1016202                
+         1000515                        BFT 7 PE MK 2 5/3.5      2         52   
+         1995                                                                   
+NOTE: BFT SECTION                                                               
+           -1137                                                                
+                                                                                
+
+      1137    1016278 BFT AAA              PA            1016202                
+         1000515                        BFT 7 PE MK 2 5/3.5      2         52   
+         1995                                                                   
+NOTE: BFT SECTION                                                               
+                                                                                
+                                                                                
+         0    1016283 BFT BBB              PA            1016202                
+         1000515                        BFT 4 PE MK 2 5/3.5      2         52   
+         1995                                                                   
+BBB                                                                             
+           -1137                                                                
+                                                                                
+      1137    1016283 BFT BBB              PA            1016202                
+
+         1000515                        BFT 4 PE MK 2 5/3.5      2         52   
+         1995                                                                   
+BBB                                                                             
+                                                                                
+                                                                                
+         0    1016308 CCC                  PA            1016202                
+         1000515                        BFT 4 PVC MK 1 8/6       2         52   
+         1995                                                                   
+CCC                                                                             
+           -1137                                                                
+                                                                                
+      1137    1016308 CCC                  PA            1016202                
+         1000515                        BFT 4 PVC MK 1 8/6       2         52   
+
+         1995                                                                   
+CCC                                                                             
+                                                                                
+                                                                                

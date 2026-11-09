@@ -1,0 +1,98 @@
+.SILENT
+.AUTODEPEND
+.PRECIOUS:    GPA.LIB
+
+#COMPRESS      = PKLITE $*
+COMPRESS      = 
+MODEL         = l
+LINKPARMS     = -L\BC\LIB /c/m/s
+NORMLIBS      = EMU+MATH$(MODEL)+C$(MODEL)
+GPALIBS       = NOEHL+GPA+$(NORMLIBS)
+TEMPFILE      = TEMPFILE.GPA
+
+# GOBJS         = GPRIM.OBJ \bc\lib\compat\setjmp.obj
+GOBJS         = GPRIM.OBJ
+OBJS          = GPAMAIN.OBJ
+INCS          = INSTRUCT.H KEYNAMES.H KEYDEF.H SCANCODE.H
+BOTH1         = CONFIG,CONTROL,MEMORY,EXTMEM,FUNCTION,DST,MONEY,ARITH,
+BOTH2         = GLOBAL,ACTIONS,LANG,MESSAGE,CALC,TRANSLOG,FORMHAND,
+BOTH3         = FORMPROC,MENUPROC,TABPROC,FLDPROC,REPPROC,
+DEVS          = KBD,VFON,DISK,PRN,PDX, #HERC,SCALE,NET,MOUSE,8255,COMM,STAMP,
+
+BOTHDEPS      = $(BOTH1) $(BOTH2) $(BOTH3)
+LIBDEPS       = $(OBJS) $(BOTHDEPS:,=.OBJ )
+INCDEPS       = $(INCS) $(BOTHDEPS:,=.H )   $(DEVS:,=DEV.H )
+
+.C.OBJ:
+	      BCC -c -m$(MODEL){ $< }
+
+ALL:          BGPAHEAD.EXE    \
+ 	      BLIBLIST.EXE    \
+              GPA.H           \
+              GPA.EXE         \
+#              FEX.EXE         \
+#              FIN.EXE         \
+#              FR.EXE          \
+              PP.EXE         
+
+BGPAHEAD.EXE: BGPAHEAD.OBJ
+	      TLINK $(LINKPARMS) @&&!
+	      c0$(MODEL) $*
+	      $*
+	      $*
+	      $(NORMLIBS)
+!
+
+BLIBLIST.EXE: BLIBLIST.OBJ
+	      TLINK $(LINKPARMS) @&&!
+	      c0$(MODEL) $*
+	      $*
+	      $*
+	      $(NORMLIBS)
+!
+
+GPA.H:        $(INCDEPS) BGPAHEAD.EXE TYPES.H
+	      BGPAHEAD GPA.H <<! 
+$** 
+!
+
+GPA.EXE:      GPA.H GPA.OBJ GPA.LIB $(DEVS:,=DEV.OBJ ) $(GOBJS)
+	      TLINK $(LINKPARMS) @&&!
+	      c0$(MODEL) $* $(DEVS:,=DEV.OBJ ) $(GOBJS),$*,$*,$(GPALIBS)+PXENGTCL
+!
+	      $(COMPRESS)
+
+PP.EXE:       PP.OBJ GPA.OBJ GPA.LIB
+	      TLINK $(LINKPARMS) @&&!
+	      c0$(MODEL) $* GPA,$*,$*,$(GPALIBS)
+!
+	      $(COMPRESS)
+
+FR.EXE:       FR.OBJ GPA.OBJ GPA.LIB
+	      TLINK $(LINKPARMS) @&&!
+	      c0$(MODEL) $* GPA,$*,$*,$(GPALIBS)
+!
+	      $(COMPRESS)
+FEX.EXE:      FEX.OBJ GPA.OBJ GPA.LIB
+	      TLINK $(LINKPARMS) @&&!
+	      c0$(MODEL) $* GPA,$*,$*,$(GPALIBS)
+!
+	      $(COMPRESS)
+FIN.EXE:      FIN.OBJ GPA.OBJ GPA.LIB
+	      TLINK $(LINKPARMS) @&&!
+	      c0$(MODEL) $* GPA,$*,$*,$(GPALIBS)
+!
+	      $(COMPRESS)
+
+GPAR.EXE:     GPAR.OBJ GPA.OBJ GPA.LIB
+	      TLINK $(LINKPARMS) @&&!
+	      c0$(MODEL) $* GPA,$*,$*,$(GPALIBS)+PXENGTCL
+!
+	      $(COMPRESS)
+
+GPA.LIB:      $(LIBDEPS)
+	      BLIBLIST $(TEMPFILE) $*.LIB <<! 
+	      $? 
+!
+              TLIB /E $* @$(TEMPFILE)
+	      DEL $(TEMPFILE)

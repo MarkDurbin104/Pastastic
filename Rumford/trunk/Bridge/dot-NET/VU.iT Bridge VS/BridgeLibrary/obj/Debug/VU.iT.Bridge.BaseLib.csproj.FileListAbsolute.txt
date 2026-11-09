@@ -1,0 +1,5 @@
+C:\Proiam\Source\VU.iT Bridge\VU.iT Bridge VS\BridgeLibrary\bin\Debug\VU.iT.Bridge.BaseLib.dll
+C:\Proiam\Source\VU.iT Bridge\VU.iT Bridge VS\BridgeLibrary\bin\Debug\VU.iT.Bridge.BaseLib.pdb
+C:\Proiam\Source\VU.iT Bridge\VU.iT Bridge VS\BridgeLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Proiam\Source\VU.iT Bridge\VU.iT Bridge VS\BridgeLibrary\obj\Debug\VU.iT.Bridge.BaseLib.dll
+C:\Proiam\Source\VU.iT Bridge\VU.iT Bridge VS\BridgeLibrary\obj\Debug\VU.iT.Bridge.BaseLib.pdb

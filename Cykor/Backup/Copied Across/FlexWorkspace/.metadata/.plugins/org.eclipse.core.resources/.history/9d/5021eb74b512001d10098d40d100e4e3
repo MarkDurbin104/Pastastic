@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="130" height="103"
+	backgroundImage="@Embed(source='embedded/Button1.svg')" 
+	backgroundSize="100%"
+	creationComplete="createEffect(event);"
+	horizontalScrollPolicy="off" verticalScrollPolicy="off"
+	styleName="normalItem" xmlns:filters="flash.filters.*"> 
+	<mx:Script>
+        <![CDATA[
+        	import mx.effects.Fade;
+        	import com.proiam.mails.MailService;
+        
+            import flash.events.Event;
+            import mx.effects.Zoom;
+
+			public var service:MailService=null;
+            private var alphaFade:Fade=new Fade();
+        	private var _caption:String;
+        	private var _price:String;
+        	private var _hint:String;
+        	private var _iconSource:Object;
+            
+            [Bindable]
+            [Inspectable(defaultValue="")]
+            public function get caption():String
+            {
+            	return _caption;
+            }
+            public function set caption(value:String):void
+            {
+            	_caption=value;
+            }
+            [Bindable]
+            [Inspectable(defaultValue="")]
+            public function get price():String
+            {
+            	return _price;
+            }
+            public function set price(value:String):void
+            {
+            	_price=value;
+            }
+            [Bindable]
+            [Inspectable(defaultValue="")]
+            public function get hint():String
+            {
+            	return _hint;
+            }
+            public function set hint(value:String):void
+            {
+            	_hint=value;
+            }
+            [Bindable]
+            [Inspectable(defaultValue=null)]
+            public function get iconSource():Object
+            {
+            	return _iconSource;
+            }
+            public function set iconSource(value:Object):void
+            {
+            	_iconSource=value;
+            }
+        	public function fadeToAlpha(newAlpha:Number,duration:int=2000):void {
+        		if (alphaFade.isPlaying) alphaFade.end();
+                alphaFade.alphaFrom=alpha;
+                alphaFade.alphaTo=newAlpha;
+                alphaFade.duration=duration;
+                alphaFade.target=this;
+                alphaFade.play();
+        	}
+            private function createEffect(eventObj:Event):void {
+                // Define a new Zoom effect.
+                tick.visible=false;
+                var zoomOver:Zoom = new Zoom();
+                zoomOver.duration = 20; 
+                zoomOver.zoomHeightTo = 1.05; 
+                zoomOver.zoomWidthTo = 1.05; 
+                var zoomOut:Zoom = new Zoom();
+                zoomOut.duration =200; 
+                zoomOut.zoomHeightTo = 1; 
+                zoomOut.zoomWidthTo = 1; 
+                setStyle("rollOverEffect", zoomOver); 
+                setStyle("rollOutEffect", zoomOut); 
+			} 
+        ]]>
+    </mx:Script>
+	<mx:Image source="{iconSource}" left="10" top="10" width="85%" height="32" scaleContent="true" alpha="0.75"/>
+	<mx:Text text="{caption}" styleName="embVerdanaStyle" top="16" textAlign="right" left="10" width="110"/>	
+	<mx:Text text="{hint}" left="6" top="46" fontSize="8" styleName="embVerdanaNormalStyle" width="89%" fontFamily="Verdana" textAlign="left" color="#000000"/>
+	<mx:Text text="{price}" textAlign="right" styleName="embVerdanaStyle" color="#000000" left="9" width="115" top="74" height="23"/>
+	<mx:Image id="tick" left="10" source="@Embed(source='embedded/Tick.png')" scaleContent="true" top="77" height="16"/>
+	<mx:filters>
+		<filters:DropShadowFilter angle="45" alpha=".1" distance="4" blurX="0" blurY="0"/>
+	</mx:filters>
+	<mx:Text id="special" text="*BEST VALUE SERVICE* Next day for $1 more than Priority"  width="110" left="10" y="10" fontSize="8" fontWeight="bold" visible="false"/>	
+  
+</mx:Canvas>

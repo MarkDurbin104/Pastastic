@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!-- A wrapper state that contains all other states in this file
+- it represents the complete state machine -->
+<scxml 
+       version="1.0"
+       initalstate="Main">  
+  <state id="Main">
+    <!-- its initial state is Test1 -->
+    <initial>
+      <transition>
+        <target next="Test1"/>
+      </transition>
+    </initial>
+    <!-- Really simple state showing the basic syntax. -->
+    <state id="Test1">
+      <initial>
+        <transition>
+          <target next="Test1Sub1"/>
+        </transition>
+      </initial>
+      <!-- Runs before we go into the substate -->
+      <onentry> 
+        <log expr="'Inside Test1'"/>
+      </onentry>
+      <!-- Here is our first substate -->
+      <state id="Test1Sub1">
+        <onentry>
+          <log expr="'Inside Test1Sub1.'"/>
+        </onentry>
+        <onexit>
+          <log expr="'Leaving Test1Sub1'"/>
+        </onexit>
+        <!-- Go to Sub2 on Event1 -->
+        <transition event="Event1">
+          <target next="Test1Sub2"/>
+        </transition>
+      </state>
+      <!-- Here is the second substate 
+           -    It is final, so Test1 is done when we get here -->
+      <state id="Test1Sub2" final="true">
+        <onentry>
+          <log expr="'Inside Test1Sub2...'"/>
+        </onentry>
+        <onexit>
+          <log expr="'Leaving Test1Sub2'"/>
+        </onexit>
+      </state>
+      <!-- We get this event when we reach Test1Sub2. -->
+      <transition event="Test1.done">
+        <target next="Test2"/>
+      </transition>
+      <!-- We run this on the way out of Test1 -->
+      <onexit>
+        <log expr="'Leaving Test1...'"/>
+      </onexit>
+    </state>
+    <state id="Test2">
+      <initial>
+        <transition>
+          <target next="Test2Sub1"/>
+        </transition>
+      </initial>
+      <!-- This time we reference a state 
+           -    defined in an external file -->
+      <state id="Test2Sub1" src="Test2Sub1.scxml"/>
+      <!-- This time we reference a state 
+           -    defined in an external file and 
+           -    use the templating support to add
+           -    an onexit hander. -->
+      <state id="Test2Sub2" src="Template.scxml">
+        <onexit>
+          <log expr="'Leaving Substate Test2Sub2'"/>
+        </onexit>
+      </state>
+      <!-- Test2Sub2 is defined as final, so this
+           -  event is generated when we reach it -->
+      <transition event="Test2.done">
+        <target next="Test3"/>
+      </transition>
+    </state>
+    <state id="Test3">
+      <initial>
+        <transition>
+          <target next="Test3Sub1"/>
+        </transition>
+      </initial>
+      <state id="Test3Sub1">
+        <onentry>
+          <log expr="'Inside Test3Sub1...'"/>
+          <!-- Send our self an event in 5s -->
+          <send event="Timer"  delay="5s"/>
+        </onentry>
+        <transition event="Timer">
+          <!-- Transition on to Test4.
+               -    This will exit both us and our parent. -->
+          <target next="Test4"/>
+        </transition>
+        <onexit>
+          <log expr="'Leaving Test3Sub1...'"/>
+        </onexit>
+      </state>
+      <onexit>
+        <log expr="'Leaving Test3...'"/>
+      </onexit>
+    </state>
+    <state id="Test4">
+      <onentry>
+        <log expr="'Inside Test4...'"/>
+      </onentry>
+      <!-- Here we use the inline features of 
+           -    target to create our scratch state.-->
+      <initial>
+        <transition>
+          <target>
+            <state id="Test4Sub1" >
+              <onexit>
+                <log expr="'Leaving Test4Sub1...'"/>
+              </onexit>
+              <!-- This transition causes the state to exit immediately
+                   - after entering Test4Sub1.  The transition has no event or guard 
+                   - so it is always active -->
+              <transition>
+                <target next="Test5"/>
+              </transition>
+            </state>
+          </target>
+        </transition>
+      </initial>
+    </state>
+    <state id="Test5">
+      <onentry>
+        <log expr="'Inside Test5...'"/>
+      </onentry>
+      <initial>
+        <transition>
+          <target next="Test5P"/>
+        </transition>
+      </initial>
+      <!-- Fire off our parallel states -->
+      <parallel id="Test5P">
+        <state id="Test5PSub1" final="true">
+          <onentry>
+            <log expr="'Inside Test5PSub1...'"/>
+          </onentry>
+        </state>
+        <state id="Test5PSub2" final="true">
+          <onentry>
+            <log expr="'Inside Test5PSub2...'"/>
+          </onentry>
+        </state>
+        <onexit>
+          <log expr="'all parallel states done'"/>
+        </onexit>
+      </parallel>
+      <!-- The parallel states are all final, so this
+           -  event is generated immediately -->
+      <transition event="Test5P.done">
+        <target next="Test6"/>
+      </transition>
+    </state>
+    <!-- 
+         - This state shows invocation of external component
+         - We will use CCXML + VoiceXML actions as an example 
+         - as it is a good smoke test to show how it all 
+         - fits together. 
+         - Note: Odds are in a real app you would 
+         - split this over several states but we 
+         - are trying to keep it simple here. 
+    -->
+    <state id="Test6"
+           xmlns:ccxml="http://www.w3.org/2002/09/ccxml"
+           xmlns:v3="http://www.w3.org/2005/07/vxml3">
+      <onentry>
+        <!--
+            - Use <send> to run a createcall using the 
+            - CCXML component / Event I/O Processor
+        -->
+        <var name="dest" expr="'tel:+18315552020'"/>
+        <send targettype="ccxml" event="ccxml:createcall" namelist="dest"/>
+      </onentry>
+      <transition event="ccxml:connection.connected" name="evt">      
+        <!--
+            - Here we use example V3 
+            - Custom Action Elements instead of send . 
+        -->
+        <v3:form id="HelloWorld">
+          <v3:block><v3:prompt>Hello World!</v3:prompt></v3:block>          
+        </v3:form>
+      </transition>
+      <!--
+          - Here we are using the low level <send> 
+          - element to run a v3 form. Note that the event "v3:HelloWorld.done" 
+          is assumed either to be set/sent explicitly by the v3:form code or 
+          implicitly by some process outside of the v3:form
+      -->
+      <transition event="v3:HelloWorld.done" name="evt">
+        <var name="src" expr="'helloworld2.vxml'"/>
+        <var name="id" expr="'HelloWorld'"/>
+        <send targettype="v3" event="v3:formstart" namelist="src id"/>
+      </transition>
+      <transition event="v3:HelloWorld2.done" name="evt">
+        <ccxml:disconnect connectionid="evt.connectionid"/>      
+      </transition>
+      <transition event="ccxml:connection.disconnected">
+        <!--
+            - Here we are using the <exit/> shorthand to 
+            - move ourself to a final state.
+            - In this example you could do <target next="Done"/>
+            - and get the same result.
+        -->
+        <exit/>
+      </transition>
+      <!-- Transitions to handle events generated by the component
+           - component invoked successfully. this transition has no target 
+           - so Test6 is not exited.
+           - We are just going to log tha we were able to send an event. -->
+      <transition event="send.successful">
+        <log expr="'Event was able to be sent'"/>
+      </transition>
+      <!--
+          - If we get an error event we move to the Done state that 
+          - is a final state. 
+      -->
+      <transition event="error.send">
+        <log expr="'Sending to and External component failed'"/>
+        <target next="Done"/>
+      </transition>
+      <onexit>
+        <log expr="'Finished with external component'"/>
+      </onexit>
+    </state>
+    <!-- This final state is an immediate child of Main
+         -  when we get here, Main.done is generated. -->
+    <state id="Done" final="true"/>
+    <!-- End of Main > -->
+  </state>
+</scxml>

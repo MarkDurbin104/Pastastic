@@ -1,0 +1,30 @@
+Hi, Paul.
+
+This is COMPKEY.EXE V1.10ft.  ( Will this ever end ! )
+
+I converted all the code so that I could run it in 32 bit protected mode
+and after 2 hours of debugging, I may have found the problem.
+
+It would appear that under certain conditions, if you enter an invalid
+plu and press enter, 12 bytes at address 0000:0008 will be overwritten
+and bang go your interrupt vectors !
+
+The only reason this happens on your machine is due to a typo in the test
+script.  On the key before the "CANS" key, I should have put PLU 318 
+but I put in 3180 which doesn't exist - POP!
+
+None of my previous tests entered an invalid PLU.
+
+So the moral of this story is :-
+
+      People should NEVER enter invalid PLU's.
+
+
+
+I have included GENKEYS.EXE if you need to run it I will talk you through
+it's use.
+
+
+Regards,
+
+Mark.

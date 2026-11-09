@@ -1,0 +1,352 @@
+LAN Test Documentation                          UNISYS, 15 August 1991
+
+
+Contents                                                   Page
+--------                                                   ----
+
+1.     Functional Specification
+
+2.     Preliminary User Instructions and Procedures
+
+3.     Technical Specification
+
+4.     Design
+
+5.     Test Specification
+
+
+1.     Functional Specification
+
+1.1    Introduction - requirement
+
+1.1.1  The primary requirement of the LAN test is to confirm that all
+       elements of the ECCO+ office installation are functioning 
+       correctly with respect to the LAN capabilities of the system.
+       
+       If it is found that the LAN is not functioning correctly, then 
+       the secondary requirement of the LAN test is to determine which
+       element of the system is at fault.
+
+1.1.2  The LAN test will consist of a set of computer programs and 
+       operational procedures which will allow the testing of:
+       
+       a)  the LAN wiring (ie the LAN T-box, interconnecting cables and 
+           stub cables);
+       b)  the counter terminal (CT) and back office system (BOP) LAN 
+           hardware.
+       
+1.1.3  The programs and procedures will be simple and unambiguous so
+       that PO staff may carry out the tests without requiring extensive
+       computing experience.  In particular, the 'pass/fail' decision 
+       will not require a subjective judgement from the operator.
+
+1.1.4  Hardcopy confirmation of the result of the test will be provided
+       in the form of a printout from the CT printer.
+
+
+1.2    Background - LAN operation overview
+
+1.2.1  The LAN functionality is provided by the multi-port comms card 
+       in the CT or BOP, and by the LAN software (LANLink) and the
+       operating system (PCMOS).
+
+1.2.2  Network topology 
+
+       An office installation consists of a BOP connected via a LAN to 
+       a maximum of 21 CTs.  The diagram below shows the way in which 
+       CTs are interconnected.  Note, CT.1 is the nearest CT to the BOP 
+       and CT.21 is the farthest. 
+
+         ÚÄ¿        ÚÄ¿      ÚÄ¿      ÚÄ¿             ÚÄ¿      ÚÄ¿         
+         ³ ÃÄÄÄÄÄÄÄÄ´1ÃÄÄÄÄÄÄ´2ÃÄÄÄÄÄÄ´3ÃÄÄÄ ....  ÄÄÄ20ÃÄÄÄÄÄÄ21³     
+         ÀÂÙ        ÀÂÙ      ÀÂÙ      ÀÂÙ             ÀÂÙ      ÀÂÙ         
+       ÚÄÄÁÄÄ¿    ÚÄÄÁÄÄ¿  ÚÄÄÁÄÄ¿  ÚÄÄÁÄÄ¿         ÚÄÄÁÄÄ¿  ÚÄÄÁÄÄ¿      
+       ³ BOP ³    ³  CT ³  ³  CT ³  ³  CT ³         ³  CT ³  ³  CT ³      
+       ÀÄÄÄÄÄÙ    ÀÄÄÄÄÄÙ  ÀÄÄÄÄÄÙ  ÀÄÄÄÄÄÙ         ÀÄÄÄÄÄÙ  ÀÄÄÄÄÄÙ      
+
+       The daisy-chain topology of the network means that the end CT
+       (CT.21 in the diagram above) has to communicate with the BOP via 
+       all active intermediate nodes.  When this happens the CT initiates 
+       the activity and the intermediate nodes carry out "passthru" of 
+       the message.  A message from the CT travels to its adjacent
+       neighbour, from there to the next CT, and so on until it goes from 
+       CT1 to the BOP.  Thus the message has had to travel through every 
+       LAN cable and every CT comms card in the office.
+
+1.2.3  Performance
+
+       Under controlled conditions, the performance of the LAN is
+       consistent and predictable.  The transfer rate (throughput) of 
+       information between a given CT and the BOP is fixed and easily 
+       measurable.  Due to a small performance overhead related to 
+       passthru, the measured throughput at a CT is dependent on its
+       position in the office.
+      
+       
+1.2.3  Hardware
+
+       The LAN ports of a CT or BOP are served by a DUART on the comms
+       card.  The integrity of the DUART may be determined by an 
+       internal loopback test.  The DUART, the driver stages of the 
+       circuitry, and the port on the distribution panel on the rear of 
+       the CT or BOP can be tested using an external loopback test.  
+       The external loopback test requires a loopback connector which 
+       plugs into the LAN port on the distribution panel. 
+
+
+1.3    Basic functionality
+
+       Two types of diskette will be used; a CT diskette, and a BOP 
+       diskette.  Two applications are to be run and these will be
+       referred to as LANCT and LANBOP.  The BOP should be booted first
+       followed by each CT in turn.
+
+1.3.1  BOP functionality
+
+       a)  The BOP is rebooted using the BOP diskette.
+       b)  PCMOS loads and installs the system drivers, LANLink 
+           drivers, and RAMDISK.
+       c)  A file, say LANTMP, is copied from the floppy drive to the
+           RAMDISK.
+       d)  The LAN server is kicked off as a background task.
+       e)  The LANBOP application is automatically run in the foreground.
+       f)  The operator is prompted to enter the number of counter 
+           terminals in the office.  This information will enable the 
+           overhead due to passthru to be taken into account. 
+
+1.3.2  CT functionality
+
+       a)  The CT is rebooted using the CT diskette.
+       b)  PCMOS loads and installs the system drivers and LANLink 
+           drivers.
+       c)  The LAN server task is kicked off as a background task.
+       d)  The LANCT application is automatically run in the foreground.
+       e)  Three tests are provided by LANCT:
+           - cable test;
+           - throughput test;
+           - loopback test;
+       f)  To begin with LANCT automatically runs the cable test.  If 
+           this is not successful the CT displays a failure message and
+           the operator is advised to check the wiring.  A key press is
+           required before the main menu is displayed.
+       g)  If the cable test is successful then the LAN test main menu 
+           is displayed on this CT.  
+       h)  The LANCT main menu provides options to carry out a LAN 
+           cable test, throughput test, and loopback test.
+       i)  The LAN throughput test transfers the LANTMP file from the 
+           BOP into the CT's memory and calculates the transfer rate.  
+           This rate is compared with an expected rate and a pass/fail
+           result is determined.  The result is printed automatically.
+       j)  The LAN test result can be reprinted if required.  The 
+           printout also shows the result of the cable and loopback test.
+
+
+2.     Preliminary User Instructions and Procedures
+
+
+3.     Technical Specification
+
+3.1    Performance
+
+3.1.1  Under controlled conditions, the performance of the LAN is
+       consistent and predictable.  The transfer rate (throughput) of 
+       information between a given CT and the BOP is fixed and easily 
+       measurable.
+
+3.1.2  The effect of passthru on the performance of the LAN is seen as 
+       a small reduction in throughput.  The throughput achievable at
+       a CT is dependent on the number of active intermediate CTs 
+       between it and the BOP.
+
+       The following table gives the measured throughput at a CT when
+       all intermediate CTs are doing only passthrus.
+
+       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+       ³    CT      Throughput ³
+       ³            (bits/sec) ³
+       ÃÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄ´
+       ³     1    ³    170792  ³
+       ³     2    ³    169040  ³
+       ³     3    ³    167288  ³
+       ³     4    ³    165536  ³
+       ³     5    ³    163784  ³
+       ³     6    ³    162032  ³
+       ³     7    ³    160280  ³
+       ³     8    ³    158528  ³
+       ³     9    ³    156776  ³
+       ³    10    ³    155024  ³
+       ³    11    ³    153272  ³
+       ³    12    ³    151520  ³
+       ³    13    ³    149768  ³
+       ³    14    ³    148016  ³
+       ³    15    ³    146264  ³
+       ³    16    ³    144512  ³
+       ³    17    ³    142760  ³
+       ³    18    ³    141008  ³
+       ³    19    ³    139256  ³
+       ³    20    ³    137504  ³
+       ³    21    ³    135752  ³
+       ³    22    ³    134000  ³
+       ÀÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+
+3.2    LAN test applications
+
+3.2.1  LANTST.EXE
+
+       LANTST.EXE will provide the following functions:
+       
+       a)  cable test;
+       b)  throughput test;
+       c)  loopback test;
+       
+3.2.2  an application, LANTST.EXE, to be run on the BOP.
+       LANTST.EXE will provide an indication that the BOP is active
+       on the LAN and will respond to requests from the end CT.
+
+
+3.3    LAN test diskettes
+
+       There will be two diskettes.  One for the CTs, and one for the 
+       BOP.  These diskettes will be referred to as the CT diskette and 
+       BOP diskette.
+
+1.3.3  CT diskette
+
+       The CT diskette will contain the following files:
+
+       a)  PCMOS operating system and utilities
+
+           $$MOS.SYS
+           $$SHELL.SYS
+           $386.SYS
+           COMMAND.COM
+           DDI10.SYS
+           ADDTASK.COM
+          
+       b)  LANLink satellite and server software
+
+           LANSAT.SYS
+           SERVER.SYS
+           LANSERVE.COM
+           LAN.COM
+
+       c)  Configuration and setup files
+
+            CONFIG.SYS
+           ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  
+           ³ MEMDEV=$386.SYS                ; memory management driver ³
+           ³ SMPSIZE=64K                    ; system memory pool       ³
+           ³ DEVICE=SERVER.SYS 0200 FF 18   ; LAN server driver        ³  
+           ³ DEVICE=LANSAT.SYS /0260,h1,c,3 ; LAN satellite driver     ³  
+           ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+            AUTOEXEC.BAT
+           ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  
+           ³ REM Add the LAN server task                               ³
+           ³ ADDTASK 32K,,,SERVECT                                     ³
+           ³                                                           ³
+           ³ REM I will talk to a server called 100                    ³
+           ³ LAN ACCESS 100                                            ³
+           ³                                                           ³  
+           ³ REM Run the LAN test application                          ³  
+           ³ LANCT.EXE                                                 ³  
+           ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+            SERVECT.BAT
+           ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  
+           ³ REM I will be known as 999     ³
+           ³ LAN ID 999                     ³
+           ³                                ³
+           ³ REM LAN server                 ³
+           ³ LANSERVE /0300,h1,a,1          ³  
+           ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+
+       d) LANTST.EXE application 
+       
+       application (includes LOOPBACK functionality)
+           - application will open file LANCT.TMP on LAN drive C:
+           - read (transfer) file LANCT.TMP into memory in 1KB blocks
+           - measure the time taken to do so 
+           - divide file size by transfer time to calculate throughput
+           - check if throughput is correct
+           - display pass/fail on screen
+           - print confirmation of pass/fail on CT printer
+           - offer option to repeat or finish
+           - on finish a menu is displayed which allows LANCT to be 
+           repeated or LOOPBACK to be run
+           - if LOOPBACK function is selected
+           - application carries out a loopback test on the LAN ports
+           - display pass/fail on screen
+           - print confirmation of pass/fail on CT printer
+           - offer option to repeat or finish
+           - on finish a menu is displayed which allows LANCT or 
+           LOOPBACK to be be run
+
+1.3.5  BOP diskette
+
+       The BOP diskette will contain the following:
+
+       a)  PCMOS operating system and utilities
+
+           $$MOS.SYS
+           $$SHELL.SYS
+           $386.SYS
+           COMMAND.COM
+           $RAMDISK.SYS
+           DDI10.SYS
+           ADDTASK.COM
+          
+       b)  LANLink satellite and server software
+
+           LANSAT.SYS
+           SERVER.SYS
+           LANSERVE.COM
+           LAN.COM
+
+       c)  Configuration and setup files
+
+            CONFIG.SYS
+           ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  
+           ³ MEMDEV=$386.SYS                ; memory management driver ³
+           ³ SMPSIZE=64K                    ; system memory pool       ³
+           ³ DEVICE=$RAMDISK.SYS 300K       ; Ramdisk of 300Kbytes     ³  
+           ³ DEVICE=SERVER.SYS 0200 FF 18   ; LAN server driver        ³  
+           ³ DEVICE=LANSAT.SYS /0260,h1,f,1 ; LAN satellite driver     ³  
+           ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+            AUTOEXEC.BAT
+           ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  
+           ³ REM copy file from floppy to ramdisk                      ³
+           ³ COPY A:LANTMP.TMP E:LANTMP.TMP                            ³
+           ³                                                           ³
+           ³ REM Add the LAN server task                               ³
+           ³ ADDTASK 32K,,,SERVEBOP                                    ³
+           ³                                                           ³
+           ³ REM I will talk to a server called 999                    ³
+           ³ LAN ACCESS 999                                            ³
+           ³                                                           ³  
+           ³ REM Run the LAN test application                          ³  
+           ³ LANTST.EXE                                                ³  
+           ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+            SRVTASK.BAT
+           ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  
+           ³ REM I will be known as 100     ³
+           ³ LAN ID 100                     ³
+           ³                                ³
+           ³ REM LAN server                 ³
+           ³ LANSERVE /0300,h1,c,3          ³  
+           ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+
+       d) LANTMP.TMP file
+
+       e) LANTST.EXE
+
+4. Design
+
+
+5. Test Specification
+

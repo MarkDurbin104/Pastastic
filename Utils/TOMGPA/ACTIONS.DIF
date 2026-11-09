@@ -1,0 +1,103 @@
+Comparing files ACTIONS.C and i:actions.c
+****** ACTIONS.C
+/*******************************************************
+* ACTIONS.C
+*
+* $Revision$  $Date$  $Author$
+*
+* $Log$
+*
+********************************************************/
+
+//SYSDOC ACTIONS.CMT
+
+#define ACTIONS_C
+****** i:actions.c
+//SYSDOC ACTIONS.CMT
+#define ACTIONS_C
+******
+
+****** ACTIONS.C
+extern CHAR *G_keyname[];
+extern INT  *G_shutdown;
+extern void setvar(CHAR **s,CHAR *v);   // from config
+****** i:actions.c
+extern CHAR *G_keyname[];
+extern void setvar(CHAR **s,CHAR *v);   // from config
+******
+
+****** ACTIONS.C
+{
+    CHAR *filespec;
+    UCHAR *t;
+****** i:actions.c
+{
+    UCHAR *t;
+******
+
+****** ACTIONS.C
+                    k=(INT)l;
+                    (CHAR *)t=MALLOC(16);
+                    filespec=MALLOC(16);
+                    sprintf(filespec,"%s.*",G_store[k].name);
+                    sprintf((CHAR *)t,"%s.*",G_s0);
+                    sendmsg("DISK",MESSAGE_D,t,G_database);
+                    l=snum((CHAR *)G_s0);
+                    sendmsg("DBM",MESSAGE_qg,(UCHAR)k,(UCHAR)0,G_s2);
+****** i:actions.c
+                    k=(INT)l;
+                    (CHAR *)t=STRDUP(G_s0);
+
+                    l=snum((CHAR *)t);
+                    sendmsg("DBM",MESSAGE_qg,(UCHAR)k,(UCHAR)0,G_s2);
+******
+
+****** ACTIONS.C
+
+                    if (sendmsg("DISK",MESSAGE_r,G_database,filespec,G_s0)) {
+                        sendmsg("DBM",MESSAGE_qp,(UCHAR)l,(UCHAR)0,G_s2);
+                        memcpy(G_sstat[(INT)l].buf,G_sstat[k].buf,G_sstat[(INT)l].len);
+                        sendmsg("DBM",MESSAGE_qp,(UCHAR)l,(UCHAR)0,G_s2);           
+****** i:actions.c
+
+                    if (sendmsg("DISK",MESSAGE_s,G_database,t,G_store[k].name)==1L) {
+                        sendmsg("DBM",MESSAGE_qp,(UCHAR)l,(UCHAR)0,G_s2);
+                        memcpy(G_sstat[(INT)l].buf,G_sstat[k].buf,G_sstat[k].len);
+                        sendmsg("DBM",MESSAGE_qp,(UCHAR)l,(UCHAR)0,G_s2);           
+******
+
+****** ACTIONS.C
+                        runaction(G_s1);
+                        if (!sendmsg("DISK",MESSAGE_r,G_database,t,G_store[k].name))
+                        {
+                            printf("Error renaming %s to %s\n",t,G_store[k].name);
+                            *G_shutdown=1;       // Force an exit
+                        }
+****** i:actions.c
+                        runaction(G_s1);
+                        if (sendmsg("DISK",MESSAGE_s,G_database,t,G_store[k].name)!=1L) {
+                            printf("Error swapping %s backto %s\n",G_store[k].name,t);
+                        }
+******
+
+****** ACTIONS.C
+                    } else {
+                        printf("Error renaming %s to %s\n",G_store[k].name,t);
+                        *G_shutdown=1;       // Force an exit
+                    }
+****** i:actions.c
+                    } else {
+                        printf("Error swapping %s to %s\n",t,G_store[k].name);
+                    }
+******
+
+****** ACTIONS.C
+                                        FREE(t);
+                    FREE(filespec);
+                                        memcpy(G_vars,varspace,10*sizeof(LONG));
+****** i:actions.c
+                                        FREE(t);
+                                        memcpy(G_vars,varspace,10*sizeof(LONG));
+******
+
+

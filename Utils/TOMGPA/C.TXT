@@ -1,0 +1,45 @@
+actionc  c                      190
+actions  c                     2165
+arith    c                      518
+bgpahead c                       70
+bliblist c                       38
+calc     c                      419
+capgpa   c                     3200
+caprndev c                     1339
+commdev  c                      302
+config   c                     1190
+control  c                      392
+diskdev  c                     1622
+dst      c                      228
+fldproc  c                      946
+formhand c                      319
+formproc c                      736
+fr       c                      136
+function c                     2080
+genkeys  c                      214
+genscrpt c                       63
+gpamain  c                      705
+gpar     c                      838
+gprim    c                     2807
+kbddev   c                      613
+lang     c                      168
+menuproc c                      124
+message  c                      589
+money    c                      196
+ossdev   c                      368
+pdxdev   c                     2140
+pp       c                     1270
+repproc  c                      489
+scrnsave c                      686
+start    c                      755
+tabproc  c                     1495
+temppass c                      217
+vfondev  c                     1243
+                            =======
+                              33480    
+
+
+Plus gpad.c and file variants for it
+                              +3000
+
+

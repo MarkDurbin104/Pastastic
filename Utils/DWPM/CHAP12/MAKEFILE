@@ -1,0 +1,63 @@
+# Makefile for XCITEST.EXE and XCITST.DLL
+# Use Microsoft NMAKE
+# or Borland MAKE to compile
+# !!! Be sure to set the right variable below
+# depending on your compiler
+
+# Note: Since 286|DOS Extender 2.5 doesn't fully support
+# DLLs with MSC 7.0, this example will not work if you
+# use this combination. Use Borland C or MSC 6.0. Future
+# releases of 286|DOS Extender will probably offer full
+# DLL support, but may require different compiler
+# directives
+
+BORLAND=1
+MICROSOFT=0
+# Set to 0 if Using 286 extender version 2.5 or later
+CL7=1
+
+!if $(BORLAND)
+CC=..\bin\bcc286
+COPT=-c -w-rvl -w-par -w-pro -I\BC\INCLUDE;..\INC;
+DLLOPT=-dll -w-rvl -w-par -Dprintf=pl_printf xcitst.def
+LD=..\bin\bcc286
+LOPT= -L..\BC3\LIB;\BC\LIB;
+AS=..\bin\tasm
+AOPT=-ml
+!endif
+
+!if $(MICROSOFT)
+CC=cl
+COPT=-AL -Ox -G2 -c
+DLLOPT=-ML -Gs -Lp -Ox -G2
+LD=cl
+AS=masm
+AOPT=-ml
+!if $(CL7)
+XLIB=
+!else
+XLIB=LLIBPE.LIB
+!endif
+LOPT=-AL -Lp $(XLIB)
+!endif
+
+all : xcitest.exe xcitst.dll
+
+xcitest.exe : xcitest.obj xci.obj
+        $(LD) $(LOPT) xcitest.obj xci.obj
+
+xcitst.dll : xcitst.c dllstart.obj xci.h
+        $(CC) $(DLLOPT) xcitst.c dllstart.obj
+
+xcitest.obj : xcitest.c xci.h
+        $(CC) $(COPT) xcitest.c
+
+xci.obj : xci.c xci.h
+        $(CC) $(COPT) xci.c
+
+dllstart.obj : dllstart.asm
+        $(AS) $(AOPT) dllstart.asm;
+
+
+
+

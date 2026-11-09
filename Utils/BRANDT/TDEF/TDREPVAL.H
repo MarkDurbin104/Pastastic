@@ -1,0 +1,16 @@
+#define PARM_VAL		0xa7
+#define FNO_VAL			0xa0
+#define FFIELD_VAL		0xa1
+#define IFNO_VAL		0xad
+#define KNO_VAL			0xa2
+#define TNO_VAL			0xaa
+#define SDIREC_VAL		0xab
+#define TSPEC_VAL		0xa4
+#define FSPEC_VAL		0xac
+#define FLDSPC_VAL		0xa9
+#define OP_VAL			0xa5
+#define LITER_VAL		0xa8
+#define CONST_VAL		0xa6
+#define VSPEC_VAL		0xa3
+#define NOOP_VAL		0x00
+#define EXPR_VAL		0x92

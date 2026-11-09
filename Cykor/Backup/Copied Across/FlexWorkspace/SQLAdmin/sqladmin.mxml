@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns="*" creationComplete="selectDatabase()" viewSourceURL="srcview/index.html">
+
+	<mx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+
+			[Bindable]
+			private var dbName:String;
+
+			public function selectDatabase():void
+			{
+				var connectionDialog:ConnectionDialog = PopUpManager.createPopUp(this, ConnectionDialog, true) as ConnectionDialog;
+				connectionDialog.addEventListener("change", function (event:MyEvent):void
+					{
+						dbName = event.data as String;
+						db.open(dbName);
+						mdiFrame.removeAllPanels();
+						drawer.getTables();
+						PopUpManager.removePopUp(connectionDialog);
+					});
+				PopUpManager.centerPopUp(connectionDialog);
+			}
+			
+			public function openTableView(table:Object):void
+			{
+				var panel:TableView = mdiFrame.openPanel(TableView) as TableView;
+				panel.table = table;
+			}		 
+
+			private function openQueryView():void
+			{
+				var panel:QueryView = mdiFrame.openPanel(QueryView) as QueryView;
+			}		
+			
+			private function minimizedButtonClick(event:Event):void
+			{
+				var index:int = event.target.data;
+				var panel:MDIPanel = mdiFrame.minimizedPanels.getItemAt(index) as MDIPanel;
+				mdiFrame.restoreUp(panel, index);
+			}
+ 
+		]]>
+	</mx:Script>
+
+	<mx:Style source="styles.css"/>
+
+	<Database id="db"/>
+
+	<mx:ApplicationControlBar width="100%" dock="true" horizontalGap="0">
+		<mx:Label text="SQLAdmin for Gears" styleName="logo"/>
+		<mx:Spacer width="10"/>
+		<mx:Button icon="@Embed('assets/icon_addlist.gif')" label="NEW QUERY" click="openQueryView()" height="34" upSkin="{null}" styleName="menuBarButton" width="100" id="button1"/> 
+		<mx:Spacer width="100%"/>
+		<mx:Label text="Database:"/>
+		<mx:LinkButton label="{dbName}" click="selectDatabase()"/>
+	</mx:ApplicationControlBar>
+
+	<mx:Spacer height="6"/>
+	
+	<mx:HBox id="mainArea" width="100%" height="100%">
+		<Drawer id="drawer"/>
+		<MDIFrame id="mdiFrame" taskBar="{taskBar}"/>
+	</mx:HBox>
+
+	<mx:Spacer height="2"/>
+
+	<mx:HBox id="taskBar" horizontalGap="1" horizontalAlign="left" width="100%" backgroundColor="#BBBBBB" 
+		bottom="0" left="0" right="0" height="24">
+		<mx:Repeater id="list" dataProvider="{mdiFrame.minimizedPanels}">
+			<mx:Button id="minimizedButton" height="24"
+				icon="{list.currentItem.titleIcon}" horizontalGap="0"
+				label="{list.currentItem.title}"
+				styleName="taskBarButton" data="{list.currentIndex}" 
+				click="minimizedButtonClick(event)"/>
+		</mx:Repeater>
+	</mx:HBox>
+
+</mx:Application>

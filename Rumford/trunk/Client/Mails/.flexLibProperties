@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flexLibProperties version="1">
+<includeClasses>
+<classEntry path="com.proiam.mails.LookUp"/>
+<classEntry path="com.proiam.mails.Dimensions"/>
+<classEntry path="com.proiam.mails.WeightType"/>
+<classEntry path="com.proiam.mails.InvoiceNumber"/>
+<classEntry path="com.proiam.mails.SecondaryMailService"/>
+<classEntry path="com.proiam.mails.PostBack"/>
+<classEntry path="com.proiam.mails.AccountNumber"/>
+<classEntry path="com.proiam.mails.MailServices"/>
+<classEntry path="com.proiam.mails.Address"/>
+<classEntry path="com.proiam.mails.ItemData"/>
+<classEntry path="com.proiam.mails.MailServiceGroup"/>
+<classEntry path="com.proiam.mails.IWeight"/>
+<classEntry path="com.proiam.mails.Weight"/>
+<classEntry path="com.proiam.mails.Amount"/>
+</includeClasses>
+<includeResources>
+<resourceEntry destPath="resources/_ServiceLevels.bin.zlib" sourcePath="resources/_ServiceLevels.bin.zlib"/>
+<resourceEntry destPath="resources/Cities.zlib" sourcePath="resources/Cities.zlib"/>
+</includeResources>
+<namespaceManifests/>
+</flexLibProperties>

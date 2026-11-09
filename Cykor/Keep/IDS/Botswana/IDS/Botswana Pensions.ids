@@ -1,0 +1,698 @@
+Domains {
+
+ID_Number {
+      Title  { 'Omang Number' }
+      Prompt { 'Omang Number' }
+      Hint   { 'Enter Omang' }
+      Error  { 'Enter a Valid Omang Number' }
+      Format {                         
+         Mask { '999999999' }
+      }
+      InputFrom {
+         'Keyboard'
+         'Barcode'
+      }
+   }
+
+//PensionNumber {
+//      Title  { 'Pension Number' }
+//      Prompt { 'Pension Number' }
+//      Hint   { 'Enter Pension Number' }
+//      Error  { 'Enter a Valid Pension Number' }
+//      Format {
+//         Mask { '99999999999' }
+//      }
+//      InputFrom {
+//         'Keyboard'
+//      }
+//   }
+
+VoucherNumber {
+      Title  { 'Voucher Number' }
+      Prompt { 'Voucher Number' }
+      Hint   { 'Enter Voucher Number' }
+      Error  { 'Enter a Valid Voucher Number' }
+      Format {
+         Mask { '99999999' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   
+SAVoucherNumber {
+      Title  { 'Voucher Number' }
+      Prompt { 'Voucher Number' }
+      Hint   { 'Enter Voucher Number' }
+      Error  { 'Enter a Valid Voucher Number' }
+      Format {
+         None
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+// PensionAmount {
+//      Title  { 'Amount' }
+//      Prompt { 'Amount' }
+//      Hint   { 'Enter the Amount' }
+//      Error  { 'Enter a Valid Amount' }
+//      Format {
+//         Mask { 'xxxxxxxxxxxxx' }
+//      }
+//      InputFrom {
+//         'Keyboard'
+//      }
+//   }
+
+   ROCustomerName { 
+      Title     { 'Customer Name' }
+      Prompt    { 'Customer Name' }
+   }
+   ROAmount {
+      Title  { 'Amount' }
+      Prompt { 'Amount' }
+   }
+   ValidProxy {
+      Title  { 'Valid Proxy' }
+      Prompt { 'Valid Proxy' }
+   }
+   ValidProxyID {
+      Title  { 'Valid Proxy Omang' }
+      Prompt { 'Valid Proxy Omang' }
+   }
+   ROPensionType {
+      Title  { 'Pension Type' }
+      Prompt { 'Pension Type' }
+   }
+   VoucherNumberList {
+      Title  { 'Voucher Number' }
+      Prompt { 'Voucher Number' }
+      Hint   { 'Pick a Voucher from the list' }
+      Error  { 'Pick a a Valid Voucher Number' }
+      Format { PickList { '' } }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+}    
+Products {
+
+BasePension {
+     DontBuild
+     SubGroup { 'Pension' }
+  }
+
+   OsmiumPayment {
+      BasedOn     { BasePension       }
+      Caption     { 'Osmium Pension Payment' }
+      Description { 'Pension Payment' }
+      Title       { 'Osmium Pension Payment' }
+      BitMap      { '..\images\Osmium.bmp' }
+      PLU	      { PLU_NormalPayments }
+      Snippets    { OsmiumUses,OsmiumVars,OsmiumValidate,OsmiumLog,
+                    OsmiumLogVars,OsmiumTriggerDec,OsmiumTriggerDef }
+      Domains {
+         ID_Number
+         ROCustomerName
+         VoucherNumberList
+         ROAmount
+         ROPensionType
+         ValidProxy
+         ValidProxyID
+      }
+   }
+
+    NormalPayments {
+                   BasedOn { BasePension }
+                   Caption      { 'Normal Pension Payment' }
+                   Description  { 'Normal Pension Payment' }
+                   Title        { 'Normal Pension Payment' }
+                   BitMap      { '..\images\P_PensionPayment.bmp' }
+                   Domains     {
+                      CustomerName
+                      ID_Number
+                      PaymentPeriod
+                      VoucherNumber
+                      Amount
+                   }
+                 //  LogAs { NormalPayments }
+                   PLU	 { PLU_NormalPayments}
+                   Snippets { PaymentsPostVal, NormalPaymentsLog }
+   }
+
+    ArrearsPayments {
+                   BasedOn { BasePension }
+                   Caption      { 'Arrears Pension Payment' }
+                   Description  { 'Arrears Pension Payment' }
+                   Title        { 'Arrears Pension Payment' }
+                   BitMap      { '..\images\P_PensionPayment.bmp' }
+                   Domains     {
+                      CustomerName
+                      ID_Number
+                      PaymentPeriod
+                    //  PensionNumber
+                      VoucherNumber
+                      Amount
+                   }
+                  // LogAs { ArrearsPayments }
+                   PLU	 { PLU_ArrearsPayments }
+                   Snippets { PaymentsPostVal,ArrearsPaymentsLog }
+
+    }
+
+
+    SAPayments {
+                   BasedOn { BasePension }
+                   Caption      { 'South Africa Pension Payment' }
+                   Description  { 'South Africa Pension Payment' }
+                   Title        { 'South Africa Pension Payment' }
+                   BitMap      { '..\images\P_SAPensions.bmp' }
+                   Domains     {
+                      CustomerName
+                      PayeeIdentification
+                      SAVoucherNumber
+                      PaymentPeriod
+                      Amount
+                      ExchangeRate
+                      TotalFee
+                   }
+                   PLU	 { PLU_SAPayments }
+                   Snippets {
+                      SAPaymentsValVar
+                      SAPaymentsVal
+                      SAPaymentsLog
+                   }
+    }
+
+  }
+
+ Snippets {
+   OsmiumUses {
+    InsertBetween { '{FormUsesStart}','{FormUsesEnd}' }
+    CodeBlock { [*
+       FileTxStatusU,OsmiumSupportU,
+    *] }
+   }
+   OsmiumVars {
+    InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+    CodeBlock { [*
+     var
+        PensionList:TPackStringList;
+        PensionPayment:TMinPensionPayment;
+        I:Integer;
+    *] }
+   }
+   
+   OsmiumTriggerDec {
+    InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+    CodeBlock { [*
+     procedure TriggerBarCode(Value:String); override;
+    *] }
+   }
+   OsmiumTriggerDef {
+    InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+    CodeBlock { [*
+     procedure {PClass}TOsmiumPaymentProduct.TriggerBarCode(Value:String);
+     begin
+        if (Length(Value) = 9) then
+        begin
+           ProdForm.ID_Number.Text:=Value;
+        end
+        else if (ProdForm.ID_Number.Text = '') and (Length(Value) > 6) then
+        begin
+           ProdForm.ID_Number.Text:=Value;
+        end
+        else if ProdForm.ID_Number.Text <> '' then
+        begin
+           ProdForm.VoucherNumberList.Text:=Value;
+        end;
+        FlagComplete(ProdForm.Validate);
+        UIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+     end;
+    *] }
+   }
+
+   
+   
+   OsmiumValidate {
+    InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+    CodeBlock { [*
+   If (ID_Number.Text <> '') or (VoucherNumberList.Text <> '') then
+   begin
+      Result:=False;
+      if (VoucherNumberList.Text <> '') then
+      begin
+         PensionList:=TPackStringList.Create;
+         if ID_Number.Text <> '' then
+            PensionList.PackText:=RequestServiceData('UnpaidPensionList',ID_Number.Text)
+         else
+            PensionList.PackText:=RequestServiceData('UnpaidPensionList',VoucherNumberList.Text);
+         if PensionList.Count > 0 then
+         begin
+            PensionPayment:=TMinPensionPayment.Create;
+            for I:=0 to PensionList.Count-1 do
+            begin
+               PensionPayment.PackData:=PensionList[I];
+               ID_Number.Text:=PensionPayment.PayeeIdentifier;
+               PensionPayment.VoucherNumber:=IntToStr(PensionPayment.VoucherNumber);
+               if PensionPayment.VoucherNumber = Copy(VoucherNumberList.Text,1,Length(PensionPayment.VoucherNumber)) then
+               begin
+                  VoucherNumberList.Text:=PensionPayment.VoucherNumber;
+                  ROAmount.Text:=CurrToStrF(PensionPayment.Amount,ffNumber,2);
+                  case TPensionType(PensionPayment.PensionType) of
+                     ptOAPNormal  : ROPensionType.Text:='Normal  OAP';
+                     ptOAPArrears : ROPensionType.Text:='Arrears OAP';
+                     ptWWVNormal  : ROPensionType.Text:='Normal  WWV';
+                     ptWWVArrears : ROPensionType.Text:='Arrears WWV';
+                     ptDCANormal  : ROPensionType.Text:='Normal  DCA';
+                     ptDCAArrears : ROPensionType.Text:='Arrears DCA';
+                  end;
+                  if not VarIsEmpty(PensionPayment.ProxyIdentifier) then
+                  begin
+                     ValidProxy.Text   :=PensionPayment.ProxyName;
+                     ValidProxyID.Text:=PensionPayment.ProxyIdentifier;
+                  end
+                  else
+                  begin
+                     ValidProxy.Text:='None.';
+                     ValidProxyID.Text:='';
+                  end;
+                  Result:=True;
+               end;   
+            end;
+            PensionPayment.Free;
+         end              
+         else                    
+            Result:=False;
+         PensionList.Free;
+      end;
+      if not Result then
+      begin
+         VoucherNumberList.Items.Clear;
+         PensionList:=TPackStringList.Create;
+         PensionList.PackText:=RequestServiceData('UnpaidPensionList',ID_Number.Text);
+         if PensionList.Count > 0 then
+         begin
+            PensionPayment:=TMinPensionPayment.Create;
+            if PensionList.Count = 1 then
+            begin
+               PensionPayment.PackData:=PensionList[0];
+               ID_Number.Text:=PensionPayment.PayeeIdentifier;
+               case TPensionType(PensionPayment.PensionType) of
+                  ptOAPNormal  : ROPensionType.Text:='Normal  OAP';
+                  ptOAPArrears : ROPensionType.Text:='Arrears OAP';
+                  ptWWVNormal  : ROPensionType.Text:='Normal  WWV';
+                  ptWWVArrears : ROPensionType.Text:='Arrears WWV';
+                  ptDCANormal  : ROPensionType.Text:='Normal  DCA';
+                  ptDCAArrears : ROPensionType.Text:='Arrears DCA';
+               end;
+               VoucherNumberList.Items.Add(PensionPayment.VoucherNumber+' '+
+                                           ROPensionType.Text+' '+
+                                           CurrToStrF(PensionPayment.Amount,ffNumber,2));
+               ROCustomerName.Text:=PensionPayment.PayeeName;
+               VoucherNumberList.Text:=PensionPayment.VoucherNumber;
+               ROAmount.Text:=CurrToStrF(PensionPayment.Amount,ffNumber,2);
+               if not VarIsEmpty(PensionPayment.ProxyIdentifier) then
+               begin
+                  ValidProxy.Text   :=PensionPayment.ProxyName;
+                  ValidProxyID.Text:=PensionPayment.ProxyIdentifier;
+               end
+               else
+               begin
+                  ValidProxy.Text:='None.';
+                  ValidProxyID.Text:='';
+               end;
+               MoveFocusTo(VoucherNumberList);
+               Result:=True;
+            end
+            else
+            begin
+               PensionPayment.PackData:=PensionList[0];
+               for I:=0 to PensionList.Count-1 do
+               begin
+                  PensionPayment.PackData:=PensionList[I];
+                  case TPensionType(PensionPayment.PensionType) of
+                     ptOAPNormal  : VoucherNumberList.Items.Add(PensionPayment.VoucherNumber+' OAP Normal  '+CurrToStrF(PensionPayment.Amount,ffNumber,2));
+                     ptOAPArrears : VoucherNumberList.Items.Add(PensionPayment.VoucherNumber+' OAP Arrears '+CurrToStrF(PensionPayment.Amount,ffNumber,2));
+                     ptWWVNormal  : VoucherNumberList.Items.Add(PensionPayment.VoucherNumber+' WWV Normal  '+CurrToStrF(PensionPayment.Amount,ffNumber,2));
+                     ptWWVArrears : VoucherNumberList.Items.Add(PensionPayment.VoucherNumber+' WWV Arrears '+CurrToStrF(PensionPayment.Amount,ffNumber,2));
+                     ptDCANormal  : VoucherNumberList.Items.Add(PensionPayment.VoucherNumber+' DCA Normal  '+CurrToStrF(PensionPayment.Amount,ffNumber,2));
+                     ptDCAArrears : VoucherNumberList.Items.Add(PensionPayment.VoucherNumber+' DCA Arrears '+CurrToStrF(PensionPayment.Amount,ffNumber,2));
+                  end;
+               end;
+               ID_Number.Text:=PensionPayment.PayeeIdentifier;
+               ROCustomerName.Text:=PensionPayment.PayeeName;
+               VoucherNumberList.Text:='';
+               ROPensionType.Text:='';
+               ROAmount.Text:='';
+               ValidProxy.Text:='';
+               ValidProxyID.Text:='';
+               PensionPayment.Free;     
+               MoveFocusTo(VoucherNumberList);
+               Result:=True;
+            end;
+         end              
+         else
+         begin
+            MoveFocusTo(ID_Number);
+            ROCustomerName.Text:='Not Found';
+            VoucherNumberList.Items.Clear;
+            VoucherNumberList.Text:='';
+            ROPensionType.Text:='';
+            ROAmount.Text:='';
+            ValidProxy.Text:='';
+            ValidProxyID.Text:='';
+            Result:=False;
+         end;
+         PensionList.Free;
+      end;   
+         
+      if Result and (VoucherNumberList.Text = '') then
+         Result:=False;
+   end
+   else
+   begin
+      MoveFocusTo(ID_Number);
+      ROCustomerName.Text:='';
+      VoucherNumberList.Items.Clear;
+      VoucherNumberList.Text:='';
+      ROPensionType.Text:='';
+      ROAmount.Text:='';
+      ValidProxy.Text:='';
+      ValidProxyID.Text:='';
+      Result:=False;
+   end;
+    *] }
+   }
+   OsmiumLogVars  {
+    InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+    CodeBlock { [*
+     var
+        PLU:Integer;
+    *] }
+   }
+   OsmiumLog  {
+    InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+    CodeBlock { [*
+     if Copy(ProdForm.ROPensionType.Text,1,1) = 'N' then // normal pension
+         PLU:=Get_PLU
+     else // arrears pension
+         PLU:=StrToIntDef(PLU_ArrearsPayments,Get_PLU);
+     TxnLog.LogTransaction(Index,FQuantity,PLU,
+            0-(FQuantity*StrToCurrDef(ProdForm.ROAmount.Text,0)),
+            0-StrToCurrDef(ProdForm.ROAmount.Text,0),
+            ProdForm.ROPensionType.Text+' Pension Payment','',Get_ProgramID,Enumerate(ProdForm));
+     Inc(Index);
+     TxnLog.LogTransaction(Index,FQuantity,PLU,0,0,
+            'Customer Name - ',ProdForm.ROCustomerName.Text,Get_ProgramID,'');
+     Inc(Index);
+     TxnLog.LogTransaction(Index,FQuantity,PLU,0,0,
+            'Omang No. - ',ProdForm.ID_Number.Text,Get_ProgramID,'');
+     Inc(Index);
+     TxnLog.LogTransaction(Index,FQuantity,PLU,0,0,
+            'Voucher No. - ',ProdForm.VoucherNumberList.Text,Get_ProgramID,'');
+     Inc(Index);
+     if CombineList <> nil then CombineList.LogTransactions(Index,TxnLog);
+    *] }
+   }
+
+   SAPaymentsLog {
+   InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+    TxnLog.LogTransaction(
+             Index,
+             FQuantity, // Quantity
+             Get_PLU, // PLU
+             0-(FQuantity*StrToCurrDef(ProdForm.TotalFee.Text,0)), // Value
+             0-StrToCurrDef(ProdForm.TotalFee.Text,0), // Price
+             Get_Description, // Description
+             '', // Additional Info
+             Get_ProgramID, // ProgID
+             Enumerate(ProdForm)); // Domain Info
+       Inc(Index);
+
+       TxnLog.LogTransaction(
+             Index,
+             0, // Quantity
+             Get_PLU, // PLU
+             0, // Value
+             0, // Price
+             'Payment Value ', // Description
+             ProdForm.Amount.Text, // Additional Info
+             Get_ProgramID, // ProgID
+             ''); // Domain Info
+       Inc(Index);
+
+       TxnLog.LogTransaction(
+              Index,
+              1, // Quantity
+              0, // PLU
+              0, // Value
+              0, // Price
+              'Payment Period', // Description
+              ProdForm.PaymentPeriod.Text, // Additional Info
+              '', // ProgID
+              ''); // Domain Info
+       Inc(Index);
+
+       TxnLog.LogTransaction(
+             Index,
+             0, // Quantity
+             Get_PLU, // PLU
+             0, // Value
+             0, // Price
+             'Exchange Value ', // Description
+             ProdForm.ExchangeRate.Text, // Additional Info
+             Get_ProgramID, // ProgID
+             ''); // Domain Info
+       Inc(Index);
+
+       TxnLog.LogTransaction(
+             Index,
+             FQuantity, // Quantity
+             Get_PLU, // PLU
+             0, // Value
+             0, // Price
+             'Voucher Number - ', // Description
+             ProdForm.SAVoucherNumber.Text, // Additional Info
+             Get_ProgramID, // ProgID
+             ''); // Domain Info
+       Inc(Index);
+
+      TxnLog.LogTransaction(
+             Index,
+             FQuantity, // Quantity
+             Get_PLU, // PLU
+             0, // Value
+             0, // Price
+             'Customer Name - ', // Description
+             ProdForm.CustomerName.Text, // Additional Info
+             Get_ProgramID, // ProgID
+             ''); // Domain Info
+       Inc(Index);
+
+      TxnLog.LogTransaction(
+             Index,
+             FQuantity, // Quantity
+             Get_PLU, // PLU
+             0, // Value
+             0, // Price
+             'Identification - ', // Description
+             ProdForm.PayeeIdentification.Text, // Additional Info
+             Get_ProgramID, // ProgID
+             ''); // Domain Info
+       Inc(Index);
+
+
+
+       if CombineList <> nil then
+          CombineList.LogTransactions(Index,TxnLog);
+
+      *]
+      }
+
+   }
+
+   SAPaymentsValVar {
+      InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            ExchangeRateServer:IExchangeRateServer;
+      *]
+      }
+   }
+
+    SAPaymentsVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+
+          ClearFocus(self);
+          ExchangeRateServer:=CreateRemoteExchangeRateServer(GetGPCSRegString('','ServerName',GetLocalMachineName));
+          ExchangeRate.Text:=CurrToStr(ExchangeRateServer.RateFor('South Africa'));
+          if StrToCurrDef( Amount.Text,0 ) > 0 then
+             TotalFee.Text := CurrToStrF( StrToCurrDef( ExchangeRate.Text, 0 ) * StrToCurrDef( Amount.Text, 0 ), ffNumber, 2 )
+          else
+            Result := False ;
+
+
+      *]
+      }
+   }
+
+
+   
+   PaymentsPostVal {
+   InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+   CodeBlock {
+   [*
+     ClearFocus(Self);
+     If (ID_Number.Text <> '') and Result then
+     begin
+        Result := False ;
+        try
+           StrToCurr( Amount.Text );
+           Result := True ;
+         except
+            MoveFocusTo( Amount );
+         end ;
+     end;
+        *]
+
+      }
+   }
+    
+   ArrearsPaymentsLog {
+   InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+    TxnLog.LogTransaction(
+             Index,
+             FQuantity, // Quantity
+             Get_PLU, // PLU
+             0-(FQuantity*StrToCurrDef(ProdForm.Amount.Text,0)), // Value
+             0-StrToCurrDef(ProdForm.Amount.Text,0), // Price
+             Get_Description, // Description
+             '', // Additional Info
+             Get_ProgramID, // ProgID
+             Enumerate(ProdForm)); // Domain Info
+       Inc(Index);
+      TxnLog.LogTransaction(
+             Index,
+             FQuantity, // Quantity
+             Get_PLU, // PLU
+             0, // Value
+             0, // Price
+             'Customer Name - ', // Description
+             ProdForm.CustomerName.Text, // Additional Info
+             Get_ProgramID, // ProgID
+             ''); // Domain Info
+       Inc(Index);
+      TxnLog.LogTransaction(
+             Index,
+             FQuantity, // Quantity
+             Get_PLU, // PLU
+             0, // Value
+             0, // Price
+             'Omang No. - ', // Description
+             ProdForm.ID_Number.Text, // Additional Info
+             Get_ProgramID, // ProgID
+             ''); // Domain Info
+       Inc(Index);
+       TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0, // Value
+               0, // Price
+               'Payment Period - ', // Description
+               ProdForm.PaymentPeriod.Text, // Additional Info
+               Get_ProgramID, // ProgID
+               ''); // Domain Info
+        Inc(Index);
+        TxnLog.LogTransaction(
+             Index,
+             FQuantity, // Quantity
+             Get_PLU, // PLU
+             0, // Value
+             0, // Price
+             'Voucher No. - ', // Description
+             ProdForm.VoucherNumber.Text, // Additional Info
+             Get_ProgramID, // ProgID
+             ''); // Domain Info
+       Inc(Index);
+       if CombineList <> nil then
+          CombineList.LogTransactions(Index,TxnLog);
+         *]
+      }
+    }
+   NormalPaymentsLog  {
+   InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+        CodeBlock {
+        [*
+     TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0-(FQuantity*StrToCurrDef(ProdForm.Amount.Text,0)), // Value
+               0-StrToCurrDef(ProdForm.Amount.Text,0), // Price
+               Get_Description, // Description
+               '', // Additional Info
+               Get_ProgramID, // ProgID
+               Enumerate(ProdForm)); // Domain Info
+         Inc(Index);
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0, // Value
+               0, // Price
+               'Customer Name - ', // Description
+               ProdForm.CustomerName.Text, // Additional Info
+               Get_ProgramID, // ProgID
+               ''); // Domain Info   \
+         Inc(Index);
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0, // Value
+               0, // Price
+               'Omang No. - ', // Description
+               ProdForm.ID_Number.Text, // Additional Info
+               Get_ProgramID, // ProgID
+               ''); // Domain Info
+         Inc(Index);
+       TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0, // Value
+               0, // Price
+               'Payment Period - ', // Description
+               ProdForm.PaymentPeriod.Text, // Additional Info
+               Get_ProgramID, // ProgID
+               ''); // Domain Info
+        Inc(Index);
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0, // Value
+               0, // Price
+               'Voucher No. - ', // Description
+               ProdForm.VoucherNumber.Text, // Additional Info
+               Get_ProgramID, // ProgID
+               ''); // Domain Info
+         Inc(Index);
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+           *]
+        }
+    }
+ }

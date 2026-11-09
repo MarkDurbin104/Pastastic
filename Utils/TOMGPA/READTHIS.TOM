@@ -1,0 +1,160 @@
+Hi Tom,
+
+Here are the things I have done today!
+
+	04/10/94
+
+	PROBLEMS WITH GPA CAPTURE - VERSION RECEIVED 4/10/94
+
+============================================================================
+1	Updating cash and stock on hand
+	Scenario - Enter data in subscreen of Other Postage. Press ESC
+	"to return to stock on hand screen. Screen display is incorrect, e.g. "
+	incorrect stock items displayed. If ESC is pressed and then screen 
+	"is accessed again, display has been correctly updated"
+	(OK on previous version)
+----------------------------------------------------------------------------
+        This was caused by the change I made in table processing for speed
+        It should now work correctly!
+============================================================================
+
+2	Temporary lines is blank
+	(OK on previous version)
+----------------------------------------------------------------------------
+        With the Paradox tables open exclusively, the re-open on secondary 
+        key fails with TABLE BUSY! so I changed I back to how it was before
+        and it then worked but it took 6 seconds for the table to appear 
+        again.  So I changed the code so that I read every record and work
+        out if it is within the key.  This takes .5 seconds (But I dont know
+        how long it would take on a large table!)
+============================================================================
+
+3	"On main receipts/payments entry screens, screen sometimes "
+	"temporarily ""freezes"" after data entry. Pressing ESC and re-entering"
+	the screen resolves.
+	(OK on previous version)
+----------------------------------------------------------------------------
+        I couldn't get this to happen but I had made a few changes by the
+        time I tried so it may be fixed.
+============================================================================
+
+4	"Creating LOCAL SCHEMES, AUTOMATED PRODUCTS and "
+	WATER AUTHORITIES does not function correctly.
+	(OK on previous  version)
+----------------------------------------------------------------------------
+        I have made a change that keeps the speed if the record added was 
+        the last record in the list and goes back to a full search if not.
+        This seems to have fixed the problem.
+============================================================================
+
+5	Remittances out - System does not appear to be holding 
+	records for each rem correctly. 
+	(OK on previous version)
+----------------------------------------------------------------------------
+        As in 1
+============================================================================
+
+6	Unable to print MVL and MT Reconciliation 
+	(OK on previous version)
+----------------------------------------------------------------------------
+        I couldn't find these menu items! I assume it was MVL11 etc..
+        I can't test these on my printer appart from the fact that they
+        make the printer print junk.
+
+        The menu item Reconciliation is attached to a form called recmenu
+        this form does not seem to exist.
+============================================================================
+
+7	Transaction Log printout layout has changed from previous 
+	"version. Previous version, apart from the blank headers was OK."
+----------------------------------------------------------------------------
+        The layout shouldn't have changed and it looks the same on my printer 
+        as before but my printer doesn't show the changes in attribute only
+        the text. Try again with this version and if it's still a problem
+        you could tell me the difference between the old and the new and I
+        can look at that specific area.
+============================================================================
+
+8	"On the COMPAQ 386, when entering transaction data, e.g. Vehicle"
+	"stamps redeemed, extra records are created - screen display"
+	is not correct.  OK on other machines on this version.
+----------------------------------------------------------------------------
+        This was probably as in 1 or 4 but it may be as in 10 in which case
+        I will have to change the number of files available.
+============================================================================
+
+9	"On Special functions menu, change Caworkwk get GPF's"
+	NOTE - new today with changes to action code
+	"GPF indicates ACTIONS.C, line 652, inttok (),PUSHS(G_form..."
+----------------------------------------------------------------------------
+        The function Caworkwk is accessing F[CF] for a comparison. F[CF]
+        is invalid due to the fact that you are on a menu. I assume this
+        function used to be run off a field containing the week number.
+        You will need to create a form and attach this function to a field 
+        on that form.
+
+        If you try to do this in future the system will make 5 short beeps 
+        increasing in frequency and there wont be a GPF F[CF] will 
+        return the value ""
+============================================================================
+
+10	GPF in PARADOX engine - not able to repeat (on Compaq 386)
+	"Segment #19, CS:0C59"
+----------------------------------------------------------------------------
+        The only reasons I can see for this is possibly less memory on the
+        compaq or the version of DOS.  If it is the version of DOS then we 
+        may not be able to retrospectivly set the number of file handles
+        This would mean that we will only be able to have a maximum of 3
+        tables open concurrently.  We will nee to do some more work on this.
+============================================================================
+
+11	GPF in P&A sorting - Form pealsort on action Pealsort
+	GPF in FORMPROC.C on return from loaditem() -could
+	not repeat
+----------------------------------------------------------------------------
+        I problem I could see is if the field->item is > 20 chars in length
+        so I have changed the code and we shouldn't see any more GPF's.
+============================================================================
+
+12	GPF in accessing Hot list key from cheques in rems out.
+	GPF in LANG.C line 163 if (*(S+4)=='_'
+----------------------------------------------------------------------------
+        This function shouldn't be called with an invalid string but I have 
+        changed it to check and return on an error.
+============================================================================
+
+	OUTSTANDING ISSUES
+
+1	Transaction LOG - extra headers. This can be re-created by 
+	entering sufficient data to fill 3 sheets of print (?120 txns)
+	Enter some receipts and some payments
+	"Print TXN log for all txns, then Print txnlog for selected txns e.g."
+	receipts
+----------------------------------------------------------------------------
+        Fixed...    ...What a bummer!
+============================================================================
+
+2	Back up and restore
+----------------------------------------------------------------------------
+        I have written the code for backup but not restore yet so I havn't 
+        put it in.  This should be approx. 2 hours work.
+============================================================================
+
+3	Colour of variable/modifiable form headings are display only fields
+	This causes the colour to be blue instead of required colour.
+----------------------------------------------------------------------------
+        Fixed 
+============================================================================
+
+4	Numlock light key
+----------------------------------------------------------------------------
+        Fixed - It took from 2:58 until 5:10, but I got there.
+============================================================================
+
+        Right, That's it for today. DON'T FIND ANY MORE BUGS! and I'll talk 
+        to you later.
+
+Regards,
+
+
+        Mark.

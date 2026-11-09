@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	backgroundImage="@Embed(source='embedded/Rotation Logo.png')"
+	creationComplete="onCreationComplete(event);" 
+    backgroundSize="100%"	width="95" height="95">
+	<mx:Script>
+		<![CDATA[
+			import mx.effects.Sequence;
+			import mx.effects.Rotate;
+			private function onCreationComplete(event:Event):void {
+				var sequence:Sequence=new Sequence(this);
+				var rotation:Rotate=new Rotate();
+				
+				rotation=new Rotate();
+				rotation.angleFrom=0;
+				rotation.angleTo=120;
+				rotation.originX=width/2;
+				rotation.originY=height/2;
+				rotation.duration=230;
+				rotation.startDelay=400;
+				sequence.addChild(rotation);
+
+				rotation=new Rotate();
+				rotation.angleFrom=120;
+				rotation.angleTo=240;
+				rotation.originX=width/2;
+				rotation.originY=height/2;
+				rotation.duration=230;
+				rotation.startDelay=400;
+				sequence.addChild(rotation);
+
+				rotation=new Rotate();
+				rotation.angleFrom=240;
+				rotation.angleTo=360;
+				rotation.originX=width/2;
+				rotation.originY=height/2;
+				rotation.duration=230;
+				rotation.startDelay=400;
+				sequence.addChild(rotation);
+
+				sequence.repeatCount=0;
+				sequence.play();
+			}
+		]]>
+	</mx:Script>
+</mx:Canvas>

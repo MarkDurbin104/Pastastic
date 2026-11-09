@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<diagram>
+	<elements definedIn="serviceSymbols.xml">
+		<input 	name="WeightInput" 					style="Input" 						x="20" 	y="50" 	InText="WEIGHT" 										/>
+		<input 	name="DistanceInput" 				style="Input" 						x="20" 	y="200" 	InText="DISTANCE" 									/>
+		<input 	name="SizeInput" 						style="Input" 						x="20" 	y="350" 	InText="SIZE"												/>
+		<input 	name="DayInput" 						style="Input" 						x="20" 	y="500" 	InText="DAY"												/>
+		<lookup 	name="DomLookup" 					style="LookUp" 					x="190" 	y="30" 	LookText="Domestic&#xa;Lookup" 			/>
+		<lookup 	name="DomDistLookup" 			style="LookUp" 					x="190" 	y="180" 	LookText="Dom Distance&#xa;Lookup"	/>
+		<lookup 	name="DomSizeLookup" 			style="LookUp" 					x="190" 	y="330" 	LookText="Letter Size&#xa;Lookup"		/>
+		<lookup 	name="DomDaysLookup" 			style="LookUp" 					x="190" 	y="480" 	LookText="Standard Days&#xa;Lookup"	/>
+		<fee 		name="StandardFee" 				style="Fee" 						x="170" 	y="120" 	FeeText="STANDARD FEE"						/>
+		<fee 		name="DistanceFee" 					style="Fee" 						x="170" 	y="270" 	FeeText="LONG DISTANCE&#xa;FEE"		/>
+		<fee 		name="SizeFee" 						style="Fee" 						x="170" 	y="420" 	FeeText="OVERSIZE FEE"							/>
+		<fee 		name="DayFee" 							style="Fee" 						x="170" 	y="570" 	FeeText="SATURDAY FEE"						/>
+		<gate 		name="DomLetterSelect"			style="ANDGate" 				x="350" 	y="195" 																		/>
+		<service  name="DomLetterService" 		style="PrimaryService" 		x="450" 	y="175" 	ServiceTitle="Domestic&#xa;Letter"		/>
+		<service  name="AODService" 					style="SecondaryService" 	x="550" 	y="270" 	ServiceTitle="Advice of&#xa;Delivery"		/>
+		<service  name="InsuranceService" 			style="SecondaryService" 	x="550" 	y="370" 	ServiceTitle="Insurance"							/>
+		<service  name="ExpressService" 				style="SecondaryService" 	x="550" 	y="470" 	ServiceTitle="Express"								/>
+		<input 	name="SenderAddressInput" 	style="Input" 						x="720" 	y="270" 	InText="SENDER ADDRESS" 						/>
+		<fee 		name="AODFee" 						style="Fee" 						x="720" 	y="320" 	FeeText="AOD FEE"									/>
+		<input 	name="InsuredInput" 				style="Input" 						x="720" 	y="370" 	InText="INSURED VALUE"							/>
+		<lookup 	name="DomInsuranceLookup" 	style="LookUp" 					x="880" 	y="350" 	LookText="Dom Insurance&#xa;Lookup"	/>
+		<fee 		name="InsuranceFee" 				style="Fee" 						x="1000"	y="370" 	FeeText="INSURANCE FEE"						/>
+		<fee 		name="ExpressFee" 					style="Fee" 						x="720" 	y="470" 	FeeText="EXPRESS FEE"							/>
+		
+		<link from="WeightInput" 				to="DomLookup" 				> <point x="140" y="70" 	/> <point x="190" y="70" 	/> </link>
+		<link from="DistanceInput" 				to="DomDistLookup"			> <point x="140" y="220" /> <point x="190" y="220" 	/> </link>
+		<link from="SizeInput" 						to="DomSizeLookup" 			> <point x="140" y="370" /> <point x="190" y="370" 	/> </link>
+		<link from="DayInput" 						to="DomDaysLookup" 		> <point x="140" y="520" /> <point x="190" y="520" 	/> </link>
+		<link from="DomLookup" 					to="StandardFee" 				> <point x="230" y="90" 	/> <point x="230" y="120" 	/> </link>
+		<link from="DomDistLookup" 			to="DistanceFee" 				> <point x="230" y="240" /> <point x="230" y="270" 	/> </link>
+		<link from="DomSizeLookup" 			to="SizeFee" 						> <point x="230" y="390" /> <point x="230" y="420" 	/> </link>
+		<link from="DomDaysLookup" 			to="DayFee" 						> <point x="230" y="540" /> <point x="230" y="570" 	/> </link>
+		<link from="DomLookup" 					to="DomLetterSelect" 		> <point x="270" y="70" 	/> <point x="320" y="70" 	/> <point x="320" y="210" /><point x="350" y="210"/> </link>
+		<link from="DomDistLookup" 			to="DomLetterSelect" 		> <point x="270" y="220" /> <point x="310" y="220" 	/> <point x="310" y="220" /><point x="350" y="220"/> </link>
+		<link from="DomSizeLookup" 			to="DomLetterSelect" 		> <point x="270" y="370" /> <point x="320" y="370" 	/> <point x="320" y="230" /><point x="350" y="230"/> </link>
+		<link from="DomDaysLookup" 			to="DomLetterSelect" 		> <point x="270" y="520" /> <point x="330" y="520" 	/> <point x="330" y="240" /><point x="350" y="240"/> </link>
+		<link from="DomLetterSelect" 			to="DomLetterService"		> <point x="410" y="225" /> <point x="450" y="225" 	/> </link>
+		<link from="DomLetterService"			to="ExpressService"			> <point x="570" y="195" /> <point x="610" y="195" 	/> <point x="610" y="255" /><point x="510" y="255"/><point x="510" y="520" /><point x="550" y="520" /></link>
+		<link from="DomLetterService"			to="InsuranceService"		> <point x="570" y="195" /> <point x="610" y="195" 	/> <point x="610" y="255" /><point x="510" y="255"/><jpoint x="510" y="420" /><point x="550" y="420" /></link>
+		<link from="DomLetterService"			to="AODService"					> <point x="570" y="195" /> <point x="610" y="195" 	/> <point x="610" y="255" /><point x="510" y="255"/><jpoint x="510" y="320" /><point x="550" y="320" /></link>
+		<link from="AODService" 					to="SenderAddressInput"	> <point x="670" y="290" /><point x="720" y="290" 	/> </link>
+		<link from="AODService" 					to="AODFee"						> <point x="670" y="290" /><jpoint x="695" y="290"	/> <point x="695" y="340" /><point x="720" y="340"/></link>
+		<link from="InsuranceService"			to="InsuredInput" 				> <point x="670" y="390" /><point x="720" y="390" 	/> </link>
+		<link from="InsuranceService"			to="AODService" 				> <point x="670" y="390" /><jpoint x="695" y="390" 	/> <point x="695" y="355" /><point x="530" y="355"/><point x="530" y="290" /> <point x="550" y="290" /></link>
+		<link from="InsuredInput"					to="DomInsuranceLookup"> <point x="840" y="390" /><point x="880" y="390" 	/> </link>
+		<link from="DomInsuranceLookup"	to="InsuranceFee" 				> <point x="960" y="390" /><point x="1000" y="390" 	/> </link>
+		<link from="InsuranceService" 			to="ExpressService"			> <point x="680" y="420" /><point x="695" y="420" 	/> <point x="695" y="455" /><point x="530" y="455"/><point x="530" y="490" /> <point x="550" y="490" /></link>
+		<link from="ExpressService" 			to="ExpressFee"					> <point x="670" y="490" /><point x="720" y="490" 	/> </link>
+		<link from="ExpressService" 			to="InsuranceService" 		> <point x="680" y="520" /><point x="695" y="520" 	/> <point x="695" y="555" /><point x="490" y="555"/><point x="490" y="390" /> <point x="550" y="390" /></link>
+	</elements>
+</diagram>

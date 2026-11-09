@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="107" height="82"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	styleName="secondaryItem" xmlns:filters="flash.filters.*">
+	<mx:Metadata>
+    [Event(name="inConflictAutoClose", type="flash.events.Event")]
+	</mx:Metadata>
+	<mx:states>
+		<mx:State name="inConflictResolution" enterState="clearCancelFlag()" exitState="timer.stop();">
+			<mx:SetProperty name="width" value="220"/>
+			<mx:SetProperty name="height" value="170"/>
+			<mx:SetStyle target="{image1}" name="bottom"/>
+			<mx:SetStyle target="{pricetext}" name="right" value="5"/>
+			<mx:SetStyle target="{pricetext}" name="left"/>
+			<mx:AddChild relativeTo="{inner}" position="lastChild">
+				<mx:Text x="42" y="7" text="Confirm Replacement" width="169" height="21" selectable="false" color="#FFFFFF" textAlign="left"/>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{inner}" position="lastChild">
+				<mx:Text x="5" y="34" width="200" fontSize="9" fontWeight="bold" height="50" selectable="false"
+					text="This selection conflicts with others you have made. Touch again to confirm that you would like to replace them?" color="#FFFFFF"/>
+			</mx:AddChild>
+			<mx:AddChild relativeTo="{inner}" position="lastChild">
+				<mx:Canvas x="13" y="85" width="86" height="62" backgroundSize="100%"  click="CancelClick(event);"
+					backgroundImage="@Embed(source='embedded/ConflictCancel.png',scaleGridLeft='21',scaleGridTop='9',scaleGridRight='97',scaleGridBottom='12')" />
+			</mx:AddChild>
+			<mx:SetProperty target="{cross}" name="visible" value="false"/>
+			<mx:SetProperty target="{tick}" name="visible" value="false"/>
+			<mx:SetStyle target="{image1}" name="left"/>
+			<mx:RemoveChild target="{image1}"/>
+			<mx:AddChild relativeTo="{inner}" position="lastChild" target="{image1}"/>
+			<mx:SetProperty target="{image1}" name="x" value="117"/>
+			<mx:SetProperty target="{image1}" name="y" value="92"/>
+			<mx:SetStyle name="backgroundImage" value="@Embed(source='embedded/Conflict.png')"/>
+			<mx:SetStyle target="{inner}" name="bottom"/>
+			<mx:SetStyle target="{inner}" name="verticalCenter" value="0"/>
+			<mx:SetProperty target="{inner}" name="width" value="220"/>
+			<mx:SetProperty target="{inner}" name="height" value="170"/>
+			<mx:SetStyle target="{inner}" name="backgroundImage" value="@Embed(source='embedded/Conflict.png')"/>
+		</mx:State>
+		<mx:State name="PrimarySelected">
+			<mx:SetProperty name="width" value="257"/>
+			<mx:SetProperty name="height" value="122"/>
+			<mx:SetStyle target="{inner}" name="horizontalCenter"/>
+			<mx:SetStyle target="{inner}" name="right" value="3"/>
+			<mx:SetStyle target="{inner}" name="bottom"/>
+			<mx:SetStyle target="{inner}" name="top" value="1"/>
+			<mx:SetStyle target="{image1}" name="bottom"/>
+			<mx:SetStyle target="{image1}" name="left"/>
+			<mx:SetProperty target="{image1}" name="x" value="149"/>
+			<mx:SetProperty target="{image1}" name="y" value="6"/>
+			<mx:SetStyle name="borderStyle" value="solid"/>
+			<mx:SetStyle name="cornerRadius" value="10"/>
+			<mx:SetStyle name="backgroundColor" value="#CFE7D1"/>
+			<mx:SetStyle name="borderColor" value="#FFFFFF"/>
+			<mx:SetStyle name="borderThickness" value="2"/>
+			<mx:AddChild position="lastChild">
+				<mx:Text  id="serviceDescription" x="2" y="4" width="140" fontSize="12" fontWeight="bold" height="110" selectable="false"
+					text="{hint}" color="#4E6A68" textAlign="left"/>
+			</mx:AddChild>
+			<mx:SetStyle target="{cross}" name="left" value="143"/>
+			<mx:SetStyle target="{cross}" name="bottom" value="35"/>
+			<mx:SetStyle target="{tick}" name="left" value="143"/>
+			<mx:SetStyle target="{tick}" name="bottom" value="35"/>
+			<mx:SetStyle target="{pricetext}" name="left"/>
+			<mx:SetStyle target="{pricetext}" name="bottom"/>
+			<mx:SetProperty target="{pricetext}" name="x" value="148"/>
+			<mx:SetProperty target="{pricetext}" name="y" value="61"/>
+			<mx:AddChild position="lastChild">
+				<mx:Label y="89" fontSize="15" text="{addInfo}" horizontalCenter="0" textAlign="center" width="100%" id="label1"/>
+			</mx:AddChild>
+		</mx:State>
+		<mx:State name="PendingInput" basedOn="PrimarySelected">
+			<mx:SetStyle name="backgroundColor" value="#CEE0EB"/>
+			<mx:SetProperty target="{tick}" name="visible" value="false"/>
+			<mx:SetProperty target="{cross}" name="visible" value="false"/>
+			<mx:SetProperty target="{pricetext}" name="visible" value="false"/>
+			<mx:SetStyle target="{label1}" name="color" value="#004663"/>
+			<mx:SetStyle target="{serviceDescription}" name="color" value="#004663"/>
+			<mx:AddChild position="lastChild">
+				<mx:Image x="3" y="92" source="@Embed('com/proiam/slides/embedded/Exclaim.png')"/>
+			</mx:AddChild>
+			<mx:SetProperty target="{label1}" name="width" value="222"/>
+			<mx:SetStyle target="{label1}" name="horizontalCenter"/>
+			<mx:SetStyle target="{label1}" name="left" value="30"/>
+			<mx:SetProperty target="{label1}" name="y" value="92"/>
+		</mx:State>
+	</mx:states>
+	<mx:Script>
+        <![CDATA[
+        	import com.proiam.mails.MailService;
+        	import com.cykorsystems.utils.Configuration;
+        
+            import flash.events.Event;
+            import mx.effects.Zoom;
+            
+            [Bindable]
+        	private var scale:Number=1;
+			public var service:MailService=null;
+            [Bindable]
+        	public var caption:String="";
+        	[Bindable]
+        	public  var price:String="";
+        	[Bindable]
+        	public  var iconSource:Object=null;
+        	[Bindable]
+        	public var hint:String="";
+        	[Bindable]
+        	public var addInfo:String="";
+        	
+        	private var _available:Boolean=true;
+            [Bindable]
+            [Inspectable(defaultValue=true)]
+            public function get available():Boolean
+            {
+            	return _available;
+            }
+            public function set available(value:Boolean):void
+            {
+            	_available=value;
+            	if (_available) cross.visible=false; else cross.visible=true;
+            }
+            public var cancelClicked:Boolean=false;
+            private var timer:Timer=new Timer(5000);
+            public function clearCancelFlag():void {
+            	cancelClicked=false;
+            	timer.addEventListener(TimerEvent.TIMER,autoClose);
+            	timer.start();
+            }
+            public function autoClose(event:TimerEvent):void {
+            	timer.stop();
+            	currentState=null;
+            	dispatchEvent(new Event("inConflictAutoClose"));
+            }
+            public function CancelClick(event:Event):void {
+            	timer.stop();
+            	currentState=null;
+            	cancelClicked=true;
+            }
+            public function ConfirmClick(event:Event):void {
+            	timer.stop();
+            	cancelClicked=false;
+            }
+        ]]>
+    </mx:Script>
+	<mx:Canvas id="inner" horizontalCenter="0" bottom="0" width="107" height="82" 
+							backgroundImage="@Embed(source='embedded/Additional.png',scaleGridLeft='12',scaleGridTop='12', scaleGridRight='95',scaleGridBottom='61')" 
+						 	backgroundSize="100%"  visible="true"
+							verticalScrollPolicy="off" horizontalScrollPolicy="off"/>
+    <mx:Image id="tick" source="@Embed(source='embedded/Entry.png',scaleGridLeft='21',scaleGridTop='9',scaleGridRight='97',scaleGridBottom='12')" scaleContent="false" height="21" width="107" bottom="0" left="0" visible="false"/>
+	<mx:Image id="cross" source="@Embed(source='embedded/NoEntry.png',scaleGridLeft='21',scaleGridTop='9',scaleGridRight='97',scaleGridBottom='12')" scaleContent="false" height="21" width="107" bottom="0" left="0" visible="false"/>
+    <mx:Image id="conflictCheck" source="@Embed(source='embedded/ConflictCheck.png')" scaleContent="false" height="21" width="107" visible="false" left="0" bottom="0"/>
+	<mx:Text text="{price}" bottom="0" textAlign="right" color="#FFFFFF" left="5" width="97"  fontFamily="Tahoma" fontWeight="bold" fontSize="13" id="pricetext"/>
+	<mx:Image source="{iconSource}" left="5" width="95" height="55" scaleContent="true" alpha="0.75" bottom="21" id="image1"/>
+	<mx:Text  visible="false" text="{caption}" width="95" selectable="false" fontFamily="Tahoma" fontWeight="bold" fontSize="12" textAlign="left" left="6" bottom="30" height="46"/>		
+	<mx:filters>
+		<filters:DropShadowFilter id="shadow" angle="45" alpha="0.1" distance="4" blurX="0" blurY="0" />
+	</mx:filters>
+</mx:Canvas>

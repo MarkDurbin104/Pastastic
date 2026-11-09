@@ -1,0 +1,60 @@
+<vuitResult>
+	<status>OK</status>
+	<image>EnvelopeScan7.jpg</image>
+	<physicalAttributes>
+		<weight>0.9</weight>
+		<length>8.5</length>
+		<width>3.5</width>
+		<height>0.2</height>
+		<units>US</units>
+	</physicalAttributes>
+	<postage/>
+	<services>
+		<service>
+			<imageLocation>172, 315</imageLocation>
+			<serviceCode><![CDATA[03073330000103346875]]></serviceCode>
+		</service>
+	</services>
+	<destination>
+		<rawString>
+<![CDATA[
+ERIC METOIS 
+6 ORTONA ST 
+ARLINGTON MA 02476-5700 
+]]>
+		</rawString>
+		<imageLocation>468, 297, 610, 335 </imageLocation>
+		<address>
+			<name>ERIC METOIS </name>
+			<line1>6 ORTONA ST </line1>
+			<line2/>
+			<line3/>
+			<city>ARLINGTON</city>
+			<state>MA</state>
+			<zip>02476-5700</zip>
+			<country>USA</country>
+			<telephone/>
+			<email/>
+		</address>
+	</destination>
+	<origin>
+		<rawString>
+<![CDATA[
+PO Box 2400 Young America MN 55553-2400 
+]]>
+		</rawString>
+		<imageLocation>26, 30, 332, 94</imageLocation>
+		<address>
+			<name>.T...Mobile.</name>
+			<line1>PO Box 2400</line1>
+			<line2/>
+			<line3/>
+			<city>Young America</city>
+			<state>MN</state>
+			<zip>55553-2400</zip>
+			<country>USA</country>
+			<telephone/>
+			<email/>
+		</address>
+	</origin>
+</vuitResult>

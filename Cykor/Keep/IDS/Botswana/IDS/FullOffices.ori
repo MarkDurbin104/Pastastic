@@ -1,0 +1,257 @@
+// CRC 00000000
+OfficesRoutes {
+   Version { 1 }
+   System { 'Botswana Post' }
+   Offices {
+     HeadQuarters    { Title { 'Head Quarters'    } SCode { 'HQ'  } Code { 1000 } PCode { 2600 } I3Code { 001 } AccessVia { '172.016.000.017' } Automated } // 172.016.000.018
+     GaboroneCentral { Title { 'Gaborone Central' } SCode { 'GBE' } Code { 2000 } PCode { 0101 } I3Code { 002 } AccessVia { '172.016.000.133' } Automated } // 192.168.001.024
+     RiverWalk       { Title { 'River Walk'       } SCode { 'RWK' } Code { 2001 } PCode { 2601 } I3Code { 003 } AccessVia { '172.016.000.111' } Automated } // 192.168.003.024
+     Bontleng        { Title { 'Bontleng'         } SCode { 'BTG' } Code { 2020 } PCode { 0102 } I3Code { 004 } AccessVia { '192.168.008.024' } }
+     GaboroneVillage { Title { 'Gaborone Village' } SCode { 'GBE' } Code { 2021 } PCode { 0105 } I3Code { 005 } AccessVia { '192.168.053.024' } }
+     RamotswaVillage { Title { 'Ramotswa Village' } SCode { 'RMV' } Code { 2022 } PCode { 1101 } I3Code { 006 } AccessVia { '192.168.011.024' } }
+     RamotswaStation { Title { 'Ramotswa Station' } SCode { 'RMS' } Code { 2023 } PCode { 1105 } I3Code { 007 } AccessVia { '192.168.010.024' } }
+     GaboroneUB      { Title { 'Gaborone UB'      } SCode { 'UPO' } Code { 2024 } PCode { 2602 } I3Code { 008 } AccessVia { '192.168.004.024' } }
+     Broadhurst      { Title { 'Broadhurst'       } SCode { 'BDT' } Code { 2040 } PCode { 0103 } I3Code { 009 } AccessVia { '192.168.002.024' } Automated } // 192.168.002.024
+     Kopong          { Title { 'Kopong'           } SCode { 'KOP' } Code { 2041 } PCode { 1206 } I3Code { 010 } AccessVia { '192.168.033.024' } }
+     SSKAirport      { Title { 'SSK Airport'      } SCode { 'SKA' } Code { 2042 } PCode { 2603 } I3Code { 011 } AccessVia { '192.168.047.024' } }
+     Tlokweng        { Title { 'Tlokweng'         } SCode { 'TKG' } Code { 2043 } PCode { 0701 } I3Code { 012 } AccessVia { '192.168.007.024' } }
+     GaboroneStation { Title { 'Gaborone Station' } SCode { 'GBS' } Code { 2060 } PCode { 0104 } I3Code { 013 } AccessVia { '192.168.005.024' } }
+     Gabane          { Title { 'Gabane'           } SCode { 'GBN' } Code { 2061 } PCode { 1205 } I3Code { 014 } AccessVia { '192.168.009.024' } }
+     Mogoditshane    { Title { 'Mogoditshane'     } SCode { 'MGT' } Code { 2062 } PCode { 1203 } I3Code { 015 } AccessVia { '192.168.006.024' } }
+     Mmankgodi       { Title { 'Mmankgodi'        } SCode { 'MKD' } Code { 2063 } PCode { 1204 } I3Code { 016 } AccessVia { '192.168.044.024' } }
+     Thamaga         { Title { 'Thamaga'          } SCode { 'TMG' } Code { 2064 } PCode { 1202 } I3Code { 017 } AccessVia { '192.168.023.024' } }
+     Ghanzi          { Title { 'Ghanzi'           } SCode { 'GNZ' } Code { 2080 } PCode { 2201 } I3Code { 018 } AccessVia { '192.168.027.024' } }
+     Charleshill     { Title { 'Charles hill'     } SCode { 'CSL' } Code { 2081 } PCode { 2206 } I3Code { 019 } AccessVia { '192.168.032.024' } }
+     Kalfontein      { Title { 'Kalfontein'       } SCode { 'KKN' } Code { 2082 } PCode { 2202 } I3Code { 020 } AccessVia { '192.168.038.024' } }
+     Nojane          { Title { 'Nojane'           } SCode { 'NJN' } Code { 2083 } PCode { 2203 } I3Code { 021 } AccessVia { '192.168.037.024' } }
+     Jwaneng         { Title { 'Jwaneng'          } SCode { 'JNG' } Code { 2100 } PCode { 0601 } I3Code { 022 } AccessVia { '192.168.028.024' } }
+     Hukuntsi        { Title { 'Hukuntsi'         } SCode { 'HKI' } Code { 2101 } PCode { 2301 } I3Code { 023 } AccessVia { '192.168.026.024' } }
+     Kang            { Title { 'Kang'             } SCode { 'KNG' } Code { 2102 } PCode { 2303 } I3Code { 024 } AccessVia { '192.168.029.024' } }
+     Khakhea         { Title { 'Khakhea'          } SCode { 'KKA' } Code { 2103 } PCode { 0907 } I3Code { 025 } AccessVia { '192.168.043.024' } }
+     Lehututu        { Title { 'Lehututu'         } SCode { 'LTU' } Code { 2104 } PCode { 2307 } I3Code { 026 } AccessVia { '192.168.034.024' } }
+     Mabutsane       { Title { 'Mabutsane'        } SCode { 'BDT' } Code { 2105 } PCode { 0911 } I3Code { 027 } AccessVia { '192.168.054.024' } }
+     Middlepits      { Title { 'Middlepits'       } SCode { 'MDP' } Code { 2106 } PCode { 2315 } I3Code { 028 } AccessVia { '192.168.051.024' } }
+     Tsabong         { Title { 'Tsabong'          } SCode { 'TBG' } Code { 2107 } PCode { 2302 } I3Code { 029 } AccessVia { '192.168.024.024' } }
+     Werda           { Title { 'Werda'            } SCode { 'WDA' } Code { 2108 } PCode { 2304 } I3Code { 030 } AccessVia { '192.168.052.024' } }
+     Lobatse         { Title { 'Lobatse'          } SCode { 'LBT' } Code { 2120 } PCode { 0301 } I3Code { 031 } AccessVia { '192.168.012.024' } }
+     Digawana        { Title { 'Digawana'         } SCode { 'DGW' } Code { 2121 } PCode { 0906 } I3Code { 032 } AccessVia { '192.168.015.024' } }
+     GoodHope        { Title { 'Good Hope'        } SCode { 'GPH' } Code { 2122 } PCode { 1004 } I3Code { 033 } AccessVia { '192.168.030.024' } }
+     Mabule          { Title { 'Mabule'           } SCode { 'MBL' } Code { 2123 } PCode { 0908 } I3Code { 034 } AccessVia { '192.168.049.024' } }
+     Otse            { Title { 'Otse'             } SCode { 'OTS' } Code { 2124 } PCode { 1103 } I3Code { 035 } AccessVia { '192.168.040.024' } }
+     Pitsane         { Title { 'Pitsane'          } SCode { 'PTE' } Code { 2125 } PCode { 1001 } I3Code { 036 } AccessVia { '192.168.041.024' } }
+     Sedibeng        { Title { 'Sedibeng'         } SCode { 'SDG' } Code { 2126 } PCode { 0953 } I3Code { 037 } AccessVia { '192.168.045.024' } }
+     Woodhall        { Title { 'Woodhall'         } SCode { 'WDL' } Code { 2127 } PCode { 0302 } I3Code { 038 } AccessVia { '192.168.025.024' } }
+     Mochudi         { Title { 'Mochudi'          } SCode { 'MOC' } Code { 2140 } PCode { 1301 } I3Code { 039 } AccessVia { '192.168.019.024' } }
+     Bokaa           { Title { 'Bokaa'            } SCode { 'BKA' } Code { 2141 } PCode { 1302 } I3Code { 040 } AccessVia { '192.168.013.024' } }
+     Ntshinoge       { Title { 'Ntshinoge'        } SCode { 'NTG' } Code { 2142 } PCode { 1399 } I3Code { 041 } AccessVia { '192.168.022.024' } }
+     Oodi            { Title { 'Oodi'             } SCode { 'ODI' } Code { 2143 } PCode { 1303 } I3Code { 042 } AccessVia { '192.168.039.024' } }
+     Sikwane         { Title { 'Sikwane'          } SCode { 'SKN' } Code { 2144 } PCode { 1308 } I3Code { 043 } AccessVia { '192.168.046.024' } }
+     Molepolole      { Title { 'Molepolole'       } SCode { 'MPE' } Code { 2160 } PCode { 1201 } I3Code { 044 } AccessVia { '192.168.020.024' } }
+     Letlhakeng      { Title { 'Letlhakeng'       } SCode { 'LTG' } Code { 2161 } PCode { 2501 } I3Code { 045 } AccessVia { '192.168.042.024' } }
+     Lentsweletau    { Title { 'Lentsweletau'     } SCode { 'LTT' } Code { 2162 } PCode { 1207 } I3Code { 046 } AccessVia { '192.168.035.024' } }
+     Mathubantwa     { Title { 'Mathubantwa'      } SCode { 'MBT' } Code { 2163 } PCode { 1299 } I3Code { 047 } AccessVia { '192.168.017.024' } }
+     Motokwe         { Title { 'Motokwe'          } SCode { 'MTE' } Code { 2164 } PCode { 2502 } I3Code { 048 } AccessVia { '192.168.036.024' } }
+     Sojwe           { Title { 'Sojwe'            } SCode { 'SJE' } Code { 2165 } PCode { 1215 } I3Code { 049 } AccessVia { '192.168.048.024' } }
+     Thebephatswa    { Title { 'Thebephatswa'     } SCode { 'TBH' } Code { 2166 } PCode { 2604 } I3Code { 050 } AccessVia { '192.168.050.024' } }
+     Mmasekou        { Title { 'Mmasekou'         } SCode { 'MSK' } Code { 2180 } PCode { 0998 } I3Code { 051 } AccessVia { '192.168.018.024' } }           
+     Kanye           { Title { 'Kanye'            } SCode { 'KYE' } Code { 2181 } PCode { 0901 } I3Code { 052 } AccessVia { '192.168.014.024' } }
+     Mafhikana       { Title { 'Mafhikana'        } SCode { 'MHK' } Code { 2182 } PCode { 1501 } I3Code { 053 } AccessVia { '192.168.016.024' } }
+     Moshupa         { Title { 'Moshupa'          } SCode { 'MSP' } Code { 2183 } PCode { 0902 } I3Code { 054 } AccessVia { '192.168.021.024' } }           
+     Mmathethe       { Title { 'Mmathethe'        } SCode { 'MTT' } Code { 2184 } PCode { 0904 } I3Code { 055 } AccessVia { '192.168.031.024' } }           
+     Serowe          { Title { 'Serowe'           } SCode { 'SRW' } Code { 2200 } PCode { 1401 } I3Code { 056 } AccessVia { '192.168.069.024' } }
+     Moiyabana       { Title { 'Moiyabana'        } SCode { 'MYA' } Code { 2201 } PCode { 1404 } I3Code { 057 } AccessVia { '192.168.078.024' } }
+     Rasebolai       { Title { 'Rasebolai'        } SCode { 'RBI' } Code { 2202 } PCode { 1499 } I3Code { 058 } AccessVia { '192.168.066.024' } }
+     Palapye         { Title { 'Palapye'          } SCode { 'PLY' } Code { 3000 } PCode { 0801 } I3Code { 059 } AccessVia { '192.168.064.024' } Automated }
+     Tumasera        { Title { 'Tumasera'         } SCode { 'TMS' } Code { 3001 } PCode { 1538 } I3Code { 060 } AccessVia { '192.168.085.024' } }
+     Lecheng         { Title { 'Lecheng'          } SCode { 'LCG' } Code { 3002 } PCode { 1410 } I3Code { 061 } AccessVia { '192.168.072.024' } }
+     Pota            { Title { 'Pota'             } SCode { 'PTA' } Code { 3003 } PCode { 0802 } I3Code { 062 } AccessVia { '192.168.065.024' } }
+     Maokatumo       { Title { 'Maokatumo'        } SCode { 'MTM' } Code { 3004 } PCode { 1458 } I3Code { 063 } AccessVia { '192.168.075.024' } }
+     SherwoodRanch   { Title { 'Sherwood Ranch'   } SCode { 'SWR' } Code { 3005 } PCode { 2605 } I3Code { 064 } AccessVia { '192.168.082.024' } }
+     Lerala          { Title { 'Lerala'           } SCode { 'LRL' } Code { 3006 } PCode { 1402 } I3Code { 065 } AccessVia { '192.168.059.024' } }
+     Moeng           { Title { 'Moeng'            } SCode { 'MOE' } Code { 3007 } PCode { 2606 } I3Code { 066 } AccessVia { '192.168.076.024' } }
+     Maunatlala      { Title { 'Maunatlala'       } SCode { 'MTL' } Code { 3008 } PCode { 1403 } I3Code { 067 } AccessVia { '192.168.062.024' } }
+     Ramokgonami     { Title { 'Ramokgonami'      } SCode { 'RKM' } Code { 3009 } PCode { 1506 } I3Code { 068 } AccessVia { '192.168.074.024' } }
+     SelebiPhikwe    { Title { 'Selebi Phikwe'    } SCode { 'SBE' } Code { 3020 } PCode { 0401 } I3Code { 069 } AccessVia { '192.168.068.024' } }
+     Sefhophe        { Title { 'Sefhophe'         } SCode { 'SFE' } Code { 3021 } PCode { 1603 } I3Code { 070 } AccessVia { '192.168.077.024' } }
+     Mmadinare       { Title { 'Mmadinare'        } SCode { 'MDR' } Code { 3022 } PCode { 1601 } I3Code { 071 } AccessVia { '192.168.063.024' } }
+     Serule          { Title { 'Serule'           } SCode { 'SRL' } Code { 3023 } PCode { 1605 } I3Code { 072 } AccessVia { '192.168.081.024' } }
+     Tsetsebye       { Title { 'Tsetsebye'        } SCode { 'TBY' } Code { 3024 } PCode { 1927 } I3Code { 073 } AccessVia { '192.168.084.024' } }
+     Bobonong        { Title { 'Bobonong'         } SCode { 'BBG' } Code { 3025 } PCode { 1602 } I3Code { 074 } AccessVia { '192.168.057.024' } }
+     Botshabelo      { Title { 'Botshabelo'       } SCode { 'BTL' } Code { 3026 } PCode { 0402 } I3Code { 075 } AccessVia { '192.168.058.024' } }
+     Semolale        { Title { 'Semolale'         } SCode { 'SME' } Code { 3027 } PCode { 1607 } I3Code { 076 } AccessVia { '192.168.079.024' } }
+     Mahalapye       { Title { 'Mahalapye'        } SCode { 'MHY' } Code { 3040 } PCode { 0999 } I3Code { 077 } AccessVia { '192.168.061.024' } }
+     Mookane         { Title { 'Mookane'          } SCode { 'MKE' } Code { 3041 } PCode { 1507 } I3Code { 078 } AccessVia { '192.168.083.024' } }
+     Sefhare         { Title { 'Sefhare'          } SCode { 'SFR' } Code { 3042 } PCode { 1503 } I3Code { 079 } AccessVia { '192.168.067.024' } }
+     Madiba          { Title { 'Madiba'           } SCode { 'MDB' } Code { 3043 } PCode { 1599 } I3Code { 080 } AccessVia { '192.168.060.024' } }
+     Pilikwe         { Title { 'Pilikwe'          } SCode { 'PLE' } Code { 3044 } PCode { 1510 } I3Code { 081 } AccessVia { '192.168.080.024' } }
+     Shoshong        { Title { 'Shoshong'         } SCode { 'SSG' } Code { 3045 } PCode { 1502 } I3Code { 082 } AccessVia { '192.168.070.024' } }
+     Kalamare        { Title { 'Kalamare'         } SCode { 'KMR' } Code { 3046 } PCode { 1505 } I3Code { 083 } AccessVia { '192.168.071.024' } }
+     Machaneng       { Title { 'Machaneng'        } SCode { 'MCG' } Code { 3047 } PCode { 1509 } I3Code { 084 } AccessVia { '192.168.073.024' } }
+     Francistown     { Title { 'Francistown'      } SCode { 'FTN' } Code { 4000 } PCode { 0201 } I3Code { 085 } AccessVia { '192.168.092.024' } Automated }
+     Tatitown        { Title { 'Tatitown'         } SCode { 'TTT' } Code { 4100 } PCode { 0202 } I3Code { 086 } AccessVia { '192.168.106.024' } }
+     Matsiloje       { Title { 'Matsiloje'        } SCode { 'MTJ' } Code { 4101 } PCode { 1921 } I3Code { 087 } AccessVia { '192.168.115.024' } }
+     Mathangwane     { Title { 'Mathangwane'      } SCode { 'MTN' } Code { 4102 } PCode { 1811 } I3Code { 088 } AccessVia { '192.168.114.024' } }
+     Nata            { Title { 'Nata'             } SCode { 'NTA' } Code { 4103 } PCode { 1808 } I3Code { 089 } AccessVia { '192.168.100.024' } }
+     Gweta           { Title { 'Gweta'            } SCode { 'GWE' } Code { 4104 } PCode { 1805 } I3Code { 090 } AccessVia { '192.168.116.024' } }
+     Sowa            { Title { 'Sowa'             } SCode { 'SWA' } Code { 4105 } PCode { 1891 } I3Code { 091 } AccessVia { '192.168.105.024' } }           
+     Tutume          { Title { 'Tutume'           } SCode { 'TTM' } Code { 4200 } PCode { 1802 } I3Code { 092 } AccessVia { '192.168.109.024' } }           
+     Sebina          { Title { 'Sebina'           } SCode { 'SBA' } Code { 4201 } PCode { 1820 } I3Code { 093 } AccessVia { '192.168.102.024' } }           
+     Nkange          { Title { 'Nkange'           } SCode { 'NKG' } Code { 4202 } PCode { 1804 } I3Code { 094 } AccessVia { '192.168.110.024' } }           
+     Maitengwe       { Title { 'Maitengwe'        } SCode { 'MTG' } Code { 4203 } PCode { 1803 } I3Code { 095 } AccessVia { '192.168.118.024' } }           
+     Masunga         { Title { 'Masunga'          } SCode { 'MSG' } Code { 4300 } PCode { 1907 } I3Code { 096 } AccessVia { '192.168.097.024' } }           
+     Makaleng        { Title { 'Makaleng'         } SCode { 'MKG' } Code { 4301 } PCode { 1914 } I3Code { 097 } AccessVia { '192.168.096.024' } }           
+     Ramokwebana     { Title { 'Ramokwebana'      } SCode { 'RKE' } Code { 4302 } PCode { 1909 } I3Code { 098 } AccessVia { '192.168.112.024' } }
+     Tsesebe         { Title { 'Tsesebe'          } SCode { 'TSB' } Code { 4303 } PCode { 1604 } I3Code { 099 } AccessVia { '192.168.108.024' } }           
+     Tonota          { Title { 'Tonota'           } SCode { 'TNT' } Code { 4400 } PCode { 1801 } I3Code { 100 } AccessVia { '192.168.107.024' } }           
+     Shashe          { Title { 'Shashe'           } SCode { 'SHS' } Code { 4401 } PCode { 1807 } I3Code { 101 } AccessVia { '192.168.104.024' } }           
+     Monarch         { Title { 'Monarch'          } SCode { 'MNH' } Code { 4500 } PCode { 0203 } I3Code { 102 } AccessVia { '192.168.099.024' } }
+     Orapa           { Title { 'Orapa'            } SCode { 'ORA' } Code { 4600 } PCode { 0501 } I3Code { 103 } AccessVia { '192.168.101.024' } }
+     Letlhakane      { Title { 'Letlhakane'       } SCode { 'LTK' } Code { 4601 } PCode { 1701 } I3Code { 104 } AccessVia { '192.168.095.024' } }           
+     Mopipi          { Title { 'Mopipi'           } SCode { 'MPP' } Code { 4601 } PCode { 1703 } I3Code { 105 } AccessVia { '192.168.119.024' } }           
+     Rakops          { Title { 'Rakops'           } SCode { 'RKP' } Code { 4602 } PCode { 1702 } I3Code { 106 } AccessVia { '192.168.111.024' } }           
+     Kasane          { Title { 'Kasane'           } SCode { 'KSE' } Code { 4700 } PCode { 2101 } I3Code { 107 } AccessVia { '192.168.094.024' } }           
+     Kavimba         { Title { 'Kavimba'          } SCode { 'KVB' } Code { 4701 } PCode { 2109 } I3Code { 108 } AccessVia { '192.168.117.024' } }           
+     Maun            { Title { 'Maun'             } SCode { 'MAU' } Code { 4800 } PCode { 2001 } I3Code { 109 } AccessVia { '192.168.098.024' } }
+     Boseja          { Title { 'Boseja'           } SCode { 'BSA' } Code { 4801 } PCode { 2099 } I3Code { 110 } AccessVia { '192.168.091.024' } }           
+     Sehitwa         { Title { 'Sehitwa'          } SCode { 'SHW' } Code { 4802 } PCode { 2002 } I3Code { 111 } AccessVia { '192.168.113.024' } }           
+     Gumare          { Title { 'Gumare'           } SCode { 'GMR' } Code { 4803 } PCode { 2401 } I3Code { 112 } AccessVia { '192.168.093.024' } }
+     Etsha           { Title { 'Etsha'            } SCode { 'ETS' } Code { 4804 } PCode { 2402 } I3Code { 113 } AccessVia { '192.168.120.024' } }
+     Shakawe         { Title { 'Shakawe'          } SCode { 'SKE' } Code { 4805 } PCode { 2403 } I3Code { 114 } AccessVia { '192.168.103.024' } }
+   }
+   Schedules {
+      HeadQuarters {
+         GaboroneCentral { 30 }
+         Palapye         { 30 }
+         Francistown     { 30 }
+      }
+      GaboroneCentral {
+         AllSubOffices { 30 }
+      }
+      Palapye         {
+         AllSubOffices { 30 }
+      }
+      Francistown     {
+         AllSubOffices { 30 }
+      }
+   }
+   Routes {
+      Data {
+         HeadQuarters {
+             GaboroneCentral {
+               Broadhurst     , RiverWalk      , GaboroneUB , GaboroneStation,
+               Mogoditshane   , Tlokweng       , Bontleng   , Gabane         ,
+               RamotswaStation, RamotswaVillage, Lobatse    , Bokaa          ,
+               Kanye          , Digawana       , Mafhikana  , Mathubantwa    ,
+               Mmasekou       , Mochudi        , Molepolole , Moshupa        ,
+               Ntshinoge      , Thamaga        , Tsabong    , Woodhall       ,
+               Hukuntsi       , Ghanzi         , Jwaneng    , Kang           ,
+               GoodHope       , Mmathethe      , Charleshill, Kopong         ,
+               Lehututu       , Lentsweletau   , Motokwe    , Nojane         ,
+               Kalfontein     , Oodi           , Otse       , Pitsane        ,
+               Letlhakeng     , Khakhea        , Mmankgodi  , Sedibeng       ,
+               Sikwane        , SSKAirport     , Sojwe      , Mabule         ,
+               Thebephatswa   , Middlepits     , Werda      , GaboroneVillage,
+               Mabutsane
+            }
+            Palapye {
+               Bobonong     , Botshabelo, Lerala      , Madiba   ,
+               Mahalapye    , Maunatlala, Mmadinare   , Pota     ,
+               Rasebolai    , Sefhare   , SelebiPhikwe, Serowe   ,
+               Shoshong     , Kalamare  , Lecheng     , Machaneng,
+               Ramokgonami  , Maokatuma , Moeng       , Sefhophe ,
+               Moiyabana    , Semolale  , Pilikwe     , Serule   ,
+               SherwoodRanch, Mookane   , Tsetsebye   , Tumasera
+            }
+            Francistown {
+               Gumare , Kasane     , Letlhakane, Makaleng   ,
+               Masunga, Maun       , Monarch   , Nata       ,
+               Orapa  , Sebina     , Shakawe   , Shashe     ,
+               Sowa   , Tatitown   , Tonota    , Tsesebe    ,
+               Tutume , Nkange     , Rakops    , Ramokwebana,
+               Sehitwa, Mathangwane, Matsiloje , Gweta      ,
+               Kavimba, Maitengwe  , Mopipi    , Etsha
+            }
+         }
+      }
+      OfficeHirarchy {
+         HeadQuarters {
+            GaboroneCentral {
+               RiverWalk
+            }
+            Bontleng {
+               GaboroneVillage, RamotswaVillage,
+               RamotswaStation, GaboroneUB
+            }
+            Broadhurst {
+               Kopong, SSKAirport, Tlokweng
+            }
+            GaboroneStation {
+               Gabane, Mogoditshane, Mmankgodi, Thamaga
+            }
+            Ghanzi {
+               Charleshill, Kalfontein, Nojane
+            }
+            Jwaneng {
+               Hukuntsi, Kang, Khakhea, Lehututu,
+               Mabutsane, Middlepits ,Tsabong, Werda
+            }
+            Lobatse {
+               Digawana, GoodHope, Mabule, Otse,
+               Pitsane, Sedibeng, Woodhall
+            }
+            Mochudi {
+               Bokaa, Ntshinoge, Oodi, Sikwane
+            }
+            Molepolole {
+               Letlhakeng, Lentsweletau, Mathubantwa,
+               Motokwe, Sojwe, Thebephatswa
+            }
+            Mmasekou {
+               Kanye, Mafhikana, Moshupa, Mmathethe
+            }
+            Serowe {
+               Moiyabana, Rasebolai
+            }
+            Palapye {
+               Tumasera, Lecheng, Pota, Maokatumo,
+               SherwoodRanch, Lerala, Moeng, Maunatlala,
+               Ramokgonami
+            }
+            SelebiPhikwe {
+               Sefhophe, Mmadinare, Serule, Tsetsebye,
+               Bobonong, Botshabelo, Semolale
+            }
+            Mahalapye {
+               Mookane, Sefhare, Madiba, Pilikwe,
+               Shoshong, Kalamare, Machaneng
+            }
+            Francistown {
+               Tatitown {
+                  Matsiloje, Mathangwane, Nata,
+                  Gweta, Sowa
+               }
+               Tutume {
+                  Sebina, Nkange, Maitengwe
+               }
+               Masunga {
+                  Makaleng, Ramokwebana, Tsesebe
+               }
+               Tonota {
+                  Shashe
+               }
+               Monarch
+            }
+            Orapa  {
+               Letlhakane, Mopipi, Rakops
+            }
+            Kasane {
+               Kavimba
+            }
+            Maun {
+               Boseja, Sehitwa, Gumare, Etsha, Shakawe
+            }
+         }
+      }
+   }
+}
+

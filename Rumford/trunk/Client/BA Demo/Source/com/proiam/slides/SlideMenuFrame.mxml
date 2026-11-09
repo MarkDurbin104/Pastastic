@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  xmlns:filters="flash.filters.*"
+	width="292" 
+	height="734" 
+	
+	verticalScrollPolicy="off" 
+	horizontalScrollPolicy="off" 
+	
+	backgroundColor="{backtone}" 
+	borderColor="{foretone}" 
+	color="{foretone}" 
+	fontFamily="Verdana" 
+	fontWeight="bold" 
+	fontSize="15" 
+
+	borderStyle="solid" 
+	borderThickness="5"	 
+	cornerRadius="10"  xmlns:slides="com.proiam.slides.*">
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public var foretone:uint=0x8FB898;
+			[Bindable]
+			public var backtone:uint=0x8FB898;
+		]]>
+	</mx:Script> 
+	<slides:MenuButton visible="{foretone==0x8DBBB0}"  x="16" y="28" title="Manage&#xa;Stock" caption="Manage stock units.&#xa;View, transfer and&#xa;remit stock" iconSource="resources/menu/ManageStock.png" foretone="{foretone}" backtone="{backtone}"/>
+	<slides:MenuButton visible="{foretone==0x8DBBB0}"  x="16" y="139" title="View&#xa;Reports" caption="View and Print&#xa;daily, weekly and&#xa;monthly reports" iconSource="resources/menu/ViewReports.png" foretone="{foretone}" backtone="{backtone}"/>
+	<slides:MenuButton visible="{foretone==0x8DBBB0}"  x="16" y="251" title="End of Day&#xa;Tasks" caption="Perform end of day&#xa;processing and&#xa;reporting" iconSource="resources/menu/EndofDay.png" foretone="{foretone}" backtone="{backtone}"/>
+	<slides:MenuButton visible="{foretone==0x8DBBB0}"  x="16" y="362" title="Manage&#xa;Users" caption="Create, delete and&#xa;modify user preferences&#xa;and system access" iconSource="resources/menu/ManageUsers.png" foretone="{foretone}" backtone="{backtone}"/>
+	<slides:MenuButton visible="{foretone==0x8DBBB0}"  x="16" y="474" title="Message&#xa;Center" caption="Send messages to&#xa;other offices or &#xa;personnel" iconSource="resources/menu/MessageCenter.png" foretone="{foretone}" backtone="{backtone}"/>
+	<slides:MenuButton visible="{foretone==0x8DBBB0}"  x="16" y="587" title="Lock&#xa;System" caption="Lock this screen&#xa;until the password&#xa;is re-entered" iconSource="resources/menu/LockSystem.png" foretone="{foretone}" backtone="{backtone}"/>
+	<mx:filters>
+		<filters:DropShadowFilter angle="45" alpha=".1" distance="4" blurX="0" blurY="0"/>
+	</mx:filters>
+</mx:Canvas>

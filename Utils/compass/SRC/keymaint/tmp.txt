@@ -1,0 +1,2006 @@
+
+Function	AddReMACSPLU
+
+Synopsis
+
+Prototype	void AddReMACSPLU(REMACSPLU **plulist,REMACSPLU *plu,LONG price,INT plevel);
+
+Module	FILEIO.C
+
+Description	
+
+Passed	REMACSPLU **plulist 
+	REMACSPLU *plu 
+	LONG price 
+	INT plevel 
+
+Return Value	None
+
+Modifies	plu plulist 
+
+Called By	LoadReMACSPLU.
+
+See Also	CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	AuditLog
+
+Synopsis	========================================================================
+
+Prototype	void AuditLog(CHAR *format,...);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	CHAR *format 
+	... 
+
+Return Value	None
+
+Modifies	donestart 
+
+Called By	ExitMenu, ShutDown, StartUp.
+
+See Also	DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	Beep
+
+Synopsis
+
+Prototype	void Beep(void);
+
+Module	VIDEOKBD.C
+
+Description	
+
+Return Value	None
+
+Called By	[ExitMenu], [InputAlNum], [InputLine], [InputNumber], [MenuInput], [PLUInput], [RunSearch], [SelectCFGLine], [StartScreen].
+
+See Also	DrawCBar, GetFont, GetKey, HideCursor, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutChXY, OutFormat, OutWrap, PlaceCursor, Rectangle, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	CleanBuf
+
+Synopsis	Remove any spaces at the start and end of a string
+
+Prototype	CHAR *CleanBuf(CHAR *str);
+
+Module	FILEIO.C
+
+Description	Remove any spaces at the start and end of a string 
+
+Passed	CHAR *str  - The padded string
+
+Return Value	CHAR *  - The cleaned string
+
+Called By	GetLong, [MenuInput], [MenuPLUInput], [OutCentre], [PLUInput], [PrintLine], [RunHelp], [TitleInput].
+
+See Also	AddReMACSPLU, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	DrawCBar
+
+Synopsis
+
+Prototype	void DrawCBar(INT x,INT y,INT wid,INT attr);
+
+Module	VIDEOKBD.C
+
+Description	
+
+Passed	INT x 
+	INT y 
+	INT wid 
+	INT attr 
+
+Return Value	None
+
+Called By	[ListCFGLines], [ListPLULines].
+
+See Also	Beep, GetFont, GetKey, HideCursor, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutChXY, OutFormat, OutWrap, PlaceCursor, Rectangle, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	DrawKey
+
+Synopsis	Draw one key with it's text
+
+Prototype	INT DrawKey(MAINDS *ds,INT kindex,INT startx,INT starty,INT level,BOOL drawt);
+
+Module	COMPKEY.C
+
+Description	Draw one key with it's text 
+
+Passed	MAINDS *ds  - The List of keyboard layout information
+	INT kindex  - The number of keys on the keyboard
+	INT startx  - The key index
+	INT starty  - The start X co-ordinate of the key
+	INT level  - The start Y co-ordinate of the key
+	BOOL drawt  - The keyboard overlay information
+
+Return Value	INT  - The available movement key flags (see KeyInd()) if the title is drawn
+
+Modifies	G_colour 
+
+Called By	KeyGrid.
+
+Calls	KeyAtPos, [Rectangle], [OutChar], [FindPLU], ismenu, [FindRePLU], [OutWrap], TitleBar, [OutFormat].
+
+See Also	AuditLog, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	DrawMenu
+
+Synopsis	Draw a menu box on the right hand side
+
+Prototype	INT DrawMenu(INT curkey,MAINDS *ds,BOOL draw,INT top);
+
+Module	COMPKEY.C
+
+Description	Draw a menu box on the right hand side 
+
+Passed	INT curkey  - The current key
+	MAINDS *ds  - The keyboard overlay information
+	BOOL draw  - The current keyboard level
+	INT top 
+
+Return Value	INT 
+
+Called By	main, MenuInput.
+
+Calls	[SetViewPort], [Rectangle], [OutFormat].
+
+See Also	AuditLog, DrawKey, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	ExitMenu
+
+Synopsis
+
+Prototype	BOOL ExitMenu(MAINDS *ds);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	MAINDS *ds 
+
+Return Value	BOOL 
+
+Called By	main.
+
+Calls	[SetViewPort], StatusLine, [OutFormat], [GetKey], AuditLog, InputLine, PrintKeyboard, [Beep].
+
+See Also	AuditLog, DrawKey, DrawMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	FindDept
+
+Synopsis
+
+Prototype	DEPARTMENT *FindDept(DEPARTMENT *deptlist,INT dept);
+
+Module	FILEIO.C
+
+Description	
+
+Passed	DEPARTMENT *deptlist 
+	INT dept 
+
+Return Value	DEPARTMENT * 
+
+Modifies	deptlist 
+
+Called By	[main], [MenuInput], [PLUInput], [PrintKeyboard], SaveDepartment, [TitleInput], [ToggleState].
+
+See Also	AddReMACSPLU, CleanBuf, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	FindPLU
+
+Synopsis
+
+Prototype	PLU *FindPLU(PLU *plulist,LONG plu_code);
+
+Module	FILEIO.C
+
+Description	
+
+Passed	PLU *plulist 
+	LONG plu_code 
+
+Return Value	PLU * 
+
+Modifies	plulist 
+
+Called By	[DrawKey], LoadPLU, [MenuInput], [MenuPLUInput], [PLUInput], [PrintLine], [TitleInput].
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	FindRePLU
+
+Synopsis
+
+Prototype	REMACSPLU *FindRePLU(REMACSPLU *plulist,LONG plu_code);
+
+Module	FILEIO.C
+
+Description	
+
+Passed	REMACSPLU *plulist 
+	LONG plu_code 
+
+Return Value	REMACSPLU * 
+
+Modifies	plulist 
+
+Called By	[DrawKey], LoadPLU, [MenuInput], [MenuPLUInput], [PLUInput], [TitleInput].
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	FreeCFGList
+
+Synopsis
+
+Prototype	void FreeCFGList(CONFIG **cfglist);
+
+Module	FILEIO.C
+
+Description	
+
+Passed	CONFIG **cfglist 
+
+Return Value	None
+
+Called By	SaveConfig, [StartUp].
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	FreeDeptList
+
+Synopsis
+
+Prototype	void FreeDeptList(DEPARTMENT **deptlist);
+
+Module	FILEIO.C
+
+Description	
+
+Passed	DEPARTMENT **deptlist 
+
+Return Value	None
+
+Called By	SaveDepartment, [ShutDown].
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	FreePLUList
+
+Synopsis
+
+Prototype	void FreePLUList(PLU **plulist);
+
+Module	FILEIO.C
+
+Description	
+
+Passed	PLU **plulist 
+
+Return Value	None
+
+Called By	SavePLU, [ShutDown].
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	FreeReMACSPLUList
+
+Synopsis
+
+Prototype	void FreeReMACSPLUList(REMACSPLU **plulist);
+
+Module	FILEIO.C
+
+Description	
+
+Passed	REMACSPLU **plulist 
+
+Return Value	None
+
+Called By	SaveLocalPLU.
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	GetFont
+
+Synopsis	Return the address of a VGA font mapping
+
+Prototype	UCHAR *GetFont(INT type);
+
+Module	VIDEOKBD.C
+
+Description	Return the address of a VGA font mapping 
+
+Passed	INT type  - The font type
+
+Return Value	UCHAR *  - The address of the font mapping
+
+Modifies	r 
+
+Called By	LoadFont.
+
+See Also	Beep, DrawCBar, GetKey, HideCursor, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutChXY, OutFormat, OutWrap, PlaceCursor, Rectangle, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	GetInt
+
+Synopsis	Get a INT from an ASCII string
+
+Prototype	BOOL GetInt(CHAR *line,INT fieldofs,INT fieldlen,INT *val);
+
+Module	FILEIO.C
+
+Description	Get a INT from an ASCII string given an offset and length 
+
+Passed	CHAR *line  - The source string
+	INT fieldofs  - The offset of the start of the INT
+	INT fieldlen  - The length of the string containing a INT
+	INT *val  - The address of the returned INT
+
+Return Value	BOOL  - TRUE return value OK.  FALSE on error
+
+Called By	LoadConfig, LoadDepartment, LoadPLU, LoadReMACSPLU.
+
+Calls	GetLong.
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	GetKey
+
+Synopsis	Wait for and return a key from the keyboard
+
+Prototype	INT GetKey(void);
+
+Module	VIDEOKBD.C
+
+Description	Wait for and return a key from the keyboard 
+
+Return Value	INT  - The key pressed or if an extended key 0-the key pressed
+
+Called By	[ExitMenu], [InputAlNum], [InputLine], [InputNumber], [main], [RunSearch], [SelectCFGLine], [StartScreen].
+
+See Also	Beep, DrawCBar, GetFont, HideCursor, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutChXY, OutFormat, OutWrap, PlaceCursor, Rectangle, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	GetLong
+
+Synopsis	Get a LONG from an ASCII string
+
+Prototype	BOOL GetLong(CHAR *line,INT fieldofs,INT fieldlen,LONG *val);
+
+Module	FILEIO.C
+
+Description	Get a LONG from an ASCII string given an offset and length 
+
+Passed	CHAR *line  - The source string
+	INT fieldofs  - The offset of the start of the long
+	INT fieldlen  - The length of the string containing a long
+	LONG *val  - The address of the returned long
+
+Return Value	BOOL  - TRUE return value OK.  FALSE on error
+
+Modifies	val 
+
+Called By	GetInt, LoadDepartment, LoadLocalPLU, LoadPLU, LoadReMACSPLU.
+
+Calls	CleanBuf.
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	GetString
+
+Synopsis	Get a String from an ASCII string
+
+Prototype	BOOL GetString(CHAR *line,INT fieldofs,INT fieldlen,CHAR *buf);
+
+Module	FILEIO.C
+
+Description	Get a String from an ASCII string given an offset and length 
+
+Passed	CHAR *line  - The source string
+	INT fieldofs  - The offset of the start of the String
+	INT fieldlen  - The length of the string containing a String
+	CHAR *buf  - The address of the returned String
+
+Return Value	BOOL  - TRUE return value OK.  FALSE on error
+
+Called By	LoadConfig, LoadDepartment, LoadLocalPLU, LoadPLU, LoadReMACSPLU.
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	GetWrapLine
+
+Synopsis
+
+Prototype	CHAR *GetWrapLine(char *str,INT w,INT h,INT line);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	char *str 
+	INT w 
+	INT h 
+	INT line 
+
+Return Value	CHAR * 
+
+Modifies	str 
+
+Called By	PrintLine.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	HasAssoc
+
+Synopsis
+
+Prototype	BOOL HasAssoc(INT dept,PLU *plulist);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	INT dept 
+	PLU *plulist 
+
+Return Value	BOOL 
+
+Modifies	plulist 
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	HideCursor
+
+Synopsis	Hide the cursor
+
+Prototype	void HideCursor(void);
+
+Module	VIDEOKBD.C
+
+Description	Hide the cursor 
+
+Return Value	None
+
+Modifies	r 
+
+Called By	[InputAlNum], [InputLine], [InputNumber], [StartUp].
+
+See Also	Beep, DrawCBar, GetFont, GetKey, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutChXY, OutFormat, OutWrap, PlaceCursor, Rectangle, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	InputAlNum
+
+Synopsis
+
+Prototype	INT InputAlNum(INT x,INT y,INT attr,CHAR *value,INT maxwid);
+
+Module	CONFIG.C
+
+Description	
+
+Passed	INT x 
+	INT y 
+	INT attr 
+	CHAR *value 
+	INT maxwid 
+
+Return Value	INT 
+
+Modifies	buffer 
+
+Called By	StartScreen.
+
+Calls	[OutFormat], [LargeCursor], [PlaceCursor], [GetKey], [HideCursor], [RunHelp], [Beep].
+
+See Also	InputNumber, IsControlCentre, IsTerminal, ListCFGLines, SelectCFGLine, SetCFGLine, StartScreen, TerminalType.
+
+
+Function	InputDesc
+
+Synopsis
+
+Prototype	INT InputDesc(MAINDS *ds,INT cursorx,INT cursory,CHAR *curdesc,INT len);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	MAINDS *ds 
+	INT cursorx 
+	INT cursory 
+	CHAR *curdesc 
+	INT len 
+
+Return Value	INT 
+
+Called By	MenuInput, TitleInput.
+
+Calls	InputLine.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	InputKP
+
+Synopsis
+
+Prototype	INT InputKP(MAINDS *ds,INT cursorx,INT cursory,BOOL *kitprnt);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	MAINDS *ds 
+	INT cursorx 
+	INT cursory 
+	BOOL *kitprnt 
+
+Return Value	INT 
+
+Modifies	kitprnt 
+
+Called By	MenuInput, TitleInput.
+
+Calls	InputLine.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	InputLine
+
+Synopsis	Input a character string
+
+Prototype	CHAR *InputLine(MAINDS *ds,INT x,INT y,INT attr,CHAR *str,INT maxwid,INT cx,INT cy,INT *lastkey,CHAR type);
+
+Module	COMPKEY.C
+
+Description	Input a character string 
+
+Passed	MAINDS *ds  - Zero based X co-ordinate (origin Top left)
+	INT x  - Zero based Y co-ordinate (origin Top left)
+	INT y  - The attribute
+	INT attr  - The string to start with
+	CHAR *str  - The maximum width of the input string
+	INT maxwid  - The current keyboard cursor x co-ordinate (the flashing cursor)
+	INT cx  - The current keyboard cursor y co-ordinate 
+	INT cy  - The current keyboard cursor width 
+	INT *lastkey  - The current keyboard cursor height 
+	CHAR type  - The last key pressed (the key that caused exit)
+
+Return Value	CHAR *  - The input string
+
+Modifies	buffer ds lastkey 
+
+Called By	ExitMenu, InputDesc, InputKP, MenuPLUInput, PLUInput.
+
+Calls	[OutFormat], [LargeCursor], [PlaceCursor], [KeyCursor], [GetKey], [HideCursor], RunHelp, isvalid, [Beep].
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	InputNumber
+
+Synopsis
+
+Prototype	INT InputNumber(INT x,INT y,INT attr,INT *value,INT maxwid);
+
+Module	CONFIG.C
+
+Description	
+
+Passed	INT x 
+	INT y 
+	INT attr 
+	INT *value 
+	INT maxwid 
+
+Return Value	INT 
+
+Modifies	buffer value 
+
+Called By	StartScreen.
+
+Calls	[OutFormat], [LargeCursor], [PlaceCursor], [GetKey], [HideCursor], [RunHelp], [Beep].
+
+See Also	InputAlNum, IsControlCentre, IsTerminal, ListCFGLines, SelectCFGLine, SetCFGLine, StartScreen, TerminalType.
+
+
+Function	IsControlCentre
+
+Synopsis
+
+Prototype	BOOL IsControlCentre(CHAR *value,CONFIG *cfglist);
+
+Module	CONFIG.C
+
+Description	
+
+Passed	CHAR *value 
+	CONFIG *cfglist 
+
+Return Value	BOOL 
+
+Modifies	cfglist 
+
+Called By	StartScreen.
+
+See Also	InputAlNum, InputNumber, IsTerminal, ListCFGLines, SelectCFGLine, SetCFGLine, StartScreen, TerminalType.
+
+
+Function	ismenu
+
+Synopsis
+
+Prototype	BOOL ismenu(DEPARTMENT *dept);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	DEPARTMENT *dept 
+
+Return Value	BOOL 
+
+Called By	DrawKey, main, PrintLine, TitleInput.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	IsTerminal
+
+Synopsis
+
+Prototype	BOOL IsTerminal(INT value,CHAR *ctrl_centre,CONFIG *cfglist);
+
+Module	CONFIG.C
+
+Description	
+
+Passed	INT value 
+	CHAR *ctrl_centre 
+	CONFIG *cfglist 
+
+Return Value	BOOL 
+
+Modifies	cfglist 
+
+Called By	StartScreen.
+
+See Also	InputAlNum, InputNumber, IsControlCentre, ListCFGLines, SelectCFGLine, SetCFGLine, StartScreen, TerminalType.
+
+
+Function	isvalid
+
+Synopsis	__________________________________________________________________________
+
+Prototype	BOOL isvalid(INT *key,CHAR type);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	INT *key 
+	CHAR type 
+
+Return Value	BOOL 
+
+Modifies	key 
+
+Called By	InputLine.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	KeyAtPos
+
+Synopsis	Return TRUE if there is a key at a given X/Y co-ordinate
+
+Prototype	INT KeyAtPos(ULONG *layout,INT numkeys,INT x,INT y);
+
+Module	COMPKEY.C
+
+Description	Return TRUE if there is a key at a given X/Y co-ordinate 
+
+Passed	ULONG *layout  - The List of keyboard layout information
+	INT numkeys  - The number of keys on the keyboard
+	INT x  - The X co-ordinate of the key
+	INT y  - The Y co-ordinate of the key
+
+Return Value	INT  - TRUE there is a key, FALSE there isn't
+
+Called By	DrawKey, main, PrintKeyboard.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	KeyCursor
+
+Synopsis	Flash a cursor of inverse video while waiting for a key press
+
+Prototype	void KeyCursor(INT x,INT y,INT width,INT height,INT flash);
+
+Module	VIDEOKBD.C
+
+Description	Flash a cursor of inverse video while waiting for a key press 
+
+Passed	INT x  - The x co-ordinate (Zero based) of the top-left corner
+	INT y  - The y co-ordinate (Zero based) of the top-left corner
+	INT width  - The width in characters of the cursor
+	INT height  - The height in characters of the cursor
+	INT flash 
+
+Return Value	None
+
+Called By	[InputLine], [main].
+
+See Also	Beep, DrawCBar, GetFont, GetKey, HideCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutChXY, OutFormat, OutWrap, PlaceCursor, Rectangle, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	KeyGrid
+
+Synopsis	Draw the keyboard grid
+
+Prototype	BOOL KeyGrid(INT curkey,MAINDS *ds,INT *startx,INT *starty,INT level,BOOL forcedraw);
+
+Module	COMPKEY.C
+
+Description	Draw the keyboard grid 
+
+Passed	INT curkey  - The current key
+	MAINDS *ds  - The keyboard layout information
+	INT *startx  - The number of keys
+	INT *starty  - The start X co-ordinate
+	INT level  - The start Y co-ordinate
+	BOOL forcedraw  - The keyboard overlay information
+
+Return Value	BOOL 
+
+Modifies	drawall 
+
+Called By	main.
+
+Calls	[SetViewPort], DrawKey, KeyInd.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	KeyInd
+
+Synopsis	Output the key movement indicator
+
+Prototype	void KeyInd(INT x,INT y,INT key,INT bounds,INT level);
+
+Module	COMPKEY.C
+
+Description	Output the key movement indicator i.e. show the key number, level and  available movement keys 
+
+Passed	INT x  - Zero based X co-ordinate (origin Top left)
+	INT y  - Zero based Y co-ordinate (origin Top left)
+	INT key  - The key number (department)
+	INT bounds  - Bit flags of available movement keys, bit 4-left 3-right 2-up 1-down 
+	INT level  - The current keyboard level (0-2)
+
+Return Value	None
+
+Called By	KeyGrid.
+
+Calls	[OutChar], [OutFormat].
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	LargeCursor
+
+Synopsis	Restore the cursor
+
+Prototype	void LargeCursor(void);
+
+Module	VIDEOKBD.C
+
+Description	Restore the cursor 
+
+Return Value	None
+
+Modifies	r 
+
+Called By	[InputAlNum], [InputLine], [InputNumber].
+
+See Also	Beep, DrawCBar, GetFont, GetKey, HideCursor, KeyCursor, LoadFont, OutCentre, OutChar, OutChXY, OutFormat, OutWrap, PlaceCursor, Rectangle, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	ListCFGLines
+
+Synopsis	========================================================================
+
+Prototype	INT ListCFGLines(INT x,INT y,INT len,INT topline,INT highlight,CONFIG *cfglist);
+
+Module	CONFIG.C
+
+Description	
+
+Passed	INT x 
+	INT y 
+	INT len 
+	INT topline 
+	INT highlight 
+	CONFIG *cfglist 
+
+Return Value	INT 
+
+Modifies	cfglist y 
+
+Called By	SelectCFGLine.
+
+Calls	[OutFormat], [DrawCBar].
+
+See Also	InputAlNum, InputNumber, IsControlCentre, IsTerminal, SelectCFGLine, SetCFGLine, StartScreen, TerminalType.
+
+
+Function	ListPLULines
+
+Synopsis
+
+Prototype	INT ListPLULines(INT x,INT y,INT len,INT topline,INT highlight,SORTRPLU *plulist,LONG *curplu);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	INT x 
+	INT y 
+	INT len 
+	INT topline 
+	INT highlight 
+	SORTRPLU *plulist 
+	LONG *curplu 
+
+Return Value	INT 
+
+Modifies	 plulist curplu y 
+
+Called By	RunSearch.
+
+Calls	[OutFormat], [DrawCBar].
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	LoadColours
+
+Synopsis	Load the colour file
+
+Prototype	void LoadColours(CHAR *name,INT *cbuf);
+
+Module	FILEIO.C
+
+Description	Load the colour file 
+
+Passed	CHAR *name  - The colour file
+	INT *cbuf  - The address of an array of colour values
+
+Return Value	None
+
+Modifies	cbuf 
+
+Called By	[StartUp].
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	LoadConfig
+
+Synopsis	Load the configurations file into a linked list
+
+Prototype	BOOL LoadConfig(CHAR *name,CONFIG **cfglist);
+
+Module	FILEIO.C
+
+Description	Load the configurations file into a linked list 
+
+Passed	CHAR *name  - A pointer to the empty linked list i.e. *(cfglist)==NULL
+	CONFIG **cfglist 
+
+Return Value	BOOL  - TRUE if all OK. FALSE if memory or file error. 
+
+Called By	main, [StartUp].
+
+Calls	GetString, GetInt.
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	LoadDepartment
+
+Synopsis	Load a department file into a linked list
+
+Prototype	BOOL LoadDepartment(CHAR *name,DEPARTMENT **deptlist,INT numbkey);
+
+Module	FILEIO.C
+
+Description	Load a department file into a linked list 
+
+Passed	CHAR *name  - the file name
+	DEPARTMENT **deptlist  - A pointer to the empty linked list i.e. *(deptlist)==NULL
+	INT numbkey 
+
+Return Value	BOOL  - TRUE if all OK. FALSE if memory or file error. 
+
+Called By	main, [StartUp].
+
+Calls	SaveDepartment, GetString, GetInt, GetLong.
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	LoadFont
+
+Synopsis	Load the VGA font from a local array
+
+Prototype	void LoadFont(void);
+
+Module	VIDEOKBD.C
+
+Description	Load the VGA font from a local array 
+
+Return Value	None
+
+Modifies	r 
+
+Called By	[StartUp].
+
+Calls	GetFont.
+
+See Also	Beep, DrawCBar, GetFont, GetKey, HideCursor, KeyCursor, LargeCursor, OutCentre, OutChar, OutChXY, OutFormat, OutWrap, PlaceCursor, Rectangle, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	LoadLayout
+
+Synopsis	Load a keyboard layout file
+
+Prototype	ULONG *LoadLayout(CHAR *name,KEYMETRICS *keys);
+
+Module	FILEIO.C
+
+Description	Load a keyboard layout file into an array of ULONGs in the format bits 31-24 the line of the key bits 23-16 the column of the key bits 15-00 the key number (department) 
+
+Passed	CHAR *name  - The keyboard layout file
+	KEYMETRICS *keys  - The address of an INT for the returned number of keys
+
+Return Value	ULONG *  - a pointer to an array of ULONGs allocated from the heap
+
+Modifies	keys 
+
+Called By	[StartUp].
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	LoadLocalPLU
+
+Synopsis	Load a Local ReMACS PLU file into a linked list
+
+Prototype	BOOL LoadLocalPLU(CHAR *name,REMACSPLU **plulist);
+
+Module	FILEIO.C
+
+Description	Load a Local ReMACS PLU file into a linked list 
+
+Passed	CHAR *name  - the file name
+	REMACSPLU **plulist  - A pointer to the linked list
+
+Return Value	BOOL  - TRUE if all OK. FALSE if memory or file error. 
+
+Called By	main, [StartUp].
+
+Calls	GetLong, GetString.
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	LoadPLU
+
+Synopsis	Load a PLU file into a linked list
+
+Prototype	BOOL LoadPLU(CHAR *name,PLU **plulist,REMACSPLU *rplulist);
+
+Module	FILEIO.C
+
+Description	Load a PLU file into a linked list 
+
+Passed	CHAR *name  - the file name
+	PLU **plulist  - A pointer to the empty linked list i.e. *(plulist)==NULL
+	REMACSPLU *rplulist 
+
+Return Value	BOOL  - TRUE if all OK. FALSE if memory or file error. 
+
+Called By	main, [StartUp].
+
+Calls	GetString, GetLong, GetInt, FindRePLU, FindPLU.
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	LoadReMACSPLU
+
+Synopsis	Load a ReMACS PLU file into a linked list
+
+Prototype	BOOL LoadReMACSPLU(CHAR *name,REMACSPLU **plulist);
+
+Module	FILEIO.C
+
+Description	Load a ReMACS PLU file into a linked list 
+
+Passed	CHAR *name  - the file name
+	REMACSPLU **plulist  - A pointer to the linked list
+
+Return Value	BOOL  - TRUE if all OK. FALSE if memory or file error. 
+
+Called By	main, [StartUp].
+
+Calls	GetString, GetLong, GetInt, AddReMACSPLU.
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	main
+
+Synopsis	main used for unit testing of FILEIO.C
+
+Prototype	int main(int argc,char *argv[]);
+
+Module	FILEIO.C
+
+Description	Load PLUFile (argv[1]) Load DeptFile (argv[2]) list the contents of both on stdout Save the PLU Linked list into "PLU.DAT" and free it's memory Save the Dept. Linked list into "DEPT.DAT"  and free it's memory 
+
+Passed	int argc  - should be 3
+	char *argv[]  - [0]=command [1]=PLUFile [2]=DeptFile
+
+Return Value	int  - ErrLevel = 0,OK 1,Invalid args 2,PLU file error 3,DEPT file error
+
+Calls	LoadPLU, LoadDepartment, LoadConfig, LoadLocalPLU, LoadReMACSPLU, SaveDepartment, SavePLU, SaveConfig, SaveLocalPLU.
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, SaveConfig, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	main
+
+Synopsis	main used for unit testing of FILEIO.C
+
+Prototype	int main(void);
+
+Module	COMPKEY.C
+
+Description	Load PLUFile (argv[1]) Load DeptFile (argv[2]) list the contents of both on stdout Save the PLU Linked list into "PLU.DAT" and free it's memory Save the Dept. Linked list into "DEPT.DAT"  and free it's memory 
+
+Return Value	int  - ErrLevel = 0,OK 1,Invalid args 2,PLU file error 3,DEPT file error
+
+Calls	StartUp, [RestCursor], [SetViewPort], StatusLine, KeyGrid, DrawMenu, [KeyCursor], [GetKey], RunHelp, ExitMenu, KeyAtPos, SetCurXY, ToggleState, TitleInput, [FindDept], ismenu, ShutDown.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	MenuInput
+
+Synopsis
+
+Prototype	BOOL MenuInput(MAINDS *ds,INT keypos,INT cursorx,INT cursory);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	MAINDS *ds 
+	INT keypos 
+	INT cursorx 
+	INT cursory 
+
+Return Value	BOOL 
+
+Called By	TitleInput.
+
+Calls	[FindDept], [CleanBuf], InputDesc, DrawMenu, [FindPLU], [FindRePLU], StatusLine, MenuPLUInput, [Beep], InputKP, RunSearch.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	MenuPLUInput
+
+Synopsis
+
+Prototype	INT MenuPLUInput(MAINDS *ds,PLU *plu,INT cursorx,INT cursory,INT lastkey,CHAR *curdesc,BOOL *kitprnt,LONG *update);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	MAINDS *ds 
+	PLU *plu 
+	INT cursorx 
+	INT cursory 
+	INT lastkey 
+	CHAR *curdesc 
+	BOOL *kitprnt 
+	LONG *update 
+
+Return Value	INT 
+
+Modifies	update plu kitprnt curdesc 
+
+Called By	MenuInput.
+
+Calls	InputLine, [FindRePLU], [FindPLU], [CleanBuf], TitleBar.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	OutCentre
+
+Synopsis	Output a formatted string centred about an X/Y co-ordinate
+
+Prototype	void OutCentre(INT x,INT y,INT attr,CHAR *format,...);
+
+Module	VIDEOKBD.C
+
+Description	Output a formatted string centred about an X/Y co-ordinate 
+
+Passed	INT x  - Zero based X Co-ordinate (origin Top Left)
+	INT y  - Zero based Y Co-ordinate (origin Top Left)
+	INT attr  - The attribute
+	CHAR *format  - The format string. NOTE: must NOT result in string length > MAXSTRLEN
+	...  - variable parameters
+
+Return Value	None
+
+Modifies	x 
+
+Called By	OutWrap.
+
+Calls	[CleanBuf], OutFormat.
+
+See Also	Beep, DrawCBar, GetFont, GetKey, HideCursor, KeyCursor, LargeCursor, LoadFont, OutChar, OutChXY, OutFormat, OutWrap, PlaceCursor, Rectangle, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	OutChar
+
+Synopsis	Output a character on the console
+
+Prototype	void OutChar(INT x,INT y,INT colour,CHAR ch);
+
+Module	VIDEOKBD.C
+
+Description	Output a character on the console at a given x and y co-ordinate. Any character that falls outside the clipping viewport will be ignored. use SetViewPort() to assign the clipping values. 
+
+Passed	INT x  - Zero based X Co-ordinate (origin Top Left)
+	INT y  - Zero based Y Co-ordinate (origin Top Left)
+	INT colour  - The character to output
+	CHAR ch 
+
+Return Value	None
+
+Called By	[DrawKey], [KeyInd], Rectangle.
+
+Calls	OutChXY.
+
+See Also	Beep, DrawCBar, GetFont, GetKey, HideCursor, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChXY, OutFormat, OutWrap, PlaceCursor, Rectangle, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	OutChXY
+
+Synopsis	Output a character of a given colour at an X/Y co-ordinate
+
+Prototype	void OutChXY(INT x,INT y,UINT colour,CHAR ch);
+
+Module	VIDEOKBD.C
+
+Description	Output a character of a given colour at an X/Y co-ordinate.   NOTE: This function has no bounds checking and should not  be called directly.  Use OutChar() to perform this function. 
+
+Passed	INT x  - The X co-ordinate (Zero based - origin top left)
+	INT y  - The Y co-ordinate (Zero based - origin top left)
+	UINT colour  - The attribute
+	CHAR ch  - The character
+
+Return Value	None
+
+Called By	OutChar, OutFormat.
+
+See Also	Beep, DrawCBar, GetFont, GetKey, HideCursor, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutFormat, OutWrap, PlaceCursor, Rectangle, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	OutFormat
+
+Synopsis	Formatted String Output on the console
+
+Prototype	void OutFormat (INT x,INT y,INT colour,CHAR *format,...);
+
+Module	VIDEOKBD.C
+
+Description	Formatted String Output on the console at a given x and y co-ordinate using the same formatting commands as printf(). Any character that falls outside the clipping viewport will be ignored. use SetViewPort() to assign the clipping values. 
+
+Passed	INT x  - Zero based X Co-ordinate (origin Top Left)
+	INT y  - Zero based Y Co-ordinate (origin Top Left)
+	INT colour  - The attribute
+	CHAR *format  - The format string. NOTE: must NOT result in string length > MAXSTRLEN
+	...  - variable parameters
+
+Return Value	None
+
+Modifies	x 
+
+Called By	[DrawKey], [DrawMenu], [ExitMenu], [InputAlNum], [InputLine], [InputNumber], [KeyInd], [ListCFGLines], [ListPLULines], OutCentre, OutWrap, [RunHelp], SetViewPort, [StartScreen], [StartUp], [StatusLine], [TitleBar].
+
+Calls	OutChXY.
+
+See Also	Beep, DrawCBar, GetFont, GetKey, HideCursor, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutChXY, OutWrap, PlaceCursor, Rectangle, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	OutWrap
+
+Synopsis	Output a string with word wrap, centred.
+
+Prototype	INT OutWrap(INT x,INT y,INT w,INT h,INT attr,CHAR *str);
+
+Module	VIDEOKBD.C
+
+Description	Output a string with word wrap, centred. 
+
+Passed	INT x  - Zero based X Co-ordinate (origin Top Left)
+	INT y  - Zero based Y Co-ordinate (origin Top Left)
+	INT w  - The maximum width of any line
+	INT h  - The height (i.e. number of lines)
+	INT attr  - The attribute
+	CHAR *str  - The string
+
+Return Value	INT  - The actual height (i.e. number of lines) of the output string
+
+Modifies	str 
+
+Called By	[DrawKey].
+
+Calls	OutFormat, OutCentre.
+
+See Also	Beep, DrawCBar, GetFont, GetKey, HideCursor, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutChXY, OutFormat, PlaceCursor, Rectangle, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	PlaceCursor
+
+Synopsis	Hide the cursor
+
+Prototype	void PlaceCursor(INT x,INT y);
+
+Module	VIDEOKBD.C
+
+Description	Hide the cursor 
+
+Passed	INT x 
+	INT y 
+
+Return Value	None
+
+Modifies	x y r 
+
+Called By	[InputAlNum], [InputLine], [InputNumber].
+
+See Also	Beep, DrawCBar, GetFont, GetKey, HideCursor, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutChXY, OutFormat, OutWrap, Rectangle, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	PLUInput
+
+Synopsis
+
+Prototype	INT PLUInput(MAINDS *ds,INT keypos,INT cursorx,INT cursory,INT level,INT lastkey,CHAR *curdesc,BOOL *kitprnt,LONG update);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	MAINDS *ds 
+	INT keypos 
+	INT cursorx 
+	INT cursory 
+	INT level 
+	INT lastkey 
+	CHAR *curdesc 
+	BOOL *kitprnt 
+	LONG update 
+
+Return Value	INT 
+
+Modifies	kitprnt curdesc 
+
+Called By	TitleInput.
+
+Calls	[FindDept], InputLine, [FindRePLU], [FindPLU], [CleanBuf], TitleBar, [Beep].
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	PrintKeyboard
+
+Synopsis
+
+Prototype	void PrintKeyboard(MAINDS *ds,INT level);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	MAINDS *ds 
+	INT level 
+
+Return Value	None
+
+Called By	ExitMenu.
+
+Calls	Set15CPI, SetPrYofs, KeyAtPos, [FindDept], PrintLine, Set10CPI.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	PrintLine
+
+Synopsis
+
+Prototype	void PrintLine(FILE *fp,MAINDS *ds,DEPARTMENT *dept,INT x,INT line,INT level);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	FILE *fp 
+	MAINDS *ds 
+	DEPARTMENT *dept 
+	INT x 
+	INT line 
+	INT level 
+
+Return Value	None
+
+Called By	PrintKeyboard.
+
+Calls	ismenu, [CleanBuf], SetPrXofs, Set10CPI, Set15CPI, [FindPLU], GetWrapLine.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	Rectangle
+
+Synopsis	Draw a rectangle
+
+Prototype	void Rectangle(INT x,INT y,INT x1,INT y1,INT colour,INT type);
+
+Module	VIDEOKBD.C
+
+Description	Draw a rectangle using the character output device 
+
+Passed	INT x  - First X Co-ordinate
+	INT y  - First Y Co-ordinate
+	INT x1  - Second X Co-ordinate
+	INT y1  - Second Y Co-ordinate
+	INT colour  - The attribute of the box characters
+	INT type  - The type of the box characters i.e. 0 = ÚÄ   1 = ÉÍ   2 = Ûß
+
+Return Value	None
+
+Called By	[DrawKey], [DrawMenu], [RunHelp], [RunSearch], [SelectCFGLine], [StatusLine], [TitleBar].
+
+Calls	OutChar.
+
+See Also	Beep, DrawCBar, GetFont, GetKey, HideCursor, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutChXY, OutFormat, OutWrap, PlaceCursor, RestCursor, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	RestCursor
+
+Synopsis	Restore the cursor
+
+Prototype	void RestCursor(void);
+
+Module	VIDEOKBD.C
+
+Description	Restore the cursor 
+
+Return Value	None
+
+Modifies	r 
+
+Called By	[main], [ShutDown].
+
+See Also	Beep, DrawCBar, GetFont, GetKey, HideCursor, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutChXY, OutFormat, OutWrap, PlaceCursor, Rectangle, RestFont, SetBlinkBit, SetViewPort.
+
+
+Function	RestFont
+
+Synopsis	Restore the VGA text font to default values
+
+Prototype	void RestFont(void);
+
+Module	VIDEOKBD.C
+
+Description	Restore the VGA text font to default values 
+
+Return Value	None
+
+Modifies	r 
+
+Called By	[ShutDown].
+
+See Also	Beep, DrawCBar, GetFont, GetKey, HideCursor, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutChXY, OutFormat, OutWrap, PlaceCursor, Rectangle, RestCursor, SetBlinkBit, SetViewPort.
+
+
+Function	RunHelp
+
+Synopsis
+
+Prototype	void RunHelp(INT helplevel);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	INT helplevel 
+
+Return Value	None
+
+Called By	[InputAlNum], InputLine, [InputNumber], main, RunSearch, [SelectCFGLine].
+
+Calls	[CleanBuf], [SetViewPort], [Rectangle], [OutFormat].
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	RunSearch
+
+Synopsis	Run the Search Function
+
+Prototype	void RunSearch(MAINDS *ds,LONG *selected_plu);
+
+Module	COMPKEY.C
+
+Description	Run the Search Function 
+
+Passed	MAINDS *ds 
+	LONG *selected_plu 
+
+Return Value	None
+
+Modifies	selected_plu 
+
+Called By	MenuInput, TitleInput.
+
+Calls	StatusLine, [SetViewPort], [Rectangle], SortList, ListPLULines, [GetKey], RunHelp, [Beep].
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	SaveConfig
+
+Synopsis	Save a configuration file from a linked list
+
+Prototype	BOOL SaveConfig(CHAR *name,CONFIG **cfglist,BOOL freelist);
+
+Module	FILEIO.C
+
+Description	Save a configuration file from a linked list and conditionally free the memory associated with the list 
+
+Passed	CHAR *name  - The configuration file
+	CONFIG **cfglist  - The configuration linked list
+	BOOL freelist  - TRUE if the memory associated with the list should be free'd
+
+Return Value	BOOL  - TRUE if OK, FALSE on file error or cfglist==NULL or cfglist empty
+
+Called By	main.
+
+Calls	FreeCFGList.
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveDepartment, SaveLocalPLU, SavePLU.
+
+
+Function	SaveDepartment
+
+Synopsis	Save a department file from a linked list
+
+Prototype	BOOL SaveDepartment(CHAR *name,DEPARTMENT **deptlist,INT numbkey,BOOL freelist);
+
+Module	FILEIO.C
+
+Description	Save a department file from a linked list and conditionally free the memory associated with the list 
+
+Passed	CHAR *name  - The department file
+	DEPARTMENT **deptlist  - The department linked list
+	INT numbkey  - TRUE if the memory associated with the list should be free'd
+	BOOL freelist 
+
+Return Value	BOOL  - TRUE if OK, FALSE on file error or deptlist==NULL or deptlist empty
+
+Modifies	0 
+
+Called By	LoadDepartment, main, [ShutDown].
+
+Calls	FindDept, FreeDeptList.
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveLocalPLU, SavePLU.
+
+
+Function	SaveLocalPLU
+
+Synopsis	Save a Local ReMACS PLU file from a linked list
+
+Prototype	BOOL SaveLocalPLU(CHAR *name,REMACSPLU **plulist,BOOL freelist);
+
+Module	FILEIO.C
+
+Description	Save a Local ReMACS PLU file from a linked list and conditionally free the memory associated with the list 
+
+Passed	CHAR *name  - The Local ReMACS PLU file
+	REMACSPLU **plulist  - The ReMACS PLU linked list
+	BOOL freelist  - TRUE if the memory associated with the list should be free'd
+
+Return Value	BOOL  - TRUE if OK, FALSE on file error or deptlist==NULL or deptlist empty
+
+Called By	main, [ShutDown].
+
+Calls	FreeReMACSPLUList.
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SavePLU.
+
+
+Function	SavePLU
+
+Synopsis	Save a PLU file from a linked list
+
+Prototype	BOOL SavePLU(CHAR *name,PLU **plulist,BOOL freelist);
+
+Module	FILEIO.C
+
+Description	Save a PLU file from a linked list and conditionally free the memory associated with the list 
+
+Passed	CHAR *name  - The PLU file
+	PLU **plulist  - The PLU linked list
+	BOOL freelist  - TRUE if the memory associated with the list should be free'd
+
+Return Value	BOOL  - TRUE if OK, FALSE on file error or plulist==NULL or plulist empty
+
+Called By	main, [ShutDown].
+
+Calls	FreePLUList.
+
+See Also	AddReMACSPLU, CleanBuf, FindDept, FindPLU, FindRePLU, FreeCFGList, FreeDeptList, FreePLUList, FreeReMACSPLUList, GetInt, GetLong, GetString, LoadColours, LoadConfig, LoadDepartment, LoadLayout, LoadLocalPLU, LoadPLU, LoadReMACSPLU, main, SaveConfig, SaveDepartment, SaveLocalPLU.
+
+
+Function	SelectCFGLine
+
+Synopsis
+
+Prototype	BOOL SelectCFGLine(CONFIG *cfglist,CHAR *ctrl_centre,INT *term_id);
+
+Module	CONFIG.C
+
+Description	
+
+Passed	CONFIG *cfglist 
+	CHAR *ctrl_centre 
+	INT *term_id 
+
+Return Value	BOOL 
+
+Called By	StartScreen.
+
+Calls	[Rectangle], [StatusLine], ListCFGLines, [GetKey], [RunHelp], SetCFGLine, [Beep].
+
+See Also	InputAlNum, InputNumber, IsControlCentre, IsTerminal, ListCFGLines, SetCFGLine, StartScreen, TerminalType.
+
+
+Function	Set10CPI
+
+Synopsis
+
+Prototype	void Set10CPI(FILE *fp);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	FILE *fp 
+
+Return Value	None
+
+Called By	PrintKeyboard, PrintLine.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	Set15CPI
+
+Synopsis
+
+Prototype	void Set15CPI(FILE *fp);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	FILE *fp 
+
+Return Value	None
+
+Called By	PrintKeyboard, PrintLine.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	SetBlinkBit
+
+Synopsis	Set The Blink attribute bit
+
+Prototype	void SetBlinkBit(void);
+
+Module	VIDEOKBD.C
+
+Description	Set The Blink attribute bit 
+
+Return Value	None
+
+Modifies	r 
+
+Called By	[StartUp].
+
+See Also	Beep, DrawCBar, GetFont, GetKey, HideCursor, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutChXY, OutFormat, OutWrap, PlaceCursor, Rectangle, RestCursor, RestFont, SetViewPort.
+
+
+Function	SetCFGLine
+
+Synopsis
+
+Prototype	void SetCFGLine(INT linenum,CONFIG *cfglist,CHAR *ctrl_centre,INT *term_id);
+
+Module	CONFIG.C
+
+Description	
+
+Passed	INT linenum 
+	CONFIG *cfglist 
+	CHAR *ctrl_centre 
+	INT *term_id 
+
+Return Value	None
+
+Modifies	term_id cfglist 
+
+Called By	SelectCFGLine.
+
+See Also	InputAlNum, InputNumber, IsControlCentre, IsTerminal, ListCFGLines, SelectCFGLine, StartScreen, TerminalType.
+
+
+Function	SetCurXY
+
+Synopsis	Set the cursor X and Y co-ordinates from the key number
+
+Prototype	void SetCurXY(ULONG *layout,INT numkeys,INT keypos,INT *cx,INT *cy);
+
+Module	COMPKEY.C
+
+Description	Set the cursor X and Y co-ordinates from the key number 
+
+Passed	ULONG *layout  - The List of keyboard layout information
+	INT numkeys  - The number of keys on the keyboard
+	INT keypos  - The address of the integer to set to the X co-ordinate
+	INT *cx  - The address of the integer to set to the Y co-ordinate
+	INT *cy 
+
+Return Value	None
+
+Modifies	cy cx 
+
+Called By	main.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	SetPrXofs
+
+Synopsis
+
+Prototype	void SetPrXofs(FILE *fp,INT ofs);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	FILE *fp 
+	INT ofs 
+
+Return Value	None
+
+Modifies	ofs 
+
+Called By	PrintLine.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	SetPrYofs
+
+Synopsis
+
+Prototype	void SetPrYofs(FILE *fp,LONG ofs);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	FILE *fp 
+	LONG ofs 
+
+Return Value	None
+
+Modifies	ofs ofs* lofs 
+
+Called By	PrintKeyboard.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	SetViewPort
+
+Synopsis	Set the View Port clipping parameters
+
+Prototype	void SetViewPort(INT minx,INT miny,INT maxx,INT maxy,BOOL attrib);
+
+Module	VIDEOKBD.C
+
+Description	Set the View Port clipping parameters. All subsequent video output will be clipped to these boundaries. 
+
+Passed	INT minx  - The minimum X co-ordinated
+	INT miny  - The minimum Y co-ordinated
+	INT maxx  - The maximum X co-ordinated
+	INT maxy  - The maximum Y co-ordinated
+	BOOL attrib  - Zero to leave, The attribute to clear the area covered by the view port
+
+Return Value	None
+
+Modifies	G_viewmaxx G_viewmaxy G_viewminx G_viewminy 
+
+Called By	[DrawMenu], [ExitMenu], [KeyGrid], [main], [RunHelp], [RunSearch], [ShutDown], [StartScreen], [StartUp].
+
+Calls	OutFormat.
+
+See Also	Beep, DrawCBar, GetFont, GetKey, HideCursor, KeyCursor, LargeCursor, LoadFont, OutCentre, OutChar, OutChXY, OutFormat, OutWrap, PlaceCursor, Rectangle, RestCursor, RestFont, SetBlinkBit.
+
+
+Function	ShutDown
+
+Synopsis
+
+Prototype	void ShutDown(MAINDS *ds,BOOL save);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	MAINDS *ds 
+	BOOL save 
+
+Return Value	None
+
+Called By	main.
+
+Calls	AuditLog, [SaveDepartment], [SavePLU], [FreeDeptList], [FreePLUList], [SaveLocalPLU], [SetViewPort], [RestFont], [RestCursor].
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, SortList, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	SortList
+
+Synopsis
+
+Prototype	SORTRPLU *SortList(REMACSPLU *plulist,BOOL by_code);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	REMACSPLU *plulist 
+	BOOL by_code 
+
+Return Value	SORTRPLU * 
+
+Modifies	plulist 
+
+Called By	RunSearch.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, StartUp, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	StartScreen
+
+Synopsis	Present and Run the terminal selection screen
+
+Prototype	BOOL StartScreen(CONFIG *cfglist,CHAR *ctrl_centre,INT *term_id);
+
+Module	CONFIG.C
+
+Description	Present and Run the terminal selection screen 
+
+Passed	CONFIG *cfglist  - The configuration linked list
+	CHAR *ctrl_centre  - The selected control centre
+	INT *term_id  - The selected terminal id
+
+Return Value	BOOL  - TRUE if valid control center and terminal id selected, otherwise FALSE
+
+Modifies	term_id 
+
+Called By	[StartUp].
+
+Calls	[SetViewPort], [StatusLine], [OutFormat], InputAlNum, SelectCFGLine, IsControlCentre, [Beep], [GetKey], InputNumber, IsTerminal.
+
+See Also	InputAlNum, InputNumber, IsControlCentre, IsTerminal, ListCFGLines, SelectCFGLine, SetCFGLine, TerminalType.
+
+
+Function	StartUp
+
+Synopsis
+
+Prototype	BOOL StartUp(MAINDS *ds);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	MAINDS *ds 
+
+Return Value	BOOL 
+
+Called By	main.
+
+Calls	[SetBlinkBit], [LoadColours], [LoadFont], [LoadConfig], [StartScreen], [OutFormat], [TerminalType], [FreeCFGList], AuditLog, [LoadLayout], [LoadLocalPLU], [LoadReMACSPLU], [LoadPLU], [LoadDepartment], [HideCursor], [SetViewPort].
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StatusLine, TitleBar, TitleInput, ToggleState.
+
+
+Function	StatusLine
+
+Synopsis	Output a series of status items in the status box
+
+Prototype	void StatusLine(CHAR **keys,BOOL flash);
+
+Module	COMPKEY.C
+
+Description	Output a series of status items in the status box 
+
+Passed	CHAR **keys  - A series of string pairs the first is the key the second the action
+	BOOL flash  - TRUE if the status bar should FLASH
+
+Return Value	None
+
+Called By	ExitMenu, main, MenuInput, RunSearch, [SelectCFGLine], [StartScreen], TitleInput.
+
+Calls	[OutFormat], [Rectangle].
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, TitleBar, TitleInput, ToggleState.
+
+
+Function	TerminalType
+
+Synopsis
+
+Prototype	CHAR *TerminalType(CONFIG *cfglist,CHAR *ctrl_centre,INT term_id);
+
+Module	CONFIG.C
+
+Description	
+
+Passed	CONFIG *cfglist 
+	CHAR *ctrl_centre 
+	INT term_id 
+
+Return Value	CHAR * 
+
+Modifies	cfglist 
+
+Called By	[StartUp].
+
+See Also	InputAlNum, InputNumber, IsControlCentre, IsTerminal, ListCFGLines, SelectCFGLine, SetCFGLine, StartScreen.
+
+
+Function	TitleBar
+
+Synopsis	Output the Title bar
+
+Prototype	void TitleBar(LONG prodcode,CHAR *desc,CHAR *desc12,LONG v1,LONG v2,LONG v3,LONG v4,LONG v5,LONG v6,BOOL kp,BOOL state);
+
+Module	COMPKEY.C
+
+Description	Output the Title bar 
+
+Passed	LONG prodcode  - The product code i.e. PLU
+	CHAR *desc  - The product description
+	CHAR *desc12  - The 12 character product description for the key top
+	LONG v1  - Value (price level) 1
+	LONG v2  - Value (price level) 2
+	LONG v3  - Value (price level) 3
+	LONG v4  - Value (price level) 4
+	LONG v5  - Value (price level) 5
+	LONG v6  - Value (price level) 6
+	BOOL kp  - TRUE kitchen print == 'Y', FALSE kitchen print == 'N'
+	BOOL state  - TRUE key is a MENU key, FALSE key is a Single Shot key
+
+Return Value	None
+
+Modifies	 v1 v4 
+
+Called By	DrawKey, MenuPLUInput, PLUInput.
+
+Calls	[Rectangle], [OutFormat].
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleInput, ToggleState.
+
+
+Function	TitleInput
+
+Synopsis
+
+Prototype	BOOL TitleInput(MAINDS *ds,INT keypos,INT cursorx,INT cursory,INT level);
+
+Module	COMPKEY.C
+
+Description	
+
+Passed	MAINDS *ds 
+	INT keypos 
+	INT cursorx 
+	INT cursory 
+	INT level 
+
+Return Value	BOOL 
+
+Called By	main.
+
+Calls	[FindDept], ismenu, MenuInput, [FindPLU], [FindRePLU], [CleanBuf], StatusLine, PLUInput, InputDesc, InputKP, RunSearch.
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, ToggleState.
+
+
+Function	ToggleState
+
+Synopsis	Toggle the state of a key between Menu and Single Shot
+
+Prototype	void ToggleState(INT key,MAINDS *ds);
+
+Module	COMPKEY.C
+
+Description	Toggle the state of a key between Menu and Single Shot 
+
+Passed	INT key  - The key to toggle
+	MAINDS *ds  - The main data structures
+
+Return Value	None
+
+Called By	main.
+
+Calls	[FindDept].
+
+See Also	AuditLog, DrawKey, DrawMenu, ExitMenu, GetWrapLine, HasAssoc, InputDesc, InputKP, InputLine, ismenu, isvalid, KeyAtPos, KeyGrid, KeyInd, ListPLULines, main, MenuInput, MenuPLUInput, PLUInput, PrintKeyboard, PrintLine, RunHelp, RunSearch, Set10CPI, Set15CPI, SetCurXY, SetPrXofs, SetPrYofs, ShutDown, SortList, StartUp, StatusLine, TitleBar, TitleInput.
+
+

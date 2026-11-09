@@ -1,0 +1,9 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="800" height="700" version="1.1" xmlns="http://www.w3.org/2000/svg">
+	<polygon points="400, 450, 227, 350, 400, 250, 573, 350"	style="fill:#406488;	stroke:#FFFFFF;	stroke-width:10"	/>
+	<polygon points="400, 450, 573, 350, 573, 550, 400, 650"	style="fill:#678eb7;	stroke:#FFFFFF;	stroke-width:10"	/>
+	<polygon points="400, 450, 400, 650, 227, 550, 227, 350"	style="fill:#b4c8dc;	stroke:#FFFFFF;	stroke-width:10"	/>
+	<polygon points="227, 350, 400, 250, 573, 350, 400,   50"	style="fill:#678eb7;	stroke:#FFFFFF;	stroke-width:10"	/>
+	<polygon points="573, 350, 573, 550, 400, 650, 746, 650"	style="fill:#b4c8dc;	stroke:#FFFFFF;	stroke-width:10"	/>
+	<polygon points="400, 650, 227, 550, 227, 350,   54, 650"	style="fill:#406488;	stroke:#FFFFFF;	stroke-width:10"	/>
+</svg>

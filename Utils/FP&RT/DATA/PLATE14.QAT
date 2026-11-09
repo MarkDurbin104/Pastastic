@@ -1,0 +1,77 @@
+BACKGROUND
+		(1, 1, 0)
+AMB
+		(0.3, 0.3, 0.6)
+
+DIFF 
+		(0.5, 0.5 1.0)
+
+SREFLECT
+		3
+
+REFLECT (0.3, 0.3, .9)
+
+FILE_NAME 
+		plate14
+
+FLIP 
+		1
+
+LIGHT_PHI:
+
+	-40
+
+LIGHT_THETA:
+
+	45
+
+VIEW_PHI:
+
+	75
+
+XRES
+
+	319
+
+YRES
+
+	199
+
+XMAX
+
+	2.0
+
+XMIN
+
+	-2.0
+
+YMAX
+
+	1.3
+    
+YMIN
+
+	-1.3
+
+ZMAX
+
+	0.6
+
+ZMIN
+
+	0.0
+
+MAX_SIZE
+
+	128 
+
+MAX_ITERATIONS
+
+	64
+
+QUATERNION
+
+	(-0.743036, 0.113467, 0, 0)
+
+JULIA
+

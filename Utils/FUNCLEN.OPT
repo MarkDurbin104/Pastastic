@@ -1,0 +1,27 @@
+?S None Available
+?R int FAR PASCAL
+?C FREE,
+?U FALSE,G_setup,G_fs,
+?D None Available
+int FAR PASCAL WEP (int nParameter)
+{
+    int i;
+    FCSTRUCT *fs;
+    while (G_fs!=NULL) {
+        fs=G_fs->next;
+        FREE(G_fs->f);
+        FREE(G_fs->n);
+        FREE(G_fs->s);
+        FREE(G_fs->r);
+        FREE(G_fs->c);
+        FREE(G_fs->u);
+        for (i=0;i<G_fs->np;i++) FREE(G_fs->p[i]);
+        for (i=0;i<G_fs->nd;i++) FREE(G_fs->d[i]);
+        for (i=0;i<(G_fs->el-G_fs->sl)+1;i++) FREE(G_fs->l[i]);
+        FREE(G_fs->l);
+        FREE(G_fs);
+        G_fs=fs;
+    }
+    G_setup=FALSE;
+    return 1;
+}

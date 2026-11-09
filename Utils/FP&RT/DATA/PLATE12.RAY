@@ -1,0 +1,99 @@
+{   ษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+    บ                                                               บ
+    บ                  Picture of Fractal Mountain                  บ
+    บ                                                               บ
+    บ                By Roger T. Stevens - 6/2/90                   บ
+    บ                                                               บ
+    ศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+}
+
+FILE_NAME = Mount4.RAW
+
+COLOR
+	diff (.75, .43, .14)
+	diff (.85, .43, .14)
+	diff (.95, .65, .65)
+	amb (.2, .3, .3);
+)
+
+BEGIN_BBOX
+	SPHERE 			loc = 230, 50, -50
+    	   			radius 8
+					diff 1, .35, .35
+			)
+				
+	RING		    loc = 230, 50, -50
+					v1 = 1, 0, 0
+					v2 = 0, 0, 1
+					rad_2 = 20
+					rad_1 = 8
+					diff = .2, .8, .8
+			)
+
+	SPHERE 			loc = 180, 50, 0
+    	   			radius 8
+					diff 1, .35, .35
+			)
+				
+	RING		    loc = 180, 50, 0
+					v1 = 1, 0, 0
+					v2 = 0, 0, 1
+					rad_2 = 20
+					rad_1 = 8
+					diff = .2, .8, .8
+			)
+	SPHERE 			loc = 230, 50, 50
+    	   			radius 8
+					diff 1, .35, .35
+			)
+				
+	RING		    loc = 230, 50, 50
+					v1 = 1, 0, 0
+					v2 = 0, 0, 1
+					rad_2 = 20
+					rad_1 = 8
+					diff = .2, .8, .8
+			)
+END_BBOX
+
+{ ** ground ** }
+PARALLELOGRAM ( loc  = (  -10000, 0,  -10000),
+                v1   = (20000, 0,    0),
+                v2   = (  0, 0, 20000),
+				amb = (.48, .32, .40)
+                diff = (  1.0, .8, .4),
+                dither  = 0,
+              )
+
+	FRACTAL (loc = (300, 0, 100)
+		scalar = 0.009
+		dimension = 0.8
+		v1 = (502,0,-650)
+		v2 = (502, 0, 750)
+)
+
+{ ** An observer ** }
+OBSERVER ( loc    = (-20 , 70, -40),
+           lookat = (200, 50, 0)
+         )
+{ ** A lamp ** }
+LAMP ( loc = (120, 180,  80),
+       radius = 5,
+       dist = 270
+     )
+
+LAMP ( loc = (-20, 350, -400),
+       radius = 5,
+       dist = 200
+     )
+SKY  ( horiz  = (0, .4, .7),
+       zenith = (0, .4, .7),
+       dither = 1
+     )
+XRES = 320
+YRES = 200
+
+FOC_LENGTH = 75
+
+
+

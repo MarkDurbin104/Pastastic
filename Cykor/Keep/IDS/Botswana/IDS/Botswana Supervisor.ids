@@ -1,0 +1,6092 @@
+Domains {
+
+   CashSentToBank {
+      Title { 'List Cash Sent To bank' }
+      Prompt { 'Enter The Cash And Cheques Sent To The Bank' }
+      Hint { 'Please Enter Quantity^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { 'Cash',Return }
+      }
+   }
+
+   DecCash {
+      Title { 'Declare Cash Order' }
+      Prompt { 'Enter Quantity to declare' }
+      Hint { 'Please Enter Quantity to declare^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { 'Cash',Declare }
+      }
+   }
+
+   DecPostalOrd {
+      Title { 'Declare Postal Order' }
+      Prompt { 'Enter Quantity to declare' }
+      Hint { 'Please Enter Quantity to declare^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { 'PostalOrd',Declare }
+      }
+   }
+
+   DecStamps {
+      Title { 'Declare Stamps' }
+      Prompt { 'Enter Quantity to declare' }
+      Hint { 'Please Enter Quantity to declare^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { 'Stamps',Declare }
+      }
+   }
+
+   DecStockBWCourier {
+      Title { 'Declare Stock - BW Courier' }
+      Prompt { 'Enter Quantity to declare' }
+      Hint { 'Please Enter Quantity to declare^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { '*BWCourier',Declare }
+      }
+   }
+
+   DecStockMerchandise {
+      Title { 'Declare Stock - Merchandise' }
+      Prompt { 'Enter Quantity to declare' }
+      Hint { 'Please Enter Quantity to declare^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { '*Merchandise',Declare }
+      }
+   }
+
+   DecStockRetailOther {
+      Title { 'Declare Stock - Retail' }
+      Prompt { 'Enter Quantity to declare' }
+      Hint { 'Please Enter Quantity to declare^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { '*Retail',Declare }
+      }
+   }
+
+   DecPhilFDC {
+      Title   { 'Declare Philatelic - FDC' }
+      Prompt  { 'Enter Quantity to declare' }
+      Hint    { 'Please Enter Quantity to declare^against each item Shown' }
+      Error   { 'Invalid Quantity' }
+      Format  {  List { '*FDCover',Declare }      }
+   }
+
+   DecPhilSouvSheets {
+      Title   { 'Declare Philatelic - Souvenir Sheets' }
+      Prompt  { 'Enter Quantity to declare' }
+      Hint    { 'Please Enter Quantity to declare^against each item Shown' }
+      Error   { 'Invalid Quantity' }
+      Format  {  List { '*SouvSheet',Declare }      }
+   }
+
+   DecPhilYearPacks {
+      Title   { 'Declare Philatelic - Year Packs' }
+      Prompt  { 'Enter Quantity to declare' }
+      Hint    { 'Please Enter Quantity to declare^against each item Shown' }
+      Error   { 'Invalid Quantity' }
+      Format  {  List { '*YearPack',Declare }      }
+   }
+
+   DecPhilOtherPhil {
+      Title   { 'Declare Philatelic - Other Items' }
+      Prompt  { 'Enter Quantity to declare' }
+      Hint    { 'Please Enter Quantity to declare^against each item Shown' }
+      Error   { 'Invalid Quantity' }
+      Format  {  List { '*PhilOther',Declare }      }
+   }
+
+
+   SerialNumber {
+      Title  { 'Serial Number' }
+      Prompt { 'Serial Number' }
+      Hint   { 'Enter the Serial Number' }
+      Error  { 'Enter a Valid Serial Number' }
+      Format { //None
+         Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+}
+Users {
+
+   Supervisor {
+      Items {
+         'Group.SMain'
+         'Group.SuperAdmin'
+         'Group.StockRemittances'
+         'Group.SuperEndOfDay'
+         'Group.Services'
+         'Group.SuperReport'
+         'Group.ModifyStock'
+         'Group.SupCALines'
+         'Group.CashAccount'
+         'Group.SuperDeclare'
+         'Group.ClerkDeclareStock'
+         'Group.ClerkDeclarePhil'
+         // 'Group.SuperUtils'
+         'Group.VendorSales'
+         'Group.Supervisor__A'
+         //'Group.Supervisor_C_'
+         //'Group.Supervisor_CA'
+         //'Group.SupervisorS__'
+         //'Group.SupervisorS_A'
+         //'Group.SupervisorSC_'
+         //'Group.SupervisorSCA'
+         'Group.Pays'
+         'Group.GOVSuperMain'
+         'Group.MOSuperMain'         
+         'Group.ViewStock'
+         'Group.ViewPhilItems'
+         'Group.ViewStockItems'
+      }
+   }
+}
+
+Groups {
+
+   Supervisor__A {
+      BitMap  { '..\images\G_Altkey.bmp'   }
+      Title { 'ALT-HOTKEYS'            }
+     Items {
+       'Product.Cash'
+       'Receipt'
+       'End Customer'
+       'Exit'
+       'Product.Cheque'
+       'Product.AccountPay'
+       'Product.AccountGOVPay'
+     }
+   }
+
+   SMain {
+     Caption { 'Main' }
+     BitMap { '..\IMAGES\SmallLogo.bmp' }
+     Title        { 'Botswana Post - Supervisor' }
+     Prompt       { 'Select a Menu Item:' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the [Up] and [Down] arrows and [Enter]' }
+     Items {
+       'Product.AcceptOrder'
+       'Product.AcceptReturn'
+       'Group.VendorSales'
+       'Group.CashAccount'
+       'Group.SuperAdmin'
+       'Group.SuperReport'
+//       'Product.SupEndOfDay'
+       'Exit'
+       'Shutdown Workstation'
+       'Product.DeleteTran'
+       'Product.CashAccAdj'
+     }
+   }
+   CashAccount {
+     Caption { 'Cash Account' }
+     BitMap {  '..\IMAGES\P_OrderPrint.bmp' }
+     Title        { 'Cash Account' }
+     Prompt       { 'Select a Menu Item:' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the [Up] and [Down] arrows and [Enter]' }
+     Items {
+//       'Product.GPOCashAccount'
+       'Product.FullCashAccount'
+       'Product.NATellerAcc'
+       'Product.AnOfficeCashAccount'
+       'Product.SubsCashAccount'
+//       'Product.SubOfficeAcc'
+     }
+   }
+   SuperAdmin {
+     Caption { 'Administration' }
+     BitMap { '..\IMAGES\G_SuperAdmin.bmp' }
+     Title        { 'Administration' }
+     Prompt       { 'Select a Menu Item:' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the [Up] and [Down] arrows and [Enter]' }
+     Items {
+       'Product.SetExcngRates'
+       'Group.ModifyStock'
+       'Group.StockRemittances'
+       'Group.SuperEndOfDay'
+       'Group.ViewStock'
+       'Group.Pays'
+       'Group.GOVSuperMain'
+       'Group.MOSuperMain'
+       'Product.ReversalTran'
+       'Copy On Distribution Files'
+     }
+   }
+
+   StockRemittances {
+     Caption { 'Stock Remittances' }
+     BitMap { '..\IMAGES\G_SuperAdmin.bmp' }
+     Title        { 'Stock Remittances' }
+     Prompt       { 'Select a Menu Item:' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the [Up] and [Down] arrows and [Enter]' }
+     Items {
+       'Product.RemRec'
+       'Product.RemDisp'
+       'Product.TransferFromVendors'
+       'Product.TransferToVendors'
+       'Product.CashRecBank'
+       'Product.CashDepBank'       
+     }
+   }
+
+   SuperEndOfDay {
+     Caption { 'End Of Day Functions' }
+     BitMap { '..\IMAGES\G_SuperAdmin.bmp' }
+     Title        { 'End Of Day Functions' }
+     Prompt       { 'Select a Menu Item:' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the [Up] and [Down] arrows and [Enter]' }
+     Items {
+       'Group.CashAccount'
+       'Group.SuperDeclare'
+//       'Product.TrialBalance'
+       'Shutdown All Workstations'     
+     }
+   }
+
+   Pays {
+     Caption { 'Payments' }
+     BitMap { '..\IMAGES\G_Pension.bmp' }
+     Title        { 'Payments' }
+     Prompt       { 'Select a Menu Item:' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the [Up] and [Down] arrows and [Enter]' }
+     Items {
+       'Product.PaySalary'
+       'Product.PayWagesIC'
+       'Product.PayTempStaff'
+       'Product.PayDeathClaim'
+     }
+   }
+
+//   SuperUtils {
+//     Caption { 'Administration Utilities' }
+//     BitMap { '..\IMAGES\G_SuperAdmin.bmp' }
+//     Title        { 'Administration Utilities' }
+//     Prompt       { 'Select a Menu Item:' }
+//     Hint         { 'Select a menu item by pressing the Function Key^or by using the [Up] and [Down] arrows and [Enter]' }
+//     Items {
+//       'Product.ChangePassword'
+//       'Product.TransDisk'
+//       'Product.ReadTrans'
+//     }
+//   }
+
+   SuperReport {
+     Caption { 'Supervisor Reports' }
+     BitMap { '..\IMAGES\G_SuperReports.bmp' }
+     Title        { 'Supervisor Reports' }
+     Prompt       { 'Supervisor Reports' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the [Up] and [Down] arrows and [Enter]' }
+     Items {
+      //'Product.SClientReturns'
+      //'Product.SClientRetSum'
+        'Product.RepMonthlyCert'
+        'Product.RepBankAcc'
+        'Product.RepPensions'
+        'Product.RepPostalOrder'
+        'Product.RepPostalOrderInt'
+        'Product.RepMoneyOrder'
+        'Product.RepMoneyOrderInt'
+        'Product.RepParcels'
+        'Product.GenReport'
+     }
+   }
+
+   ModifyStock {
+      Title { 'Modify Stock Items' }
+      Prompt { 'Select a Service or Menu' }
+      Hint { 'Select a service by pressing a Function Key^or by using the arrow keys and pressing [ENTER]' }
+      Bitmap { '..\images\G_ModifyStock.bmp' }
+      Items {
+         'Product.AddModStockItem'
+         'Product.DeleteStockItem'
+      }
+   }
+   SupCALines {
+      Title { 'Supervisor Cash Account Lines' }
+      Prompt { 'Select a Service or Menu' }
+      Hint { 'Select a service by pressing a Function Key^or by using the arrow keys and pressing [ENTER]' }
+      Bitmap { '..\images\G_ModifyStock.bmp' }
+      Items {
+         'Product.EMail'
+//         'Product.TeleGraph'
+         'Product.Refunds'
+         'Product.SalCont'
+         'Product.PMStock'
+         'Product.UnClPay'
+         'Product.UnChRec'
+         'Product.PayRemRec'
+         'Product.PayRemDisp'
+         'Product.CashToBank'
+      }
+   }
+   //SuperOrder {
+   //}
+   //SuperReturn {
+   //}
+   //SuperDeclare {
+   //}
+   //SuperPrint {
+   //}
+   //SuperUserAdm {
+   //}
+   //SuperPrint {
+   //}
+  // Services {
+  // }
+  // Supplement {
+  // }
+}
+
+
+Products {
+
+   BaseServices {
+      DontBuild
+      SubGroup { 'Services' }
+   }
+
+   BaseAdministration {
+      DontBuild
+      SubGroup { 'Administration' }
+   }
+
+  CashAccAdj {
+    BasedOn       { BaseAdministration            }
+    Caption       { 'Cash Account Adjustment'     }
+    BitMap        { '..\IMAGES\P_CashAccAdj.bmp'  }
+    Description   { 'Cash Account Adjustment'     }
+    Title         { 'Cash Account Adjustment'     }
+    Prompt        { 'Cash Account Adjustment'     }
+    Hint          { 'Cash Account Adjustment'     }
+    PLU           { PLU_CashAccAdj                }
+    Domains       { CashAccAdjOffice
+                    CashAccAdjPerson
+                    CashAccAdjDate
+                    CashAccAdjList
+                    CashAccAdjAmount
+                    CashAccAdjType}
+    Items         { 'Complete'                    }
+    Snippets      { CashAccAdjEXECVAR
+                    CashAccAdjISLIST
+                    CashAccAdjVAL
+                    CashAccAdjLOG}
+  }
+
+//   StampsToVendor {
+//      Title { 'Stamps To Vendors' }
+//      Bitmap { '..\Images\P_StampsList.bmp' }
+//      Domains {
+//         StampsList
+//         TotalStampValue
+//         StampDiscount
+//         DiscountStampValue
+//      }
+//      Items {
+//         'Complete'
+//      }
+//      SubGroup { 'Stock' }
+//     Snippets {
+//         VendorEnableComplete
+//         VendorCompleteClick
+//         VendorSetData
+//         VendorGetData
+//         VendorLogStock
+//      }
+//   }
+
+  RemDisp {
+    BasedOn { BaseServices }
+    Caption { 'Remittances Dispatched' }
+    BitMap {  '..\IMAGES\P_RemDisp.bmp' }
+    Description  { 'Remittances Dispatched' }
+    Title        { 'Remittances Dispatched' }
+    Prompt       { 'Remittances Dispatched' }
+    Hint         { 'Remittances Dispatched' }
+    PLU          { PLU_RemDisp }
+    Domains {
+      PostOffice
+      IssueList
+    }
+    Items { 'Complete' }
+    Snippets {
+      RemDispDec
+      RemDispDef
+      RemDispGetExecData
+      RemDispVAL
+      RemRecAddExtraOffices
+      RemDispLOG
+    }
+  }
+
+  RemRec {
+    BasedOn { BaseServices }
+    Caption { 'Remittances Received' }
+    BitMap {  '..\IMAGES\P_RemRec.bmp' }
+    Description  { 'Remittances Received' }
+    Title        { 'Remittances Received' }
+    Prompt       { 'Remittances Received' }
+    Hint         { 'Remittances Received' }
+    PLU          { PLU_RemRec }
+    Domains {
+      PostOffice
+      ReceiveList
+    }
+    Items { 'Complete' }
+    Snippets {
+      RemRecDec
+      RemRecDef
+      RemRecGetExecData
+      RemRecVAL
+      RemRecAddExtraOffices
+      RemRecLOG
+    }
+  }
+
+  CashRecBank {
+    BasedOn     { BaseServices }
+    Caption     { 'Cash Received from Bank' }
+    BitMap      {  '..\IMAGES\P_CashRec.bmp' }
+    Description { 'Cash Received from Bank' }
+    Title       { 'Cash Received from Bank' }
+    Prompt      { 'Cash Received from Bank' }
+    Hint        { 'Cash Received from Bank' }
+    PLU         { PLU_CashRec }
+    Domains {
+      BankList
+      CashList
+    }
+    Items { 'Complete' }
+    Snippets {
+      RemRecDec
+      CashRecDef
+      CashRecGetExecData
+      CashRecVAL
+      CashRecLOG
+    }
+  }
+
+  CashDepBank {
+    BasedOn     { BaseServices }
+    Caption     { 'Cash Deposited with Bank' }
+    BitMap      {  '..\IMAGES\P_CashDep.bmp' }
+    Description { 'Cash Deposited with Bank' }
+    Title       { 'Cash Deposited with Bank' }
+    Prompt      { 'Cash Deposited with Bank' }
+    Hint        { 'Cash Deposited with Bank' }
+    PLU         { PLU_CashDepBank }
+    Domains {
+      BankList
+      CashList
+    }
+    Items { 'Complete' }
+    Snippets {
+      RemRecDec
+      CashRecDef
+      CashRecGetExecData
+      CashDepVAL
+      CashRecLog
+    }
+  }
+
+
+  OrderCash {
+      BasedOn { BaseAdministration }
+      Caption { 'Order Cash' }
+      BitMap {  '..\IMAGES\P_OrderCash.bmp' }
+      Description  { 'Order Cash' }
+      Title        { 'Order Cash' }
+      Prompt       { 'Order Cash' }
+      Hint         { 'Order Cash' }
+      PLU          { PLU_OrderCash }
+      Domains { TransCash }
+      Snippets { SetCashOrder
+                 StampValidateVars
+                 CashOrderValidate
+                 LogStockCash }
+      Items {
+         'Complete'
+      }
+   }
+
+   OrderPostOrd {
+      BasedOn { BaseAdministration }
+      Caption { 'Order Postal Orders' }
+      BitMap {  '..\IMAGES\P_OrderPostOrd.bmp' }
+      Description  { 'Order Postal Orders' }
+      Title        { 'Order Postal Orders' }
+      Prompt       { 'Order Postal Orders' }
+      Hint         { 'Order Postal Orders' }
+      PLU          { PLU_OrderPostOrd }
+      Domains { TransPostalOrd }
+      Items {
+         'Complete'
+      }
+      Snippets { SetPostalOrder
+                 StampValidateVars
+                 POOrderValidate
+                 LogStockPostal }
+   }
+
+   OrderPhilFDC {
+      BasedOn { BaseAdministration }
+      BitMap {  '..\IMAGES\P_StampsList.bmp' }
+      Caption      { 'Order Philatelic - First Day Covers' }
+      Description  { 'Order Philatelic - First Day Covers' }
+      Title        { 'Order Philatelic - First Day Covers' }
+      Prompt       { 'Order Philatelic - First Day Covers' }
+      Hint         { 'Order Philatelic - First Day Covers' }
+      PLU          { PLU_OrderPhil }
+      Domains { TransPhil }
+      Items {
+         'Complete'
+      }
+      Snippets { SetPhilatelicFDC
+                 StampValidateVars
+                 PhilOrderValidate
+                 LogStockPhilFDC }
+   }
+
+   OrderPhilSouvSheets {
+      BasedOn { BaseAdministration }
+      BitMap {  '..\IMAGES\P_StampsList.bmp' }
+      Caption      { 'Order Philatelic - Souvenir Sheets' }
+      Description  { 'Order Philatelic - Souvenir Sheets' }
+      Title        { 'Order Philatelic - Souvenir Sheets' }
+      Prompt       { 'Order Philatelic - Souvenir Sheets' }
+      Hint         { 'Order Philatelic - Souvenir Sheets' }
+      PLU          { PLU_OrderPhil }
+      Domains { TransPhil }
+      Items {
+         'Complete'
+      }
+      Snippets { SetPhilatelicSouvSheets
+                 StampValidateVars
+                 PhilOrderValidate
+                 LogStockPhilSouvSheets }
+   }
+
+   OrderPhilYearPacks {
+      BasedOn { BaseAdministration }
+      BitMap {  '..\IMAGES\P_StampsList.bmp' }
+      Caption      { 'Order Philatelic - Year Packs' }
+      Description  { 'Order Philatelic - Year Packs' }
+      Title        { 'Order Philatelic - Year Packs' }
+      Prompt       { 'Order Philatelic - Year Packs' }
+      Hint         { 'Order Philatelic - Year Packs' }
+      PLU          { PLU_OrderPhil }
+      Domains { TransPhil }
+      Items {
+         'Complete'
+      }
+      Snippets { SetPhilatelicYearPacks
+                 StampValidateVars
+                 PhilOrderValidate
+                 LogStockPhilYearPacks }
+   }
+
+   OrderPhilOtherPhil {
+      BasedOn { BaseAdministration }
+      BitMap {  '..\IMAGES\P_StampsList.bmp' }
+      Caption      { 'Order Philatelic - Other Items' }
+      Description  { 'Order Philatelic - Other Items' }
+      Title        { 'Order Philatelic - Other Items' }
+      Prompt       { 'Order Philatelic - Other Items' }
+      Hint         { 'Order Philatelic - Other Items' }
+      PLU          { PLU_OrderPhil }
+      Domains { TransPhil }
+      Items {
+         'Complete'
+      }
+      Snippets { SetPhilatelicOtherPhil
+                 StampValidateVars
+                 PhilOrderValidate
+                 LogStockPhilOtherPhil }
+   }
+
+
+   OrderStamps {
+      BasedOn { BaseAdministration }
+      Caption { 'Order Stamps' }
+      BitMap {  '..\IMAGES\P_OrderStamps.bmp' }
+      Description  { 'Order Stamps' }
+      Title        { 'Order Stamps' }
+      Prompt       { 'Order Stamps' }
+      Hint         { 'Order Stamps' }
+      PLU          { PLU_OrderStamps }
+      Domains { TransStamps }
+      Items {
+         'Complete'
+      }
+      Snippets { SetStampsOrder,
+      StampValidateVars,StampsOrderValidate,
+      LogStockStamps }
+   }
+
+   OrderStockBWCourier {
+      BasedOn      {  BaseAdministration }
+      BitMap       { '..\IMAGES\P_OrderStock.bmp' }
+      Caption      { 'Order Stock - BW Courier' }
+      Description  { 'Order Stock - BW Courier' }
+      Title        { 'Order Stock - BW Courier' }
+      Prompt       { 'Order Stock - BW Courier' }
+      Hint         { 'Order Stock - BW Courier' }
+      PLU          {  PLU_OrderStock }
+      Domains      {  TransStock     }
+      Items        { 'Complete'      }
+      Snippets     {  SetStockOrderBWCourier
+                      StampValidateVars
+                      StockOrderValidate
+                      LogStockStockBWCourier }
+   }
+
+   OrderStockMerchandise {
+      BasedOn      {  BaseAdministration }
+      BitMap       { '..\IMAGES\P_OrderStock.bmp' }
+      Caption      { 'Order Stock - Merchandise' }
+      Description  { 'Order Stock - Merchandise' }
+      Title        { 'Order Stock - Merchandise' }
+      Prompt       { 'Order Stock - Merchandise' }
+      Hint         { 'Order Stock - Merchandise' }
+      PLU          {  PLU_OrderStock }
+      Domains      {  TransStock     }
+      Items        { 'Complete'      }
+      Snippets     {  SetStockOrderMerchandise
+                      StampValidateVars
+                      StockOrderValidate
+                      LogStockStockMerchandise }
+   }
+
+   OrderStockRetailOther {
+      BasedOn      {  BaseAdministration }
+      BitMap       { '..\IMAGES\P_OrderStock.bmp' }
+      Caption      { 'Order Stock - Retail' }
+      Description  { 'Order Stock - Retail' }
+      Title        { 'Order Stock - Retail' }
+      Prompt       { 'Order Stock - Retail' }
+      Hint         { 'Order Stock - Retail' }
+      PLU          {  PLU_OrderStock }
+      Domains      {  TransStock     }
+      Items        { 'Complete'      }
+      Snippets     {  SetStockOrderRetailOther
+                      StampValidateVars
+                      StockOrderValidate
+                      LogStockStockRetailOther }
+   }
+
+   OrderPrint {
+      BasedOn { BaseAdministration }
+      Caption { 'Print Order' }
+      BitMap {  '..\IMAGES\P_OrderPrint.bmp' }
+      Description  { 'Print Order' }
+      Title        { 'Print Order' }
+      Prompt       { 'Print Order' }
+      Hint         { 'Print Order' }
+      PLU          { PLU_OrderPrint }
+      Items {
+         'Complete'
+      }
+      PrintList { Detail, 'BotsOrders' }
+   }
+
+   TransferToVendors {
+      BasedOn { BaseAdministration }
+      Caption { 'Supply Stock To Agencies' }
+      BitMap {  '..\IMAGES\P_TransferToVendors.bmp' }
+      Description  { 'Supply Stock To Agencies' }
+      Title        { 'Supply Stock To Agencies' }
+      Prompt       { 'Supply Stock To Agencies' }
+      Hint         { 'Supply Stock To Agencies' }
+      PLU          { PLU_ }
+      Domains      {
+                     ToVendorsList
+                     ToVendorStockList
+                   }
+      Snippets     {
+                     AcceptTranOverDec
+                     TransferToVerdorsOverDef
+                     TransferToVendorsExe
+                     TransferVenGetExecData
+                     TransferVenSetExecData
+                     TransferVenToComplete
+                     TransferVenValid
+                   }
+   }
+
+   TransferFromVendors {
+      BasedOn { BaseAdministration }
+      Caption { 'Receive Stock From Agencies' }
+      BitMap {  '..\IMAGES\P_TransferFromVendors.bmp' }
+      Description  { 'Receive Stock From Agencies' }
+      Title        { 'Receive Stock From Agencies' }
+      Prompt       { 'Receive Stock From Agencies' }
+      Hint         { 'Receive Stock From Agencies' }
+      PLU          { PLU_ }
+      Domains      {
+                     ToVendorsList
+                     ToVendorStockList
+                   }
+      Snippets     {
+                     AcceptTranOverDec
+                     TransferToVerdorsOverDef
+                     TransferToVendorsExe
+                     TransferVenGetExecData
+                     TransferVenSetExecData
+                     TransferVenFromComplete
+                     TransferVenValid
+                   }
+   }
+
+   AcceptOrder {
+      BasedOn { BaseAdministration }
+      Caption { 'Accept Stock Order' }
+      BitMap {  '..\IMAGES\P_AcceptOrder.bmp' }
+      Description  { 'Accept Stock Order' }
+      Title        { 'Accept Stock Order' }
+      Prompt       { 'Accept Stock Order' }
+      Hint         { 'Accept Stock Order' }
+      PLU          { PLU_AcceptOrder }
+      Domains {
+         ToUser
+         TransList
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         ExecuteAcceptVars
+         AcceptTranOverDec
+         AcceptTranOverDef
+         AcceptTranGetExecData
+         AcceptTranSetExecData
+         AcceptTranUserList
+         AcceptTranComplete
+         TranValidate
+      }
+   }
+
+   AcceptReturn {
+      BasedOn { BaseAdministration }
+      Caption { 'Accept Stock Return' }
+      BitMap {  '..\IMAGES\P_AcceptReturn.bmp' }
+      Description  { 'Accept Stock Return' }
+      Title        { 'Accept Stock Return' }
+      Prompt       { 'Accept Stock Return' }
+      Hint         { 'Accept Stock Return' }
+      PLU          { PLU_AcceptReturn }
+      Domains {
+         ToUser
+         TransList
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         ExecuteAcceptVars
+         AcceptTranOverDec
+         AcceptReturnOverDef
+         AcceptTranGetExecData
+         AcceptTranSetExecData
+         AcceptReturnUserList
+         AcceptTranComplete
+         TranValidate
+      }
+   }
+
+  Balance {
+    BasedOn { BaseAdministration }
+    Caption { 'End of day balance' }
+    BitMap {  '..\IMAGES\P_Balance.bmp' }
+    Description  { 'End of day balance' }
+    Title        { 'End of day balance' }
+    Prompt       { 'End of day balance' }
+    Hint         { 'End of day balance' }
+    PLU          { PLU_Balance }
+    Domains      {
+      CashAccAdjDate
+      RunEndOfDayQuestion }
+    Items { 'Complete' }
+    Snippets {
+       EndOfDayExec
+       EndOfDayDisableComple
+    }
+  }
+
+  SupEndOfDay {
+    BasedOn     { BaseAdministration }
+    Caption     { 'End of day' }
+    BitMap      {  '..\IMAGES\P_Balance.bmp' }
+    Description { 'End of day' }
+    Title       { 'End of day' }
+    Prompt      { 'End of day' }
+    Hint        { 'End of day' }
+    PLU         { PLU_SupEndOfDay }
+    Items       { 'Complete' }
+    Snippets    { EndOfDayExec }
+  }
+
+   ChangePassword {
+      BasedOn { BaseAdministration }
+      Title { 'Change Password' }
+      BitMap {  '..\IMAGES\P_ChangePassword.bmp' }
+      PLU    { PLU_ChangePassword }
+      Domains {
+         UserName
+         NewPass
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+        SetPasswordComplete,UserListFill
+      }
+   }
+
+   TransDisk {
+      BasedOn { BaseAdministration }
+      Title { 'Create Transfer Disk' }
+      Bitmap { '..\images\P_CreateTransDisk.bmp' }
+      Snippets { CreateTDisk }
+   }
+
+   ReadTrans {
+      BasedOn { BaseAdministration }
+      Title { 'Read Transfer Disk' }
+      Bitmap { '..\images\P_ReadTransDisk.bmp' }
+      Snippets { ReadTDisk }
+   }
+
+   ClientReturns {
+      BasedOn { BaseAdministration }
+      Caption { 'Client Returns' }
+      BitMap {  '..\IMAGES\P_ClientRetSum.bmp' }
+      Description  { 'Client Returns' }
+      Title        { 'Client Returns' }
+      Prompt       { 'Client Returns' }
+      Hint         { 'Client Returns' }
+      PLU          { PLU_ClientReturns }
+      Domains {
+         StartDomainEdit
+         EndDomainEdit
+      }
+      Items {
+         'Complete'
+      }
+      Snippets { ExternalFuncUses, LogClientReturns, LogClientReturnsVars }
+   }
+
+   ClientRetSum {
+      BasedOn { BaseAdministration }
+      Caption { 'Client Returns Summary' }
+      BitMap {  '..\IMAGES\P_ClientRetSum.bmp' }
+      Description  { 'Client Returns Summary' }
+      Title        { 'Client Returns Summary' }
+      Prompt       { 'Client Returns Summary' }
+      Hint         { 'Client Returns Summary' }
+      PLU          { PLU_ClientRetSum }
+      Domains {
+         StartDomainEdit
+         EndDomainEdit
+      }
+      Items {
+         'Complete'
+      }
+      Snippets { ExternalFuncUses, LogClientReturnsSummary, LogClientReturnsVars }
+   }
+
+   DeclareCash {
+      BasedOn { BaseAdministration }
+      Caption { 'Declare Cash' }
+      BitMap {  '..\IMAGES\P_DeclareCash.bmp' }
+      Description  { 'Declare Cash' }
+      Title        { 'Declare Cash' }
+      Prompt       { 'Declare Cash' }
+      Hint         { 'Declare Cash' }
+      Domains { DecCash }
+      Items {
+         'Complete'
+      }
+   }
+
+   DeclarePostOrd {
+      BasedOn { BaseAdministration }
+      Caption { 'Declare Postal Orders' }
+      BitMap {  '..\IMAGES\P_DeclarePostOrd.bmp' }
+      Description  { 'Declare Postal Orders' }
+      Title        { 'Declare Postal Orders' }
+      Prompt       { 'Declare Postal Orders' }
+      Hint         { 'Declare Postal Orders' }
+      Domains { DecPostalOrd }
+      Items {
+         'Complete'
+      }
+   }
+
+   DeclarePrint {
+      BasedOn { BaseAdministration }
+      Caption { 'Print Declaration' }
+      BitMap {  '..\IMAGES\P_DeclarePrint.bmp' }
+      Description  { 'Print Declaration' }
+      Title        { 'Print Declaration' }
+      Prompt       { 'Print Declaration' }
+      Hint         { 'Print Declaration' }
+      PLU          { PLU_DeclarePrint }
+      Items {
+         'Complete'
+      }
+      PrintList { Detail, 'BotsDeclaration' }
+   }
+
+   SDeclarePrint {
+      BasedOn { BaseAdministration }
+      Caption { 'Print Declaration' }
+      BitMap {  '..\IMAGES\P_DeclarePrint.bmp' }
+      Description  { 'Print Declaration' }
+      Title        { 'Print Declaration' }
+      Prompt       { 'Print Declaration' }
+      Hint         { 'Print Declaration' }
+      PLU          { PLU_DeclarePrint }
+      Items {
+         'Complete'
+      }
+      PrintList { Detail, '*BotsDeclaration' }
+   }
+
+   DeclareStamps {
+      BasedOn { BaseAdministration }
+      Caption { 'Declare Stamps' }
+      BitMap {  '..\IMAGES\P_DeclareStamps.bmp' }
+      Description  { 'Declare Stamps' }
+      Title        { 'Declare Stamps' }
+      Prompt       { 'Declare Stamps' }
+      Hint         { 'Declare Stamps' }
+      Domains { DecStamps }
+      Items {
+         'Complete'
+      }
+   }
+
+   DeclareStockBWCourier {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_DeclareStock.bmp' }
+      Caption      { 'Declare Stock - BW Courier' }
+      Description  { 'Declare Stock - BW Courier' }
+      Title        { 'Declare Stock - BW Courier' }
+      Prompt       { 'Declare Stock - BW Courier' }
+      Hint         { 'Declare Stock - BW Courier' }
+      Domains { DecStockBWCourier }
+      Items {
+         'Complete'
+      }
+   }
+
+   DeclareStockMerchandise {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_DeclareStock.bmp' }
+      Caption      { 'Declare Stock - Merchandise' }
+      Description  { 'Declare Stock - Merchandise' }
+      Title        { 'Declare Stock - Merchandise' }
+      Prompt       { 'Declare Stock - Merchandise' }
+      Hint         { 'Declare Stock - Merchandise' }
+      Domains { DecStockMerchandise }
+      Items {
+         'Complete'
+      }
+   }
+
+   DeclareStockRetail {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_DeclareStock.bmp' }
+      Caption      { 'Declare Stock - Retail' }
+      Description  { 'Declare Stock - Retail' }
+      Title        { 'Declare Stock - Retail' }
+      Prompt       { 'Declare Stock - Retail' }
+      Hint         { 'Declare Stock - Retail' }
+      Domains { DecStockRetailOther }
+      Items {
+         'Complete'
+      }
+   }
+
+   DeclarePhilFDC {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_DeclareStock.bmp' }
+      Caption      { 'Declare Philatelic - FDC' }
+      Description  { 'Declare Philatelic - FDC' }
+      Title        { 'Declare Philatelic - FDC' }
+      Prompt       { 'Declare Philatelic - FDC' }
+      Hint         { 'Declare Philatelic - FDC' }
+      Domains      {  DecPhilFDC                }
+      Items        { 'Complete'                 }
+   }
+
+   DeclarePhilSouvSheets {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_DeclareStock.bmp' }
+      Caption      { 'Declare Philatelic - Souvenir Sheets' }
+      Description  { 'Declare Philatelic - Souvenir Sheets' }
+      Title        { 'Declare Philatelic - Souvenir Sheets' }
+      Prompt       { 'Declare Philatelic - Souvenir Sheets' }
+      Hint         { 'Declare Philatelic - Souvenir Sheets' }
+      Domains      {  DecPhilSouvSheets         }
+      Items        { 'Complete'                 }
+   }
+
+   DeclarePhilYearPacks {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_DeclareStock.bmp' }
+      Caption      { 'Declare Philatelic - Year Packs' }
+      Description  { 'Declare Philatelic - Year Packs' }
+      Title        { 'Declare Philatelic - Year Packs' }
+      Prompt       { 'Declare Philatelic - Year Packs' }
+      Hint         { 'Declare Philatelic - Year Packs' }
+      Domains      {  DecPhilYearPacks          }
+      Items        { 'Complete'                 }
+   }
+
+   DeclarePhilOtherPhil {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_DeclareStock.bmp' }
+      Caption      { 'Declare Philatelic - Other Items' }
+      Description  { 'Declare Philatelic - Other Items' }
+      Title        { 'Declare Philatelic - Other Items' }
+      Prompt       { 'Declare Philatelic - Other Items' }
+      Hint         { 'Declare Philatelic - Other Items' }
+      Domains      {  DecPhilOtherPhil          }
+      Items        { 'Complete'                 }
+   }
+
+
+   ReturnCash {
+      BasedOn { BaseAdministration }
+      Caption { 'Return Cash' }
+      BitMap {  '..\IMAGES\P_ReturnCash.bmp' }
+      Description  { 'Return Cash' }
+      Title        { 'Return Cash' }
+      Prompt       { 'Return Cash' }
+      Hint         { 'Return Cash' }
+      PLU          { PLU_ReturnCash }
+      Domains { TransCash }
+      Snippets { SetCashReturn
+                 StampValidateVars
+                 CashOrderValidate
+                 LogStockCash }
+      Items {
+         'Complete'
+      }
+   }
+
+   ReturnPostOrd {
+      BasedOn { BaseAdministration }
+      Caption { 'Return Postal Orders' }
+      BitMap {  '..\IMAGES\P_ReturnPostOrd.bmp' }
+      Description  { 'Return Postal Orders' }
+      Title        { 'Return Postal Orders' }
+      Prompt       { 'Return Postal Orders' }
+      Hint         { 'Return Postal Orders' }
+      PLU          { PLU_ReturnPostOrd }
+      Domains { TransPostalOrd }
+      Snippets { SetPostalReturn
+                 StampValidateVars
+                 POOrderValidate
+                 LogStockPostal }
+      Items {
+         'Complete'
+      }
+   }
+
+   ReturnPhilFDC {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_StampsList.bmp' }
+      Caption      { 'Return Philatelic - First Day Covers' }
+      Description  { 'Return Philatelic - First Day Covers' }
+      Title        { 'Return Philatelic - First Day Covers' }
+      Prompt       { 'Return Philatelic - First Day Covers' }
+      Hint         { 'Return Philatelic - First Day Covers' }
+      PLU          { PLU_ReturnPhil }
+      Domains { TransPhil }
+      Snippets { SetPhilatelicReturnFDC
+                 StampValidateVars
+                 PhilOrderValidate
+                 LogStockPhilFDC }
+      Items {
+         'Complete'
+      }
+   }
+
+   ReturnPhilSouvSheets {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_StampsList.bmp' }
+      Caption      { 'Return Philatelic - Souvenir Sheets' }
+      Description  { 'Return Philatelic - Souvenir Sheets' }
+      Title        { 'Return Philatelic - Souvenir Sheets' }
+      Prompt       { 'Return Philatelic - Souvenir Sheets' }
+      Hint         { 'Return Philatelic - Souvenir Sheets' }
+      PLU          { PLU_ReturnPhil }
+      Domains { TransPhil }
+      Snippets { SetPhilatelicReturnSouvSheets
+                 StampValidateVars
+                 PhilOrderValidate
+                 LogStockPhilSouvSheets }
+      Items {
+         'Complete'
+      }
+   }
+
+   ReturnPhilYearPacks {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_StampsList.bmp' }
+      Caption      { 'Return Philatelic - Year Packs' }
+      Description  { 'Return Philatelic - Year Packs' }
+      Title        { 'Return Philatelic - Year Packs' }
+      Prompt       { 'Return Philatelic - Year Packs' }
+      Hint         { 'Return Philatelic - Year Packs' }
+      PLU          { PLU_ReturnPhil }
+      Domains { TransPhil }
+      Snippets { SetPhilatelicReturnYearPacks
+                 StampValidateVars
+                 PhilOrderValidate
+                 LogStockPhilYearPacks }
+      Items {
+         'Complete'
+      }
+   }
+
+   ReturnPhilOtherPhil {
+      BasedOn { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_StampsList.bmp' }
+      Caption      { 'Return Philatelic - Other Items' }
+      Description  { 'Return Philatelic - Other Items' }
+      Title        { 'Return Philatelic - Other Items' }
+      Prompt       { 'Return Philatelic - Other Items' }
+      Hint         { 'Return Philatelic - Other Items' }
+      PLU          { PLU_ReturnPhil }
+      Domains { TransPhil }
+      Snippets { SetPhilatelicReturnOtherPhil
+                 StampValidateVars
+                 PhilOrderValidate
+                 LogStockPhilOtherPhil }
+      Items {
+         'Complete'
+      }
+   }
+
+
+   ReturnStamps {
+      BasedOn { BaseAdministration }
+      Caption { 'Return Stamps' }
+      BitMap {  '..\IMAGES\P_ReturnStamps.bmp' }
+      Description  { 'Return Stamps' }
+      Title        { 'Return Stamps' }
+      Prompt       { 'Return Stamps' }
+      Hint         { 'Return Stamps' }
+      PLU          { PLU_ReturnStamps }
+      Snippets { SetStampsReturn
+                 StampValidateVars
+                 StampsOrderValidate
+                 LogStockStamps }
+      Domains { TransStamps }
+      Items {
+         'Complete'
+      }
+   }
+
+   ReturnStockBWCourier {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_ReturnStock.bmp' }
+      Caption      { 'Return Stock - BW Courier' }
+      Description  { 'Return Stock - BW Courier' }
+      Title        { 'Return Stock - BW Courier' }
+      Prompt       { 'Return Stock - BW Courier' }
+      Hint         { 'Return Stock - BW Courier' }
+      PLU          { PLU_ReturnStock }
+      Snippets { SetStockReturnBWCourier
+                 StampValidateVars
+                 StockOrderValidate
+                 LogStockStockBWCourier }
+      Domains { TransStock }
+      Items {
+         'Complete'
+      }
+   }
+
+   ReturnStockMerchandise {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_ReturnStock.bmp' }
+      Caption      { 'Return Stock - Merchandise' }
+      Description  { 'Return Stock - Merchandise' }
+      Title        { 'Return Stock - Merchandise' }
+      Prompt       { 'Return Stock - Merchandise' }
+      Hint         { 'Return Stock - Merchandise' }
+      PLU          { PLU_ReturnStock }
+      Snippets { SetStockReturnMerchandise
+                 StampValidateVars
+                 StockOrderValidate
+                 LogStockStockMerchandise }
+      Domains { TransStock }
+      Items {
+         'Complete'
+      }
+   }
+
+   ReturnStockRetailOther {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_ReturnStock.bmp' }
+      Caption      { 'Return Stock - Retail' }
+      Description  { 'Return Stock - Retail' }
+      Title        { 'Return Stock - Retail' }
+      Prompt       { 'Return Stock - Retail' }
+      Hint         { 'Return Stock - Retail' }
+      PLU          { PLU_ReturnStock }
+      Snippets { SetStockReturnRetailOther
+                 StampValidateVars
+                 StockOrderValidate
+                 LogStockStockRetailOther }
+      Domains { TransStock }
+      Items {
+         'Complete'
+      }
+   }
+
+   ReturnPrint {
+      BasedOn { BaseAdministration }
+      Caption { 'Print Returns' }
+      BitMap {  '..\IMAGES\P_ReturnPrint.bmp' }
+      Description  { 'Print Returns' }
+      Title        { 'Print Returns' }
+      Prompt       { 'Print Returns' }
+      Hint         { 'Print Returns' }
+      PLU          { PLU_ReturnPrint }
+      Items {
+         'Complete'
+      }
+      PrintList { Detail, 'BotsReturns' }
+   }
+
+   SetExcngRates {
+      BasedOn { BaseAdministration }
+      Caption { 'Set Todays Exchange Rates' }
+      BitMap {  '..\IMAGES\P_SetExcngRates.bmp' }
+      Description  { 'Set Todays Exchange Rates' }
+      OCRCode      { '' }
+      Regulations  { '' }
+      Title        { 'Set Todays Exchange Rates' }
+      PLU          { PLU_SetExcngRates }
+      Domains {
+         ExchangeList
+      }
+      Items {
+         'Complete'
+      }
+      Snippets { ReadExRatesList }
+   }
+
+//   SetupStock {
+//      BasedOn { BaseAdministration }
+//      Caption { 'View/Modify Current Stock Levels' }
+//      BitMap {  '..\IMAGES\P_SetupStock.bmp' }
+//      Description  { 'View/Modify Current Stock Levels' }
+//      Title        { 'View/Modify Current Stock Levels' }
+//      Prompt       { 'View/Modify Current Stock Levels' }
+//      Hint         { 'View/Modify Current Stock Levels' }
+//      PLU          { PLU_SetupStock }
+//      Domains {
+//         SetList
+//      }
+//      Items {
+//         'Complete'
+//      }
+//      //Snippets { GetUserName,AddStockGetExecData,AddStockSetExecData,LogTranStockTo,AddToOverDef,AcceptTranOverDec }
+//   }
+
+   TrialBalance {
+      BasedOn { BaseAdministration }
+      Caption { 'Trial Balance' }
+      BitMap {  '..\IMAGES\P_TrialBalance.bmp' }
+      Description  { 'Trial Balance' }
+      Title        { 'Trial Balance' }
+      Prompt       { 'Trial Balance' }
+      Hint         { 'Trial Balance' }
+      PLU          { PLU_TrialBalance }
+      Items {
+         'Complete'
+      }
+      PrintList { Summary, 'BotsBalance' }
+   }
+
+  StockSetup {
+    BasedOn     { BaseAdministration                  }
+    Caption     { 'View/Modify Current Stock Levels'  }
+    BitMap      {  '..\IMAGES\P_StockSetup.bmp'       }
+    Description { 'View/Modify Current Stock Levels'  }
+    Title       { 'View/Modify Current Stock Levels'  }
+    Prompt      { 'View/Modify Current Stock Levels'  }
+    Hint        { 'View/Modify Current Stock Levels'  }
+    PLU         { PLU_StockSetup                      }
+    Domains     { StockSetList                        }
+    Items       { 'Complete'                          }
+    Snippets    {
+//      StockGetUserName
+//      StockAddGetExecData
+//      StockAddSetExecData
+//      StockLogTranTo
+//      StockAddToOverDef
+//      AcceptTranOverDec
+    }
+  }
+
+   UserStock {
+      BasedOn { BaseAdministration }
+      Caption { 'List Current Stock Levels' }
+      BitMap {  '..\IMAGES\P_UserStock.bmp' }
+      Description  { 'List Current Stock Levels' }
+      Title        { 'List Current Stock Levels' }
+      Prompt       { 'List Current Stock Levels' }
+      Hint         { 'List Current Stock Levels' }
+      PLU          { PLU_UserStock }
+      Domains {
+         UserName
+         StockList
+      }
+      Items {
+         'Complete'
+         'Report'
+      }
+      Snippets {
+         UserStockDec
+         UserStockDef
+         UserStockLog
+         UserStockLevel
+         UserStockSetData
+         UserStockGetData
+         UserStockReport
+         UserStockResItem
+         UserStockReportVars
+         UserStockReportUses
+      }
+   }
+
+   ViewStockCash {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_ViewStock.bmp' }
+      Caption      { 'View Stock - Cash and Stock' }
+      Description  { 'View Stock - Cash and Stock' }
+      Title        { 'View Stock - Cash and Stock' }
+      Prompt       { 'View Stock - Cash and Stock' }
+      Hint         { 'View Stock - Cash and Stock' }
+      PLU          { PLU_ViewStock }
+      Domains {
+         UserName
+         StockList
+      }
+      Items {
+         'Complete'
+         'Report'
+      }
+      Snippets {
+                  ViewStockPostVarExecute
+                  ViewStockPostExecute
+                  DontLog
+                  UserStockReportVars
+                  UserStockReportUses
+                  ViewStockReport
+         ViewStockDec
+         ViewStockDef
+         ViewStockLevelCashAndStock
+         ViewStockSetData
+         ViewStockGetData
+         ViewStockResItem
+                }
+   }
+
+   ViewStockStamps {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_ViewStock.bmp' }
+      Caption      { 'View Stock - Stamps' }
+      Description  { 'View Stock - Stamps' }
+      Title        { 'View Stock - Stamps' }
+      Prompt       { 'View Stock - Stamps' }
+      Hint         { 'View Stock - Stamps' }
+      PLU          { PLU_ViewStock }
+      Domains {
+         UserName
+         StockList
+      }
+      Items {
+         'Complete'
+         'Report'
+      }
+      Snippets {
+                  DontLog
+                  ViewStockReport
+                  UserStockReportVars
+                  UserStockReportUses
+         ViewStockDec
+         ViewStockDef
+         ViewStockAddExtraUser
+         ViewStockLevelStamps
+         ViewStockSetData
+         ViewStockGetData
+         ViewStockResItem
+                }
+   }
+
+   ViewStockPostOrder {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_ViewStock.bmp' }
+      Caption      { 'View Stock - Postal Orders' }
+      Description  { 'View Stock - Postal Orders' }
+      Title        { 'View Stock - Postal Orders' }
+      Prompt       { 'View Stock - Postal Orders' }
+      Hint         { 'View Stock - Postal Orders' }
+      PLU          { PLU_ViewStock }
+      Domains {
+         UserName
+         StockList
+      }
+      Items {
+         'Complete'
+         'Report'
+      }
+      // PrintList { Detail, 'Stock' }
+      Snippets {
+                  DontLog
+                  ViewStockReport
+                  UserStockReportVars
+                  UserStockReportUses
+         ViewStockDec
+         ViewStockDef
+         ViewStockAddExtraUser
+         ViewStockLevelPO
+         ViewStockSetData
+         ViewStockGetData
+         ViewStockResItem
+                }
+   }
+
+   ViewStockBWCourier {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_ViewStock.bmp' }
+      Caption      { 'View Stock - BW Couriers' }
+      Description  { 'View Stock - BW Couriers' }
+      Title        { 'View Stock - BW Couriers' }
+      Prompt       { 'View Stock - BW Couriers' }
+      Hint         { 'View Stock - BW Couriers' }
+      PLU          { PLU_ViewStock }
+      Domains {
+         UserName
+         StockList
+      }
+      Items {
+         'Complete'
+         'Report'
+      }
+      // PrintList { Detail, 'Stock' }
+      Snippets {
+                  DontLog
+                  ViewStockReport
+                  UserStockReportVars
+                  UserStockReportUses
+         ViewStockDec
+         ViewStockDef
+         ViewStockAddExtraUser
+         ViewStockLevelBWCouriers
+         ViewStockSetData
+         ViewStockGetData
+         ViewStockResItem
+                }
+   }
+
+   ViewStockMerchandise {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_ViewStock.bmp' }
+      Caption      { 'View Stock - Merchandise' }
+      Description  { 'View Stock - Merchandise' }
+      Title        { 'View Stock - Merchandise' }
+      Prompt       { 'View Stock - Merchandise' }
+      Hint         { 'View Stock - Merchandise' }
+      PLU          { PLU_ViewStock }
+      Domains {
+         UserName
+         StockList
+      }
+      Items {
+         'Complete'
+         'Report'
+      }
+      // PrintList { Detail, 'Stock' }
+      Snippets {
+                  DontLog
+                  ViewStockReport
+                  UserStockReportVars
+                  UserStockReportUses
+         ViewStockDec
+         ViewStockDef
+         ViewStockAddExtraUser
+         ViewStockLevelMerchandise
+         ViewStockSetData
+         ViewStockGetData
+         ViewStockResItem
+                }
+   }
+
+   ViewStockRetail {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_ViewStock.bmp' }
+      Caption      { 'View Stock - Retail' }
+      Description  { 'View Stock - Retail' }
+      Title        { 'View Stock - Retail' }
+      Prompt       { 'View Stock - Retail' }
+      Hint         { 'View Stock - Retail' }
+      PLU          { PLU_ViewStock }
+      Domains {
+         UserName
+         StockList
+      }
+      Items {
+         'Complete'
+         'Report'
+      }
+      // PrintList { Detail, 'Stock' }
+      Snippets {
+                  DontLog
+                  ViewStockReport
+                  UserStockReportVars
+                  UserStockReportUses
+         ViewStockDec
+         ViewStockDef
+         ViewStockAddExtraUser
+         ViewStockLevelRetail
+         ViewStockSetData
+         ViewStockGetData
+         ViewStockResItem
+                }
+   }
+
+   ViewStockPhilOther {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_ViewStock.bmp' }
+      Caption      { 'View Stock - Other Philatelic Items' }
+      Description  { 'View Stock - Other Philatelic Items' }
+      Title        { 'View Stock - Other Philatelic Items' }
+      Prompt       { 'View Stock - Other Philatelic Items' }
+      Hint         { 'View Stock - Other Philatelic Items' }
+      PLU          { PLU_ViewStock }
+      Domains {
+         UserName
+         StockList
+      }
+      Items {
+         'Complete'
+         'Report'
+      }
+      // PrintList { Detail, 'Stock' }
+      Snippets {
+                  DontLog
+                  ViewStockReport
+                  UserStockReportVars
+                  UserStockReportUses
+         ViewStockDec
+         ViewStockDef
+         ViewStockAddExtraUser
+         ViewStockLevelPhilOther
+         ViewStockSetData
+         ViewStockGetData
+         ViewStockResItem
+                }
+   }
+
+   ViewStockPhilYearPack {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_ViewStock.bmp' }
+      Caption      { 'View Stock - Philatelic Year Packs' }
+      Description  { 'View Stock - Philatelic Year Packs' }
+      Title        { 'View Stock - Philatelic Year Packs' }
+      Prompt       { 'View Stock - Philatelic Year Packs' }
+      Hint         { 'View Stock - Philatelic Year Packs' }
+      PLU          { PLU_ViewStock }
+      Domains {
+         UserName
+         StockList
+      }
+      Items {
+         'Complete'
+         'Report'
+      }
+      // PrintList { Detail, 'Stock' }
+      Snippets {
+                  DontLog
+                  ViewStockReport
+                  UserStockReportVars
+                  UserStockReportUses
+         ViewStockDec
+         ViewStockDef
+         ViewStockAddExtraUser
+         ViewStockLevelPhilYearPack
+         ViewStockSetData
+         ViewStockGetData
+         ViewStockResItem
+                }
+   }
+
+   ViewStockPhilSouvSheet {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_ViewStock.bmp' }
+      Caption      { 'View Stock - Philatelic Souv Sheets' }
+      Description  { 'View Stock - Philatelic Souv Sheets' }
+      Title        { 'View Stock - Philatelic Souv Sheets' }
+      Prompt       { 'View Stock - Philatelic Souv Sheets' }
+      Hint         { 'View Stock - Philatelic Souv Sheets' }
+      PLU          { PLU_ViewStock }
+      Domains {
+         UserName
+         StockList
+      }
+      Items {
+         'Complete'
+         'Report'
+      }
+      // PrintList { Detail, 'Stock' }
+      Snippets {
+                  DontLog
+                  ViewStockReport
+                  UserStockReportVars
+                  UserStockReportUses
+         ViewStockDec
+         ViewStockDef
+         ViewStockAddExtraUser
+         ViewStockLevelPhilSouvSheet
+         ViewStockSetData
+         ViewStockGetData
+         ViewStockResItem
+                }
+   }
+
+   ViewStockPhilFDCover {
+      BasedOn      { BaseAdministration }
+      BitMap       {  '..\IMAGES\P_ViewStock.bmp' }
+      Caption      { 'View Stock - Philatelic FD Covers' }
+      Description  { 'View Stock - Philatelic FD Covers' }
+      Title        { 'View Stock - Philatelic FD Covers' }
+      Prompt       { 'View Stock - Philatelic FD Covers' }
+      Hint         { 'View Stock - Philatelic FD Covers' }
+      PLU          { PLU_ViewStock }
+      Domains {
+         UserName
+         StockList
+      }
+      Items {
+         'Complete'
+         'Report'
+      }
+      // PrintList { Detail, 'Stock' }
+      Snippets {
+                  DontLog
+                  ViewStockReport
+                  UserStockReportVars
+                  UserStockReportUses
+         ViewStockDec
+         ViewStockDef
+         ViewStockAddExtraUser
+         ViewStockLevelPhilFDCover
+         ViewStockSetData
+         ViewStockGetData
+         ViewStockResItem
+                }
+   }
+
+   SuperCOrder {
+      BasedOn { BaseAdministration }
+      Caption { 'Order Stamps' }
+      BitMap {  '..\IMAGES\P_SuperCOrder.bmp' }
+      Description  { 'Order Stamps' }
+      Title        { 'Order Stamps' }
+      Prompt       { 'Order Stamps' }
+      Hint         { 'Order Stamps' }
+      PLU          { PLU_SuperCOrder }
+      Items {
+         'Complete'
+      }
+   }
+   ClerkCA {
+      SubGroup { 'Cash Account' }
+      Caption { 'Print Cash Account' }
+      BitMap {  '..\IMAGES\P_OrderPrint.bmp' }
+      Description  { 'Print Cash Account' }
+      Title        { 'Print Cash Account' }
+      Prompt       { 'Print Cash Account' }
+      Hint         { 'Print Cash Account' }
+      PLU          { PLU_ClerkCA }
+      Items {
+         'Complete'
+      }
+      PrintList { Summary, 'BotsCash Account' }
+   }
+
+   FullCashAccount {
+      SubGroup { 'Cash Account' }
+      BitMap {  '..\IMAGES\P_OrderPrint.bmp' }
+      Caption      { 'Print Full Cash Account' }
+      Description  { 'Print Full Cash Account' }
+      Title        { 'Print Full Cash Account' }
+      PLU          { PLU_FullCashAccount       }
+      Items {
+         'Complete'
+      }
+      Domains {
+         StartDomainEdit
+         EndDomainEdit
+      }
+      PrintList { Summary, '*BotsCash Account', StartDomainEdit, EndDomainEdit }
+//      PrintList { Summary, '*Cash Account' }
+   }
+   AnOfficeCashAccount {
+      SubGroup { 'Cash Account' }
+      BitMap {  '..\IMAGES\P_OrderPrint.bmp' }
+      Caption      { 'Print Sub-Office Cash Account' }
+      Description  { 'Print Sub-Office Cash Account' }
+      Title        { 'Print Sub-Office Cash Account' }
+      PLU          { PLU_AnOfficeCashAccount }
+      Items {
+         'Complete'
+      }
+      Domains {
+         StartDomainEdit
+         EndDomainEdit
+         OfficeCode
+      }
+      PrintList { Summary, '*BotsCash Account', StartDomainEdit, EndDomainEdit, OfficeCode }
+//      PrintList { Summary, '*Cash Account' }
+   }
+   GPOCashAccount {
+      SubGroup { 'Cash Account' }
+      BitMap {  '..\IMAGES\P_OrderPrint.bmp' }
+      Caption      { 'Print GPO Cash Account' }
+      Description  { 'Print GPO Cash Account' }
+      Title        { 'Print GPO Cash Account' }
+      PLU          { PLU_GPOCashAccount  }
+      Items {
+         'Complete'
+      }
+      Domains {
+         StartDomainEdit
+         EndDomainEdit
+      }
+      PrintList { Summary, '*BotsCash Account', StartDomainEdit, EndDomainEdit }
+      Snippets { LogGPOCashAcc }
+   }
+   SubsCashAccount {
+      SubGroup { 'Cash Account' }
+      BitMap {  '..\IMAGES\P_OrderPrint.bmp' }
+      Caption      { 'Print All-Sub Cash Account' }
+      Description  { 'Print All-Sub Cash Account' }
+      Title        { 'Print All-Sub Cash Account' }
+      PLU          { PLU_SubsCashAccount  }
+      Items {
+         'Complete'
+      }
+      Domains {
+         StartDomainEdit
+         EndDomainEdit
+      }
+      PrintList { Summary, '*BotsCash Account', StartDomainEdit, EndDomainEdit }
+      Snippets { LogSubsCashAcc }
+   }
+
+   SClientReturns {
+      BasedOn { BaseAdministration }
+      Caption { 'Client Returns' }
+      BitMap {  '..\IMAGES\P_ClientRetSum.bmp' }
+      Description  { 'Client Returns' }
+      Title        { 'Client Returns' }
+      Prompt       { 'Client Returns' }
+      Hint         { 'Client Returns' }
+      PLU          { PLU_ClientReturns }
+      Domains {
+         StartDomainEdit
+         EndDomainEdit
+      }
+      Items {
+         'Complete'
+      }
+      Snippets { ExternalFuncUses, SLogClientReturns, LogTranVar  }
+   }
+
+   SClientRetSum {
+      BasedOn { BaseAdministration }
+      Caption { 'Client Returns Summary' }
+      BitMap {  '..\IMAGES\P_ClientRetSum.bmp' }
+      Description  { 'Client Returns Summary' }
+      Title        { 'Client Returns Summary' }
+      Prompt       { 'Client Returns Summary' }
+      Hint         { 'Client Returns Summary' }
+      PLU          { PLU_ClientRetSum }
+      Domains {
+         StartDomainEdit
+         EndDomainEdit
+      }
+      Items {
+         'Complete'
+      }
+      Snippets { ExternalFuncUses, SLogClientReturnsSummary, LogTranVar }
+   }
+
+   EMail {
+      SubGroup { CAExtra }
+      Caption { 'Total EMail Moneys Received' }
+      BitMap {  '..\IMAGES\P_EMail.bmp' }
+      Description  { 'Total EMail Moneys Received' }
+      Title        { 'Total EMail Moneys Received' }
+      Prompt       { 'Total EMail Moneys Received' }
+      Hint         { 'Total EMail Moneys Received' }
+      PLU          { PLU_EMAil }
+      Domains {
+         Amount
+      }
+      Items {
+         'Complete'
+      }
+      Snippets { LogEMail }
+   }
+   TeleGraph {
+      SubGroup { CAExtra }
+      Caption { 'Telegraph Moneys Received' }
+      BitMap {  '..\IMAGES\TeleGraph.bmp' }
+      Description  { 'Telegraph Moneys Received' }
+      Title        { 'Telegraph Moneys Received' }
+      Prompt       { 'Telegraph Moneys Received' }
+      Hint         { 'Telegraph Moneys Received' }
+      PLU          { PLU_Telegraph }
+      Domains {
+         ItemAmount
+         ItemCommission
+      }
+      Items {
+         'Complete'
+      }
+      Snippets { LogTeleGraph }
+   }
+   PayRemRec {
+      SubGroup { CAExtra }
+      Caption { 'Payment Vouchers Received' }
+      BitMap {  '..\IMAGES\P_PayVouchRR.bmp' }
+      Description  { 'Payment Vouchers Received' }
+      Title        { 'Payment Vouchers Received' }
+      Prompt       { 'Payment Vouchers Received' }
+      Hint         { 'Payment Vouchers Received' }
+      PLU          { PLU_PayVouchR }
+      Domains {
+         Amount
+      }
+      Items {
+         'Complete'
+      }
+      Snippets { PayRemRec }
+   }
+   PayRemDisp {
+      SubGroup { CAExtra }
+      Caption { 'Payment Vouchers Dispatched' }
+      BitMap {  '..\IMAGES\P_PayVouchRD.bmp' }
+      Description  { 'Payment Vouchers Dispatched' }
+      Title        { 'Payment Vouchers Dispatched' }
+      Prompt       { 'Payment Vouchers Dispatched' }
+      Hint         { 'Payment Vouchers Dispatched' }
+      PLU          { PLU_PayVouchR }
+      Domains {
+         Amount
+      }
+      Items {
+         'Complete'
+      }
+      Snippets { PayRemDisp }
+   }
+   Refunds {
+      SubGroup { CAExtra }
+      Caption { 'Schedule of Refunds' }
+      BitMap {  '..\IMAGES\P_Refunds.bmp' }
+      Description  { 'Schedule of Refunds' }
+      Title        { 'Schedule of Refunds' }
+      Prompt       { 'Schedule of Refunds' }
+      Hint         { 'Schedule of Refunds' }
+      PLU          { PLU_Refunds }
+      Domains {
+         Amount
+      }
+      Items {
+         'Complete'
+      }
+      Snippets { LogRefunds }
+   }
+   SalCont {
+      SubGroup { CAExtra }
+      Caption { 'Salary Control Account' }
+      BitMap {  '..\IMAGES\P_SalCont.bmp' }
+      Description  { 'Salary Control Account' }
+      Title        { 'Salary Control Account' }
+      Prompt       { 'Salary Control Account' }
+      Hint         { 'Salary Control Account' }
+      PLU          { PLU_SalCont }
+      Domains {
+         Amount
+      }
+      Items {
+         'Complete'
+      }
+      Snippets { LogSalCont }
+   }
+ CashToBank { BasedOn      { BaseAdministration            }
+              Caption      { 'Cash To Bank' }
+              BitMap       { '..\IMAGES\CashToBank.bmp' }
+              Description  { 'Cash To Bank' }
+              Title        { 'Cash To Bank' }
+              Prompt       { 'Cash To Bank' }
+              Hint         { 'Cash To Bank' }
+              PLU          { PLU_CashToBank }
+              Domains      { CashSentToBank }
+              Items        {'Complete'      }
+              Snippets     { StampValidateVars
+                             CashToBankValidate
+                             CashToBankLog  }
+             }
+
+   StampVendor {
+      BasedOn { BaseServices }
+      Caption { 'Stamp Vendor' }
+      BitMap {  '..\IMAGES\P_Stamps.bmp' }
+      Description  { 'Stamp Vendor' }
+      Title        { 'Stamp Vendor' }
+      PLU          { PLU_StampVendor }
+   }
+   ServiceMoneyOrder {
+      BasedOn { BaseServices }
+      Caption { 'Service Money Order' }
+      BitMap {  '..\IMAGES\P_ExpMonOrd.bmp' }
+      Description  { 'Service Money Order' }
+      Title        { 'Service Money Order' }
+      PLU          { PLU_ExpMonOrd }
+      Domains {
+         SerialNumber
+         PFNumber
+         Value
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         ServiceMoneyOrderLog
+         LogTranVarV
+      }
+   }
+   PMStock {
+      SubGroup { CAExtra }
+      Caption { 'Total Sub-Postmasters Stock' }
+      BitMap {  '..\IMAGES\P_PMStock.bmp' }
+      Description  { 'Total Sub-Postmasters Stock' }
+      Title        { 'Total Sub-Postmasters Stock' }
+      Prompt       { 'Total Sub-Postmasters Stock' }
+      Hint         { 'Total Sub-Postmasters Stock' }
+      PLU          { PLU_PMStock }
+      Domains {
+         Amount
+      }
+      Items {
+         'Complete'
+      }
+      Snippets { LogPMStock }
+   }
+   UnClPay {
+      SubGroup { CAExtra }
+      Caption { 'Unclaimed Payment (Table 5)' }
+      BitMap {  '..\IMAGES\P_UnClPay.bmp' }
+      Description  { 'Unclaimed Payment (Table 5)' }
+      Title        { 'Unclaimed Payment (Table 5)' }
+      Prompt       { 'Unclaimed Payment (Table 5)' }
+      Hint         { 'Unclaimed Payment (Table 5)' }
+      PLU          { PLU_UnClPay }
+      Domains {
+         Amount
+      }
+      Items {
+         'Complete'
+      }
+      Snippets { LogUnClPay }
+   }
+   UnChRec {
+      SubGroup { CAExtra }
+      Caption { 'Uncharged Receipts' }
+      BitMap {  '..\IMAGES\P_UnClRec.bmp' }
+      Description  { 'Uncharged Receipts' }
+      Title        { 'Uncharged Receipts' }
+      Prompt       { 'Uncharged Receipts' }
+      Hint         { 'Uncharged Receipts' }
+      PLU          { PLU_UnChRec }
+      Domains {
+         Amount
+      }
+      Items {
+         'Complete'
+      }
+      Snippets { LogUnChRec }
+   }
+
+   DeleteStockItem {
+      Title { 'Permanently Delete Stock Item' }
+      Caption { 'Delete Stock Item' }
+      Bitmap { '..\images\P_DelStockItem.bmp' }
+      Domains { DeleteList }
+      Items { 'Complete' }
+      PLU   { PLU_DeleteStockItem }
+      SubGroup { 'Administration' }
+      Snippets {
+         FillDelList
+         FillDelListVars
+         DelListGetData
+         DelListSetData
+         OverDelListDec
+         OverDelListDef
+         DelListValidate
+         DelListComplete
+      }
+   }
+   AddModStockItem {
+      Title { 'Add / Modify Stock Item' }
+      Caption { 'Add / Modify Stock Item' }
+      Bitmap { '..\images\P_AddModStockItem.bmp' }
+      PLU   { PLU_AddModStockItem }
+      Domains {
+         AddModStockList
+         StockDescription
+         StockPrice
+      }
+      Items { 'Complete' }
+      SubGroup { 'Administration' }
+      Snippets {
+         FillAddModList
+         FillDelListVars
+         AddModListGetData
+         AddModListSetData
+         OverAddModListDec
+         OverAddModListDef
+         DelListValidate
+         AddModListComplete
+         AddModListCompVars
+      }
+   }
+   DeleteTran {
+      Title { 'Cancel Outstanding Stock Requests' }
+      Bitmap { '..\images\P_DeleteTran.bmp' }
+      Domains { CancelList  }
+      PLU  { PLU_DeleteTran }
+      Items { 'Complete' }
+      SubGroup { 'Stock' }
+      Snippets {
+           DeleteTranGetExecData
+           DeleteTranUserList,
+           OverDelListDec,
+           DeleteTranOverDef,
+           DelListValidate,
+           DeleteTranLogVars,
+           DeleteTranComplete
+      }
+   }
+
+
+   PaySalary {
+      SubGroup { 'Administration' }
+      Title { 'Pay Salary' }
+      Caption { 'Pay Salary' }
+      Bitmap { '..\images\P_PensionPayment.bmp' }
+      PLU   { PLU_PaySalary }
+      Domains {
+         PayeeName
+         PayrollNumber
+         AmountPaid
+      }
+      Items { 'Complete' }
+      Snippets {
+         PaySalaryVal
+      }
+      //LogAs { PaySalary }
+      Snippets { PaySalaryLog }
+   }
+
+ PayWagesIC { SubGroup { 'Administration'                 }
+              Title    { 'Pay Wages Industrial Class'     }
+              Caption  { 'Pay Wages Industrial Class'     }
+              Bitmap   { '..\images\P_PensionPayment.bmp' }
+              PLU      {  PLU_PayWagesIC                  }
+              Domains  {  PayeeName
+                          PayrollNumber
+                          AmountPaid
+                        }
+              Items    { 'Complete'                       }
+              Snippets {  PaySalaryVal
+                          PayWagesICLog
+                        }
+             }
+
+ PayTempStaff { SubGroup { 'Administration'                 }
+                Title    { 'Pay Temporary Staff'            }
+                Caption  { 'Pay Temporary Staff'            }
+                Bitmap   { '..\images\P_PensionPayment.bmp' }
+                PLU      {  PLU_PayTempStaff                }
+                Domains  {  PayeeName
+                            AmountPaid
+                            Comment
+                          }
+                Items    { 'Complete'                       }
+                Snippets {  PaySalaryVal
+                            PayTempStaffLog
+                          }
+               }
+
+ PayDeathClaim { SubGroup { 'Administration'                 }
+                 Title    { 'Death Claim'                    }
+                 Caption  { 'Death Claim'                    }
+                 Bitmap   { '..\images\P_PensionPayment.bmp' }
+                 PLU      {  PLU_PayDeathClaim               }
+                 Domains  {  PayeeName
+                             AmountPaid
+                             Comment
+                           }
+                 Items    { 'Complete'                       }
+                 Snippets {  PaySalaryVal
+                             PayDeathClaimLog
+                           }
+                }
+
+ PayHumana    { SubGroup { 'Administration'                 }
+                Title    { 'Pay Humana'            }
+                Caption  { 'Pay Humana'            }
+                Bitmap   { '..\images\P_PensionPayment.bmp' }
+                PLU      {  PLU_PayHumana                }
+                Domains  {  EmployeeNumber
+                            EmployeeName
+                            CustID_Number
+                            AmountPaid
+                            Comment
+                          }
+                Items    { 'Complete'                       }
+                Snippets {  PaySalaryVal
+                            PayHumanaLog
+                          }
+               }
+
+
+}
+
+//------------------------------------------------------------------------------
+// Snippets
+//------------------------------------------------------------------------------
+
+Snippets {
+
+  CashAccAdjEXECVAR {
+    InsertBetween { '{ExecuteVarStart}','{ExecuteVarEnd}' }
+    CodeBlock {
+    [*
+      var
+        StockItemIndex : Integer;
+    *]
+    }
+  }
+
+  CashAccAdjISLIST {
+    InsertBetween { '{IsListStart}','{IsListEnd}' }
+    CodeBlock {
+    [*
+      try
+        //Office number
+        ProdForm.CashAccAdjOffice.Text := GetGPCSRegString('OfficeInfo', 'Office ID','0');
+
+        //fill user list
+        if UIEventSink <> nil then
+        begin
+          ProdForm.CashAccAdjPerson.Items.CommaText:=UIEventSink.ReferenceData('Users');
+          if ProdForm.CashAccAdjPerson.Items.IndexOf('Supervisor') = -1 then
+            ProdForm.CashAccAdjPerson.Items.Add('Supervisor');
+        end ;
+
+
+        //fill picklist with cash acc lines and plus
+        ReportParams.Stock:=CreateStock;
+        With TStringList.Create do
+        begin
+          try
+            ProdForm.CashAccAdjList.Items.CommaText := ReportParams.Stock.ListAllStock('Supervisor','CashAcc');
+            StockItemIndex := 0;
+            While StockItemIndex <= ProdForm.CashAccAdjList.Items.Count -1 do
+            begin
+              CommaText := ProdForm.CashAccAdjList.Items[StockItemIndex]; //grab the stock line
+              ProdForm.CashAccAdjList.Items.InsertObject(StockItemIndex,Strings[0], TObject(StrToIntDef(Strings[3],0)));
+              ProdForm.CashAccAdjList.Items.Delete(StockItemIndex+1);
+              Inc(StockItemIndex);
+            end;
+          finally
+            Free;
+            ReportParams.Stock:=nil;
+          end;
+        end;
+      except
+        On E : Exception do RaiseGUIDException('{D274DE64-E726-4087-9625-85F956528BEB}', E);  // Error in Stock
+      end;
+    *]
+    }
+  }
+
+  CashAccAdjVAL {
+    InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+    CodeBlock {
+    [*
+      Result:=CheckMaskEdits(Self);
+      If Result and (StrToCurrDef(CashAccAdjAmount.Text,0) = 0) then
+      begin
+        Result := False;
+        MoveFocusTo(CashAccAdjAmount);
+      end;
+    *]
+    }
+  }
+
+  CashAccAdjLOG {
+    InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+    CodeBlock {
+    [*
+      If ProdForm.CashAccAdjType.Text = 'Decrease' then
+        ProdForm.CashAccAdjAmount.Text := '-' + ProdForm.CashAccAdjAmount.Text;
+      TxnLog.WriteFullTransaction(
+          StrToIntDef(GetGPCSRegString('Workstation','Ident','0'),0),//wsnumber
+          DateTimeToPeriod(StrToDateTime(ProdForm.CashAccAdjDate.text)),
+          Index, //recindex
+          StrToInt(ProdForm.CashAccAdjOffice.Text), //Office
+          'CashAccAdj',
+          ProdForm.CashAccAdjPerson.Text,
+          1,
+          Integer(ProdForm.CashAccAdjList.Items.Objects[ProdForm.CashAccAdjList.ItemIndex]),    //PLU of cash account line to be adjusted
+          StrToCurrDef(ProdForm.CashAccAdjAmount.Text,0),
+          StrToCurrDef(ProdForm.CashAccAdjAmount.Text,0),
+          Get_Description,
+          '',
+          Get_ProgramId,
+          '',
+          Enumerate(ProdForm));
+      Inc(Index);
+    *]
+    }
+  }
+
+  ViewStockPostVarExecute {
+    InsertBetween { '{ExecuteVarStart}','{ExecuteVarEnd}' }
+    CodeBlock {
+    [*
+     var
+        TempList: TPackStringList;
+        I:integer;
+    *]
+    }
+  }
+
+  ViewStockPostExecute {
+    InsertBetween { '{PostExecuteStart}','{PostExecuteEnd}' }
+    CodeBlock {
+    [*
+                                                        // This line is in here instead of a separate snippet
+                                                        // because this snippet already inserts code
+      ProdForm.UserName.Items.Insert(0,'All');          // between PostExecuteStart and PostExecuteEnd
+      ProdForm.UserName.Items.Insert(1,'Vendor');      // This snippet is only used with ViewStockCash
+                                                        // Compare with ViewStockStamps etc.
+      //delete cash breakdown and move cheques to second line
+      TempList:=TPackStringList.Create;
+      With ProdForm.StockList do
+      begin
+        if (Items.Count > 2) then
+        begin
+          I := 0 ;
+          while I <= Items.Count-1 do
+          begin
+            TempList.PackText := Items[I];  //grab the stock item
+            //delete cash breakdown lines
+            if LeftOf(TempList[5],'Product.Cash') then
+              Items.Delete( I )
+            //move the cheque line
+            else if (TempList[5]='Product.Cheque')  then
+            begin
+              if I = 1 then
+                Inc( I ) // in case it is already in that position
+              else
+              begin
+                Items.Move( I, 1  );  //move cheque to 2nd position
+                I := Items.Count;     //force break
+              end;
+            end //if cheque
+            else
+              Inc( I );
+          end;  //while more stock items
+        end;  //if more than 2 stock items in list
+      end;  //with stocklist
+      TempList.Free;
+    *]
+    }
+  }
+
+
+
+  PaySalaryVal {
+    InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+    CodeBlock {
+    [*
+      ClearFocus(self);
+      CheckDomain(AmountPaid,StrToCurrDef( AmountPaid.Text, 0 ) > 0, Result);
+    *]
+    }
+  }
+
+
+    SetCashOrder {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransCash,UIEventSink.User,'Cash,Transfer,<Supervisor') then
+            begin
+               ProdForm.TransCash.Clear;
+               ProdForm.TransCash.Text:='No Stock Available';
+            end;
+         end;
+         ProdForm.TransCash.AssociatedProgId:='<Supervisor';
+      *]
+      }
+   }
+
+   LogStockCash {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         try
+            DisablePrint := TRUE;
+            LogStock(TxnLog,ProdForm.TransCash);
+         finally
+            DisablePrint := FALSE;
+         end;
+      *]
+      }
+   }
+
+   SetPostalOrder {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+        if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransPostalOrd,UIEventSink.User,'PostalOrd,Transfer,<Supervisor') then
+            begin
+               ProdForm.TransPostalOrd.Clear;
+               ProdForm.TransPostalOrd.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransPostalOrd.AssociatedProgId:='<Supervisor';
+
+      *]
+      }
+   }
+
+   SetPhilatelicFDC {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+        if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransPhil,UIEventSink.User,'*FDCover,Transfer,<Supervisor') then
+            begin
+               ProdForm.TransPhil.Clear;
+               ProdForm.TransPhil.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransPhil.AssociatedProgId:='<Supervisor';
+
+      *]
+      }
+   }
+
+   LogStockPhilFDC {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         try
+            DisablePrint := TRUE;
+            LogStock(TxnLog,ProdForm.TransPhil);
+         finally
+            DisablePrint := FALSE;
+         end;
+      *]
+      }
+   }
+
+   SetPhilatelicSouvSheets {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+        if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransPhil,UIEventSink.User,'*SouvSheet,Transfer,<Supervisor') then
+            begin
+               ProdForm.TransPhil.Clear;
+               ProdForm.TransPhil.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransPhil.AssociatedProgId:='<Supervisor';
+
+      *]
+      }
+   }
+
+   LogStockPhilSouvSheets {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         try
+            DisablePrint := TRUE;
+            LogStock(TxnLog,ProdForm.TransPhil);
+         finally
+            DisablePrint := FALSE;
+         end;
+      *]
+      }
+   }
+
+
+   SetPhilatelicYearPacks {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+        if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransPhil,UIEventSink.User,'*YearPack,Transfer,<Supervisor') then
+            begin
+               ProdForm.TransPhil.Clear;
+               ProdForm.TransPhil.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransPhil.AssociatedProgId:='<Supervisor';
+
+      *]
+      }
+   }
+
+   LogStockPhilYearPacks {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         try
+            DisablePrint := TRUE;
+            LogStock(TxnLog,ProdForm.TransPhil);
+         finally
+            DisablePrint := FALSE;
+         end;
+      *]
+      }
+   }
+
+
+   SetPhilatelicOtherPhil {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+        if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransPhil,UIEventSink.User,'*PhilOther,Transfer,<Supervisor') then
+            begin
+               ProdForm.TransPhil.Clear;
+               ProdForm.TransPhil.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransPhil.AssociatedProgId:='<Supervisor';
+
+      *]
+      }
+   }
+
+   LogStockPhilOtherPhil {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         try
+            DisablePrint := TRUE;
+            LogStock(TxnLog,ProdForm.TransPhil);
+         finally
+            DisablePrint := FALSE;
+         end;
+      *]
+      }
+   }
+
+
+   LogStockPostal {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         try
+            DisablePrint := TRUE;
+            LogStock(TxnLog,ProdForm.TransPostalOrd);
+         finally
+            DisablePrint := FALSE;
+         end;
+      *]
+      }
+   }
+
+
+   LogStockStamps {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         try
+            DisablePrint := TRUE;
+            LogStock(TxnLog,ProdForm.TransStamps);
+         finally
+            DisablePrint := FALSE;
+         end;
+      *]
+      }
+   }
+
+   SetStockOrderBWCourier {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransStock,UIEventSink.User,'*BWCourier,Transfer,<Supervisor') then
+            begin
+               ProdForm.TransStock.Clear;
+               ProdForm.TransStock.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransStock.AssociatedProgId:='<Supervisor';
+
+      *]
+      }
+   }
+
+   LogStockStockBWCourier {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         try
+            DisablePrint := TRUE;
+            LogStock(TxnLog,ProdForm.TransStock);
+         finally
+            DisablePrint := FALSE;
+         end;
+      *]
+      }
+   }
+
+   SetStockOrderMerchandise {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransStock,UIEventSink.User,'*Merchandise,Transfer,<Supervisor') then
+            begin
+               ProdForm.TransStock.Clear;
+               ProdForm.TransStock.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransStock.AssociatedProgId:='<Supervisor';
+
+      *]
+      }
+   }
+
+   LogStockStockMerchandise {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         try
+            DisablePrint := TRUE;
+            LogStock(TxnLog,ProdForm.TransStock);
+         finally
+            DisablePrint := FALSE;
+         end;
+      *]
+      }
+   }
+
+   SetStockOrderRetailOther {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransStock,UIEventSink.User,'*Retail,Transfer,<Supervisor') then
+            begin
+               ProdForm.TransStock.Clear;
+               ProdForm.TransStock.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransStock.AssociatedProgId:='<Supervisor';
+
+      *]
+      }
+   }
+
+   LogStockStockRetailOther {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         try
+            DisablePrint := TRUE;
+            LogStock(TxnLog,ProdForm.TransStock);
+         finally
+            DisablePrint := FALSE;
+         end;
+      *]
+      }
+   }
+
+   ExecuteAcceptVars {
+      InsertBetween { '{ExecuteVarStart}','{ExecuteVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            I : integer ;
+      *]
+      }
+   }
+
+   AcceptTranOverDec {
+      InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+      CodeBlock {
+      [*
+        procedure TriggerBarCode(Value:String); override;
+      *]
+      }
+   }
+
+   AcceptTranOverDef {
+      InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+      CodeBlock {
+      [*
+         procedure {PClass}TAcceptOrderProduct.TriggerBarCode(Value:String);
+         begin
+            ProdForm.ToUser.Text:=Value;
+            ProdForm.TransList.Ignore:=False;
+            GetTransferDetails(ProdForm.TransList,'Supervisor',ProdForm.ToUser.Text );
+            FlagComplete(ProdForm.Validate);            
+            FUIEventSink.DataChanged(Self,ProdForm.TransList.LineEditData,False);
+         end;
+      *]
+      }
+   }
+
+   AcceptTranGetExecData {
+      InsertBetween { '{ListGetDataStart}','{ListGetDataEnd}' }
+      CodeBlock {
+      [*
+         if ProdForm.ToUser.Text <> '' then
+            Result:=ProdForm.TransList.LineEditData
+         else
+            Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   AcceptTranSetExecData {
+      InsertBetween { '{ListSetDataStart}','{ListSetDataEnd}' }
+      CodeBlock {
+      [*
+         if ProdForm.ToUser.Text <> '' then
+            ProdForm.TransList.SetLineEditData(Value)
+         else
+            SetFormData(Value,ProdForm);
+         ProdForm.CurrentLine:=FUIEventSink.CurrentLine;
+         if not ProdForm.Validate then FlagError:=True;
+         if ProdForm.ToUser.Text <> '' then
+            Result:=ProdForm.TransList.LineEditData
+         else
+            Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   AcceptTranUserList {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         if UIEventSink <> nil then
+         begin
+            ProdForm.TransList.Ignore:=True;
+            if not CheckTransfersAvail(ProdForm.ToUser,'Supervisor') then
+            begin
+               UIEventSink.Restore;
+               Exit;
+            end;
+            I := 0;
+            while I < ProdForm.ToUser.Items.Count do
+            begin
+                 //if ProdForm.ToUser.Items[ I ][ 13 ]= 'T' then
+                 if Pos( 'Transfer', ProdForm.ToUser.Items[ I ] ) > 0 then
+                    ProdForm.ToUser.Items.Delete( I )
+                 else
+                     Inc( I )
+            end;
+            if ProdForm.ToUser.Items.Count = 0 then
+            begin
+               UIEventSink.Restore;
+               Exit;
+            end;
+
+
+         end;
+      *]
+      }
+   }
+
+   AcceptTranComplete {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         if ProdForm.ToUser.Items.Count > 0 then
+         begin
+            ProdForm.TransList.AssociatedProgId:='*'+ProdForm.ToUser.Text;
+            LogStock(TxnLog,ProdForm.TransList);
+         end;
+      *]
+      }
+   }
+
+   TranValidate {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         if ToUser.Text <> '' then
+            Result := TRUE
+         else
+            Result := FALSE ;
+         TransList.Hint:='Enter Desired Quantities against each item^Total Value so far P'+TotalStockValue(TransList.Items);
+      *]
+      }
+   }
+
+   AcceptReturnOverDef {
+      InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+      CodeBlock {
+      [*
+         procedure {PClass}TAcceptReturnProduct.TriggerBarCode(Value:String);
+         begin
+            ProdForm.ToUser.Text:=Value;
+            ProdForm.TransList.Ignore:=False;
+            GetTransferDetails(ProdForm.TransList,'Supervisor',ProdForm.ToUser.Text);
+            FlagComplete(ProdForm.Validate);
+            FUIEventSink.DataChanged(Self,ProdForm.TransList.LineEditData,False);
+         end;
+      *]
+      }
+   }
+
+   AcceptReturnUserList {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         if UIEventSink <> nil then
+         begin
+            ProdForm.TransList.Ignore:=True;
+            if not CheckTransfersAvail(ProdForm.ToUser,'Supervisor') then
+            begin
+               UIEventSink.Restore;
+               Exit;
+            end;
+            I := 0;
+            while I < ProdForm.ToUser.Items.Count do
+            begin
+                 if Pos( 'Transfer',ProdForm.ToUser.Items[ I ] ) = 0 then
+                 //if ProdForm.ToUser.Items[ I ][ 13 ] <> 'T' then
+                    ProdForm.ToUser.Items.Delete( I )
+                 else
+                     Inc( I )
+            end;
+            if ProdForm.ToUser.Items.Count = 0 then
+            begin
+               UIEventSink.Restore;
+               Exit;
+            end;
+
+         end;
+      *]
+      }
+   }
+
+   EndOfDayExec {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         if FUIEventSink.User <> 'Supervisor' then
+            TxnReport('EODBotsBalance','','',stSummary,'');
+
+         FUIEventSink.GetComponentReference('End Of Day');
+      *]
+      }
+   }
+
+   EndOfDayDisableComple {
+      InsertBetween { '{EnableCompleteStart}','{EnableCompleteEnd}' }
+      CodeBlock {
+      [*
+         if Value and ( ProdForm.RunEndOfDayQuestion.Text = 'Yes' ) then
+            FUIEventSink.DisplayItemInfo(Self,0,'','Complete',0,0,False,False)
+         else
+            FUIEventSink.DisplayItemInfo(Self,0,'','',0,0,True,False);
+      *]
+      }
+   }
+
+
+   SetPasswordComplete {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock { 
+      [*
+         FUIEventSink.ReferenceData('PASSWORD,'+ProdForm.UserName.Text+','+ProdForm.NewPass.Text);
+      *]
+      }
+   }
+
+   UserListFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         FUIEventSink := UIEventSink ;
+         ProdForm.UserName.Items.CommaText := ListUsers;
+         ProdForm.UserName.Items.Insert(0,'Supervisor');
+         FUIEventSink := nil ;
+      *]
+      }
+   }
+
+   CreateTDisk {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         if FUIEventSink <> nil then
+            FUIEventSink.TransferTxnsToDiskette;
+      *]
+      }
+   }
+
+   ReadTDisk {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         if FUIEventSink <> nil then
+            FUIEventSink.TransferTxnsFromDiskette;
+      *]
+      }
+   }
+
+   ExternalFuncUses {
+      InsertBetween { '{UsesStart}','{UsesEnd}' }
+      CodeBlock {
+      [*
+         uses ExternalFunc;
+      *]
+      }
+   }
+
+   LogClientReturnsVars {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            ResultCR : String;
+            ReceiptPrinter : IDevice;
+      *]
+      }
+   }
+
+   LogClientReturns {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+         ResultCR := ClientReturnData( ProdForm.StartDomainEdit.Text , ProdForm.EndDomainEdit.Text,
+                                       FUIEventSink.User, IntToStr(FUIEventSink.Office), FALSE );
+
+         try
+            ReceiptPrinter:=FUIEventSink.GetComponentReference(GUIDToString(Class_ReceiptDevice)) as IDevice;
+            ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+            ReceiptPrinter.WriteDevice(dcList5Data,ResultCR,1);
+            ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+         finally
+            ReceiptPrinter := nil;
+         end ;
+      *]
+      }
+   }
+
+   LogClientReturnsSummary {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+         ResultCR := ClientReturnData( ProdForm.StartDomainEdit.Text , ProdForm.EndDomainEdit.Text,
+                                       FUIEventSink.User, IntToStr(FUIEventSink.Office), TRUE );
+
+         try
+            ReceiptPrinter:=FUIEventSink.GetComponentReference(GUIDToString(Class_ReceiptDevice)) as IDevice;
+            ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+            ReceiptPrinter.WriteDevice(dcList5Data,ResultCR,1);
+            ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+         finally
+            ReceiptPrinter := nil;
+         end ;
+      *]
+      }
+   }
+
+   ReadExRatesList {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.ExchangeList,UIEventSink.User,'ExchangeRates') then
+            begin
+               ProdForm.ExchangeList.Clear;
+               ProdForm.ExchangeList.Text:='No Echange Rates Set';
+            end;
+         end;
+      *]
+      }
+   }
+
+   UserStockDec {
+     InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+     CodeBlock {
+       [*
+          procedure TriggerBarCode(Value:String); override;
+       *]
+     }
+   }
+
+   UserStockDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+          procedure {PClass}TUserStockProduct.TriggerBarCode(Value:String);
+          var
+            TempList: TPackStringList;
+            I:integer;
+          begin
+             ProdForm.UserName.Ignore:=True;
+             ProdForm.StockList.Ignore:=False;
+             ProdForm.UserName.ItemIndex:=ProdForm.UserName.Items.IndexOf(Value);
+             GetAvailableStock(ProdForm.StockList,Value,'!CashAcc,View');
+
+             TempList:=TPackStringList.Create;
+
+             with ProdForm.StockList do
+             begin
+                I := 0 ;
+                if (Items.Count > 2) then
+                   while I <= Items.Count-1 do
+                   begin
+                      TempList.PackText := Items[I];
+                      if (TempList[5]='Product.Cheque')  then
+                      begin
+                         if I = 1 then
+                            Inc( I )// in case it is already in that position
+                         else
+                         begin
+                           Items.Move( I, 1  ) ; // Once its found, it will finish.
+                           I := Items.Count ;
+                         end ;
+                      end
+                      else
+                         Inc( I );
+                   end ;
+             end ;
+             TempList.Free;
+
+             FlagComplete(ProdForm.Validate);
+             FUIEventSink.DisplayItemInfo(Self,1,'',ResItem01,0,0,True,False);
+             FUIEventSink.DataChanged(Self,ProdForm.StockList.LineEditData,False);
+          end;
+
+
+       *]
+     }
+   }
+
+   UserStockLog {
+     InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+     CodeBlock {
+       [*
+       *]
+     }
+   }
+
+   UserStockLevel {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         FUIEventSink := UIEventSink ;
+         ProdForm.UserName.Items.CommaText := ListUsers;
+         ProdForm.UserName.Items.Insert(0,'Supervisor');
+         ProdForm.StockList.Ignore := TRUE;
+         FUIEventSink := nil ;
+      *]
+      }
+   }
+
+   UserStockSetData {
+      InsertBetween { '{ListSetDataStart}','{ListSetDataEnd}' }
+      CodeBlock {
+      [*
+         if not ProdForm.StockList.Ignore then
+            ProdForm.StockList.SetLineEditData(Value)
+         else
+            SetFormData(Value,ProdForm);
+         ProdForm.CurrentLine:=FUIEventSink.CurrentLine;
+         if not ProdForm.Validate then FlagError:=True;
+         if not ProdForm.StockList.Ignore then
+            Result:=ProdForm.StockList.LineEditData
+         else
+            Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   UserStockGetData {
+      InsertBetween { '{ListGetDataStart}','{ListGetDataEnd}' }
+      CodeBlock {
+      [*
+         if not ProdForm.StockList.Ignore then
+            Result:=ProdForm.StockList.LineEditData
+         else
+            Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   UserStockReportUses {
+      InsertBetween { '{AutoUsesStart}','{AutoUsesEnd}' }
+      CodeBlock {
+      [*
+         StringUtil,
+      *]
+      }
+   }
+   UserStockReportVars {
+      InsertBetween { '{NotifyVarStart}','{NotifyVarEnd}' }
+      CodeBlock {
+      [*
+         Res:TPackStringList;
+         SL:TPackStringList;
+         I:Integer;
+         Total:Currency;
+         Qty  :Integer;
+         LineTot:Currency;
+         Price:Currency;
+      *]
+      }
+   }
+
+   UserStockReport {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+
+         if Name = 'Report' then
+         begin
+            Res:=TPackStringList.Create;
+            Res.Add('"Stock For User '+ProdForm.UserName.Text+'",""');
+            Res.Add('" "," "');
+            SL :=TPackStringList.Create;
+            Total:=0;
+            for I:=0 to ProdForm.StockList.Items.Count-1 do
+            begin
+              // 0,Description 1,Input Quantity 2,Focused  3,Enabled 4,Price
+              // 5,ProgID      6,StockQ         7,Declared 8,PLU
+              // 9,Original Description
+               SL.PackText:=ProdForm.StockList.Items[I];
+               if Copy(SL[5],1,12) <> 'Product.Cash' then
+               begin
+                  if SL[0] = 'Cash On Hand' then
+                  begin
+                     Qty:=1;
+                     Price:=StrToCurrDef(SL[1],0);
+                  end
+                  else
+                  begin
+                     Qty:=Trunc(StrToCurrDef(SL[1],0));
+                     if Qty = 0 then Qty:=1;
+                     Price:=StrToCurrDef(SL[4],0);
+                     if Price = 0 then Price:=1;
+                  end;
+                  LineTot:=Price*Qty;
+                  Total:=Total+LineTot;
+                  Res.Add('"'+LeftPad(IntToStr(Qty),5,' ')+' '+SL[0]+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+               end;
+            end;
+            Res.Add('" "," "');
+            Res.Add('"Total Value","'+CurrToStrF(Total,ffNumber,2)+'"');
+            if  (FUIEventSink.User = 'Supervisor') 
+            or (UpperCase(Copy(GetGPCSRegString('','System Name',''),1,8)) <> 'BOTSWANA')
+            or (GetGPCSRegString('','Show Cash Balance','N') = 'Y') then 
+               PrintReportStandard('1000','500,500',Res.CommaText);
+            //PrintReport(Res);
+            Res.Free;
+            SL .Free;
+            Exit;
+         end;
+      *]
+      }
+   }
+
+   ViewStockDec {
+     InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+     CodeBlock {
+       [*
+          procedure TriggerBarCode(Value:String); override;
+       *]
+     }
+   }
+
+  ViewStockDef {
+    InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+    CodeBlock {
+    [*
+      procedure {PClass}TUserStockProduct.TriggerBarCode(Value:String);
+      var
+        TempList: TPackStringList;
+        I:integer;
+      begin
+        ProdForm.UserName.Ignore:=True;
+        ProdForm.StockList.Ignore:=False;
+        ProdForm.UserName.ItemIndex:=ProdForm.UserName.Items.IndexOf(Value);
+        GetAvailableStock(ProdForm.StockList,Value,ProdForm.Stocklist.AssociatedProgID);
+
+        //delete cash breakdown and move cheques to second line
+        TempList:=TPackStringList.Create;
+        With ProdForm.StockList do
+        begin
+          I := 0 ;
+          if (Items.Count > 2) then
+          begin
+            while I <= Items.Count-1 do
+            begin
+              TempList.PackText := Items[I];
+              //delete cash breakdown lines
+              if Copy( TempList[5],1, 12 ) = 'Product.Cash' then
+                Items.Delete( I )
+              //move the cheque line
+              else if (TempList[5]='Product.Cheque')  then
+              begin
+                 if  (FUIEventSink.User <> 'Supervisor') 
+                 and (UpperCase(Copy(GetGPCSRegString('','System Name',''),1,8)) = 'BOTSWANA')
+                 and (GetGPCSRegString('','Show Cash Balance','N') <> 'Y') then 
+                 begin
+                    Items.Delete(I);
+                 end
+                 else 
+                 begin
+                    if I = 1 then
+                       Inc( I ) // in case it is already in that position
+                    else
+                       Items.Move(I,1) ; 
+                       // next line commented out because above check for Cash items
+                       // I := Items.Count; // Once its found, it will finish.
+                 end;
+              end //if cheque
+              else
+                Inc( I );
+            end;
+          end; //if more than 2 stock items in list
+          if  (FUIEventSink.User <> 'Supervisor') 
+          and (UpperCase(Copy(GetGPCSRegString('','System Name',''),1,8)) = 'BOTSWANA')
+          and (GetGPCSRegString('','Show Cash Balance','N') <> 'Y') then 
+             Items.Delete(0);
+        end;  //with stocklist
+        TempList.Free;
+
+        FlagComplete(ProdForm.Validate);
+        FUIEventSink.DisplayItemInfo(Self,1,'',ResItem01,0,0,True,False);
+        FUIEventSink.DataChanged(Self,ProdForm.StockList.LineEditData,False);
+      end;
+      *]
+    }
+  }
+
+   ViewStockLog {
+     InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+     CodeBlock {
+       [*
+       *]
+     }
+   }
+
+  ViewStockAddExtraUser {
+    InsertBetween { '{PostExecuteStart}','{PostExecuteEnd}' }
+    CodeBlock {
+    [*
+       ProdForm.UserName.Items.Insert(0,'All');
+       ProdForm.UserName.Items.Insert(1,'Vendor');
+    *]
+    }
+  }
+
+
+  ViewStockLevelCashAndStock {
+    InsertBetween { '{IsListStart}','{IsListEnd}' }
+    CodeBlock {[*
+      SetupButtons(MaxItems,Quantity,NoRedraw,UIEventSink,ProdForm,Nested);
+      ProdForm.Stocklist.AssociatedProgID := '!CashAcc,View' ;
+      FUIEventSink := UIEventSink ;
+      ProdForm.UserName.Items.CommaText := ListUsers;
+      ProdForm.UserName.Items.Insert(0,'Supervisor');
+      if FUIEventSink.User = 'Supervisor' then
+        ProdForm.StockList.Ignore := TRUE
+      else
+      begin
+        //ProdForm.UserName.text := FUIEventSink.User ;
+        TriggerBarCode(FUIEventSink.User);
+      end;
+      FUIEventSink := nil ;
+    *]}
+  }
+
+  ViewStockLevelStamps {
+    InsertBetween { '{IsListStart}','{IsListEnd}' }
+    CodeBlock {[*
+      SetupButtons(MaxItems,Quantity,NoRedraw,UIEventSink,ProdForm,Nested);
+      ProdForm.Stocklist.AssociatedProgID := 'Stamps,View' ;
+      FUIEventSink := UIEventSink ;
+      ProdForm.UserName.Items.CommaText := ListUsers;
+      ProdForm.UserName.Items.Insert(0,'Supervisor');
+      if FUIEventSink.User = 'Supervisor' then
+         ProdForm.StockList.Ignore := TRUE
+      else
+      begin
+         TriggerBarCode(FUIEventSink.User);
+      end;
+      FUIEventSink := nil ;
+    *]}
+  }
+
+  ViewStockLevelPO {
+    InsertBetween { '{IsListStart}','{IsListEnd}' }
+    CodeBlock {[*
+      SetupButtons(MaxItems,Quantity,NoRedraw,UIEventSink,ProdForm,Nested);
+      ProdForm.Stocklist.AssociatedProgID := 'PostalOrd,View' ;
+      FUIEventSink := UIEventSink ;
+      ProdForm.UserName.Items.CommaText := ListUsers;
+      ProdForm.UserName.Items.Insert(0,'Supervisor');
+      if FUIEventSink.User = 'Supervisor' then
+        ProdForm.StockList.Ignore := TRUE
+      else
+      begin
+        TriggerBarCode(FUIEventSink.User);
+      end;
+      FUIEventSink := nil ;
+    *]}
+  }
+
+  ViewStockLevelBWCouriers {
+    InsertBetween { '{IsListStart}','{IsListEnd}' }
+    CodeBlock {[*
+      SetupButtons(MaxItems,Quantity,NoRedraw,UIEventSink,ProdForm,Nested);
+      ProdForm.Stocklist.AssociatedProgID := '*BWCourier,View' ;
+      FUIEventSink := UIEventSink ;
+      ProdForm.UserName.Items.CommaText := ListUsers;
+      ProdForm.UserName.Items.Insert(0,'Supervisor');
+      if FUIEventSink.User = 'Supervisor' then
+        ProdForm.StockList.Ignore := TRUE
+      else
+      begin
+        TriggerBarCode(FUIEventSink.User);
+      end;
+      FUIEventSink := nil ;
+    *]}
+  }
+
+  ViewStockLevelMerchandise {
+    InsertBetween { '{IsListStart}','{IsListEnd}' }
+    CodeBlock {[*
+      SetupButtons(MaxItems,Quantity,NoRedraw,UIEventSink,ProdForm,Nested);
+      ProdForm.Stocklist.AssociatedProgID := '*Merchandise,View' ;
+      FUIEventSink := UIEventSink ;
+      ProdForm.UserName.Items.CommaText := ListUsers;
+      ProdForm.UserName.Items.Insert(0,'Supervisor');
+      if FUIEventSink.User = 'Supervisor' then
+        ProdForm.StockList.Ignore := TRUE
+      else
+      begin
+        TriggerBarCode(FUIEventSink.User);
+      end;
+      FUIEventSink := nil ;
+    *]}
+  }
+
+  ViewStockLevelRetail {
+    InsertBetween { '{IsListStart}','{IsListEnd}' }
+    CodeBlock {[*
+      SetupButtons(MaxItems,Quantity,NoRedraw,UIEventSink,ProdForm,Nested);    
+      ProdForm.Stocklist.AssociatedProgID := '*Retail,View' ;
+      FUIEventSink := UIEventSink ;
+      ProdForm.UserName.Items.CommaText := ListUsers;
+      ProdForm.UserName.Items.Insert(0,'Supervisor');
+      if FUIEventSink.User = 'Supervisor' then
+        ProdForm.StockList.Ignore := TRUE
+      else
+      begin
+        TriggerBarCode(FUIEventSink.User);
+      end;
+      FUIEventSink := nil ;
+    *]}
+  }
+
+  ViewStockLevelPhilOther {
+    InsertBetween { '{IsListStart}','{IsListEnd}' }
+    CodeBlock {[*
+      SetupButtons(MaxItems,Quantity,NoRedraw,UIEventSink,ProdForm,Nested);
+      ProdForm.Stocklist.AssociatedProgID := '*PhilOther,View' ;
+      FUIEventSink := UIEventSink ;
+      ProdForm.UserName.Items.CommaText := ListUsers;
+      ProdForm.UserName.Items.Insert(0,'Supervisor');
+      if FUIEventSink.User = 'Supervisor' then
+         ProdForm.StockList.Ignore := TRUE
+      else
+      begin
+         TriggerBarCode(FUIEventSink.User);
+      end;
+      FUIEventSink := nil ;
+    *]}
+  }
+
+  ViewStockLevelPhilYearPack {
+    InsertBetween { '{IsListStart}','{IsListEnd}' }
+    CodeBlock {[*
+      SetupButtons(MaxItems,Quantity,NoRedraw,UIEventSink,ProdForm,Nested);
+      ProdForm.Stocklist.AssociatedProgID := '*YearPack,View' ;
+      FUIEventSink := UIEventSink ;
+      ProdForm.UserName.Items.CommaText := ListUsers;
+      ProdForm.UserName.Items.Insert(0,'Supervisor');
+      if FUIEventSink.User = 'Supervisor' then
+        ProdForm.StockList.Ignore := TRUE
+      else
+      begin
+        TriggerBarCode(FUIEventSink.User);
+      end;
+      FUIEventSink := nil ;
+    *]}
+  }
+
+  ViewStockLevelPhilSouvSheet {
+    InsertBetween { '{IsListStart}','{IsListEnd}' }
+    CodeBlock {[*
+      SetupButtons(MaxItems,Quantity,NoRedraw,UIEventSink,ProdForm,Nested);
+      ProdForm.Stocklist.AssociatedProgID := '*SouvSheet,View' ;
+      FUIEventSink := UIEventSink ;
+      ProdForm.UserName.Items.CommaText := ListUsers;
+      ProdForm.UserName.Items.Insert(0,'Supervisor');
+      if FUIEventSink.User = 'Supervisor' then
+        ProdForm.StockList.Ignore := TRUE
+      else
+      begin
+        TriggerBarCode(FUIEventSink.User);
+      end;
+      FUIEventSink := nil ;
+    *]}
+  }
+
+  ViewStockLevelPhilFDCover {
+    InsertBetween { '{IsListStart}','{IsListEnd}' }
+    CodeBlock {[*
+      SetupButtons(MaxItems,Quantity,NoRedraw,UIEventSink,ProdForm,Nested);    
+      ProdForm.Stocklist.AssociatedProgID := '*FDCover,View' ;
+      FUIEventSink := UIEventSink ;
+      ProdForm.UserName.Items.CommaText := ListUsers;
+      ProdForm.UserName.Items.Insert(0,'Supervisor');
+      if FUIEventSink.User = 'Supervisor' then
+        ProdForm.StockList.Ignore := TRUE
+      else
+      begin
+        TriggerBarCode(FUIEventSink.User);
+      end;
+      FUIEventSink := nil ;
+    *]}
+  }
+
+   ViewStockSetData {
+      InsertBetween { '{ListSetDataStart}','{ListSetDataEnd}' }
+      CodeBlock {
+      [*
+         if not ProdForm.StockList.Ignore then
+            ProdForm.StockList.SetLineEditData(Value)
+         else
+            SetFormData(Value,ProdForm);
+         ProdForm.CurrentLine:=FUIEventSink.CurrentLine;
+         if not ProdForm.Validate then FlagError:=True;
+         if not ProdForm.StockList.Ignore then
+            Result:=ProdForm.StockList.LineEditData
+         else
+            Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   ViewStockGetData {
+      InsertBetween { '{ListGetDataStart}','{ListGetDataEnd}' }
+      CodeBlock {
+      [*
+         if not ProdForm.StockList.Ignore then
+            Result:=ProdForm.StockList.LineEditData
+         else
+            Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   ViewStockResItem {
+      InsertBetween { '{ItemResStart}','{ItemResEnd}' }
+      CodeBlock {
+      [*
+         riItemBase     : if ValidateOK then Result:=ResItem00 else Result:='';
+         riItemBase+1   : if ProdForm.StockList.Ignore then Result:='' else Result:=ResItem01;
+      *]
+      }
+   }
+
+   ViewStockReport {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+
+         if Name = 'Report' then
+         begin
+            Res:=TPackStringList.Create;
+            Res.Add('"Detailed Stock Report"');
+            Res.Add('" "," "');
+            SL :=TPackStringList.Create;
+            Total:=0;
+            for I:=0 to ProdForm.StockList.Items.Count-1 do
+            begin
+              // 0,Description 1,Input Quantity 2,Focused  3,Enabled 4,Price
+              // 5,ProgID      6,StockQ         7,Declared 8,PLU
+              // 9,Original Description
+               SL.PackText:=ProdForm.StockList.Items[I];
+               if Copy(SL[5],1,12) <> 'Product.Cash' then
+               begin
+                  if SL[0] = 'Cash On Hand' then
+                  begin
+                     Qty:=1;
+                     Price:=StrToCurrDef(SL[1],0);
+                  end
+                  else
+                  begin
+                     Qty:=Trunc(StrToCurrDef(SL[1],0));
+                     if Qty = 0 then Qty:=1;
+                     Price:=StrToCurrDef(SL[4],0);
+                     if Price = 0 then Price:=1;
+                  end;
+                  LineTot:=Price*Qty;
+                  Total:=Total+LineTot;
+//                  Res.Add('"'+LeftPad(IntToStr(Qty),5,' ')+' '+SL[0]+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+                  Res.Add('"'+SL[0]+'","'+LeftPad(IntToStr(Qty),5,' ')+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+//                  Res.Add('"+SL[0]+"
+//                          ,"'+LeftPad(IntToStr(Qty),5,' ')'"
+//                          ,"'+CurrToStrF(LineTot,ffNumber,2)+'"');
+               end;
+            end;
+            Res.Add('" "," "');
+            Res.Add('"Total Value","'+CurrToStrF(Total,ffNumber,2)+'"');
+            if  (FUIEventSink.User = 'Supervisor') 
+            or (UpperCase(Copy(GetGPCSRegString('','System Name',''),1,8)) <> 'BOTSWANA')
+            or (GetGPCSRegString('','Show Cash Balance','N') = 'Y') then 
+               PrintReportStandard('1000','-900,-350,-500',Res.CommaText);
+            //PrintReport(Res);
+            Res.Free;
+            SL .Free;
+            Exit;
+         end;
+      *]
+      }
+   }
+
+   ViewStockReportStamps {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+
+         if Name = 'Report' then
+         begin
+            Res:=TPackStringList.Create;
+            Res.Add('"Detailed Stock Report"');
+            Res.Add('" "," "');
+            SL :=TPackStringList.Create;
+            Total:=0;
+            for I:=0 to ProdForm.StockListStamps.Items.Count-1 do
+            begin
+              // 0,Description 1,Input Quantity 2,Focused  3,Enabled 4,Price
+              // 5,ProgID      6,StockQ         7,Declared 8,PLU
+              // 9,Original Description
+               SL.PackText:=ProdForm.StockListStamps.Items[I];
+               if Copy(SL[5],1,12) <> 'Product.Cash' then
+               begin
+                  if SL[0] = 'Cash On Hand' then
+                  begin
+                     Qty:=1;
+                     Price:=StrToCurrDef(SL[1],0);
+                  end
+                  else
+                  begin
+                     Qty:=Trunc(StrToCurrDef(SL[1],0));
+                     if Qty = 0 then Qty:=1;
+                     Price:=StrToCurrDef(SL[4],0);
+                     if Price = 0 then Price:=1;
+                  end;
+                  LineTot:=Price*Qty;
+                  Total:=Total+LineTot;
+//                  Res.Add('"'+LeftPad(IntToStr(Qty),5,' ')+' '+SL[0]+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+                  Res.Add('"'+SL[0]+'","'+LeftPad(IntToStr(Qty),5,' ')+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+//                  Res.Add('"+SL[0]+"
+//                          ,"'+LeftPad(IntToStr(Qty),5,' ')'"
+//                          ,"'+CurrToStrF(LineTot,ffNumber,2)+'"');
+               end;
+            end;
+            Res.Add('" "," "');
+            Res.Add('"Total Value","'+CurrToStrF(Total,ffNumber,2)+'"');
+            if  (FUIEventSink.User = 'Supervisor') 
+            or (UpperCase(Copy(GetGPCSRegString('','System Name',''),1,8)) <> 'BOTSWANA')
+            or (GetGPCSRegString('','Show Cash Balance','N') = 'Y') then 
+               PrintReportStandard('1000','-900,-350,-500',Res.CommaText);
+            //PrintReport(Res);
+            Res.Free;
+            SL .Free;
+            Exit;
+         end;
+      *]
+      }
+   }
+
+   ViewStockReportPostOrder {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+
+         if Name = 'Report' then
+         begin
+            Res:=TPackStringList.Create;
+            Res.Add('"Detailed Stock Report"');
+            Res.Add('" "," "');
+            SL :=TPackStringList.Create;
+            Total:=0;
+            for I:=0 to ProdForm.StockListPostOrder.Items.Count-1 do
+            begin
+              // 0,Description 1,Input Quantity 2,Focused  3,Enabled 4,Price
+              // 5,ProgID      6,StockQ         7,Declared 8,PLU
+              // 9,Original Description
+               SL.PackText:=ProdForm.StockListPostOrder.Items[I];
+               if Copy(SL[5],1,12) <> 'Product.Cash' then
+               begin
+                  if SL[0] = 'Cash On Hand' then
+                  begin
+                     Qty:=1;
+                     Price:=StrToCurrDef(SL[1],0);
+                  end
+                  else
+                  begin
+                     Qty:=Trunc(StrToCurrDef(SL[1],0));
+                     if Qty = 0 then Qty:=1;
+                     Price:=StrToCurrDef(SL[4],0);
+                     if Price = 0 then Price:=1;
+                  end;
+                  LineTot:=Price*Qty;
+                  Total:=Total+LineTot;
+//                  Res.Add('"'+LeftPad(IntToStr(Qty),5,' ')+' '+SL[0]+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+                  Res.Add('"'+SL[0]+'","'+LeftPad(IntToStr(Qty),5,' ')+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+//                  Res.Add('"+SL[0]+"
+//                          ,"'+LeftPad(IntToStr(Qty),5,' ')'"
+//                          ,"'+CurrToStrF(LineTot,ffNumber,2)+'"');
+               end;
+            end;
+            Res.Add('" "," "');
+            Res.Add('"Total Value","'+CurrToStrF(Total,ffNumber,2)+'"');
+            if  (FUIEventSink.User = 'Supervisor') 
+            or (UpperCase(Copy(GetGPCSRegString('','System Name',''),1,8)) <> 'BOTSWANA')
+            or (GetGPCSRegString('','Show Cash Balance','N') = 'Y') then 
+               PrintReportStandard('1000','-900,-350,-500',Res.CommaText);
+            //PrintReport(Res);
+            Res.Free;
+            SL .Free;
+            Exit;
+         end;
+      *]
+      }
+   }
+
+   ViewStockReportBWCourier {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+
+         if Name = 'Report' then
+         begin
+            Res:=TPackStringList.Create;
+            Res.Add('"Detailed Stock Report"');
+            Res.Add('" "," "');
+            SL :=TPackStringList.Create;
+            Total:=0;
+            for I:=0 to ProdForm.StockListBWCourier.Items.Count-1 do
+            begin
+              // 0,Description 1,Input Quantity 2,Focused  3,Enabled 4,Price
+              // 5,ProgID      6,StockQ         7,Declared 8,PLU
+              // 9,Original Description
+               SL.PackText:=ProdForm.StockListBWCourier.Items[I];
+               if Copy(SL[5],1,12) <> 'Product.Cash' then
+               begin
+                  if SL[0] = 'Cash On Hand' then
+                  begin
+                     Qty:=1;
+                     Price:=StrToCurrDef(SL[1],0);
+                  end
+                  else
+                  begin
+                     Qty:=Trunc(StrToCurrDef(SL[1],0));
+                     if Qty = 0 then Qty:=1;
+                     Price:=StrToCurrDef(SL[4],0);
+                     if Price = 0 then Price:=1;
+                  end;
+                  LineTot:=Price*Qty;
+                  Total:=Total+LineTot;
+//                  Res.Add('"'+LeftPad(IntToStr(Qty),5,' ')+' '+SL[0]+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+                  Res.Add('"'+SL[0]+'","'+LeftPad(IntToStr(Qty),5,' ')+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+//                  Res.Add('"+SL[0]+"
+//                          ,"'+LeftPad(IntToStr(Qty),5,' ')'"
+//                          ,"'+CurrToStrF(LineTot,ffNumber,2)+'"');
+               end;
+            end;
+            Res.Add('" "," "');
+            Res.Add('"Total Value","'+CurrToStrF(Total,ffNumber,2)+'"');
+            if  (FUIEventSink.User = 'Supervisor') 
+            or (UpperCase(Copy(GetGPCSRegString('','System Name',''),1,8)) <> 'BOTSWANA')
+            or (GetGPCSRegString('','Show Cash Balance','N') = 'Y') then 
+               PrintReportStandard('1000','-900,-350,-500',Res.CommaText);
+            //PrintReport(Res);
+            Res.Free;
+            SL .Free;
+            Exit;
+         end;
+      *]
+      }
+   }
+
+   ViewStockReportMerchandise {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+
+         if Name = 'Report' then
+         begin
+            Res:=TPackStringList.Create;
+            Res.Add('"Detailed Stock Report"');
+            Res.Add('" "," "');
+            SL :=TPackStringList.Create;
+            Total:=0;
+            for I:=0 to ProdForm.StockListMerchandise.Items.Count-1 do
+            begin
+              // 0,Description 1,Input Quantity 2,Focused  3,Enabled 4,Price
+              // 5,ProgID      6,StockQ         7,Declared 8,PLU
+              // 9,Original Description
+               SL.PackText:=ProdForm.StockListMerchandise.Items[I];
+               if Copy(SL[5],1,12) <> 'Product.Cash' then
+               begin
+                  if SL[0] = 'Cash On Hand' then
+                  begin
+                     Qty:=1;
+                     Price:=StrToCurrDef(SL[1],0);
+                  end
+                  else
+                  begin
+                     Qty:=Trunc(StrToCurrDef(SL[1],0));
+                     if Qty = 0 then Qty:=1;
+                     Price:=StrToCurrDef(SL[4],0);
+                     if Price = 0 then Price:=1;
+                  end;
+                  LineTot:=Price*Qty;
+                  Total:=Total+LineTot;
+//                  Res.Add('"'+LeftPad(IntToStr(Qty),5,' ')+' '+SL[0]+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+                  Res.Add('"'+SL[0]+'","'+LeftPad(IntToStr(Qty),5,' ')+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+//                  Res.Add('"+SL[0]+"
+//                          ,"'+LeftPad(IntToStr(Qty),5,' ')'"
+//                          ,"'+CurrToStrF(LineTot,ffNumber,2)+'"');
+               end;
+            end;
+            Res.Add('" "," "');
+            Res.Add('"Total Value","'+CurrToStrF(Total,ffNumber,2)+'"');
+            if  (FUIEventSink.User = 'Supervisor') 
+            or (UpperCase(Copy(GetGPCSRegString('','System Name',''),1,8)) <> 'BOTSWANA')
+            or (GetGPCSRegString('','Show Cash Balance','N') = 'Y') then 
+               PrintReportStandard('1000','-900,-350,-500',Res.CommaText);
+            //PrintReport(Res);
+            Res.Free;
+            SL .Free;
+            Exit;
+         end;
+      *]
+      }
+   }
+
+   ViewStockReportRetail {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+
+         if Name = 'Report' then
+         begin
+            Res:=TPackStringList.Create;
+            Res.Add('"Detailed Stock Report"');
+            Res.Add('" "," "');
+            SL :=TPackStringList.Create;
+            Total:=0;
+            for I:=0 to ProdForm.StockListRetail.Items.Count-1 do
+            begin
+              // 0,Description 1,Input Quantity 2,Focused  3,Enabled 4,Price
+              // 5,ProgID      6,StockQ         7,Declared 8,PLU
+              // 9,Original Description
+               SL.PackText:=ProdForm.StockListRetail.Items[I];
+               if Copy(SL[5],1,12) <> 'Product.Cash' then
+               begin
+                  if SL[0] = 'Cash On Hand' then
+                  begin
+                     Qty:=1;
+                     Price:=StrToCurrDef(SL[1],0);
+                  end
+                  else
+                  begin
+                     Qty:=Trunc(StrToCurrDef(SL[1],0));
+                     if Qty = 0 then Qty:=1;
+                     Price:=StrToCurrDef(SL[4],0);
+                     if Price = 0 then Price:=1;
+                  end;
+                  LineTot:=Price*Qty;
+                  Total:=Total+LineTot;
+//                  Res.Add('"'+LeftPad(IntToStr(Qty),5,' ')+' '+SL[0]+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+                  Res.Add('"'+SL[0]+'","'+LeftPad(IntToStr(Qty),5,' ')+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+//                  Res.Add('"+SL[0]+"
+//                          ,"'+LeftPad(IntToStr(Qty),5,' ')'"
+//                          ,"'+CurrToStrF(LineTot,ffNumber,2)+'"');
+               end;
+            end;
+            Res.Add('" "," "');
+            Res.Add('"Total Value","'+CurrToStrF(Total,ffNumber,2)+'"');
+            if  (FUIEventSink.User = 'Supervisor') 
+            or (UpperCase(Copy(GetGPCSRegString('','System Name',''),1,8)) <> 'BOTSWANA')
+            or (GetGPCSRegString('','Show Cash Balance','N') = 'Y') then 
+               PrintReportStandard('1000','-900,-350,-500',Res.CommaText);
+            //PrintReport(Res);
+            Res.Free;
+            SL .Free;
+            Exit;
+         end;
+      *]
+      }
+   }
+
+   ViewStockReportPhilOther {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+
+         if Name = 'Report' then
+         begin
+            Res:=TPackStringList.Create;
+            Res.Add('"Detailed Stock Report"');
+            Res.Add('" "," "');
+            SL :=TPackStringList.Create;
+            Total:=0;
+            for I:=0 to ProdForm.StockListPhilOther.Items.Count-1 do
+            begin
+              // 0,Description 1,Input Quantity 2,Focused  3,Enabled 4,Price
+              // 5,ProgID      6,StockQ         7,Declared 8,PLU
+              // 9,Original Description
+               SL.PackText:=ProdForm.StockListPhilOther.Items[I];
+               if Copy(SL[5],1,12) <> 'Product.Cash' then
+               begin
+                  if SL[0] = 'Cash On Hand' then
+                  begin
+                     Qty:=1;
+                     Price:=StrToCurrDef(SL[1],0);
+                  end
+                  else
+                  begin
+                     Qty:=Trunc(StrToCurrDef(SL[1],0));
+                     if Qty = 0 then Qty:=1;
+                     Price:=StrToCurrDef(SL[4],0);
+                     if Price = 0 then Price:=1;
+                  end;
+                  LineTot:=Price*Qty;
+                  Total:=Total+LineTot;
+//                  Res.Add('"'+LeftPad(IntToStr(Qty),5,' ')+' '+SL[0]+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+                  Res.Add('"'+SL[0]+'","'+LeftPad(IntToStr(Qty),5,' ')+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+//                  Res.Add('"+SL[0]+"
+//                          ,"'+LeftPad(IntToStr(Qty),5,' ')'"
+//                          ,"'+CurrToStrF(LineTot,ffNumber,2)+'"');
+               end;
+            end;
+            Res.Add('" "," "');
+            Res.Add('"Total Value","'+CurrToStrF(Total,ffNumber,2)+'"');
+            if  (FUIEventSink.User = 'Supervisor') 
+            or (UpperCase(Copy(GetGPCSRegString('','System Name',''),1,8)) <> 'BOTSWANA')
+            or (GetGPCSRegString('','Show Cash Balance','N') = 'Y') then 
+               PrintReportStandard('1000','-900,-350,-500',Res.CommaText);
+            //PrintReport(Res);
+            Res.Free;
+            SL .Free;
+            Exit;
+         end;
+      *]
+      }
+   }
+
+   ViewStockReportPhilYearPack {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+
+         if Name = 'Report' then
+         begin
+            Res:=TPackStringList.Create;
+            Res.Add('"Detailed Stock Report"');
+            Res.Add('" "," "');
+            SL :=TPackStringList.Create;
+            Total:=0;
+            for I:=0 to ProdForm.StockListphilYearPack.Items.Count-1 do
+            begin
+              // 0,Description 1,Input Quantity 2,Focused  3,Enabled 4,Price
+              // 5,ProgID      6,StockQ         7,Declared 8,PLU
+              // 9,Original Description
+               SL.PackText:=ProdForm.StockListPhilYearPack.Items[I];
+               if Copy(SL[5],1,12) <> 'Product.Cash' then
+               begin
+                  if SL[0] = 'Cash On Hand' then
+                  begin
+                     Qty:=1;
+                     Price:=StrToCurrDef(SL[1],0);
+                  end
+                  else
+                  begin
+                     Qty:=Trunc(StrToCurrDef(SL[1],0));
+                     if Qty = 0 then Qty:=1;
+                     Price:=StrToCurrDef(SL[4],0);
+                     if Price = 0 then Price:=1;
+                  end;
+                  LineTot:=Price*Qty;
+                  Total:=Total+LineTot;
+//                  Res.Add('"'+LeftPad(IntToStr(Qty),5,' ')+' '+SL[0]+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+                  Res.Add('"'+SL[0]+'","'+LeftPad(IntToStr(Qty),5,' ')+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+//                  Res.Add('"+SL[0]+"
+//                          ,"'+LeftPad(IntToStr(Qty),5,' ')'"
+//                          ,"'+CurrToStrF(LineTot,ffNumber,2)+'"');
+               end;
+            end;
+            Res.Add('" "," "');
+            Res.Add('"Total Value","'+CurrToStrF(Total,ffNumber,2)+'"');
+            if  (FUIEventSink.User = 'Supervisor') 
+            or (UpperCase(Copy(GetGPCSRegString('','System Name',''),1,8)) <> 'BOTSWANA')
+            or (GetGPCSRegString('','Show Cash Balance','N') = 'Y') then 
+               PrintReportStandard('1000','-900,-350,-500',Res.CommaText);
+            //PrintReport(Res);
+            Res.Free;
+            SL .Free;
+            Exit;
+         end;
+      *]
+      }
+   }
+
+   ViewStockReportPhilSouvSheet {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+
+         if Name = 'Report' then
+         begin
+            Res:=TPackStringList.Create;
+            Res.Add('"Detailed Stock Report"');
+            Res.Add('" "," "');
+            SL :=TPackStringList.Create;
+            Total:=0;
+            for I:=0 to ProdForm.StockListPhilSouvSheet.Items.Count-1 do
+            begin
+              // 0,Description 1,Input Quantity 2,Focused  3,Enabled 4,Price
+              // 5,ProgID      6,StockQ         7,Declared 8,PLU
+              // 9,Original Description
+               SL.PackText:=ProdForm.StockListPhilSouvSheet.Items[I];
+               if Copy(SL[5],1,12) <> 'Product.Cash' then
+               begin
+                  if SL[0] = 'Cash On Hand' then
+                  begin
+                     Qty:=1;
+                     Price:=StrToCurrDef(SL[1],0);
+                  end
+                  else
+                  begin
+                     Qty:=Trunc(StrToCurrDef(SL[1],0));
+                     if Qty = 0 then Qty:=1;
+                     Price:=StrToCurrDef(SL[4],0);
+                     if Price = 0 then Price:=1;
+                  end;
+                  LineTot:=Price*Qty;
+                  Total:=Total+LineTot;
+//                  Res.Add('"'+LeftPad(IntToStr(Qty),5,' ')+' '+SL[0]+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+                  Res.Add('"'+SL[0]+'","'+LeftPad(IntToStr(Qty),5,' ')+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+//                  Res.Add('"+SL[0]+"
+//                          ,"'+LeftPad(IntToStr(Qty),5,' ')'"
+//                          ,"'+CurrToStrF(LineTot,ffNumber,2)+'"');
+               end;
+            end;
+            Res.Add('" "," "');
+            Res.Add('"Total Value","'+CurrToStrF(Total,ffNumber,2)+'"');
+            if  (FUIEventSink.User = 'Supervisor') 
+            or (UpperCase(Copy(GetGPCSRegString('','System Name',''),1,8)) <> 'BOTSWANA')
+            or (GetGPCSRegString('','Show Cash Balance','N') = 'Y') then 
+               PrintReportStandard('1000','-900,-350,-500',Res.CommaText);
+            //PrintReport(Res);
+            Res.Free;
+            SL .Free;
+            Exit;
+         end;
+      *]
+      }
+   }
+
+   ViewStockReportPhilFDCover {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+
+         if Name = 'Report' then
+         begin
+            Res:=TPackStringList.Create;
+            Res.Add('"Detailed Stock Report"');
+            Res.Add('" "," "');
+            SL :=TPackStringList.Create;
+            Total:=0;
+            for I:=0 to ProdForm.StockListPhilFDCover.Items.Count-1 do
+            begin
+              // 0,Description 1,Input Quantity 2,Focused  3,Enabled 4,Price
+              // 5,ProgID      6,StockQ         7,Declared 8,PLU
+              // 9,Original Description
+               SL.PackText:=ProdForm.StockListPhilFDCover.Items[I];
+               if Copy(SL[5],1,12) <> 'Product.Cash' then
+               begin
+                  if SL[0] = 'Cash On Hand' then
+                  begin
+                     Qty:=1;
+                     Price:=StrToCurrDef(SL[1],0);
+                  end
+                  else
+                  begin
+                     Qty:=Trunc(StrToCurrDef(SL[1],0));
+                     if Qty = 0 then Qty:=1;
+                     Price:=StrToCurrDef(SL[4],0);
+                     if Price = 0 then Price:=1;
+                  end;
+                  LineTot:=Price*Qty;
+                  Total:=Total+LineTot;
+//                  Res.Add('"'+LeftPad(IntToStr(Qty),5,' ')+' '+SL[0]+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+                  Res.Add('"'+SL[0]+'","'+LeftPad(IntToStr(Qty),5,' ')+'","'+CurrToStrF(LineTot,ffNumber,2)+'"');
+//                  Res.Add('"+SL[0]+"
+//                          ,"'+LeftPad(IntToStr(Qty),5,' ')'"
+//                          ,"'+CurrToStrF(LineTot,ffNumber,2)+'"');
+               end;
+            end;
+            Res.Add('" "," "');
+            Res.Add('"Total Value","'+CurrToStrF(Total,ffNumber,2)+'"');
+            if  (FUIEventSink.User = 'Supervisor') 
+            or (UpperCase(Copy(GetGPCSRegString('','System Name',''),1,8)) <> 'BOTSWANA')
+            or (GetGPCSRegString('','Show Cash Balance','N') = 'Y') then 
+               PrintReportStandard('1000','-900,-350,-500',Res.CommaText);
+            //PrintReport(Res);
+            Res.Free;
+            SL .Free;
+            Exit;
+         end;
+      *]
+      }
+   }
+
+   DontLog{
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+      *]
+      }
+   }
+
+   LogSubsCashAcc {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnReport('*Cash Account',ProdForm.StartDomainEdit.Text,ProdForm.EndDomainEdit.Text,stSummary,'!'+IntToStr(UIEventSink.Office));
+      *]
+      }
+   }
+
+   SLogClientReturns {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         SL := TStringList.Create ;
+         SL.CommaText := ClientReturnData( ProdForm.StartDomainEdit.Text , ProdForm.EndDomainEdit.Text,
+                                       FUIEventSink.User, IntToStr(FUIEventSink.Office), FALSE );
+
+         Print2x2Report( SL );
+         SL.Free ;
+      *]
+      }
+   }
+
+   SLogClientReturnsSummary {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+         SL := TStringList.Create ;
+         SL.CommaText := ClientReturnData( ProdForm.StartDomainEdit.Text , ProdForm.EndDomainEdit.Text,
+                                       FUIEventSink.User, IntToStr(FUIEventSink.Office), TRUE );
+
+         Print2x2Report( SL );
+         SL.Free ;
+      *]
+      }
+   }
+
+   LogEMail {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.WriteTransaction('*TxnTotal',0,0, Get_PLU,
+                                   StrToCurrDef(ProdForm.Amount.Text,0),
+                                   0, Get_Description,'*Supervisor', Get_ProgramID,'');
+         TxnLog.WriteTransaction('*TxnTotal',0,0, 0,
+                                   StrToCurrDef(ProdForm.Amount.Text,0),
+                                   0,Get_Description+' Cash','*Supervisor','Product.Cash','');
+      *]
+      }
+   }
+
+   LogTeleGraph {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.WriteTransaction('*TxnTotal',0,0, Get_PLU,
+                                   StrToCurrDef(ProdForm.ItemAmount.Text,0),
+                                   0, Get_Description,'*Supervisor', Get_ProgramID,'');
+         TxnLog.WriteTransaction('*TxnTotal',0,0, Get_PLU+10,
+                                   StrToCurrDef(ProdForm.ItemCommission.Text,0),
+                                   0, Get_Description+' Commission','*Supervisor', Get_ProgramID,'');
+         TxnLog.WriteTransaction('*TxnTotal',0,0, 0,
+                                   StrToCurrDef(ProdForm.ItemAmount.Text,0),
+                                   0,Get_Description+' Cash','*Supervisor','Product.Cash','');
+         TxnLog.WriteTransaction('*TxnTotal',0,0, 0,
+                                   StrToCurrDef(ProdForm.ItemCommission.Text,0),
+                                   0,Get_Description+' Commission Cash','*Supervisor','Product.Cash','');
+      *]
+      }
+   }
+
+    PayRemRec {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.WriteTransaction('*TxStkTo',0,0, Get_PLU,
+                                   StrToCurrDef(ProdForm.Amount.Text,0),
+                                   0, Get_Description,'*Supervisor', Get_ProgramID,'');
+         TxnLog.WriteTransaction('*TxnTotal',0,0, 0,
+                                   StrToCurrDef(ProdForm.Amount.Text,0),
+                                   0,Get_Description+' Cash','*Supervisor','Product.Cash','');
+      *]
+      }
+   }
+
+   PayRemDisp {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.WriteTransaction('*TxStkFrom',0,0, Get_PLU,
+                                   StrToCurrDef(ProdForm.Amount.Text,0),
+                                   0, Get_Description,'*Supervisor', Get_ProgramID,'');
+         TxnLog.WriteTransaction('*TxnTotal',0,0, 0,
+                                   0-StrToCurrDef(ProdForm.Amount.Text,0),
+                                   0,Get_Description+' Cash','*Supervisor','Product.Cash','');
+      *]
+      }
+   }
+
+   LogRefunds {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.WriteTransaction('*TxnTotal',0,0, Get_PLU,
+                                   StrToCurrDef(ProdForm.Amount.Text,0),
+                                   0, Get_Description,'*Supervisor', Get_ProgramID,'');
+         TxnLog.WriteTransaction('*TxnTotal',0,0, 0,
+                                   0-StrToCurrDef(ProdForm.Amount.Text,0),
+                                   0,Get_Description+' Cash','*Supervisor','Product.Cash','');
+      *]
+      }
+   }
+
+   LogSalCont {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.WriteTransaction('*TxnTotal',0,0, Get_PLU,
+                                   StrToCurrDef(ProdForm.Amount.Text,0),
+                                   0, Get_Description,'*Supervisor', Get_ProgramID,'');
+         TxnLog.WriteTransaction('*TxnTotal',0,0, 0,
+                                   0-StrToCurrDef(ProdForm.Amount.Text,0),
+                                   0,Get_Description+' Cash','*Supervisor','Product.Cash','');
+      *]
+      }
+   }
+
+   CashToBankLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.WriteTransaction('*TxnTotal',0,0, Get_PLU,
+                                   StrToCurrDef(TotalStockValue(ProdForm.CashSentToBank.Items),0),
+                                   0, Get_Description,'*Supervisor', Get_ProgramID,'');
+         TxnLog.WriteTransaction('*TxnTotal',0,0, 0,
+                                   0-StrToCurrDef(TotalStockValue(ProdForm.CashSentToBank.Items),0),
+                                   0,Get_Description+' Cash','*Supervisor','Product.Cash','');
+      *]
+      }
+   }
+
+   ServiceMoneyOrderLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         Value:=StrToCurrDef(ProdForm.Value.Text,0);
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,Value,Value,Get_Description,
+                               'No. '+ProdForm.SerialNumber.Text,
+                               {PProgID}'Product.ExpMonOrd',Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.LogTransaction(1,FQuantity,100003,
+                           0,0,'Commission',
+                           '','Money Order Commission','LogSeparatelyToAccounts');
+         Inc(Index);
+         TxnLog.LogTransaction(1,FQuantity,0,0,0,'PFNumber '+ProdForm.PFNumber.Text,'','','');
+         Inc(Index);
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+   LogTranVarV {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            Value:Currency;
+      *]
+      }
+   }
+
+   LogPMStock {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.WriteTransaction('*TxnTotal',0,0, Get_PLU,
+                                   StrToCurrDef(ProdForm.Amount.Text,0),
+                                   0, Get_Description,'*Supervisor', Get_ProgramID,'');
+      *]
+      }
+   }
+
+   LogUnClPay {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.WriteTransaction('*TxnTotal',0,0, Get_PLU,
+                                   StrToCurrDef(ProdForm.Amount.Text,0),
+                                   0, Get_Description,'*Supervisor', Get_ProgramID,'');
+      *]
+      }
+   }
+
+   LogUnChRec {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.WriteTransaction('*TxnTotal',0,0, Get_PLU,
+                                   StrToCurrDef(ProdForm.Amount.Text,0),
+                                   0, Get_Description,'*Supervisor', Get_ProgramID,'');
+      *]
+      }
+   }
+
+   FillDelList {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.DeleteList,UIEventSink.User,'!CashAcc,Set') then
+            begin
+               ProdForm.DeleteList.Clear;
+               ProdForm.DeleteList.Text:='No Stock Available';
+            end
+            else
+            begin
+               SL:=TPackStringList.Create;
+               for I:=0 to ProdForm.DeleteList.Items.Count-1 do
+               begin
+                  SL.PackText:=ProdForm.DeleteList.Items[I];
+                  if SL.Count > 9 then
+                     ProdForm.DeleteList.Items[I]:=SL[9]; // original description
+               end;
+               SL.Free;
+            end;
+         end;
+      *]
+      }
+   }
+
+   FillDelListVars {
+      InsertBetween { '{ExecuteVarStart}','{ExecuteVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            SL:TPackStringList;
+            I:Integer;
+      *]
+      }
+   }
+
+   DelListGetData {
+      InsertBetween { '{ListGetDataStart}','{ListGetDataEnd}' }
+      CodeBlock {
+      [*
+         Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   DelListSetData {
+      InsertBetween { '{ListSetDataStart}','{ListSetDataEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.CurrentLine:=FUIEventSink.CurrentLine;
+         FlagError:=False;
+         if not FlagComplete(ProdForm.Validate) then FlagError:=True;
+         Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   OverDelListDec {
+      InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+      CodeBlock {
+      [*
+        procedure TriggerBarCode(Value:String); override;
+      *]
+      }
+   }
+   OverDelListDef {
+      InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+      CodeBlock {
+      [*
+         procedure {PClass}TDeleteStockItemProduct.TriggerBarCode(Value:String);
+         begin
+            if Copy(Value,Length(Value)-9,10) =' <- DELETE' then
+            begin
+               ProdForm.DeleteList.Items[ProdForm.DeleteList.Items.IndexOf(Value)]:=Copy(Value,1,Length(Value)-10);
+            end
+            else
+            begin
+               ProdForm.DeleteList.Items[ProdForm.DeleteList.Items.IndexOf(Value)]:=Value+' <- DELETE';
+            end;
+            FlagComplete(ProdForm.Validate);
+            FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+         end;
+      *]
+      }
+   }
+   DelListValidate {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+          Result:=True;
+      *]
+      }
+   }
+   DelListComplete {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         DeleteStockItems(TxnLog,ProdForm.DeleteList.Items);
+      *]
+      }
+   }
+
+   AddModListGetData {
+      InsertBetween { '{ListGetDataStart}','{ListGetDataEnd}' }
+      CodeBlock {
+      [*
+         Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   AddModListSetData {
+      InsertBetween { '{ListSetDataStart}','{ListSetDataEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.CurrentLine:=FUIEventSink.CurrentLine;
+         FlagError:=False;
+         if ProdForm.AddModStockList.Ignore then
+            SetFormData(Value,ProdForm);
+         if not FlagComplete(ProdForm.Validate) then FlagError:=True;
+         Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+   OverAddModListDec {
+      InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+      CodeBlock {
+      [*
+        procedure TriggerBarCode(Value:String); override;
+      *]
+      }
+   }
+
+   OverAddModListDef {
+      InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+      CodeBlock {
+      [*
+         procedure {PClass}TAddModStockItemProduct.TriggerBarCode(Value:String);
+         var
+            SL:TStringList;
+         begin
+            ProdForm.AddModStockList.Ignore:=True;
+            ProdForm.StockDescription.Ignore:=False;
+            ProdForm.StockPrice.Ignore      :=False;
+            SL:=TStringList.Create;
+            ProdForm.AddModStockList.ItemIndex:=ProdForm.AddModStockList.Items.IndexOf(Value);
+            ProdForm.StockDescription.Text:=Value;
+            // 0=Description 1=Price 2=Group 3=AccountID 4=Agency 5=ReportLine 6=PLU 7=ProgID
+            SL.CommaText:=GetStockItemDetails(Value);
+            AdditionalInfo:=SL.CommaText;
+            if SL.Count > 1 then
+            begin
+               ProdForm.StockPrice.Text:=SL[1];
+            end;
+            SL.Free;
+            FlagComplete(ProdForm.Validate);
+            FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+         end;
+      *]
+      }
+   }
+
+   AddModListComplete {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+          SL:=TStringList.Create;
+          SL.CommaText:=AdditionalInfo;
+          // 0=Description 1=Price 2=Group 3=AccountID 4=Agency 5=ReportLine 6=PLU 7=ProgID
+          AddStockItem(TxnLog,ProdForm.StockDescription.Text,SL[2],SL[3],SL[4],SL[5],SL[7],StrToIntDef(SL[6],0),StrToCurrDef(ProdForm.StockPrice.Text,0));
+
+          SL.Free;
+      *]
+      }
+   }
+
+   AddModListCompVars {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            SL:TStringList;
+      *]
+      }
+   }
+
+   DeleteTranGetExecData {
+      InsertBetween { '{ListGetDataStart}','{ListGetDataEnd}' }
+      CodeBlock {
+      [*
+         Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+   DeleteTranUserList {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         if UIEventSink <> nil then
+         begin
+            if not CheckTransfersAvail(ProdForm.CancelList,UIEventSink.User) then
+            begin
+               UIEventSink.Restore;
+               Exit;
+            end;
+         end;
+      *]
+      }
+   }
+   DeleteTranOverDef {
+      InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+      CodeBlock {
+      [*
+         procedure {PClass}TDeleteTranProduct.TriggerBarCode(Value:String);
+         begin
+            if Copy(Value,Length(Value)-9,10) =' <- CANCEL' then
+            begin
+               ProdForm.CancelList.Items[ProdForm.CancelList.Items.IndexOf(Value)]:=Copy(Value,1,Length(Value)-10);
+            end
+            else
+            begin
+               ProdForm.CancelList.Items[ProdForm.CancelList.Items.IndexOf(Value)]:=Value+' <- CANCEL';
+            end;
+            FlagComplete(ProdForm.Validate);
+            FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+         end;
+      *]
+      }
+   }
+   DeleteTranLogVars {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            DeleteTranList:TDomainCombo;
+            Value : String ;
+            I : Integer ;
+      *]
+      }
+   }
+
+   DeleteTranComplete {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+	      DeleteTranList := TDomainCombo.Create( nil ) ;
+         ProdForm.InsertControl(DeleteTranList);
+
+         for I := 0 to ProdForm.CancelList.Items.Count -1 do
+         begin
+
+            Value := ProdForm.CancelList.Items[ I ];
+            if Copy(Value,Length(Value)-9,10) =' <- CANCEL' then
+            begin
+               ProdForm.CancelList.Items[ I ]:=Copy(Value,1,Length(Value)-10);
+               DeleteTranList.Items.Clear ;
+               GetTransferDetails(DeleteTranList,UIEventSink.User,ProdForm.CancelList.Items[ I ]);
+               DeleteTranList.AssociatedProgId:='*'+ProdForm.CancelList.Items[ I ];
+               CancelTransfer( TxnLog,DeleteTranList );
+            end;
+         end;
+
+         ProdForm.RemoveControl(DeleteTranList);
+         DeleteTranList.Free ;
+
+
+      *]
+      }
+   }
+   FillAddModList {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.AddModStockList,UIEventSink.User,'!CashAcc,Set') then
+            begin
+               ProdForm.AddModStockList.Clear;
+               ProdForm.AddModStockList.Text:='No Stock Available';
+            end
+            else
+            begin
+               SL:=TPackStringList.Create;
+               for I:=0 to ProdForm.AddModStockList.Items.Count-1 do
+               begin
+                  SL.PackText:=ProdForm.AddModStockList.Items[I];
+                  if SL.Count > 9 then
+                     ProdForm.AddModStockList.Items[I]:=SL[9]; // original description
+               end;
+               SL.Free;
+               ProdForm.StockDescription.Ignore:=True;
+               ProdForm.StockPrice.Ignore      :=True;
+            end;
+         end;
+      *]
+      }
+   }
+
+   SetStampsOrder {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransStamps,UIEventSink.User,'Stamps,Transfer,<Supervisor') then
+            begin
+               ProdForm.TransStamps.Clear;
+               ProdForm.TransStamps.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransStamps.AssociatedProgId:='<Supervisor';
+
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   CashToBankValidate {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         Result:=True;
+         CashSentToBank.Hint:='Enter Desired Quantities against each item^Total Value so far P'+TotalStockValue(CashSentToBank.Items);
+      *]
+      }
+   }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   StampsOrderValidate {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         Result:=True;
+         TransStamps.Hint:='Enter Desired Quantities against each item^Total Value so far P'+TotalStockValue(TransStamps.Items);
+      *]
+      }
+   }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   CashOrderValidate {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         Result:=True;
+         TransCash.Hint:='Enter Desired Quantities against each item^Total Value so far P'+TotalStockValue(TransCash.Items);
+      *]
+      }
+   }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   PhilOrderValidate {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         Result:=True;
+         TransPhil.Hint:='Enter Desired Quantities against each item^Total Value so far P'+TotalStockValue(TransPhil.Items);
+      *]
+      }
+   }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   POOrderValidate {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         Result:=True;
+         TransPostalOrd.Hint:='Enter Desired Quantities against each item^Total Value so far P'+TotalStockValue(TransPostalOrd.Items);
+      *]
+      }
+   }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   StockOrderValidate {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         Result:=True;
+         TransStock.Hint:='Enter Desired Quantities against each item^Total Value so far P'+TotalStockValue(TransStock.Items);
+      *]
+      }
+   }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   SetCashReturn {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransCash,UIEventSink.User,'Cash,Transfer,>Supervisor') then
+            begin
+               ProdForm.TransCash.Clear;
+               ProdForm.TransCash.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransCash.AssociatedProgId:='>Supervisor';
+
+      *]
+      }
+   }
+
+   SetPostalReturn {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransPostalOrd,UIEventSink.User,'PostalOrd,Transfer,>Supervisor') then
+            begin
+               ProdForm.TransPostalOrd.Clear;
+               ProdForm.TransPostalOrd.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransPostalOrd.AssociatedProgId:='>Supervisor';
+
+      *]
+      }
+   }
+
+   SetPhilatelicReturnFDC {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransPhil,UIEventSink.User,'*FDCover,Transfer,>Supervisor') then
+            begin
+               ProdForm.TransPhil.Clear;
+               ProdForm.TransPhil.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransPhil.AssociatedProgId:='>Supervisor';
+
+      *]
+      }
+   }
+
+   SetPhilatelicReturnSouvSheets {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransPhil,UIEventSink.User,'*SouvSheet,Transfer,>Supervisor') then
+            begin
+               ProdForm.TransPhil.Clear;
+               ProdForm.TransPhil.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransPhil.AssociatedProgId:='>Supervisor';
+
+      *]
+      }
+   }
+
+   SetPhilatelicReturnYearPacks {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransPhil,UIEventSink.User,'*YearPack,Transfer,>Supervisor') then
+            begin
+               ProdForm.TransPhil.Clear;
+               ProdForm.TransPhil.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransPhil.AssociatedProgId:='>Supervisor';
+
+      *]
+      }
+   }
+
+   SetPhilatelicReturnOtherPhil {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransPhil,UIEventSink.User,'*PhilOther,Transfer,>Supervisor') then
+            begin
+               ProdForm.TransPhil.Clear;
+               ProdForm.TransPhil.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransPhil.AssociatedProgId:='>Supervisor';
+
+      *]
+      }
+   }
+
+   SetStampsReturn {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransStamps,UIEventSink.User,'Stamps,Transfer,>Supervisor') then
+            begin
+               ProdForm.TransStamps.Clear;
+               ProdForm.TransStamps.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransStamps.AssociatedProgId:='>Supervisor';
+
+      *]
+      }
+   }
+
+   SetStockReturnBWCourier {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransStock,UIEventSink.User,'*BWCourier,Transfer,>Supervisor') then
+            begin
+               ProdForm.TransStock.Clear;
+               ProdForm.TransStock.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransStock.AssociatedProgId:='>Supervisor';
+
+      *]
+      }
+   }
+
+   SetStockReturnMerchandise {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransStock,UIEventSink.User,'*Merchandise,Transfer,>Supervisor') then
+            begin
+               ProdForm.TransStock.Clear;
+               ProdForm.TransStock.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransStock.AssociatedProgId:='>Supervisor';
+
+      *]
+      }
+   }
+
+   SetStockReturnRetailOther {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.TransStock,UIEventSink.User,'*Retail,Transfer,>Supervisor') then
+            begin
+               ProdForm.TransStock.Clear;
+               ProdForm.TransStock.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.TransStock.AssociatedProgId:='>Supervisor';
+
+      *]
+      }
+   }
+
+   UserStockResItem {
+      InsertBetween { '{ItemResStart}','{ItemResEnd}' }
+      CodeBlock {
+      [*
+         riItemBase     : if ValidateOK then Result:=ResItem00 else Result:='';
+         riItemBase+1   : if ProdForm.StockList.Ignore then Result:='' else Result:=ResItem01;
+      *]
+      }
+   }
+
+   LogGPOCashAcc {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnReport('*Cash Account',ProdForm.StartDomainEdit.Text,ProdForm.EndDomainEdit.Text,stSummary,IntToStr(UIEventSink.Office));
+      *]
+      }
+   }
+
+   VendorEnableComplete {
+      InsertBetween { '{EnableCompleteStart}','{EnableCompleteEnd}' }
+      CodeBlock {
+      [*
+         if (not ProdForm.StampsList.Ignore) then
+         begin
+            FUIEventSink.DisplayItemInfo(Self,0,'','Complete',0,0,True,False);
+         end
+         else
+         begin
+            FUIEventSink.DisplayItemInfo(Self,0,'','Complete',0,0,False,False);
+         end;
+      *]
+      }
+   }
+   VendorCompleteClick {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+         if Name = 'Complete' then
+         begin
+            ProdForm.StampsList.Ignore         :=True;
+            ProdForm.DiscountStampValue.Ignore :=False;
+            ProdForm.StampDiscount.Ignore      :=False;
+            ProdForm.TotalStampValue.Ignore    :=False;
+            ProdForm.TotalStampValue.Text:=TotalStockValue(ProdForm.StampsList.Items);
+            ProdForm.StampDiscount.Text:=CurrToStrF(Round((StrToCurrDef(ProdForm.TotalStampValue.Text,0)/110)*10),ffNumber,2);
+            ProdForm.DiscountStampValue.Text:=CurrToStrF(StrToCurrDef(ProdForm.TotalStampValue.Text,0)-StrToCurrDef(ProdForm.StampDiscount.Text,0),ffNumber,2);
+            FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+            FUIEventSink.DisplayItemInfo(Self,0,'','Complete',0,0,False,False);
+            Exit;
+         end;
+      *]
+      }
+   }
+   VendorSetData {
+      InsertBetween { '{ListSetDataStart}','{ListSetDataEnd}' }
+      CodeBlock {
+      [*
+         if not ProdForm.StampsList.Ignore then
+            ProdForm.StampsList.SetLineEditData(Value)
+         else
+            SetFormData(Value,ProdForm);
+         ProdForm.CurrentLine:=FUIEventSink.CurrentLine;
+         if not FlagComplete(ProdForm.Validate) then FlagError:=True;
+         if not ProdForm.StampsList.Ignore then
+            Result:=ProdForm.StampsList.LineEditData
+         else
+            Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   VendorGetData {
+      InsertBetween { '{ListGetDataStart}','{ListGetDataEnd}' }
+      CodeBlock {
+      [*
+         FlagComplete(ProdForm.Validate);
+         if not ProdForm.StampsList.Ignore then
+            Result:=ProdForm.StampsList.LineEditData
+         else
+            Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   VendorLogStock {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(
+               Index,
+               1, // Quantity
+               0, // PLU
+               0, // Value
+               0, // Price
+               'Discounted Items:', // Description
+               '', // Additional Info
+               'VendorDiscount', // ProgID
+               ''); // Domain Info
+         IndentStampLog:=1;
+         LogStock(TxnLog,ProdForm.StampsList);
+         IndentStampLog:=0;
+         Index:=0;
+         TxnLog.LogTransaction(
+               Index,
+               1, // Quantity
+               2008000, // PLU
+               0-StrToCurrDef(ProdForm.StampDiscount.Text,0), // Value
+               0-StrToCurrDef(ProdForm.StampDiscount.Text,0), // Price
+               'Discount', // Description
+               '', // Additional Info
+               'VendorDiscount', // ProgID
+               ''); // Domain Info
+      *]
+      }
+   }
+
+   PaySalaryLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                Get_PLU, // PLU
+                -(FQuantity*StrToCurrDef(ProdForm.AmountPaid.Text,0)), // Value
+                -(StrToCurrDef(ProdForm.AmountPaid.Text,0)), // Price
+                Get_Description, // Description
+                '', // Additional Info
+                Get_ProgramID, // ProgID
+                Enumerate(ProdForm)); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Payee Name -', // Description
+                ProdForm.PayeeName.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Payroll Number -', // Description
+                ProdForm.PayrollNumber.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+
+      *]
+      }
+   }
+
+   PayWagesICLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                Get_PLU, // PLU
+                -(FQuantity*StrToCurrDef(ProdForm.AmountPaid.Text,0)), // Value
+                -(StrToCurrDef(ProdForm.AmountPaid.Text,0)), // Price
+                Get_Description, // Description
+                '', // Additional Info
+                Get_ProgramID, // ProgID
+                Enumerate(ProdForm)); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Payee Name -', // Description
+                ProdForm.PayeeName.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Payroll Number -', // Description
+                ProdForm.PayrollNumber.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+   PayTempStaffLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                Get_PLU, // PLU
+                -(FQuantity*StrToCurrDef(ProdForm.AmountPaid.Text,0)), // Value
+                -(StrToCurrDef(ProdForm.AmountPaid.Text,0)), // Price
+                Get_Description, // Description
+                '', // Additional Info
+                Get_ProgramID, // ProgID
+                Enumerate(ProdForm)); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Payee Name -', // Description
+                ProdForm.PayeeName.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Comment -', // Description
+                ProdForm.Comment.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+   PayDeathClaimLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                Get_PLU, // PLU
+                -(FQuantity*StrToCurrDef(ProdForm.AmountPaid.Text,0)), // Value
+                -(StrToCurrDef(ProdForm.AmountPaid.Text,0)), // Price
+                Get_Description, // Description
+                '', // Additional Info
+                Get_ProgramID, // ProgID
+                Enumerate(ProdForm)); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Payee Name -', // Description
+                ProdForm.PayeeName.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Comment -', // Description
+                ProdForm.Comment.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+   PayHumanaLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                Get_PLU, // PLU
+                -(FQuantity*StrToCurrDef(ProdForm.AmountPaid.Text,0)), // Value
+                -(StrToCurrDef(ProdForm.AmountPaid.Text,0)), // Price
+                Get_Description, // Description
+                '', // Additional Info
+                Get_ProgramID, // ProgID
+                Enumerate(ProdForm)); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Employee No. -', // Description
+                ProdForm.EmployeeNumber.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Employee Name -', // Description
+                ProdForm.EmployeeName.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                FQuantity, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Omang No. -', // Description
+                ProdForm.CustID_Number.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+         If ProdForm.Comment.Text <> ''
+         then begin
+            TxnLog.LogTransaction(
+                   Index,
+                   FQuantity, // Quantity
+                   0, // PLU
+                   0, // Value
+                   0, // Price
+                   'Comment -', // Description
+                   ProdForm.Comment.Text, // Additional Info
+                   '', // ProgID
+                   ''); // Domain Info
+             Inc(Index);
+          end ;         
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+  ClaimsLog {
+    InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+    CodeBlock {
+    [*
+      If Get_Description = 'Imprest and Travel Claims' then
+        TxnLog.LogTransaction( Index, FQuantity, Get_PLU,
+                              -FQuantity*StrToCurrDef(ProdForm.AmountPaid.Text,0),
+                              -StrToCurrDef(ProdForm.AmountPaid.Text,0), // Price
+                              Get_Description, '', Get_ProgramID, Enumerate(ProdForm)) // Domain Info
+      else  //ImprestTraveleReceipt
+        TxnLog.LogTransaction( Index, FQuantity, Get_PLU,
+                              FQuantity*StrToCurrDef(ProdForm.AmountPaid.Text,0),
+                              StrToCurrDef(ProdForm.AmountPaid.Text,0), // Price
+                              Get_Description, '', Get_ProgramID, Enumerate(ProdForm)); // Domain Info
+
+      Inc(Index);
+
+      TxnLog.LogTransaction(Index,FQuantity,Get_PLU,0,0,'Payee Name -',ProdForm.PayeeName.Text,Get_ProgramId,''); Inc(Index);
+      TxnLog.LogTransaction(Index,FQuantity,Get_PLU,0,0,'Payee Identification -',ProdForm.PayeeIdentification.Text,Get_ProgramId,''); Inc(Index);
+      if ProdForm.Comment.Text <> '' then
+        TxnLog.LogTransaction(Index,FQuantity,Get_PLU,0,0,'Comment -',ProdForm.Comment.Text,Get_ProgramId,'');Inc(Index);
+      if CombineList <> nil then
+        CombineList.LogTransactions(Index,TxnLog);
+    *]
+    }
+  }
+
+  RemDispGetExecData {
+    InsertBetween { '{ListGetDataStart}','{ListGetDataEnd}' }
+    CodeBlock {
+    [*
+      if not ProdForm.IssueList.Ignore then
+        Result:=ProdForm.IssueList.LineEditData
+      else
+        Result:=GetFormData(ProdForm);
+    *]
+    }
+  }
+
+   RemDispSetExecData {
+      InsertBetween { '{ListSetDataStart}','{ListSetDataEnd}' }
+      CodeBlock {
+      [*
+         if not ProdForm.IssueList.Ignore then
+            ProdForm.IssueList.SetLineEditData(Value)
+         else
+            SetFormData(Value,ProdForm);
+         ProdForm.CurrentLine:=FUIEventSink.CurrentLine;
+         if not ProdForm.Validate then FlagError:=True;
+         if not ProdForm.IssueList.Ignore then
+            Result:=ProdForm.IssueList.LineEditData
+         else
+            Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+
+
+   RemDispDec {
+     InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+     CodeBlock {
+       [*
+          procedure TriggerBarCode(Value:String); override;
+       *]
+     }
+   }
+
+   RemDispDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+          procedure {PClass}TRemDispProduct.TriggerBarCode(Value:String);
+          begin
+             ProdForm.PostOffice.Ignore:=True;
+             ProdForm.IssueList.Ignore:=False;
+             ProdForm.PostOffice.ItemIndex:=ProdForm.PostOffice.Items.IndexOf(Value);
+             ProdForm.IssueList.AssociatedProgID := ProdForm.IssueList.AssociatedProgID  +  ' ' + ProdForm.PostOffice.Text;
+             FlagComplete(ProdForm.Validate);
+             FUIEventSink.DataChanged(Self,ProdForm.IssueList.LineEditData,False);
+          end;
+       *]
+     }
+   }
+
+
+
+  RemDispVAL {
+    InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+    CodeBlock {
+    [*
+      Result:=(PostOffice.Text <> '');
+      IssueList.Ignore :=(PostOffice.Text = '');
+      IssueList.Hint:='Enter Quantities against each item^Total Value so far P'+TotalStockValue(IssueList.Items);
+    *]      
+    }
+  }
+
+  RemDispLOG {
+    InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+    CodeBlock {
+    [*
+      ReferenceData('SET(RemittanceDest,' + ProdForm.PostOffice.Text + ')');
+      LogStock(TxnLog,ProdForm.IssueList);
+      ReferenceData('SET(RemittanceDest,)');
+    *]
+    }
+  }
+
+
+
+  //RemRec snippets
+  RemRecGetExecData {
+      InsertBetween { '{ListGetDataStart}','{ListGetDataEnd}' }
+      CodeBlock {
+      [*
+         if not ProdForm.ReceiveList.Ignore then
+            Result:=ProdForm.ReceiveList.LineEditData
+         else
+            Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   RemRecSetExecData {
+      InsertBetween { '{ListSetDataStart}','{ListSetDataEnd}' }
+      CodeBlock {
+      [*
+         if not ProdForm.ReceiveList.Ignore then
+            ProdForm.IssueList.SetLineEditData(Value)
+         else
+            SetFormData(Value,ProdForm);
+         ProdForm.CurrentLine:=FUIEventSink.CurrentLine;
+         if not ProdForm.Validate then FlagError:=True;
+         if not ProdForm.ReceiveList.Ignore then
+            Result:=ProdForm.ReceiveList.LineEditData
+         else
+            Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   RemRecDec {
+     InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+     CodeBlock {
+       [*
+          procedure TriggerBarCode(Value:String); override;
+       *]
+     }
+   }
+
+   RemRecDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+          procedure {PClass}TRemRecProduct.TriggerBarCode(Value:String);
+          begin
+             ProdForm.PostOffice.Ignore:=True;
+             ProdForm.ReceiveList.Ignore:=False;
+             ProdForm.PostOffice.ItemIndex:=ProdForm.PostOffice.Items.IndexOf(Value);
+             ProdForm.ReceiveList.AssociatedProgID := ProdForm.ReceiveList.AssociatedProgID  +  ' ' + ProdForm.PostOffice.Text;
+             FlagComplete(ProdForm.Validate);
+             FUIEventSink.DataChanged(Self,ProdForm.ReceiveList.LineEditData,False);
+          end;
+       *]
+     }
+   }
+
+  RemRecVAL {
+    InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+    CodeBlock {
+    [*
+      Result:=(PostOffice.Text <> '');
+      ReceiveList.Ignore :=(PostOffice.Text = '');
+      ReceiveList.Hint:='Enter Quantities against each item^Total Value so far P'+TotalStockValue(ReceiveList.Items);
+    *]     
+    }
+  }
+
+  RemRecAddExtraOffices {
+    InsertBetween { '{PostExecuteStart}','{PostExecuteEnd}' }
+    CodeBlock {
+    [*
+       ProdForm.PostOffice.Items.Add('Cash Account');
+       ProdForm.PostOffice.Items.Add('Philatelic');
+       ProdForm.PostOffice.Sorted := True;
+    *]
+    }
+  }
+
+  RemRecLOG {
+    InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+    CodeBlock {
+    [*
+      ReferenceData('SET(RemittanceDest,' + ProdForm.PostOffice.Text + ')');
+      LogStock(TxnLog,ProdForm.ReceiveList);
+      ReferenceData('SET(RemittanceDest,)');
+    *]
+    }
+  }
+
+  CashRecDef {
+    InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+    CodeBlock {
+    [*
+      procedure {PClass}TCashRecProduct.TriggerBarCode(Value:String);
+      begin
+        ProdForm.BankList.Ignore            := True;
+        ProdForm.CashList.Ignore            := False;
+        ProdForm.BankList.ItemIndex         := ProdForm.BankList.Items.IndexOf(Value);
+        FlagComplete(ProdForm.Validate);
+        FUIEventSink.DataChanged(Self,ProdForm.CashList.LineEditData,False);
+      end;
+    *]
+    }
+  }
+
+  CashRecGetExecData {
+    InsertBetween { '{ListGetDataStart}','{ListGetDataEnd}' }
+    CodeBlock {
+    [*
+      if not ProdForm.CashList.Ignore then
+        Result:=ProdForm.CashList.LineEditData
+      else
+        Result:=GetFormData(ProdForm);
+    *]
+    }
+  }
+
+  CashRecVAL {
+    InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+    CodeBlock {
+    [*
+      Result                    := (BankList.Text <> '');
+      CashList.Ignore           := (BankList.Text = '');
+      CashList.AssociatedProgID := 'Receive ' + BankList.Text;
+    *]
+    }
+  }
+
+  CashRecLOG {
+    InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+    CodeBlock {
+    [*
+      ReferenceData('SET(RemittanceDest,' + ProdForm.BankList.Text + ')');
+      LogStock(TxnLog,ProdForm.CashList);
+      ReferenceData('SET(RemittanceDest,)');
+      Inc(Index);
+    *]
+    }
+  }
+
+  CashDepVAL {
+    InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+    CodeBlock {
+    [*
+      Result                    := (BankList.Text <> '');
+      CashList.Ignore           := (BankList.Text = '');
+      CashList.AssociatedProgID := 'Return ' + BankList.Text;
+    *]
+    }
+  }
+
+   TransferToVerdorsOverDef {
+      InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+      CodeBlock {
+      [*
+         procedure {PClass}TTransferToVendorsProduct.TriggerBarCode(Value:String);
+         begin
+            ProdForm.ToVendorsList.Text:=Value;
+            ProdForm.ToVendorsList.Ignore := True ;
+            ProdForm.ToVendorStockList.Ignore:=False;
+            //GetTransferDetails(ProdForm.ToVendorStockList,'Supervisor',ProdForm.ToVendorsList.Text );
+            FlagComplete(ProdForm.Validate);
+            FUIEventSink.DataChanged(Self,ProdForm.ToVendorStockList.LineEditData,False);
+         end;
+      *]
+      }
+   }
+
+   TransferToVendorsExe {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.ToVendorStockList,UIEventSink.User,'"Stamps,PostalOrd,Retail",Transfer') then
+            begin
+               ProdForm.ToVendorStockList.Clear;
+               ProdForm.ToVendorStockList.Text:='No Stock Available';
+            end;
+         end;
+         ProdForm.ToVendorStockList.Ignore:=True;
+      *]
+      }
+   }
+
+   TransferVenGetExecData {
+      InsertBetween { '{ListGetDataStart}','{ListGetDataEnd}' }
+      CodeBlock {
+      [*
+         if ProdForm.ToVendorsList.Text <> '' then
+            Result:=ProdForm.ToVendorStockList.LineEditData
+         else
+            Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   TransferVenSetExecData {
+      InsertBetween { '{ListSetDataStart}','{ListSetDataEnd}' }
+      CodeBlock {
+      [*
+         if ProdForm.ToVendorsList.Text <> '' then
+            ProdForm.ToVendorStockList.SetLineEditData(Value)
+         else
+            SetFormData(Value,ProdForm);
+         ProdForm.CurrentLine:=FUIEventSink.CurrentLine;
+         if not ProdForm.Validate then FlagError:=True;
+         if ProdForm.ToVendorsList.Text <> '' then
+            Result:=ProdForm.ToVendorStockList.LineEditData
+         else
+            Result:=GetFormData(ProdForm);
+      *]
+      }
+   }
+
+   TransferVenToComplete {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.ToVendorStockList.AssociatedProgId := '*'+ PeriodToDateStr(GetCurrentPeriod) +
+                                                             '  Request From '+'Vendor:'+ProdForm.ToVendorsList.Text ;
+         LogStock(TxnLog,ProdForm.ToVendorStockList);
+      *]
+      }
+   }
+
+   TransferVenFromComplete {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.ToVendorStockList.AssociatedProgId := '*'+ PeriodToDateStr(GetCurrentPeriod) +
+                                                             '  Transfer From '+'Vendor:'+ProdForm.ToVendorsList.Text ;
+         LogStock(TxnLog,ProdForm.ToVendorStockList);
+      *]
+      }
+   }
+
+
+
+   TransferVenValid {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         result := (ToVendorsList.Text <> '');
+      *]
+      }
+   }
+
+
+}
+
+//------------------------------------------------------------------------------
+// Domains
+//------------------------------------------------------------------------------
+
+
+Domains {
+
+  CashAccAdjOffice {
+    Title     { 'Office Code'           }
+    Prompt    { 'Office Code'           }
+    Hint      { 'Enter the Office Code' }
+    Error     { 'Invalid Office Code'   }
+    Format    {  None                   }
+    InputFrom { 'Keyboard'              }
+  }
+
+  CashAccAdjPerson {
+    Title         { 'Person'                }
+    Prompt        { 'Person'                }
+    Hint          { 'Select the Person'     }
+    Error         { 'Invalid Person'        }
+    Format        {  PickList { Users }     }
+    DefaultValue  { 'Supervisor' }
+  }
+
+  CashAccAdjDate {
+    Title         { 'Date'              }
+    Prompt        { 'Enter Date'        }
+    Hint          { 'Please enter date' }
+    Error         { 'Invalid Date'      }
+    Format        { Date                }
+    DefaultValue  { 'Now'               }
+  }
+
+  CashAccAdjList {
+    Title     { 'Cash Account Line' }
+    Prompt    { 'Cash Account Line' }
+    Hint      { 'Select the Cash Account Line'        }
+    Error     { 'Select a Valid Cash Account Line'    }
+    Format    {  PickList { 'PickList.CashAccAdj' }   }
+    InputFrom { 'Keyboard' }
+  }
+
+  CashAccAdjAmount {
+    Title         { 'Adjustment Amount' }
+    Prompt        { 'Adjustment Amount' }
+    Hint          { 'Enter the Adjustment Amount'        }
+    Error         { 'Enter a Valid Adjustment Amount'    }
+    Format        {  Currency { '-9999999,9999999' } }
+    InputFrom     { 'Keyboard' }
+    DefaultValue  { '0' }
+  }
+
+  CashAccAdjType {
+    Title         { 'Adjustment Type' }
+    Prompt        { 'Adjustment Type' }
+    Hint          { 'Enter the Adjustment Type'        }
+    Error         { 'Enter a Valid Adjustment Type'    }
+    Format        { PickList  { 'PickList.CashAccAdjType' } }
+    DefaultValue  { 'Increase' }
+  }
+
+   OfficeCode {
+      Title  { 'Office Code' }
+      Prompt { 'Office Code' }
+      Hint   { 'Enter the Office Code' }
+      Error  { 'Enter a Valid Office Code' }
+      Format {
+         Range { '0,9999' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   ToUser {
+      Title { 'Destination Person' }
+      Prompt { 'Transfer to' }
+      Hint { 'Select the Destination Person' }
+      Error { 'The Destination Person you have Selected is invalid' }
+      Format {
+         PickList { Users }
+      }
+   }
+
+   DeleteList {
+      Title { 'Delete Stock Item' }
+      Prompt { 'Select Item to Permanently Delete' }
+      Hint { 'Select Item to Permanently Delete^Warning This process is IRREVERSIBLE' }
+      Error { 'Select Item to Permanently Delete' }
+      Format {
+         List { '!CashAcc' }
+      }
+   }
+
+   AddModStockList {
+      Title    { 'Add or Modify Stock Item' }
+      Prompt   { 'Select Item to Add or Modify' }
+      Hint     { 'Select Item to Add or Modify' }
+      Error    { 'Select Item to Add or Modify' }
+      Format {
+         List { '!CashAcc' }
+      }
+   }
+
+    StockDescription {
+      Title { 'Stock Item Description' }
+      Prompt { 'Description' }
+      Hint { 'Enter the Stock Item Description' }
+      Error { 'Invalid Stock Item Description' }
+      Format {
+         None
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   StockPrice {
+      Title { 'Stock Item Price' }
+      Prompt { 'Price' }
+      Hint { 'Enter the Stock Item Price' }
+      Error { 'Invalid Stock Item Price' }
+      Format {
+         Currency { '0,999999' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   UserName{
+      Title  { 'User Name' }
+      Prompt { 'User Name' }
+      Hint   { 'Select a User from the list' }
+      Error  { 'This user has no stock requests outstanding' }
+      Format {
+         PickList  { '' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   NewPass {
+      Title { 'New Password' }
+      Prompt { 'New Password' }
+      Hint { 'Enter your New Password' }
+      Error { 'Invalid New Password' }
+      Format {
+         None
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   TransList {
+      Title { 'Transfer Stock/Stamps List' }
+      Prompt { 'Enter Quantity to Transfer' }
+      Hint { 'Please Enter Quantity to Transfer^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { '!CashAcc',Transfer }
+      }
+   }
+
+   TransCash {
+      Title { 'Transfer Cash' }
+      Prompt { 'Enter Quantity to Transfer' }
+      Hint { 'Please Enter Quantity to Transfer^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { 'Cash',Transfer }
+      }
+   }
+
+   TransPostalOrd {
+      Title { 'Transfer Postal Order' }
+      Prompt { 'Enter Quantity to Transfer' }
+      Hint { 'Please Enter Quantity to Transfer^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { 'PostalOrd',Transfer }
+      }
+   }
+
+   TransStamps {
+      Title { 'Transfer Stamps' }
+      Prompt { 'Enter Quantity to Transfer' }
+      Hint { 'Please Enter Quantity to Transfer^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { 'Stamps',Transfer }
+      }
+   }
+
+   TransStock {
+      Title { 'Transfer Stock' }
+      Prompt { 'Enter Quantity to Transfer' }
+      Hint { 'Please Enter Quantity to Transfer^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { 'Retail',Transfer }
+      }
+   }
+
+   TransPhil {
+      Title { 'Transfer Philatelick' }
+      Prompt { 'Enter Quantity to Transfer' }
+      Hint { 'Please Enter Quantity to Transfer^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { 'Philatelic',Transfer }
+      }
+   }
+
+
+   ExchangeList {
+      Title { 'Exchange Rates' }
+      Prompt { 'Enter the current Exchange Rate' }
+      Hint { 'Please Enter the amount of currency^that is equal to 1 Dollar' }
+      Error { 'Invalid Exchange Rate' }
+      Format {
+         List { 'ExchangeRates' }
+      }
+   }
+
+   StockList {
+      Title { 'View Current Stock Level' }
+      Prompt { 'View Current Stock Level' }
+      Hint { 'Use Up/Down PgUp and PgDown to view the Stock' }
+      Error { 'You cannot modify these values' }
+      Format {
+         List { '!CashAcc',View }
+      }
+   }
+
+   StockListPostOrder {
+      Title { 'View Current Stock Level' }
+      Prompt { 'View Current Stock Level' }
+      Hint { 'Use Up/Down PgUp and PgDown to view the Stock' }
+      Error { 'You cannot modify these values' }
+      Format {
+        List { 'PostalOrd', View }
+      }
+   }
+
+   StockListCash {
+      Title { 'View Current Stock Level' }
+      Prompt { 'View Current Stock Level' }
+      Hint { 'Use Up/Down PgUp and PgDown to view the Stock' }
+      Error { 'You cannot modify these values' }
+      Format {
+         List { '!CashAcc',View }
+//         List { 'Cash',View }
+      }
+   }
+
+   StockListStamps {
+      Title { 'View Current Stock Level' }
+      Prompt { 'View Current Stock Level' }
+      Hint { 'Use Up/Down PgUp and PgDown to view the Stock' }
+      Error { 'You cannot modify these values' }
+      Format {
+         List { 'Stamps',View }
+      }
+   }
+
+   StockListBWCourier {
+      Title { 'View Current Stock Level' }
+      Prompt { 'View Current Stock Level' }
+      Hint { 'Use Up/Down PgUp and PgDown to view the Stock' }
+      Error { 'You cannot modify these values' }
+      Format {
+         List { '*BWCourier',View }
+      }
+   }
+
+   StockListMerchandise {
+      Title { 'View Current Stock Level' }
+      Prompt { 'View Current Stock Level' }
+      Hint { 'Use Up/Down PgUp and PgDown to view the Stock' }
+      Error { 'You cannot modify these values' }
+      Format {
+         List { '*Merchandise',View }
+      }
+   }
+
+   StockListRetail {
+      Title { 'View Current Stock Level' }
+      Prompt { 'View Current Stock Level' }
+      Hint { 'Use Up/Down PgUp and PgDown to view the Stock' }
+      Error { 'You cannot modify these values' }
+      Format {
+         List { '*Retail',View }
+      }
+   }
+
+   StockListPhilOther {
+      Title { 'View Current Stock Level' }
+      Prompt { 'View Current Stock Level' }
+      Hint { 'Use Up/Down PgUp and PgDown to view the Stock' }
+      Error { 'You cannot modify these values' }
+      Format {
+         List { '*PhilOther',View }
+      }
+   }
+
+   StockListPhilYearPack {
+      Title { 'View Current Stock Level' }
+      Prompt { 'View Current Stock Level' }
+      Hint { 'Use Up/Down PgUp and PgDown to view the Stock' }
+      Error { 'You cannot modify these values' }
+      Format {
+         List { '*YearPack',View }
+      }
+   }
+
+   StockListPhilSouvSheet {
+      Title { 'View Current Stock Level' }
+      Prompt { 'View Current Stock Level' }
+      Hint { 'Use Up/Down PgUp and PgDown to view the Stock' }
+      Error { 'You cannot modify these values' }
+      Format {
+         List { '*SouvSheet',View }
+      }
+   }
+
+   StockListPhilFDCover {
+      Title { 'View Current Stock Level' }
+      Prompt { 'View Current Stock Level' }
+      Hint { 'Use Up/Down PgUp and PgDown to view the Stock' }
+      Error { 'You cannot modify these values' }
+      Format {
+         List { '*FDCover',View }
+      }
+   }
+
+  StockSetList {
+    Title   { 'View/Modify Current Stock Level' }
+    Prompt  { 'View/Modify Current Stock Level' }
+    Hint    { 'Type the quantities required,^against each item Shown' }
+    Error   { 'Select the quantities of stamps required' }
+    Format  {
+      List { '!CashAcc',Set}
+    }
+  }
+   CancelList {
+      Title { 'Cancel Outstanding Stock Requests' }
+      Prompt { 'Select Stock Request to Cancel' }
+      Hint { 'Select Stock Request to Cancel by pressing "ENTER"^Then press "Complete" to cancel them' }
+      Error { 'Select Stock Request to Cancel' }
+      Format {
+         List { '!CashAcc' }
+      }
+   }
+
+   Value {
+      Title  { 'Value' }
+      Prompt { 'Value' }
+      Hint   { 'Enter the Value' }
+      Error  { 'Enter a Valid Value' }
+      Format {
+         Range { '0,100000000' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   PFNumber {
+      Title  { 'Personal File Number' }
+      Prompt { 'Personal File Number' }
+      Hint   { 'Enter the Payee''s Personal File Number' }
+      Error  { 'Invalid Personal File Number' }
+      Format {
+         Mask { '99999' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   ReceiveList {
+      Title { 'Remittances Received' }
+      Prompt { 'Enter Quantity Received' }
+      Hint { 'Type the quantities of items received,^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { '!CashAcc',Receive } // Add }
+      }
+   }
+
+  CashList {
+    Title   { 'Cash Received' }
+    Prompt  { 'Enter Cash Received' }
+    Hint    { 'Type the quantities of items received,^against each item shown' }
+    Error   { 'Invalid Quantity' }
+    Format  { List { 'Cash', Receive }  }
+  }
+
+  IssueList {
+      Title { 'Remittances Dispatched' }
+      Prompt { 'Enter Quantity to Dispatch' }
+      Hint { 'Please Enter Quantity to Dispatch,^against each item Shown' }
+      Error { 'Invalid Quantity' }
+      Format {
+         List { '!CashAcc',Return } // Remove }
+      }
+   }
+
+   TotalStampValue {
+      Title  { 'Total Value of Stamps' }
+      Prompt { 'Total Value of Stamps' }
+      Hint   { 'Total Value of Stamps' }
+   }
+
+   StampDiscount {
+      Title  { 'Discount' }
+      Prompt { 'Discount' }
+      Hint   { 'Discount' }
+   }
+
+   DiscountStampValue {
+      Title  { 'Discounted Value of Stamps' }
+      Prompt { 'Discounted Value of Stamps' }
+      Hint   { 'Discounted Value of Stamps' }
+   }
+
+   ItemAmount {
+      Title  { 'Amount' }
+      Prompt { 'Amount' }
+      Format {
+         Range { '0,999999' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+      TotalIn { TotalFee }
+   }
+
+   ItemCommission {
+      Title  { 'Commission' }
+      Prompt { 'Commission' }
+      Format {
+         Range { '0,999999' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+      TotalIn { TotalFee }
+   }
+
+   ToVendorsList {
+      Title         { 'To Agency' }
+      Prompt        { 'To Agency' }
+      Hint          { 'Enter the Agency Name' }
+      Error         { 'Enter a Valid Agency Name' }
+      Format        { PickList  { 'PickList.ToVendorsNames' } }
+   }
+
+  ToVendorStockList {
+               Prompt { 'Enter Desired Quantity'  }
+               Error  { 'Invalid Quantity - Insufficient Stock' }
+               Title  { 'Stock Transfer From Stock' }
+               Format {  List { 'PostalOrd', Transfer }  }
+             }
+
+
+  RunEndOfDayQuestion {
+    Title         { 'Enter Yes to run end of day' }
+    Prompt        { 'Enter Yes or No' }
+    Hint          { 'Enter Yes to run end of day'        }
+    Error         { 'Enter Yes or No'    }
+    Format        { PickList  { 'PickList.YesOrNo' } }
+    DefaultValue  { 'No' }
+  }
+
+}
+
+PickLists {
+
+ CashAccAdjType { Increase {'Increase'}
+                  Decrease {'Decrease'}
+                 }
+
+ ToVendorsNames { Items { 'Mosomane'
+                          'Kumakwane'
+                         }
+                  }
+
+ YesOrNo { Yes {'Yes'}
+           No  {'No'}
+          }
+
+}
+
+

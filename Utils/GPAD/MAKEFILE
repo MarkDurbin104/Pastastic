@@ -1,0 +1,22 @@
+.AUTODEPEND
+.SILENT
+
+MODEL = l
+COPT  = -v -w -WX -3 -DM_DEBUG=0 -m$(MODEL) -I\BC\INCLUDE -L\BC\LIB -lm
+
+OBJSD = GSCRACC.OBJ MOUSE.OBJ NEWFORMH.OBJ DST.OBJ CONTROL.OBJ CONFIG.OBJ
+
+INCS = \
+     CONTROL.H FORMHAND.H DST.H CONFIG.H 
+
+.c.obj:
+	        bcc -c $(COPT) { $< }
+
+gpad.exe:       gpad.obj frdscr.obj frdwin.obj frdgfx.obj win.obj des.lib
+                tlink /s /c /Txe /v -L\BC\LIB C0X+GPAD+FRDSCR+FRDWIN+FRDGFX+WIN,GPAD,,DES+dpmi16+bgi16 Cwl EMUX MATHWL
+#                pklite $*
+
+des.lib:        $(OBJSD) $(OBJSF) des2.lst
+                del des.lib > nul
+                tlib /E des.lib @des2.lst
+

@@ -1,0 +1,8 @@
+Borland C++ 5.0 Copyright (c) 1987, 1996 Borland International
+testexe.c:
+Warning testexe.c 289: Conversion may lose significant digits in function DumpDialog
+Warning testexe.c 294: Conversion may lose significant digits in function DumpDialog
+Warning testexe.c 478: Parameter 'type' is never used in function TraverseDataEntry
+Warning testexe.c 478: Parameter 'pid' is never used in function TraverseDataEntry
+Warning testexe.c 492: Conversion may lose significant digits in function TraverseDir
+Warning testexe.c 516: Call to function 'filelength' with no prototype in function main

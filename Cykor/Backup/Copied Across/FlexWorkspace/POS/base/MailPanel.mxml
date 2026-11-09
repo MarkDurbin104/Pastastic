@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	borderThickness="6" borderColor="#86B7BE" cornerRadius="15" borderStyle="none" 
+ 	themeColor="#E0AB6C" styleName="gradientRectangleSkin"
+ 	horizontalScrollPolicy="off" verticalScrollPolicy="off"
+ 	 height="95">
+	<mx:Style source="../css/styles.css" />
+
+	<mx:Button y="0" x="0" height="100%" width="100%" styleName="gradientRectangleSkin"/>
+	<mx:String id="price">$12.49</mx:String>
+	<mx:String id="description">Up to three lines of sample description text here like this</mx:String>
+	<mx:String id="iconSource">configuration\mails\IExpressMail.gif</mx:String>
+	<mx:VBox horizontalScrollPolicy="off" verticalScrollPolicy="off" verticalGap="0" width="100" height="100%" x="0" y="0" horizontalAlign="right">
+		<mx:Spacer height="6"/>
+		<mx:Image width="94%" height="24" source="{iconSource}" scaleContent="true"  autoLoad="true"/>
+		<mx:Text text="{description}" height="42" width="94%" color="#000000" fontSize="9" fontWeight="bold"/>
+		<mx:Text text="{price}" height="100%" width="100%" textAlign="right" fontSize="12" fontFamily="verdana" fontWeight="bold"  color="#000000"/>
+	</mx:VBox>
+</mx:Canvas>

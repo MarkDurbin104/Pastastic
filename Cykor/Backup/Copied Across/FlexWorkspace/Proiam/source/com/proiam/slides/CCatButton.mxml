@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="213" height="133"
+ 	backgroundSize="100%" backgroundImage="@Embed('embedded/ConfAddrButton.png')" 
+ 	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+ 	buttonMode="true" useHandCursor="true">
+	<mx:String id="title"></mx:String>
+	<mx:String id="catagory"></mx:String>
+	<mx:String id="text"></mx:String>
+  	<mx:Label x="10" y="15" text="{title}" fontWeight="bold" fontFamily="Verdana" fontSize="12" color="#496384" width="183" selectable="false" buttonMode="true" useHandCursor="true"/>
+  	<mx:Text x="76" y="48" width="127" height="75" alpha="0.0" color="#214134" text="{text}" selectable="false" 
+  		fontFamily="Verdana" fontSize="11" fontWeight="bold" buttonMode="true" useHandCursor="true"/>
+  	<mx:Text x="9" y="48" width="74" height="75" alpha="0.0" color="#496384" text="{catagory}" selectable="false" 
+  		fontWeight="bold" fontFamily="Verdana" fontSize="11" buttonMode="true" useHandCursor="true" />
+  	<mx:Canvas buttonMode="true" width="100%" height="100%" useHandCursor="true"/>
+</mx:Canvas>

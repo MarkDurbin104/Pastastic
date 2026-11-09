@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="1.5.0" prefix="BrowserHistoryUtils" extends="" parent="" >
+	<file path="C:/FlexWorkspace/Proiam/bin/history/history.js" creation="1208474092437">
+		<item repl="addEvent()" display="addEvent(elm, evType, fn, useCapture)" chrno="1" />
+	</file>
+	<file path="C:/FlexWorkspace/Proiam/bin-release/history/history.js" creation="1207351539375">
+		<item repl="addEvent()" display="addEvent(elm, evType, fn, useCapture)" chrno="1" />
+	</file>
+	<file path="C:/FlexWorkspace/Proiam/html-template/history/history.js" creation="1207351539375">
+		<item repl="addEvent()" display="addEvent(elm, evType, fn, useCapture)" chrno="1" />
+	</file>
+</completion>

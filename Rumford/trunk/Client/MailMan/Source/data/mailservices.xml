@@ -1,0 +1,540 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MailServices>
+	<ServiceGroups>
+		<ServiceGroup Name="ExpressMail" 
+			Caption="Express Mail" FullName="Express Mail" Icon="ExpressMail.png">
+			<ExpressPOtoAddr/>
+			<ExpressPOtoAddrFlatRate/>
+			<FedEx/>
+		</ServiceGroup>
+		<ServiceGroup Name="PriorityMail" 
+			Caption="Priority Mail" FullName="Priority Mail" Icon="PriorityMail.png">
+			<PriorityMail/>
+			<PriorityFlatRateBox/>
+			<PriorityFlatRateEnvelope/>
+		</ServiceGroup>
+		<ServiceGroup Name="FirstClass" 
+			Caption="First Class" FullName="First Class" Icon="FirstClass.png">
+			<FirstClassLetter/>
+			<FirstClassLargeEnvelope/>
+			<FirstClassPackage/>
+		</ServiceGroup>
+		<ServiceGroup Name="Packages" 
+			Caption="Packages" FullName="Packages" Icon="Other.png">
+			<ParcelPost/>
+			<MediaMail/>
+			<LibraryMail/>
+		</ServiceGroup>
+		<ServiceGroup Name="ExpressMailInternational" 
+			Caption="Express Mail Int." FullName="Express Mail International" Icon="EXPMI.png">
+			<IntExpressMailFlatRate/>
+			<IntExpressMail/>
+		</ServiceGroup>
+		<ServiceGroup Name="PriorityMailInternational" 
+			Caption="Priority Mail Int." FullName="Priority Mail International" Icon="PRMI.png">
+			<PriorityMailInternational/>
+			<PriorityMailInternationalBox/>
+			<PriorityMailInternationalEnvelope/>
+		</ServiceGroup>
+		<ServiceGroup Name="Insurance" 
+			Caption="Insurance" FullName="Insurance" Icon="Insurance.png">
+			<ExpressDomesticInsurance/>
+			<DomesticInsurance/>
+			<ExpressInternationalInsurance/>
+			<GlobalExpressGuaranteedInsurance/>
+			<PriorityMailInternationalInsurance/>
+		</ServiceGroup>
+	</ServiceGroups>
+	<Services>
+		<Service Name="ExpressPOtoAddr"
+			ReceiptCaption="Express PO to Addr"
+			Hint="1 or 2 day delivery guarantee. Guarantee depends on ZIP code and time of acceptance."
+			FullName="PO to Addressee"
+			HelpURL="dmm/113.htm"
+			Icon="Express_Dom.png"
+			Image_Selected="Express_Dom.png"
+			Domestic="true" Type="Express" Tariff="Express" TariffType="lb" TariffColumn="Next Day &amp; Second Day PO to Addressee">
+			<ApplicableTypes>Undersize, Postcard, Letter, UndersizeSQ, 
+				Square, Long, Large Letter, Large Square, Large Long, 
+				Package, Oversize Parcel, Parcel, Oversize
+			</ApplicableTypes>		
+			<Insurance/>
+			<ReturnReceipt>
+				<Exclude>
+					<Insurance/>
+				</Exclude>
+				<Include>
+					<Certified/>
+					<DeliveryConfirmation/>
+					<SignatureConfirmation/>
+				</Include>
+			</ReturnReceipt>
+		</Service>
+		<Service Name="ExpressPOtoAddrFlatRate"
+			ReceiptCaption="Express PO to Addr F/R"
+			Hint="1 or 2 day delivery guarantee. Guarantee depends on ZIP code and time of acceptance."
+			FullName="PO to Addressee"
+			HelpURL="dmm/113.htm"
+			Icon="Express_Dom_FlatRate.png"
+			Image_Selected="Express_Dom_FlatRate.png"
+			Image_Featured="Express_Dom_FlatRate.png"
+			Domestic="true" Type="Express" Tariff="ExpressFR" TariffType="lb" >
+			<ApplicableTypes>Undersize,UndersizeSQ,Letter,
+				Square, Long, Large Letter, Large Square, Large Long, 
+				Package, Oversize Parcel, Parcel, Oversize
+			</ApplicableTypes>	
+			<Insurance/>
+			<ReturnReceipt/>
+		</Service>
+		<Service Name="FedEx"
+			ReceiptCaption="Federal Express"
+			Hint="Next day delivery guarantee by 9 a.m.."
+			FullName="Federal Express"
+			Icon="FedEx.png"
+			Image_Selected="FedEx.png"
+			Domestic="true" Type="FedEx" Tariff="FedEx" TariffType="lb" TariffColumn="Cost" >
+			<ApplicableTypes>Undersize,UndersizeSQ,Letter,
+				Square, Long, Large Letter, Large Square, Large Long, 
+				Package, Oversize Parcel, Parcel, Oversize
+			</ApplicableTypes>	
+			<Insurance/>
+		</Service>
+		<Service Name="PriorityMail"
+			ReceiptCaption="Priority Mail"
+			Hint="Expedited service for 1st Class mail more than 13 oz., and other items less than 13 oz. 2 to 3 day delivery in most cases, depending on ZIP code and time of acceptance."
+			HelpURL="dmm/123.htm"
+			Icon="Priority_Dom.png"
+			Image_Selected="Priority_Dom.png"
+			Image_Featured="Priority_Dom.png"
+			Domestic="true" Type="Priority" Tariff="Priority" TariffColumn="Zone" TariffMultiColumn="true" TariffType="lb">
+			<ApplicableTypes>Undersize,UndersizeSQ,Letter,
+				Square, Long, Large Letter, Large Square, Large Long, 
+				Package, Oversize Parcel, Parcel, Oversize
+			</ApplicableTypes>	
+			<Registered/>
+			<Insurance/>
+			<Certified/>
+			<DeliveryConfirmation/>
+			<SignatureConfirmation/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="PriorityFlatRateBox"
+			ReceiptCaption="Priority F/R Box"
+			Hint="Expedited service for 1st Class mail more than 13 oz., and other items less than 13 oz. 2 to 3 day delivery in most cases, depending on ZIP code and time of acceptance."
+			FullName="Flat Rate Box"
+			HelpURL="dmm/123.htm&amp;anchor=1_5"
+			Icon="Priority_Dom_Box_FlatRate.png"
+			Image_Selected="Priority_Dom_Box_FlatRate.png"
+			Domestic="true" Type="Priority" Tariff="PriorityFR" TariffType="lb">
+			<ApplicableTypes>
+				Package, Oversize Parcel, Parcel, Oversize
+			</ApplicableTypes>	
+			<Registered/>
+			<Insurance/>
+			<Certified/>
+			<DeliveryConfirmation/>
+			<SignatureConfirmation/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="PriorityFlatRateEnvelope"
+			ReceiptCaption="Priority F/R Env."
+			Hint="Expedited service for 1st Class mail more than 13 oz., and other items less than 13 oz. 2 to 3 day delivery in most cases, depending on ZIP code and time of acceptance."
+			FullName="Flat Rate Envelope"
+			HelpURL="dmm/123.htm&amp;anchor=1_5"
+			Icon="Priority_Dom_Envelope_FlatRate.png"
+			Image_Selected="Priority_Dom_Envelope_FlatRate.png"
+			Domestic="true" Type="Priority" Tariff="Priority" TariffColumn="Zone" TariffMultiColumn="true" TariffType="lb">
+			<ApplicableTypes>Undersize,UndersizeSQ, 
+				Square, Long, Large Letter, Large Square, Large Long,
+			</ApplicableTypes>	
+			<Registered/>
+			<Insurance/>
+			<Certified/>
+			<ReturnReceipt/>
+			<RestrictedDelivery/>
+			<DeliveryConfirmation/>
+			<SignatureConfirmation/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="FirstClassLetter"
+			ReceiptCaption="First Class Letter"
+			Hint="1 to 3 day delivery in most cases. Any mailable item is eligible for 1st Class."
+			FullName="Letter"
+			HelpURL="dmm/133.htm"
+			Icon="1st_Dom_Letter.png"
+			Image_Selected="1st_Dom_Letter.png"
+			Domestic="true" Type="First"  Tariff="First" TariffColumn="Machinable"> 
+			<ApplicableTypes>
+				Letter
+			</ApplicableTypes>		
+			<Registered/>
+			<Insurance/>
+			<Certified/>
+			<ReturnReceipt/>
+			<RestrictedDelivery/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="FirstClassPostcard"
+			ReceiptCaption="First Class Postcard"
+			Hint="1 to 3 day delivery in most cases. Any mailable item is eligible for 1st Class."
+			FullName="Postcard"
+			HelpURL="dmm/133.htm"
+			Icon="1st_Dom_Postcard.png"
+			Image_Selected="1st_Dom_Postcard.png"
+			Domestic="true" Type="Postcard"  Tariff="Postcard"> 
+			<ApplicableTypes>
+				Postcard
+			</ApplicableTypes>		
+			<Registered/>
+			<Certified/>
+			<ReturnReceipt/>
+			<RestrictedDelivery/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="FirstClassLetterNM"
+			ReceiptCaption="First Class Letter (NM)"
+			Hint="1 to 3 day delivery in most cases. Any mailable item is eligible for 1st Class."
+			FullName="Non-machinable Letter"
+			HelpURL="dmm/133.htm"
+			Icon="1st_Dom_Letter_NonMachinable.png"
+			Image_Selected="1st_Dom_Letter_NonMachinable.png"
+			Domestic="true" Type="First"  Tariff="First" TariffColumn="NonMachinable"> 
+			<ApplicableTypes>
+				Undersize, UndersizeSQ,Square, Long
+			</ApplicableTypes>		
+			<Registered/>
+			<Insurance/>
+			<Certified/>
+			<ReturnReceipt/>
+			<RestrictedDelivery/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="FirstClassLargeEnvelope"
+			ReceiptCaption="First Class Large Env."
+			Hint="1 to 3 day delivery in most cases. Any mailable item is eligible for 1st Class."
+			FullName="Large Envelope"
+			HelpURL="dmm/133.htm"
+			Icon="1st_Dom_LargeEnvelope.png"
+			Image_Selected="1st_Dom_LargeEnvelope.png"
+			Domestic="true" Type="First" Tariff="FirstLarge">
+			<ApplicableTypes>Large Letter
+			</ApplicableTypes>		
+			<Registered/>
+			<Insurance/>
+			<Certified/>
+			<ReturnReceipt/>
+			<RestrictedDelivery/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="FirstClassPackage"
+			ReceiptCaption="First Class Package"
+			Hint="1 to 3 day delivery in most cases. Any mailable item is eligible for 1st Class."
+			FullName="Package"
+			HelpURL="dmm/133.htm"
+			Icon="1st_Dom_Package.png"
+			Image_Selected="1st_Dom_Package.png"
+			Domestic="true" Type="First" Tariff="FirstParcels">
+			<ApplicableTypes>Undersize, UndersizeSQ, Large Square, Large Long
+				Square, Long, Large Letter, Large Square, Large Long, Package
+			</ApplicableTypes>		
+			<Registered/>
+			<Insurance/>
+			<Certified/>
+			<ReturnReceipt/>
+			<RestrictedDelivery/>
+			<DeliveryConfirmation/>
+			<SignatureConfirmation/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="ParcelPost"
+			ReceiptCaption="Parcel Post"
+			Hint="Not an expedited service."
+			FullName="Not an expedited service."
+			HelpURL="dmm/153.htm"
+			Icon="ParcelPost.png"
+			Image_Selected="ParcelPost.png"
+			Domestic="true" Type="Package" Tariff="PP InterBMC Machinable" TariffColumn="Zone" TariffMultiColumn="true" TariffType="lb">
+			<ApplicableTypes>
+				Package, Oversize Parcel, Parcel, Oversize
+			</ApplicableTypes>		
+			<Insurance/>
+			<ReturnReceipt/>
+			<RestrictedDelivery/>
+			<DeliveryConfirmation/>
+			<SignatureConfirmation/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="MediaMail"
+			ReceiptCaption="Media Mail"
+			FullName="Only certain items qualify as Media Mail"
+			Hint="Not an expedited service. Only certain items qualify. See help screen for more details."
+			HelpURL="dmm/173.htm"
+			Icon="Packages_Media.png"
+			Image_Selected="Packages_Media.png"
+			Domestic="true" Type="Package"  Tariff="Media" TariffType="lb" TariffColumn="Basic">
+			<ApplicableTypes>
+				Package, Oversize Parcel, Parcel, Oversize
+			</ApplicableTypes>		
+			<Insurance/>
+			<ReturnReceipt/>
+			<RestrictedDelivery/>
+			<DeliveryConfirmation/>
+			<SignatureConfirmation/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="LibraryMail"
+			ReceiptCaption="Library Mail"
+			FullName="Only certain items qualify as Library Mail"
+			Hint="Not an expedited service. Only certain items qualify. See help screen for more details."
+			HelpURL="dmm/183.htm"
+			Icon="Packages_Library.png"
+			Image_Selected="Packages_Library.png"
+			Domestic="true" Type="Package" Tariff="Library" TariffType="lb" TariffColumn="Basic">
+			<ApplicableTypes>
+				Package, Oversize Parcel, Parcel, Oversize
+			</ApplicableTypes>		
+			<Insurance/>
+			<ReturnReceipt/>
+			<RestrictedDelivery/>
+			<DeliveryConfirmation/>
+			<SignatureConfirmation/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="GlobalExpressGuaranteed"
+			ReceiptCaption="GXG"
+			Hint="Expedited and guaranteed service from selected US facilities to selected international destinations. Provided through an alliance with FedEx Corporation."
+			FullName="Global Express Guaranteed"
+			HelpURL="imm/immc2_001.htm"
+			Icon="GlobalExpress.png"
+			Image_Selected="GlobalExpress.png"
+			International="true" Type="GXG" Tariff="GXG" TariffColumn="Price Group" TariffMultiColumn="true" TariffType="lb" >
+			<ApplicableTypes>Undersize,UndersizeSQ,Letter,Square, Long, Large Letter, Large Square, Large Long, Package, Oversize Parcel, Parcel, Oversize</ApplicableTypes>	
+			<Insurance/>
+		</Service>
+		<Service Name="IntExpressMailFlatRate"
+			ReceiptCaption="Int Express Mail F/R"
+			Hint="Expedited service to selected international destinations." 
+			FullName="Express_Intl_FlatRate" 
+			HelpURL="imm/immc2_008.htm"
+			Icon="Express_Intl_FlatRate.png"
+			Image_Selected="Express_Intl_FlatRate.png"
+			International="true" Type="Express" Tariff="EMI FR E" TariffColumn="Price Group" TariffMultiColumn="true" >
+			<ApplicableTypes>Undersize,UndersizeSQ,Letter</ApplicableTypes>	
+			<Insurance/>
+			<ReturnReceipt/>
+		</Service>
+		<Service Name="IntExpressMail"
+			ReceiptCaption="Int Express Mail"
+			Hint="Expedited service to selected international destinations." 
+			FullName="International"
+			HelpURL="imm/immc2_008.htm"
+			Icon="Express_Intl.png"
+			Image_Selected="Express_Intl.png"
+			International="true" Type="Express" Tariff="EMI" TariffColumn="Price Group" TariffMultiColumn="true" TariffType="lb">
+			<ApplicableTypes>Undersize,UndersizeSQ,Letter,Square, Long, Large Letter, Large Square, Large Long, Package, Oversize Parcel, Parcel, Oversize</ApplicableTypes>	
+			<Insurance/>
+			<ReturnReceipt/>
+		</Service>
+		<Service Name="PriorityMailInternational"
+			ReceiptCaption="Int Priority Mail"
+			Hint="Parcel service"
+			FullName="International"
+			HelpURL="imm/immc2_012.htm"
+			Icon="Priority_Intl.png"
+			Image_Selected="Priority_Intl.png"
+			International="true" Type="Priority" Tariff="PMI" TariffColumn="Price Group" TariffMultiColumn="true" TariffType="lb">
+			<ApplicableTypes>Undersize,UndersizeSQ,Letter,Square, Long, Large Letter, Large Square, Large Long, Package, Oversize Parcel, Parcel, Oversize</ApplicableTypes>	
+			<Insurance/>
+			<ReturnReceipt/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="PriorityMailInternationalBox"
+			ReceiptCaption="Int Priority Mail Box"
+			Hint="Parcel service flat-rate box option"
+			FullName="International Box"
+			HelpURL="imm/immc2_015.htm"
+			Icon="Priority_Intl_Box.png"
+			Image_Selected="Priority_Intl_Box.png"
+			International="true" Type="Priority" Tariff="PMI FR B" TariffColumn="Price Group" TariffMultiColumn="true" TariffType="lb">
+			<ApplicableTypes>Large Letter, Large Square, Large Long, Package</ApplicableTypes>	
+			<Insurance/>
+			<ReturnReceipt/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="PriorityMailInternationalEnvelope"
+			ReceiptCaption="Int Priority Mail Env."
+			Hint="Parcel service flat-rate envelope option. Current and personal written correspondence is permitted in the flat-rate envelope only."
+			FullName="International Envelope"
+			HelpURL="imm/immc2_012.htm"
+			Icon="Priority_Intl_Envelope.png"
+			Image_Selected="Priority_Intl_Envelope.png"
+			International="true" Type="Priority" Tariff="PMI FR E" TariffColumn="Price Group" TariffMultiColumn="true" >
+			<ApplicableTypes>Undersize,UndersizeSQ,Letter</ApplicableTypes>	
+			<Registered/>
+			<ReturnReceipt/>
+			<RestrictedDelivery/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="FirstClassMailInternationalLetter"
+			ReceiptCaption="Int First Class"
+			Hint="Includes all the classes of international mail that were formerly categorized as airmail letter-post and economy letter-post, post and postal cards, printed matter, and small packets that were formerly categorized as LC (letters and cards) and AO (other articles)."
+			FullName="First Class Mail International Letter"
+			HelpURL="imm/immc2_018.htm"
+			Icon="1st_Intl.png"
+			Image_Selected="1st_Intl.png"
+			International="true" Type="First" Tariff="FCMI Letters" TariffColumn="Group" TariffMultiColumn="true">
+			<ApplicableTypes>Undersize,UndersizeSQ,Letter,Square, Long, Large Letter, Large Square, Large Long, Package</ApplicableTypes>	
+			<Registered/>
+			<ReturnReceipt/>
+			<RestrictedDelivery/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="FirstClassMailInternationalFlat"
+			ReceiptCaption="Int First Class"
+			Hint="Includes all the classes of international mail that were formerly categorized as airmail letter-post and economy letter-post, post and postal cards, printed matter, and small packets that were formerly categorized as LC (letters and cards) and AO (other articles)."
+			FullName="First Class Mail International Flat"
+			HelpURL="imm/immc2_018.htm"
+			Icon="1st_Intl.png"
+			Image_Selected="1st_Intl.png"
+			International="true" Type="First" Tariff="FCMI Flats" TariffColumn="Group" TariffMultiColumn="true">
+			<ApplicableTypes>Undersize,UndersizeSQ,Letter,Square, Long, Large Letter, Large Square, Large Long, Package</ApplicableTypes>	
+			<Registered/>
+			<ReturnReceipt/>
+			<RestrictedDelivery/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="FirstClassMailInternationalParcel"
+			ReceiptCaption="Int First Class"
+			Hint="Includes all the classes of international mail that were formerly categorized as airmail letter-post and economy letter-post, post and postal cards, printed matter, and small packets that were formerly categorized as LC (letters and cards) and AO (other articles)."
+			FullName="First Class Mail International Parcel"
+			HelpURL="imm/immc2_018.htm"
+			Icon="1st_Intl.png"
+			Image_Selected="1st_Intl.png"
+			International="true" Type="First" Tariff="FCMI Parcels" TariffColumn="Group" TariffMultiColumn="true">
+			<ApplicableTypes>Undersize,UndersizeSQ,Letter,Square, Long, Large Letter, Large Square, Large Long, Package, Oversize Parcel, Parcel, Oversize</ApplicableTypes>	
+			<Registered/>
+			<ReturnReceipt/>
+			<RestrictedDelivery/>
+			<CertificateOfMailing/>
+		</Service>
+		<Service Name="CertificateOfMailing"
+			ReceiptCaption="Certificate Of Mailing"
+			Hint="Provides evidence that mail has been presented to the USPS for mailing. Does not provide a record of delivery."
+			HelpURL="certofmail.htm"
+			Price="$1.10"
+			Icon="Certificate.png"
+			Caption=""
+			FullName="Certificate Of Mailing" 
+			/>
+		<Service Name="Certified"
+			ReceiptCaption="Certified"
+			Hint="Provides verification that an article was delivered or that a delivery attempt was made."
+			HelpURL="dmm/503.htm&amp;anchor=3_0"
+			Price="$2.70"
+			Caption=""
+			FullName="Certified" 
+			Icon="Certified.png"/>
+		<Service Name="DeliveryConfirmation"
+			ReceiptCaption="Delivery Confirm."
+			Hint="Provides information about the date and time an article was delivered and, if delivery was attempted but not successful, the date and time of the delivery attempt. No record is kept at the office of mailing."
+			HelpURL="dmm/503.htm&amp;anchor=9_0"
+			Price="$0.65-$0.75"
+			Caption=""
+			FullName="Delivery Confirmation" 
+			Icon="DeliveryConfirmation.png"/>
+		<Service Name="ExpressDomesticInsurance"
+			ReceiptCaption="Insurance"
+			Hint="Express mail items can be insured as long as they contain merchandise or items of value. Maximum is $5000."
+			HelpURL="dmm/503.htm&amp;anchor=1_0"
+			Price="From $1.65"
+			Caption=""
+			FullName="Insurance" 
+			Icon="Insurance_Express_Dom.png"/>
+		<Service Name="ExpressInternationalInsurance"
+			ReceiptCaption="Insurance"
+			Hint="Express Mail International items can be insured as long as they contain merchandise or items of value. Maximum depends on destination."
+			HelpURL="imm/immc2_008.htm&amp;anchor=221_3"
+			Price="From $1.70"
+			Caption=""
+			FullName="Insurance" 
+			Icon="Insurance_Express_Intl.png"/>
+		<Service Name="GlobalExpressGuaranteedInsurance"
+			ReceiptCaption="Insurance"
+			Hint="Global Express Guaranteed  mail  items can be insured as long as they contain merchandise or items of value. Maximum depends on destination."
+			HelpURL="imm/immc2_005.htm"
+			Price="From $1.70"
+			Caption=""
+			FullName="Insurance" 
+			Icon="Insurance_GlobalExpress.png"/>
+		<Service Name="Insurance"
+			ReceiptCaption="Insurance"
+			Hint="Items can be insured as long as they contain merchandise or items of value. Maximum insured amount is $5000."
+			HelpURL="insurance.htm"
+			Price="From $1.70"
+			Caption=""
+			FullName="Insurance" 
+			Icon="Insurance.png">
+				<ExpressDomesticInsurance/>
+				<ExpressInternationalInsurance/>
+				<GlobalExpressGuaranteedInsurance/>
+				<PriorityMailInternationalInsurance/>
+				<DomesticInsurance/>
+			</Service>
+		<Service Name="DomesticInsurance"
+			ReceiptCaption="Insurance"
+			Hint="First Class, Priority and Parcel Post mail items can be insured as long as they contain merchandise or items of value. Insurance under $200 does not allow a return receipt. (Delivery Confirmation is available.) Maximum is $5000."
+			Caption="" 
+			FullName="Insurance"
+			HelpURL="insurance.htm"
+			Price="From $1.70"
+			Icon="Insurance_Dom.png"/>
+		<Service Name="PriorityMailInternationalInsurance"
+			ReceiptCaption="Insurance"
+			Hint="Priority Mail International  mail  items can be insured as long as they contain merchandise or items of value. Maximum depends on destination."
+			Caption="" 
+			FullName="Insurance"
+			HelpURL="imm/immc2_014.htm"
+			Price="From $1.70"
+			Icon="Insurance_Priority_Intl.png"/>
+		<Service Name="Registered"
+			ReceiptCaption="Registered"
+			Hint="The most secure service that the USPS offers. Only matter prepaid with postage at the First-Class Mail rates (including Priority Mail) may be registered. "
+			Caption="" 
+			FullName="Registered"
+			HelpURL="registered.htm"
+			Price="$10.80"
+			Icon="Registered.png"/>
+		<Service Name="RestrictedDelivery"
+			ReceiptCaption="Restricted Delivery"
+			Hint="Permits sender to direct delivery only to the addressee or addressee's authorized agent. The addressee must be an individual (or natural person) specified by name."
+			Caption="" 
+			FullName="Restricted Delivery"
+			HelpURL="RestrictedDelivery.htm"
+			Price="$4.30"
+			Icon="RestrictedDelivery.png"/>
+		<Service Name="ReturnReceipt"
+			ReceiptCaption="Return Receipt"
+			Hint="Provides evidence of delivery (to whom the mail was delivered and date of delivery), along with information about the recipient's actual delivery address."
+			Caption="" 
+			FullName="Return Receipt"
+			HelpURL="ReturnReceipt.htm"
+			Price="$2.20"
+			Icon="ReturnReceipt.png"/>
+		<Service Name="SignatureConfirmation"
+			ReceiptCaption="Signature Confirm."
+			Hint="Provides the date and time an article was delivered and, if delivery was attempted but not successful, the date and time of the delivery attempt. "
+			Caption="Signature Confirmation" 
+			FullName="Signature Confirmation"
+			HelpURL="dmm/503.htm&amp;anchor=10_0"
+			Price="$2.20"
+			Icon="SignatureConfirmation.png"/>
+		<Service Name="Rigid"
+			ReceiptCaption="Rigid"
+			Hint=""
+			Caption="" 
+			FullName="Rigid"
+			HelpURL="rigid.htm"
+			Price="$0.20"
+			Icon="Rigid.png"/>
+	</Services>
+</MailServices>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	creationComplete="onCreationComplete(event);"
+	>
+	<mx:Script>
+		<![CDATA[
+			import com.proiam.mails.LookUp;
+			import com.cykorsystems.utils.CachedURLLoader;
+			import mx.utils.StringUtil;
+			public var loaded:Boolean=false;
+			public var Lookups:Array=new Array();
+			
+			private function onCreationComplete(event:Event):void {
+				acc.visible=true;
+				var listLoader:CachedURLLoader = new CachedURLLoader(); 
+				listLoader.addEventListener(Event.COMPLETE,onListLoaded);
+				listLoader.load(new URLRequest("resources/tariffs/lookup.lst"));
+			}
+			private function onListLoaded(event:Event):void {
+				var lookup:LookUp;
+				var q:String=event.target.data;
+				var params:Array = StringUtil.trim(q).split("\r\n");
+				var lookUpData:Array;
+				try {
+					for (var i:int=0;i <params.length;i++) {
+						lookUpData=params[i].split(",");
+						var numParams:int=lookUpData.length;
+						if (numParams>0) {
+							var fileName:String=StringUtil.trim(lookUpData[0]);
+							var tariffName:String=fileName.split('.')[0];
+							if (numParams==1) {
+								lookup=new LookUp(tariffName,"resources/tariffs/",fileName);
+							} else if (numParams==3) { // includes coordinates for start of table
+								lookup=new LookUp(tariffName,"resources/tariffs/",fileName,lookUpData[1],lookUpData[2]);
+							} else if (numParams==5) { // includes coordinates for title
+								lookup=new LookUp(tariffName,"resources/tariffs/",fileName,lookUpData[1],lookUpData[2],lookUpData[3],lookUpData[4]);
+							}
+							Lookups.push(lookup);
+							acc.addChild(lookup);
+							lookup.x=0;//int(i%4)*250;
+							lookup.y=0;//int(i/4)*200;
+							lookup.setStyle("width","100%");
+							lookup.setStyle("height","100%");
+							break;
+						}
+					}
+				} finally {
+					loaded=true;
+				}
+			}
+		]]>
+	</mx:Script>
+	<mx:Canvas backgroundColor="#ECF5E7" />
+	<mx:Accordion id="acc" x="0" y="0" width="100%" height="100%" visible="false"/>	
+</mx:Canvas>

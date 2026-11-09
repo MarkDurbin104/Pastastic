@@ -1,0 +1,44 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{43ae9644-7009-4651-a49e-156404b763d3}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="ServiceTestHarness.dproj" />
+    <Projects Include="VU.iTService.dproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+  <BorlandProject xmlns=""> <Default.Personality> </Default.Personality> </BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="VU_iTService">
+    <MSBuild Projects="VU.iTService.dproj" Targets="" />
+  </Target>
+  <Target Name="VU_iTService:Clean">
+    <MSBuild Projects="VU.iTService.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="VU_iTService:Make">
+    <MSBuild Projects="VU.iTService.dproj" Targets="Make" />
+  </Target>
+  <Target Name="ServiceTestHarness">
+    <MSBuild Projects="ServiceTestHarness.dproj" Targets="" />
+  </Target>
+  <Target Name="ServiceTestHarness:Clean">
+    <MSBuild Projects="ServiceTestHarness.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="ServiceTestHarness:Make">
+    <MSBuild Projects="ServiceTestHarness.dproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="VU_iTService;ServiceTestHarness" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="VU_iTService:Clean;ServiceTestHarness:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="VU_iTService:Make;ServiceTestHarness:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

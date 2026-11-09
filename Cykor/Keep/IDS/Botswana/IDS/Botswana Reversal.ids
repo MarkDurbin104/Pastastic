@@ -1,0 +1,233 @@
+Products {
+
+   ReversalTran {
+      SubGroup { 'Reversal Transaction' }
+      Caption { 'Reversal Transaction Cash Account' }
+      BitMap {  '..\IMAGES\P_ReversalTran.bmp' }
+      Description  { 'Reversal Transaction Cash Account' }
+      Title        { 'Reversal Transaction Cash Account' }
+      Snippets {
+         SubOfficeRevVAL
+         SubOfficeRevEXEC
+         SubOfficeRevGET
+         SubOfficeRevSET
+         SubOfficeREvLOGVAR
+         SubOfficeRevLOG
+      }
+      Domains {
+         EntryDateRev
+         ReasonRev
+         UserNameRev
+         OfficeCodeRev
+         OfficeAccListRev
+      }
+      Items {
+         'Complete'
+      }
+   }
+
+
+
+
+}
+Domains {
+
+   OfficeAccListRev {
+      Title { 'Enter the Value' }
+      Prompt { 'Enter the Value' }
+      Hint { 'Please Enter the Value,^against each Cash Account Line' }
+      Error { 'Invalid Value - Please Re-Enter' }
+      Format {
+         List { 'CashAcc',Declare }
+      }
+   }
+
+   UserNameRev {
+      Title  { 'User Name' }
+      Prompt { 'User Name' }
+      Hint   { 'Select a User from the list' }
+      Error  { 'This user has no stock requests outstanding' }
+      Format {
+         PickList  { '' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   ReasonRev {
+         Title  { 'Reason' }
+         Prompt { 'Reason' }
+         Hint   { 'Enter the Reason' }
+         Error  { 'Enter a Valid Reason' }
+         Format { Mask { 'xxxxxxxxxxxxx'} }
+         InputFrom { 'Keyboard' }
+   }
+
+   EntryDateRev {
+      Title  { 'Cash Account Date' }
+      Prompt { 'Cash Account Date' }
+      Hint   { 'Enter Date of Cash Account' }
+      Error  { 'Enter Valid Cash Account Date' }
+      DefaultValue {'Now'}
+      Format {
+         Date
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   OfficeCodeRev {
+      Title  { 'Office Code' }
+      Prompt { 'Office Code' }
+      Hint   { 'Enter the Office Code' }
+      Error  { 'Enter a Valid Office Code' }
+      Format {
+         Range { '0,9999' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+}
+
+Snippets {
+
+   SubOfficeRevVAL {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+
+         Result:=TRUE;
+         if (EntryDateRev.Text = '') or (OfficeCodeRev.Text = '') or (UserNameRev.Text='') or (ReasonRev.Text='')then
+           Result:=FALSE;
+
+         if (EntryDateRev.Text = '') then
+            MoveFocusTo( EntryDateRev )
+         else if (ReasonRev.Text = '') then
+            MoveFocusTo( ReasonRev )
+         else if (UserNameRev.Text = '') then
+            MoveFocusTo( UserNameRev )
+         else if (OfficeCodeRev.Text = '') then
+            MoveFocusTo( OfficeCodeRev ) ;
+
+      *]
+      }
+   }
+
+   SubOfficeRevEXEC {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.OfficeAccListRev,UIEventSink.User,'CashAcc,Declare') then
+            begin
+               ProdForm.OfficeAccListRev.Clear;
+               ProdForm.OfficeAccListRev.Text:='No Stock Available';
+            end;
+         end;
+
+         ProdForm.UserNameRev.Items.CommaText := ListUsers;
+         ProdForm.UserNameRev.Items.Insert(0,'Supervisor');
+
+         ProdForm.EntryDateRev.Text:=FormatDateTime('dd/mm/yy',Now-1);
+         ProdForm.OfficeCodeRev.Ignore:=False;
+         ProdForm.EntryDateRev.Ignore:=False;
+         ProdForm.OfficeAccListRev.Ignore:=True;
+      *]
+      }
+   }
+
+   SubOfficeRevGET {
+      InsertBetween { '{ListGetDataStart}','{ListGetDataEnd}' }
+      CodeBlock {
+      [*
+         if ProdForm.OfficeAccListRev.Ignore = True then
+            Result:=GetFormData(ProdForm)
+         else
+            Result:=ProdForm.OfficeAccListRev.LineEditData;
+      *]
+      }
+   }
+
+   SubOfficeRevSET {
+      InsertBetween { '{ListSetDataStart}','{ListSetDataEnd}' }
+      CodeBlock {
+      [*
+         if ProdForm.OfficeAccListRev.Ignore = True then
+            SetFormData(Value,ProdForm)
+         else
+            ProdForm.OfficeAccListRev.SetLineEditData(Value);
+         ProdForm.CurrentLine:=FUIEventSink.CurrentLine;
+         if not FlagComplete(ProdForm.Validate) then FlagError:=True;
+
+         if (not FlagError) and (ProdForm.OfficeAccListRev.Ignore) then
+         begin
+            ProdForm.ReasonRev.Ignore:=True;
+            ProdForm.UserNameRev.Ignore:=True;
+            ProdForm.OfficeCodeRev.Ignore:=True;
+            ProdForm.EntryDateRev.Ignore:=True;
+		      // populate list based on office & date
+            ProdForm.OfficeAccListRev.Ignore:=False;
+         end;
+         if ProdForm.OfficeAccListRev.Ignore = True then
+            Result:=GetFormData(ProdForm)
+         else
+            Result:=ProdForm.OfficeAccListRev.LineEditData;
+      *]
+      }
+   }
+
+   SubOfficeRevLOGVAR {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+           I,
+           TempOfficeCode : Integer;
+           Value          : Currency;
+           OfficeAccLine  : TPackStringList;
+      *]
+      }
+   }
+
+   SubOfficeRevLOG {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+        OfficeAccLine:=TPackStringList.Create;
+        TempOfficeCode := TxnLog.Office;                             // store office code
+        TxnLog.Office := StrToIntDef(ProdForm.OfficeCodeRev.Text, -1);  // set office code
+        try
+           for I:=0 to ProdForm.OfficeAccListRev.Items.Count-1 do
+           begin
+              OfficeAccLine.PackText:=ProdForm.OfficeAccListRev.Items[I];
+              Value:=StrToCurrdef(OfficeAccLine[1],0);
+              if Value > 0 then
+              begin
+                 TxnLog.WriteTransaction(
+                    '*RevCashAcc',                                     // Type
+                    0,                                              // Index
+                    0,                                              // Quantity
+                    StrToIntDef(OfficeAccLine[8],9000000),          // plu
+                    Value,                                          // Value
+                    Value,                                          // Price
+                    OfficeAccLine[9],                               // Description
+                    IntToStr(StrToPeriod(ProdForm.EntryDateRev.Text)), // Additional
+                    OfficeAccLine[5],                               // ProgID
+                    ProdForm.UserNameRev.Text                       // DomInfo
+                 );
+              end;
+           end;
+        finally
+           TxnLog.Office := TempOfficeCode;                             // reset office code
+           OfficeAccLine.Free;
+        end;
+      *]
+      }
+   }
+
+
+}
+

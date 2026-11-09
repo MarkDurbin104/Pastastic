@@ -1,0 +1,66 @@
+
+.flatColorRectangleSkin {
+	
+    fontFamily: Arial;
+    fontSize: 12;
+    color: #FFFFFF;
+    textAlign:left;
+    width:150;
+    height:30;
+    
+    upSkin:ClassReference('programmaticSkinClasses.FlatColorRectangleSkin');
+	downSkin:ClassReference('programmaticSkinClasses.FlatColorRectangleSkin');
+	overSkin:ClassReference('programmaticSkinClasses.FlatColorRectangleSkin');
+	disabledSkin:ClassReference('programmaticSkinClasses.FlatColorRectangleSkin');
+}
+
+.flatColorRoundedRectangleSkin {
+	
+    fontFamily: Arial;
+    fontSize: 12;
+    color: #FFFFFF;
+    textAlign:left;
+    width:150;
+    height:30;
+    
+    upSkin:ClassReference('programmaticSkinClasses.FlatColorRoundedRectangleSkin');
+	downSkin:ClassReference('programmaticSkinClasses.FlatColorRoundedRectangleSkin');
+	overSkin:ClassReference('programmaticSkinClasses.FlatColorRoundedRectangleSkin');
+	disabledSkin:ClassReference('programmaticSkinClasses.FlatColorRoundedRectangleSkin');
+}
+
+.gradientRectangleSkin {
+	
+    fontFamily: Arial;
+    fontSize: 12;
+    color: #FFFFFF;
+    textAlign:left;
+    width:150;
+    height:30;
+    
+    upSkin:ClassReference('programmaticSkinClasses.GradientRectangleSkin');
+	downSkin:ClassReference('programmaticSkinClasses.GradientRectangleSkin');
+	overSkin:ClassReference('programmaticSkinClasses.GradientRectangleSkin');
+	disabledSkin:ClassReference('programmaticSkinClasses.GradientRectangleSkin');
+}
+.gradientRoundedRectangleSkin {
+	
+    fontFamily: Arial;
+    fontSize: 12;
+    color: #FFFFFF;
+    textAlign:left;
+    width:150;
+    height:30;
+    
+    upSkin:ClassReference('programmaticSkinClasses.GradientRoundedRectangleSkin');
+	downSkin:ClassReference('programmaticSkinClasses.GradientRoundedRectangleSkin');
+	overSkin:ClassReference('programmaticSkinClasses.GradientRoundedRectangleSkin');
+	disabledSkin:ClassReference('programmaticSkinClasses.GradientRoundedRectangleSkin');
+}
+.toolTip { 
+	fontFamily: Arial; 
+	fontSize: 24; 
+	fontStyle: italic; 
+	color: #FF6699; 
+	backgroundColor: #33CC99;
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<nodeSet>
+  <view uin="1btnfxfds3xeqg">
+    <property name="$name" value="default" />
+    <property name="$metaclass" value="Package Diagram" />
+    <reference referencedUin="source:Project1:Unit2">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="source:Project1:Unit2.TForm2">
+        <reference referencedUin="source:Project1:Unit2.TForm2.Button1" />
+        <reference referencedUin="source:Project1:Unit2.TForm2.Edit1" />
+        <reference referencedUin="source:Project1:Unit2.TForm2.Button1Click" />
+      </reference>
+    </reference>
+  </view>
+</nodeSet>

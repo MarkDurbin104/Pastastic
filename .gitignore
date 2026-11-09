@@ -1,0 +1,21 @@
+# Delphi/Pascal IDE state and local settings (not source, not deliverables)
+*.dsk
+*.~dsk
+*.local
+*.identcache
+*.tvsconfig
+*.ddp
+__history/
+__recovery/
+
+# Editor backup copies (*.~pas, *.~dfm, *.~dpr ...)
+*.~pa
+*.~pas
+*.~df
+*.~dfm
+*.~dp
+*.~dpr
+
+# NOTE: compiled output (.exe/.dll/.dcu/.obj/.bpl) is deliberately NOT ignored.
+# These are 1996-2009 archives; the shipped binaries are part of the historical
+# record. Add specific paths here if any prove too large to keep.

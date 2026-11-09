@@ -1,0 +1,37 @@
+?S Merge two adjacent rectangles of the same height
+?R (BOOL) TRUE if the rectangle was merged with an adjacent one
+?C free,
+?U 
+?P (l) The list of all rectangles
+?P (p) The Current rectangle
+?D Merge two adjacent rectangles of the same height
+BOOL YAdjRect(PLIST *p,PLIST *l)
+{
+    PLIST *lastl;   /* previous point in list */
+
+    while (l!=NULL) {
+        lastl=l;
+        l=l->next;
+        if (l!=NULL) {
+            /* rectangles same width and start pos */
+            if ((l!=p)&&(l->X==p->X)&&(l->X1==p->X1)) {
+                /* touching along bottom edge */
+                if ((l->Y==p->Y1)||(l->Y==p->Y1+1)) { 
+                    p->Y1=l->Y1;         /* adjust edge down */
+                    lastl->next=l->next; /* remove rectangle form list */
+                    free(l);
+                    return(TRUE); /* found touching rectangle */
+                }
+                /* touching along top edge */
+                if ((l->Y1==p->Y)||(l->Y1+1==p->Y)) {
+                    p->Y=l->Y;           /* adjust edge up */
+                    lastl->next=l->next; /* remove rectangle form list */
+                    free(l);
+                    return(TRUE); /* found touching rectangle */
+                }
+            }    
+            l=l->next;
+        }
+    }
+    return (FALSE); /* did not find touching rectangle */
+}

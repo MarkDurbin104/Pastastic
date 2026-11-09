@@ -1,0 +1,285 @@
+//****************************************************************************************//
+//**                                                                                    **//
+//**                              Base IDS Files                                        **//
+//**                                                                                    **//
+//****************************************************************************************//
+
+Products
+{
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  BaseProd {
+             DontBuild
+             SubGroup { Base       }
+             Items    { Complete   }
+//           LogAs    { DefaultLog }
+            }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  BaseWeightProd {
+                   DontBuild
+                   Group   { Base                             }
+                   BasedOn { BaseProd                         }
+                   Domains { Weight   StandardFee { Weight }  }
+                   LogAs   { Weight                           }
+                  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+
+  BaseWeightNoStandFee {
+    DontBuild
+    Group   { Base      }
+    BasedOn { BaseProd  }
+    Domains {
+      Weight
+      BulkQuantity
+      BulkTotal
+    }
+    Snippets {
+      BulkTotalPOSTEXEC
+      BulkTotalPOSTVAL
+    }
+    LogAs   { Weight    }
+  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+
+  BaseSurface {
+     DontBuild
+     //BasedOn  { BaseWeightProd    }
+     BasedOn  { BaseWeightNoStandFee }
+     SubGroup { 'Mail Sur International' }
+     Domains  { Weight
+                BulkQuantity
+              }
+     Snippets {
+               MailItemLog
+               }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  BaseSurfaceDest {
+     DontBuild
+     BasedOn  { BaseSurface }
+     Domains  { Weight
+                MailSurDestination
+                BulkQuantity
+              }
+  }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  BaseGovSurfaceDest {
+     DontBuild
+     BasedOn  { BaseSurface }
+     SubGroup { 'Government Mail Surface International' }
+     Domains  { Weight
+                IntGovSurRegDestination
+                BulkQuantity
+                CustomerList
+              }
+     Snippets {
+               UtilsUses
+               CustomerFillGov
+               CustomerPayExecVars
+               GovMailLog
+               GovMailSetLastCustomer
+              }
+  }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+  BaseAirDest {
+    DontBuild
+    BasedOn  { BaseWeightNoStandFee }
+    SubGroup { 'Mail Air International' }
+    Domains  { Weight
+               MailAirDestination
+               BulkQuantity
+               BulkTotal
+    }
+    Snippets { MailItemLog }
+  }
+//
+//------------------------------------------------------------------------------------------
+//
+
+  BaseGovAirDest {
+     DontBuild
+     BasedOn  { BaseWeightNoStandFee }
+     SubGroup { 'Government Mail Air International' }
+     Domains  { Weight
+                IntGovAirRegDestination
+                BulkQuantity
+                CustomerList
+              }
+     Snippets {
+               UtilsUses
+               CustomerFillGov
+               CustomerPayExecVars
+               GovMailLog
+               GovMailSetLastCustomer
+              }
+  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+
+   BaseParcel  {
+     DontBuild
+     SubGroup { 'Mail Parcel' }
+     BasedOn  { BaseWeightProd }
+     Domains  {
+         ParcelInsurance
+         ParcelExpress
+     }
+     Snippets {
+         DisableParcelExecute
+     }
+
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+
+  BaseExpress {
+                DontBuild
+                BasedOn  { BaseWeightProd }
+                SubGroup { Express        }
+               }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//  BaseBank {
+//             DontBuild
+//             BasedOn  { BaseProd }
+//             SubGroup { Bank     }
+//            }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+  BaseAdmin {
+              DontBuild
+              SubGroup { 'Administration' }
+             }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//  BaseMoneyOrder {
+//                   DontBuild
+//                   BasedOn  { BaseProd  }
+//                   SubGroup { Financial }
+//                  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+ BaseFinancial {
+                 DontBuild
+                 BasedOn  { BaseProd  }
+                 SubGroup { Financial }
+                }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+ BaseRent {
+            DontBuild
+            SubGroup { Rent     }
+           }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+ BaseRentComplete {
+            DontBuild
+            BasedOn  { BaseRent }
+            Items    { Complete   }
+           }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+
+ BaseAgency {
+              DontBuild
+              BasedOn  { BaseProd }
+              SubGroup { Agency   }
+             }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+ BaseSales {
+             DontBuild
+             BasedOn  { BaseProd }
+             SubGroup { Sales    }
+            }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  BaseCertificates {
+              DontBuild
+              SubGroup { 'Certificates' }
+             }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  BaseOptionalServices {
+              DontBuild
+              SubGroup { 'Optional Services' }
+             }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  BaseDelivery {
+              DontBuild
+              SubGroup { 'Delivery' }
+             }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+}

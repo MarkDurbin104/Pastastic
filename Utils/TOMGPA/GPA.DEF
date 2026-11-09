@@ -1,0 +1,25 @@
+;*******************************************************
+; GPA.DEF
+; Module definition file
+;
+; $Revision$  $Date$  $Author$
+;
+; $Log$
+; 
+;*******************************************************
+
+NAME            GPA
+DESCRIPTION     'UNISYS Generic Postal Architecture Run-Time'
+CODE            PRELOAD MOVEABLE DISCARDABLE
+DATA            PRELOAD MOVEABLE
+
+; NOTE - Do NOT use the SEGMENTS command. For some reason the
+; Borland Run-Time Manager gradually consumes ALL memory if 
+; SEGMENTS are declared!
+; 
+;SEGMENTS
+;        OSSDEV_TEXT CLASS 'CODE' FIXED
+;        _DATA CLASS 'DATA' FIXED
+
+STACKSIZE       8192
+HEAPSIZE        4096

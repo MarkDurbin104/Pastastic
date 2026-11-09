@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="72" height="62"
+	backgroundImage="@Embed(source='embedded/InputKeyBG.png')" 
+	backgroundSize="100%"
+	 buttonMode="true">
+	<mx:String id="key" >0</mx:String>
+	<mx:Label text="{key}" horizontalCenter="0" verticalCenter="0" textAlign="center" fontWeight="bold" fontSize="24" fontFamily="Tahoma" color="#004663" buttonMode="true"/>
+	
+</mx:Canvas>

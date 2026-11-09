@@ -1,0 +1,66 @@
+M TMP.C
+F fooi
+S Synopsis for foo
+D Description for foo
+P the first arg
+
+M TMP.C
+F fooh
+S Synopsis for foo
+D Description for foo
+P the first arg
+
+M TMP.C
+F foog
+S Synopsis for foo
+D Description for foo
+P the first arg
+
+M TMP.C
+F foof
+S Synopsis for foo
+D Description for foo
+P the first arg
+
+M TMP.C
+F fooe
+S Synopsis for foo
+D Description for foo
+P the first arg
+
+M TMP.C
+F food
+S Synopsis for foo
+D Description for foo
+P the first arg
+
+M TMP.C
+F fooc
+S Synopsis for foo
+D Description for foo
+P the first arg
+
+M TMP.C
+F foob
+S Synopsis for foo
+D Description for foo
+P the first arg
+
+M TMP.C
+F fooa
+S Synopsis for foo
+D Description for foo
+P the first arg
+
+M TMP.C
+F bar
+S Synopsis for bar
+D Description for bar
+R the ret value
+
+M TMP.C
+F main
+S Synopsis for main
+D Description for main
+R the ret value
+

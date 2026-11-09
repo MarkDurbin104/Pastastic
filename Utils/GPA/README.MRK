@@ -1,0 +1,24 @@
+				20/2/95
+
+Hi Mark,
+
+The files attached are the latest revisions I had from you
+with comments added.
+
+I notice config.h has a set of G_rec***** globals added. Are these
+all to do with buffered database handling?
+
+
+Tom
+
+
+
+	actionc  h
+	config   h
+	types    h
+
+	capgpa   c
+	formproc c
+	gpamain  c
+	menuproc c
+          

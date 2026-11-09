@@ -1,0 +1,244 @@
+Cheque,0.01,Cash,6100000,Cash,Cash,Cash,Product.Cheque,Clerk,Supervisor,Declare
+Credit Card Receipts,0.01,Cash,6100010,Cash,Cash,Cash,Product.Cheque,Clerk,Supervisor,Declare
+QAR 0.25 Coin,0.25,CashDenom,6000025,Cash,Cash,Cash,Product.Cash00025,Clerk,Supervisor,Declare
+QAR 0.50 Coin,0.5,CashDenom,6000050,Cash,Cash,Cash,Product.Cash00050,Clerk,Supervisor,Declare
+QAR 1.00 Note,1,CashDenom,6000100,Cash,Cash,Cash,Product.Cash00100,Clerk,Supervisor,Declare
+QAR 5.00 Note,5,CashDenom,6000500,Cash,Cash,Cash,Product.Cash00500,Clerk,Supervisor,Declare
+QAR 10.00 Note,10,CashDenom,6001000,Cash,Cash,Cash,Product.Cash01000,Clerk,Supervisor,Declare
+QAR 50.00 Note,50,CashDenom,6005000,Cash,Cash,Cash,Product.Cash05000,Clerk,Supervisor,Declare
+QAR 100.00 Note,100,CashDenom,6010000,Cash,Cash,Cash,Product.Cash10000,Clerk,Supervisor,Declare
+QAR 500.00 Note,500,CashDenom,6050000,Cash,Cash,Cash,Product.Cash50000,Clerk,Supervisor,Declare
+QAR 0.25 Stamp,0.25,Stamps,9000025,Stamps,Stock,POSTAGESTAMPS,Product.Stamp25,Clerk,Supervisor,Declare
+QAR 0.50 Stamp,0.5,Stamps,9000050,Stamps,Stock,POSTAGESTAMPS,Product.Stamp50,Clerk,Supervisor,Declare
+QAR 0.75 Stamp,0.75,Stamps,9000075,Stamps,Stock,POSTAGESTAMPS,Product.Stamp75,Clerk,Supervisor,Declare
+QAR 1.00 Stamp,1,Stamps,9000100,Stamps,Stock,POSTAGESTAMPS,Product.Stamp100,Clerk,Supervisor,Declare
+QAR 1.50 Stamp,1.5,Stamps,9000150,Stamps,Stock,POSTAGESTAMPS,Product.Stamp150,Clerk,Supervisor,Declare
+QAR 2.00 Stamp,2,Stamps,9000200,Stamps,Stock,POSTAGESTAMPS,Product.Stamp200,Clerk,Supervisor,Declare
+QAR 2.50 Stamp,2.5,Stamps,9000250,Stamps,Stock,POSTAGESTAMPS,Product.Stamp250,Clerk,Supervisor,Declare
+QAR 3.00 Stamp,3,Stamps,9000300,Stamps,Stock,POSTAGESTAMPS,Product.Stamp300,Clerk,Supervisor,Declare
+QAR 4.00 Stamp,4,Stamps,9000400,Stamps,Stock,POSTAGESTAMPS,Product.Stamp400,Clerk,Supervisor,Declare
+QAR 5.00 Stamp,5,Stamps,9000500,Stamps,Stock,POSTAGESTAMPS,Product.Stamp500,Clerk,Supervisor,Declare
+QAR 10.00 Stamp,10,Stamps,9001000,Stamps,Stock,POSTAGESTAMPS,Product.Stamp1000,Clerk,Supervisor,Declare
+QAR 15.00 Stamp,15,Stamps,9001500,Stamps,Stock,POSTAGESTAMPS,Product.Stamp1500,Clerk,Supervisor,Declare
+QAR 20.00 Stamp,20,Stamps,9002000,Stamps,Stock,POSTAGESTAMPS,Product.Stamp2000,Clerk,Supervisor,Declare
+QAR 30.00 Stamp,30,Stamps,9003000,Stamps,Stock,POSTAGESTAMPS,Product.Stamp3000,Clerk,Supervisor,Declare
+QAR 1.00 Revenue Stamp,1,TillStock,9100100,TillStock,RevenueStamps,REVENUE STAMPS,Product.RevenueStamp100,Clerk,Supervisor,Declare
+QAR 2.00 Revenue Stamp,2,TillStock,9100200,TillStock,RevenueStamps,REVENUE STAMPS,Product.RevenueStamp200,Clerk,Supervisor,Declare
+QAR 5.00 Revenue Stamp,5,TillStock,9100500,TillStock,RevenueStamps,REVENUE STAMPS,Product.RevenueStamp500,Clerk,Supervisor,Declare
+QAR 10.00 Revenue Stamp,10,TillStock,9101000,TillStock,RevenueStamps,REVENUE STAMPS,Product.RevenueStamp1000,Clerk,Supervisor,Declare
+QAR 15.00 Revenue Stamp,15,TillStock,9101500,TillStock,RevenueStamps,REVENUE STAMPS,Product.RevenueStamp1500,Clerk,Supervisor,Declare
+QAR 50.00 Revenue Stamp,50,TillStock,9105000,TillStock,RevenueStamps,REVENUE STAMPS,Product.RevenueStamp5000,Clerk,Supervisor,Declare
+QAR 100.00 Revenue Stamp,100,TillStock,9110000,TillStock,RevenueStamps,REVENUE STAMPS,Product.RevenueStamp10000,Clerk,Supervisor,Declare
+QAR 200.00 Revenue Stamp,200,TillStock,9120000,TillStock,RevenueStamps,REVENUE STAMPS,Product.RevenueStamp20000,Clerk,Supervisor,Declare
+QAR 500.00 Revenue Stamp,500,TillStock,9150000,TillStock,RevenueStamps,REVENUE STAMPS,Product.RevenueStamp50000,Clerk,Supervisor,Declare
+QAR 2.00 Tax Stamp,2,TillStock,9100201,TillStock,RevenueStamps,REVENUE STAMPS,Product.TaxStamp200,Clerk,Supervisor,Declare
+QAR 5.00 Tax Stamp,5,TillStock,9100501,TillStock,RevenueStamps,REVENUE STAMPS,Product.TaxStamp500,Clerk,Supervisor,Declare
+Used Postage Labels,0.01,PostLabel,2100000,PostLabel,PostLabel,PostLabel,Product.UsedPostageLabel,Clerk,Supervisor,Declare
+Hala Card - QAR50.00,50,TillStock,2100030,TelCard,TelCard,RETAIL,Product.HalaCardQAR50,Clerk,Supervisor,Declare
+Hala Card - QAR100.00,100,TillStock,2100040,TelCard,TelCard,RETAIL,Product.HalaCardQAR100,Clerk,Supervisor,Declare
+QCard - QAR30.00,30,TillStock,2100050,TelCard,TelCard,RETAIL,Product.QCardQAR30,Clerk,Supervisor,Declare
+QCard - QAR50.00,50,TillStock,2100060,TelCard,TelCard,RETAIL,Product.QCardQAR50,Clerk,Supervisor,Declare
+QCard - QAR100.00,100,TillStock,2100070,TelCard,TelCard,RETAIL,Product.QCardQAR100,Clerk,Supervisor,Declare
+SmartCard - QAR30.00,30,TillStock,2100080,TelCard,TelCard,RETAIL,Product.SmartCardQAR30,Clerk,Supervisor,Declare
+SmartCard - QAR50.00,50,TillStock,2100100,TelCard,TelCard,RETAIL,Product.SmartCardQAR50,Clerk,Supervisor,Declare
+IRC,4,TillStock,2000300,TillStock,IRC,RETAIL,Product.IRC,Clerk,Supervisor,Declare
+Envelope A,2,TillStock,2100300,TillStock,Stationery,RETAIL,Product.EnvA,Clerk,Supervisor,Declare
+Envelope B,3,TillStock,2100400,TillStock,Stationery,RETAIL,Product.EnvB,Clerk,Supervisor,Declare
+Envelope C,5,TillStock,2100500,TillStock,Stationery,RETAIL,Product.EnvC,Clerk,Supervisor,Declare
+Parcel Box size 2,2,TillStock,2100501,TillStock,Stationery,RETAIL,Product.ParcBox2,Clerk,Supervisor,Declare
+Parcel Box size 3,3,TillStock,2100502,TillStock,Stationery,RETAIL,Product.ParcBox3,Clerk,Supervisor,Declare
+Parcel Box size 4,4,TillStock,2100503,TillStock,Stationery,RETAIL,Product.ParcBox4,Clerk,Supervisor,Declare
+Parcel Box size 5,5,TillStock,2100504,TillStock,Stationery,RETAIL,Product.ParcBox5,Clerk,Supervisor,Declare
+Parcel Box size 6,6,TillStock,2100505,TillStock,Stationery,RETAIL,Product.ParcBox6,Clerk,Supervisor,Declare
+Parcel Box size 7,7,TillStock,2100506,TillStock,Stationery,RETAIL,Product.ParcBox7,Clerk,Supervisor,Declare
+Parcel Box size 10,10,TillStock,2100507,TillStock,Stationery,RETAIL,Product.ParcBox10,Clerk,Supervisor,Declare
+Parcel Box size 12,12,TillStock,2100508,TillStock,Stationery,RETAIL,Product.ParcBox12,Clerk,Supervisor,Declare
+Parcel Box size 14,14,TillStock,2100509,TillStock,Stationery,RETAIL,Product.ParcBox14,Clerk,Supervisor,Declare
+Picture Postcard,1,TillStock,2100550,TillStock,Stationery,RETAIL,Product.PictPostcard,Clerk,Supervisor,Declare
+Aerogramme,1.5,TillStock,2100600,TillStock,Stationery,RETAIL,Product.Aerogramme,Clerk,Supervisor,Declare
+Dummy Retail Item 1,1,Retail,2010010,Retail,Stock,POSTSHOP,Product.DummyRetailItem1,Clerk,Supervisor,Declare
+Dummy Retail Item 2,2,Retail,2010020,Retail,Stock,POSTSHOP,Product.DummyRetailItem2,Clerk,Supervisor,Declare
+Set-Old Mosques,4,Philatelic,7000010,PSet,PSet,PHILATELIC,Product.SetOldMosques,Clerk,Supervisor,Declare
+Set-World Day for Water,1.25,Philatelic,7000020,PSet,PSet,PHILATELIC,Product.SetWorldWaterDay,Clerk,Supervisor,Declare
+Set-Int Year of the Family,1.25,Philatelic,7000030,PSet,PSet,PHILATELIC,Product.SetIntYearFamily,Clerk,Supervisor,Declare
+Set-Rock Carvings,6,Philatelic,7000040,PSet,PSet,PHILATELIC,Product.SetRockCarvings,Clerk,Supervisor,Declare
+Set-Gulf Envt Day (Sea Shells),7,Philatelic,7000050,PSet,PSet,PHILATELIC,Product.SetGulfEnvDay,Clerk,Supervisor,Declare
+Set-Int Nursing Day,2.5,Philatelic,7000060,PSet,PSet,PHILATELIC,Product.SetIntNursingDay,Clerk,Supervisor,Declare
+Set-24th Anniv Independence,5,Philatelic,7000070,PSet,PSet,PHILATELIC,Product.SetIndep24thAnniv,Clerk,Supervisor,Declare
+Set-Gazelles,6,Philatelic,7000080,PSet,PSet,PHILATELIC,Product.SetGazelles,Clerk,Supervisor,Declare
+Set-No To Drugs,1.5,Philatelic,7000090,PSet,PSet,PHILATELIC,Product.SetNoToDrugs,Clerk,Supervisor,Declare
+Set-Atlanta Olympics,3.5,Philatelic,7000100,PSet,PSet,PHILATELIC,Product.SetAtlantaOlympics,Clerk,Supervisor,Declare
+Set-Definitive,75,Philatelic,7000110,PSet,PSet,PHILATELIC,Product.SetDefinite,Clerk,Supervisor,Declare
+Set-50th Anniv UNICEF,1.5,Philatelic,7000120,PSet,PSet,PHILATELIC,Product.SetUNICEF50thAnniv,Clerk,Supervisor,Declare
+Set-Castles (Forts),5,Philatelic,7000130,PSet,PSet,PHILATELIC,Product.SetCastles,Clerk,Supervisor,Declare
+Set-Arab Horses,3.5,Philatelic,7000140,PSet,PSet,PHILATELIC,Product.SetArabHorses,Clerk,Supervisor,Declare
+Set-26th Anniv Independence,2.5,Philatelic,7000150,PSet,PSet,PHILATELIC,Product.SetIndep24thAnniv,Clerk,Supervisor,Declare
+Set-Doha-Mena Ec Conf,2,Philatelic,7000160,PSet,PSet,PHILATELIC,Product.SetEcConf,Clerk,Supervisor,Declare
+Set-Insects,40,Philatelic,7000170,PSet,PSet,PHILATELIC,Product.SetInsects,Clerk,Supervisor,Declare
+Set-Early Diving Equipment,3.5,Philatelic,7000180,PSet,PSet,PHILATELIC,Product.SetEarlyDivingEquipt,Clerk,Supervisor,Declare
+Set-Silver Jubilee QA Univ,2.5,Philatelic,7000190,PSet,PSet,PHILATELIC,Product.SetQAUnivSilver,Clerk,Supervisor,Declare
+Set-27th Anniv Independence,2.5,Philatelic,7000200,PSet,PSet,PHILATELIC,Product.SetIndep27thAnniv,Clerk,Supervisor,Declare
+Set-Camels,3.5,Philatelic,7000210,PSet,PSet,PHILATELIC,Product.SetCamels,Clerk,Supervisor,Declare
+Set-F.E.I. Gen Ass Meeting,1.5,Philatelic,7000220,PSet,PSet,PHILATELIC,Product.SetFEIGenAssMeeting,Clerk,Supervisor,Declare
+Set-Old Islamic Coins,15,Philatelic,7000230,PSet,PSet,PHILATELIC,Product.SetOldIslamicCoins,Clerk,Supervisor,Declare
+Set-28th Anniv Independence,2.5,Philatelic,7000240,PSet,PSet,PHILATELIC,Product.SetIndep28thAnniv,Clerk,Supervisor,Declare
+Set-125th Anniv UPU,2.5,Philatelic,7000250,PSet,PSet,PHILATELIC,Product.SetUPU125thAnniv,Clerk,Supervisor,Declare
+Set-5th GCC Stamps Exhib,2.5,Philatelic,7000260,PSet,PSet,PHILATELIC,Product.SetGCCStamps5thExhib,Clerk,Supervisor,Declare
+Set-Doha 2000,3.5,Philatelic,7000270,PSet,PSet,PHILATELIC,Product.SetDoha2000,Clerk,Supervisor,Declare
+Set-QA Open 2000 - Emir Cup,2.5,Philatelic,7000280,PSet,PSet,PHILATELIC,Product.SetQAOpen2000,Clerk,Supervisor,Declare
+Set-GCC Water Week 2000,2.5,Philatelic,7000290,PSet,PSet,PHILATELIC,Product.SetWaterWeek2000,Clerk,Supervisor,Declare
+Set-15th Asian Table Tennis,1.5,Philatelic,7000300,PSet,PSet,PHILATELIC,Product.Set15thAsianTableTennis,Clerk,Supervisor,Declare
+Set-29th Anniv Independence,2.5,Philatelic,7000310,PSet,PSet,PHILATELIC,Product.SetIndep29thAnniv,Clerk,Supervisor,Declare
+Set-Golden Jubilee QA PO,3.5,Philatelic,7000320,PSet,PSet,PHILATELIC,Product.SetQAPOGolden,Clerk,Supervisor,Declare
+Set-9th Islamic Summit ,2.5,Philatelic,7000330,PSet,PSet,PHILATELIC,Product.Set9thIslSummit,Clerk,Supervisor,Declare
+Set-30th Anniv Independence,2.5,Philatelic,7000340,PSet,PSet,PHILATELIC,Product.SetIndep30thAnniv,Clerk,Supervisor,Declare
+Set-Dialogue among civilizations,3.5,Philatelic,7000350,PSet,PSet,PHILATELIC,Product.SetDialogue,Clerk,Supervisor,Declare
+Set-4th Ministerial Conf 2001,2.5,Philatelic,7000360,PSet,PSet,PHILATELIC,Product.SetMinConf2000,Clerk,Supervisor,Declare
+Set-Old Doors,4.5,Philatelic,7000370,PSet,PSet,PHILATELIC,Product.SetOldDoors,Clerk,Supervisor,Declare
+Set-FIFA World Cup 2002,36,Philatelic,7000380,PSet,PSet,PHILATELIC,Product.SetWorldCup2002,Clerk,Supervisor,Declare
+Set-Asian Games,4,Philatelic,7000390,PSet,PSet,PHILATELIC,Product.SetAsianGames,Clerk,Supervisor,Declare
+Set-1st Anniv Gen Post Corp,4,Philatelic,7000400,PSet,PSet,PHILATELIC,Product.SetGPC1stAnniv,Clerk,Supervisor,Declare
+Set-World No Tobacco Day,1.5,Philatelic,7000410,PSet,PSet,PHILATELIC,Product.SetNoTobacco,Clerk,Supervisor,Declare
+Set-25th Anniv QA Red Cresc ,1.5,Philatelic,7000420,PSet,PSet,PHILATELIC,Product.SetRedCresc25thAnniv,Clerk,Supervisor,Declare
+Set-Jewellery ,4.5,Philatelic,7000430,PSet,PSet,PHILATELIC,Product.SetJewellery,Clerk,Supervisor,Declare
+Set-100th Anniv Aviation,2,Philatelic,7000440,PSet,PSet,PHILATELIC,Product.SetAviation,Clerk,Supervisor,Declare
+SH-Old Mosques,16,Philatelic,7000011,PSheet,PSheet,PHILATELIC,Product.ShOldMosques,Clerk,Supervisor,Declare
+SH-World Day for Water,25,Philatelic,7000021,PSheet,PSheet,PHILATELIC,Product.ShWorldWaterDay,Clerk,Supervisor,Declare
+SH-Int Year of the Family,25,Philatelic,7000031,PSheet,PSheet,PHILATELIC,Product.ShIntYearFamily,Clerk,Supervisor,Declare
+SH-Rock Carvings,24,Philatelic,7000041,PSheet,PSheet,PHILATELIC,Product.ShRockCarvings,Clerk,Supervisor,Declare
+SH-Gulf Envt Day (Sea Shells),42,Philatelic,7000051,PSheet,PSheet,PHILATELIC,Product.ShGulfEnvDay,Clerk,Supervisor,Declare
+SH-Int Nursing Day,62.5,Philatelic,7000061,PSheet,PSheet,PHILATELIC,Product.ShIntNursingDay,Clerk,Supervisor,Declare
+SH-24th Anniv Independence,40,Philatelic,7000071,PSheet,PSheet,PHILATELIC,Product.ShIndep24thAnniv,Clerk,Supervisor,Declare
+SH-Gazelles,24,Philatelic,7000081,PSheet,PSheet,PHILATELIC,Product.ShGazelles,Clerk,Supervisor,Declare
+SH-No To Drugs,75,Philatelic,7000091,PSheet,PSheet,PHILATELIC,Product.ShNoToDrugs,Clerk,Supervisor,Declare
+SH-Atlanta Olympics,17.5,Philatelic,7000101,PSheet,PSheet,PHILATELIC,Product.ShAtlantaOlympics,Clerk,Supervisor,Declare
+SH-Definitive,3750,Philatelic,7000111,PSheet,PSheet,PHILATELIC,Product.ShDefinite,Clerk,Supervisor,Declare
+SH-50th Anniv UNICEF,37.5,Philatelic,7000121,PSheet,PSheet,PHILATELIC,Product.ShUNICEF50thAnniv,Clerk,Supervisor,Declare
+SH-Castles (Forts),125,Philatelic,7000131,PSheet,PSheet,PHILATELIC,Product.ShCastles,Clerk,Supervisor,Declare
+SH-Arab Horses,70,Philatelic,7000141,PSheet,PSheet,PHILATELIC,Product.ShArabHorses,Clerk,Supervisor,Declare
+SH-26th Anniv Independence,62.5,Philatelic,7000151,PSheet,PSheet,PHILATELIC,Product.ShIndep24thAnniv,Clerk,Supervisor,Declare
+SH-Doha-Mena Ec Conf,60,Philatelic,7000161,PSheet,PSheet,PHILATELIC,Product.ShEcConf,Clerk,Supervisor,Declare
+SH-Insects,40,Philatelic,7000171,PSheet,PSheet,PHILATELIC,Product.ShInsects,Clerk,Supervisor,Declare
+SH-Early Diving Equipment,35,Philatelic,7000181,PSheet,PSheet,PHILATELIC,Product.ShEarlyDivingEquipt,Clerk,Supervisor,Declare
+SH-Silver Jubilee QA Univ,125,Philatelic,7000191,PSheet,PSheet,PHILATELIC,Product.ShQAUnivSilver,Clerk,Supervisor,Declare
+SH-27th Anniv Independence,125,Philatelic,7000201,PSheet,PSheet,PHILATELIC,Product.ShIndep27thAnniv,Clerk,Supervisor,Declare
+SH-Camels,35,Philatelic,7000211,PSheet,PSheet,PHILATELIC,Product.ShCamels,Clerk,Supervisor,Declare
+SH-F.E.I. Gen Ass Meeting,60,Philatelic,7000221,PSheet,PSheet,PHILATELIC,Product.ShFEIGenAssMeeting,Clerk,Supervisor,Declare
+SH-Old Islamic Coins,60,Philatelic,7000231,PSheet,PSheet,PHILATELIC,Product.ShOldIslamicCoins,Clerk,Supervisor,Declare
+SH-28th Anniv Independence,125,Philatelic,7000241,PSheet,PSheet,PHILATELIC,Product.ShIndep28thAnniv,Clerk,Supervisor,Declare
+SH-125th Anniv UPU,62.5,Philatelic,7000251,PSheet,PSheet,PHILATELIC,Product.ShUPU125thAnniv,Clerk,Supervisor,Declare
+SH-5th GCC Stamps Exhib,62.5,Philatelic,7000261,PSheet,PSheet,PHILATELIC,Product.ShGCCStamps5thExhib,Clerk,Supervisor,Declare
+SH-Doha 2000,87.5,Philatelic,7000271,PSheet,PSheet,PHILATELIC,Product.ShDoha2000,Clerk,Supervisor,Declare
+SH-QA Open 2000 - Emir Cup,100,Philatelic,7000281,PSheet,PSheet,PHILATELIC,Product.ShQAOpen2000,Clerk,Supervisor,Declare
+SH-GCC Water Week 2000,125,Philatelic,7000291,PSheet,PSheet,PHILATELIC,Product.ShWaterWeek2000,Clerk,Supervisor,Declare
+SH-15th Asian Table Tennis,37.5,Philatelic,7000301,PSheet,PSheet,PHILATELIC,Product.Sh15thAsianTableTennis,Clerk,Supervisor,Declare
+SH-29th Anniv Independence,62.5,Philatelic,7000311,PSheet,PSheet,PHILATELIC,Product.ShIndep29thAnniv,Clerk,Supervisor,Declare
+SH-Golden Jubilee QA PO,87.5,Philatelic,7000321,PSheet,PSheet,PHILATELIC,Product.ShQAPOGolden,Clerk,Supervisor,Declare
+SH-9th Islamic Summit ,37.5,Philatelic,7000331,PSheet,PSheet,PHILATELIC,Product.Sh9thIslSummit,Clerk,Supervisor,Declare
+SH-30th Anniv Independence,62.5,Philatelic,7000341,PSheet,PSheet,PHILATELIC,Product.ShIndep30thAnniv,Clerk,Supervisor,Declare
+SH-Dialogue among civilizations,70,Philatelic,7000351,PSheet,PSheet,PHILATELIC,Product.ShDialogue,Clerk,Supervisor,Declare
+SH-4th Ministerial Conf 2001,50,Philatelic,7000361,PSheet,PSheet,PHILATELIC,Product.ShMinConf2000,Clerk,Supervisor,Declare
+SH-Old Doors,112.5,Philatelic,7000371,PSheet,PSheet,PHILATELIC,Product.ShOldDoors,Clerk,Supervisor,Declare
+SH-FIFA World Cup 2002,36,Philatelic,7000381,PSheet,PSheet,PHILATELIC,Product.ShWorldCup2002,Clerk,Supervisor,Declare
+SH-Asian Games,4,Philatelic,7000391,PSheet,PSheet,PHILATELIC,Product.ShAsianGames,Clerk,Supervisor,Declare
+SH-1st Anniv Gen Post Corp,44,Philatelic,7000401,PSheet,PSheet,PHILATELIC,Product.ShGPC1stAnniv,Clerk,Supervisor,Declare
+SH-World No Tobacco Day,30,Philatelic,7000411,PSheet,PSheet,PHILATELIC,Product.ShNoTobacco,Clerk,Supervisor,Declare
+SH-25th Anniv QA Red Cresc ,13.5,Philatelic,7000421,PSheet,PSheet,PHILATELIC,Product.ShRedCresc25thAnniv,Clerk,Supervisor,Declare
+SH-Jewellery ,67.5,Philatelic,7000431,PSheet,PSheet,PHILATELIC,Product.ShJewellery,Clerk,Supervisor,Declare
+SH-100th Anniv Aviation,2,Philatelic,7000441,PSheet,PSheet,PHILATELIC,Product.ShAviation,Clerk,Supervisor,Declare
+F-Old Mosques,4,Philatelic,7000012,PFDC,PFDC,PHILATELIC,Product.FDCOldMosques,Clerk,Supervisor,Declare
+F-World Day for Water,1.25,Philatelic,7000022,PFDC,PFDC,PHILATELIC,Product.FDCWorldWaterDay,Clerk,Supervisor,Declare
+F-Int Year of the Family,1.25,Philatelic,7000032,PFDC,PFDC,PHILATELIC,Product.FDCIntYearFamily,Clerk,Supervisor,Declare
+F-Rock Carvings,6,Philatelic,7000042,PFDC,PFDC,PHILATELIC,Product.FDCRockCarvings,Clerk,Supervisor,Declare
+F-Gulf Envt Day (Sea Shells),7,Philatelic,7000052,PFDC,PFDC,PHILATELIC,Product.FDCGulfEnvDay,Clerk,Supervisor,Declare
+F-Int Nursing Day,2.5,Philatelic,7000062,PFDC,PFDC,PHILATELIC,Product.FDCIntNursingDay,Clerk,Supervisor,Declare
+F-24th Anniv Independence,5,Philatelic,7000072,PFDC,PFDC,PHILATELIC,Product.FDCIndep24thAnniv,Clerk,Supervisor,Declare
+F-Gazelles,6,Philatelic,7000082,PFDC,PFDC,PHILATELIC,Product.FDCGazelles,Clerk,Supervisor,Declare
+F-No To Drugs,1.5,Philatelic,7000092,PFDC,PFDC,PHILATELIC,Product.FDCNoToDrugs,Clerk,Supervisor,Declare
+F-Atlanta Olympics,3.5,Philatelic,7000102,PFDC,PFDC,PHILATELIC,Product.FDCAtlantaOlympics,Clerk,Supervisor,Declare
+F-Definitive,75,Philatelic,7000112,PFDC,PFDC,PHILATELIC,Product.FDCDefinite,Clerk,Supervisor,Declare
+F-50th Anniv UNICEF,1.5,Philatelic,7000122,PFDC,PFDC,PHILATELIC,Product.FDCUNICEF50thAnniv,Clerk,Supervisor,Declare
+F-Castles (Forts),5,Philatelic,7000132,PFDC,PFDC,PHILATELIC,Product.FDCCastles,Clerk,Supervisor,Declare
+F-Arab Horses,3.5,Philatelic,7000142,PFDC,PFDC,PHILATELIC,Product.FDCArabHorses,Clerk,Supervisor,Declare
+F-26th Anniv Independence,2.5,Philatelic,7000152,PFDC,PFDC,PHILATELIC,Product.FDCIndep24thAnniv,Clerk,Supervisor,Declare
+F-Doha-Mena Ec Conf,2,Philatelic,7000162,PFDC,PFDC,PHILATELIC,Product.FDCEcConf,Clerk,Supervisor,Declare
+F-Insects,40,Philatelic,7000172,PFDC,PFDC,PHILATELIC,Product.FDCInsects,Clerk,Supervisor,Declare
+F-Early Diving Equipment,3.5,Philatelic,7000182,PFDC,PFDC,PHILATELIC,Product.FDCEarlyDivingEquipt,Clerk,Supervisor,Declare
+F-Silver Jubilee QA Univ,2.5,Philatelic,7000192,PFDC,PFDC,PHILATELIC,Product.FDCQAUnivSilver,Clerk,Supervisor,Declare
+F-27th Anniv Independence,2.5,Philatelic,7000202,PFDC,PFDC,PHILATELIC,Product.FDCIndep27thAnniv,Clerk,Supervisor,Declare
+F-Camels,3.5,Philatelic,7000212,PFDC,PFDC,PHILATELIC,Product.FDCCamels,Clerk,Supervisor,Declare
+F-F.E.I. Gen Ass Meeting,1.5,Philatelic,7000222,PFDC,PFDC,PHILATELIC,Product.FDCFEIGenAssMeeting,Clerk,Supervisor,Declare
+F-Old Islamic Coins,15,Philatelic,7000232,PFDC,PFDC,PHILATELIC,Product.FDCOldIslamicCoins,Clerk,Supervisor,Declare
+F-28th Anniv Independence,2.5,Philatelic,7000242,PFDC,PFDC,PHILATELIC,Product.FDCIndep28thAnniv,Clerk,Supervisor,Declare
+F-125th Anniv UPU,2.5,Philatelic,7000252,PFDC,PFDC,PHILATELIC,Product.FDCUPU125thAnniv,Clerk,Supervisor,Declare
+F-5th GCC Stamps Exhib,2.5,Philatelic,7000262,PFDC,PFDC,PHILATELIC,Product.FDCGCCStamps5thExhib,Clerk,Supervisor,Declare
+F-Doha 2000,3.5,Philatelic,7000272,PFDC,PFDC,PHILATELIC,Product.FDCDoha2000,Clerk,Supervisor,Declare
+F-QA Open 2000 - Emir Cup,2.5,Philatelic,7000282,PFDC,PFDC,PHILATELIC,Product.FDCQAOpen2000,Clerk,Supervisor,Declare
+F-GCC Water Week 2000,2.5,Philatelic,7000292,PFDC,PFDC,PHILATELIC,Product.FDCWaterWeek2000,Clerk,Supervisor,Declare
+F-15th Asian Table Tennis,1.5,Philatelic,7000302,PFDC,PFDC,PHILATELIC,Product.FDC15thAsianTableTennis,Clerk,Supervisor,Declare
+F-29th Anniv Independence,2.5,Philatelic,7000312,PFDC,PFDC,PHILATELIC,Product.FDCIndep29thAnniv,Clerk,Supervisor,Declare
+F-Golden Jubilee QA PO,3.5,Philatelic,7000322,PFDC,PFDC,PHILATELIC,Product.FDCQAPOGolden,Clerk,Supervisor,Declare
+F-9th Islamic Summit ,2.5,Philatelic,7000332,PFDC,PFDC,PHILATELIC,Product.FDC9thIslSummit,Clerk,Supervisor,Declare
+F-30th Anniv Independence,2.5,Philatelic,7000342,PFDC,PFDC,PHILATELIC,Product.FDCIndep30thAnniv,Clerk,Supervisor,Declare
+F-Dialogue among civilizations,3.5,Philatelic,7000352,PFDC,PFDC,PHILATELIC,Product.FDCDialogue,Clerk,Supervisor,Declare
+F-4th Ministerial Conf 2001,2.5,Philatelic,7000362,PFDC,PFDC,PHILATELIC,Product.FDCMinConf2000,Clerk,Supervisor,Declare
+F-Old Doors,4.5,Philatelic,7000372,PFDC,PFDC,PHILATELIC,Product.FDCOldDoors,Clerk,Supervisor,Declare
+F-FIFA World Cup 2002,36,Philatelic,7000382,PFDC,PFDC,PHILATELIC,Product.FDCWorldCup2002,Clerk,Supervisor,Declare
+F-Asian Games,4,Philatelic,7000392,PFDC,PFDC,PHILATELIC,Product.FDCAsianGames,Clerk,Supervisor,Declare
+F-1st Anniv Gen Post Corp,4,Philatelic,7000402,PFDC,PFDC,PHILATELIC,Product.FDCGPC1stAnniv,Clerk,Supervisor,Declare
+F-World No Tobacco Day,1.5,Philatelic,7000412,PFDC,PFDC,PHILATELIC,Product.FDCNoTobacco,Clerk,Supervisor,Declare
+F-25th Anniv QA Red Cresc ,1.5,Philatelic,7000422,PFDC,PFDC,PHILATELIC,Product.FDCRedCresc25thAnniv,Clerk,Supervisor,Declare
+F-Jewellery ,4.5,Philatelic,7000432,PFDC,PFDC,PHILATELIC,Product.FDCJewellery,Clerk,Supervisor,Declare
+F-100th Anniv Aviation,2,Philatelic,7000442,PFDC,PFDC,PHILATELIC,Product.FDCAviation,Clerk,Supervisor,Declare
+P-Old Mosques,4,Philatelic,7000013,PPostcard,PPostcard,PHILATELIC,Product.PCOldMosques,Clerk,Supervisor,Declare
+P-World Day for Water,1.25,Philatelic,7000023,PPostcard,PPostcard,PHILATELIC,Product.PCWorldWaterDay,Clerk,Supervisor,Declare
+P-Int Year of the Family,1.25,Philatelic,7000033,PPostcard,PPostcard,PHILATELIC,Product.PCIntYearFamily,Clerk,Supervisor,Declare
+P-Rock Carvings,6,Philatelic,7000043,PPostcard,PPostcard,PHILATELIC,Product.PCRockCarvings,Clerk,Supervisor,Declare
+P-Gulf Envt Day (Sea Shells),7,Philatelic,7000053,PPostcard,PPostcard,PHILATELIC,Product.PCGulfEnvDay,Clerk,Supervisor,Declare
+P-International Nursing Day,2.5,Philatelic,7000063,PPostcard,PPostcard,PHILATELIC,Product.PCIntNursingDay,Clerk,Supervisor,Declare
+P-24th Anniv Independence,5,Philatelic,7000073,PPostcard,PPostcard,PHILATELIC,Product.PCIndep24thAnniv,Clerk,Supervisor,Declare
+P-Gazelles,6,Philatelic,7000083,PPostcard,PPostcard,PHILATELIC,Product.PCGazelles,Clerk,Supervisor,Declare
+P-No To Drugs,1.5,Philatelic,7000093,PPostcard,PPostcard,PHILATELIC,Product.PCNoToDrugs,Clerk,Supervisor,Declare
+P-Atlanta Olympics,3.5,Philatelic,7000103,PPostcard,PPostcard,PHILATELIC,Product.PCAtlantaOlympics,Clerk,Supervisor,Declare
+P-Definitive,75,Philatelic,7000113,PPostcard,PPostcard,PHILATELIC,Product.PCDefinite,Clerk,Supervisor,Declare
+P-50th Anniv UNICEF,1.5,Philatelic,7000123,PPostcard,PPostcard,PHILATELIC,Product.PCUNICEF50thAnniv,Clerk,Supervisor,Declare
+P-Castles (Forts),5,Philatelic,7000133,PPostcard,PPostcard,PHILATELIC,Product.PCCastles,Clerk,Supervisor,Declare
+P-Arab Horses,3.5,Philatelic,7000143,PPostcard,PPostcard,PHILATELIC,Product.PCArabHorses,Clerk,Supervisor,Declare
+P-26th Anniv Independence,2.5,Philatelic,7000153,PPostcard,PPostcard,PHILATELIC,Product.PCIndep24thAnniv,Clerk,Supervisor,Declare
+P-Doha-Mena Ec Conf,2,Philatelic,7000163,PPostcard,PPostcard,PHILATELIC,Product.PCEcConf,Clerk,Supervisor,Declare
+P-Insects,40,Philatelic,7000173,PPostcard,PPostcard,PHILATELIC,Product.PCInsects,Clerk,Supervisor,Declare
+P-Early Diving Equipment,3.5,Philatelic,7000183,PPostcard,PPostcard,PHILATELIC,Product.PCEarlyDivingEquipt,Clerk,Supervisor,Declare
+P-Silver Jubilee QA Univ,2.5,Philatelic,7000193,PPostcard,PPostcard,PHILATELIC,Product.PCQAUnivSilver,Clerk,Supervisor,Declare
+P-27th Anniv Independence,2.5,Philatelic,7000203,PPostcard,PPostcard,PHILATELIC,Product.PCIndep27thAnniv,Clerk,Supervisor,Declare
+P-Camels,3.5,Philatelic,7000213,PPostcard,PPostcard,PHILATELIC,Product.PCCamels,Clerk,Supervisor,Declare
+P-F.E.I. Gen Ass Meeting,1.5,Philatelic,7000223,PPostcard,PPostcard,PHILATELIC,Product.PCFEIGenAssMeeting,Clerk,Supervisor,Declare
+P-Old Islamic Coins,15,Philatelic,7000233,PPostcard,PPostcard,PHILATELIC,Product.PCOldIslamicCoins,Clerk,Supervisor,Declare
+P-28th Anniv Independence,2.5,Philatelic,7000243,PPostcard,PPostcard,PHILATELIC,Product.PCIndep28thAnniv,Clerk,Supervisor,Declare
+P-125th Anniv UPU,2.5,Philatelic,7000253,PPostcard,PPostcard,PHILATELIC,Product.PCUPU125thAnniv,Clerk,Supervisor,Declare
+P-5th GCC Stamps Exhib,2.5,Philatelic,7000263,PPostcard,PPostcard,PHILATELIC,Product.PCGCCStamps5thExhib,Clerk,Supervisor,Declare
+P-Doha 2000,3.5,Philatelic,7000273,PPostcard,PPostcard,PHILATELIC,Product.PCDoha2000,Clerk,Supervisor,Declare
+P-QA Open 2000 - Emir Cup,2.5,Philatelic,7000283,PPostcard,PPostcard,PHILATELIC,Product.PCQAOpen2000,Clerk,Supervisor,Declare
+P-GCC Water Week 2000,2.5,Philatelic,7000293,PPostcard,PPostcard,PHILATELIC,Product.PCWaterWeek2000,Clerk,Supervisor,Declare
+P-15th Asian Table Tennis,1.5,Philatelic,7000303,PPostcard,PPostcard,PHILATELIC,Product.PC15thAsianTableTennis,Clerk,Supervisor,Declare
+P-29th Anniv Independence,2.5,Philatelic,7000313,PPostcard,PPostcard,PHILATELIC,Product.PCIndep29thAnniv,Clerk,Supervisor,Declare
+P-Golden Jubilee QA PO,3.5,Philatelic,7000323,PPostcard,PPostcard,PHILATELIC,Product.PCQAPOGolden,Clerk,Supervisor,Declare
+P-9th Islamic Summit ,2.5,Philatelic,7000333,PPostcard,PPostcard,PHILATELIC,Product.PC9thIslSummit,Clerk,Supervisor,Declare
+P-30th Anniv Independence,2.5,Philatelic,7000343,PPostcard,PPostcard,PHILATELIC,Product.PCIndep30thAnniv,Clerk,Supervisor,Declare
+P-Dialogue among civilizations,3.5,Philatelic,7000353,PPostcard,PPostcard,PHILATELIC,Product.PCDialogue,Clerk,Supervisor,Declare
+P-4th Ministerial Conf 2001,2.5,Philatelic,7000363,PPostcard,PPostcard,PHILATELIC,Product.PCMinConf2000,Clerk,Supervisor,Declare
+P-Old Doors,4.5,Philatelic,7000373,PPostcard,PPostcard,PHILATELIC,Product.PCOldDoors,Clerk,Supervisor,Declare
+P-FIFA World Cup 2002,36,Philatelic,7000383,PPostcard,PPostcard,PHILATELIC,Product.PCWorldCup2002,Clerk,Supervisor,Declare
+P-Asian Games,4,Philatelic,7000393,PPostcard,PPostcard,PHILATELIC,Product.PCAsianGames,Clerk,Supervisor,Declare
+P-1st Anniv Gen Post Corp,4,Philatelic,7000403,PPostcard,PPostcard,PHILATELIC,Product.PCGPC1stAnniv,Clerk,Supervisor,Declare
+P-World No Tobacco Day,1.5,Philatelic,7000413,PPostcard,PPostcard,PHILATELIC,Product.PCNoTobacco,Clerk,Supervisor,Declare
+P-25th Anniv QA Red Cresc ,1.5,Philatelic,7000423,PPostcard,PPostcard,PHILATELIC,Product.PCRedCresc25thAnniv,Clerk,Supervisor,Declare
+P-Jewellery ,4.5,Philatelic,7000433,PPostcard,PPostcard,PHILATELIC,Product.PCJewellery,Clerk,Supervisor,Declare
+P-100th Anniv Aviation,2,Philatelic,7000443,PPostcard,PPostcard,PHILATELIC,Product.PCAviation,Clerk,Supervisor,Declare
+SS-Gazelles,3,Philatelic,7000084,PSouvSheet,PSouvSheet,PHILATELIC,Product.SSGazelles,Clerk,Supervisor,Declare
+SS-Arab Horses,3,Philatelic,7000144,PSouvSheet,PSouvSheet,PHILATELIC,Product.SSArabHorses,Clerk,Supervisor,Declare
+SS-Insects,4,Philatelic,7000174,PSouvSheet,PSouvSheet,PHILATELIC,Product.SSInsects,Clerk,Supervisor,Declare
+SS-Early Diving Equipment,2,Philatelic,7000184,PSouvSheet,PSouvSheet,PHILATELIC,Product.SSEarlyDivingEquipt,Clerk,Supervisor,Declare
+SS-Camels,2,Philatelic,7000214,PSouvSheet,PSouvSheet,PHILATELIC,Product.SSCamels,Clerk,Supervisor,Declare
+SS-Old Islamic Coins,5,Philatelic,7000234,PSouvSheet,PSouvSheet,PHILATELIC,Product.SSOldIslamicCoins,Clerk,Supervisor,Declare
+SS-Old Doors,3,Philatelic,7000374,PSouvSheet,PSouvSheet,PHILATELIC,Product.SSOldDoors,Clerk,Supervisor,Declare
+SS-FIFA World Cup 2002,4,Philatelic,7000384,PSouvSheet,PSouvSheet,PHILATELIC,Product.SSWorldCup2002,Clerk,Supervisor,Declare

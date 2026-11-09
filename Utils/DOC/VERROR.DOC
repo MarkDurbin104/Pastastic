@@ -1,0 +1,288 @@
+/***********************************************************************
+*
+*   ECCO+
+*
+*   File Name:          $Workfile:   VERROR.C  $
+*
+*   Descriptive Name:   Critical Error Handling routines
+*
+*   Author:             Mark Durbin (Unisys)
+*
+*   Date of Origin:     4-12-1990
+*
+*   Copyright:          Copyright THE POST OFFICE 1990
+*
+*   Contents List:      
+*
+*   Notes:              
+*
+*
+*   $Log:   Z:\cm\g\eccorel\src\vcs\verror.c_v  $
+*   
+***********************************************************************/
+#define PVERROR_C
+
+#include <vepublic.dh>
+
+#include <vepublic.fh>
+#include <ve.fh>
+
+#include <vepublic.vh>
+#include <ve.vh>
+
+
+/***********************************************************************
+*
+*   FUNCTION HEADER
+*
+*   Function Name:          ve_bios_str
+*
+*   Synopsis:               print a string on the screen without going
+*                           through DOS/MOS
+*
+*   Input:                  the string to print
+*
+*   Output:                 a string to the screen
+*
+*   Returns:                
+*
+*   Global Data Read:       
+*
+*   Global Data Written:    
+*
+*   Drastic Errors:         
+*
+*   Description:            
+*
+*   Notes:                  
+*
+***********************************************************************/
+VOID ve_bios_str( CHAR *p )
+{
+    AUTO union REGS regs;
+    AUTO CHAR *start = p;
+
+    regs.h.ah = DVE_BIOS_PRCHR;
+    while(*p)
+    {
+        regs.h.al = *(p++);
+        int86( DVE_BIOS_VDU, &regs, &regs );
+    }
+}
+
+/***********************************************************************
+*
+*   FUNCTION HEADER
+*
+*   Function Name:          VEfgint24handler
+*
+*   Synopsis:               forground critical error handler
+*
+*   Input:                  Passed by DOS/MOS
+*
+*   Output:                 Request responses
+*
+*   Returns:                None
+*
+*   Global Data Read:       None
+*
+*   Global Data Written:    None
+*
+*   Drastic Errors:         None
+*
+*   Description:            forground critical error handler
+*
+*   Notes:                  
+*
+***********************************************************************/
+
+VOID VEfgint24handler(UINT deverror,
+                      UINT errcode,
+                      UINT *devhdr)
+{
+    AUTO INT key;
+    AUTO INT done = 0;
+    AUTO CHAR buf[80];
+    
+    /*******************************************************/
+    /*                                                     */
+    /*              Just call the background one           */
+    /*              until a message is required            */
+    /*                                                     */
+    /*******************************************************/
+    VEbgint24handler(deverror,errcode,devhdr);
+    return;
+    /*******************************************************/
+
+    VE_deverror = deverror;
+    VE_errcode  = errcode;
+    VE_devhdr   = devhdr;
+
+    sprintf (buf,"CRITICAL ERROR: %s\n\r",ve_error_str[errcode&0xFF]);
+    ve_bios_str (buf);
+    sprintf (buf, "[A]bort  [R]etry  [I]gnore [F]ail\n\r");
+    ve_bios_str (buf);
+
+    while (!done)
+    {
+        key = _bios_keybrd(DVE_KEYBRD_READ);
+        switch (key & 0xFF)
+        {
+            case 'A':
+            case 'a':
+                done = 1;
+                _hardresume(DVE_ABORT);
+                break;
+            case 'F':
+            case 'f':
+                done = 1;
+                _hardresume(DVE_FAIL);
+                break;
+            case 'R':
+            case 'r':
+                done = 1;
+                _hardresume(DVE_RETRY);
+                break;
+            case 'I':
+            case 'i':
+                done = 1;
+                _hardresume(DVE_IGNORE);
+                break;
+        }
+    }
+}
+
+/***********************************************************************
+*
+*   FUNCTION HEADER
+*
+*   Function Name:          VEbgint24handler
+*
+*   Synopsis:               background critical error handler
+*
+*   Input:                  Passed by DOS/MOS
+*
+*   Output:                 Request responses
+*
+*   Returns:                None
+*
+*   Global Data Read:       None
+*
+*   Global Data Written:    None
+*
+*   Drastic Errors:         None
+*
+*   Description:            background critical error handler
+*
+*   Notes:                  
+*
+***********************************************************************/
+
+VOID VEbgint24handler(UINT deverror,
+                      UINT errcode,
+                      UINT *devhdr)
+{
+    VE_deverror = deverror;
+    VE_errcode  = errcode;
+    VE_devhdr   = devhdr;
+    _hardresume(DVE_FAIL);
+}
+
+/***********************************************************************
+*
+*   FUNCTION HEADER
+*
+*   Function Name:          VEgethandler
+*
+*   Synopsis:               get the current critical error function
+*
+*   Input:                  None
+*
+*   Output:                 None
+*
+*   Returns:                Pointer to function
+*
+*   Global Data Read:       None
+*
+*   Global Data Written:    None
+*
+*   Drastic Errors:         None
+*
+*   Description:            get the current critical error function
+*
+*   Notes:                  
+*
+***********************************************************************/
+FPTR VEgethandler(VOID)
+{
+    if (ve_old_vect==NULL) ve_old_vect=(FPTR)_dos_getvect(DVE_DOS_GETVECT);
+    return((FPTR)_dos_getvect(DVE_DOS_GETVECT));
+}
+
+/***********************************************************************
+*
+*   FUNCTION HEADER
+*
+*   Function Name:          VErestorehandler
+*
+*   Synopsis:               restore the system critical error handler
+*
+*   Input:                  None
+*
+*   Output:                 None
+*
+*   Returns:                OK              - done
+*                           DVE_NOHANDLER   - no handler installed
+*
+*   Global Data Read:       None
+*
+*   Global Data Written:    None
+*
+*   Drastic Errors:         None
+*
+*   Description:            restore the system critical error handler
+*
+*   Notes:                  
+*
+***********************************************************************/
+STATUS VErestorehandler(VOID)
+{
+    if (ve_old_vect==NULL) return(DVE_NOHANDLER);
+    _harderr(ve_old_vect);
+    return(OK);
+}
+
+/***********************************************************************
+*
+*   FUNCTION HEADER
+*
+*   Function Name:          VEsethandler
+*
+*   Synopsis:               set the critical error function
+*
+*   Input:                  new handler
+*
+*   Output:                 None
+*
+*   Returns:                OK              - done
+*                           DVE_BADHANDLER  - invalid argument
+*
+*   Global Data Read:       None
+*
+*   Global Data Written:    None
+*
+*   Drastic Errors:         None
+*
+*   Description:            set the critical error function
+*
+*   Notes:                  
+*
+***********************************************************************/
+STATUS VEsethandler(FPTR handler)
+{
+    if (ve_old_vect==NULL) ve_old_vect=(FPTR)_dos_getvect(DVE_DOS_GETVECT);
+    if (handler==NULL) return(DVE_BADHANDLER);
+    _harderr(handler);
+    return(OK);
+}
+

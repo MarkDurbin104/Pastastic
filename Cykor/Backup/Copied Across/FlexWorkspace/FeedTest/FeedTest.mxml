@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!-- wrapper/SimplestNavigateToURL.mxml -->
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml">
+  <mx:Script><![CDATA[
+     import flash.net.*;
+     public function openNewWindow(event:MouseEvent):void {
+        var u:URLRequest = new URLRequest("MWS.exe");
+        navigateToURL(u,"_blank");
+     }
+  ]]></mx:Script>
+  <mx:Button label="Open New Window" click="openNewWindow(event)"/>
+</mx:Application>
+

@@ -1,0 +1,7 @@
+Borland C++ 5.0 Copyright (c) 1987, 1996 Borland International
+test.c:
+Warning test.c 15: Call to function 'getch' with no prototype in function main
+Warning test.c 15: Call to function 'getch' with no prototype in function main
+Error test.c 19: Undefined symbol 'fp0' in function main
+Error test.c 19: Function call missing ) in function main
+*** 2 errors in Compile ***

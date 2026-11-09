@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<slides:OneDayItem xmlns:slides="com.proiam.slides.*" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	 backgroundImage="@Embed(source='embedded/OneDayItem.png',scaleGridLeft='12',scaleGridTop='12', scaleGridRight='95',scaleGridBottom='82')" 
+	width="221" height="100" 
+	backgroundSize="100%"
+	itemWidth="2"
+	styleName="normalItem">
+</slides:OneDayItem>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	creationComplete="callLater(LoadMailsData)"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	>
+	<mx:Script>
+		<![CDATA[
+			import com.proiam.mails.SecondaryMailService;
+			import com.proiam.mails.MailServices;
+			import com.proiam.mails.MailService;
+			import flash.display.DisplayObject;
+			import flash.display.Stage;
+			import flash.display.StageDisplayState;
+			import flash.geom.Rectangle;
+			
+			import mx.controls.ProgressBar;
+	        public var mailServices:MailServices;
+	        
+			private function LoadMailsData():void {
+				mailServices=new MailServices("resources/mailservices.xml",onMailsLoadComplete);
+			}
+			private function onMailsLoadComplete(event:Event):void {
+				var idx:int=0;
+				for (var i:int=0;i<mailServices.services.length;i++) {
+					var mailService:MailService=mailServices.services[i];
+					if (mailService is SecondaryMailService) {
+						mailsgrid.addChild(mailService);
+						mailService.x=5+int(idx%3)*170;
+						mailService.y=int(idx/3)*95;
+						idx++;
+					}
+				}
+			}
+		]]>
+	</mx:Script>
+	<mx:Canvas id="mailsgrid" backgroundColor="#ECF5E7" width="100%" height="100%" top="0" left="0" verticalScrollPolicy="off" horizontalScrollPolicy="off" />
+</mx:Canvas>

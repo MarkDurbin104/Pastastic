@@ -1,0 +1,122 @@
+   1.  Scale Power Supply.
+
+       Unisys believes that powering the scale via the ECCO+ counter 
+       terminal interface cable is the most desirable solution for the 
+       following reasons:
+
+       1.  The scale will be automatically switched off when both the
+           ECCO+ terminals are turned off. 
+
+       2.  The ECCO+ scale port has been specifically designated for    
+           this purpose (all ECCO+ peripherals are powered from the  
+           ECCO+ counter terminal) and has been designed to deliver the 
+           power required.
+
+       3.  Providing power via the interface cable eliminates the need
+           for a separate mains cable and mains socket.
+
+       4.  The provision of a separate power supply will add to the cost 
+           and complexity (thus reducing the reliability) of the scale unit.
+
+       5.  Powering the scale directly from 240VAC and feeding this 
+           voltage to the customer side of the counter may infringe Post 
+           Office safety regulations.
+
+       In a standalone scale the power would be provided by an external 
+       power supply into the scale via the same interface port.
+
+
+   2.  Counter Clerk Primary Display.
+
+       The ECCO+ counter terminal application operates in CGA text mode.
+       It is perfectly feasable that the scales application could run in
+       a graphics mode and therefore could display characters of height 
+       10mm or more.
+
+       However, the main reason for a separate weight display for the clerk 
+       is that when the scale is operating in standalone mode or under 
+       battery backup power for weight only mode it still needs to display
+       information to the clerk.  Since in this mode it is isolated from the 
+       ECCO+ counter terminal the clerk will still need a primary display.
+
+       A separate display would allow operation in standalone mode and
+       will also provide check and reset facility in either mode.
+
+
+   3.  Check / Reset Functions.
+
+       The check and Reset keys would be incorporated on the clerks
+       primary weight display.
+
+       By using this method the clerk would always be able to ensure
+       that the scale had returned to Stable Gross Zero before the
+       next customer places a mail item on the scale even though the
+       clerk may still be displaying an ECCO+ software sceen. 
+
+
+   4.  Production of Receipts.
+
+       The Unisys produced scale software will pass all the
+       information required by the ECCO+ software to produce a
+       receipt for the customer.
+
+
+   5.  Indication to Customer.
+
+       The proposed scale would have indicators at either edge of the
+       scale indicating which clerk had control of the scale.
+
+
+
+   6.  Battery Back-Up
+
+
+       When the scale is used in battery powered weight only mode the
+       scale can be isolated from the ECCO+ terminal by differing
+       methods:
+
+       1.  Removal of the interface cables.
+       2.  Automatic isolation, via relays within the scale
+       3.  By utilisation of the battery switch on our design,  this  
+           could be used as a battery power/ECCO+ power switch.
+
+
+   7.  Minimum Weighing Accuracy.
+
+       The change in regulations from 20e to 5e will allow a Single
+       Interval Instrument to acheive a capacity of 10kg.
+
+       i.e.  5000 divisions @ 2g = 10,000g or 10kg.
+
+       If a Multi-Interval Instrument was used then the following
+       combinations would give higher weight limits.
+
+       i.e.    2g from  0kg to  2kg             ( 1000 divisions)
+               5g from  2kg to 22kg             ( 4000 divisions)
+
+       or      2g from  0kg to  5kg             ( 2500 divisions)
+               5g from  5kg to 10kg             ( 1000 divisions)
+              10g from 10kg to 25kg             ( 1500 divisions)
+
+       or      2g from  0kg to  2kg             ( 1000 divisions)
+               5g from  2kg to 10kg             ( 1600 divisions)
+              10g from 10kg to 36kg             ( 2400 divisions)
+
+
+   8.  Approval
+
+       The proposed scale software would be developed as a totally
+       standalone software module that would conform to the ECCO+ MMI
+       but would not interact with it.  
+
+       All the information from the scales transaction would be
+       passed to a file that ECCO+ would read to incorporate in its
+       transcation log and use this information to print the
+       mandatory customer receipt.
+
+       This method would allow the scale software to be qualified by
+       NW & ML as a totally separate software module 
+
+       However it should be noted that the format of the receipt printed 
+       from the ECCO+ software would need to be approved by NW & ML.
+

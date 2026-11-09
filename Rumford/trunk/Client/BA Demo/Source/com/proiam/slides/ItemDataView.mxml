@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="706" height="666" xmlns:slides="com.proiam.slides.*" cornerRadius="15"
+	borderColor="#FFFFFF" backgroundColor="#FFFFFF" borderStyle="solid" 
+	fontFamily="Tahoma" xmlns:filters="flash.filters.*"
+	 verticalScrollPolicy="off" horizontalScrollPolicy="off" xmlns:utils="com.cykorsystems.utils.*">
+	<mx:states>
+		<mx:State name="Paper" enterState="mono=true;" exitState="mono=false;">
+			<mx:SetStyle target="{label1}" name="color" value="#000000"/>
+			<mx:SetStyle target="{piCatagory}" name="color" value="#000000"/>
+			<mx:SetStyle target="{label2}" name="color" value="#000000"/>
+			<mx:SetStyle target="{piText}" name="color" value="#000000"/>
+			<mx:SetStyle target="{tiCatagory}" name="color" value="#000000"/>
+			<mx:SetStyle target="{tiText}" name="color" value="#000000"/>
+			<mx:SetStyle target="{contactBox}" name="color" value="#000000"/>
+			<mx:SetStyle target="{destBox}" name="color" value="#000000"/>
+			<mx:SetStyle target="{originBox}" name="color" value="#000000"/>
+			<mx:SetStyle target="{label3}" name="color" value="#000000"/>
+			<mx:SetStyle target="{postage}" name="color" value="#000000"/>
+			<mx:SetStyle target="{label4}" name="color" value="#000000"/>
+			<mx:SetStyle target="{preapplied}" name="color" value="#000000"/>
+			<mx:RemoveChild target="{canvas1}"/>
+			<mx:SetStyle target="{itemImageCanvas}" name="borderColor" value="#808080"/>
+			<mx:SetProperty target="{originBox}" name="currentState" value="Paper"/>
+			<mx:SetProperty target="{destBox}" name="currentState" value="Paper"/>
+			<mx:SetProperty target="{contactBox}" name="currentState" value="Paper"/>
+			<mx:SetStyle target="{originBox}" name="borderStyle" value="solid"/>
+			<mx:SetStyle target="{originBox}" name="borderColor" value="#808080"/>
+			<mx:SetStyle target="{destBox}" name="borderStyle" value="solid"/>
+			<mx:SetStyle target="{contactBox}" name="borderStyle" value="solid"/>
+			<mx:SetStyle target="{destBox}" name="borderColor" value="#808080"/>
+			<mx:SetStyle target="{contactBox}" name="borderColor" value="#808080"/>
+			<mx:AddChild position="lastChild">
+				<mx:Canvas x="10" y="335" width="195" height="180" borderStyle="solid" borderColor="#808080">
+				</mx:Canvas>
+			</mx:AddChild>
+			<mx:AddChild position="lastChild">
+				<mx:Canvas x="10" y="516" width="195" height="142" borderStyle="solid" borderColor="#808080">
+				</mx:Canvas>
+			</mx:AddChild>
+			<mx:AddChild position="lastChild">
+				<mx:Canvas x="521" y="335" width="173" height="323" borderStyle="solid" borderColor="#808080">
+					<mx:Canvas x="10" y="167" width="151" height="144" borderStyle="solid" borderColor="#C0C0C0">
+						<mx:Text text="Post Mark Here" horizontalCenter="0" top="0" textAlign="center" fontSize="11" width="100%" color="#000000"/>
+					</mx:Canvas>
+					<mx:Text text="{date}" horizontalCenter="0" textAlign="center" fontSize="12" width="100%" y="149" fontWeight="bold" color="#000000"/>
+				</mx:Canvas>
+			</mx:AddChild>
+			<mx:SetStyle name="cornerRadius" value="0"/>
+			<mx:SetStyle name="borderStyle" value="none"/>
+			<mx:SetProperty target="{parcelInfoOffCanvas}" name="alpha" value="0"/>
+			<mx:SetProperty target="{tariffInfoOffCanvas}" name="alpha" value="0"/>
+			<mx:SetProperty target="{postageInfoOffCanvas}" name="alpha" value="0"/>
+			<mx:SetProperty target="{InfoOnCanvas}" name="alpha" value="0"/>
+		</mx:State>
+		<mx:State name="Wait State 1">
+			<mx:SetProperty target="{originBox}" name="currentState" value="Wait State"/>
+			<mx:SetProperty target="{destBox}" name="currentState" value="Wait State"/>
+			<mx:SetProperty target="{contactBox}" name="currentState" value="Wait State"/>
+			<mx:RemoveChild target="{canvas1}"/>
+			<mx:RemoveChild target="{piText}"/>
+			<mx:RemoveChild target="{typeImage}"/>
+			<mx:RemoveChild target="{piCatagory}"/>
+			<mx:RemoveChild target="{tiCatagory}"/>
+			<mx:RemoveChild target="{tiText}"/>
+			<mx:RemoveChild target="{preapplied}"/>
+			<mx:RemoveChild target="{postage}"/>
+			<mx:AddChild position="lastChild">
+				<slides:RotatingLogo x="558" y="475"/>
+			</mx:AddChild>
+			<mx:AddChild position="lastChild">
+				<slides:RotatingLogo x="60" y="387"/>
+			</mx:AddChild>
+			<mx:AddChild position="lastChild">
+				<slides:RotatingLogo x="60" y="549"/>
+			</mx:AddChild>
+			<mx:SetProperty target="{parcelInfoOffCanvas}" name="alpha" value="1"/>
+			<mx:SetProperty target="{tariffInfoOffCanvas}" name="alpha" value="1"/>
+			<mx:SetProperty target="{postageInfoOffCanvas}" name="alpha" value="1"/>
+		</mx:State>
+		<mx:State name="Wait State 2">
+			<mx:SetProperty target="{originBox}" name="currentState" value="Wait State"/>
+			<mx:SetProperty target="{destBox}" name="currentState" value="Wait State"/>
+			<mx:SetProperty target="{contactBox}" name="currentState" value="Wait State"/>
+			<mx:RemoveChild target="{canvas1}"/>
+			<mx:RemoveChild target="{preapplied}"/>
+			<mx:RemoveChild target="{postage}"/>
+			<mx:RemoveChild target="{tiText}"/>
+			<mx:RemoveChild target="{tiCatagory}"/>
+			<mx:AddChild  position="lastChild">
+				<slides:RotatingLogo x="558" y="475"/>
+			</mx:AddChild>
+			<mx:AddChild  position="lastChild">
+				<slides:RotatingLogo x="60" y="548"/>
+			</mx:AddChild>
+			<mx:SetProperty target="{parcelInfoOffCanvas}" name="alpha" value="0"/>
+			<mx:SetProperty target="{tariffInfoOffCanvas}" name="alpha" value="1"/>
+			<mx:SetProperty target="{postageInfoOffCanvas}" name="alpha" value="1"/>
+		</mx:State>
+		<mx:State name="Wait State 3">
+			<mx:RemoveChild target="{preapplied}"/>
+			<mx:RemoveChild target="{postage}"/>
+			<mx:AddChild position="lastChild">
+				<slides:RotatingLogo x="558" y="475"/>
+			</mx:AddChild>
+			<mx:SetProperty target="{parcelInfoOffCanvas}" name="alpha" value="0"/>
+			<mx:SetProperty target="{tariffInfoOffCanvas}" name="alpha" value="0"/>
+			<mx:SetProperty target="{postageInfoOffCanvas}" name="alpha" value="1"/>
+		</mx:State>
+	</mx:states>
+	<mx:transitions>
+	    <mx:Transition id="Transition1" fromState="Wait State 1" toState="Wait State 2">
+			<mx:Parallel duration="1000" >
+			    <mx:Fade target="{parcelInfoOffCanvas}" alphaFrom="1" alphaTo="0" />
+			</mx:Parallel>
+	    </mx:Transition>
+	    <mx:Transition id="Transition2" fromState="Wait State 2" toState="Wait State 3">
+			<mx:Parallel duration="1000" >
+			    <mx:Fade target="{tariffInfoOffCanvas}" alphaFrom="1" alphaTo="0" />
+			</mx:Parallel>
+	    </mx:Transition>
+	    <mx:Transition id="Transition3" fromState="Wait State 3" toState="*" >
+			<mx:Parallel duration="1000" >
+			    <mx:Fade target="{postageInfoOffCanvas}" alphaFrom="1" alphaTo="0" />
+			</mx:Parallel>
+	    </mx:Transition>
+	</mx:transitions>
+	<mx:Metadata>
+        [Event(name="nextClicked", type="flash.events.Event")]
+        [Event(name="originChange", type="flash.events.Event")]
+        [Event(name="destinationChange", type="flash.events.Event")]
+        [Event(name="contactChange", type="flash.events.Event")]
+        [Event(name="infoClicked", type="flash.events.Event")]
+    </mx:Metadata>
+		
+	<mx:Script>
+		<![CDATA[
+			import com.proiam.mails.ItemData;
+			import mx.controls.SWFLoader;
+			import mx.graphics.ImageSnapshot;
+			import mx.core.BitmapAsset;
+			import flash.sampler.NewObjectSample;
+			import flash.utils.ByteArray;
+			import mx.utils.Base64Decoder;
+			import mx.core.UIComponent;
+			import mx.controls.Image;
+			import flash.events.Event;
+			import com.cykorsystems.utils.*;
+			
+			private var addressData:ItemData;
+			private var imageScale:Number=0;
+			public var tariffData:String="";
+			public var validDestAddress:Boolean=true;
+			public var validOriginAddress:Boolean=true;
+			public var destination:String="";
+			public var lastImageFile:String="";
+			
+            private var _mono:Boolean=false;
+            [Bindable]
+            // monochrome filter to display reciept
+            public function set mono(value:Boolean):void {
+            	_mono=value;
+            	if (value) {
+            		var intensity:Number=1;
+					var red:Number 		= 0.3086*intensity; // luminance contrast value for red
+					var green:Number 	= 0.6940*intensity; // luminance contrast value for green
+					var blue:Number 		= 0.0820*intensity; // luminance contrast value for blue
+					var mono:ColorMatrixFilter=new ColorMatrixFilter([red, green, blue, 0, 0, red, green, blue, 0, 0, red, green, blue, 0, 0, 0, 0, 0, 1, 0]);
+		            var myFilters:Array = new Array();
+		            myFilters.push(mono);
+		            itemImageCanvas.filters = myFilters;
+		            
+            		intensity=0.8;
+					red		= 0.3086*intensity; // luminance contrast value for red
+					green	= 0.6940*intensity; // luminance contrast value for green
+					blue		= 0.0820*intensity; // luminance contrast value for blue
+					mono=new ColorMatrixFilter([red, green, blue, 0, 0, red, green, blue, 0, 0, red, green, blue, 0, 0, 0, 0, 0, 1, 0]);
+		            myFilters= new Array();
+		            myFilters.push(mono);
+		            typeImage.filters = myFilters;
+            	} else {
+		            itemImageCanvas.filters = null;
+            	}
+            }
+            public function get mono():Boolean {
+            	return _mono;
+            }
+            [Bindable]
+            // return a string of a DateTime
+			private function get date():String {
+				var now:Date=new Date;
+				var months:Array = new Array("Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec");
+				return now.day+" "+months[now.month]+" "+now.fullYear;				
+			}
+			private function set date(value:String):void {
+				// just to remove compiler warnings - ignore
+			}
+			
+			
+			// populates mail item data with address data
+			public function SetItemData(value:ItemData):Boolean {
+				var result:Boolean=true; 
+				addressData=value
+				
+				if (validOriginAddress) {
+					originBox.title="Origin adddress";
+				} else {
+					originBox.title="Origin adddress - ZIP Error";
+				}
+				if (value != null) originBox.text=addressData.origin.asText(); else originBox.text="";
+				originBox.error=!validOriginAddress;
+				
+				if (validDestAddress) {
+					destBox.title="Destination adddress";
+				} else {
+					destBox.title="Destination adddress - ZIP Error";
+				}
+				if (value != null) destBox.text=addressData.destination.asText(); else destBox.text="";
+				
+				destBox.error=!validDestAddress;
+				
+				result=(!validDestAddress) || (!validOriginAddress);
+				
+				contactBox.title="Contact information" 
+				contactBox.catagory="Origin:\n\nDest:";
+				if (value != null) 
+					contactBox.text=addressData.origin.contact()+"\n"+addressData.destination.contact();
+				else
+					contactBox.text="";
+				
+				if (value != null)  
+					postage.text=(addressData.postage!=""?addressData.postage:"None found")
+				else
+					postage.text="None found";
+				var services:String="";
+				if (value != null) { 
+					for (var i:int=0;i<addressData.addedServices.length;i++) {
+						services+=addressData.serviceTypes[addressData.addedServices[i].index][1]+":\nID:"+addressData.addedServices[i].id+"\n";
+					}
+				}
+				preapplied.text=(services!=""?services:"None found");
+
+			    piCatagory.text="Weight:\nSize:\nLen+Girth:\nType:"; 
+				if (value != null) { 
+				    piText.text=	addressData.weight.lbOzString+"\n"+
+				    						addressData.dimensions.inchesString()+"\n"+
+				    						addressData.dimensions.girthInInches()+"\n"+
+				    						addressData.dimensions.itemType(addressData.weight.weightInOunces);
+				    if (currentState == "Paper")  {
+				    	var path:String="resources/graphics/mails_types/OnWhite/";
+				    } else {
+				    	path="resources/graphics/mails_types/OnBlue/";
+				    }
+				    switch (addressData.dimensions.itemType(addressData.weight.weightInOunces)) {
+						case "Undersize"				: typeImage.source=path+"Letter_Long.png"; 				break;
+						case "Postcard"				: typeImage.source=path+"Postcard.png"; 					break;
+						case "Letter"						: typeImage.source=path+"Letter.png"; 						break;
+						case "UndersizeSQ"			: typeImage.source=path+"Letter_Large.png"; 			break;
+						case "Square"					: typeImage.source=path+"Letter_Square.png"; 			break;
+						case "Long"						: typeImage.source=path+"Letter_Long.png"; 				break;
+						case "Large Letter"			: typeImage.source=path+"Letter_Large.png"; 			break;
+						case "Large Square"		: typeImage.source=path+"Letter_Square.png"; 			break;
+						case "Large Long"			: typeImage.source=path+"Letter_Long.png"; 				break;
+						case "Package"					: typeImage.source=path+"Package.png"; 					break;
+						case "Oversize Parcel"	: typeImage.source=path+"Package_Oversize.png"; 	break;
+						case "Parcel"						: typeImage.source=path+"Package_Large.png"; 		break;
+						case "Oversize"				: typeImage.source=path+"Package_Oversize.png"; 	break;
+						default								: typeImage.source=path+"Letter.png"; 
+				    }
+			 	} else {
+			 		piText.text="";
+			 		typeImage.source="";
+			 	}
+			    tiCatagory.text="Source:\nDest:\nZone:\nInterBMC:\nOrigin:\nStatus:";
+				if (value != null) { 
+				    tiText.text=tariffData+"\n"+addressData.status;
+				} else {
+				    tiText.text="";
+				}
+			    if (value != null) {
+					if (addressData.imageFile.length > 255) { // not a filename - must be an image
+						try {
+							var s:String=addressData.imageFile;
+							if (s.indexOf("base64") > 0) {
+								s=s.slice(s.indexOf("base64")+6); // remove: "MIME-Version: 1.0	Content-Type: image/jpeg	Content-Transfer-Encoding: base64"
+							}
+			                var byteArr:ByteArray;
+			                var base64Dec:Base64Decoder = new Base64Decoder();
+			                base64Dec.decode(s);
+			                byteArr = base64Dec.toByteArray();
+					    	itemImage.addEventListener(Event.COMPLETE,imageLoaded);
+			                itemImage.load(byteArr);
+				    		lastImageFile="";
+//			                imageLoaded(null);
+		    			}	catch (error:Error) {
+						    itemOverImage.graphics.clear();
+					    	itemImage.addEventListener(Event.COMPLETE,imageLoaded);
+							itemImage.source="data/Empty.jpg"; 
+				    		lastImageFile="";
+		                }
+					} else  {
+						if (value.local) {
+						    itemOverImage.graphics.clear();
+					    	itemImage.addEventListener(Event.COMPLETE,imageLoaded);
+					    	if (itemImage.source=="data/"+addressData.imageFile)
+					    		drawBoxes();
+					    	itemImage.source="data/"+addressData.imageFile;
+				    		lastImageFile="";
+						} else {
+							var unique:int=new Date().getTime();
+							if (addressData.imageFile == "") {
+							    itemOverImage.graphics.clear();
+						    	itemImage.addEventListener(Event.COMPLETE,imageLoaded);
+					    		lastImageFile=addressData.imageFile;
+								itemImage.source="data/Empty.jpg"; 
+							}	else	if (addressData.imageFile != lastImageFile) { 
+							    itemOverImage.graphics.clear();
+						    	itemImage.addEventListener(Event.COMPLETE,imageLoaded);
+					    		itemImage.source="http://"+value.IPAddress+":8000//"+addressData.imageFile+"?unique="+unique;
+					    		lastImageFile=addressData.imageFile;
+					    		value.imageFileProcessed=true;
+					  		/*} else {
+				                imageLoaded(null);*/
+					  		}
+						}
+					}
+				} else {
+				    itemOverImage.graphics.clear();
+				}
+				return result;
+			}
+			private function imageLoaded(event:Event):void {
+			    drawBoxes();
+			}
+			//  draw elipses on mail items and draw a cross on a barcode
+			private function drawBoxes():void {
+			    itemOverImage.graphics.clear();
+			    if (currentState != "Paper") {
+			    	try {
+						if ((addressData!=null)&&(addressData.imageFile != "")) {
+							imageScale=itemImage.height/Math.max(itemImage.measuredHeight,itemImage.contentHeight);
+						    itemOverImage.graphics.lineStyle(2,0x0000C0);//0xB2D2C7);
+						    var inRect:Rectangle=addressData.destination.inRect;
+						    if ((inRect.left != inRect.right) && (inRect.top != inRect.bottom))  
+							    itemOverImage.graphics.drawEllipse	((inRect.left-(inRect.width*0.15))*imageScale,(inRect.top-(inRect.height*0.15))*imageScale,
+							    																		inRect.width*1.3*imageScale,inRect.height*1.3*imageScale);
+						    inRect=addressData.origin.inRect;
+						    if ((inRect.left != inRect.right) && (inRect.top != inRect.bottom))  
+							    itemOverImage.graphics.drawEllipse	((inRect.left-(inRect.width*0.15))*imageScale,(inRect.top-(inRect.height*0.15))*imageScale,
+								    																	inRect.width*1.3*imageScale,inRect.height*1.3*imageScale);
+						    for (var i:int=0;i<addressData.addedServices.length;i++) {
+								var locations:Array=addressData.addedServices[i].location.split(', ');
+								if (locations.length == 2) {
+									    itemOverImage.graphics.moveTo(locations[0]*imageScale,locations[1]*imageScale-20);
+									    itemOverImage.graphics.lineTo(locations[0]*imageScale,locations[1]*imageScale+20);
+									    itemOverImage.graphics.moveTo(locations[0]*imageScale-20,locations[1]*imageScale);
+									    itemOverImage.graphics.lineTo(locations[0]*imageScale+20,locations[1]*imageScale);
+								}
+						    }
+						}
+			    	} catch (error:Error) {
+						trace(error.message);
+					}
+			 	}
+			}
+			private function onCreationComplete(event:Event):void {
+				//UIUtils.addExpand(originBox,1.1,1);
+				//UIUtils.addExpand(destBox,1.1,20);
+				//UIUtils.addExpand(contactBox,1.1,20);
+			}			
+			public function fireNextClicked(event:MouseEvent):void {
+                dispatchEvent(new Event("nextClicked"));
+            }
+			public function fireOriginChange(event:Event):void {
+                dispatchEvent(new Event("originChange"));
+            }
+			public function fireDestinationChange(event:Event):void {
+                dispatchEvent(new Event("destinationChange"));
+            }
+			public function fireContactChange(event:Event):void {
+                dispatchEvent(new Event("contactChange"));
+            }
+			public function fireInfoClicked(event:Event):void {
+                dispatchEvent(new Event("infoClicked"));
+            }
+            //  spinny graphics
+            public function simulateLazyLoad(event:Event):void {
+            	if (currentState==null) {
+            		var lazyTimer:Timer=new Timer(4000,3);
+            		lazyTimer.addEventListener(TimerEvent.TIMER,nextLazyStep);
+            		lazyTimer.start();
+            		currentState="Wait State 1";
+            	}
+            }
+            public function nextLazyStep(event:TimerEvent):void {
+            	if (currentState=="Wait State 1")
+            		currentState="Wait State 2";
+            	else if (currentState=="Wait State 2")
+            		currentState="Wait State 3";
+            	else 
+            		currentState=null;
+            }
+			private var myPrintJob:PrintJob = null;
+			private var printSprite:Sprite;
+            public function onImageClick(event:Event):void {
+            	if (currentState=="Paper") {
+            		myPrintJob = new PrintJob();
+		            if (myPrintJob.start()) {
+						try {
+							
+					        var screenDPI:Number = Capabilities.screenDPI;
+					        var scale:Number = 200 / screenDPI;
+					        if (scale > (ImageSnapshot.MAX_BITMAP_DIMENSION/width)) {
+					        	scale=ImageSnapshot.MAX_BITMAP_DIMENSION/width;
+					        }
+	        				var matrix:Matrix = new Matrix(scale, 0, 0, scale);
+							var data:BitmapData = new BitmapData((width*scale),height*scale, true, 0x00000000);
+							data.draw(this,matrix);
+            				var bmp:Bitmap=new Bitmap(data);
+					        var itemScale:Number=(myPrintJob.pageWidth/data.width)*0.75;
+							var sprite:Sprite=new Sprite();
+							sprite.x=5;
+							sprite.y=5;
+							sprite.addChild(bmp);
+							sprite.scaleX=itemScale;
+							sprite.scaleY=itemScale;
+		            		myPrintJob.addPage(sprite);
+		            		
+						} catch (error:Error) {
+							trace(error.message);
+						}
+		            	myPrintJob.send(); 
+		            }
+            	} else {
+            		fireInfoClicked(event);
+            	}
+            }
+		]]>
+	</mx:Script>
+ 	<mx:Canvas id="InfoOnCanvas" x="6" y="336" width="690" height="320" backgroundImage="@Embed(source='embedded/ItemDataViewBG.png')" backgroundSize="100%" />
+ 	<mx:Canvas id="parcelInfoOffCanvas" x="6" y="335" width="203" height="180" backgroundImage="@Embed(source='embedded/ParcelInfoOff.png')" backgroundSize="100%" alpha="0"/>
+ 	<mx:Canvas id="tariffInfoOffCanvas" x="6" y="516" width="203" height="140" backgroundImage="@Embed(source='embedded/TariffInfoOff.png')" backgroundSize="100%" alpha="0"/>
+ 	<mx:Canvas id="postageInfoOffCanvas" x="517" y="336" width="179" height="321" backgroundImage="@Embed(source='embedded/PostageInfoOff.png')" backgroundSize="100%" alpha="0"/>
+ 	<slides:ConfButton id="originBox"  x="213" y="335" click="fireOriginChange(event);" />
+ 	<slides:ConfButton id="destBox"  x="213" y="443"  click="fireDestinationChange(event);"/>
+ 	<slides:CCatButton id="contactBox"  x="213" y="551"  click="fireContactChange(event);"/>
+ 	<mx:Canvas id="itemImageCanvas" x="10" y="9" width="686" height="316" borderStyle="solid" borderThickness="2" borderColor="#B2D2C7" >
+ 	 	<mx:Image x="0" y="0" width="100%" height="100%" id="itemImage" scaleContent="true"/>
+ 	 	<mx:Canvas x="0" y="0" width="100%" height="100%" id="itemOverImage" click="onImageClick(event);"/>
+ 	</mx:Canvas>
+ 	<mx:Image id="typeImage" x="53" y="432" width="100" height="68" source="resources/graphics/mails_types/Letter.png"/>
+ 	<mx:Label x="16" y="338" text="Parcel information" color="#FFFFFF" fontSize="12" width="190" id="label1"/>
+ 	<mx:Label x="16" y="517" text="Tariff information" color="#FFFFFF" fontSize="12" width="190" id="label2"/>
+ 	<mx:Label x="526" y="338" text="Postage" color="#FFFFFF" fontSize="12" width="170" id="label3" click="simulateLazyLoad(event);"/>
+ 	<mx:Label x="526" y="385" text="Pre-applied services" color="#FFFFFF" fontSize="12" width="170" id="label4"/>
+ 	<mx:Text x="16" y="357" text="Type" color="#FFFFFF" fontWeight="normal" fontSize="11" width="64" height="125" id="piCatagory"/>
+ 	<mx:Text x="16" y="536" text="Source" color="#FFFFFF" fontWeight="normal" fontSize="11" width="64" height="125" id="tiCatagory" />
+ 	<mx:Text x="81" y="357" text="Type" color="#FFFFFF" fontWeight="bold" fontSize="11" width="130" height="125" id="piText"/>
+ 	<mx:Text x="81" y="536" text="Source" color="#FFFFFF" fontWeight="bold" fontSize="11" width="130" height="125" id="tiText" />
+ 	<mx:Text x="526" y="357" text="None found" color="#FFFFFF" fontWeight="bold" fontSize="11" width="170" height="30" id="postage"/>
+ 	<mx:Text x="526" y="404" text="None found" color="#FFFFFF" fontWeight="bold" fontSize="11" width="170" height="230" id="preapplied"/>
+ 	<mx:Canvas x="10" y="336" width="185" height="320" click="fireInfoClicked(event);"  id="canvas1"/>	
+</mx:Canvas>

@@ -1,0 +1,4 @@
+# Historical archive (1996-2018): preserve original bytes exactly.
+# These files are artefacts, not actively edited source - do not normalise
+# line endings, or the archive stops matching the originals on G:.
+* -text

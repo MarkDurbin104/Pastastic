@@ -1,0 +1,39 @@
+
+      здддддддддддддддддддддддддддCONFIG.SYSдддддддддддддддддддддддддд©
+      Ё                                                               Ё
+      ЁDEVICE=SCRNBLNK.SYS 10      ;  1 to 59 minutes (default 5)     Ё
+      Ё                                                               Ё
+      юддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддды
+
+      зддддддддддддддддддддддддSIGN ON MESSAGEдддддддддддддддддддддддд©
+      Ё                                                               Ё
+      Ё10 Minute Screen Blanking Utitity                              Ё
+      ЁSCRNBLNK.SYS device driver Version 1.0                         Ё
+      ЁCopyright (c) UNISYS Limited 1991.                             Ё
+      Ё                                                               Ё
+      юддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддддды
+
+                      -1SCRNBLNK.SYS Memory Map-0
+
+   0000   ддддддбдддддддддддддддддддддддддддддддбдддддддддддддддддддддддд
+                Ё  Device Driver Header Block   Ё
+   0012   ддддддеддддддддддддддддддддддддддддддд╢
+                Ё          Variables            Ё   Resident Portion
+   0023   ддддддеддддддддддддддддддддддддддддддд╢    Of Device Driver
+                Ё          Keyboard             Ё    
+                Ё      Interrupt Routine        Ё       100 bytes
+   003F   ддддддеддддддддддддддддддддддддддддддд╢
+                Ё           Timer               Ё
+                Ё      Interrupt Routine        Ё
+   0063   ддддддедддддддддддддддддддддддддддддддедддддддддддддддддддддддд
+                Ё                               Ё
+                Ё                               Ё
+                Ё            Device             Ё
+                Ё            Driver             Ё
+                Ё        Initialisation         Ё
+                Ё             Code              Ё
+                Ё                               Ё
+                Ё                               Ё
+   0203   ддддддаддддддддддддддддддддддддддддддды
+   
+

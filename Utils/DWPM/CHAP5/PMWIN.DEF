@@ -1,0 +1,9 @@
+Name              PMWIN
+Description       'Protected mode test frame'
+Exetype           WINDOWS
+Code              PRELOAD MOVEABLE DISCARDABLE
+Data              PRELOAD MOVEABLE SINGLE
+Heapsize          4096
+Stacksize         5120
+Stub              'WINSTUB.EXE'
+

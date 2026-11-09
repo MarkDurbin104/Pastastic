@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="169" height="95"
+	horizontalScrollPolicy="off" verticalScrollPolicy="off" 
+	backgroundColor="#448BB5" backgroundAlpha=".25" 
+	borderStyle="solid" borderThickness="2" borderColor="#404040" cornerRadius="5">
+	<mx:Metadata>
+	    [Event(name="ImageLoaded", type="flash.events.Event")]
+		[Event(name="mailServiceClicked", type="flash.events.MouseEvent")]
+	</mx:Metadata>
+	<mx:Script>
+		<![CDATA[
+			import mx.events.IndexChangedEvent;
+			import mx.collections.SortField;
+			import mx.collections.Sort;
+			import mx.collections.ArrayCollection;
+			import mx.utils.StringUtil;
+			
+			[Bindable] public var type:String; 							
+			[Bindable] public var tariff:String; 							
+			[Bindable] public var tariffColumn:String;
+			[Bindable] public var tariffMultiColumn:Boolean;
+			[Bindable] public var tariffType:String; 				
+			[Bindable] public var requiresInput:Boolean; 		
+			[Bindable] public var iconFilePath:String; 		
+			[Bindable] public var shortName:String; 	
+			[Bindable] public var isDomestic:Boolean;
+			[Bindable] public var isInternational:Boolean;
+			[Bindable] public var caption:String; 				
+			[Bindable] public var receiptCaption:String; 	
+			[Bindable] public var fullName:String; 			
+			[Bindable] public var hint:String; 					
+			[Bindable] public var helpURL:String; 			
+			[Bindable] public var maxWeight:Number; 	
+	
+			public var services:Array;
+			private var serviceXML:XML;
+			public var price:String="";
+			public var priceValue:Number=0;
+			public var appliableTypes:Array=new Array;
+
+			[Bindable]
+         	private var properties:ArrayCollection; 	
+         	
+			private var _iconFile:String;
+			[Bindable]
+			public function set iconFile(value:String):void {
+				_iconFile=value;
+				var imageLoader:URLLoader=new URLLoader();
+				imageLoader.addEventListener(Event.COMPLETE,imageLoaded);
+				imageLoader.load(new URLRequest(iconFilePath+_iconFile));
+			}
+			private function imageLoaded(event:Event):void {
+				notifyImageLoaded();
+			}
+			private function notifyImageLoaded():void {
+				if (iconImage == null) {
+					callLater(notifyImageLoaded);
+				} else {
+					iconImage.source=iconFilePath+_iconFile;
+					dispatchEvent(new Event("ImageLoaded"));
+				}
+			}
+			
+			public function get iconFile():String{
+				return(_iconFile);
+			}
+	
+			public function hasService(secondary:String):Boolean {
+				return services.indexOf(secondary)>=0;
+			}
+			
+			public function setup(service:XML,iconURL:String="resources/graphics/mails_icons/"):void {
+				serviceXML=new XML(service);
+				iconFilePath=iconURL;
+	     		shortName=service.@Name;
+	     		caption=service.@Caption;
+	     		receiptCaption=service.@ReceiptCaption;
+	     		fullName=service.@FullName;
+	     		hint=service.@Hint;
+	     		helpURL=service.@HelpURL;
+	     		iconFile=service.@Icon;
+	     		isDomestic=service.@Domestic == "true";
+	     		isInternational=service.@International== "true";
+	     		type=service.@Type;
+	     		maxWeight=service.@MaxWeight;
+	     		tariff=service.@Tariff;
+	     		tariffColumn=service.@TariffColumn;
+	     		tariffMultiColumn=service.@TariffMultiColumn=="true";
+	     		tariffType=service.@TariffType;
+	     		price=service.@Price;
+	     		
+	     		if (maxWeight == 0) maxWeight=1120;
+	     		var atypes:String=service.ApplicableTypes; 
+	     		if (atypes != "")
+		     		appliableTypes=atypes.split(",");
+		        for (var i:int=0;i<appliableTypes.length;i++) {
+		        	appliableTypes[i]=StringUtil.trim(appliableTypes[i]);
+		        }
+				services=new Array;
+		        for (i=0;i<service.elements().length();i++) {
+		        	if (service.elements()[i].localName() != "ApplicableTypes") {
+			        	services.push(service.elements()[i].localName());
+		        	}
+		        }
+			}
+			public function onClick(event:MouseEvent):void {
+				if (currentState == "minimised") {
+					currentState="";
+				} else if (currentState == "maximised") {
+					populatePropertiesFromArray();
+					currentState="minimised";
+				} else {
+					populateArrayFromProperties();
+					currentState="maximised";
+				}
+				dispatchEvent(new MouseEvent("mailServiceClicked"));
+			}	
+			private function populateArrayFromProperties():void {
+				var props:Array=new Array([
+					{property:"caption"					,value:""},
+					{property:"fullName"					,value:""},
+					{property:"helpURL"					,value:""},
+					{property:"hint"							,value:""},
+					{property:"iconFile"					,value:""},
+					{property:"iconFilePath"			,value:""},
+					{property:"isDomestic"				,value:""},
+					{property:"isInternational"		,value:""},
+					{property:"maxWeight"				,value:""},
+					{property:"receiptCaption"		,value:""},
+					{property:"requiresInput"			,value:""},
+					{property:"shortName"				,value:""},
+					{property:"tariff"						,value:""},
+					{property:"tariffColumn"			,value:""},
+					{property:"tariffType"				,value:""},
+					{property:"tariffMultiColumn"	,value:""},
+					{property:"type"							,value:""}]);
+					
+				for (var i:int=0;i<serviceXML.attributes().length();i++) {
+					var name:String=serviceXML.attributes()[i].name();
+					var val:String=serviceXML.attribute(name)[0];
+					var index:int=props.indexOf(name);
+					if (index >=0) {
+						props[index].value=val;
+					} else {
+						props.push({property:name,value:val});
+					}
+				}
+				
+				properties=new ArrayCollection(props);
+				
+				var sort:Sort = new Sort();
+     			sort.fields = [new SortField("property",true), new SortField("value",true)];
+				properties.sort = sort;
+				properties.refresh();
+				
+/*
+				properties=new ArrayCollection([
+					{property:"caption"						,value:caption						},
+					{property:"fullName"					,value:fullName					},
+					{property:"helpURL"					,value:helpURL					},
+					{property:"hint"							,value:hint							},
+					{property:"iconFile"						,value:iconFile					},
+					{property:"iconFilePath"				,value:iconFilePath				},
+					{property:"isDomestic"				,value:isDomestic				},
+					{property:"isInternational"			,value:isInternational			},
+					{property:"maxWeight"				,value:maxWeight				},
+					{property:"receiptCaption"			,value:receiptCaption			},
+					{property:"requiresInput"			,value:requiresInput			},
+					{property:"shortName"				,value:shortName				},
+					{property:"tariff"							,value:tariff						},
+					{property:"tariffColumn"				,value:tariffColumn				},
+					{property:"tariffType"					,value:tariffType					},
+					{property:"tariffMultiColumn"		,value:tariffMultiColumn		},
+					{property:"type"							,value:type							}]);
+*/
+			}
+			private function getProperty(name:String):Object {
+				for (var i:int=0;i<properties.length;i++) {
+					if (properties[i].property==name) {
+						return(properties[i].value);
+					}
+				}
+				return null;
+			}
+			private function populatePropertiesFromArray():void {
+				/*
+				caption					=String(getProperty("caption"));
+				fullName					=String(getProperty("fullName"));
+				helpURL					=String(getProperty("helpURL"));
+				hint							=String(getProperty("hint"));
+				iconFile					=String(getProperty("iconFile"));
+				iconFilePath			=String(getProperty("iconFilePath"));
+				isDomestic				=Boolean(getProperty("isDomestic"));
+				isInternational		=Boolean(getProperty("isInternational"));
+				maxWeight				=Number(getProperty("maxWeight"));
+				receiptCaption		=String(getProperty("receiptCaption"));
+				requiresInput			=Boolean(getProperty("requiresInput"));
+				shortName				=String(getProperty("shortName"));
+				tariff						=String(getProperty("tariff"));
+				tariffColumn			=String(getProperty("tariffColumn"));
+				tariffType				=String(getProperty("tariffType"));
+				tariffMultiColumn	=Boolean(getProperty("tariffMultiColumn"));
+				type							=String(getProperty("type"));
+				*/
+			}
+			private function longestName():String {
+				if (fullName.length > receiptCaption.length) {
+					if (fullName.length > caption.length) {
+						return(fullName); 
+					} else {
+						return(caption);
+					}
+				} else if (receiptCaption.length > caption.length) {
+					return(receiptCaption);
+				} else {
+					return(caption);
+				}
+			}
+		]]>
+	</mx:Script>
+	
+	<mx:states>
+		<mx:State name="minimised">
+			<mx:RemoveChild target="{captionLabel}"/>
+			<mx:RemoveChild target="{shortNameLabel}"/>
+			<mx:RemoveChild target="{hrule1}"/>
+			<mx:RemoveChild target="{iconImage}"/>
+			<mx:SetProperty name="height" value="45"/>
+			<mx:AddChild position="firstChild">
+				<mx:TextArea text="{longestName()}" horizontalCenter="0" textAlign="center" fontFamily="Tahoma" fontSize="10" fontWeight="bold" color="#000000" id="longNameLabel" verticalCenter="0" wordWrap="true" editable="false" selectable="false" backgroundAlpha="0.0"/>
+			</mx:AddChild>
+		</mx:State>
+		<mx:State name="maximised">
+			<mx:RemoveChild target="{iconImage}"/>
+			<mx:RemoveChild target="{captionLabel}"/>
+			<mx:SetProperty name="width" value="260"/>
+			<mx:SetProperty name="height" value="430"/>
+			<mx:SetProperty target="{overCanvas}" name="height" value="20"/>
+			<mx:AddChild position="lastChild">
+				<mx:DataGrid x="0" y="20" dataProvider="{properties}" height="100%" width="100%">
+					<mx:columns>
+						<mx:DataGridColumn headerText="Property" dataField="property"/>
+						<mx:DataGridColumn headerText="Value" dataField="value"/>
+					</mx:columns>
+				</mx:DataGrid>
+			</mx:AddChild>
+		</mx:State>
+	</mx:states>
+
+	<mx:Label y="0" text="{shortName}" horizontalCenter="0" textAlign="center" fontFamily="Tahoma" fontSize="10" fontWeight="bold" color="#000000" id="shortNameLabel" width="100%"/>
+	<mx:HRule left="0" right="0" top="18" strokeColor="#000000" id="hrule1"/>
+	<mx:Image horizontalCenter="0" verticalCenter="0" id="iconImage" source="../../../MailMan/Source/data/mails_icons/Express_Dom.png" width="95" height="55">
+	</mx:Image>
+	<mx:Label bottom="0" text="{caption}" horizontalCenter="0" textAlign="center" fontFamily="Tahoma" fontSize="10" fontWeight="bold" color="#000000" id="captionLabel" width="100%"/>
+	<mx:Canvas id="overCanvas" width="100%" height="100%" x="0" y="0" alpha="0" buttonMode="true" click="onClick(event)"/>
+</mx:Canvas>

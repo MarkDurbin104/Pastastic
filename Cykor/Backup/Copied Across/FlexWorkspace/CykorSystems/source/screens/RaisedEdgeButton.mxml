@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:filters="flash.filters.*" >
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public var title:String;			
+		]]>
+	</mx:Script>
+	<mx:Canvas 		width="200" 		height="52" 			cornerRadius="12" 	x="0" 			y="0" 		borderStyle="solid" backgroundColor="#3C5490" borderColor="#3C5490" horizontalScrollPolicy="off" verticalScrollPolicy="off" buttonMode="true">
+		<mx:Canvas 		width="194" 		height="46" 			cornerRadius="10" 	x="2" 			y="2" 		borderStyle="solid" backgroundColor="#19233B" borderColor="#19233B" horizontalScrollPolicy="off" verticalScrollPolicy="off" buttonMode="true">
+			<mx:Canvas 		width="194" 		height="33" 			cornerRadius="10" 	x="-2" 			y="12" 		borderStyle="solid" backgroundColor="0" borderColor="0" horizontalScrollPolicy="off" verticalScrollPolicy="off" buttonMode="true"/>
+			<mx:Canvas 		width="194" 		height="19"	x="-2" 			y="7" 		borderStyle="solid" backgroundColor="#19233B" borderColor="#19233B" horizontalScrollPolicy="off" verticalScrollPolicy="off" buttonMode="true"/>
+			<mx:Label x="4" y="11" text="{title}" fontFamily="Verdana" fontSize="14" color="#FFFFFF" width="100%" selectable="false" buttonMode="true"/>
+		</mx:Canvas>
+	</mx:Canvas>
+<!--	<mx:Canvas 		width="160" 		height="120" 			cornerRadius="12" 	x="0" 			y="0" 		borderStyle="solid" backgroundColor="#ACCFDD" borderColor="#ACCFDD" horizontalScrollPolicy="off" verticalScrollPolicy="off" themeColor="#6B98AF" buttonMode="true"/>
+	<mx:Canvas		width="162.4" 	height="118.4" 		cornerRadius="12" 	x="1.6" 		y="1.6" 	borderStyle="solid" backgroundColor="#7DAECC" borderColor="#7DAECC" horizontalScrollPolicy="off" verticalScrollPolicy="off" themeColor="#6B98AF" buttonMode="true"/>
+	<mx:Canvas 		width="144" 		height="104.8" 		cornerRadius="8" 	x="8" 			y="8" 		borderStyle="solid" backgroundColor="#6B98AF" borderColor="#6B98AF"  horizontalScrollPolicy="off" verticalScrollPolicy="off" buttonMode="true"/>
+	<mx:Canvas 		width="142" 		height="102.8" 		cornerRadius="8" 	x="10" 		y="10"	borderStyle="solid" backgroundColor="#ACCFDD" borderColor="#ACCFDD" horizontalScrollPolicy="off" verticalScrollPolicy="off" themeColor="#6B98AF" buttonMode="true"/>
+	<mx:Canvas		width="141.2" 	height="102" 			cornerRadius="7.2" x="9.6" 		y="9.6" 	borderStyle="solid" backgroundColor="#EFF5F6" horizontalScrollPolicy="off" verticalScrollPolicy="off" buttonMode="true">
+		<mx:Canvas 	width="100%" height="54.2" 		cornerRadius="7.2" x="0" 			y="45.8"  	backgroundColor="#D7E7E8" borderColor="#D7E7E8"  borderStyle="solid"/>
+		<mx:Canvas 	width="152" 		height="39.2" 												x="-5.6" 	y="18.6"  borderStyle="none" alpha="1.0" backgroundAlpha="1.0" backgroundColor="#EFF5F6" />
+		<mx:Text x="4" y="38" text="{title}" fontFamily="Verdana" fontWeight="bold" fontSize="20" width="100%"/>
+	</mx:Canvas>
+	<mx:filters>
+		<filters:DropShadowFilter alpha="0.1" blurX="0" blurY="0" distance="4" />
+	</mx:filters>
+ -->
+ </mx:Canvas>

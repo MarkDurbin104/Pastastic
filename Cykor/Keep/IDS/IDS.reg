@@ -1,0 +1,6 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\PSL\GPCS\IDS]
+"Initial Directory"="C:\\PSL\\Botswana\\IDS\\"
+"Initial File"="Botswana E.ids"
+

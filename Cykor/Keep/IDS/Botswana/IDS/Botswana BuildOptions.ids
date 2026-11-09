@@ -1,0 +1,15 @@
+//***********************************************************************************************************//
+//**                                                                                                       **//
+//**                                   Botswana Post Build Options                                         **//
+//**                                                                                                       **//
+//***********************************************************************************************************//
+
+BuildOptions
+{
+
+  RootSrcOutputDir { 'C:\PSL\Botswana\Source'     }
+  EXEOutputDir     { 'C:\PSL\Botswana\Binary'     }
+  DCUOutputDir     { 'C:\PSL\Botswana\Binary\DCU' }
+
+
+}

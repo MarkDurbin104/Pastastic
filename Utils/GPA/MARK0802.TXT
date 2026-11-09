@@ -1,0 +1,43 @@
+                                8/2/95
+
+Mark,
+
+The sections for the GPA manual are as follows:
+
+
+Section         Owner/Status                    Filename
+--------        ------------                    ---------
+
+Overview        Mark to do
+
+Forms Designer  Completed apart from minor
+                edits                           gpadman1.doc
+
+Store Designer  Completed                       sd-man1.doc
+
+Font Designer   John - working on, completion
+                expected 9/2/95
+
+Keyboard Designer Completed                     kd-man1.doc
+
+Macro Language/Programmers Guide
+                Tom working on concurrant
+                with source code documenting    actman1.doc
+
+CAPTURE         Completed                       cap-bld1.doc
+  Build system
+
+
+
+
+I've placed all the latest revisions of these documents as ZIP
+files on the server.
+
+Regarding the overview - will you be documenting the configuration
+of a system?  If not we will need another section.
+
+
+Tom
+
+
+cc:  Pam, Len

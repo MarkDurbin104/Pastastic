@@ -1,0 +1,204 @@
+package base
+{
+	import mx.collections.ArrayCollection;
+	import mx.containers.Canvas;
+	import mx.containers.Panel;
+	import mx.controls.Label;
+	import mx.containers.HBox;
+	import mx.containers.VBox;
+	import mx.containers.Panel;
+	import mx.controls.Image;
+	import mx.controls.Spacer;
+	import mx.core.Container;
+
+	public class Menus extends Canvas
+	{
+		public var menus:XML;
+		public var menuList:ArrayCollection;
+		public var mainMenu:Container;
+		public var buttonWidth:int = 110;
+		public var buttonStep:int = 3;
+		public var buttonIndent:int = buttonWidth / buttonStep;
+		
+		public function Menus(themenus:XML)
+		{
+			super();
+			parseMenus(themenus);
+		}
+		public function parseMenus(themenus:XML): void 
+		{
+   				menus=themenus;
+				menuList= new ArrayCollection();;
+   			
+		        var xl:XMLList=new XMLList(menus.menu);
+				
+		        for (var i:int=0;i<xl.length();i++)
+		        {
+		        	var name:Label;
+		        	var icon:Image;
+		        	var groupHB:HBox;
+		        	var keyHB:HBox;
+		        	var tmpHB:HBox;
+		        	var tmpVB:VBox;
+		        	var tmpBtn:VBox;
+		        	var panel:VBox= new VBox();
+		        	var buttonIndex:int=0;
+		        	
+					panel.id=xl[i].@name;
+		        	menuList.addItem(panel);
+		        	if (panel.id=="main") {
+		        		mainMenu=panel;
+		        	}
+					panel.setStyle("borderStyle","none"); 
+/* 					panel.setStyle("alpha","0.0"); 
+					if (xl[i].@isMOP=="true") {
+						panel.setStyle("backgroundAlpha","0.2");
+						panel.setStyle("backgroundColor","#400000"); 
+					} else {
+						panel.setStyle("backgroundAlpha","0.1");
+						panel.setStyle("backgroundColor","#000040"); 
+					}
+ */	         		
+ 					tmpHB=new HBox();	panel.addChild(tmpHB);
+					tmpHB.setStyle("horizontalAlign","left");
+					tmpHB.setStyle("verticalAlign","middle");
+		        	if (xl[i].icon+xl[i].@icon != "") {
+		        		icon=new Image();	tmpHB.addChild(icon);
+		        		icon.source="configuration/"+xl[i].icon+xl[i].@icon; 
+		        		icon.scaleContent=true;
+		        		icon.height=50;
+		        	}
+		        	name=new Label();	tmpHB.addChild(name); 
+		        	name.setStyle("fontSize","18");
+		        	name.setStyle("fontWeight","bold");
+		        	name.setStyle("color","#0000A0");
+		        	name.text=xl[i].caption+xl[i].@caption;
+//		        	panel.alpha=0.5;
+		         	if (xl[i].hasOwnProperty("group")) {
+			        	var gi:int=0;
+			         	for each(var group:XML in xl[i].group) {
+				        	groupHB=new HBox();	panel.addChild(groupHB); 
+							groupHB.setStyle("verticalAlign","middle");
+							var hasIcon:Boolean=(group.attribute("icon").length() > 0) || group.hasOwnProperty("icon");
+							var hasCaption:Boolean=(group.attribute("caption").length() > 0) || group.hasOwnProperty("caption");
+							group.attribute("caption").length() >0
+				        	if (hasIcon || hasCaption) {
+								groupHB.setStyle("borderStyle","solid"); 
+								groupHB.setStyle("borderThickness","1"); 
+								groupHB.setStyle("cornerRadius","10"); 
+								groupHB.setStyle("alpha","0.1"); 
+								groupHB.setStyle("backgroundColor","#000080"); 
+								groupHB.setStyle("backgroundAlpha","0.1");
+								tmpVB.setStyle("verticalGap","2");
+								
+				         		tmpVB=new VBox();	groupHB.addChild(tmpVB);
+								tmpVB.setStyle("horizontalAlign","center");
+								tmpVB.setStyle("verticalAlign","middle");
+								tmpVB.setStyle("verticalGap","0");
+				         		tmpVB.width=110; 
+				         		tmpVB.height=94; 
+					        	if (hasIcon)  {
+					        		icon=new Image();	tmpVB.addChild(icon);
+					        		icon.source="configuration/"+group.icon+group.@icon; 
+					        	}
+					        	if (hasCaption)  {
+						        	name=new Label();	tmpVB.addChild(name); 
+						        	name.setStyle("fontSize","14");
+						        	name.setStyle("fontWeight","bold");
+						        	name.setStyle("color","#132367");
+						        	name.text=group.caption+group.@caption;
+					        	}
+				        	}
+			         		tmpVB=new VBox();	groupHB.addChild(tmpVB); tmpVB.width=gi*buttonIndent; tmpVB.height=110; 
+				         	for each(var gmi:XML in group.menuitem) {
+				         		tmpBtn=new VBox();	groupHB.addChild(tmpBtn);
+								tmpBtn.setStyle("horizontalAlign","center");
+								tmpBtn.setStyle("verticalAlign","middle");
+								tmpBtn.setStyle("verticalGap","0");
+								tmpBtn.setStyle("borderStyle","solid"); 
+								tmpBtn.setStyle("cornerRadius","8"); 
+								tmpBtn.setStyle("borderColor","#132367"); 
+								tmpBtn.setStyle("borderThickness","3"); 
+								tmpBtn.setStyle("alpha","0.5"); 
+//								tmpBtn.setStyle("alpha","0.1"); 
+								tmpBtn.setStyle("backgroundColor","#c0c0c0"); 
+								tmpBtn.setStyle("backgroundAlpha","0.2");
+//					        	tmpBtn.styleName="gradientRoundedRectangleSkin";
+				         		tmpBtn.width=buttonWidth; 
+				         		tmpBtn.buttonMode=true;
+				         		tmpBtn.id=gmi.@id+"="+gmi.execute+gmi.@execute;
+				         		var ht:String = gmi.helptext+gmi.@helptext;
+				         		if (ht == "") {
+					         		tmpBtn.toolTip="Touch this button for "+gmi.title+gmi.@title;
+				         		} else {
+					         		tmpBtn.toolTip=ht;
+				         		}
+				         		tmpBtn.toolTip+="\n"+tmpBtn.id;
+				         		
+				         		keyHB=new HBox();	
+								keyHB.setStyle("horizontalAlign","right");
+				         		keyHB.buttonMode=true;
+				         		tmpBtn.addChild(keyHB);
+				         		
+				         		var exec:String=gmi.execute+gmi.@execute;
+								
+								if (exec.slice(0,5)=="menu.") {
+									name=new Label();	keyHB.addChild(name); 
+						        	name.text="ooo";
+						        	name.setStyle("fontWeight","bold");
+						        	name.setStyle("fontSize","8");
+						        	name.setStyle("color","#FFFFFF");
+									var spacer:Spacer=new Spacer();	keyHB.addChild(spacer); 
+						        	spacer.width=40;
+								}
+
+
+								name=new Label();	keyHB.addChild(name); 
+					        	name.text=gmi.shortcut+gmi.@shortcut;
+				         		name.buttonMode=true;
+					        	if (name.text == "") {
+					        		name.text="F"+(buttonIndex+1);
+					        	}
+					        	name.setStyle("fontWeight","bold");
+					        	name.setStyle("color","#FFFFFF");
+					        	
+					        	if (gmi.icon+gmi.@icon != "") {
+					        		icon=new Image();	tmpBtn.addChild(icon);
+					        		icon.source="configuration/"+gmi.icon+gmi.@icon; 
+					        	}
+ 				         		tmpHB=new HBox();	tmpBtn.addChild(tmpHB);
+				         		tmpHB.buttonMode=true;
+								tmpHB.setStyle("horizontalAlign","left");
+								name=new Label();	tmpHB.addChild(name); 
+					        	name.text=gmi.caption+gmi.@caption;
+				         		name.buttonMode=true;
+					        	name.setStyle("fontWeight","bold");
+					        	tmpHB.setStyle("backgroundColor","#5762A4");
+								tmpHB.setStyle("borderStyle","inset"); 
+								tmpHB.setStyle("cornerRadius","1"); 
+								tmpHB.setStyle("borderColor","#132367"); 
+								tmpHB.setStyle("borderThickness","2"); 
+								tmpHB.setStyle("alpha","0.8"); 
+//								tmpHB.setStyle("backgroundColor","#c0c0c0"); 
+								tmpHB.setStyle("backgroundAlpha","0.8");
+					        	name.setStyle("color","#ffffff");
+					        	keyHB.width=tmpBtn.width-6;
+					        	tmpHB.width=tmpBtn.width-6;
+					        	buttonIndex++;
+				         	}
+			         		tmpVB=new VBox();	groupHB.addChild(tmpVB); tmpVB.width=(buttonWidth-buttonIndent)-(gi*buttonIndent); 
+			         		gi++;
+			         		gi%=buttonStep;
+			         	}
+		         	} else {
+			        	name=new Label();	addChild(name); 
+			        	name.text="-   MENU ITEMS   -";
+			         	for each(var mi:XML in xl[i].menuitem) {
+				        	name=new Label();	panel.addChild(name); 
+				        	name.text="\t["+mi.shortcut+mi.@shortcut+"] ["+mi.alt+mi.@alt+"] "+mi.title+mi.@title+"\t"+mi.execute+mi.@execute+" \t("+mi.icon+mi.@icon+")";
+			         	}
+		         	}
+		        }
+			} 
+		}
+	}

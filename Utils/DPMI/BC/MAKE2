@@ -1,0 +1,25 @@
+LIB_DEP	= 	PFXi32t.obj	\
+		PFXint32.obj
+
+#DEBUG	= -v
+
+all:	int32.lib
+
+i32t.obj:	i32t.asm
+	tasm32 /ml /m2 i32t
+
+int32.obj:	int32.c
+	bcc32 -WX -c -w $(DEBUG) int32.c
+
+int32.lib:	$(LIB_DEP:PFX=)
+	tlib int32.lib @&&|
+$(LIB_DEP:PFX=-+)
+|
+
+test:	int32.lib t.obj
+	tlink32 /ax $(DEBUG) /Lc:\bc4\lib c0x32 t,t,,int32 dpmi32 cw32 import32
+
+t.obj:	t.c
+	bcc32 -WX -c -w $(DEBUG) t.c
+
+

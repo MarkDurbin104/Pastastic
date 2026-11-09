@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
+	top="5" horizontalCenter="0" width="140" height="56" borderStyle="inset" borderColor="#1C4C88" alpha="1" backgroundAlpha="0">
+	<mx:ProgressBar left="2" right="2" labelPlacement="center" label="IMAGES" minimum="0" id="imagePB" height="15" borderColor="#1C4C88" indeterminate="true" maximum="100" barColor="#1C4C88" fontFamily="Verdana" color="#FFFFFF" enabled="true" bottom="2"/>
+	<mx:ProgressBar top="19" left="2" right="2" labelPlacement="center" label="TARIFFS" minimum="0" enabled="true" id="tariffPB" height="15" borderColor="#1C4C88" indeterminate="true" maximum="100" barColor="#1C4C88" fontFamily="Verdana" color="#FFFFFF"/>
+	<mx:Label text="LOADING MAILS:" left="2" top="2" right="2" textAlign="center" fontWeight="bold" fontFamily="Verdana" fontSize="11" color="#1C4C88"/>
+</mx:Canvas>

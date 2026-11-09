@@ -1,0 +1,391 @@
+// Botswana Post Office Constants
+
+// PLU to check
+// PLU_PaySalary        { 000000000 }  // Supervisor pay salary
+// PLU_Claims           { 000000000 }  // Over Time Claims
+//
+
+Constants {
+//----------------------- Administration.IDS Product PLU's ---------------------
+
+
+   PLU_AcceptOrder          { 010000001 }
+   PLU_AcceptReturn         { 010000002 }
+   PLU_OrderCash            { 010000003 }
+   PLU_Balance              { 010000004 }
+   PLU_SupEndOfDay          { 010000005 } 
+   PLU_ChangePassword       { 010000006 }
+   PLU_ChangeCA             { 010000007 }
+   PLU_ClerkCA              { 010000008 }
+   PLU_FullCashAccount      { 010000009 }
+   PLU_AnOfficeCashAccount  { 010000010 }
+   PLU_GPOCashAccount       { 010000011 }
+   PLU_SubsCashAccount      { 010000012 }
+   PLU_ClientReturns        { 010000013 }
+   PLU_ClientRetSum         { 010000014 }
+   PLU_StampVendor          { 010000015 }
+   PLU_DeleteStockItem      { 010000016 }
+   PLU_AddModStockItem      { 010000017 }
+   PLU_DeleteTran           { 010000018 }
+   //   PLU_DeclareCash     { 010000007 }
+   //   PLU_DeclarePostOrd  { 010000008 }
+   PLU_DeclarePrint         { 010000019 }
+   //   PLU_DeclareStamps  { 010000010 }
+   //   PLU_DeclareStock   { 010000011 }
+   PLU_OrderPostOrd         { 010000020 }
+   PLU_OrderPhil            { 010000021 }
+   PLU_OrderPrint           { 010000022 }
+   PLU_OrderStamps          { 010000023 }
+   PLU_OrderStock           { 010000024 }
+   PLU_ReturnCash           { 010000025 }
+   PLU_ReturnPostOrd        { 010000026 }
+   PLU_ReturnPhil           { 010000027 }
+   PLU_ReturnPrint          { 010000028 }
+   PLU_ReturnStamps         { 010000029 }
+   PLU_ReturnStock          { 010000030 }
+   PLU_SetExcngRates        { 010000031 }
+   //   PLU_SetupOther     { 010000022 }
+   PLU_SetupStock           { 010000032 }
+   PLU_StartOfDay           { 010000033 }
+   PLU_TrialBalance         { 010000034 }
+   PLU_UserStock            { 010000035 }
+   PLU_ViewStock            { 010000036 }
+   PLU_SuperCOrder          { 010000037 }
+
+   // ------------- Administrative
+   PLU_CancelCustomer   { 010000038 }
+   PLU_Declaration      { 010000039 }
+   PLU_ClientReturn     { 010000040 }
+   PLU_EndOfDayBalance  { 010000041 }
+   PLU_ClientReturnSummary { 010000042 }
+
+
+
+//-------------------- Charges and Fees.IDS Product PLU's ----------------------
+   //    // PLU_BoxLockKey     { 030000014 }
+
+
+   PLU_PBNewLockKey      { 030000013 }
+   PLU_BagNewLockKey     { 030000014 }
+
+   PLU_PrivBoxAnnualRent { 030000015 }
+   PLU_PBQuarterRent     { 030000016 }
+   PLU_PBSurcharge       { 030000017 }
+
+   PLU_BusBoxAnnualRent  { 030000018 }
+   PLU_BusBoxQuarterRent { 030000019 }
+   PLU_BusBoxNewLockKey  { 030000020 }
+
+   PLU_GovBoxAnnualRent  { 030000021 }
+   PLU_GovBoxQuarterRent { 030000022 }
+   PLU_GovBoxNewLockKey  { 030000023 }
+
+   PLU_BagAnnualRent     { 030000030 }
+   PLU_BagQuarterRent    { 030000031 }
+   PLU_BagConveyanceFee  { 030000032 }
+   PLU_BagPenalty        { 030000033 }
+   PLU_BagNewRental      { 030000034 }
+
+
+//   PLU_ParcelCustPres { 030000021 } //17
+//   PLU_ParcelCustPres { 030000022 } //17
+//
+//   PLU_PostOrd        { 040000017 } //67
+//
+//   // Commistion of postord          //21
+//   PLU_RetailList     { 040000018 }
+//
+
+//   PLU_BoxKey         { 041000012 } //26
+//   PLU_BoxLock        { 041000013 } //26
+//   PLU_ComIntCoup     { 041000014 } //26
+//   PLU_DupPstOrd      { 041000015 } //26
+//   PLU_MonOrdAlt      { 041000016 } //26
+//   PLU_MonOrdName     { 041000017 } //26
+//   PLU_OrdEnquiry     { 041000018 } //26
+//   PLU_Demurrage      { 041000020 } //26
+//   PLU_DomDMAL        { 041000021 } //26
+//   PLU_DomDMAO        { 041000022 } //26
+//   PLU_DomDMUL        { 041000023 } //26
+//   PLU_DomDMUO        { 041000024 } //26
+//
+//   PLU_DepAcctLdg     { 042000001 } //26
+//   PLU_BulkMail       { 042000002 } //26
+//   PLU_PostRest       { 042000003 } //26
+//   PLU_PRNewsReg      { 042000005 } //26
+//   PLU_PRNewsRen      { 042000006 } //26
+//   PLU_RntlAthUrb     { 042000007 } //26
+//   PLU_RntlAthRur     { 042000008 } //26
+//   PLU_CertPost       { 042000009 } //26
+//   PLU_DomBusRep      { 042000010 } //26
+//   PLU_IntBusRep      { 042000011 } //26
+//
+//   PLU_IntCustBag     { 042000021 } //26
+//   PLU_IntCustPar     { 042000022 } //26
+//   PLU_DirAgtStrg     { 042000023 } //26
+//   PLU_DemuParc       { 042000024 } //26
+//
+//
+//
+//
+//
+////----------------- Domestic Mail Items.IDS Product PLU's ----------------------
+
+
+   //------- Parcels
+   PLU_SurParcel           { 050010000 }
+   PLU_AirParcel           { 050010001 }
+   PLU_GovSurParcel        { 050010002 }
+   PLU_GovAirParcel        { 050010003 }
+
+   ///------ Mail
+   PLU_AirLetterStd        { 050000000 }
+   PLU_AirLetterLrg        { 050000001 }
+   PLU_AirLetterOver       { 050000002 }
+   
+   PLU_AirAerogramme       { 050000003 }
+   PLU_AirPostCard         { 050000004 }
+   PLU_AirSmallPacket      { 050000005 }
+
+   PLU_SurLetterStd        { 050000050 }
+   PLU_SurLetterLrg        { 050000051 }
+   PLU_SurLetterOver       { 050000052 }
+   PLU_SurPostCard         { 050000053 }
+   PLU_SurSmallPacket      { 050000054 }
+   PLU_SurBlindLit         { 050000055 }
+   
+   PLU_AirFrqLetterStd     { 050000100 }
+   PLU_AirFrqLetterLrg     { 050000101 }
+   PLU_AirFrqLetterOver    { 050000102 }
+   PLU_AirFrqAerogramme    { 050000103 }
+   PLU_AirFrqPostCard      { 050000104 }
+
+   PLU_SurFrqLetterStd     { 050000150 }
+   PLU_SurFrqLetterLrg     { 050000151 }
+   PLU_SurFrqLetterOver    { 050000152 }
+   PLU_SurFrqPostCard      { 050000153 }
+   PLU_SurFrqSmallPacket   { 050000154 }
+   PLU_SurFrqBlindLit      { 050000155 }
+   
+   PLU_AirBlkLetterStd     { 050000200 }
+   PLU_AirBlkLetterLrg     { 050000201 }
+   PLU_AirBlkLetterOver    { 050000202 }
+   PLU_AirBlkAerogramme    { 050000203 }
+   PLU_AirBlkPostCard      { 050000204 }
+
+   PLU_SurBlkLetterStd     { 050000250 }
+   PLU_SurBlkLetterLrg     { 050000251 }
+   PLU_SurBlkLetterOver    { 050000252 }
+   PLU_SurBlkPostCard      { 050000253 }
+   PLU_SurBlkSmallPacket   { 050000254 }
+   
+   PLU_AirGovLetterStd     { 050000301 }
+   PLU_AirGovLetterLrg     { 050000302 }
+   PLU_AirGovLetterOver    { 050000303 }
+   PLU_AirGovAerogramme    { 050000304 }
+   PLU_AirGovPostCard      { 050000305 }
+   PLU_AirGovSmallPacket   { 050000306 }
+   
+   PLU_SurGovLetterStd     { 050000350 }
+   PLU_SurGovLetterLrg     { 050000351 }
+   PLU_SurGovLetterOver    { 050000352 }
+   PLU_SurGovPostCard      { 050000353 }
+   PLU_SurGovSmallPacket   { 050000354 }
+   PLU_SurGovBlindLit      { 050000355 }
+
+   // ------------ Delivery
+ //  PLU_DelDomParcel        { 050020001 }
+ //  PLU_DelIntParcel        { 050020002 }
+ //  PLU_DelCODDomParcel     { 050020003 }
+ //  PLU_DelCODIntParcel     { 050020004 }
+ //  PLU_DelDomEMS           { 050020005 }
+ //  PLU_DelIntEMS           { 050020006 }
+     PLU_StandardLetterDel   { 050020001 }
+     PLU_LargeLetterDel	     { 050020002 }
+     PLU_OversizedLetterDel  { 050020003 }
+     PLU_PostcardDel         { 050020004 }
+     PLU_AerogrammeDel       { 050020005 } 
+     PLU_ParcelsDel          { 050020006 }
+     PLU_CODParcelDel        { 050020007 }
+     PLU_CODHandCharge       { 050020008 }
+     PLU_CODTradeCharge      { 050020009 }
+     PLU_EMSDel              { 050020010 }
+//***PLU_PacketDel           { 050020011 }
+     PLU_CustomsHandCharge   { 050020101 }
+     PLU_CustomsDutyBotswanaFee{ 050020102 }
+     PLU_CustomsDutySAFee      { 050020103 }     // South Africa
+
+   // ------------ Express
+   PLU_DomEMS              { 050050001 }
+   PLU_DomEMSContract      { 050050002 }
+   PLU_IntEMS              { 050050003 }
+   PLU_IntEMSContract      { 050050004 }
+   PLU_DomEMSContractCash  { 050050005 }
+   PLU_IntEMSContractCash  { 050050006 }
+
+   // ------------
+   // PLU_AccountPay          { 060010001 }  // Payment Account  -> Use P_AccPay
+   PLU_AddModCust          { 060010002 }  // Add/Modify Customer
+   PLU_DelCust             { 060010003 }  // Delete EMS customer
+   PLU_CustStatement       { 060010004 }  // EMS Customer Statement
+   PLU_CustInvoice         { 060010005 }  // Print EMS Customer Invoice
+   PLU_CustTransact        { 060010006 }  // EMS Customer Transaction
+
+   // ------------ Government customer PLUs
+   PLU_GovAccountPay       { 060010021 }  // Payment Account
+   PLU_GovAddModCust       { 060010022 }  // Add/Modify Customer
+   PLU_GovDelCust          { 060010023 }  // Delete EMS customer
+   PLU_GovCustStatement    { 060010024 }  // EMS Customer Statement
+   PLU_GovCustInvoice      { 060010025 }  // Print EMS Customer Invoice
+   PLU_GovCustTransact     { 060010026 }  // EMS Customer Transaction
+
+   // ------------ Postal customer PLUs
+   PLU_POAddModCust       { 060010040 }  // Add/Modify Customer
+   PLU_MODelCust          { 060010041 }  // Delete EMS customer
+
+
+   // ------------- Sales
+   PLU_Stamps              { 060020001 }
+   PLU_RetailSales         { 060020002 }
+   PLU_DefinStamps         { 060020003 }
+   PLU_ComemStamps         { 060020004 }
+   PLU_FDStamps            { 060020005 }
+   PLU_SouvStamps          { 060020006 }
+   PLU_YearPack            { 060020007 }
+   PLU_SAlbum              { 060020008 }
+   PLU_PhilOther           { 060020009 }
+   PLU_VendorSales         { 060020010 }
+   PLU_VendorStampSales    { 060020011 }
+   PLU_QuickStamp55        { 060020055 }
+
+
+   // ------------ Agency
+   PLU_ElecBillPayDOE      { 060030000 }
+   PLU_ElecBillPayBPC      { 060030001 }
+   PLU_TelecomBillPayment  { 060030002 }
+   PLU_PensionPayment      { 060030003 }
+   PLU_Housing             { 060030004 }
+   PLU_WaterAffair         { 060030005 }
+   PLU_WaterUtility        { 060030006 }
+   PLU_RIPC                { 060030007 }
+   PLU_FuneralScheme       { 060030008 }
+   PLU_IpolokengScheme     { 060030009 }
+
+
+////-------------- International Mail Items.IDS Product PLU's 060000001 --------------------
+//
+////--------------       EMS Services.IDS Product PLU's       070000001 --------------------
+
+////---------------- Optional Mail Services.IDS Product PLU's 080000002 --------------------
+
+////----------------       Services.IDS Product PLU's         090000001 --------------------
+   PLU_BankOrdDep             { 090000201 }  //24
+   PLU_BankOrdWith            { 090000202 }  //44
+   PLU_BankOrdOpen            { 090000203 }  //44
+   PLU_BankOrdClose           { 090000204 }  //44
+   PLU_BankTrsDep             { 090000211 }  //44
+   PLU_BankTrsWith            { 090000212 }  //44
+   PLU_BankTrsOpen            { 090000213 }  //44
+   PLU_BankTrsClose           { 090000214 }  //44
+   PLU_BankSpcDep             { 090000221 }  //44
+   PLU_BankSpcWith            { 090000222 }  //44
+   PLU_BankSpcOpen            { 090000223 }  //44
+   PLU_BankSpcClose           { 090000224 }  //44
+   PLU_BankSAYEDep            { 090000230 }  //44
+   PLU_BSBLostBook            { 090000240 }  //44
+
+   PLU_Cash                   { 090000003 }
+   PLU_AccPay                 { 090000004 }
+   PLU_AccPayment             { 090000005 }
+   PLU_SavingsAccountOpen     { 090000010 }
+   PLU_SavingsAccountClose    { 090000011 }
+
+   // ------------ Certificates
+   PLU_NatSavCert             { 090000100 }
+   PLU_NatSavCertFPay         { 090000101 }
+   PLU_NatSavCertPPay         { 090000102 }
+   PLU_NatSavCertInterest     { 090000200 }
+   PLU_NatSavCertDate         { 090000201 }
+   PLU_NatSavCertNumber       { 090000202 }
+
+   // ------------ Financial Services
+   PLU_DomMoneyOrd            { 050021001 }
+   PLU_DomMoneyOrderPay       { 050021002 }
+   PLU_DomMoneyOrderMod       { 050021003 }
+   PLU_DomMoneyOrderRefund    { 050021004 }
+   PLU_IntMoneyOrder          { 050021005 }
+   PLU_IntMoneyOrderPaid      { 050021006 }
+   PLU_ChangePayeeName        { 050021007 }
+   PLU_ChangePayeeLocation    { 050021008 }
+   PLU_CeasePaymnet           { 050021009 }
+   PLU_PaymentCopy            { 050021010 }
+   PLU_TelegramCharges        { 050021011 }
+   PLU_MOOptionalService      { 050021012 }
+   PLU_TransmissionFee        { 050021013 } //Money order transmission fee
+   PLU_IntTransmissionFee     { 050021014 } //Int Money order transmission fee
+   PLU_MOOAdviceRecipient     { 050021015 }
+   PLU_MOOAdvicePayment       { 050021016 }
+   PLU_BulkMOPayment          { 050021017 }
+   PLU_AdviceOfPaymentAfterIssue { 050021018 }
+   PLU_ChangeRecipient        { 050021019 }
+   PLU_PostalOrderPay         { 050021051 }  // Pay Postal Order
+   PLU_PostalOrderPayIntUK    { 050021052 }  // Pay Foreign Postal Order - UK
+   PLU_PostalOrderPayIntOther { 050021053 }  // Pay Foreign Postal Order - Other Countries
+   PLU_PostalOrderPayBulk     { 050021054 }
+   PLU_FinPostalOrder         { 050021055 }
+
+// Optional Services -------------------------------
+   PLU_SurParInsurance        { 050030001 }
+   PLU_AirParInsurance        { 050030002 }
+   PLU_AirLetterRegID         { 050030003 }
+   PLU_SurLetterRegID         { 050030004 }
+   PLU_AerogrammeRegID        { 050030005 }
+   PLU_SurPostCardRegID       { 050030006 }
+   PLU_SurSmallPacketRegID    { 050030007 }
+   PLU_SurBlindRegID          { 050030008 }
+   PLU_AirSmallPacketRegID    { 050030009 }
+
+   PLU_AirFrankRegID          { 050030020 }
+   PLU_SurFrankRegID          { 050030021 }
+
+   PLU_AdviceDelivery         { 050031001 }
+   PLU_ExpressDelivery        { 050031002 }
+   PLU_PBLatePayment          { 050031003 }
+   PLU_FrankingMachine        { 050031004 }
+   PLU_PrePaidStamps          { 050031005 }
+   PLU_CustomerVoucher        { 050031006 }
+   PLU_CODFee                 { 050031007 }
+   PLU_UnSorted               { 050031008 }
+   PLU_RegOfNewsPapers        { 050031009 }
+   PLU_AccUnaddrAdvtLeaflets  { 050031010 }
+   PLU_CustomerFax            { 050031011 }
+   PLU_BusReply               { 050031012 }
+   PLU_IntRepCoup             { 050031020 }
+   PLU_BusBoxLatePayment      { 050031021 }
+   PLU_GovBoxLatePayment      { 050031022 }
+
+   // ------------ Miscellaneous receipts / payments
+   PLU_MiscReceipt            { 050032001 }
+   PLU_MiscPayment            { 050032002 }
+   PLU_PaySalary              { 050033001 }  // Supervisor pay salary
+   PLU_Claims                 { 050033002 }  // Over Time Claims
+   PLU_PayWagesIC             { 050033003 }  // Wages Industrial Class
+   PLU_PayTempStaff           { 050033004 }  // Temporary Staff
+   PLU_PayDeathClaim          { 050033005 }  // Death Claim payment
+   PLU_ImprestTravelReceipt   { 050033006 }  // 
+   PLU_PayHumana              { 050033007 }  //
+
+   PLU_PayStaffCheque         { 050034001 }  // Staff cheques paid by the clerk at the counter
+   PLU_CashDispBank           { 050035001 }  // Cash and cheques remmitted to bank
+   PLU_CashRecBank            { 050036001 }  // Cash and cheques received from bank
+
+   // ------------ Financial Services
+   PLU_NormalPayments         { 050040001 }
+   PLU_ArrearsPayments        { 050040002 }
+   PLU_SAPayments             { 050040003 }
+
+   //Methods of payment
+   PLU_Cheque                 { 6100000 }
+
+}
+

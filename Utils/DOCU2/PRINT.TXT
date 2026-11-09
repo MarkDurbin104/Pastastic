@@ -1,0 +1,228 @@
+object Form2: TForm2
+  Left = 254
+  Top = 73
+  Width = 510
+  Height = 690
+  BorderIcons = []
+  Caption = 'Form2'
+  Color = clWhite
+  Font.Color = clGray
+  Font.Height = -16
+  Font.Name = 'Times New Roman'
+  Font.Style = [fsBold]
+  PixelsPerInch = 96
+  PrintScale = poNone
+  TextHeight = 19
+  object Label1: TLabel
+    Left = 17
+    Top = 4
+    Width = 47
+    Height = 15
+    Alignment = taRightJustify
+    Caption = 'Synopsis'
+    Font.Color = clGray
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 14
+    Top = 28
+    Width = 50
+    Height = 15
+    Alignment = taRightJustify
+    Caption = 'Prototype'
+    Font.Color = clGray
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label4: TLabel
+    Left = 3
+    Top = 52
+    Width = 61
+    Height = 15
+    Alignment = taRightJustify
+    Caption = 'Description'
+    Font.Color = clGray
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label6: TLabel
+    Left = 29
+    Top = 128
+    Width = 35
+    Height = 15
+    Alignment = taRightJustify
+    Caption = 'Passed'
+    Font.Color = clGray
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 27
+    Top = 204
+    Width = 37
+    Height = 15
+    Alignment = taRightJustify
+    Caption = 'Return'
+    Font.Color = clGray
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label5: TLabel
+    Left = 36
+    Top = 228
+    Width = 28
+    Height = 15
+    Alignment = taRightJustify
+    Caption = 'Calls'
+    Font.Color = clGray
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object Label7: TLabel
+    Left = 40
+    Top = 252
+    Width = 24
+    Height = 15
+    Alignment = taRightJustify
+    Caption = 'Uses'
+    Font.Color = clGray
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
+  object SEdit: TEdit
+    Left = 66
+    Top = 4
+    Width = 432
+    Height = 21
+    BorderStyle = bsNone
+    Ctl3D = False
+    Font.Color = clNavy
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentCtl3D = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 0
+    Text = 'SEdit'
+  end
+  object PEdit: TEdit
+    Left = 66
+    Top = 28
+    Width = 432
+    Height = 21
+    BorderStyle = bsNone
+    Ctl3D = False
+    Font.Color = clNavy
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentCtl3D = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 1
+    Text = 'PEdit'
+  end
+  object DMemo: TMemo
+    Left = 66
+    Top = 52
+    Width = 432
+    Height = 73
+    BorderStyle = bsNone
+    Ctl3D = False
+    Font.Color = clNavy
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    Lines.Strings = (
+      'DMemo')
+    ParentCtl3D = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 2
+  end
+  object PMemo: TMemo
+    Left = 66
+    Top = 128
+    Width = 432
+    Height = 73
+    BorderStyle = bsNone
+    Ctl3D = False
+    Font.Color = clNavy
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    Lines.Strings = (
+      'PMemo')
+    ParentCtl3D = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 3
+  end
+  object REdit: TEdit
+    Left = 66
+    Top = 204
+    Width = 432
+    Height = 21
+    BorderStyle = bsNone
+    Ctl3D = False
+    Font.Color = clNavy
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentCtl3D = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 4
+    Text = 'REdit'
+  end
+  object CEdit: TEdit
+    Left = 66
+    Top = 228
+    Width = 432
+    Height = 21
+    BorderStyle = bsNone
+    Ctl3D = False
+    Font.Color = clNavy
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentCtl3D = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 5
+    Text = 'CEdit'
+  end
+  object UEdit: TEdit
+    Left = 66
+    Top = 252
+    Width = 432
+    Height = 21
+    BorderStyle = bsNone
+    Ctl3D = False
+    Font.Color = clNavy
+    Font.Height = -12
+    Font.Name = 'Times New Roman'
+    Font.Style = [fsBold]
+    ParentCtl3D = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 6
+    Text = 'UEdit'
+  end
+end

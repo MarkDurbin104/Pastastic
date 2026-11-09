@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
+	backgroundImage="@Embed(source='embedded/CopyrightLogo.png')" backgroundSize="100%"
+	width="128" height="29">
+</mx:Canvas>

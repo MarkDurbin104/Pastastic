@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
+	backgroundImage="@Embed(source='embedded/Change Origin address.jpg')"
+	width="100%" height="100%"
+	backgroundSize="100%" xmlns:slides="com.proiam.slides.*" color="#496384" fontFamily="Arial" xmlns:CoverFlow="com.cykorsystems.CoverFlow.*">
+	<mx:Metadata>
+        [Event(name="nextClicked", type="flash.events.Event")]
+    </mx:Metadata>
+		
+	<mx:Script>
+		<![CDATA[
+			import flash.events.Event;
+			public function fireNextClicked(event:Event):void {
+                dispatchEvent(new Event("nextClicked"));
+            }
+            public function setUpAccordion(formData:XML):void {
+            	accordionPanel.setupAccordion(formData);
+            }
+            public function formData():XML {
+            	return accordionPanel.formData();
+            }
+		]]>
+	</mx:Script>
+	<mx:Canvas x="883" y="687" width="121" height="71" click="fireNextClicked(event);" buttonMode="true"/>
+	<CoverFlow:KeyBoardCanvas x="25" y="397"/>
+	<slides:AccordionPanel  id="accordionPanel" x="414" y="80" width="590" height="315"/>
+ 	<mx:Canvas id="itemImageCanvas" x="27" y="94" width="370" height="295" borderStyle="solid" borderThickness="2" borderColor="#B2D2C7"	>
+ 	 	<mx:Image x="0" y="0" width="100%" height="100%" id="itemImage" scaleContent="true"/>
+ 	 	<mx:Canvas x="0" y="0" width="100%" height="100%" id="itemOverImage"/>
+ 	</mx:Canvas>
+</mx:Canvas>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vuitResult>
+	<status>OK</status>
+	<image>EnvelopeScan2.jpg</image>
+	<physicalAttributes>
+		<weight>22.0</weight>
+		<length>12.8</length>
+		<width>8.9</width>
+		<height>0.7</height>
+		<units>metric</units>
+	</physicalAttributes>
+	<postage/>
+	<services/>
+	<destination>
+		<zipCode>02476</zipCode>
+		<country>USA</country>
+		<rawString>MR ERIC METOIS 6 ORT0NA $T ARLINGTON MA 02476-5700</rawString>
+		<imageLocation>190, 300, 470, 380</imageLocation>
+		<address>
+			<name>Mr Eric Metois</name>
+			<line1>6 Ortona St</line1>
+			<line2></line2>
+			<line3></line3>
+			<city>Arlington</city>
+			<state>MA</state>
+			<zip>02476-5700</zip>
+			<telephone>000 000-0000</telephone>
+			<email>name@aol.com</email>
+		</address>
+	</destination>
+	<origin>
+		<zipCode>90021</zipCode>
+		<country>USA</country>
+		<rawString>RCN* 100 Baltimore Drive Wilkes-Barre PA 18702-7939</rawString>
+		<imageLocation>180, 60, 440, 160</imageLocation>
+		<address>
+			<name>RCN</name>
+			<line1>100 Baltimore Drive</line1>
+			<line2></line2>
+			<line3></line3>
+			<city>Wilkes-Barre</city>
+			<state>PA</state>
+			<zip>18702-7939</zip>
+			<telephone>000 000-0000</telephone>
+			<email>name@gmail.com</email>
+		</address>
+	</origin>
+</vuitResult>

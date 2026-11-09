@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<IntZoneInfo>
+	<zones>
+		<zone name="1" countries="Canada"/>
+		<zone name="2" countries="Mexico" />
+		<zone name="3" countries="Australia, China, Hong Kong, Japan, Korea Republic (South Korea)" />
+		<zone name="4" countries="Albania, Bosnia-Herzegovina, Bulgaria, Croatia, Cyprus, Czech Republic, Estonia, Hungary, Latvia, Macedonia, Poland, Romania, Russia, Turkey, Ukraine" />
+		<zone name="5" countries="Austria, Belgium, Denmark, Finland, France, Germany, Great Britain, United Kingdom, UK, GB, U.K., G.B., England, Scotland, Wales, Greece, Ireland, Italy, Netherlands, Norway, Spain, Sweden, Switzerland" />
+		<zone name="6" countries="Cambodia, Fiji Islands, India, Indonesia, Malaysia, New Zealand, Pakistan, Philippines, Singapore, Sri Lanka, Taiwan, Thailand, Uzbekistan, Vietnam" />
+		<zone name="7" countries="Botswana, Congo - Democratic Republic of the, Cote D’Ivoire, Ghana, Kenya, Malawi, Mozambique, Niger, Nigeria, South Africa, Swaziland, Tanzania, Uganda" />
+		<zone name="8" countries="Bahrain, Egypt, Ethiopia, Israel, Kuwait, Morocco, Qatar, Saudi Arabia, United Arab Emirates" />
+		<zone name="9" countries="Argentina, Bahamas, Bermuda, Brazil, Chile, Colombia, Costa Rica, Guatemala, Jamaica, Panama, Peru, Trinidad and Tobago, Uruguay, Venezuela" />
+	</zones>
+</IntZoneInfo>

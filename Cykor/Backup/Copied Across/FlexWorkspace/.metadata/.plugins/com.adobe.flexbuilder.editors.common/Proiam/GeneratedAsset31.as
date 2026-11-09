@@ -1,0 +1,19 @@
+
+package 
+{
+
+import mx.core.BitmapAsset;
+
+[ExcludeClass]
+[Embed(exportSymbol="GeneratedAsset31",  source="C:/FlexWorkspace/Proiam/source/com/proiam/slides/embedded/ProdServ.png")]
+
+public class GeneratedAsset31 extends mx.core.BitmapAsset 
+{
+    public function GeneratedAsset31() 
+    { 
+	    super(); 
+    }
+
+}
+
+}

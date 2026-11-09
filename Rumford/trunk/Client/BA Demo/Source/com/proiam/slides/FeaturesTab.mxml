@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:filters="flash.filters.*" 
+	backgroundImage="@Embed('embedded/FeaturedCard.png')" backgroundSize="100%"
+	horizontalScrollPolicy="off" verticalScrollPolicy="off"  
+	width="212" height="465"
+	>
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public function get background():Canvas {
+				return bg;
+			}
+			public function set background(value:Canvas):void {
+				
+			}
+		]]>
+	</mx:Script>
+	<mx:Text id="featuresTitle" text="Featured Services" x="12" y="6" textAlign="left" enabled="true" selectable="false" fontWeight="bold" color="#FFFFFF" fontSize="14" width="200" fontFamily="Tahoma"/>
+	<mx:Canvas id="bg" x="0" y="33" width="100%" height="200" backgroundColor="#C8C8EC"  borderColor="#C8C8EC" horizontalScrollPolicy="off" verticalScrollPolicy="off" />
+	<mx:filters>
+		<filters:DropShadowFilter angle="45" alpha=".1" distance="4" blurX="0" blurY="0"/>
+	</mx:filters>
+</mx:Canvas>

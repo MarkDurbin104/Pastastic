@@ -1,0 +1,22 @@
+#Tue Apr 29 12:08:16 BST 2008
+SizedContainerInserter.Tile=true
+activeViewIDs2=org.eclipse.ui.views.ResourceNavigator,org.eclipse.ui.views.ContentOutline,org.eclipse.ui.views.ProblemView,org.eclipse.help.ui.HelpView
+SizedContainerInserter.VBox.width=100%
+activeViewIDs1=org.eclipse.ui.views.ResourceNavigator,com.adobe.flexbuilder.editors.mxml.components.ComponentsView,org.eclipse.ui.views.ProblemView,com.adobe.flexbuilder.editors.mxml.inspector.view.PropertiesView
+autoViewIDs=com.adobe.flexbuilder.editors.mxml.states.StatesView\=design,com.adobe.flexbuilder.editors.mxml.inspector.view.PropertiesView\=design,com.adobe.flexbuilder.editors.mxml.components.ComponentsView\=design
+SizedContainerInserter.Form=true
+lastEditorView=Source
+eclipse.preferences.version=1
+SizedContainerInserter.HBox=true
+SizedContainerInserter.HBox.width=100%
+newCompLayout=vertical
+SizedContainerInserter.Form.width=200
+expandState=controls\:layout\:navigators\:
+SizedContainerInserter.VBox=true
+compViewSize=400 x 300;300 x 200;512 x 384;100 x 80;1024 x 768;300 x 60
+SizedContainerInserter.VBox.height=100%
+appViewSizes=1024 x 768;800 x 600
+SizedContainerInserter.VDividedBox=true
+SizedContainerInserter.VDividedBox.height=2
+SizedContainerInserter.Form.height=200
+SizedContainerInserter.HBox.height=100%

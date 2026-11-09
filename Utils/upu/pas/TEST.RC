@@ -1,0 +1,16 @@
+#define IDD_ABOUTBOX 100
+#define IDR_MAIN_FRAME 1
+
+IDD_ABOUTBOX DIALOG DISCARDABLE  34, 22, 235, 78
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About IPS 96"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDR_MAIN_FRAME,IDC_STATIC,16,16,18,20
+    CTEXT           "IPS 96 Version 1.20",IDC_STATIC,58,8,119,8
+    CTEXT           "Copyright \251 Universal Postal Union, 1996",IDC_STATIC,
+                    49,23,136,8
+    DEFPUSHBUTTON   "OK",IDOK,91,56,52,16,WS_GROUP
+    CTEXT           "Praxis Informatique, 1995",IDC_STATIC,49,38,136,8
+END
+

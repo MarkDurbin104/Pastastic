@@ -1,0 +1,221 @@
+[InstallShield Wizard]
+iDate=1
+iTime=1
+Flag=0
+ISX.EXE Size=493568
+ISX.EXE Date=18:27:36  8/2/1996
+ISX.EXE Ver=1.0.0.1
+SETUP.EXE Size=47616
+SETUP.EXE Date=4:59:32  22/1/1996
+SETUP.EXE Ver=3.0.95.0
+SETUP.INS Size=145368
+SETUP.INS Date=15:02:10  6/2/1996
+SETUP.INS Ver=Not available
+_INST16.EX_ Size=145368
+_INST16.EX_ Date=15:02:10  6/2/1996
+_INST16.EX_ Ver=Not available
+_INST32I.EX_ Size=306666
+_INST32I.EX_ Date=5:08:18  22/1/1996
+_INST32I.EX_ Ver=Not available
+ISDEPEND.INI Size=2489
+ISDEPEND.INI Date=17:41:22  2/2/1996
+ISDEPEND.INI Ver=Not available
+SWDEPEND.INI Size=3179
+SWDEPEND.INI Date=11:08:18  6/2/1996
+SWDEPEND.INI Ver=Not available
+ICOMP.EXE Size=119808
+ICOMP.EXE Date=15:05:10  15/1/1996
+ICOMP.EXE Ver=3.00.062
+SPLIT.EXE Size=90624
+SPLIT.EXE Date=15:09:36  15/1/1996
+SPLIT.EXE Ver=3.00.060
+PACKLIST.EXE Size=87552
+PACKLIST.EXE Date=15:10:30  15/1/1996
+PACKLIST.EXE Ver=3.00.060
+Version=1.0
+DevTool=for Delphi
+Platform=Win32
+PtrBase=30350
+PtrPosY=311
+PtrPage=0
+DisksBuilt=1
+DisksDir=UPUBAR~1\144MB\
+TabsVisit=11111111100001111101
+
+[VisualDesign]
+AppName=UPU BarCode Printing
+Version=1.0
+Company=Postal Solutions Limited
+Title=UPU BarCode Printing
+TitleType=1
+BackgrndAlign=4
+Backgrnd=1
+BackgrndColor=0
+Uninstall=1
+Silent=1
+
+[SysRequire]
+Colors=0
+CPU=0
+Resolution=0
+OperateSys=0
+MathChip=0
+WarnOnly=0
+
+[Autoexec]
+CommandLoc=0
+
+[RegEntries]
+Reg1Path=HKEY_CLASSES_ROOT
+Reg1Val1Type=0
+Reg1Val1Name=(Default)
+Reg1Val1Data=(value not set)
+Reg1Vals=1
+Reg2Path=HKEY_CURRENT_USER
+Reg2Val1Type=0
+Reg2Val1Name=(Default)
+Reg2Val1Data=(value not set)
+Reg2Vals=1
+Reg3Path=HKEY_LOCAL_MACHINE
+Reg3Val1Type=0
+Reg3Val1Name=(Default)
+Reg3Val1Data=(value not set)
+Reg3Vals=1
+Reg4Path=HKEY_USERS
+Reg4Val1Type=0
+Reg4Val1Name=(Default)
+Reg4Val1Data=(value not set)
+Reg4Vals=1
+Reg5Path=HKEY_CURRENT_CONFIG
+Reg5Val1Type=0
+Reg5Val1Name=(Default)
+Reg5Val1Data=(value not set)
+Reg5Vals=1
+Reg6Path=HKEY_DYN_DATA
+Reg6Val1Type=0
+Reg6Val1Name=(Default)
+Reg6Val1Data=(value not set)
+Reg6Vals=1
+Regs=6
+
+[Groups]
+Groups=5
+Group1Size=1955816
+Group1Files=3
+Group1Name=Program Files
+Group1Dir=<INSTALLDIR>
+Group1File1=E:\UI\barcode\bprint.exe
+Group1File2=E:\UI\barcode\Countrys.txt
+Group1File3=E:\UI\barcode\BarPStr.Txt
+Group2Size=34816
+Group2Files=8
+Group2Name=Database
+Group2Dir=<INSTALLDIR>\database
+Group2File1=E:\UI\DataBase\BYVOL.db
+Group2File2=E:\UI\DataBase\BARREP.PX
+Group2File3=E:\UI\DataBase\BYCOUNTRY.db
+Group2File4=E:\UI\DataBase\BYCOUNTRY.PX
+Group2File5=E:\UI\DataBase\BYDATE.db
+Group2File6=E:\UI\DataBase\BYDATE.PX
+Group2File7=E:\UI\DataBase\BARREP.db
+Group2File8=E:\UI\DataBase\BYVOL.PX
+Group3Size=1809783
+Group3Files=8
+Group3Auto=101
+Group3ID=38251
+Group3Name=BDE/IDAPI Files
+Group3Dir=<INSTALLDIR>
+Group3File1=d:\Delphi\Common Files\BDE\IDPDX32.DLL
+Group3File1Auto=101
+Group3File1Version=3.0.0.180
+Group3File2=d:\Delphi\Common Files\BDE\IDAPI32.DLL
+Group3File2Auto=101
+Group3File2Version=3.0.0.180
+Group3File3=d:\Delphi\Common Files\BDE\IDR20009.DLL
+Group3File3Auto=101
+Group3File3Version=3.0.0.180
+Group3File4=d:\Delphi\Common Files\BDE\BLW32.DLL
+Group3File4Auto=101
+Group3File4Version=1.9.1.0
+Group3File5=d:\Delphi\Common Files\BDE\BDECFG32.EXE
+Group3File5Auto=101
+Group3File5Version=3.0.0.180
+Group3File6=d:\Delphi\Common Files\BDE\BDECFG32.HLP
+Group3File6Auto=101
+Group3File7=d:\Delphi\Common Files\BDE\BDECFG32.CNT
+Group3File7Auto=101
+Group3File8=D:\DELPHI\IS\redist\IDAPINST.DLL
+Group3File8Auto=101
+Group3File8Version=3.0.0.165
+Group4Size=730189
+Group4Files=5
+Group4Auto=99
+Group4ID=38249
+Group4Name=BDE/IDAPI BLL Files
+Group4Dir=<ProgramFilesDir>\Borland\Common Files\BDE
+Group4File1=d:\Delphi\Common Files\BDE\USA.BLL
+Group4File1Auto=99
+Group4File2=d:\Delphi\Common Files\BDE\EUROPE.BLL
+Group4File2Auto=99
+Group4File3=d:\Delphi\Common Files\BDE\CEEUROPE.BLL
+Group4File3Auto=99
+Group4File4=d:\Delphi\Common Files\BDE\CHARSET.BLL
+Group4File4Auto=99
+Group4File5=d:\Delphi\Common Files\BDE\OTHER.BLL
+Group4File5Auto=99
+Group5Size=5601
+Group5Files=1
+Group5Auto=98
+Group5ID=38248
+Group5Name=BDE/IDAPI CNF File
+Group5Dir=<ProgramFilesDir>\Borland\Common Files\BDE
+Group5File1=D:\DELPHI\IS\redist\IDAPI32.CNF
+Group5File1Auto=98
+
+[Components]
+Components=1
+Component1Groups=5
+Component1Name=Application Files
+Component1Description=Application files needed to run the application
+Component1GroupList=1 2 3 4 5
+
+[Types]
+Types=1
+Type1Components=1
+Type1Name=Complete
+Type1ComponentList=1
+
+[Sequence]
+DestinationLocationDir=\BarCode
+WelcomeMessage=1
+DestinationLocation=1
+SelectProgramFolder=1
+SelectProgramFolderName=UPU BarCode Printing
+BeginFileTransfer=1
+ProgressBar=1
+SetupComplete=1
+
+[Icons]
+Icons=1
+Icon1Param=
+Icon1Cmd=[Program Files]\bprint.exe
+Icon1Description=EMS Barcodes
+Icon1WorkingDir=[Program Files]
+Icon1IconFile=
+Icon1RealFile=E:\UI\barcode\bprint.exe
+Icon1WhichIcon=0
+Icon1KeyVirtual=0
+Icon1KeyFlags=0
+Icon1StartMenu=1
+
+[IDAPI Alias]
+Alias1=UPU
+Alias1Path=<INSTALLDIR>\database
+Alias1Type=PARADOX
+Aliases=1
+SaveCfg=0
+BDE Radio=1
+BDE Checks=10000
+
+
+[IDAPI Alias UPU]

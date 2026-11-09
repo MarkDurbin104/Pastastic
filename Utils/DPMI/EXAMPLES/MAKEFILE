@@ -1,0 +1,26 @@
+# (C) Copyright 1992 Qualitas, Inc.  All rights reserved.
+#
+# Makefile for DPMI class library examples with Borland C++ 3.0
+#
+
+# NOTE: You must define BC3lib as the directory 
+# 	where your BC++ 3.0 libraries reside
+
+BC3lib	= \bc\lib
+DPMIlib	= ..\lib
+LIBS	= dpmi dpmiclas cs
+
+C0	= $(DPMIlib)\c0s.obj
+C	= bcc -I..\include -2 -ms -H -c $*.c
+CPP	= bcc -I..\include -2 -ms -H -c $*.cpp
+LINK	= tlink -L$(BC3lib);$(DPMIlib)   $(C0)  $*.obj, $*, , $(LIBS);
+
+examples: xmem.exe xintr.exe xcept.exe xreal.exe hello.exe qsort.exe
+
+.cpp.exe:
+	$(CPP) 
+	$(LINK) 
+.c.exe:
+	$(C) 
+	$(LINK) 
+

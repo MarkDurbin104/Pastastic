@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" 
+	pageTitle="Cykor Systems Limited"
+	>
+<!--	
+	backgroundGradientColors="[0x0000FF, 0xCCCCCC]"
+	backgroundImage="{bgImage}"
+	styleName="plain"
+ -->	
+ 	<mx:Script>
+  		<![CDATA[
+			/* -----------------------------------------------------------------------------
+			IMPORT CLASSES
+			----------------------------------------------------------------------------- */
+			import mx.controls.Alert;
+			
+
+			/* -----------------------------------------------------------------------------
+			DECLARE VARIABLES
+			----------------------------------------------------------------------------- */
+			[Bindable]
+			[Embed(source="resources/Blue Globe.jpg")]
+			public var bgImage:Class;
+			
+
+			
+			/* -----------------------------------------------------------------------------
+			METHODS
+			----------------------------------------------------------------------------- */
+	     public var myAlert:Alert;
+
+
+    	 private function clickButtonHome():void {
+     	}
+     	private function clickButtonBlog():void {
+     	}
+     	private function clickButtonWiki():void {
+     	}
+     	private function clickButtonRetail():void {
+     	}
+     	private function clickLinkButtonRegisterNow():void {
+     		myAlert = Alert.show("We are not currently accepting any new registrations", "Sorry!", Alert.OK);
+     		myAlert.width=400;
+     		myAlert.alpha=1;
+     	}
+     	private function clickLinkButtonLogIn():void {
+     		myAlert = Alert.show("It shouldn’t be long, please accept our apologies for any inconvenience caused.", "Database closed for administration!", Alert.OK);
+     		myAlert.width=500;
+     	}
+  	]]>
+  </mx:Script>
+  
+  <mx:VBox left="10" top="10" bottom="10" right="10" verticalGap="0" backgroundColor="#FFFFFF" blendMode="normal">
+    <mx:HBox width="100%" horizontalGap="0" >
+      <mx:Button label="HOME" cornerRadius="0" id="ButtonHome" enabled="true" fontFamily="Verdana" fontSize="10" color="#404040" borderColor="#606060" themeColor="#ffffff" alpha="1.0" fillColors="[#F0F0F0, #F0F0F0]" width="100" click="clickButtonHome()" height="100%"/>
+      <mx:Button label="BLOG" cornerRadius="0" id="ButtonBlog" enabled="false" fontFamily="Verdana" fontSize="10" color="#A0A0A0" borderColor="#A0A0A0" themeColor="#A0A0A0" alpha="1.0" fillColors="[#F0F0F0, #F0F0F0]" width="100" click="clickButtonBlog()" height="100%"/>
+      <mx:Button label="WIKI" cornerRadius="0" id="ButtonWiki" enabled="false" fontFamily="Verdana" fontSize="10" color="#A0A0A0" borderColor="#A0A0A0" themeColor="#A0A0A0" alpha="1.0" fillColors="[#F0F0F0, #F0F0F0]" width="100" click="clickButtonWiki()" height="100%"/>
+      <mx:Button label="AUCTIONS" cornerRadius="0" id="ButtonAuction" enabled="false" fontFamily="Verdana" fontSize="10" color="#A0A0A0" borderColor="#A0A0A0" themeColor="#A0A0A0" alpha="1.0" fillColors="[#F0F0F0, #F0F0F0]" width="100" click="clickButtonRetail()" height="100%"/>
+      <mx:Spacer height="100%" width="100%"/>
+      <mx:LinkButton label="Log In" id="LinkButtonLogIn" click="clickLinkButtonLogIn()" fontFamily="Verdana" fontSize="11" textAlign="center" color="#000080" height="22"/>
+      <mx:Spacer width="4" height="100%"/>
+      <mx:LinkButton label="Register Now" id="LinkButtonRegisterNow" click="clickLinkButtonRegisterNow()" fontFamily="Verdana" fontSize="11" textAlign="center" color="#000080" height="22"/>
+    </mx:HBox>
+    <mx:VBox width="100%" borderColor="#606060" borderStyle="solid" borderThickness="1" themeColor="#606060" cornerRadius="0" alpha="1.0" backgroundColor="#ffffff" backgroundAlpha="1.0" id="MainVBox" horizontalAlign="left" verticalAlign="top" verticalGap="0" height="100%">
+      <mx:HBox width="100%" horizontalGap="0">
+        <mx:Spacer width="6" height="100%"/>
+        <mx:VBox height="100%" horizontalAlign="center" verticalAlign="top" verticalGap="0">
+          <mx:Spacer height="6" width="100%"/>
+          <mx:Image source="Small Web Logo.jpg" id="ImageLogo" scaleContent="false" autoLoad="true"/>
+          <mx:Label text="CYKOR SYSTEMS" fontFamily="Verdana" fontSize="10" color="#000064"/>
+          <mx:Spacer height="6" width="100%"/>
+        </mx:VBox>
+        <mx:Spacer width="50%" height="100%"/>
+        <mx:VBox height="100%" horizontalAlign="center" verticalAlign="middle" verticalGap="0">
+          <mx:Label text="NEWS" fontFamily="Verdana" fontSize="28" color="#000064" fontWeight="bold" fontStyle="italic"/>
+        </mx:VBox>
+        <mx:Spacer width="50%" height="100%"/>
+        <mx:VBox height="100%" horizontalAlign="right" verticalAlign="top" verticalGap="0">
+          <mx:Spacer height="6" width="100%"/>
+          <mx:TextInput cornerRadius="2" width="200" borderColor="#000080"/>
+          <mx:Spacer height="6" width="100%"/>
+          <mx:Button label="Search"/>
+        </mx:VBox>
+        <mx:Spacer width="6" height="100%"/>
+      </mx:HBox>
+      <mx:HRule width="100%" strokeColor="#000000" themeColor="#000000" strokeWidth="1" alpha="1.0"/>
+      <mx:HRule width="100%" strokeColor="#000000" themeColor="#000000" strokeWidth="1" alpha="1.0"/>
+      <mx:HBox width="100%" height="100%" horizontalGap="0" backgroundAlpha=".5" backgroundColor="#c0c0c0">
+        <mx:Spacer width="12" height="12"/>
+        <mx:VBox x="0" y="0" width="100%">
+	        <mx:Spacer width="12" height="12"/>
+	        <mx:HBox width="100%" horizontalAlign="right" verticalAlign="middle">
+	        <mx:Label text="iSocietas™ enters alpha testing" fontSize="28" fontStyle="italic"/>
+	        <mx:Spacer width="100%"/>
+	        <mx:Button label="Proiam" height="20" click="navigateToURL(new URLRequest('http://www.CykorSystems.com/proiam'));" >
+	        </mx:Button>
+	        <mx:Button x="534" y="0" label="Sneak Peek" height="20" click="navigateToURL(new URLRequest('http://www.iSocietas.com'));" >
+	        </mx:Button>
+	        <mx:Spacer width="12" height="12"/>
+	        </mx:HBox>
+			<mx:Label text="The Enterprise 2.0 Event and Transaction framework" fontSize="18"/>
+			<mx:Text text="iSocietas is a BPM driven Collaborative Event and Transaction framework. A Multi-tier Web 2.0 platform for Enterprise deployment across the Web and Desktop environments both in-house and for your small and medium sized business customers. Running on Windows, Mac and Linux operating systems or any combination, it includes integrated CRM, Help Desk support, Enterprise IM &amp; remote management" width="95%" fontSize="14"/>
+			<mx:Spacer width="12" height="12"/>
+			<mx:Text text="Built on Web 2.0 Technology and utilising the XMPP protocol to link all your enterprise nodes in real time, the framework also has built in support for long term disconnected operation with automatic synchronisation and a state engine based UI to support the different operating models on Workstations, PDAs, Kiosks, Phones and the Web" width="95%" fontSize="14"/>
+        </mx:VBox>
+        <mx:VBox horizontalAlign="center" verticalAlign="middle" verticalGap="0" backgroundColor="#c0c0c0" backgroundAlpha=".2">
+          <mx:Spacer width="12" height="12"/>
+          <mx:HBox width="100%" height="100%" horizontalGap="0">
+            <mx:Spacer width="12" height="12"/>
+            <mx:Image source="Flow.jpg" scaleContent="false" autoLoad="true"/>
+            <mx:Spacer width="12" height="12"/>
+          </mx:HBox>
+          <mx:Spacer width="12" height="12"/>
+        </mx:VBox>
+      </mx:HBox>
+      <mx:HRule width="100%" strokeColor="#000000" themeColor="#000000" strokeWidth="1" alpha="1.0"/>
+      <mx:HRule width="100%" strokeColor="#000000" themeColor="#000000" strokeWidth="1" alpha="1.0"/>
+      <mx:HBox width="100%" horizontalAlign="center" verticalAlign="middle">
+        <mx:MenuBar width="100%" id="MenuBarFooter" labelField="@label"  enabled="false">
+          <mx:XMLList>
+            <menuitem label="News"/>
+          	<menuitem label="White Papers"/>
+          	<menuitem label="Products"/>
+          	<menuitem label="Services"/>
+          	<menuitem label="Support"/>
+          	<menuitem label="Technology"/>
+          	<menuitem label="Contact Us"/>
+          	<menuitem label="Employment"/>
+          </mx:XMLList>
+		</mx:MenuBar>
+      </mx:HBox>
+    </mx:VBox>
+    <mx:HBox width="100%" horizontalAlign="right" verticalAlign="top" horizontalGap="0">
+      <mx:Label text="© Cykor Systems Limited 2004-2008 - Company No:5366102"/>
+    </mx:HBox>
+  </mx:VBox>
+</mx:Application>

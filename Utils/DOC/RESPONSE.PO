@@ -1,0 +1,374 @@
+ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+บ                           1.4     Hardware                                 บ
+บ                                                                            บ
+บ    What intrim and long term policies should be adopted for phase out      บ
+บ    and migration of existing NCR tower based UNIX application ?            บ
+ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+
+        The current application running on the NCR tower platform could 
+        be used with the proposed hardware solution in one of three ways.
+
+        i)      The current application could stay as it is and run
+                in a standalone manner.
+
+                This would have the effect of stagnating the growth of the 
+                current application and limiting the information available
+                in that application to the NCR tower system.
+
+        ii)     The current NCR towers could be networked with the proposed
+                hardware solution so that both systems could share the same 
+                information.
+
+                This would impose a limit to the number of concurrent 
+                accesses to the application but the data available from 
+                that system would be made available for other applications.
+
+        iii)    The application could be ported, along with the data onto
+                the proposed hardware platform.  
+
+                This would take longer, and require more investment but 
+                would open the application to more expansion and integration 
+                with the new applications.
+        
+ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+บ                     3.0     Platform Integration                           บ
+บ                                                                            บ
+บ   How can the selected UNIX platform(s) be integrated with existing        บ
+บ   Mainframe, Midrange and PC technical architectures and applications ?    บ
+ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+
+        In general the selected UNIX platforms will need to be able to 
+        communicate with all the existing Mainframe, Midrange and PC's 
+        currently operating.  The method of communication and the 
+        information/access available will vary depending upon the system
+        being interfaced.
+
+        Mainframes :   
+                Typically there will be some sort of file 
+                access/transfer facilities between the mainframe and the
+                selected UNIX platforms.
+
+                There might also be some sort of terminal emulation running
+                on the UNIX platforms in order to run applications on
+                the mainframe from the UNIX platforms.
+
+        Midrange :
+                The interface between midrange systems and the UNIX platforms 
+                would probably be similar to mainframe access, but with a 
+                greater possibility for data sharing between applications on
+                the two different systems.
+
+        PC's :
+                There are several ways of connecting PC's to the selected
+                UNIX platforms these are discussed in the answer to question 
+                6.0.
+
+    Networking Protocols
+              
+        Proprietory communication protocols 
+            various proprietory communication protocols exist 
+
+                Personal Computer Interface PCI
+                NET-5000/6000
+                NET-PC TCP/IP
+                NET-PC telnet
+                PDN-5000/6000
+                U6000 X.25
+                DDN-5000/6000
+                UNISCOPE
+                UNISCOPE DataXpress
+                IBM HOST
+                U 6000 SNA transport
+                3270 Emulation
+                RJE Emulation
+                SNA APPC
+                SNA X.25
+                SNA SNADS
+                DEC Network Interface (DNI)
+
+        Open systems protocols
+
+                OSI Transport Services (TNS)
+                OSI Application Services (APS)
+                OSI File Tranfer, Access Management (FTAM)
+                OSI Message Handling Services (MHS)
+                OSI Directory Services (DS)
+
+    Mainframes
+
+        Unisys Open/OLTP addresses the requirement to access mainframe 
+        databases based on proprietary OLTP architechtures.  With 
+        Open/CONNECT, data can be accessed from mainframe databases and 
+        automatically loaded into Informix or Oracle relational database 
+        management systems.  This provides applications and users access to 
+        mainframe data. Similarly data can be sent to the mainframe for
+        processing and loading into the host applications.
+
+    Midrange Machines
+
+    PCs
+
+    Unisys Approch
+        
+ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+บ                         6.0     User Interface                             บ
+บ                                                                            บ
+บ     What use would be made of asynchronous terminal devices, as opposed    บ
+บ     to PCs, in the reccomended UNIX technical portfolio ?                  บ
+ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+
+        Standard asynchronous terminals can be utilised in the recomended 
+        UNIX technical platform for tasks that invlove large amounts of 
+        data input without much processing.  Specifically form filling 
+        type applications. 
+
+        The disadvantage of using such terminals for more complex tasks 
+        such as word processing,  is that there are no local processing
+        or storage capabilities.  This means that each keypress and response
+        has to be passed to the host for processing, thereby utililising 
+        a certain amount of host processor time.
+
+
+        Some of the disadvantages of using standard terminals can be 
+        resolved by using "Inteligent" terminals. 
+
+        Such terminals incorporate local storage/editing facilities and
+        windowing facilities.  Therefore allowing several applications to
+        be accessed simultainiously and a certain ammount of processor 
+        intensive work to be done locally.
+
+        Although "Inteligent" terminals can process some information,  it
+        is limited and therefore still requires an amount of host 
+        processor time.
+
+        Using PC's instead of terminals can aliviate some of the drawbacks
+        of using terminals.
+
+        PC running a terminal emulator
+
+                running a terminal emulator on the PC allows the user to
+                access the host system as if the PC was a terminal. It also 
+                allows for file transfer to/from the PC.
+
+                So,  in the case of wordprocessing for example. The user could
+                download a file, edit it locally and transfer it back to the
+                host.
+
+                This is again limited in that each file has to be transfered
+                to and from the host for local processing,  but it does
+                distribute the processing away from the host system.  
+
+                Another limitation of operating in this manner,  is that any 
+                application that requires "shared" data,  could not transfer 
+                this data to another machine for processing.
+
+        PC running under Client/Server type architecture
+
+                Another way to access the information under the control
+                of the UNIX system is to incorporate the UNIX file system
+                into the standard DOS environment.
+
+                This would mean that all the UNIX files are available to
+                the PC and can therefore be accessed via a DOS application.
+
+                The applications running in this manner could "share" the
+                the same data and only the file accesses would invlove any
+                host processor activity.
+
+                The limitations of such a system, is that the applications
+                would run under the DOS environment and could not therefore
+                run on the host system.  Also all the applications the user
+                requires must reside on the PC.
+
+        PC as work station
+
+                The workstation differs form the client/server type 
+                architechture in that,  the PC would run the same operating
+                system as the host.
+
+                This would mean that both application and data would reside
+                on the host.  The PC would load the application from the host
+                and run it locally.
+
+                Both the host and the workstation could run the same 
+                application and "share" data.
+ 
+        To answer the question.  Depending upon the processing/shared data 
+        requirment of the applications,  there should probably be a mix of 
+        all five of the above devices within a tipical data processing 
+        environment.
+        
+ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+บ                   7.0     Graphical User Interface                         บ
+บ                                                                            บ
+บ    What is the potential and anticipated use of graphics within future     บ
+บ    Application Systems ?                                                   บ
+ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+
+        Graphical User Interfaces (GUI's) have the potential for making all
+        applications offer the same interface to the user.  Thereby reducing
+        the training and referal time spent in learning a new application.
+
+        GUI's also offer a more intuitive look and feel to the user learning
+        an application for the first time.
+
+        As software development moves towards an Object Orientated approch,  
+        GUI's offer a better interface to the software developer,  thereby 
+        decreasing the software developement time.
+
+        It is therefore widely anticipated that GUI's will become the normal
+        approch for new applications.
+        
+        During the last few years GUI's have become available from various 
+        suppliers.  These suppliers have joined forces into two major groups 
+        and come up with a standard GUI. On one side ther is the Unix Software 
+        Operation (USO) with UNIX System V.4 (AT&T) who is supporting the 
+        Open Look user interface and on the other side, there is the Open 
+        Software Foundation (OSF) with OSF/2 who is supporting OSF/Motif.
+
+        The two standards both offer good interfaces to the user,  but 
+        niether side has a commanding lead in the market place.
+
+        Until the one of the two standards is chosen,  it would be sensible 
+        to keep both in mind whilst defining a strategy for the future.
+
+ษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+บ    How effective would the recommended UNIX architecture be in providing   บ
+บ    the appropriate functionality ?                                         บ
+ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+
+        The proposed UNIX architecture supports Primary Graphical 
+        Environment (PGE) with the following features.
+
+        PGE provides a graphical, window-based interface into the Unisys 
+        System V environment.  The four basic components of PGE are:
+
+	*	X Window System
+
+	*	OSF/Motif Graphical User Interface
+
+	*	X.desktop
+
+	*	Graphical Utilities
+
+        X Window System
+
+        The X Window System of PGE is an X Consortium and X11 implementation 
+        of X Windows that controls the network based graphical windowing.  
+        PGE provides a full X11R3 implementation of X clients and Xlib.  The 
+        X server is based on X11R2.  X11R4 is supported under Unisys System 
+        V.4.
+
+        The X Window System architecture is divided into two fundamental 
+        parts: clients and the server.  The clients and server communicate 
+        using X protocol over standard UNIX network transports.
+
+        An X Server is a program that runs on a computer that directly 
+        communicates to a keyboard, mouse and bit-mapped graphics screen.  
+        The server allows X clients (application programs) to open and close 
+        windows on its display.  Input from keyboard and mouse is handled by 
+        the server, and messages passed through to the clients.
+
+        "X" has been adopted by most workstation manufacturers.  Therefore, 
+        applications can be written that are independent of a particular 
+        manufacturers hardware.  Furthermore, since "X" is a network-based 
+        window system, applications can run within a multivendor environment.
+
+        MOTIF Graphical User Interface (GUI)
+
+        The GUI for PGE is based on Motif version 1.0 from Open Software 
+        Foundation.  Motif has a distinctive three-dimensional appearance 
+        with a style and behaviour similar to Microsoft's OS/2 Presentation 
+        Manager, an interface popular in personal computing environments.  
+        The components of Motif are:
+
+	-	An Application Programming Interface (API) which includes 
+                the User Interface Toolkit and Presentation Description 
+                Language; 
+
+	- 	A Window Manager;
+
+	- 	A Style Guide.
+
+        The User Interface Toolkit provides a standard graphical interface 
+        layer upon which the window manager is based.  It includes a library 
+        of graphical objects, such as menus and forms used in the construction 
+        of application user interfaces.  The User Interface Toolkit is based 
+        on the X Window System Intrinsics, a toolkit framework provided with 
+        X Windows.
+
+        The intrinsics use an object-orientated model to create a class 
+        hierarchy of graphical objects or "widgets".  Many basic, composite, 
+        scrolled, specialised composite, basic top-level, and specialised 
+        dialogue widgets are contained within the toolkit.  The inclusion of 
+        "gadgets", windowless widgets that perform specific functions that 
+        lower X server overhead, further extends the functionality of the 
+        toolkit.
+
+        The Presentation Description Language describes widget resources.  
+        It allows developers to create a text file which contains a 
+        description of each of the widgets and its resources to be used by 
+        the interface.  This description is compiled into a resource file, 
+        separate from the application, which is loaded automatically at 
+        runtime.  Users and interface designers with minimal programming 
+        experience will be able to use the Presentation Description Language 
+        with relative ease.
+
+        The Motif window manager offers a standard environment for 
+        manipulating application windows.  It is a separate application which 
+        allows the user to move, resize and iconify windows.  The window 
+        manager is ICCM (inter-client-communication-manual) compliant and 
+        supports monochrome and colour windows.
+
+        The Motif style guide is a document that provides a set of guidelines 
+        for application programming, new widget development, customisation and
+        extension to ensure compliance with the Motif reference appearance.
+ 
+        X.desktop
+
+        X.desktop is a desktop manager with a Motif appearance that was 
+        developed by IXI Limited, Cambridge, England.  It is bundled as part 
+        of the Unisys PGE.  The release shipped with PGE is level 2.0.
+
+        X.desktop simulates common office and business tasks graphically.  
+        Many UNIX commands, programs, files and facilities are represented 
+        as icons.  By manipulating these icons, routine operations can be 
+        quickly accomplished without any knowledge of the UNIX command line.
+
+        Programs can be initiated by "clicking" on the icon that represents 
+        the program or file.  If data input is required for a program, the 
+        icon containing the data is selected and "dragged" to the program 
+        file prior to initiating the program.
+
+        Nationalisation
+
+        The Motif user interface and X.desktop use the X/Open Native Language 
+        System (NLS) standard proposed in the XPG3 portability guide for 
+        handling text information.  This makes PGE readily adaptable to 
+        different languages or dialects.
+
+        Graphical Utilities
+
+        The graphical utilities provide clients for PGE that allow users to 
+        perform many useful tasks.  They include standard X Windows clients 
+        such as clock, font utilities and DEC VT102 and Tektronic 4014 
+        terminal emulators, as well as providing additional clients that have 
+        been developed or enhanced by Unisys.  These include a four function 
+        calculator with simulated paper tape output, MS-DOS emulator, a 
+        planning calendar, a manual browser and a DEC VT220 terminal emulator.
+
+        PC Xsight
+
+        PC Xsight is an additional product that allows personal computers 
+        access to the Unisys PGE.  By using PC Xsight, PCs function as X 
+        servers.  Users then have access to PGE facilities and can display 
+        client applications through the Motif interface in a windowed 
+        environment.
+
+        The Primary Graphical Environment provides the facilities to 
+        develop window, icon, mouse and pull-down menu (wimp) capabilities 
+        for existing applications in a relatively easy manner.  PGE is able 
+        to provide a PC type environment for users of the UNIX operating 
+        system, giving benefits in ease of use and simplified user training.
+
+

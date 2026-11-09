@@ -1,0 +1,77 @@
+BACKGROUND
+		(0, 0, 0)
+AMB
+		(.9, 0, 0)
+
+DIFF 
+		(.9, .7, .4)
+
+SREFLECT
+		2
+
+REFLECT (.9, .7, 4)
+
+FILE_NAME 
+		goodrag
+
+FLIP 
+		0
+
+LIGHT_PHI:
+
+	-32
+
+LIGHT_THETA:
+
+	40
+
+VIEW_PHI:
+
+	100
+
+XRES
+
+	319
+
+YRES
+
+	199
+
+XMAX
+
+	1.2
+
+XMIN
+
+	-0.2
+
+YMAX
+
+	0.8
+    
+YMIN
+
+	-0.8
+
+ZMAX
+
+	0.8
+
+ZMIN
+
+	0.0
+
+MAX_SIZE
+
+	128 
+
+MAX_ITERATIONS
+
+	32
+
+QUATERNION
+
+	(1.646009, 0.967049, 0, 0)
+
+DRAGON
+

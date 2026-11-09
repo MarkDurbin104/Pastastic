@@ -1,0 +1,56 @@
+During the visit to T.S.L. various points were discussed. These were:
+
+
+1.     LANlink/Critical error handler. 
+
+        T.S.L. have stated that all LANLink errors will be handled
+        via the LANLink error handler and not via the Critical error
+        handler.  This modification will be available to Unisys for
+        testing by 01/02/92.
+
+
+2.     Device sharing across the LAN (eg pipes, scales).
+
+        T.S.L. can see no problem handling multiple shared devices in 
+        the same way as pipes are currently handled. the only
+        limitation to this method is the number of drives.
+
+
+3.     The Watch-Dog-Timer not being updated during retries.
+
+        T.S.L. have supplied a code change to correct this problem.
+        That is currently under test by Unisys.
+
+
+4.     Performance.
+
+        T.S.L. are looking into ack'ing 1 in four bytes to see if
+        this will help improve the processor loading during
+        passthru. This modification will be available to Unisys for
+        testing by 01/02/92.
+
+
+5.     Which LAN variables are local (ie task specific) and which are
+       global?   Particularly LAN ID and LAN ACCESS as this has
+       implications for splitting a large office into two at the BOP.
+ 
+        T.S.L. can see no problem in achieving the "Shared Back
+        Office" senario. 
+
+
+6.     Get a thorough explanation of the protocol and the retry/recovery
+       mechanisms.
+
+        T.S.L. will try to supply some more detailed information
+        regarding this but no timescale has been attached to this
+        task.
+
+
+7.     NetBIOS.
+
+        LANLink 5 Profesional supports NetBIOS for serial(standard)
+        parallel and Ethernet configurations.  As and when the Post
+        Office require NetBIOS support for the IRT lan, T.S.L. will
+        quote pricing and timescales.
+
+

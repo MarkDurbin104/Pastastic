@@ -1,0 +1,206 @@
+SQL> select * from blown_fibre_tubing;
+
+         0 101                  NH               101 ON   PA                    
+NOTE FOR BFT 101                                                                
+           -4587                                                                
+                                                                                
+         0 100                  NH               100 ON   EX                    
+BFT CW 1                                                                        
+                                                                                
+                                                                                
+      4587 101                  NH               101 ON   PA                    
+NOTE FOR BFT 101                                                                
+                                                                                
+                                                                                
+         0 2BFT1                HAC                1 ON   EX                    
+SECODARY FIBRE RING                                                             
+                                                                                
+                                                                                
+         0 3BFT1                HAC               50 ON   EX                    
+SECONDARY FIBRE RING                                                            
+                                                                                
+                                                                                
+         0 2BFT2                HAC                2 ON   EX                    
+DFG                                                                             
+                                                                                
+                                                                                
+         0 4BFT10               HAC               80 ON   EX                    
+SADF                                                                            
+                                                                                
+                                                                                
+         0 2BFT3                HAC                3 ON   EX                    
+SDFG                                                                            
+                                                                                
+                                                                                
+         0 3BFT2                HAC               51 ON   EX                    
+2ND FIB RING                                                                    
+                                                                                
+                                                                                
+         0 2BFT4                HAC                4 ON   EX                    
+FSDG                                                                            
+                                                                                
+                                                                                
+         0 5BFT1                HAC               55 ON   EX                    
+SDFG                                                                            
+                                                                                
+                                                                                
+         0 2BFT5                HAC                5 ON   EX                    
+SFDG                                                                            
+                                                                                
+                                                                                
+         0 3BDT3                HAC               52 ON   EX                    
+2ND FIB RING                                                                    
+                                                                                
+                                                                                
+         0 2BFT6                HAC                6 ON   EX                    
+DGH                                                                             
+                                                                                
+                                                                                
+         0 4BFT82               HAC               82 ON   EX                    
+DFV                                                                             
+                                                                                
+                                                                                
+         0 2BFT7                HAC                7 ON   EX                    
+SFDG                                                                            
+                                                                                
+                                                                                
+         0 3BFT5                HAC               54 ON   EX                    
+2ND FIB RING                                                                    
+                                                                                
+                                                                                
+         0 2BFT8                HAC                8 ON   EX                    
+XFDB                                                                            
+                                                                                
+                                                                                
+         0 5BFT59               HAC               59 ON   EX                    
+FHJG                                                                            
+                                                                                
+                                                                                
+         0 3BFT6                HAC               55 ON   EX                    
+DFGH                                                                            
+                                                                                
+                                                                                
+         0 4BFT83               HAC               83 ON   EX                    
+DFGH                                                                            
+                                                                                
+                                                                                
+         0 3BFT7                HAC               56 ON   EX                    
+2ND FIB RING                                                                    
+                                                                                
+                                                                                
+         0 5BFT2                HAC               56 ON   EX                    
+SFG                                                                             
+                                                                                
+                                                                                
+         0 4BFT84               HAC               84 ON   EX                    
+DGH                                                                             
+                                                                                
+                                                                                
+         0 11BFT1               HAC             1101 ON   EX                    
+SDFG                                                                            
+                                                                                
+                                                                                
+         0 4BFT85               HAC               85 ON   EX                    
+HGF                                                                             
+                                                                                
+                                                                                
+         0 5BFT57               HAC               57 ON   EX                    
+CFGH                                                                            
+                                                                                
+                                                                                
+         0 4BFT86               HAC               86 ON   EX                    
+VNB                                                                             
+                                                                                
+                                                                                
+         0 6BFT1                HAC               61 ON   EX                    
+XFG                                                                             
+                                                                                
+                                                                                
+         0 4BFT87               HAC               87 ON   EX                    
+DSH                                                                             
+                                                                                
+                                                                                
+         0 10BFT1               HAC              101 ON   EX                    
+XCVB                                                                            
+                                                                                
+                                                                                
+         0 4BFT88               HAC               88 ON   EX                    
+DHJ                                                                             
+                                                                                
+                                                                                
+         0 10BFT2               HAC              102 ON   EX                    
+CVBV                                                                            
+                                                                                
+                                                                                
+         0 11BFT2               HAC             1102 ON   EX                    
+ASDF                                                                            
+                                                                                
+                                                                                
+         0 10BFT4               HAC              104 ON   EX                    
+DFGH                                                                            
+                                                                                
+                                                                                
+         0 11BFT3               HAC             1103 ON   EX                    
+SFDG                                                                            
+                                                                                
+                                                                                
+         0 11BFT4               HAC             1104 ON   EX                    
+ASDF                                                                            
+                                                                                
+                                                                                
+         0 11BFT5               HAC             1105 ON   EX                    
+SDFG                                                                            
+                                                                                
+                                                                                
+         0 11BFTA1              HAC             1108 ON   EX                    
+SDFG                                                                            
+                                                                                
+                                                                                
+         0 11BFT2A              HAC             1108 ON   EX                    
+SDFG                                                                            
+                                                                                
+                                                                                
+         0 11BFTA3              HAC             1109 ON   EX                    
+SDFG                                                                            
+                                                                                
+                                                                                
+         0 11BFT4A              HAC             1110 ON   EX                    
+SGH                                                                             
+                                                                                
+                                                                                
+         0 YBFT1                HAC               13 ON   EX                    
+BFT TEST                                                                        
+                                                                                
+                                                                                
+         0 YBFT2                HAC               14 ON   EX                    
+TEST                                                                            
+                                                                                
+                                                                                
+         0 YBFT3                HAC               15 ON   EX                    
+TEST                                                                            
+                                                                                
+                                                                                
+         0 YBFT4                HAC               16 ON   EX                    
+TEST                                                                            
+                                                                                
+                                                                                
+         0 YYFB7                HAC               17 ON   EX                    
+TEST FOR FIB DIAGRAMS                                                           
+                                                                                
+                                                                                
+         0 QBFT1                HAC               10 ON   PA                    
+NEW BFT                                                                         
+             -25                                                                
+                                                                                
+         0 NBFT1                HAC               10 ON   EX                    
+TEST FOR FIBRE DIAG                                                             
+                                                                                
+                                                                                
+        25 QBFT1                HAC               10 ON   PA                    
+NEW BFT                                                                         
+                                                                                
+                                                                                
+
+50 rows selected.
+
+SQL> spool off

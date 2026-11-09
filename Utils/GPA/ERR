@@ -1,0 +1,16 @@
+MAKE Version 3.7  Copyright (c) 1987, 1994 Borland International
+Borland C++ Version 4.02 Copyright (c) 1994 Borland International
+actions.c:
+Warning actions.c 128: Condition is always false in function pstack
+Warning actions.c 129: Unreachable code in function pstack
+Warning actions.c 656: Mixing pointers to different 'char' types in function inttok
+Warning actions.c 992: Conversion may lose significant digits in function inttok
+Warning actions.c 1287: Conversion may lose significant digits in function inttok
+Warning actions.c 1581: 'errorlog' is declared but never used in function inttok
+Warning actions.c 1581: 'i' is declared but never used in function inttok
+TLIB 4.00 Copyright (c) 1987, 1994 Borland International
+-+gpamain.obj  -+arith.obj    -+actions.obj  -+translog.obj 
+Warning: public '_G_pnr' in module 'tabproc' clashes with prior module 'config'
+Turbo Link  Version 6.10 Copyright (c) 1992, 1993, 1994 Borland International
+Warning: No module definition file specified: using defaults
+        1 Datei(en) kopiert

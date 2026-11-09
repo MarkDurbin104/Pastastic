@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<slides:OneDayItem 
+	xmlns:slides="com.proiam.slides.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="130" height="206"
+	backgroundImage="@Embed(source='embedded/LgButton.png')" 
+	backgroundSize="100%"
+	styleName="normalItem" creationComplete="onCreationComplete()">
+	<mx:Script>
+		<![CDATA[
+			private function onCreationComplete():void {
+				special.y=95;
+				special.height=100;
+				special.visible=true;
+				special.text="THIS WEEKS FEATURED SERVICE\nEXCEPTIONAL VALUE"
+			}
+		]]>
+	</mx:Script>
+</slides:OneDayItem>

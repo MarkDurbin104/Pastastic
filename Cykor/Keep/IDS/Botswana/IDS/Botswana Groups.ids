@@ -1,0 +1,936 @@
+
+//******************************************************************************************//
+//*                                                                                        *//
+//*                           Botswana Postal Service                                      *//
+//*                                                                                        *//
+//*                                   Groups                                               *//
+//*                                                                                        *//
+//******************************************************************************************//
+Include 'Pay Money Order.ids'
+Groups
+{
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   Clerk__A {
+     BitMap  { '..\images\G_Altkey.bmp'   }
+     Title { 'ALT HOTKEYS' }
+     Items {
+       'Product.Cash'
+       'Receipt'
+       'End Customer'
+       'Exit'
+       'Product.Cheque'
+       'Product.AccountPay'
+       'Product.AccountGOVPay'
+       'Product.OpenCashDrawer'
+     }              
+   }
+   Clerk_C_ {
+     BitMap  { '..\images\G_Altkey.bmp'   }
+     Title { 'CTRL HOTKEYS' }
+     Items {
+         'Product.Stamps'
+         'Product.QuickStamp55'
+     }
+   }
+
+   //Clerk_C_ { Title { 'CTRL HOTKEYS'           } }
+   //Clerk_CA { Title { 'CTRL-ALT HOTKEYS'       } }
+   //ClerkS__ { Title { 'SHIFT HOTKEYS'          } }
+   //ClerkS_A { Title { 'SHIFT-ALT HOTKEYS'      } }
+   //ClerkSC_ { Title { 'SHIFT-CTRL HOTKEYS'     } }
+   //ClerkSCA { Title { 'SHIFT-CTRL-ALT HOTKEYS' } }
+
+   //Supervisor_C_ { Title { 'CTRL HOTKEYS'           } }
+   //Supervisor_CA { Title { 'CTRL-ALT HOTKEYS'       } }
+   //SupervisorS__ { Title { 'SHIFT HOTKEYS'          } }
+   //SupervisorS_A { Title { 'SHIFT-ALT HOTKEYS'      } }
+   //SupervisorSC_ { Title { 'SHIFT-CTRL HOTKEYS'     } }
+   //SupervisorSCA { Title { 'SHIFT-CTRL-ALT HOTKEYS' } }
+
+  Main {
+     Caption { 'Botswana Post'                          }
+     BitMap  { '..\images\SmallLogo.bmp'   }
+     Title   { 'Botswana Post'                          }
+     Prompt  { 'Select a Menu Item:'                           }
+     Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+     Items   { 'Group.MailServices'
+               'Group.Services'
+               'Group.FinancialServices'
+               'Group.Philatelic'
+               'Product.Stamps'
+               'Group.Retail'
+               'Group.Admin'
+               'Product.Cash'
+               'End Customer'
+               'Receipt'
+     }
+  }
+
+
+  Reports {
+     Caption { 'Reports' }
+     Title   { 'Reports' }
+     BitMap  { '..\images\G_SuperReports.bmp'   }
+     Prompt  { 'Select a Menu Item:' }
+     Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+     Items   {
+        'Product.RepMonthlyCert'
+        'Product.RepBankAcc'
+        'Product.RepPensions'
+        'Product.RepPostalOrder'
+        'Product.RepMoneyOrder'
+       // 'Product.RepParcels'
+        'Product.ClientReturns'
+        'Product.ClientRetSum'
+        'Product.GenReport'
+           }
+  }
+
+  Philatelic {
+         Caption { 'Philatelic Items'                          }
+         BitMap  { '..\images\Stamps.bmp'   }
+         Prompt  { 'Select a Menu Item:'                           }
+         Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+         Items   { 'Product.FDStamps'
+                   'Product.SouvStamps'
+                   'Product.YearPack'
+                   'Product.PhilOther'
+                  }
+         }
+
+  Retail {
+         Caption { 'Retail Items'                          }
+         BitMap  { '..\images\Stamps.bmp'   }
+         Prompt  { 'Select a Menu Item:'                           }
+         Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+         Items   { 'Product.BWCourierSales'
+                   'Product.MerchandiseSales'
+                   'Product.RetailOtherSales'
+                  }
+        }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+  AirIndividualMail {
+         Caption { 'Individual Air Mail' }
+         Title   { 'Individual Air Mail' }
+         BitMap  { '..\images\Mail.bmp'   }
+         Prompt  { 'Select a Menu Item:'                         }
+         Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+         Items   {
+                   'Product.AirLetterStd'
+                   'Product.AirLetterLrg'
+                   'Product.AirLetterOver'
+                   'Product.AirAeroGramme'
+                   'Product.AirPostCard'
+                   'Product.AirSmallPacket'
+         }
+  }
+
+  SurIndividualMail {
+         Caption { 'Individual Surface Mail' }
+         Title   { 'Individual Surface Mail' }
+         BitMap  { '..\images\Mail.bmp'   }
+         Prompt  { 'Select a Menu Item:'                         }
+         Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+         Items   {
+                   'Product.SurLetterStd'
+                   'Product.SurLetterLrg'
+                   'Product.SurLetterOver'
+                   'Product.SurPostCard'
+                   'Product.SurSmallPacket'
+                   'Product.SurBlindLit'
+         }
+  }
+
+  AirFrankedMail {
+         Caption { 'Franked Air Mail' }
+         Title   { 'Franked Air Mail' }
+         BitMap  { '..\images\Frank.bmp'   }
+         Prompt  { 'Select a Menu Item:'                         }
+         Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+         Items   {
+                   'Product.AirFrqLetterStd'
+                   'Product.AirFrqLetterLrg'
+                   'Product.AirFrqLetterOver'
+                   'Product.AirFrqPostCard'
+
+         }
+  }
+  SurFrankedMail {
+         Caption { 'Franked Surface Mail' }
+         Title   { 'Franked Surface Mail' }
+         BitMap  { '..\images\Frank.bmp'   }
+         Prompt  { 'Select a Menu Item:'                         }
+         Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+         Items   {
+                   'Product.SurFrqLetterStd'
+                   'Product.SurFrqLetterLrg'
+                   'Product.SurFrqLetterOver'
+                   'Product.SurFrqPostCard'
+         }
+  }
+
+  AirGovernmentMail {
+         Caption { 'Government Air Mail' }
+         Title   { 'Government Air Mail' }
+         BitMap  { '..\images\Gov.bmp'   }
+         Prompt  { 'Select a Menu Item:'                         }
+         Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+         Items   {
+                   'Product.AirGovLetterStd'
+                   'Product.AirGovLetterLrg'
+                   'Product.AirGovLetterOver'
+                   'Product.AirGovPostCard'
+                   'Product.AirGovSmallPacket'
+         }
+  }
+
+
+  SurGovernmentMail {
+         Caption { 'Government Surface Mail' }
+         Title   { 'Government Surface Mail' }
+         BitMap  { '..\images\Gov.bmp'   }
+         Prompt  { 'Select a Menu Item:'                         }
+         Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+         Items   {
+                   'Product.SurGovLetterStd'
+                   'Product.SurGovLetterLrg'
+                   'Product.SurGovLetterOver'
+                   'Product.SurGovPostCard'
+                   'Product.SurGovSmallPacket'
+         }
+  }
+  BulkMail {
+         Caption { 'Bulk Mail'                                }
+         Title   { 'Bulk Mail'                                }
+         BitMap  { '..\images\BulkMail.bmp'   }
+         Prompt  { 'Select a Menu Item:'                         }
+         Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+         Items   {
+                   'Product.SurBlkLetterStd'
+                   'Product.SurBlkLetterLrg'
+                   'Product.SurBlkLetterOver'
+                   'Product.SurBlkPostCard'
+                   'Product.SurBlkSmallPacket'
+         }
+  }
+
+//  GovParcelMail {
+//         Caption { 'Government Parcel Mail' }
+//         Title   { 'Government Parcel Mail' }
+//         BitMap  { '..\images\P_GovParcel.bmp' }
+//         Prompt  { 'Select a Menu Item:' }
+//         Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+//         Items   { 'Product.GovAirParcel'
+//                   'Product.GovSurParcel'
+//         }
+//  }
+
+  ParcelMail {
+         Caption { 'Parcel Mail' }
+         Title   { 'Parcel Mail' }
+         BitMap  { '..\images\P_DomSurParcel.bmp'   }
+         Prompt  { 'Select a Menu Item:'                         }
+         Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+         Items   { 'Product.AirParcel'
+                   'Product.SurParcel'
+                   'Product.GovAirParcel'
+                   'Product.GovSurParcel'
+         }
+  }
+
+  EMSMail {
+         Caption { 'EMS Mail'                             }
+         Title   { 'EMS Mail'                             }
+         BitMap  { '..\images\P_DomEMS.bmp'   }
+         Prompt  { 'Select a Menu Item:'                         }
+         Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+         Items   { 'Product.IntEMS'
+                   'Product.DomEMS'
+                   'Product.IntEMSContract'
+                   'Product.DomEMSContract'
+                   'Product.IntEMSContractCash'
+                   'Product.DomEMSContractCash'
+                   'Product.AccountPayment'
+         }                            
+  }
+
+  MailServices { RegDesc { 'GPCS MailServices Group'                        }
+                 Caption { 'Mail Services'                                  }
+                 BitMap  { '..\images\G_MailServices.bmp' }
+                 Title   { 'Mail Services'                                  }
+                 Prompt  { 'Select a Menu Item:'                            }
+                 Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+                 Items   { 'Group.AirIndividualMail'
+                           'Group.SurIndividualMail'
+                           'Group.AirFrankedMail'
+                           'Group.SurFrankedMail'
+                           'Group.AirGovernmentMail'
+                           'Group.SurGovernmentMail'
+                           'Group.BulkMail'
+                           'Group.ParcelMail'
+                        //   'Group.GovParcelMail'
+                           'Group.EMSMail'
+                           'Group.ParcelDelivery'
+       }
+   }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+
+  ParcelDelivery {
+                 Caption { 'Items Delivery'                                  }
+                 Title { 'Items Delivery'                                  }
+                 Description { 'Items Delivery'                                  }
+                 BitMap  { '..\images\P_DelIntParcel.bmp' }
+                 Prompt  { 'Select a Menu Item:'                            }
+                 Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+                 Items   {
+                         //  'Product.DelDomParcel'
+                         //  'Product.DelIntParcel'
+                         //  'Product.DelCODDomParcel'
+                         //  'Product.DelCODIntParcel'
+                         //  'Product.DelDomEMS'
+                         //  'Product.DelIntEMS'
+                             'Product.StandardLetterDel'
+                         //    'Product.LargeLetterDel'
+                         //    'Product.OversizedLetterDel'
+                         //    'Product.PostCardDel'
+                         //    'Product.AerogrammeDel'
+			     'Product.ParcelsDel'
+			     'Product.CODParcelDel'
+			     'Product.EMSDel'
+              'Product.PacketDel'
+       }
+   }
+
+  NationalSavings {
+      Caption { 'National Savings Certificates' }
+      Title { 'National Savings Certificates' }
+      Description { 'National Savings Certificates' }
+      BitMap  { '..\images\P_SavCertificate.bmp' }
+      Prompt  { 'Select a Menu Item:'                            }
+      Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+      Items   {
+                //'Product.NationalSaving50'
+                //'Product.NationalSaving250'
+                //'Product.NationalSaving500'
+                //'Product.NationalSavingPay'
+                'Product.NatSavCert'
+                'Product.NatSavCertFPay'
+                'Product.NatSavCertPPay'
+
+      }
+   }
+
+//  EMS {
+//                 Caption { 'EMS'                                  }
+//                 BitMap  { '..\images\G_EMS.bmp' }
+//                 Title   { 'EMS'                                  }
+//                 Prompt  { 'Select a Menu Item:'                            }
+//                 Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+//                 Items   {
+//                           'Product.IntEMS'
+//                           'Product.DomEMS'
+//                           'Product.IntEMSContract'
+//                           'Product.DomEMSContract'
+//
+//       }
+//   }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+
+//  PostPreMail {
+//                 Caption { 'Postage Prepaid Mail'             }
+//                 BitMap  { '..\images\P_PostPreMail.bmp' }
+//                 Title   { 'EMS'                                  }
+//                 Prompt  { 'Select a Menu Item:'                            }
+//                 Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+//                 Items   {
+//                           'Product.AccountPayment'
+//       }
+//   }
+
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+
+  VendorSales {
+      Caption { 'Vendor Sales' }
+      Title   { 'Vendor Sales' }
+      BitMap  { '..\images\Stamps.bmp' }
+      Prompt  { 'Select a Menu Item:' }
+      Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+      Items   {
+         'Product.VendorSales'
+         'Product.VendorStampSales'
+      }
+  }
+
+  Services {
+      Caption { 'Services' }
+      BitMap  { '..\images\G_Services.bmp' }
+      Title   { 'Services' }
+      Prompt  { 'Select a Menu Item:' }
+      Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+      Items   {
+         'Group.PrivateBox'
+         'Group.PrivateBags'
+         'Group.AgencyServices'
+         'Product.FrankingMachine'
+         'Product.CustomerVoucher'
+         'Product.RegOfNewsPapers'
+         'Product.AccUnaddrAdvtLeaflets'
+         'Product.BusinessReply'
+         'Group.CustomerFaxGroup'
+         'Group.Miscellaneous'
+      }
+  }
+
+  Miscellaneous {
+     Caption { 'Miscellaneous Receipts/Payments' }
+     BitMap  { '..\images\G_Services.bmp'        }
+     Title   { 'Miscellaneous Receipts/Payments' }
+     Prompt  { 'Select a Menu Item:'             }
+     Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+     Items   { 'Product.MiscReceipt'
+               'Product.MiscPayment'
+               'Product.Claims'
+               'Product.ImprestTravelReceipt'
+               'Product.PayStaffCheque'
+               'Product.PaySalary'
+               'Product.PayWagesIC'
+               'Product.PayTempStaff'
+               'Product.PayDeathClaim'
+               'Product.PayHumana'
+             }
+  }
+
+  CustomerFaxGroup {
+     Caption { 'Customer Fax Services'           }
+     BitMap  { '..\images\G_Services.bmp'        }
+     Title   { 'Customer Fax Services'           }
+     Prompt  { 'Select a Menu Item:'             }
+     Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+     Items   { 'Product.CustomerFax'
+               'Product.CustomerFaxInt'          }
+  }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+  PrivateBox { RegDesc { 'Corvus PO Box Group'             }
+               Caption { 'PO Boxes'                        }
+               BitMap  { '..\images\G_POBox.bmp' }
+               Title   { 'PO Boxes'                        }
+               Prompt  { 'Select a Menu Item:'             }
+               Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+               Items   { 'Product.PrivBoxAnnualRent'
+                       'Product.PBQuarterRent'
+//                       'Product.PBSurcharge'
+                       'Product.PBNewLockKey'
+                       'Product.BusBoxAnnualRent'
+                       'Product.BusQuarterRent'
+                       'Product.BusNewLockKey'
+                       'Product.GovBoxAnnualRent'
+                       'Product.GovQuarterRent'
+                       'Product.GovNewLockKey'
+                                                                   }
+              }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+  PrivateBags { RegDesc { 'Corvus Private Bags Group'              }
+                BitMap  { '..\images\G_Bags.bmp' }
+                Caption { 'Private Bags'                      }
+                Title   { 'Private Bags'                      }
+                Prompt  { 'Select a Menu Item:'                    }
+                Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+                Items   { 'Product.BagNewRental'
+                          'Product.BagAnnualRent'
+                          'Product.BagQuarterRent'
+                          'Product.BagConveyanceFee'
+                          'Product.BagNewLockKey'
+                        }
+               }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+  AgencyServices { RegDesc { 'Corvus Agency Services Group'           }
+                   BitMap  { '..\images\Tickets.bmp' }
+                   Caption { 'Agency Services'                   }
+                   Title   { 'Agency Services'                   }
+                   Prompt  { 'Select a Menu Item:'                    }
+                   Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+                   Items   {
+                   	     'Group.NationalSavings'
+                   	     'Group.SavBank'
+                   	     'Group.Pension'
+                   	     'Group.Utilities'
+                             'Product.RIPC'
+                             'Product.FuneralScheme'
+                             'Product.IpolokengScheme'
+
+                   }
+                 }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+  Utilities { RegDesc { 'Corvus Utility Services Group' }
+              BitMap  { '..\images\G_MOP.bmp'           }
+              Caption { 'Utility Services'              }
+              Title   { 'Utility Services'              }
+              Prompt  { 'Select a Menu Item:'           }
+              Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+              Items   { 'Product.ElecBillPayDOE'
+                        'Product.ElecBillPayBPC'
+                        'Product.TelecomBillPayment'
+                        'Product.Housing'
+                        'Product.WaterAffair'
+                        'Product.WaterUtility'
+                       }
+             }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+  FinancialServices { RegDesc { 'Corvus Financial Services Group'               }
+                      Caption { 'Financial Services'                       }
+                      BitMap  { '..\images\G_FinServices.bmp' }
+                      Title   { 'Financial Services'                       }
+                      Prompt  { 'Select a Menu Item:'                           }
+                      Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+                      Items   {
+                                'Group.MoneyOrder'
+                                'Group.PostalOrder'
+                                'Group.OtherPayments'
+                                'Product.BulkMOPayment'
+                                'Product.AccountPayment'
+                              }
+                     }
+  MoneyOrder {
+         Caption { 'Money Orders'                          }
+         BitMap  { '..\images\P_Cash.bmp'   }
+         Prompt  { 'Select a Menu Item:'                           }
+         Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+         Items   {
+                   'Product.DomMoneyOrder'
+                   'Product.MOForcePaid'
+//                   'Product.DomMoneyOrderPay'
+                   'Product.IntMoneyOrder'
+                   'Product.IntMoneyOrderPaid'
+                   'Product.IssueMoneyOrder'
+                   'Product.PayMoneyOrder'
+         }
+  }
+
+  OtherPayments {
+         Caption { 'Other Payments'                          }
+         BitMap  { '..\images\P_Cash.bmp'   }
+         Prompt  { 'Select a Menu Item:'                           }
+         Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+         Items   {
+                   //'Product.ChangePayeeName'
+                   'Product.ChangeRecipient'
+                   'Product.ChangePayeeLocation'
+                   'Product.CeasePayment'
+                   'Product.MoneyOrderRefund'
+                   'Product.AdviceOfPaymentAfterIssue'
+                   //'Product.PaymentCopy'
+                   //'Product.TelegramCharges'
+         }
+  }
+
+  PostalOrder {
+    Caption { 'Postal Orders'                          }
+    Title   { 'Postal Orders'                          }
+    BitMap  { '..\images\P_PostalOrder.bmp'   }
+    Prompt  { 'Select a Menu Item:'                           }
+    Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+    Items   { 'Product.FinPostalOrder'
+              'Product.PostalOrderPay'
+              'Product.PostalOrderPayInt'
+              'Product.PostalOrderBulkPay'
+              //   'Product.PostalOrderExt'
+              //   'Product.PostalOrderDup'
+    }
+  }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+   SavBank {
+     Caption { 'Botswana Savings Bank' }
+     BitMap { '..\IMAGES\G_SavBank.bmp' }
+     Title        { 'Savings Bank' }
+     Prompt       { 'Select a Menu Item:' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+     Items {
+       'Group.SavBankOrd'
+       'Group.SavBankTrs'
+       'Group.SavBankSpc'
+       'Product.BankSAYEDep'
+       'Product.AcceptBankBook'
+       'Product.LostBankBook'
+     }
+   }
+
+
+
+   SavBankOrd {
+     Caption { 'Savings Bank - Ordinary Account' }
+     BitMap { '..\IMAGES\G_SavBank.bmp' }
+     Title        { 'Savings Ordinary Bank' }
+     Prompt       { 'Select a Menu Item:' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+     Items {
+       'Product.BankOrdDep'
+       'Product.BankOrdWith'
+       'Product.BankOrdClose'
+       'Product.BankOrdOpen'
+     }
+   }
+
+   SavBankTrs {
+     Caption { 'Savings Bank - Trust Account' }
+     BitMap { '..\IMAGES\G_SavBank.bmp' }
+     Title        { 'Savings Trust Bank' }
+     Prompt       { 'Select a Menu Item:' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+     Items {
+       'Product.BankTrsDep'
+       'Product.BankTrsWith'
+       'Product.BankTrsClose'
+       'Product.BankTrsOpen'
+     }
+   }
+
+   SavBankSpc {
+     Caption { 'Savings Bank - Special Account' }
+     BitMap { '..\IMAGES\G_SavBank.bmp' }
+     Title        { 'Savings Special Bank' }
+     Prompt       { 'Select a Menu Item:' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+     Items {
+       'Product.BankSpcDep'
+       'Product.BankSpcWith'
+       'Product.BankSpcClose'
+       'Product.BankSpcOpen'
+     }
+   }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+   Admin {
+      RegDesc { 'GPCS Admin Group' }
+      Caption { 'Administration' }
+      BitMap { '..\images\G_Admin.bmp' }
+      Title        { 'Administration' }
+      Prompt       { 'Select a Menu Item:' }
+      Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+      Items {
+            //'Product.StartOfDay'
+//            'Product.CancelCustomer'
+            'Group.Returns'
+            'Group.RequestStock'
+            'Group.EndOfDay'
+            'Group.ViewStock'
+            'Group.Payment'
+            'Group.Reports'
+            'Product.ClerkCA'
+      }
+   }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+   ViewStock {
+      RegDesc  { 'GPCS View Stock Group' }
+      BitMap   { '..\images\G_Admin.bmp' }
+      Caption  { 'View Stock' }
+      Title    { 'View Stock' }
+      Prompt   { 'Select a Menu Item:' }
+      Hint     { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+      Items    { 'Product.ViewStockCash'
+                 'Product.ViewStockStamps'
+                 'Group.ViewStockItems'
+                 'Product.ViewStockPostOrder'
+                 'Group.ViewPhilItems'        }
+                }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+   ViewStockItems {
+      RegDesc  { 'GPCS View Stock Group' }
+      BitMap   { '..\images\G_Admin.bmp' }
+      Caption  { 'View Stock Items' }
+      Title    { 'View Stock Items' }
+      Prompt   { 'Select a Menu Item:' }
+      Hint     { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+      Items    { 'Product.ViewStockBWCourier'
+                 'Product.ViewStockMerchandise'
+                 'Product.ViewStockRetail'              }
+                }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+   ViewPhilItems {
+      RegDesc  { 'GPCS View Stock Group' }
+      BitMap   { '..\images\G_Admin.bmp' }
+      Caption  { 'View Philatelic Items' }
+      Title    { 'View Philatelic Items' }
+      Prompt   { 'Select a Menu Item:' }
+      Hint     { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+      Items    { 'Product.ViewStockPhilFDCover'
+                 'Product.ViewStockPhilSouvSheet'
+                 'Product.ViewStockPhilYearPack'
+                 'Product.ViewStockPhilOther'      }
+                }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+   Pension {
+      Caption { 'Pensions' }
+      BitMap { '..\images\G_Pension.bmp' }
+      Title        { 'Pension' }
+      Prompt       { 'Select a Menu Item:' }
+      Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+      Items {
+      	     'Product.NormalPayments'
+              'Product.ArrearsPayments'
+              'Product.SAPayments'
+              'Product.OsmiumPayment'
+      }
+   }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+   Returns {
+      Caption { 'Return Stock' }
+      BitMap { '..\images\G_Returns.bmp' }
+      Title        { 'Return Stock' }
+      Prompt       { 'Select a Menu Item:' }
+      Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+      Items {
+            'Product.ReturnCash'
+            'Product.ReturnStamps'
+            'Group.ReturnStockItems'
+            'Product.ReturnPostOrd'
+            'Group.ReturnPhilItems'
+            'Product.ReturnPrint'
+      }
+   }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+   RequestStock {
+      RegDesc { 'GPCS RequestStock Group' }
+      Caption { 'Request Stock' }
+      BitMap { '..\images\G_Stock.bmp' }
+      Title        { 'Request Stock' }
+      Prompt       { 'Select a Menu Item:' }
+      Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+      Items {
+            'Product.OrderCash'
+            'Product.OrderStamps'
+            'Group.RequestStockItems'
+            'Product.OrderPostOrd'
+            'Group.RequestPhilItems'
+            'Product.OrderPrint'
+      }
+   }
+
+RequestStockItems { RegDesc { 'GPCS Request Stock Items Group' }
+                    BitMap  { '..\images\G_Stock.bmp' }
+                    Caption { 'Request Stock' }
+                    Title   { 'Request Stock' }
+                    Prompt  { 'Select a Menu Item:' }
+                    Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+                    Items   { 'Product.OrderStockBWCourier'
+                              'Product.OrderStockMerchandise'
+                              'Product.OrderStockRetailOther'
+                             }
+                   }
+
+ReturnStockItems { RegDesc { 'GPCS Return Stock Items Group' }
+                    BitMap  { '..\images\G_Stock.bmp' }
+                    Caption { 'Return Stock Items' }
+                    Title   { 'Return Stock Items' }
+                    Prompt  { 'Select a Menu Item:' }
+                    Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+                    Items   { 'Product.ReturnStockBWCourier'
+                              'Product.ReturnStockMerchandise'
+                              'Product.ReturnStockRetailOther'
+                             }
+                   }
+
+RequestPhilItems { RegDesc { 'GPCS Request Phil Items Group' }
+                   BitMap  { '..\images\G_Stock.bmp' }
+                   Caption { 'Request Philatelic Items' }
+                   Title   { 'Request Philatelic Items' }
+                   Prompt  { 'Select a Menu Item:' }
+                   Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+                   Items   { 'Product.OrderPhilFDC'
+                             'Product.OrderPhilSouvSheets'
+                             'Product.OrderPhilYearPacks'
+                             'Product.OrderPhilOtherPhil'
+                            }
+                  }
+
+ReturnPhilItems { RegDesc { 'GPCS Return Phil Items Group' }
+                   BitMap  { '..\images\G_Stock.bmp' }
+                   Caption { 'Return Philatelic Items' }
+                   Title   { 'Return Philatelic Items' }
+                   Prompt  { 'Select a Menu Item:' }
+                   Hint    { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+                   Items   { 'Product.ReturnPhilFDC'
+                             'Product.ReturnPhilSouvSheets'
+                             'Product.ReturnPhilYearPacks'
+                             'Product.ReturnPhilOtherPhil'
+                            }
+                  }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+   EndOfDay {
+      RegDesc { 'GPCS EndOfDay Group' }
+      Caption { 'End Of Day Routines' }
+      BitMap { '..\images\G_EndOfDay.bmp' }
+      Title        { 'End Of Day Menu' }
+      Prompt       { 'Select a Menu Item:' }
+      Hint         { 'Select a menu item by pressing the Function Key^or by using the UP/DOWN arrows and [Enter]' }
+      Items {
+            'Group.ClerkDeclare'
+            'Product.TrialBalance'
+            'Product.Balance'
+            'Exit'
+            'Shutdown Workstation'
+           }
+   }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+   Payment {
+      Title { 'Methods of Payment' }
+      Caption { 'Methods of Payment' }
+      Prompt { 'Select a Service or Menu' }
+      Hint { 'Select a service by pressing a Function Key^or by using the arrow keys and pressing [ENTER]' }
+      Bitmap { '..\images\G_MOP.bmp' }
+      Items {
+         'Product.Cash'
+         'Product.Cheque'
+         'Product.AccountPay'
+         'Product.AccountGOVPay'
+         'Product.OpenCashDrawer'
+        // 'Product.IntRepCoup'
+      }
+   }
+
+   ClerkDeclare {
+     Caption { 'Declaration' }
+     BitMap { '..\IMAGES\G_ClerkDeclare.bmp' }
+     Title        { 'Declaration Menu' }
+     Prompt       { 'Select a Menu Item:' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the [Up] and [Down] arrows and [Enter]' }
+     Items {
+       'Product.DeclareCash'
+       'Product.DeclareStamps'
+       'Group.ClerkDeclareStock'
+       'Product.DeclarePostOrd'
+       'Group.ClerkDeclarePhil'
+       'Product.DeclarePrint'
+     }
+   }
+
+   SuperDeclare {
+     Caption { 'Declaration' }
+     BitMap { '..\IMAGES\G_ClerkDeclare.bmp' }
+     Title        { 'Declaration Menu' }
+     Prompt       { 'Select a Menu Item:' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the [Up] and [Down] arrows and [Enter]' }
+     Items {
+       'Product.DeclareCash'
+//       'Product.DeclareStamps'
+//       'Group.ClerkDeclareStock'
+//       'Product.DeclarePostOrd'
+//       'Group.ClerkDeclarePhil'
+       'Product.SDeclarePrint'
+     }
+   }
+     
+   ClerkDeclareStock {
+     Caption { 'Declare Stock' }
+     BitMap { '..\IMAGES\G_ClerkDeclare.bmp' }
+     Title        { 'Declare Stock Menu' }
+     Prompt       { 'Select a Menu Item:' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the [Up] and [Down] arrows and [Enter]' }
+     Items {
+       'Product.DeclareStockBWCourier'
+       'Product.DeclareStockMerchandise'
+       'Product.DeclareStockRetail'
+     }
+   }
+
+   ClerkDeclarePhil {
+     Caption { 'Declare Philatelic' }
+     BitMap { '..\IMAGES\G_ClerkDeclare.bmp' }
+     Title        { 'Declare Philatelic Menu' }
+     Prompt       { 'Select a Menu Item:' }
+     Hint         { 'Select a menu item by pressing the Function Key^or by using the [Up] and [Down] arrows and [Enter]' }
+     Items {
+       'Product.DeclarePhilFDC'
+       'Product.DeclarePhilSouvSheets'
+       'Product.DeclarePhilYearPacks'
+       'Product.DeclarePhilOtherPhil'
+     }
+   }
+
+
+
+}
+
+
+
+
+
+
+

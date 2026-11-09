@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	creationComplete="onCreationComplete(event)"
+	layout="vertical" xmlns:code="flexlib.*" xmlns:local="*" xmlns:containers="flexlib.containers.*">
+<!--	keyFocusChange="event.preventDefault();focusManager.getNextFocusManagerComponent(event.shiftKey).setFocus()"
+ -->	
+	<mx:Style>
+		Application {
+			backgroundGradientColors: #FFFFFF, #FFFFFF;
+			backgroundGradientAlphas: 1, 1;
+			vertical-align: middle;
+			horizontal-align: center;
+		}
+		
+		VAccordion {
+		   headerHeight: 44;
+		   vertical-gap: 5;
+		   background-alpha:0;
+		   open-duration:250;
+		   border-style:none;
+		   padding-bottom:5;
+		   background-color:#ECF6ED;
+		   header-style-name: gradientHeader;
+		}
+		
+		.gradientHeader {
+		    upSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+		    overSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+		    downSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+		    disabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+		    selectedUpSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+		    selectedOverSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+		    selectedDownSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+		    selectedDisabledSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+		    font-family:Arial;
+		    cornerRadii: 0, 0, 10, 10;
+		    borderColors: #FFFFFF, #FFFFFF;
+		    overBorderColors: #FFFFFF, #FFFFFF;
+		    selectedBorderColors: #FFFFFF,#FFFFFF; 	
+		    borderThickness: 2;
+		    borderAlpha: 1;
+		    fillColors: #FFFFFF, #FFFFFF;
+		    fillAlphas: 1, 1;
+		    fillColorRatios: 0, 255;
+		    overFillColors: #FFFFFF, #FFFFFF;
+		    overFillAlphas: 1, 1;
+		    overFillColorRatios: 0, 169;
+		    selectedFillColors: #FFFFFF, #CEE3D1;
+		    selectedFillAlphas: 1,1;
+		    selectedFillColorRatios: 0, 169;
+		}
+		
+		Panel {
+		   borderStyle: solid;
+		   borderColor: #ABD6C8;
+		   corner-radius:10;
+		   borderAlpha: 1;
+		   roundedBottomCorners: true;
+		   headerHeight: 30;
+		   highlightAlphas: 0, 0;
+		   headerColors: #92BEB1, #ABD6C8;
+		  
+		   titleStyleName: "mypanelTitle";
+		   border-thickness-left:1;
+		   border-thickness-right:1;
+		   border-thickness-top:0;
+		   border-thickness-bottom:-5;
+		    
+		   border-thickness:0;   
+		}
+		
+		.mypanelTitle {
+		   color: #496384;
+		   fontSize: 16;
+		   fontWeight:bold;
+		}
+
+	</mx:Style>
+	<mx:Script>
+		<![CDATA[
+			import mx.controls.TextInput;
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			
+			private function onCreationComplete(event:FlexEvent):void {
+				ExternalInterface.addCallback("actionScriptFunction", ExternalTABPressed);
+				onChange(null);
+			}
+			private function ExternalTABPressed(name:String):void {
+				focusManager.getNextFocusManagerComponent(name=="true").setFocus();
+				onChange(null);
+			}
+			private function onChange(event:Event):void {
+				var inputText:TextInput=AccordionItem(accordion.selectedChild).inputTextArea;
+				if (inputText!=null) {
+					var selection:int;
+					if (inputText.selectionEndIndex != 0) {
+						selection=inputText.selectionEndIndex;
+						inputText.setSelection(0,0);
+						inputText.setFocus();
+						inputText.setSelection(selection,selection);
+					} else {
+						inputText.setSelection(0,0);
+						inputText.setFocus();
+						selection=inputText.selectionEndIndex;
+						inputText.setSelection(selection,selection);
+					}
+				} else {
+					AccordionItem(accordion.selectedChild).setFocus();
+				}
+			}
+		]]>
+	</mx:Script>
+
+	<mx:Panel id="thePanel" title="Origin address">
+	
+		<containers:VAccordion id="accordion" creationPolicy="all" 
+			historyManagementEnabled="false"
+			headerLocation="below" width="500" creationComplete="onChange(event);"
+			resizeToContent="true" change="onChange(event);">
+<!--	headerRenderer="Header"  -->
+			
+			<local:AccordionItem title="Sender's name" 
+				input="Paul Yarin"
+				image="@Embed('assets/essentials_itunes20070611.png')"
+				description="Paul Yarin" />
+			
+			<local:AccordionItem title="Sender's address line 1"
+				input="Blackdust Design"
+				image="@Embed('assets/essentials_quicktime20070611.png')" 
+				description="Blackdust Design" />
+
+			<local:AccordionItem title="Sender's address line 2"
+				input="1026 S Santa Fe Ave #303"
+				image="@Embed('assets/essentials_quicktime20070611.png')" 
+				description="1026 S Santa Fe Ave #303" />
+			
+			<local:AccordionItem title="Sender's State"
+				input="Los Angeles, CA"
+				image="@Embed('assets/essentials_widgets20070611.png')"
+				description="Los Angeles, CA" />
+			
+			<local:AccordionItem title="Sender's ZIP"
+				input="90021-1772"
+				image="@Embed('assets/essentials_safari20070611.png')"
+				description="90021-1772" />
+			
+		</containers:VAccordion>
+		
+	</mx:Panel>
+	
+</mx:Application>

@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BridgeTestApp", "BridgeTestApp\BridgeTestApp.csproj", "{826213A3-1937-4346-887B-60402B7A10E4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F763276D-3E41-44E2-9DBB-BCB02417461F} = {F763276D-3E41-44E2-9DBB-BCB02417461F}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VU.iT.Bridge", "..\..\VU.iT Bridge VS\BridgeLibrary\VU.iT.Bridge.csproj", "{F763276D-3E41-44E2-9DBB-BCB02417461F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{826213A3-1937-4346-887B-60402B7A10E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{826213A3-1937-4346-887B-60402B7A10E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{826213A3-1937-4346-887B-60402B7A10E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{826213A3-1937-4346-887B-60402B7A10E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F763276D-3E41-44E2-9DBB-BCB02417461F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F763276D-3E41-44E2-9DBB-BCB02417461F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F763276D-3E41-44E2-9DBB-BCB02417461F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F763276D-3E41-44E2-9DBB-BCB02417461F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

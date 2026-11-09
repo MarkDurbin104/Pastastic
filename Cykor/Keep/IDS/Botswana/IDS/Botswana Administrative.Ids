@@ -1,0 +1,296 @@
+//****************************************************************************************//
+//**                                                                                    **//
+//**                                                                                    **//
+//**                                                                                    **//
+//****************************************************************************************//
+
+
+Products
+{
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  StartOfDay { BasedOn     { BaseAdmin                                      }
+               RegDesc     { 'CORVUS Start Of Day Product'                  }
+               Caption     { 'Start of Day'                                 }
+               Description { 'Start of Day'                                 }
+               Title       { 'Start of Day'                                 }
+               BitMap      { '..\images\P_StartOfDay.bmp' }
+               Domains     { StartCash
+                             StartStock      }
+               Items       { 'Complete'      }
+               Snippets    { StartOfDayPVar
+                             StartOfDayEVar
+                             StartOfDayCVar
+                             StartOfDayComp
+                             StartOfDayExec  }
+               PLU         { PLU_StartOfDay  }
+              }
+
+//
+//------------------------------------------------------------------------------------------
+//
+ 
+//  EndOfDay { BasedOn     { BaseAdmin            }
+//             Caption     { 'End of day'         }
+//             BitMap      { '..\images\P_EndofDayBalance.bmp' }
+//             Description { 'End of day'         }
+//             Title       { 'End of day'         }
+//             Prompt      { 'End of day'         }
+//             Hint        { 'End of day'         }
+//             Items       { 'Complete'           }
+//             Snippets    { EndOfDayVar
+//                           EndOfDayExec         }
+//            }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  CancelCustomer { BasedOn     { BaseAdmin                                          }
+                   RegDesc     { 'GPCS CancelCustomer Product'                      }
+                   Caption     { 'Cancel Customer'                                  }
+                   BitMap      { '..\images\P_CancelCustomer.bmp' }
+                   Description { 'Cancel Customer'                                  }
+                   Title       { 'Cancel Customer'                                  }
+                   PLU         { PLU_CancelCustomer }
+                  }
+//
+//------------------------------------------------------------------------------------------
+//
+
+//	ViewStock {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS ViewStock Product' }
+//      	Caption { 'View Stock' }
+//      	BitMap { '..\images\P_ViewStock.bmp' }
+//      	Description  { 'View Stock' }
+//      	Title        { 'View Stock' }
+//	}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//	ReturnCash {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS ReturnCash Product' }
+//      	Caption { 'Return Cash' }
+//      	BitMap { '..\images\P_ReturnCash.bmp' }
+//      	Description  { 'Return Cash' }
+//      	Title        { 'Return Cash' }
+//	}
+//
+//
+//------------------------------------------------------------------------------------------
+//
+//
+//	ReturnStamps {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS ReturnStamps Product' }
+//      	Caption { 'Return Stamps' }
+//      	BitMap { '..\images\P_ReturnStamps.bmp' }
+//      	Description  { 'Return Stamps' }
+//      	Title        { 'Return Stamps' }
+//	}
+//
+//
+//------------------------------------------------------------------------------------------
+//
+
+//	ReturnStock {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS ReturnStock Product' }
+//      	Caption { 'Return Stock' }
+//      	BitMap { '..\images\P_ReturnStock.bmp' }
+//      	Description  { 'Return Stock' }
+//      	Title        { 'Return Stock' }
+//	}
+//
+//
+//------------------------------------------------------------------------------------------
+//
+
+//	ReturnPostalOrders {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS ReturnPostalOrders Product' }
+//      	Caption { 'Return Postal Orders' }
+//      	BitMap { '..\images\P_ReturnPostOrd' }
+//      	Description  { 'Return Postal Orders' }
+//      	Title        { 'Return Postal Orders' }
+//	}
+//
+//
+//------------------------------------------------------------------------------------------
+//
+
+//	ReturnPrint {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS ReturnPrint Product' }
+//      	Caption { 'Return Print' }
+//      	BitMap { '..\images\P_ReturnPrint.bmp' }
+//      	Description  { 'Return Print' }
+//      	Title        { 'Return Print' }
+//	}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//	OrderCash {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS OrderCash Product' }
+//      	Caption { 'Order Cash' }
+//      	BitMap { '..\images\P_OrderCash.bmp' }
+//	    	Description  { 'Order Cash' }
+//     	Title        { 'Order Cash' }
+//	}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//	OrderStamps {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS OrderStamps Product' }
+//      	Caption { 'Order Stamps' }
+//      	BitMap { '..\images\P_OrderStamps.bmp' }
+//      	Description  { 'Order Stamps' }
+//      	Title        { 'Order Stamps' }
+//	}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//	OrderStock {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS OrderStock Product' }
+//      	Caption { 'Order Stock' }
+//      	BitMap { '..\images\P_OrderStock.bmp' }
+//      	Description  { 'Order Stock' }
+//      	Title        { 'Order Stock' }
+//	}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//	OrderPostalOrders {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS OrderPostalOrders Product' }
+//      	Caption { 'Order Postal Orders' }
+//      	BitMap { '..\images\P_OrderPostOrd.bmp' }
+//      	Description  { 'Order Postal Orders' }
+//      	Title        { 'Order Postal Orders' }
+//	}
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//	OrderPrint {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS OrdrerPrint Product' }
+//      	Caption { 'Order Print' }
+//      	BitMap { '..\images\P_OrderPrint.bmp' }
+//      	Description  { 'Order Print' }
+//      	Title        { 'Order Print' }
+//	}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+	Declaration {
+		BasedOn { BaseAdmin }
+      Caption { 'Deposit on Private Box/Bag Keys' }
+      BitMap { '..\images\P_Declaration.bmp' }
+      Description  { 'Declaration' }
+      Title        { 'Declaration' }
+      PLU          { PLU_Declaration }
+
+	}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//	ClientReturn {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS ClientReturn Product' }
+//      	Caption { 'Client Return' }
+//      	BitMap { '..\images\P_ClientReturn.bmp' }
+//      	Description  { 'Client Retrun' }
+//      	Title        { 'Client Return' }
+//         PLU          { PLU_ClientReturn }
+//	}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//	TrialBalance {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS TrialBalance Product' }
+//      	Caption { 'Trial Balance' }
+//      	BitMap { '..\images\P_TrialBalance.bmp' }
+//      	Description  { 'Trial Balance' }
+//      	Title        { 'Trial Balance' }
+//	}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//	EndOfDayBalance {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS EndOfDayBalance Product' }
+//      	Caption { 'End Of Day Balance' }
+//      	BitMap { '..\images\P_EndofDayBalance.bmp' }
+//      	Description  { 'End Of Day Balance' }
+//      	Title        { 'End Of Day Balance' }
+//         PLU          { PLU_EndOfDayBalance }
+//	}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//	ClientReturnSummary {
+//		BasedOn { BaseAdmin }
+//      	RegDesc { 'GPCS ClientReturnSummary Product' }
+//      	Caption { 'Client Return Summary' }
+//      	BitMap { '..\images\P_ClientReturn.bmp' }
+//      	Description  { 'Client Return Summary' }
+//      	Title        { 'Client Return Summary' }
+//         PLU          { PLU_ClientReturnSummary }
+//	}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   Cheque {
+		BasedOn { BaseAdmin }
+      Title { 'Cheque Payment' }
+      Bitmap { '..\Images\P_Cheque.bmp' }
+      Domains { TotalToPay, AccountNumber, ChequeNumber,AmountPaid,Change }
+      Items { 'Complete' }
+      Customer { 'Cheque P',AmountPaid }
+      Snippets { ChequeProdFormCreated,ChequeFormVars,ChequeValidVars,ValidCheque,LogChequeVars,LogCheque }
+      PLU { PLU_Cheque   }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+
+}
+
+
+

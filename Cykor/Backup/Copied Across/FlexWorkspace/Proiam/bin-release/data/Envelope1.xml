@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vuitResult>
+	<status>OK</status>
+	<image>EnvelopeScan1.jpg</image>
+	<physicalAttributes>
+		<weight>12.0</weight>
+		<length>21.0</length>
+		<width>9.0</width>
+		<height>0.3</height>
+		<units>metric</units>
+	</physicalAttributes>
+	<postage/>
+	<services/>
+	<destination>
+		<zipCode>02476</zipCode>
+		<country>USA</country>
+		<rawString>Will Crosby 12 Utah St. Neverland, CA 12345</rawString>
+		<imageLocation>195, 160, 410, 230</imageLocation>
+		<address>
+			<name>Will Crosby</name>
+			<line1>12 Utah St.</line1>
+			<line2></line2>
+			<line3></line3>
+			<city>Neverland</city>
+			<state>CA</state>
+			<zip>12345</zip>
+			<telephone></telephone>
+			<email></email>
+		</address>
+	</destination>
+	<origin>
+		<zipCode>90021</zipCode>
+		<country>USA</country>
+		<rawString>Paul Yrn 1026 Santa Fe Avve #303 Los Angeles CA 90021</rawString>
+		<imageLocationOld>12, 6, 224, 94</imageLocationOld>
+		<imageLocation>12, 6, 240, 94</imageLocation>
+		<address>
+			<name>Paul Yarin</name>
+			<line1>Blackdust Design</line1>
+			<line2>1026 S Santa Fe Ave #303</line2>
+			<line3></line3>
+			<city>Los Angeles</city>
+			<state>CA</state>
+			<zip>90021-1772</zip>
+			<telephone></telephone>
+			<email></email>
+		</address>
+	</origin>
+</vuitResult>

@@ -1,0 +1,442 @@
+{\rtf1\ansi
+ {\fonttbl
+ \f0\froman Times New Roman;
+ \f1\fdecor Courier New;
+ \f2\fswiss Arial;
+ }
+ \deff0
+ {\colortbl
+ \red0  \green0  \blue0  ;
+ \red0  \green0  \blue255;
+ \red0  \green255\blue255;
+ \red0  \green255\blue0  ;
+ \red255\green0  \blue255;
+ \red255\green0  \blue0  ;
+ \red255\green255\blue0  ;
+ \red255\green255\blue255;
+ \red0  \green0  \blue128;
+ \red0  \green128\blue128;
+ \red0  \green128\blue0  ;
+ \red128\green0  \blue128;
+ \red128\green0  \blue0  ;
+ \red128\green128\blue0  ;
+ \red128\green128\blue128;
+ \red192\green192\blue192;
+ }
+ #{\footnote ERASEPLY.C }
+ ${\footnote ERASEPLY.C }
+ +{\footnote 0001 }
+ K{\footnote ERASEPLY.C }
+\keepn\f0\fs40\par\cf8\b Functions \cf0 - \cf12 ERASEPLY.C\b0\par\pard
+\f2\fs18\tx2000\tx4000\tx6000\tx8000
+\par {\uldb DoPolyErase}{\v DoPolyErase}\tab {\uldb EraseRect}{\v EraseRect}\tab {\uldb erase_polygon}{\v erase_polygon}\tab {\uldb GetAngle}{\v GetAngle}\par {\uldb GetPointsofIntersection}{\v GetPointsofIntersection}\tab {\uldb GetUpLowBounds}{\v GetUpLowBounds}\tab {\uldb Imcmp}{\v Imcmp}\tab {\uldb YAdjRect}{\v YAdjRect}\pard \par \page
+ #{\footnote DoPolyErase }
+ ${\footnote DoPolyErase }
+ +{\footnote 0002 }
+ K{\footnote DoPolyErase }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 DoPolyErase \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Erase the polygon by rectangular region\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL DoPolyErase(XYPOINT *poly,int numply,int increment);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb ERASEPLY.C}{\v ERASEPLY.C}\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Erase the polygon by passing over each point in the polygon in the 
+direction top to bottom and marking all the intersecting blocks for
+deletion once the entire polygon has been covered,
+any adjacent rectangles of the same width are merged.
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 XYPOINT *poly  - The polygon points \par int numply  - The number of points in the polygon \par int increment  - The minimum height of each rectangle \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  - always TRUE\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb erase_polygon}{\v erase_polygon}  \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb GetUpLowBounds}{\v GetUpLowBounds}  {\uldb GetPointsofIntersection}{\v GetPointsofIntersection}  {\uldb YAdjRect}{\v YAdjRect}  {\uldb EraseRect}{\v EraseRect}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v DoPolyErase_Source}\pard \par \page
+ #{\footnote EraseRect }
+ ${\footnote EraseRect }
+ +{\footnote 0003 }
+ K{\footnote EraseRect }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 EraseRect \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Call the GMLI erase_region command for each rectangle in the list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 void EraseRect(PLIST *p);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb ERASEPLY.C}{\v ERASEPLY.C}\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Call the GMLI erase_region command for each rectangle in the list, as each
+region is erased free the memory associated with the rectangle's list entry
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 PLIST *p  - The first element in the rectangle point list \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 None\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Modifies\cell\cell}\pard\intbl{\fs26\cf8 p \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb DoPolyErase}{\v DoPolyErase}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v EraseRect_Source}\pard \par \page
+ #{\footnote erase_polygon }
+ ${\footnote erase_polygon }
+ +{\footnote 0004 }
+ K{\footnote erase_polygon }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 erase_polygon \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 erase a polygon using rectangular regions - called by GML\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL erase_polygon(void);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb ERASEPLY.C}{\v ERASEPLY.C}\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 This function is called repeatedly to collect arguments off the command
+line from GMLI on the first call the three parameters "add" the
+number of polygons and the increment size should be passed. On subsequent 
+calls the parameters should be the X and Y co-ordinates of one point in the
+polygon.  When all the points have been collected this function then
+calls DoPolyErase to do the work and then it frees the memory allocated 
+for the polygon points and returns FALSE.
+Any failure will also return FALSE
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  - TRUE if more parameters are required else FALSE\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Modifies\cell\cell}\pard\intbl{\fs26\cf8 numpolypoint currentpolypoint \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb DoPolyErase}{\v DoPolyErase}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v erase_polygon_Source}\pard \par \page
+ #{\footnote GetAngle }
+ ${\footnote GetAngle }
+ +{\footnote 0005 }
+ K{\footnote GetAngle }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 GetAngle \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Get the angle between two points\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 double GetAngle(NUMB x,NUMB y,XYPOINT *b);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb ERASEPLY.C}{\v ERASEPLY.C}\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Get the angle between two points
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 NUMB x  - The X coordinate of the first point \par NUMB y  - The Y coordinate of the first point \par XYPOINT *b  - The second point \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 double  - The angle between the two points\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb GetPointsofIntersection}{\v GetPointsofIntersection}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v GetAngle_Source}\pard \par \page
+ #{\footnote GetPointsofIntersection }
+ ${\footnote GetPointsofIntersection }
+ +{\footnote 0006 }
+ K{\footnote GetPointsofIntersection }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 GetPointsofIntersection \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Get all the points along a line that are intersected by the polygon\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 NUMB *GetPointsofIntersection(NUMB y,XYPOINT *poly,int numply);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb ERASEPLY.C}{\v ERASEPLY.C}\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Get all the points along a line that are intersected by the polygon,
+returning a list sorted from left to right
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 NUMB y  - The Y co-ordinate if the line \par XYPOINT *poly  - The polygon points \par int numply  - The number of points in the polygon \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 NUMB *  - a sorted list of points, (-1) indicating the end of the list             \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Modifies\cell\cell}\pard\intbl{\fs26\cf8 poly \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb DoPolyErase}{\v DoPolyErase}  \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb GetAngle}{\v GetAngle}  {\uldb Imcmp}{\v Imcmp}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v GetPointsofIntersection_Source}\pard \par \page
+ #{\footnote GetUpLowBounds }
+ ${\footnote GetUpLowBounds }
+ +{\footnote 0007 }
+ K{\footnote GetUpLowBounds }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 GetUpLowBounds \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Get the upper and lower bounds of the polygon\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 void GetUpLowBounds(NUMB *y,NUMB *y1,XYPOINT *poly,int numply);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb ERASEPLY.C}{\v ERASEPLY.C}\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Get the upper and lower bounds of the polygon
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 NUMB *y  - The address of returned top Y co-ordinate \par NUMB *y1  - The address of returned bottom Y co-ordinate \par XYPOINT *poly  - The polygon points \par int numply  - The number of points in the polygon \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 None\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Modifies\cell\cell}\pard\intbl{\fs26\cf8 y1 poly y \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb DoPolyErase}{\v DoPolyErase}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v GetUpLowBounds_Source}\pard \par \page
+ #{\footnote Imcmp }
+ ${\footnote Imcmp }
+ +{\footnote 0008 }
+ K{\footnote Imcmp }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 Imcmp \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Integer compare function for qsort()\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 int Imcmp(NUMB *a,NUMB *b);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb ERASEPLY.C}{\v ERASEPLY.C}\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Integer compare function for qsort()
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 NUMB *a  - The address of the first integer \par NUMB *b  - The address of the second integer \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 int  - a<b - (-1) a==b - 0 a>b - 1\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb GetPointsofIntersection}{\v GetPointsofIntersection}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v Imcmp_Source}\pard \par \page
+ #{\footnote YAdjRect }
+ ${\footnote YAdjRect }
+ +{\footnote 0009 }
+ K{\footnote YAdjRect }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 YAdjRect \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Merge two adjacent rectangles of the same height\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL YAdjRect(PLIST *p,PLIST *l);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb ERASEPLY.C}{\v ERASEPLY.C}\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Merge two adjacent rectangles of the same height
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 PLIST *p  - The Current rectangle \par PLIST *l  - The list of all rectangles \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  - TRUE if the rectangle was merged with an adjacent one\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Modifies\cell\cell}\pard\intbl{\fs26\cf8 l p \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb DoPolyErase}{\v DoPolyErase}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v YAdjRect_Source}\pard \par \page
+ #{\footnote DoPolyErase_Source }
+ ${\footnote DoPolyErase_Source }
+ +{\footnote 1009 }
+ K{\footnote DoPolyErase_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb DoPolyErase}{\v DoPolyErase}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL DoPolyErase\'28XYPOINT \'2Apoly\'2C\b\i int\b0\i0  numply\'2C\b\i int\b0\i0  increment\'29\par
+\'7B\par
+    NUMB minY\'2CmaxY\'3B     \'2F\'2A upper and lower bounds \'2A\'2F\par
+    NUMB tmpy\'3B          \'2F\'2A Y co\'2Dordinate index counter \'2A\'2F\par
+    NUMB \'2Aimap\'3B         \'2F\'2A intersection map \'2A\'2F\par
+    PLIST \'2Apnts\'3B        \'2F\'2A rectangle points structure \'2A\'2F\par
+    PLIST \'2Afirstp\'3DNULL\'3B \'2F\'2A first point in list of rectangle points \'2A\'2F\par
+    BOOL found\'3B         \'2F\'2A flag to signify end of merge \'2A\'2F\par
+\par
+    {\uldb GetUpLowBounds}{\v GetUpLowBounds_Source}\'28\'26minY\'2C\'26maxY\'2Cpoly\'2Cnumply\'29\'3B     \'2F\'2A get upper \'26 lower bounds \'2A\'2F\par
+\par
+    \b for\b0  \'28tmpy\'3DminY\'3Btmpy\'3CmaxY\'3Btmpy\'2B\'3Dincrement\'29 \'7B\par
+        imap\'3D{\uldb GetPointsofIntersection}{\v GetPointsofIntersection_Source}\'28tmpy\'2Cpoly\'2Cnumply\'29\'3B\par
+        \b while\b0  \'28\'28imap\'21\'3DNULL\'29\'26\'26\'28\'2Aimap\'3E\'3D0\'29\'29 \'7B          \'2F\'2A list ok and not at end \'2A\'2F\par
+            \b if\b0  \'28\'28pnts\'3Dmalloc\'28\b sizeof\b0 \'28PLIST\'29\'29\'29\'3D\'3DNULL\'29 \b return\b0 \'28FALSE\'29\'3B\par
+            pnts\'2D\'3EX \'3D\'2A\'28imap\'2B\'2B\'29\'3B\par
+            pnts\'2D\'3EY \'3Dtmpy\'3B\par
+            pnts\'2D\'3EX1\'3D\'2A\'28imap\'2B\'2B\'29\'3B\par
+            pnts\'2D\'3EY1\'3Dtmpy\'2Bincrement\'3B\par
+            pnts\'2D\'3Enext\'3Dfirstp\'3B                                \'2F\'2A add to list \'2A\'2F\par
+            firstp\'3Dpnts\'3B                              \'2F\'2A reset start of list \'2A\'2F\par
+        \'7D\par
+    \'7D\par
+    {\uldb GetPointsofIntersection}{\v GetPointsofIntersection_Source}\'28\'2D1\'2CNULL\'2C0\'29\'3B                  \'2F\'2A free used memory \'2A\'2F\par
+    \b do\b0  \'7B\par
+        pnts\'3Dfirstp\'3B\par
+        found\'3DFALSE\'3B\par
+        \b while\b0  \'28pnts\'21\'3DNULL\'29 \'7B                     \'2F\'2A join adjacent rectangles \'2A\'2F\par
+            \b if\b0  \'28{\uldb YAdjRect}{\v YAdjRect_Source}\'28pnts\'2Cfirstp\'29\'29 found\'3DTRUE\'3B\par
+            pnts\'3Dpnts\'2D\'3Enext\'3B\par
+        \'7D\par
+    \'7D \b while\b0  \'28found\'29\'3B\par
+    {\uldb EraseRect}{\v EraseRect_Source}\'28firstp\'29\'3B                                       \'2F\'2A \b do\b0  the erase \'2A\'2F\par
+    \b return\b0 \'28TRUE\'29\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote EraseRect_Source }
+ ${\footnote EraseRect_Source }
+ +{\footnote 1010 }
+ K{\footnote EraseRect_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb EraseRect}{\v EraseRect}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+\b\i void\b0\i0  EraseRect\'28PLIST \'2Ap\'29\par
+\'7B\par
+    PLIST \'2Aprev\'3B                      \'2F\'2A spare pointer \b for\b0  removing blocks \'2A\'2F\par
+    \b\i char\b0\i0  command\'5BGMLI_MAX_PARM_SIZE\'5D\'3B \'2F\'2A space \b for\b0  command block \'2A\'2F\par
+    \b while\b0  \'28p\'21\'3DNULL\'29 \'7B\par
+\par
+        \'2F\'2A call to GML to erase region \'2A\'2F\par
+        sprintf\'28command\'2C\cf1 \'22erase area \'28\'25f\'2C\'25f\'29\'28\'25f\'2C\'25f\'29\'5Cn\'22\cf0 \'2C\par
+            \'28\b\i double\b0\i0 \'29p\'2D\'3EX\'2C\'28\b\i double\b0\i0 \'29p\'2D\'3EY\'2C\'28\b\i double\b0\i0 \'29p\'2D\'3EX1\'2C\'28\b\i double\b0\i0 \'29p\'2D\'3EY1\'29\'3B\par
+\par
+        \b if\b0  \'28\'21gmli_call_appl\'28command\'29\'29 \'7B \'2F\'2A error in call \'2A\'2F\par
+            msg_issue\'28\cf1 \'22erase_polygon\'3A erase area failed\'22\cf0 \'2C\'27e\'27\'29\'3B\par
+            \b return\b0 \'3B \par
+        \'7D\par
+\par
+        prev\'3Dp\'3B\par
+        p\'3Dp\'2D\'3Enext\'3B\par
+        free\'28prev\'29\'3B   \'2F\'2A free used block \'2A\'2F\par
+    \'7D\par
+\'7D\par
+\pard \par \page
+ #{\footnote erase_polygon_Source }
+ ${\footnote erase_polygon_Source }
+ +{\footnote 1011 }
+ K{\footnote erase_polygon_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb erase_polygon}{\v erase_polygon}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL erase_polygon\'28\b\i void\b0\i0 \'29\par
+\'7B\par
+    \b\i char\b0\i0  parameter\'5BGMLI_MAX_PARM_SIZE\'5D\'3B  \'2F\'2A Space \b for\b0  parameter \'2A\'2F\par
+    \b\i static\b0\i0  \b\i int\b0\i0  state\'3D0\'3B                  \'2F\'2A current parameter state \'2A\'2F\par
+    \b\i static\b0\i0  XYPOINT \'2Apolypoint\'3DNULL\'3B      \'2F\'2A Space \b for\b0  poly points \'2A\'2F\par
+    \b\i static\b0\i0  \b\i int\b0\i0  increment\'3D3\'3B              \'2F\'2A increment size \'2A\'2F\par
+    \b\i static\b0\i0  NUMB numpolypoint\'3D0\'3B          \'2F\'2A number of poly points \'2A\'2F\par
+    \b\i static\b0\i0  NUMB currentpolypoint\'3B        \'2F\'2A current poly point \'2A\'2F\par
+\par
+    \b if\b0  \'28\'21gmli_get_value\'28parameter\'29\'29 \'7B                     \'2F\'2A get a parameter \'2A\'2F\par
+        msg_issue\'28\cf1 \'22erase_polygon\'3A Failed to get parameter\'22\cf0 \'2C\'27e\'27\'29\'3B\par
+        state\'3D0\'3B\par
+        \b return\b0 \'28FALSE\'29\'3B\par
+    \'7D\par
+    \b if\b0  \'28state\'3D\'3D0\'29 \'7B                                         \'2F\'2A initial state \'2A\'2F\par
+        \b if\b0  \'28strcmp\'28parameter\'2C\cf1 \'22add\'22\cf0 \'29\'29 \'7B                      \'2F\'2A must be \cf1 \'22add\'22\cf0  \'2A\'2F\par
+            msg_issue\'28\cf1 \'22erase_polygon\'3A parameter out of sequence\'22\cf0 \'2C\'27e\'27\'29\'3B\par
+            \b return\b0 \'28FALSE\'29\'3B\par
+        \'7D\par
+        \b if\b0  \'28\'21gmli_get_value\'28parameter\'29\'29 \'7B                 \'2F\'2A get a parameter \'2A\'2F\par
+            msg_issue\'28\cf1 \'22erase_polygon\'3A Failed to get parameter\'22\cf0 \'2C\'27e\'27\'29\'3B\par
+            \b return\b0 \'28FALSE\'29\'3B\par
+        \'7D\par
+        numpolypoint\'3DATON\'28parameter\'29\'3B \'2F\'2A set number of points to receive \'2A\'2F\par
+        \b if\b0  \'28numpolypoint\'3C\'3D0\'29 \'7B\par
+            msg_issue\'28\cf1 \'22erase_polygon\'3A Invalid number of poly points\'22\cf0 \'2C\'27e\'27\'29\'3B\par
+            \b return\b0 \'28FALSE\'29\'3B\par
+        \'7D\par
+        currentpolypoint\'3D0\'3B                          \'2F\'2A reset to start point \'2A\'2F\par
+        \b if\b0  \'28polypoint\'21\'3DNULL\'29 free\'28polypoint\'29\'3B        \'2F\'2A free \b if\b0  error before \'2A\'2F\par
+        polypoint\'3Dmalloc\'28\'28\b\i int\b0\i0 \'29numpolypoint\'2A\b sizeof\b0 \'28XYPOINT\'29\'29\'3B\par
+        \b if\b0  \'28polypoint\'3D\'3DNULL\'29 \'7B\par
+            msg_issue\'28\cf1 \'22erase_polygon\'3A Insufficient Memory for this operation\'22\cf0 \'2C\'27e\'27\'29\'3B\par
+            \b return\b0 \'28FALSE\'29\'3B\par
+        \'7D\par
+        \b if\b0  \'28\'21gmli_get_value\'28parameter\'29\'29 \'7B                 \'2F\'2A get a parameter \'2A\'2F\par
+            msg_issue\'28\cf1 \'22erase_polygon\'3A Failed to get parameter\'22\cf0 \'2C\'27e\'27\'29\'3B\par
+            \b return\b0 \'28FALSE\'29\'3B\par
+        \'7D\par
+        increment\'3Datoi\'28parameter\'29\'3B \'2F\'2A set the increment value \'2A\'2F\par
+        state\'2B\'2B\'3B                                               \'2F\'2A next state \'2A\'2F\par
+    \'7D \b else\b0  \'7B\par
+        polypoint\'5B\'28\b\i int\b0\i0 \'29currentpolypoint\'5D\'2EX\'3DATON\'28parameter\'29\'3B     \'2F\'2A X Co\'2Dord\'2E \'2A\'2F\par
+        \b if\b0  \'28\'21gmli_get_value\'28parameter\'29\'29 \'7B\par
+            state\'3D0\'3B\par
+            msg_issue\'28\cf1 \'22erase_polygon\'3A Failed to get parameter\'22\cf0 \'2C\'27e\'27\'29\'3B\par
+            \b return\b0 \'28FALSE\'29\'3B\par
+        \'7D\par
+        polypoint\'5B\'28\b\i int\b0\i0 \'29currentpolypoint\'5D\'2EY\'3DATON\'28parameter\'29\'3B     \'2F\'2A Y Co\'2Dord\'2E \'2A\'2F\par
+        currentpolypoint\'2B\'2B\'3B\par
+        \b if\b0  \'28currentpolypoint\'3D\'3Dnumpolypoint\'29 \'7B             \'2F\'2A reached maximum \'2A\'2F\par
+            state\'3D0\'3B                                          \'2F\'2A reset state \'2A\'2F\par
+            \b if\b0  \'28\'21{\uldb DoPolyErase}{\v DoPolyErase_Source}\'28polypoint\'2C\'28\b\i int\b0\i0 \'29numpolypoint\'2Cincrement\'29\'29 \'7B\par
+                msg_issue\'28\cf1 \'22erase_polygon\'3A Erase Failed\'21\'22\cf0 \'2C\'27e\'27\'29\'3B\par
+            \'7D\par
+            \b if\b0  \'28polypoint\'21\'3DNULL\'29 free\'28polypoint\'29\'3B         \'2F\'2A free used space \'2A\'2F\par
+            polypoint\'3DNULL\'3B\par
+            \b return\b0 \'28FALSE\'29\'3B                               \'2F\'2A signal last call \'2A\'2F\par
+        \'7D\par
+    \'7D\par
+    \b return\b0 \'28TRUE\'29\'3B                             \'2F\'2A signal more points expected \'2A\'2F\par
+\'7D\par
+\pard \par \page
+ #{\footnote GetAngle_Source }
+ ${\footnote GetAngle_Source }
+ +{\footnote 1012 }
+ K{\footnote GetAngle_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb GetAngle}{\v GetAngle}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+\b\i double\b0\i0  GetAngle\'28NUMB x\'2CNUMB y\'2CXYPOINT \'2Ab\'29\par
+\'7B\par
+    \b\i double\b0\i0  dx\'3Db\'2D\'3EX\'2Dx\'3B   \'2F\'2A delta x \'2A\'2F\par
+    \b\i double\b0\i0  dy\'3Db\'2D\'3EY\'2Dy\'3B   \'2F\'2A delta y \'2A\'2F\par
+    \b if\b0  \'28\'28dx\'3D\'3D0\'29\'26\'26\'28dy\'3D\'3D0\'29\'29 \b return\b0  0\'3B         \'2F\'2A avoid domain error in atan2\'28\'29 \'2A\'2F\par
+    \'2F\'2A \b return\b0  angle so that top\'3D0 right\'3D90 bottom\'3D180 left\'3D270 degrees \'2A\'2F\par
+    \b return\b0  180\'2E0\'2D\'28atan2\'28dx\'2Cdy\'29\'2A\'28180\'2E0\'2FM_PI\'29\'29\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote GetPointsofIntersection_Source }
+ ${\footnote GetPointsofIntersection_Source }
+ +{\footnote 1013 }
+ K{\footnote GetPointsofIntersection_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb GetPointsofIntersection}{\v GetPointsofIntersection}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+NUMB \'2AGetPointsofIntersection\'28NUMB y\'2CXYPOINT \'2Apoly\'2C\b\i int\b0\i0  numply\'29\par
+\'7B\par
+    \b\i static\b0\i0  NUMB \'2AImap\'3DNULL\'3B     \'2F\'2A intersection mapping list \'2A\'2F\par
+    \b\i int\b0\i0  i\'3B                      \'2F\'2A index counter of poly points \'2A\'2F\par
+    \b\i int\b0\i0  iofs\'3B                   \'2F\'2A ofset in intersection mapping list \'2A\'2F\par
+    \b\i double\b0\i0  angle\'3B               \'2F\'2A angle of poly line \'2A\'2F\par
+\par
+    \'2F\'2A allocate room \b for\b0  200 intersections \'2A\'2F\par
+    \b if\b0  \'28Imap\'3D\'3DNULL\'29 Imap\'3Dmalloc\'28200\'2A\b sizeof\b0 \'28NUMB\'29\'29\'3B \par
+\par
+    \b if\b0  \'28y\'3C0\'29 \'7B          \'2F\'2A \'2Dtive y \'2D free used memory \'2A\'2F\par
+        free\'28Imap\'29\'3B\par
+        Imap\'3DNULL\'3B\par
+        \b return\b0 \'28Imap\'29\'3B\par
+    \'7D\par
+\par
+    iofs\'3D0\'3B                             \par
+    \b for\b0  \'28i\'3D0\'3Bi\'3Cnumply\'2D1\'3Bi\'2B\'2B\'29 \'7B\par
+        \'2F\'2A \b if\b0  polyline dissects line \'2A\'2F\par
+        \b if\b0  \'28\'28\'28poly\'2D\'3EY\'3Cy\'29\'26\'26\'28\'28poly\'2B1\'29\'2D\'3EY\'3E\'3Dy\'29\'29\'7C\'7C\'28\'28poly\'2D\'3EY\'3E\'3Dy\'29\'26\'26\'28\'28poly\'2B1\'29\'2D\'3EY\'3Cy\'29\'29\'29 \'7B\par
+            \'2F\'2A calculate intersection point \'2A\'2F\par
+            angle\'3D{\uldb GetAngle}{\v GetAngle_Source}\'28poly\'2D\'3EX\'2Cpoly\'2D\'3EY\'2Cpoly\'2B1\'29\'3B\par
+            Imap\'5Biofs\'2B\'2B\'5D\'3Dpoly\'2D\'3EX\'2D\'28tan\'28angle\'2A\'28M_PI\'2F180\'2E0\'29\'29\'2A\'28y\'2Dpoly\'2D\'3EY\'29\'29\'3B\par
+        \'7D                \par
+        poly\'2B\'2B\'3B\par
+    \'7D\par
+    \par
+    \b if\b0  \'28iofs\'29     \'2F\'2A re\'2Dorder from left to right \'2A\'2F\par
+        qsort\'28Imap\'2Ciofs\'2C\b sizeof\b0 \'28NUMB\'29\'2C\'28QSPTR\'29{\uldb Imcmp}{\v Imcmp_Source}\'29\'3B\par
+\par
+    Imap\'5Biofs\'2B\'2B\'5D\'3D\'28\'2D1\'29\'3B                                      \'2F\'2A end of list \'2A\'2F\par
+    \b return\b0 \'28Imap\'29\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote GetUpLowBounds_Source }
+ ${\footnote GetUpLowBounds_Source }
+ +{\footnote 1014 }
+ K{\footnote GetUpLowBounds_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb GetUpLowBounds}{\v GetUpLowBounds}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+\b\i void\b0\i0  GetUpLowBounds\'28NUMB \'2Ay\'2CNUMB \'2Ay1\'2CXYPOINT \'2Apoly\'2C\b\i int\b0\i0  numply\'29\par
+\'7B\par
+    \b\i int\b0\i0  counter\'3B              \'2F\'2A index counter \'2A\'2F\par
+    \'2Ay1\'3D\'2Ay\'3Dpoly\'2D\'3EY\'3B\par
+    \b for\b0  \'28counter\'3D1\'3Bcounter\'3Cnumply\'3Bcounter\'2B\'2B\'29 \'7B      \'2F\'2A all points in polygon \'2A\'2F\par
+        poly\'2B\'2B\'3B                                     \par
+        \b if\b0  \'28poly\'2D\'3EY\'3C\'2Ay\'29 \'7B                           \par
+            \'2Ay\'3Dpoly\'2D\'3EY\'3B\par
+        \'7D \b else\b0  \b if\b0  \'28poly\'2D\'3EY\'3E\'2Ay1\'29 \'7B\par
+            \'2Ay1\'3Dpoly\'2D\'3EY\'3B\par
+        \'7D\par
+    \'7D\par
+\'7D\par
+\pard \par \page
+ #{\footnote Imcmp_Source }
+ ${\footnote Imcmp_Source }
+ +{\footnote 1015 }
+ K{\footnote Imcmp_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb Imcmp}{\v Imcmp}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+\b\i int\b0\i0  Imcmp\'28NUMB \'2Aa\'2CNUMB \'2Ab\'29\par
+\'7B\par
+    \b if\b0  \'28\'2Aa\'3D\'3D\'2Ab\'29 \b return\b0  0\'3B\par
+    \b if\b0  \'28\'2Aa\'3E\'2Ab\'29 \b return\b0  1\'3B\par
+    \b return\b0  \'2D1\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote YAdjRect_Source }
+ ${\footnote YAdjRect_Source }
+ +{\footnote 1016 }
+ K{\footnote YAdjRect_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb YAdjRect}{\v YAdjRect}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL YAdjRect\'28PLIST \'2Ap\'2CPLIST \'2Al\'29\par
+\'7B\par
+    PLIST \'2Alastl\'3B   \'2F\'2A previous point in list \'2A\'2F\par
+\par
+    \b while\b0  \'28l\'21\'3DNULL\'29 \'7B\par
+        lastl\'3Dl\'3B\par
+        l\'3Dl\'2D\'3Enext\'3B\par
+        \b if\b0  \'28l\'21\'3DNULL\'29 \'7B\par
+            \'2F\'2A rectangles same width and start pos \'2A\'2F\par
+            \b if\b0  \'28\'28l\'21\'3Dp\'29\'26\'26\'28l\'2D\'3EX\'3D\'3Dp\'2D\'3EX\'29\'26\'26\'28l\'2D\'3EX1\'3D\'3Dp\'2D\'3EX1\'29\'29 \'7B\par
+                \'2F\'2A touching along bottom edge \'2A\'2F\par
+                \b if\b0  \'28\'28l\'2D\'3EY\'3D\'3Dp\'2D\'3EY1\'29\'7C\'7C\'28l\'2D\'3EY\'3D\'3Dp\'2D\'3EY1\'2B1\'29\'29 \'7B \par
+                    p\'2D\'3EY1\'3Dl\'2D\'3EY1\'3B         \'2F\'2A adjust edge down \'2A\'2F\par
+                    lastl\'2D\'3Enext\'3Dl\'2D\'3Enext\'3B \'2F\'2A remove rectangle form list \'2A\'2F\par
+                    free\'28l\'29\'3B\par
+                    \b return\b0 \'28TRUE\'29\'3B \'2F\'2A found touching rectangle \'2A\'2F\par
+                \'7D\par
+                \'2F\'2A touching along top edge \'2A\'2F\par
+                \b if\b0  \'28\'28l\'2D\'3EY1\'3D\'3Dp\'2D\'3EY\'29\'7C\'7C\'28l\'2D\'3EY1\'2B1\'3D\'3Dp\'2D\'3EY\'29\'29 \'7B\par
+                    p\'2D\'3EY\'3Dl\'2D\'3EY\'3B           \'2F\'2A adjust edge up \'2A\'2F\par
+                    lastl\'2D\'3Enext\'3Dl\'2D\'3Enext\'3B \'2F\'2A remove rectangle form list \'2A\'2F\par
+                    free\'28l\'29\'3B\par
+                    \b return\b0 \'28TRUE\'29\'3B \'2F\'2A found touching rectangle \'2A\'2F\par
+                \'7D\par
+            \'7D    \par
+            l\'3Dl\'2D\'3Enext\'3B\par
+        \'7D\par
+    \'7D\par
+    \b return\b0  \'28FALSE\'29\'3B \'2F\'2A did not find touching rectangle \'2A\'2F\par
+\'7D\par
+\pard \par \page
+}

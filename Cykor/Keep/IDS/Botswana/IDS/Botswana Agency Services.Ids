@@ -1,0 +1,302 @@
+//****************************************************************************************//
+//**                                                                                    **//
+//**                                 Agency Services                                    **//
+//**                                                                                    **//
+//****************************************************************************************//
+
+Products
+{
+
+//**                                                                                    **//
+//**                              Electricity Bill Payment                              **//
+//**                                                                                    **//
+//          Department of Electrical
+//------------------------------------------------------------------------------------------
+//
+
+  ElecBillPayDOE { BasedOn     { BaseAgency                            }
+                   RegDesc     { 'Corvus Electricity Bill Payment DOE' }
+                   Caption     { 'Elec Bill Payment - Dep of Elec'     }
+                   Description { 'Elec Bill Payment - Dep of Elec'     }
+                   Title       { 'Elec Bill Payment - Dep of Elec'     }
+                   BitMap      { '..\images\P_Electricity.bmp'         }
+                   Domains     { ElecBillAccountNo
+                                 CustomerName
+                                 BillAmount
+                                 ElecBillDate                          }
+                   LogAs       { ElecBill                              }
+                   PLU         { PLU_ElecBillPayDOE                    }
+                  }
+
+
+//          Botswana Power Corporation
+//------------------------------------------------------------------------------------------
+//
+  ElecBillPayBPC { BasedOn     { BaseAgency                            }
+                   RegDesc     { 'Corvus Electricity Bill Payment BPC' }
+                   Caption     { 'Elec Bill Payment - BPC'             }
+                   Description { 'Elec Bill Payment - BPC'             }
+                   Title       { 'Elec Bill Payment - BPC'             }
+                   BitMap      { '..\images\P_Electricity.bmp'         }
+                   Domains     { ElecBillAccountNo
+                                 CustomerName
+                                 BillAmount
+                                 ElecBillDate                          }
+                   LogAs       { ElecBill                              }
+                   PLU         { PLU_ElecBillPayBPC                    }
+                  }
+
+
+//**                                                                                    **//
+//**                                Telecom Bill Payment                                **//
+//**                                                                                    **//
+//
+//------------------------------------------------------------------------------------------
+//
+
+  TelecomBillPayment { BasedOn     { BaseAgency                                        }
+                       RegDesc     { 'Corvus Private Box AnnualRent Product'           }
+                       Caption     { 'Telecom Bill Payment'                            }
+                       BitMap      { '..\images\P_BoxAnnualRent.bmp' }
+                       Description { 'Telecom Bill Payment'                            }
+                       Title       { 'Telecom Bill Payment'                            }
+                       Domains     { TelecomBillID
+                                     CustomerTelNo
+                                     CustomerName
+                                     BillAmount
+                                     TelecomBillPeriod                                 }
+                       LogAs       { TelecomBill                                       }
+                       PLU         { PLU_TelecomBillPayment  }
+                      }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//  AccountPayment { BasedOn     { BaseFinancial                                    }
+//                       Caption     { 'Account Payment'                            }
+//                       BitMap      { '..\images\P_AccountPayment.bmp' }
+//                       Description { 'Account Payment'                            }
+//                       Title       { 'Account Payment'                            }
+//                       Domains     {
+//                                     AccountNumber
+//                                     CustomerName
+//                                     CustomerTelNo
+//                                     BillAmount                                   }
+//                     //  LogAs       { TelecomBill                                }
+//                      }
+
+//  PensionPayment { BasedOn     { BaseFinancial                                    }
+//                       Caption     { 'Pension Payment'                            }
+//                       BitMap      { '..\images\P_PensionPayment.bmp' }
+//                       Description { 'Pension Payment'                            }
+//                       Title       { 'Pension Payment'                            }
+//                       Domains     {
+//                                     AccountNumber
+//                                     CustomerName
+//                                     CustomerTelNo
+//                                     Amount                                       }
+//                     //  LogAs       { TelecomBill                                }
+//                       PLU         { PLU_PensionPayment  }
+//                      }
+//
+//------------------------------------------------------------------------------------------
+//
+
+   Housing {
+      BasedOn     { BaseAgency }
+      Caption     { 'Botswana Housing Corporation' }
+      BitMap      { '..\images\P_Housing.bmp'   }
+      Description { 'Botswana Housing Corporation' }
+      Title       { 'Botswana Housing Corporation' }
+      Domains {
+         AccountNumber
+         CustomerName
+         AmountPaidTotal
+       }
+      LogAs { GenericBill }
+      Customer { 'B. Housing Corp.','^','Total ','P',TotalFee }
+      PLU   { PLU_Housing }
+  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   WaterAffair {
+      BasedOn     { BaseAgency }
+      Caption     { 'Water Affairs' }
+      BitMap      { '..\images\P_Water.bmp'   }
+      Description { 'Water Affairs' }
+      Title       { 'Water Affairs' }
+      Domains {
+         AccountNumber
+         CustomerName
+         AmountPaidTotal
+      }
+      LogAs { GenericBill }
+      Customer { 'Water Affairs','^','Total ','P',TotalFee }
+      PLU   { PLU_WaterAffair  }
+  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+   WaterUtility {
+      BasedOn     { BaseAgency }
+      Caption     { 'Water Utilities'}
+      BitMap      { '..\images\P_Water.bmp' }
+      Description { 'Water Utilities' }
+      Title       { 'Water Utilities' }
+      Domains {
+         AccountNumber
+         CustomerName
+         AmountPaidTotal
+      }
+      LogAs { GenericBill }
+      Customer { 'Water Utility','^','Total ','P',TotalFee }
+      PLU   { PLU_WaterUtility  }
+  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+   RIPC  {
+      BasedOn     { BaseAgency }
+      Caption     { 'R.I.P.C.' }
+      BitMap      { '..\images\P_RIPC.bmp' }
+      Description { 'R.I.P.C.' }
+      Title       { 'R.I.P.C.' }
+      Domains {
+
+         CustomerName
+         CustomerNumber
+         //DescriptionOfPayment
+         AmountPaidTotal
+       }
+      LogAs { RIPCBill }
+      Customer { 'R.I.P.C.','^','Total ','P',TotalFee }
+      PLU   { PLU_RIPC }
+  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+   FuneralScheme {
+      BasedOn     { BaseAgency }
+      Caption     { 'Group Funeral Scheme'}
+      BitMap      { '..\images\P_FuneralScheme.bmp' }
+      Description { 'Group Funeral Scheme' }
+      Title       { 'Group Funeral Scheme' }
+      Domains {
+         AccountNumber
+         FuneralCompanies
+         CustomerName
+         AmountPaidTotal
+      }
+      LogAs { FuneralBill }
+      PLU   { PLU_FuneralScheme }
+  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+ IpolokengScheme { BasedOn     {  BaseAgency                       }
+                   Caption     { 'Ipolokeng Funeral Scheme(BLI)'   }
+                   BitMap      { '..\images\P_IpolokengScheme.bmp' }
+                   Description { 'Ipolokeng Funeral Scheme(BLI)'   }
+                   Title       { 'Ipolokeng Funeral Scheme(BLI)'   }
+                   Domains     {  IpolokengContractNumber
+                                  CustomerName
+                                  NumberOfMonths
+                                  MonthlyCost
+                                  TotalAmountToPay
+                                 }
+                   Items       { 'Product.IpolokengJoin'           }
+                   Snippets    {  IpolokengVal IpolokengSchemeLog  }
+                   PLU         {  PLU_IpolokengScheme              }
+                  }
+
+  IpolokengJoin {
+                   BasedOn     { BaseOptionalServices                 }
+                   RegDesc     { 'Ipolokeng Joining Product'          }
+                   Caption     { 'Joining Fee'                        }
+                   Description { 'Joining Fee'                        }
+                   Title       { 'Joining Fee'                        }
+                   BitMap      { '..\images\P_AdviceDelivery.bmp'     }
+                   UnitPrice   { 25.00                                }
+                   Domains     { IpolokengJoiningFee { UnitPrice }    }
+                   LogAs       { IplokengJoin                         }
+                   PLU         { PLU_IpolokengScheme                  }
+                 }
+
+}
+
+//
+//------------------------------------------------------------------------------------------
+//
+Snippets {
+
+ IpolokengVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+        If Result then
+        begin
+            if ( NumberOfMonths.Text = '' ) then
+	         TotalAmountToPay.Text := '0.00'
+	     else
+            TotalAmountToPay.Text := CurrToStrF(StrToIntDef(NumberOfMonths.Text,0) * StrToCurrDef(MonthlyCost.Text,0), ffNumber, 2);
+        end;
+       *]
+
+      }
+   }
+
+  IpolokengSchemeLog {
+         InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+         CodeBlock {
+         [*
+            FQuantity := StrToIntDef(ProdForm.NumberOfMonths.Text,1);
+
+            TxnLog.LogTransaction(
+                            Index,
+                            FQuantity, // Quantity
+                            Get_PLU, // PLU
+                            FQuantity*StrToCurrDef(ProdForm.MonthlyCost.Text,0), // Value
+                            StrToCurrDef(ProdForm.MonthlyCost.Text,0), // Price
+                            'Ipolokeng Funeral Scheme (BLI)', // Description
+                            '', // Additional Info
+                            Get_ProgramID, // ProgID
+                            Enumerate(ProdForm)); // Domain Info
+                            Inc(Index);
+            TxnLog.LogTransaction(
+                      Index,
+                      1, // Quantity
+                      0, // PLU
+                      0, // Value
+                      0, // Price
+                      'Contract Number - ', // Description
+                      ProdForm.IpolokengContractNumber.Text, // Additional Info
+                      '', // ProgID
+                      ''); // Domain Info
+                Inc(Index);
+            TxnLog.LogTransaction(
+                      Index,
+                      1, // Quantity
+                      0, // PLU
+                      0, // Value
+                      0, // Price
+                      'Customer Name - ', // Description
+                      ProdForm.CustomerName.Text, // Additional Info
+                      '', // ProgID
+                      ''); // Domain Info
+                Inc(Index);
+            if CombineList <> nil then
+                   CombineList.LogTransactions(Index,TxnLog);
+         *]
+
+      }
+   }
+}

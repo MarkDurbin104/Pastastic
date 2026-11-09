@@ -1,0 +1,186 @@
+SQL> select * from fibre_bundles;
+
+         0  100052639 301                  NH               301 ON   PA         
+         100036039        100036144 BFB4-2-1                    442             
+               1                                                                
+NOTE FOR FB 301                                                                 
+           -4587                                                                
+                                                                                
+      4587  100052639 301                  NH               301 ON   PA         
+         100036039        100036144 BFB4-2-1                    442             
+               1                                                                
+NOTE FOR FB 301                                                                 
+                                                                                
+                                                                                
+         0  100052641 302                  NH               302 ON   PA         
+         100036039        100036144 BFB04-SM                    442             
+          1995 1                                                                
+NOTE FOR FB302                                                                  
+           -4587                                                                
+                                                                                
+      4587  100052641 302                  NH               302 ON   PA         
+         100036039        100036144 BFB04-SM                    442             
+          1995 1                                                                
+NOTE FOR FB302                                                                  
+                                                                                
+                                                                                
+         0  100052643 303                  NH               303 ON   PA         
+         100036040        100036144 BFB04-SM                     80             
+          1995 1                                                                
+NOTE FOR FB303                                                                  
+           -4587                                                                
+                                                                                
+      4587  100052643 303                  NH               303 ON   PA         
+         100036040        100036144 BFB04-SM                     80             
+          1995 1                                                                
+NOTE FOR FB303                                                                  
+                                                                                
+                                                                                
+         0  100052561 200                  NH               200 ON   PA         
+         100036039        100036040 BFB4-1-1                    141             
+               1                                                                
+NOTE FOR FB 1 NH200                                                             
+           -4587                                                                
+                                                                                
+      4587  100052561 200                  NH               200 ON   PA         
+         100036039        100036040 BFB4-1-1                    141             
+               1                                                                
+NOTE FOR FB 1 NH200                                                             
+                                                                                
+                                                                                
+         0  100052645 304                  NH               304 ON   PA         
+         100036144        100052563 BFB4-1-2                    336             
+               1                                                                
+NOTE FOR  FB304                                                                 
+           -4587                                                                
+                                                                                
+      4587  100052645 304                  NH               304 ON   PA         
+         100036144        100052563 BFB4-1-2                    336             
+               1                                                                
+NOTE FOR  FB304                                                                 
+                                                                                
+                                                                                
+         0  100052647 305                  NH               305 ON   PA         
+         100036144        100052563 BFB4-1-1                    336             
+          1995 1                                                                
+NOTE FOR FB305                                                                  
+           -4587                                                                
+                                                                                
+      4587  100052647 305                  NH               305 ON   PA         
+         100036144        100052563 BFB4-1-1                    336             
+          1995 1                                                                
+NOTE FOR FB305                                                                  
+                                                                                
+                                                                                
+         0  100052637 300                  NH               300 ON   PA         
+         100036040        100036144 BFB4-1-1                     80             
+               1                                                                
+NOTE FOR FB 300                                                                 
+           -4587                                                                
+                                                                                
+      4587  100052637 300                  NH               300 ON   PA         
+         100036040        100036144 BFB4-1-1                     80             
+               1                                                                
+NOTE FOR FB 300                                                                 
+                                                                                
+                                                                                
+         0  100054774 1FB1                 HAC                1 ON   EX         
+         100037266        100053088 BFB4-1-1                     35             
+          1995 2                                                                
+FIBRE NETWORK THRO BFT SECONDARY NETWORK                                        
+                                                                                
+                                                                                
+         0  100054779 1FB2                 HAC                2 ON   EX         
+         100053088        100053102 BFB4-1-1                      9             
+          1995 2                                                                
+LINK TO CUSTOMER AT HAC/YU/2F1                                                  
+                                                                                
+                                                                                
+         0  100055487 10FB2                HAC                2 ON   EX         
+         100053451        100055398 BFB4-1-1                     30             
+          1995 2                                                                
+ASDGF                                                                           
+                                                                                
+                                                                                
+         0  100055378 2FB120               HAC              120 ON   EX         
+         100053089        100053452 BFB4-2-2                    180             
+          1995 2                                                                
+HJKGKGJHK                                                                       
+                                                                                
+                                                                                
+         0  100055126 1FB20                HAC                2 ON   EX         
+         100053088        100053090 BFB4-1-1                    186             
+          1995 2                                                                
+FIBRE BUNDLE HAC/TU/2F1-HAC/TU/2F2-HAC/TU/2F3                                   
+                                                                                
+                                                                                
+         0  100055482 10FB1                HAC                1 ON   EX         
+         100053451        100055397 BFB4-1-1                     15             
+          1995 1                                                                
+ASDF                                                                            
+                                                                                
+                                                                                
+         0  100055545 10FB3                HAC                3 ON   EX         
+         100053451        100055396 BFB4-1-1                     40             
+          1995 2                                                                
+SDFG                                                                            
+                                                                                
+                                                                                
+         0  100055550 10BFT4               HAC                4 ON   EX         
+         100053451        100055395 BFB4-1-1                     37             
+          1995 2                                                                
+AFDG                                                                            
+                                                                                
+                                                                                
+         0  110063006 NEWFB1               HAC               10 ON   PA         
+         100037533        110062835 BFB4-1-1                    201             
+               2                                                                
+MORE TEST FIBRE DATA                                                            
+             -25                                                                
+                                                                                
+         0  110062879 YYFB1                HAC               10 ON   EX         
+         100037533        110062829 BFB4-2-2                     47             
+               2                                                                
+TEST FIBRE DIAG                                                                 
+                                                                                
+                                                                                
+        25  110063006 NEWFB1               HAC               10 ON   PA         
+         100037533        110062835 BFB4-1-1                    201             
+               2                                                                
+MORE TEST FIBRE DATA                                                            
+                                                                                
+                                                                                
+         0  110062884 YYFB2                HAC               10 ON   EX         
+         110062830        110062833 BFB4-2-2                     65             
+          1994 2                                                                
+TEST FOR FIBRE DIAGS                                                            
+                                                                                
+                                                                                
+         0  110062891 YYFB4                HAC               10 ON   EX         
+         110062833        110062834 BFB4-2-2                      8             
+          1995 2                                                                
+TEST FOR FIBRE DIAG                                                             
+                                                                                
+                                                                                
+         0  110062896 YYFB6                HAC               10 ON   EX         
+         110062833        110062830 BFB4-2-2                     65             
+          1995 2                                                                
+TEST FOR FIB DIAGS                                                              
+                                                                                
+                                                                                
+         0  110062910 YYFB8                HAC               10 ON   EX         
+         110062836        110062835 BFB4-1-2                      8             
+          1995 2                                                                
+TEST FIB DIAGS                                                                  
+                                                                                
+                                                                                
+         0  110062984 TFB1                 HAC               10 ON   EX         
+         110062833        110062916 BFB4-2-2                     60             
+               2                                                                
+TEST FOR FIBRE DIAG                                                             
+                                                                                
+                                                                                
+
+30 rows selected.
+
+SQL> spool off

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
+	label="Confirmation Screen" 
+	width="100%" height="100%" 
+	creationComplete="onCreationComplete(event)"
+	verticalScrollPolicy="off" xmlns:slides="com.proiam.slides.*" fontFamily="Tahoma" fontWeight="bold" fontSize="14">
+	<mx:Metadata>
+        [Event(name="nextClicked", type="flash.events.Event")]
+        [Event(name="originChange", type="flash.events.Event")]
+        [Event(name="destinationChange", type="flash.events.Event")]
+        [Event(name="contactChange", type="flash.events.Event")]
+        [Event(name="infoClicked", type="flash.events.Event")]
+    </mx:Metadata>
+    <mx:Script>
+    	<![CDATA[
+    		private function onCreationComplete(event:Event):void {
+    			itemDataView.addEventListener("nextClicked",fireNextClicked);
+    			itemDataView.addEventListener("originChange",fireOriginChange);
+    			itemDataView.addEventListener("destinationChange",fireDestinationChange);
+    			itemDataView.addEventListener("contactChange",fireContactChange);
+    			itemDataView.addEventListener("infoClicked",fireInfoClicked);
+    		}
+			private function fireNextClicked(event:MouseEvent):void {
+				if (itemDataView.currentState == null)
+                	dispatchEvent(new Event("nextClicked"));
+            }
+			private function fireOriginChange(event:Event):void {
+				if (itemDataView.currentState == null)
+    	            dispatchEvent(new Event("originChange"));
+            }
+			private function fireDestinationChange(event:Event):void {
+				if (itemDataView.currentState == null)
+	                dispatchEvent(new Event("destinationChange"));
+            }
+			private function fireContactChange(event:Event):void {
+				if (itemDataView.currentState == null)
+                	dispatchEvent(new Event("contactChange"));
+            }
+			private function fireInfoClicked(event:Event):void {
+				if (itemDataView.currentState == null)
+	                dispatchEvent(new Event("infoClicked"));
+            }
+    		
+    	]]>
+    </mx:Script>
+	<mx:Canvas top="80" width="1024" height="688"	backgroundImage="@Embed(source='embedded/ConfirmationScreen.jpg')" backgroundSize="100%" />	
+ 	<slides:ItemDataView id="itemDataView" y="93" x="15"/>
+ 	<mx:Canvas x="792" y="658" width="130" height="86" click="fireNextClicked(event);" buttonMode="true"/>
+ 	<mx:Canvas x="778" y="646" width="157" height="112" backgroundColor="#E4F2DF" visible="{itemDataView.currentState != null}"/>
+ 	<mx:Button x="949" y="91" label="Demo" fontWeight="normal" click="fireInfoClicked(event);"/>
+</mx:Canvas>

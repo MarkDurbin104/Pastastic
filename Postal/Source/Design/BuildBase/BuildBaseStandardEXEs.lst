@@ -1,0 +1,97 @@
+[BuildAll]
+Y
+[Aliases]
+WinTypes=Windows
+WinProcs=Windows
+DbiProcs=BDE
+DbiTypes=BDE
+DbiErrs=BDE
+
+[InDCUDirs]
+D:\MinDelphi
+E:\Indigo3\Automation
+E:\CorvusV3\Corvus\Source\Base Type Library
+E:\CorvusV3\Corvus\Source\Support Components\Error Handler
+E:\CorvusV3\Corvus\Source\Support Components\DatabaseServer
+E:\CorvusV3\Corvus\Source\Utility Components\Diskette Management
+E:\CorvusV3\Corvus\Source\Packages
+E:\CorvusV3\Corvus\Source\Packages\PasZLib
+E:\Corvus\Source\Utility Components\UserManager
+E:\Projects\Pakistan\RefServer
+E:\Projects\Pakistan\Reports
+
+[InPASDirs]
+D:\MinDelphi
+E:\Indigo3\Automation
+E:\CorvusV3\Corvus\Source\Packages
+E:\CorvusV3\Corvus\Source\Packages\PasZLib
+E:\CorvusV3\Corvus\Source\Base Type Library
+E:\CorvusV3\Corvus\Source\Support Components\Error Handler
+E:\CorvusV3\Corvus\Source\Support Components\DatabaseServer
+E:\CorvusV3\Corvus\Source\Component Designer\Product Designer
+E:\CorvusV3\Corvus\Source\Utility Components\Diskette Management
+E:\CorvusV3\Corvus\Source\Utility Components\UserManager
+E:\Projects\Pakistan\RefServer
+E:\Projects\Pakistan\Reports
+E:\CorvusV3\Corvus\Source\Base Components
+
+[Packages]
+VCL30
+VCLX30
+VCLDBX30
+DBX30
+vcldb30
+
+[OutEXEDir]
+C:\Build\Binary
+[OutDCUDir]
+E:\CorvusV3\Corvus\Binary\Other
+[CommandLine]
+D:\MinDelphi\DCC32
+[Projects]
+E:\CorvusV3\Corvus\Source\Packages\ExcMagicPackage.dpk
+E:\CorvusV3\Corvus\Source\Base Type Library\GPCSBase
+E:\CorvusV3\Corvus\Source\RunTime\SwazilandPost
+E:\CorvusV3\Corvus\Source\RunTime\BotswanaPost
+E:\CorvusV3\Corvus\Source\RunTime\GuernseyPost
+E:\CorvusV3\Corvus\Source\RunTime\OmanPost
+E:\CorvusV3\Corvus\Source\RunTime\QatarPost
+E:\CorvusV3\Corvus\Source\RunTime\GhanaPost
+E:\CorvusV3\Corvus\Source\RunTime\UgandaPost
+E:\CorvusV3\Corvus\Source\RunTime\TanzaniaPost
+E:\CorvusV3\Corvus\Source\RunTime\BermudaPost
+E:\CorvusV3\Corvus\Source\Design\IDSParse\IDSParse
+E:\CorvusV3\Corvus\Source\Setup Builder\InstallBuilder
+E:\CorvusV3\Corvus\Source\Support Applications\Osmium\OsmiumUI
+E:\CorvusV3\Corvus\Source\Support Applications\MSG Store Viewer\MSGSViewer
+E:\CorvusV3\Corvus\Source\Utility Components\Transaction Log\TxnLog
+E:\CorvusV3\Corvus\Source\Support Components\DatabaseServer\DatabaseServer
+E:\CorvusV3\Corvus\Source\Support Components\Component Manager\CompMan
+E:\CorvusV3\Corvus\Source\Support Components\Component Loader\CompLoad
+E:\CorvusV3\Corvus\Source\Support Components\PictureServer\PictureServer
+E:\CorvusV3\Corvus\Source\Support Components\Translate\Translator
+E:\CorvusV3\Corvus\Source\Support Components\Error Handler\ErrHand
+E:\CorvusV3\Corvus\Source\Support Components\TrackedMailItem\TrackedMail
+E:\CorvusV3\Corvus\Source\Utility Components\Accounts\Accounts
+E:\CorvusV3\Corvus\Source\Utility Components\Counters\Counters
+E:\CorvusV3\Corvus\Source\Utility Components\CustDisplay\CustDisp
+E:\CorvusV3\Corvus\Source\Utility Components\ExchangeRate\ExchangeRate
+E:\CorvusV3\Corvus\Source\Utility Components\HookUp\HookUp
+E:\CorvusV3\Corvus\Source\Utility Components\HotKeys\HotKeys
+E:\CorvusV3\Corvus\Source\Utility Components\Label\LabelPr
+E:\CorvusV3\Corvus\Source\Utility Components\OCR\OCR
+E:\CorvusV3\Corvus\Source\Utility Components\OfficeInfo\OfficeInfo
+E:\CorvusV3\Corvus\Source\Utility Components\Parallel\Parallel
+E:\CorvusV3\Corvus\Source\Utility Components\Receipt\Receipt
+E:\CorvusV3\Corvus\Source\Utility Components\Receipt\DummyReceipt
+E:\CorvusV3\Corvus\Source\Utility Components\Scale\Scale
+E:\CorvusV3\Corvus\Source\Utility Components\Serial\Serial
+E:\CorvusV3\Corvus\Source\Utility Components\Stock\Stock
+E:\CorvusV3\Corvus\Source\Utility Components\Period\Period
+E:\CorvusV3\Corvus\Source\Utility Components\Transact\Transact
+E:\CorvusV3\Corvus\Source\Utility Components\UserManager\UserManager
+
+[CondDef]
+abc=1
+[DebugInfo]
+Y

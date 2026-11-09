@@ -1,0 +1,23 @@
+;-----------------------------------------------------------------------
+; RemoteWare Node API Test Application
+; Version 2.0
+;-----------------------------------------------------------------------
+
+NAME            TEST_API    WINDOWAPI
+
+DESCRIPTION     'RemoteWare Windows Node API Test App - XcelleNet, Inc., 1992-1993'
+
+EXETYPE         WINDOWS
+
+PROTMODE
+
+STUB            'WINSTUB.EXE'
+
+CODE            PRELOAD MOVEABLE DISCARDABLE
+DATA            PRELOAD MOVEABLE MULTIPLE
+
+HEAPSIZE        1024
+STACKSIZE       8192
+
+EXPORTS         ClientWndProc               @1
+

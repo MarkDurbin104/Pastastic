@@ -1,0 +1,65 @@
+/****************************************************************************
+* Project     : GPA
+* File        : fldproc.h
+* Description : 
+* 
+* $Revision:   1.1  $  $Date:   Nov 01 1995 16:06:48  $  $Author:   JGRAY  $
+*
+* $Log:   I:/pvcs/gpa/h/fldproc.h_v  $
+ * 
+ *    Rev 1.1   Nov 01 1995 16:06:48   JGRAY
+ *  
+* 
+****************************************************************************/
+#ifndef FLDPROC_H    // stop multiple includes
+
+#define FLDPROC_H
+
+#ifdef PUBLIC
+#undef PUBLIC
+#endif
+#ifdef INIT
+#undef INIT
+#endif
+
+#ifdef FLDPROC_C
+#define PUBLIC
+#define INIT 1
+#else
+#define PUBLIC extern
+#define INIT 0
+#endif
+
+//-------------------------PUBLIC Prototypes & Variables-------------------
+// PUBLIC SYMBOLS S
+
+PUBLIC  INT     prdate      (void);
+PUBLIC  INT     chkfmt      (CHAR t,INT k);
+PUBLIC  void    putcur      (INT x,INT y,INT curpos,INT l,CHAR *fmt,INT insert,INT size,CHAR *s);
+PUBLIC  void    output      (INT x,INT y,CHAR *s,INT l,CHAR *fmt,INT size,INT attr);
+PUBLIC  INT     inputstr    (INT x,INT y,CHAR *s,CHAR *fmt,INT kp);
+PUBLIC  CHAR   *tstr        (CHAR *s,INT l);
+PUBLIC  CHAR   *dstr        (CHAR *s,INT l);
+PUBLIC  CHAR   *keyname     (INT k);
+PUBLIC  CHAR   *applyformat (CHAR *s,CHAR *fmt,INT rl);
+
+// PUBLIC SYMBOLS E
+#ifdef FLDPROC_C
+
+//------------------------PRIVATE Prototypes & Variables-------------------
+#define TABSTOP 4
+#define LENOFPRDATE 80
+#define LENOFAFSTR 80
+#define LENOFPUTCUR 80
+#define LENOFDSTROP 20
+#define LENOFKEYNAME 10
+#define LENOFOUTPUT 80
+
+
+#endif  //  def FLDPROC_C
+
+#endif  //  ndef FLDPROC_H
+// **************************************************************************
+// fldproc.h <end-of-file>
+
+

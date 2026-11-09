@@ -1,0 +1,111 @@
+{   ษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+    บ                                                               บ
+    บ             Picture of pyramids in the desert                 บ
+    บ                                                               บ
+    บ                By Roger T. Stevens - 4/22/90                  บ
+    บ                                                               บ
+    ศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+}
+
+FILE_NAME = Pyramid.RAW
+
+
+BEGIN_INSTANCES
+	name = PYRAMID
+
+BEGIN_BBOX
+		TRIANGLE (loc 0, 0, 0)
+				v1 = (52, 0, 30)
+				v2 = (34.3, 30, 0)
+				diff = (.72, .41, .14)
+		)
+		TRIANGLE (loc 0, 0, 0)
+				v1 = (52, 0, -30)
+				v2 = (34.3, 30, 0)
+				diff = (.72, .41, .14)
+		)
+		TRIANGLE (loc 52, 0, -30)
+				v1 = (0, 0, 60)
+				v2 = (-17.7, 30, 30)
+				diff = (.72, .41, .14)
+		)
+END_BBOX
+END_INSTANCES
+
+{ *********************  OBJECTS  ********************* }
+{ ** ground ** }
+PARALLELOGRAM ( loc  = (  -10000, 0,  -10000),
+                v1   = (20000, 0,    0),
+                v2   = (  0, 0, 20000),
+				amb = (.48, .32, .40)
+                diff = (  1.0, .8, .4),
+                dither  = 0,
+              )
+
+
+INSTANCE_OF name = PYRAMID
+		loc = (200, 0, -40)
+		scale = (1.3, 1.3, 1.3)
+	)
+INSTANCE_OF name = PYRAMID
+		loc = (170, 0, 80)
+		scale = (1.2, 1.2, 1.2)
+	)
+INSTANCE_OF name = PYRAMID
+		loc = (225, 0, 20)
+	)
+INSTANCE_OF name = PYRAMID
+		loc = (350, 0, -70)
+	)
+INSTANCE_OF name = PYRAMID
+		loc = (400, 0, 120)
+		scale (1.25, 1.25, 1.25)
+	)
+INSTANCE_OF name = PYRAMID
+		loc = (500, 0, -60)
+	)
+INSTANCE_OF name = PYRAMID
+		loc = (700, 0, -100)
+		scale (1.25, 1.25, 1.25)
+	)
+INSTANCE_OF name = PYRAMID
+		loc = (750, 0, 140)
+	)
+INSTANCE_OF name = PYRAMID
+		loc = (900, 0, -80)
+		scale (1.25, 1.25, 1.25)
+	)
+INSTANCE_OF name = PYRAMID
+		loc = (950, 0, 300)
+	)
+INSTANCE_OF name = PYRAMID
+		loc = (1050, 0, 0)
+	)
+
+
+{ ** An observer ** }
+OBSERVER ( loc    = (-20 , 70, -40),
+           lookat = (200, 50, 0)
+         )
+{ ** A lamp ** }
+LAMP ( loc = (120, 180,  80),
+       radius = 5,
+       dist = 70
+     )
+
+LAMP ( loc = (-20, 350, -400),
+       radius = 5,
+       dist = 1500
+     )
+SKY  ( horiz  = (0, .4, .7),
+       zenith = (0, .4, .7),
+       dither = 1
+     )
+XRES = 320
+YRES = 200
+
+FOC_LENGTH = 75
+
+
+
+

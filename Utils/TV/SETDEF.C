@@ -1,0 +1,42 @@
+#include "convhpgl.h"
+
+void setdefaults(void) {
+	G_xcur=0;
+	G_ycur=0;
+	G_chord_tol=5;
+	G_chawid=10;
+	G_chahgt=20;
+	G_labbuf[0]=0;
+	G_charslnt=0;
+	G_font=0;
+	G_afont=0;
+	G_cfont=0;
+	G_labwid=10;
+	G_labhgt=10;
+	G_labdir=0;
+	G_lterm=0;
+	G_rotation=0;
+	origx=0;
+	origy=0;
+	lorigx=0;
+	lorigy=0;
+	G_lspace=0;
+	G_llines=0;
+	G_fill=1;
+	G_onechar='A';
+	G_emask=233;
+	G_smask=0;
+	G_pmask=0;
+	G_p1x=0;
+	G_p1y=0;
+	G_p2x=11000;
+	G_p2y=9000;
+	G_w1x=0;
+	G_w2y=0;
+	G_w1x=32766;
+	G_w2y=32766;
+	G_colour=1;
+	G_linetype=0;
+	penup=1;
+}
+

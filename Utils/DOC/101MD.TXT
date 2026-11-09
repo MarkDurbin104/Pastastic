@@ -1,0 +1,102 @@
+
+
+
+
+Functional Specification
+Keyboard/MCR Device Driver
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Author:	Mark Durbin
+Issue:	1.0
+Date:	3rd October 1990
+1.0	Keyboard Scan Codes
+	The leyboard assigns unique codes known as scan codes to each keypress, it then notifies the processor (via int 09h) that a key has been pressed or released.  When the processor executes int 09h, the device driver reads the key's scan code, checking first for toggle keys such as Shift and Num Lock.
+
+	1.1  Toggle Status Byte
+	If a toggle key has been pressed or released the BIOS status byte is updated.
+
+	1.2  Special Key Combinations
+	Next the device driver checks for special key combinations (such as Ctrl-Alt-Del) and, if necessary, executes their special handlers.
+
+2.0	Scan Code Conversion
+	If the previous process has not "weeded out" the scan code as a special key combination or toggle key, the device driver transaltes it to it's ASCII equiva-ent.  If no ASCII value exists for that scan code the ASCII is set to sero.
+
+	2.1  Scan Code To Keyboard Buffer
+	The ASCII value and the original scan code are then passed to PC-MOS for placing in the keyboard buffer.
+	2.2  Double Zero
+	The  00  key is a special case and is passed to PC-MOS as two 0's.
+
+3.0	Reading The Keyboard Buffer
+
+	3.1  Buffer Size
+	The keyboard buffer has room for 15 keys with their scan codes.  If there are more that 15 keys entered they will be ignored and beep will sound.
+	3.2  Access
+	Once the keypresses are in the keyboard biffer they are available to teh application layer via the normal routes i.e. getch(), ki() etc.
+
+4.0	Magnetic Card Reading Operation
+	4.1  Place MCR in Read Mode
+	When the application requires that a magnetic card is read, it passes a command via OI_CTRL to the device driver.  The keyboard is then placed in a mode for reading this information.
+	The MCR will then be enabled and when the card is read, all three tracks of information will be passed into the keyboard's internal buffer.
+	4.2  Read Track Information
+	The application must then ask for track information, again via IO_CTRL.  The reason for separating the request for read and the track information is that the device driver has no way of knowing which of the three tracks is required.  If on the other hand the track number was passed with the first request there would be no means of reading another track.
+	4.3  Data Conversion
+	Once the information for the track required has been input from teh keyboard/MCR, it will be converted by the device driver into a readable ASCII format and then passed back to the application.
+	4.4  Read Abort
+	If a key is pressed before the card is read, the read operation is cancelled and the key placed in the keyboard buffer.
+
+5.0	Keyboard Buzzer Control
+	If the application needs to sound the keyboard buzzer (Card Read OK etc.) it may do so via the IO_CTRL function.  The function will sound the buzzer for 250ms.
+
+6.0	I/O Control Data Formats
+	6.1  Set Typematic Speed
+		Passed         Returned
+	"T" delay rate		Nothing
+
+	Where "delay" = 
+
+		0         	 250 ms
+	1	 500 ms
+	2	 750 ms
+	3	1000 ms
+
+	And "rate" =
+
+		Rate	Keys/Second		Rate	Keys/Second
+		0	30.0		16	7.5
+	1	26.7		17	6.5
+	2	24.0		18	6.0
+	3	21.8		19	5.5
+	4	20.0		20	5.0
+	5	18.5		21	4.6
+	6	17.1		22	4.3
+	7	16.0		23	4.0
+	8	15.0		24	3.7
+	9	13.3		25	3.3
+	10	12.0		26	3.0
+	11	10.9		27	2.7
+	12	10.0		28	2.5
+	13	 9.2		29	2.3
+	14	 8.0		30	2.1
+	15	 8.0		31	2.0
+
+7.0	Application Interface/Access
+	The following lines show examples of how to acess the keyboard/MCR.  The device name used for these examples is "KBMCR:".
+

@@ -1,0 +1,100 @@
+3.1     The security of the office is at the same risk if a person
+        were to bring any DOS/MOS disk into the office, press CTRL-C 
+        during the boot sequence or indeed run another application
+        in a background task (such as Lotus 1-2-3) as I had assumed 
+        they would probably do.
+
+        However, it is possible to remove the exit facility from the
+        diagnostics disk.
+
+3.2     The MMI (HCI human computer interface) was developed for the
+        USPS application and used (without any training) by
+        42,000 clerks.  I can only assume that they find it more
+        intuitive than the 'reviewer'.
+
+3.3     The term 'BOS' (Back Office System) is used throughout
+        UNISYS documentation and is the term used in both the
+        demonstration documentation and contract.  'BOP' (Back Office
+        Processor) is a term invented by iT.  UNISYS use the term BOP
+        to refer to the Back Office Printer.
+
+3.4     The automatic first pass is not part of the USPS diagnostics
+        and was specifically requested by POCL.
+
+3.5     It is possible to modify the diagnostics so that the
+        tests are interruptible. This facility is not currently
+        available as there is a requirement to run through all tests
+        automatically.
+
+3.6     It is possible to modify the diagnostics so that the printing
+        is disabled.  However if the error is caused by a temporary
+        fault i.e. OFF LINE/SWITCHED OFF. the printing will resume as
+        soon as the fault is corrected. This is not the case if the
+        software assumes a permanent fault.
+
+3.7     As the software has been modified from the USPS diagnostics
+        it has used the same keys.  These could however be changed.
+
+3.8.1   These are supposed to be internal loopback tests only. 
+        I would suggest that the insertion and removal of the
+        connectors/loop-back connectors may be beyond the scope of
+        the tests performed by a clerk.
+
+3.8.2   This is an error in the software and has already been
+        corrected.
+
+3.9     An external loop-back connector on the parallel port would
+        only test the data lines not the signal lines.
+
+3.10    The floppy disk tests perform a read/write/format test in one
+        area of the disk (unused by the diagnostics) If the diagnostics 
+        has been loaded, it is possible to access different areas of the 
+        disk and therefore only needs to test the three functions above.
+
+        Stopping the operation part way through has no effect on the
+        diagnostics disk as the area is not used.
+
+3.11    Bad blocks are a software issue and therefore not tested/corrected 
+        in HARDWARE diagnostics.
+
+3.12    see 3.10
+
+3.13    The keyboard legends could be moved into a separate file this
+        would have to be re-released just as the software would.
+
+3.13.2  The shifted function keys produce the same code as the normal
+        function keys as specified by iT's ECCO+ team.
+
+3.14    The tests require user confirmation and therefore test the
+        printed output.
+
+        The hardware diagnostics do not test software (device drivers).
+
+3.15    The test suggested test does not test if the clock is moving
+        at the correct speed.  The only errors likely with a
+        semiconductor clock are :
+        
+        1. STOPPED
+
+        2. Running very slightly out of time.
+
+        A test for condition 1 is performed adequately by the
+        diagnostics.
+
+        To test for condition 2 would require monitoring a calibrated
+        source (i.e. RUGBY RADIO) and comparing it (over a number of hours) 
+        to the internal clock.
+
+3.16    The user diagnostics although supplied with the same batch
+        file as the factory diagnostics, NEVER contain the
+        'semaphore' file and therefore NEVER format the hard disk.
+        As the reviewer's hard disk was not formatted the first time
+        the diagnostics was run. I must assume that this was obvious.
+
+3.17    The hardware diagnostics DO NOT test software.
+
+3.18    The changes mentioned are to correct the error noted in 3.8.2.
+        The other changes are purely cosmetic and therefore would not
+        require a new release to POCL.
+
+

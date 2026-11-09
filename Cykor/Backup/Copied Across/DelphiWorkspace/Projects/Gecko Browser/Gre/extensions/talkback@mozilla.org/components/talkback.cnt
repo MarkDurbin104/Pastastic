@@ -1,0 +1,31 @@
+:Base talkback.hlp>main
+:Title Netscape Quality Feedback Agent Help
+1 Netscape Quality Feedback Agent Overview
+2 Introducing the Netscape Quality Feedback Agent=IDH_OV_intro
+2 Using the Agent=IDH_OV_using
+2 The Agent Wizard=IDH_OV_wizard
+2 Using the Agent Information Window=IDH_OV_dialog
+2 The Agent Monitor Window=IDH_OV_monitor
+2 How the Agent Works=IDH_OV_how
+2 Information Gathered by the Agent=IDH_OV_information
+2 Full Circle Software=IDH_OV_Full_Circle>FCS
+1 Frequently Asked Questions
+2 Contents=IDH_FAQ_contents
+2 What causes the Agent to activate?=IDH_FAQ_Q1
+2 How do I turn the Agent on and off?=IDH_FAQ_Q2
+2 What information does the Agent gather?=IDH_FAQ_Q3
+2 How do I view the information the Agent will send?=IDH_FAQ_Q4
+2 Is the Agent collecting personal information?=IDH_FAQ_Q5
+2 How is the information gathered by the Agent used by Netscape?=IDH_FAQ_Q6
+2 Do I need to enter my Email address?=IDH_FAQ_Q7
+2 How will my Email address be used?=IDH_FAQ_Q8
+2 How does the Agent send information to Netscape?=IDH_FAQ_Q9
+2 Is the information gathered by the Agent secure?=IDH_FAQ_Q10
+1 The Agent Information Dialog
+2 Overview=IDH_INFO_overview
+2 Comments text area=IDH_INFO_comments
+2 Email Address text area=IDH_INFO_email
+2 Send button=IDH_INFO_send
+2 Don't Send button=IDH_INFO_dont
+2 Show Details button=IDH_INFO_details
+1 The Agent Monitor

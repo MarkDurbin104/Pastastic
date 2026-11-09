@@ -1,0 +1,81 @@
+#
+# Borland C++ IDE generated makefile
+#
+.AUTODEPEND
+
+
+#
+# Borland C++ tools
+#
+IMPLIB  = Implib
+BCC     = Bcc +BccW16.cfg 
+TLINK   = TLink
+TLIB    = TLib
+BRC     = Brc
+TASM    = Tasm
+#
+# IDE macros
+#
+
+
+#
+# Options
+#
+IDE_LFLAGS =  -LG:\BC45\LIB
+IDE_RFLAGS = 
+LLATW16_eraseplydlib =  -Twd -c -C
+RLATW16_eraseplydlib =  -31
+BLATW16_eraseplydlib = 
+CNIEAT_eraseplydlib = -IG:\BC45\INCLUDE -D
+LNIEAT_eraseplydlib = -x
+LEAT_eraseplydlib = $(LLATW16_eraseplydlib)
+REAT_eraseplydlib = $(RLATW16_eraseplydlib)
+BEAT_eraseplydlib = $(BLATW16_eraseplydlib)
+
+#
+# Dependency List
+#
+Dep_eraseply = \
+   eraseply.lib
+
+eraseply : BccW16.cfg $(Dep_eraseply)
+  echo MakeNode 
+
+eraseply.lib : eraseply.dll
+  $(IMPLIB) $@ eraseply.dll
+
+
+Dep_eraseplyddll = \
+   eraseply.obj\
+   G:\bc45\lib\default.def
+
+eraseply.dll : $(Dep_eraseplyddll)
+  $(TLINK)   @&&|
+ /v $(IDE_LFLAGS) $(LEAT_eraseplydlib) $(LNIEAT_eraseplydlib) +
+G:\BC45\LIB\c0dl.obj+
+eraseply.obj
+$<,$*
+G:\BC45\LIB\import.lib+
+G:\BC45\LIB\mathwl.lib+
+G:\BC45\LIB\cwl.lib
+G:\bc45\lib\default.def
+|
+
+eraseply.obj :  eraseply.c
+  $(BCC)   -P- -c @&&|
+ $(CEAT_eraseplydlib) $(CNIEAT_eraseplydlib) -o$@ eraseply.c
+|
+
+# Compiler configuration file
+BccW16.cfg : 
+   Copy &&|
+-R
+-v
+-vi
+-H
+-H=eraseply.csm
+-ml
+-WD
+| $@
+
+

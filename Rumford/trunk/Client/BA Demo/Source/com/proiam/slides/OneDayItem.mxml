@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<slides:OneDayBase xmlns:mx="http://www.adobe.com/2006/mxml"
+	 backgroundImage="@Embed(source='embedded/OneDayItem.png',scaleGridLeft='12',scaleGridTop='12', scaleGridRight='95',scaleGridBottom='82')" 
+     width="108" height="100"  backgroundSize="100%"
+	creationComplete="createEffect(event);"
+	itemWidth="1"
+	initialize="init()"
+	horizontalScrollPolicy="off" verticalScrollPolicy="off"
+	styleName="normalItem" xmlns:slides="com.proiam.slides.*"> 
+	<mx:Script>
+		<![CDATA[
+			public function init():void {
+	            featured.visible=false;
+			}
+		]]>
+	</mx:Script>
+	<mx:Image source="{iconSource}" left="8" top="6" width="85%" height="50" scaleContent="true" alpha="0.75"/>
+	<mx:Text text="{caption}" top="35" textAlign="right" width="{Math.min(width,130)-15}" left="9" fontFamily="Tahoma" fontWeight="bold"/>	
+	<mx:Text text="{hint}" left="6" top="53" fontSize="9" width="89%" fontFamily="Tahoma" textAlign="left" color="#000000" height="31" fontWeight="normal" fontSharpness="0" fontThickness="0"/>
+    <mx:Image id="conflictCheck" source="@Embed(source='embedded/ConflictCheck.png')" scaleContent="false" height="21" width="107" visible="false" left="0" bottom="0"/>
+	<mx:Text text="{price}" textAlign="right" color="#FFFFFF" height="20" width="{Math.min(width,130)-15}" left="9" fontFamily="Tahoma" bottom="0"/>
+	<mx:Text id="featured" text="Featured" textAlign="left" color="#FFFFFF" height="20" width="100" left="6" fontFamily="Tahoma" top="-3" fontSize="12" />
+	<mx:Text id="special" text=""  width="89%" left="10" y="10" fontSize="12" fontWeight="bold" visible="false" color="#DA2103" textAlign="center"/>	
+  
+</slides:OneDayBase>

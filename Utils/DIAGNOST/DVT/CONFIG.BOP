@@ -1,0 +1,4 @@
+smpsize=64k
+device=ddi10.sys
+device=$KBUK.SYS
+

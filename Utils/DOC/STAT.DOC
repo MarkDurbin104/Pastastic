@@ -1,0 +1,52 @@
+Screen
+	60 hz video driver		-	Not Needed
+	Chinese Font			-	Not Finished
+	Flip between 2 welcome forms	-   T	Done with 2 bmps
+
+Scale
+	Show on screen    		-   T	Done
+	Communications    		-   T	Done
+	Allow for Zeroing  		-   T	Done
+
+Keyboard
+	Check Scan codes for PMC.KBS	-	Dne
+
+Coins
+	Insert Detect			-   T	Done
+	Return Amount left		-   T	Done
+	Dispense Amount left		-   T	Done
+	Show on screen    		-   T	Done
+	Open/Close Door			-   T	Done
+	Re-route when hopper full  	-   F	Done
+	Set denominations in config	-   	Done
+	Reduce Amount left		-	Done	
+	Return Status     		-	Done
+
+Alarms
+	Detect				-	Done
+	Pull up Alarm Screens		-	
+	Return Status     		-	
+
+Stamp
+	Print Stamp 			-	Done
+	Print Multiple Stamps		-	Done
+	Print Stamps to 'Value'		-	
+	Alternate printer on err	-	
+	Return Status     		-	
+
+Receipt
+	Print in English  		-	Done
+	Chinese Font			-	Not Finished
+	Return Status     		-	
+
+GPA General
+	Testing				-	Need for thorough testing
+	Exit to mark			-   T	Done
+	Hold Button in state		-   T	Done
+	'Radio' Buttons			-	To be completed in UK
+	Seperate Rates & Actions	-   T	Done
+	Add line number to 'errline' 	-	To be completed in UK
+
+System
+	PC-MOS (XMS/EMS)		-	To be completed in UK
+	MODEM 				-	To be completed in UK

@@ -1,0 +1,18 @@
+MRLay 	C	1	Runtime Layout Routes1								Batch_No	C	6	0	2								Period_No	C	5	6	3								Oper_No	C	4	11									Mach_id	C	8	15									Layout_No	C	8	23									Layout_Iss_No	i	2	31	
+MBatches 	C	2	Runtime Batch Requirements1								Batch_No	C	6	0	2								Period_No	C	5	6									Priority	i	2	11									Part_No	C	16	13	Part Number								Part_Iss_No	i	2	29									Part_Type	C	1	31									Curr_Op_No	C	4	32									Curr_Mach	C	8	36									Curr_Op_stat	i	2	44									Next_Op_No	C	4	46									Next_Mach	C	8	50									Expected_Qty	i	2	58									Actual_Qty	i	2	60									Labelled_Qty	i	2	62									BfM_No	C	6	64									BfM_Par_Batch	C	6	70									Build_Loc	C	6	76									Batch_Text	C	80	82	
+MStdBfm 	C	3									BfM_No	C	6	0	1								Part_No	C	16	6	Part Number2								Part_Iss_No	i	2	22									Workcentre	C	8	24	
+MstdBfMCnt 	C	4	1								BfM_No	C	6	0	2	1							Part_No	C	16	6	Part Number3	2							Part_Iss_No	i	2	22									Comp_Qty	i	2	24									Oper_No	C	4	26	
+MRunBfm 	C	5	Runtime BfMs1								BfM_No	C	6	0	2								BfM_Par_Batch	C	6	6	3								Par_Period_No	C	5	12									Mach_id	C	8	17									Build_Loc	C	6	25	
+MRunBfMCnt 	C	6	Runtime BfM Contents1								BfM_No	C	6	0	2								BfM_Par_Batch	C	6	6	3								Par_Period_No	C	5	12	4		1						Part_No	C	16	17	Part Number5		2						Part_Iss_No	i	2	33		1							Batch_No	C	6	35		2							Oper_No	C	4	41									Quantity	i	2	45									Expected_Qty	i	2	47									Actual_Qty	i	2	49	
+Moveq 	C	7	1								Priority	i	2	0	2	1							Source_Loc	C	6	2			1						Target_Loc	C	6	8									Batch_No	C	6	14									User_Id	C	14	20	
+MPendQ 	C	8	1								Priority	i	2	0	2	1							Source_Loc	C	6	2			1						Target_Loc	C	6	8									Batch_No	C	6	14									Counter	i	2	20	
+MJobQ 	C	9	1								Mach_id	C	8	0	2								Period_No	C	5	8	3								Priority	i	2	13	4								Batch_No	C	6	15									Oper_No	C	4	21	
+MLoc 	C	10	1								Location_Id	C	6	0									Loc_Desc	C	30	6									Mach_cnt	i	2	36									Term_Id	C	6	38									Loc_Type	C	1	44									Loc_Contents	C	1	45	
+MLocCont 	C	11	1								Location_Id	C	6	0	2								Batch_No	C	6	6	3								Period_No	C	5	12									Actual_Qty	i	2	17	
+MLocMach 	C	12	1								Location_Id	C	6	0	2	1							Mach_id	C	8	6	3	2							Sub_Mach_Id	C	1	14									Mach_stat	i	2	15									Max_Unstarted	i	2	17	Limit of waiting jobs at a machine								Max_Started	i	2	19	Limit of running jobs at a machine								Act_Unstarted	i	2	21	No. of jobs waiting at a machine								Act_Started	i	2	23	No. of jobs running on machine
+MLocTerm 	C	13	1								Access	i	23	0	
+MStxref 	C	14	1								Port_Id	i	2	0	2								ST_No	i	2	2									ST_Type	C	1	4		1							User_Id	C	14	5	
+MTrans 	C	15	1		2						User_Id	C	14	0	2		3						Batch_No	C	6	14	3		4						Period_No	C	5	20									Quantity	i	2	25	4	1	1						Target_Loc	C	6	27									Unbinned_Qty	i	2	33	
+MCCQ 	C	17	1								User_Id	C	14	0									Password	C	13	14			1						User_No	i	2	27		1							Group	C	20	29									Menu	i	2	49									No_Mess_line	i	2	51									Access	i	2	53									Location_Id	C	6	55	
+MCCR 	C	19	1								TTY_Name	C	32	0	2	1							Group	C	20	32	
+MWipStats 	C	20	1	3	2						Period_No	C	5	0	2	4	3						Batch_No	C	6	5	3	5	4						Priority	i	2	11	4	6	5						Layout_No	C	8	13	5	7	6						Layout_Iss_No	i	2	21	6	8	7						Oper_No	C	4	23		1							Mach_id	C	8	27		2							Sub_Mach_Id	C	1	35			1						User_Id	C	14	36									Qty_Good	i	2	50									Qty_Rework	i	2	52									Qty_Scrapped	i	2	54									Approved_By	C	14	56									Start_Time	l	4	70									Finish_Time	l	4	74									Elapsed_Time	l	4	78	

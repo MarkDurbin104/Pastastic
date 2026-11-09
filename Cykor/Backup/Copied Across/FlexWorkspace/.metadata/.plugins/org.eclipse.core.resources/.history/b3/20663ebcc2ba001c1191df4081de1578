@@ -1,0 +1,90 @@
+Button {
+    upSkin:ClassReference('flexlib.skins.EnhancedButtonSkin');
+    overSkin:ClassReference('EnhancedButtonSkin');
+    downSkin:ClassReference('EnhancedButtonSkin');
+    disabledSkin:ClassReference('EnhancedButtonSkin');
+    selectedUpSkin:ClassReference('EnhancedButtonSkin');
+    selectedOverSkin:ClassReference('EnhancedButtonSkin');
+    selectedDownSkin:ClassReference('EnhancedButtonSkin');
+    selectedDisabledSkin:ClassReference('EnhancedButtonSkin');
+}
+
+.customButtonStyle {
+     cornerRadii: 0, 0, 16, 21;
+     borderColors: #006699, #006699;
+     overBorderColors: #003399, #003399;
+     selectedBorderColors: #003399, #003399;
+     borderThickness: 1;
+     fillColors: #003399, #0033CC, #0033FF, #0099FF;
+     fillAlphas: 0.7, 0.75, 0.5, 0.6;
+     fillColorRatios: 0, 48, 179, 255;
+     overFillColors: #FCFFF4, #006699, #0066CC, #00CCFF;
+     overFillAlphas: 0.5, 0.5, 0.5, 0.5;
+     overFillColorRatios: 0, 67, 170, 255;
+     selectedFillColors: #FCFFF4, #006699;
+     selectedFillAlphas: 0.5, 0.5;
+     selectedFillColorRatios: 0, 255;
+     highlightAlphas: 0.6, 0;
+     color: #FFFFCC;
+     textRollOverColor: #FFFFFF;
+     fontSize: 15;
+}
+
+.flatColorRectangleSkin {
+	
+    fontFamily: Arial;
+    fontSize: 12;
+    color: #FFFFFF;
+    textAlign:left;
+    width:150;
+    height:30;
+    
+    upSkin:ClassReference('programmaticSkinClasses.FlatColorRectangleSkin');
+	downSkin:ClassReference('programmaticSkinClasses.FlatColorRectangleSkin');
+	overSkin:ClassReference('programmaticSkinClasses.FlatColorRectangleSkin');
+	disabledSkin:ClassReference('programmaticSkinClasses.FlatColorRectangleSkin');
+}
+
+.flatColorRoundedRectangleSkin {
+	
+    fontFamily: Arial;
+    fontSize: 12;
+    color: #FFFFFF;
+    textAlign:left;
+    width:150;
+    height:30;
+    
+    upSkin:ClassReference('programmaticSkinClasses.FlatColorRoundedRectangleSkin');
+	downSkin:ClassReference('programmaticSkinClasses.FlatColorRoundedRectangleSkin');
+	overSkin:ClassReference('programmaticSkinClasses.FlatColorRoundedRectangleSkin');
+	disabledSkin:ClassReference('programmaticSkinClasses.FlatColorRoundedRectangleSkin');
+}
+
+.gradientRectangleSkin {
+	
+    fontFamily: Arial;
+    fontSize: 12;
+    color: #FFFFFF;
+    textAlign:left;
+    width:150;
+    height:30;
+    
+    upSkin:ClassReference('programmaticSkinClasses.GradientRectangleSkin');
+	downSkin:ClassReference('programmaticSkinClasses.GradientRectangleSkin');
+	overSkin:ClassReference('programmaticSkinClasses.GradientRectangleSkin');
+	disabledSkin:ClassReference('programmaticSkinClasses.GradientRectangleSkin');
+}
+.gradientRoundedRectangleSkin {
+	
+    fontFamily: Arial;
+    fontSize: 12;
+    color: #FFFFFF;
+    textAlign:left;
+    width:150;
+    height:30;
+    
+    upSkin:ClassReference('programmaticSkinClasses.GradientRoundedRectangleSkin');
+	downSkin:ClassReference('programmaticSkinClasses.GradientRoundedRectangleSkin');
+	overSkin:ClassReference('programmaticSkinClasses.GradientRoundedRectangleSkin');
+	disabledSkin:ClassReference('programmaticSkinClasses.GradientRoundedRectangleSkin');
+}

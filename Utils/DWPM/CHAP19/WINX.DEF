@@ -1,0 +1,9 @@
+Name              WINX
+Description       'DOS/WINDOWS COMMUNICATIONS SHELL'
+Exetype           WINDOWS
+Code              PRELOAD MOVEABLE DISCARDABLE
+Data              PRELOAD MOVEABLE SINGLE
+Heapsize          256
+Stacksize         5120
+Stub              'WINXDOS.EXE'
+

@@ -1,0 +1,17 @@
+                                                23/01/95
+Hi Mark,
+
+Thanks for the fixes today.
+
+PRD file as requested attached.
+
+Code changes - CPAGPA.C, CAPFUNC.H - DELOPROD renamed to DELOTOT
+and DELOSTK added.
+
+GPAMAIN.C, DISKDEV.C, malloc of Pkware workbuff memory moved in hope
+of a fix to backup.
+
+
+Tom
+
+

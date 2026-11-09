@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
+	width="1024" height="768"
+	creationComplete="onCreationComplete(event);"
+	xmlns:slides="com.proiam.slides.*">
+	<mx:states>
+		<mx:State name="BillItem" enterState="mono=true" >
+			<mx:RemoveChild target="{itemDataView}"/>
+			<mx:AddChild relativeTo="{canvas1}" position="lastChild">
+				<mx:Canvas y="23" width="692" height="646" backgroundColor="#FFFFFF" borderStyle="solid" borderColor="#FFFFFF" cornerRadius="5" x="22">
+					<mx:Canvas id="itemImageCanvas" borderColor="#808080" borderStyle="solid" borderThickness="2" left="9" top="9" width="362" height="539">
+						 	<mx:Image x="0" y="0" width="100%" height="100%" id="itemImage" scaleContent="true"/>
+						 	<mx:Canvas x="0" y="0" width="100%" height="100%" id="itemOverImage" click="onImageClick(event);"/>				
+					</mx:Canvas>
+					<slides:InvoiceButton id="detailsBox"  x="379" y="10"  title="Invoice Details" catagory="Name:&#xa;Address:&#xa;&#xa;&#xa;&#xa;Account:&#xa;Invoice:&#xa;&#xa;Amount:&#xa;&#xa;Payee:" text="" currentState="Paper"/>
+				</mx:Canvas>
+			</mx:AddChild>
+		</mx:State>
+	</mx:states>
+	<mx:Script>
+		<![CDATA[
+			import mx.graphics.ImageSnapshot;
+			import com.cykorsystems.utils.usdFormatter;
+			[Bindable]
+			public var totalPrice:String="$0.00"
+
+            private var _mono:Boolean=false;
+            [Bindable]
+            public function set mono(value:Boolean):void {
+            	_mono=value;
+            	if (value) {
+            		var intensity:Number=1;
+					var red:Number 		= 0.3086*intensity; 
+					var green:Number 	= 0.6940*intensity; 
+					var blue:Number 		= 0.0820*intensity; 
+					var mono:ColorMatrixFilter=new ColorMatrixFilter([red, green, blue, 0, 0, red, green, blue, 0, 0, red, green, blue, 0, 0, 0, 0, 0, 1, 0]);
+		            var myFilters:Array = new Array();
+		            myFilters.push(mono);
+		            itemImageCanvas.filters = myFilters;
+		            
+            	} else {
+		            itemImageCanvas.filters = null;
+            	}
+            }
+            public function get mono():Boolean {
+            	return _mono;
+            }
+
+			private function onCreationComplete(event:Event):void {
+			}			
+			public function setSelected(item:ReceiptItem):void {
+				var alreadySelected:Boolean=item.currentState!=null;
+				var receiptItem:ReceiptItem;
+				connector.height=0;
+				for (var i:int=0;i<receipt.numChildren;i++) {
+					receiptItem=ReceiptItem(receipt.getChildAt(i));
+					receiptItem.currentState=null;
+				}
+				receipt.validateNow();
+				if (alreadySelected) {
+					currentState=null;
+					item.currentState=null; 					
+					itemDataView.tariffData="";
+					itemDataView.validDestAddress=true;
+					itemDataView.validOriginAddress=true;
+					itemDataView.SetItemData(null);
+					itemDataView.itemImage.source="";
+				} else {
+					item.currentState="selected";
+					connector.y=receipt.y+item.y;
+					connector.height=item.height;
+					if (item.itemData.itemType=="Invoice") {
+						currentState="BillItem";
+						detailsBox.text=item.itemData.addressee.asText();
+				    	detailsBox.text+="\n\n"+item.itemData.accountNumber.number;
+				    	detailsBox.text+="\n"+item.itemData.invoiceNumber.number;
+				    	detailsBox.text+="\n\n"+item.itemData.amount.value;
+				    	detailsBox.text+="\n\n"+item.itemData.payee;
+						itemImage.source=item.itemImageSource;
+					} else {
+						currentState=null;
+						itemDataView.tariffData=item.tariffData;
+						itemDataView.validDestAddress=item.validDestAddress;
+						itemDataView.validOriginAddress=item.validOriginAddress;
+						itemDataView.SetItemData(item.itemData);
+						itemDataView.itemImage.source=item.itemImageSource;
+					}
+				}
+			}
+			private function flipSelected(event:Event):void {
+				setSelected(ReceiptItem(event.currentTarget));
+			}
+			private function calcTotal():void {
+				var formatter:usdFormatter=new usdFormatter();
+				var receiptItem:ReceiptItem;
+				var totalValue:Number=0;
+				for (var i:int=0;i<receipt.numChildren;i++) {
+					receiptItem=ReceiptItem(receipt.getChildAt(i));
+					totalValue+=receiptItem.totalPriceValue;
+				}
+				totalPrice=formatter.format(totalValue);				
+			}
+			public function addReceiptItem(item:ReceiptItem):void {
+				receipt.addChild(item);
+				item.addEventListener(MouseEvent.CLICK,flipSelected);
+				setSelected(item);
+				calcTotal();
+			}
+			private var myPrintJob:PrintJob = null;
+			private var printSprite:Sprite;
+            public function onImageClick(event:Event):void {
+        		myPrintJob = new PrintJob();
+	            if (myPrintJob.start()) {
+					try {
+						
+				        var screenDPI:Number = Capabilities.screenDPI;
+				        var scale:Number = 200 / screenDPI;
+				        if (scale > (ImageSnapshot.MAX_BITMAP_DIMENSION/width)) {
+				        	scale=ImageSnapshot.MAX_BITMAP_DIMENSION/width;
+				        }
+        				var matrix:Matrix = new Matrix(scale, 0, 0, scale);
+						var data:BitmapData = new BitmapData((width*scale),height*scale, true, 0x00000000);
+						data.draw(this,matrix);
+        				var bmp:Bitmap=new Bitmap(data);
+				        var itemScale:Number=(myPrintJob.pageWidth/data.width)*0.75;
+						var sprite:Sprite=new Sprite();
+						sprite.x=5;
+						sprite.y=5;
+						sprite.addChild(bmp);
+						sprite.scaleX=itemScale;
+						sprite.scaleY=itemScale;
+	            		myPrintJob.addPage(sprite);
+	            		
+					} catch (error:Error) {
+						trace(error.message);
+					}
+	            	myPrintJob.send(); 
+	            }
+            }
+		]]>
+	</mx:Script>
+	<mx:Canvas 	backgroundSize="100%" backgroundImage="@Embed(source='embedded/Basket.jpg')"  width="1024" height="688" top="80" left="0" id="canvas1"/>
+	<mx:Canvas id="connector" x="713" y="135" width="61" height="80" backgroundColor="#FFFFFF" backgroundAlpha="0.75"/>
+	<slides:ItemDataView id="itemDataView" x="14" y="92" currentState="Paper"/>
+	<mx:VBox id="receipt" x="739" y="135" width="252" height="566" horizontalAlign="center" verticalGap="10" horizontalScrollPolicy="off">
+	</mx:VBox>
+	<mx:Label x="755" y="709" text="Total" width="168" color="#346D88" textAlign="left" fontWeight="bold" fontSize="14" fontFamily="Tahoma"/>
+	<mx:Label x="807" y="709" text="{totalPrice}" width="168" color="#346D88" textAlign="right" fontWeight="bold" fontSize="14" fontFamily="Tahoma" alpha="0.7"/>
+</mx:Canvas>

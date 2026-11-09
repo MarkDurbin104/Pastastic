@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml">
+	<mx:states>
+		<mx:State name="ServiceGroup">
+			<mx:RemoveChild target="{image1}"/>
+			<mx:RemoveChild target="{label1}"/>
+			<mx:RemoveChild target="{textinput1}"/>
+			<mx:RemoveChild target="{textinput2}"/>
+			<mx:RemoveChild target="{textinput3}"/>
+			<mx:RemoveChild target="{checkbox1}"/>
+			<mx:RemoveChild target="{textinput4}"/>
+			<mx:RemoveChild target="{textinput5}"/>
+			<mx:RemoveChild target="{textinput6}"/>
+			<mx:RemoveChild target="{textarea1}"/>
+			<mx:RemoveChild target="{label2}"/>
+			<mx:RemoveChild target="{label3}"/>
+			<mx:RemoveChild target="{label4}"/>
+			<mx:RemoveChild target="{label5}"/>
+			<mx:RemoveChild target="{label6}"/>
+			<mx:RemoveChild target="{label7}"/>
+			<mx:RemoveChild target="{label8}"/>
+			<mx:RemoveChild target="{label9}"/>
+		</mx:State>
+		<mx:State name="Secondary">
+			<mx:RemoveChild target="{image1}"/>
+			<mx:RemoveChild target="{label1}"/>
+			<mx:RemoveChild target="{checkbox1}"/>
+			<mx:RemoveChild target="{label6}"/>
+			<mx:RemoveChild target="{textinput4}"/>
+			<mx:RemoveChild target="{label5}"/>
+			<mx:RemoveChild target="{label4}"/>
+			<mx:RemoveChild target="{textinput5}"/>
+			<mx:RemoveChild target="{textinput6}"/>
+			<mx:RemoveChild target="{label3}"/>
+			<mx:RemoveChild target="{textinput3}"/>
+			<mx:RemoveChild target="{label7}"/>
+			<mx:SetProperty target="{label2}" name="x" value="15"/>
+			<mx:SetProperty target="{label2}" name="y" value="148"/>
+			<mx:SetProperty target="{textarea1}" name="x" value="143"/>
+			<mx:SetProperty target="{textarea1}" name="y" value="151"/>
+		</mx:State>
+	</mx:states>
+<mx:Script>
+	<![CDATA[
+		import com.proiam.mails.MailService;
+		[Bindable]
+		public var ms:MailService=null;
+	]]>
+</mx:Script>
+		<mx:Label x="16" y="10" text="Name" width="120" textAlign="right"/>
+		<mx:TextInput x="143" y="8" width="260" text="{ms.shortName}"/>
+		<mx:Label x="400" y="38" text="Image" width="120" textAlign="right"/>
+		<mx:Image x="526" y="40" width="250" height="130" source="{ms.iconFilePath+ms.iconFile}" scaleContent="false"/>
+		<mx:Label x="400" y="12" text="Image File Name" width="120" textAlign="right"/>
+		<mx:Label x="16" y="38" text="Full Name" width="120" textAlign="right"/>
+		<mx:TextInput x="526" y="10" width="253" text="{ms.iconFile}"/>
+		<mx:TextInput x="143" y="36" width="260" text="{ms.fullName}"/>
+		<mx:Label x="16" y="66" text="Caption" width="120" textAlign="right"/>
+		<mx:TextInput x="143" y="64" width="260" text="{ms.caption}"/> 
+		<mx:Label x="16" y="94" text="Receipt Caption" width="120" textAlign="right" id="label9"/>
+		<mx:TextInput x="143" y="92" width="260" text="{ms.receiptCaption}" id="textinput1"/>
+		<mx:Label x="16" y="287" text="Hint" width="120" textAlign="right" id="label2"/>
+		<mx:Label x="16" y="122" text="Help URL" width="120" textAlign="right" id="label8"/>
+		<mx:TextInput x="143" y="120" width="260" text="{ms.helpURL}" id="textinput2"/>
+		<mx:Label x="16" y="150" text="Type" width="120" textAlign="right" id="label7"/>
+		<mx:Label x="16" y="178" text="Domestic" width="120" textAlign="right" id="label6"/>
+		<mx:TextInput x="143" y="148" width="260" text="{ms.type}" id="textinput3"/>
+		<mx:Label x="16" y="207" text="Tariff" width="120" textAlign="right" id="label5"/>
+		<mx:TextInput x="143" y="205" width="260" text="{ms.tariff}" id="textinput4"/>
+		<mx:Label x="16" y="235" text="Tariff Type" width="120" textAlign="right" id="label4"/>
+		<mx:TextInput x="143" y="233" width="260" text="{ms.tariffType}" id="textinput5"/>
+		<mx:Label x="16" y="263" text="Tariff Column" width="120" textAlign="right" id="label3"/>
+		<mx:TextInput x="143" y="261" width="260" text="{ms.tariffColumn}" id="textinput6"/>
+		<mx:TextArea x="144" y="290" width="260" height="137" text="{ms.hint}" id="textarea1"/>
+		<mx:Label x="400" y="178" text="Selected Image" width="120" textAlign="right" id="label1"/>
+		<mx:Image x="527" y="178" width="250" height="130" scaleContent="false" source="{ms.iconFilePath+'/selected/'+ms.iconFile}" id="image1"/>
+		<mx:CheckBox x="144" y="178" selected="{ms.isDomestic}" id="checkbox1"/>
+</mx:Canvas>

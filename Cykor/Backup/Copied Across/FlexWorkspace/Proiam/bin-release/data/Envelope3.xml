@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vuitResult>
+	<status>OK</status>
+	<image>EnvelopeScan3.jpg</image>
+	<physicalAttributes>
+		<weight>18.0</weight>
+		<length>13.0</length>
+		<width>13.0</width>
+		<height>0.3</height>
+		<units>metric</units>
+	</physicalAttributes>
+	<destination>
+		<zipCode>02476</zipCode>
+		<country>USA</country>
+		<rawString>MITCHELL HARDING 29503 LIBERTY LN TOMBALL TX 77375</rawString>
+		<imageLocation>200, 120, 440, 200</imageLocation>
+		<address>
+			<name>MITCHELL HARDING</name>
+			<line1>29503 LIBERTY LN</line1>
+			<line2></line2>
+			<line3></line3>
+			<city>TOMBALL</city>
+			<state>TX</state>
+			<zip>77375</zip>
+			<telephone></telephone>
+			<email></email>
+		</address>
+	</destination>
+</vuitResult>

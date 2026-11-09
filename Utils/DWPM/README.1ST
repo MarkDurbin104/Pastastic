@@ -1,0 +1,202 @@
+==== Readme file for the DOS and Windows Protected Mode companion
+==== disks. Version 1.0   January 1, 1993
+
+This file contains a list of the files included on the companion disk.
+All of these files are in a single .ZIP archive, LISTINGS.ZIP.
+Each chapter is in its own directory. Chapter 5, for example is
+in directory \CHAP5.
+
+To extract the entire set of listings, create a directory, make it
+the working directory and run PKUNZIP with the -d option. For example,
+if the diskette is in drive A and you want to place the listings in
+C:\DWPM you could use the following commands:
+
+C> mkdir \DWPM
+C> cd \DWPM
+C> pkunzip -d a:\listings.zip
+
+Now, the Chapter 1 listings are in C:\DWPM\CHAP1 and the Chapter
+11 listings are in C:\DWPM\CHAP11.
+
+If you only want certain listings, you can run PKUNZIP to extract the
+ones you want. For example, if you want to get the DPMI examples
+from Chapter 5 to the current directory, and the diskette is in drive
+A, you could type the following:
+
+C> pkunzip a:\listings.zip chap5\dpmi*.c
+
+Note that you won't use the -d option in this case since you don't want
+PKUNZIP to create any directories.
+
+
+==== IN CASE OF DIFFICULTY ====
+If you have trouble compiling a particular listing check the
+following items:
+
+1) Are you using the right compiler (and extender, if applicable)?
+   Each main program contains a note about which compilers it
+   will work with.
+
+2) Are you using the proper compile directives?
+   Each main program contains instructions for its compiling -- some
+   programs compile via makefiles -- you should use them where supplied.
+   Most of the Windows examples compile with the BWINCOMP (Borland) or
+   MWINCOMP (Microsoft) batch files.
+
+3) Is your compiler/extender installed properly? Can you compile
+   a simple program, e.g.:
+       main() { printf("Hello\n"); }
+   If you can't get that to run, you probably need a directory in
+   your PATH variable, an environment variable set, or something
+   else specific to your compiler or extender.
+
+4) As new versions of extenders and compilers appear, sometimes
+   the compile directives required for a program will change. For
+   example, Older versions of Phar Lap's 286 extender require the
+   LLIBPE.LIB library for int86() and other functions under Microsoft
+   C. Newer versions of the extender don't require this library.
+
+5) Phar Lap 286|DOS Extender 2.5 (and Lite) don't fully support
+   DLLs with Microsoft C 7.0. Therefore, the examples that create
+   DLLs (XCI and TURTLE) don't provide compile instructions for
+   C 7.0 -- the DLLs won't work anyway. Use Borland C or Microsoft
+   C 6.0 instead.
+
+If you have trouble running a program, check the following items:
+
+1) Do you have enough memory and the right processor for the program?
+
+2) Is your environment compatible? If you can't get the "Hello" program
+   in item 3 (above) to  run then you probably have an environment
+   conflict.
+
+3) Does your extender require a special syntax to run programs? For
+   example, the Rational extender requires you to run T.EXP like this:
+       DOS4G T
+   Many other extenders have this same requirement.
+
+4) Are you trying to run a program under 286|DOS Extender Lite that
+   requires the full 286|DOS Extender package? The INT286, CAT286B2,
+   XCI, and TURTLE programs will not work with the Lite extender.
+
+
+Good luck, and have fun!
+Al Williams
+
+
+
+================================
+Listings in LISTING.ZIP
+
+
+=========== Chapter 1
+dfit.c               Disk copy program
+dfit.h               Header for dfit.c
+dfit386.c            386 module for dfit.c
+dfitdos.c            DOS module for dfit.c
+dfitems.c            EMS module for dfit.c
+winmem.c             Example of Windows memory allocation
+
+=========== Chapter 3
+list31.c             Example Metaware fragment
+
+=========== Chapter 5
+bwincomp.bat         Batch file to compile Windows examples (Borland)
+dpmi.c               Detect DPMI
+dpmit.c              Detect DPMI under 286 extender
+mscint.c             Replacement int86x() for Microsoft C
+mwincomp.bat         Batch file to compile Windows examples (Microsoft)
+pmwin.c              Main routine for all Windows examples
+pmwin.def            DEF file for all Windows examples
+pmwin.h              Header for pmwin.c
+pmwin.rc             Resources for all Windows examples
+meminfo.c            Example Windows program -- display memory info
+winpmode.h           Header for Windows examples
+
+=========== Chapter 7
+ptrset.h             Set pointer
+shoary.c             Display array on screen (DOS)
+shoarycb.c           Display array on screen (Code Builder)
+shoarypl.c           Display array on screen (Phar Lap)
+shocom1.c            Display COM port addresses (alternate version)
+
+=========== Chapter 8
+pmcga.c              Plot on CGA from various compilers/extenders
+shocom2.c            Display COM port addresses (alternate version #2)
+
+=========== Chapter 9
+faults.c             Handle Windows faults with TOOLHELP
+int286.c             Interrupt handing for 286 extender
+
+=========== Chapter 10
+music.com            Real mode TSR to play music (no source)
+playwin.c            Windows program that talks to music.com
+protmode.c           Protected mode example -- called by realmode.c
+realmode.c           Real mode program that calls protmode.c
+
+=========== Chapter 11
+vm.c                 Example virtual memory program for many compilers
+
+=========== Chapter 12
+dllstart.asm         DLL startup code (required for XCI)
+makefile             Makefile for XCI
+rhello.c             Rational/WATCOM program that uses stub
+rhello.def           DEF file for rhello.c
+rstub.c              Real mode stub (used with rhello.c)
+xci.c                Extensible command interpreter
+xci.h                Header for xci.c
+xcitest.c            Test program for xci
+xcitst.c             XCI DLL
+xcitst.def           DEF file for XCITST
+
+=========== Chapter 13
+cat286.c             Display file from 286 extender
+cat286b1.c           ^C handler for cat286 (signal)
+cat286b2.c           ^C handler for cat286 (interrupt)
+common.h             Common routines for cat286
+
+
+=========== Chapter 15
+fpm32.asm            Floating point math library
+fpm32.h              Header for using fpm32.asm from C
+fpmc.c               C helpers for use with fpm32.asm
+fpmtime.c            Time fpm32 performance
+makefile             Makefile for fpm32
+
+=========== Chapter 17
+bgraph.c             Bare-bones graphics library for Borland
+dllstart.asm         DLL starup code
+gbuf.c               Data module for TURTLE
+inpoly.t             TURTLE example script
+makefile             Makefile for TURTLE
+pgraph.h             Portable graphics header for TURTLE
+polytsh.t            TURTLE example script
+tcmds.c              TURTLE commands
+texpr.c              TURTLE expression parser
+tsave.c              TURTLE save/load DLL
+tsave.def            DEF file for tsave
+turnpoly.t           TURTLE example script
+turnpoly.t01         TURTLE example script
+turtle.c             Main file for TURTLE
+turtle.h             TURTLE header
+
+=========== Chapter 18
+cb386.c              Copy Builder for Intel Code Builder
+cb386.h              Header for cb386.c
+dirpick.c            Directory select for Copy Builder
+diskio.c             Disk I/O routines for Copy Builder
+disp.c               Display routines for Copy Builder
+display.c            Display routines for Copy Builder
+display.h            Display header
+fileio.c             File I/O routines for Copy Builder
+histo.c              Histogram routines for Copy Builder
+makefile             Makefile for Copy Builder
+reboot.c             Inhibit reboot under Copy Builder
+
+=========== Chapter 19
+makefile             Makefile for WINX/WINRUN programs
+mscint.c             Microsoft int86x() function (also in Chapter 5)
+winrun.c             WINRUN main file
+winx.c               WINX server (Windows portion)
+winx.def             Module definition file for WINX
+winxdos.c            WINX server (DOS portion)

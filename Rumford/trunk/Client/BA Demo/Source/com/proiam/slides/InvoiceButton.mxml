@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="300" height="200"
+ 	backgroundSize="100%" backgroundImage="@Embed('embedded/InvoiceButton.png')" 
+ 	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+ 	buttonMode="true" useHandCursor="true">
+	<mx:states>
+		<mx:State name="Paper">
+			<mx:SetStyle name="backgroundImage"/>
+			<mx:SetStyle target="{label1}" name="color" value="0"/>
+			<mx:SetStyle target="{text1}" name="color" value="0"/>
+			<mx:SetStyle target="{text2}" name="color" value="0"/>
+		</mx:State>
+		<mx:State name="Wait State">
+			<mx:RemoveChild target="{canvas1}"/>
+			<mx:RemoveChild target="{text1}"/>
+			<mx:RemoveChild target="{text2}"/>
+ 	 	 	<mx:SetProperty target="{offCanvas}" name="alpha" value="1"/>
+		</mx:State>
+	</mx:states>
+	<mx:transitions>
+	    <mx:Transition id="Transition1" fromState="Wait State" toState="*">
+			<mx:Parallel duration="1000" >
+			    <mx:Fade target="{offCanvas}" alphaFrom="1" alphaTo="0" />
+			</mx:Parallel>
+	    </mx:Transition>
+	</mx:transitions>
+
+	<mx:String id="title"></mx:String>
+	<mx:String id="catagory"></mx:String>
+	<mx:String id="text"></mx:String>
+
+ 	<mx:Canvas id="offCanvas" x="0" y="0" width="300" height="200" backgroundSize="100%" backgroundImage="@Embed(source='embedded/InvoiceButton S1.png')" alpha="0"/>
+  	<mx:Label x="10" y="2" text="{title}" fontWeight="bold" fontFamily="Verdana" fontSize="12" color="#FFFFFF" width="183" selectable="false" buttonMode="true" useHandCursor="true" id="label1"/>
+  	<mx:Text x="74" y="20" width="216" height="170" alpha="0.0" color="#FFFFFF" text="{text}" selectable="false" 
+  		fontFamily="Verdana" fontSize="11" fontWeight="bold" buttonMode="true" useHandCursor="true" id="text1"/>
+  	<mx:Text x="7" y="20" width="74" height="170" alpha="0.0" color="#FFFFFF" text="{catagory}" selectable="false" 
+  		fontWeight="normal" fontFamily="Verdana" fontSize="11" buttonMode="true" useHandCursor="true"  id="text2"/>
+  	<mx:Canvas buttonMode="true" width="100%" height="100%" useHandCursor="true" id="canvas1"/>
+</mx:Canvas>

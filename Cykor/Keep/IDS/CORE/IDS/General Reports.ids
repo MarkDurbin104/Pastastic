@@ -1,0 +1,150 @@
+Products {
+   GeneralReport {
+      Bitmap  { '..\..\CORE\Images\G_Reports.BMP' }
+      Domains {
+         GRPostOffice
+         GRStartDate
+         GREndDate
+         GRUserName
+         GRReportList
+      }
+      Items  { Complete }
+      Snippets  { 
+         GeneralRepUses,
+         GeneralRepVars,
+         GeneralRepExecute,
+         GeneralRepComplete,
+      }
+      SubGroup  { Reports }
+      Title  { 'General Report' }
+   }
+}
+Snippets {
+   GeneralRepComplete {
+      InsertBetween  { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock  { [*
+         if LocalSharedData = nil then
+            LocalSharedData:=TSharedData.Create('CorvusReportShare',False);
+         LocalSharedData.SetVariable('FromPeriod',StrToPeriod(ProdForm.GRStartDate.Text));
+         LocalSharedData.SetVariable('ToPeriod'  ,StrToPeriod(ProdForm.GREndDate.Text));
+         if ProdForm.GRUserName.Text = 'All' then
+         begin
+            LocalSharedData.SetVariable('TellerCondition',' (Teller is not null) ');
+            LocalSharedData.SetVariable('Teller'    ,'')
+         end
+         else
+         begin
+            LocalSharedData.SetVariable('NotTellerCondition',' (Teller <> +ProdForm.GRUserName.Text+) ');
+            LocalSharedData.SetVariable('TellerCondition',' (Teller = '+ProdForm.GRUserName.Text+') ');
+            LocalSharedData.SetVariable('Teller'    ,ProdForm.GRUserName.Text);
+         end;
+
+         if ProdForm.GRPostOffice.Text = 'All' then
+         begin
+            LocalSharedData.SetVariable('OfficeCondition',' (Office is not null) ');
+            LocalSharedData.SetVariable('Office'    ,0);
+         end
+         else
+         begin
+            LocalSharedData.SetVariable('NotOfficeCondition',' (Office <> '+Copy(TStringObject(ProdForm.GRPostOffice.Items.Objects[ProdForm.GRPostOffice.ItemIndex]).Value,2,99)+')' );
+            LocalSharedData.SetVariable('OfficeCondition',' (Office = '+Copy(TStringObject(ProdForm.GRPostOffice.Items.Objects[ProdForm.GRPostOffice.ItemIndex]).Value,2,99)+')' );
+            LocalSharedData.SetVariable('Office',Copy(TStringObject(ProdForm.GRPostOffice.Items.Objects[ProdForm.GRPostOffice.ItemIndex]).Value,2,99));
+         end;
+         
+         LocalSharedData.SetVariable('WorkStation',0);
+         if ProdForm.GRReportList.Items.Objects[ProdForm.GRReportList.ItemIndex] <> nil then
+         begin
+{ReportNameStart}
+            FUIEventSink.GetComponentReference('Report.'+TStringObject(ProdForm.GRReportList.Items.Objects[ProdForm.GRReportList.ItemIndex]).Value);
+{ReportNameEnd}
+         end;
+         while ProdForm.GRReportList.Items.Count > 0 do
+         begin
+            if ProdForm.GRReportList.Items.Objects[0] <> nil then
+            begin
+               TStringObject(ProdForm.GRReportList.Items.Objects[0]).Free;
+            end;
+            ProdForm.GRReportList.Items.Delete(0);
+         end;
+         LocalSharedData.Free;
+         LocalSharedData:=nil;
+      *]
+      }
+   }
+   GeneralRepExecute {
+      InsertBetween  { '{IsListStart}','{IsListEnd}' }
+      CodeBlock  { [*
+         TTxnTransfer.ListOffices('',ProdForm.GRPostOffice.Items);
+         ProdForm.GRPostOffice.Items.Insert(0,'All');
+         ProdForm.GRPostOffice.Text:='All';
+         ProdForm.GRPostOffice.ItemIndex:=ProdForm.GRPostOffice.Items.IndexOf(ProdForm.GRPostOffice.Text);
+         ProdForm.GRUserName.Items.CommaText := ListUsers;
+         ProdForm.GRUserName.Items.Insert(0,'All');
+         ProdForm.GRUserName.Text:='All';
+         ProdForm.GRUserName.ItemIndex:=ProdForm.GRUserName.Items.IndexOf(ProdForm.GRUserName.Text);
+         ReportFileName:=GetGPCSRegString('Reports','Definition File','Reports.ids');
+         ReportsNode:=TReportsNode.Create('Reports',ReportFileName,1);
+         ReportsNode.ParseFile(ExtractFilePath(ReportFileName),ReportFileName,1);
+         ReportsNode.PutInReportTitles(ProdForm.GRReportList.Items);
+         ProdForm.GRReportList.Sorted:=True;
+         ReportsNode.Free;
+      *]
+      }
+   }
+   GeneralRepUses {
+      InsertBetween  { '{AutoUsesStart}','{AutoUsesEnd}' }
+      CodeBlock  { [*
+        ReportIDSU,StringUtil,ShareDataU,FileTxStatusU,
+     *]
+      }
+   }
+   GeneralRepVars {
+      InsertBetween  { '{PublVarDecStart}','{PublVarDecEnd}' }
+      CodeBlock  { [*
+        ReportsNode:TReportsNode;
+        ReportFileName:String;
+     *]
+      }
+   }
+}
+Domains {
+   GREndDate {
+      DefaultValue  { Now }
+      Error  { 'Enter required end date' }
+      Format { Date }
+      Hint  { 'Enter required end date' }
+      InputFrom  { Keyboard }
+      Prompt  { 'End Date' }
+      Title  { 'End Date' }
+   }
+   GRPostOffice {
+      Error  { 'Invalid Office' }
+      Hint  { 'Select the Office Name' }
+      Prompt  { Office }
+      Title  { Office }
+      Format    {  PickList { 'PickList.PostOffices' } }
+   }     
+   GRReportList {
+      Error  { 'Invalid Report' }
+      Hint  { 'Select the report you wish to print' }
+      Prompt  { 'Select A Report' }
+      Title  { 'Required Report' }
+      Format { PickList { '' } }
+   }     
+   GRStartDate {
+      DefaultValue  { Now }
+      Error  { 'Enter required start date' }
+      Format { Date }
+      Hint  { 'Enter required start date' }
+      InputFrom  { Keyboard }
+      Prompt  { 'Start Date' }
+      Title  { 'Start Date' }
+   }
+   GRUserName {
+      Hint  { 'Select a User from the list' }
+      InputFrom  { Keyboard }
+      Prompt  { 'User Name' }
+      Title  { 'User Name' }
+      Format { PickList { '' } }
+   }
+}

@@ -1,0 +1,98 @@
+Snippets {
+   CentralGenRepComplete {
+      InsertBetween  { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock  { [*
+      try
+         if LocalSharedData = nil then
+            LocalSharedData:=TSharedData.Create('CorvusReportShare',False);
+         LocalSharedData.SetVariable('FromPeriod',StrToPeriod(ProdForm.StartDomainEdit.Text));
+         LocalSharedData.SetVariable('ToPeriod'  ,StrToPeriod(ProdForm.EndDomainEdit.Text));
+         if ProdForm.UserName.Text = 'All' then
+         begin
+            LocalSharedData.SetVariable('TellerCondition',' (Teller is not null) ');
+            LocalSharedData.SetVariable('Teller'    ,'')
+         end
+         else
+         begin
+            LocalSharedData.SetVariable('NotTellerCondition',' (Teller <> '+ProdForm.UserName.Text+') ');
+            LocalSharedData.SetVariable('TellerCondition',' (Teller = '''+ProdForm.UserName.Text+''') ');
+            LocalSharedData.SetVariable('Teller'    ,ProdForm.UserName.Text);
+         end;
+
+         if ProdForm.PostOffice.Text = 'All' then
+         begin
+            LocalSharedData.SetVariable('OfficeCondition',' (Office is not null) ');
+            LocalSharedData.SetVariable('Office'    ,0);
+         end
+         else
+         begin
+            LocalSharedData.SetVariable('NotOfficeCondition',' (Office <> '+Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99)+')' );
+            LocalSharedData.SetVariable('OfficeCondition',' (Office = '+Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99)+')' );
+            LocalSharedData.SetVariable('Office',Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99));
+         end;
+         
+         LocalSharedData.SetVariable('WorkStation',0);
+         if ProdForm.ReportList.Items.Objects[ProdForm.ReportList.ItemIndex] <> nil then
+         begin
+{ReportNameStart}
+            FUIEventSink.GetComponentReference('Report.'+TStringObject(ProdForm.ReportList.Items.Objects[ProdForm.ReportList.ItemIndex]).Value);
+{ReportNameEnd}
+         end;
+         while ProdForm.ReportList.Items.Count > 0 do
+         begin
+            if ProdForm.ReportList.Items.Objects[0] <> nil then
+            begin
+               TStringObject(ProdForm.ReportList.Items.Objects[0]).Free;
+            end;
+            ProdForm.ReportList.Items.Delete(0);
+         end;
+         LocalSharedData.Free;
+         LocalSharedData:=nil;
+      except
+         on E:Exception do
+            RaiseGUIDException('{5AA3960F-60D8-43C6-980A-D7C8B29B6FA0}',E);
+      end;
+      *]
+      }
+   }
+   CentralGenRepConst {
+      InsertBetween  { '{VarAUStart}','{VarAUEnd}' }
+      CodeBlock  { [*
+         const
+            ReportFileName = 'C:\Botswana Report Formats.ids';
+      *]
+      }
+   }
+   CentralGenRepExecute {
+      InsertBetween  { '{IsListStart}','{IsListEnd}' }
+      CodeBlock  { [*
+         ProdForm.PostOffice.Items.Insert(0,'All');
+         ProdForm.PostOffice.Text:='All';
+         ProdForm.PostOffice.ItemIndex:=ProdForm.PostOffice.Items.IndexOf(ProdForm.PostOffice.Text);
+         ProdForm.UserName.Items.CommaText := ListUsers;
+         ProdForm.UserName.Items.Insert(0,'All');
+         ProdForm.UserName.Text:='All';
+         ProdForm.UserName.ItemIndex:=ProdForm.UserName.Items.IndexOf(ProdForm.UserName.Text);
+         ReportsNode:=TReportsNode.Create('Reports',ReportFileName,1);
+         ReportsNode.ParseFile(ExtractFilePath(ReportFileName),ReportFileName,1);
+         ReportsNode.PutInReportTitles(ProdForm.ReportList.Items);
+         ProdForm.ReportList.Sorted:=True;
+         ReportsNode.Free;
+      *]
+      }
+   }
+   CentralGenRepUses {
+      InsertBetween  { '{AutoUsesStart}','{AutoUsesEnd}' }
+      CodeBlock  { [*
+        ReportIDSU,StringUtil,ShareDataU,
+     *]
+      }
+   }
+   CentralGenRepVars {
+      InsertBetween  { '{PublVarDecStart}','{PublVarDecEnd}' }
+      CodeBlock  { [*
+        ReportsNode:TReportsNode;
+     *]
+      }
+   }
+}

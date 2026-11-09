@@ -1,0 +1,914 @@
+P691            FRIED EGGS               9607151                         0.15
+P691            FRIED EGGS               9607152                         0.25
+P691            FRIED EGGS               9607153                         0.30
+P691            FRIED EGGS               9607154                         0.35
+P691            FRIED EGGS               9607155                         0.40
+P691            FRIED EGGS               9607156                         0.45
+P692            GRILLED BACK BACON       9607151                         0.35
+P692            GRILLED BACK BACON       9607152                         0.35
+P692            GRILLED BACK BACON       9607153                         0.26
+P692            GRILLED BACK BACON       9607154                         0.26
+P692            GRILLED BACK BACON       9607155                         0.26
+P692            GRILLED BACK BACON       9607156                         0.26
+P694            GRILLED SAUSAGES         9607151                         0.20
+P694            GRILLED SAUSAGES         9607152                         0.20
+P694            GRILLED SAUSAGES         9607153                         0.14
+P694            GRILLED SAUSAGES         9607154                         0.14
+P694            GRILLED SAUSAGES         9607155                         0.14
+P694            GRILLED SAUSAGES         9607156                         0.14
+P697            PORRIDGE ENGLISH         9607151                         0.30
+P697            PORRIDGE ENGLISH         9607152                         0.30
+P697            PORRIDGE ENGLISH         9607153                         0.18
+P697            PORRIDGE ENGLISH         9607154                         0.18
+P697            PORRIDGE ENGLISH         9607155                         0.18
+P697            PORRIDGE ENGLISH         9607156                         0.18
+P701            POACHED EGGS 1           9607151                         0.15
+P701            POACHED EGGS 1           9607152                         0.15
+P701            POACHED EGGS 1           9607153                         0.10
+P701            POACHED EGGS 1           9607154                         0.10
+P701            POACHED EGGS 1           9607155                         0.10
+P701            POACHED EGGS 1           9607156                         0.10
+P704            BURGER BEEF              9607151                         0.45
+P704            BURGER BEEF              9607152                         0.45
+P704            BURGER BEEF              9607153                         0.31
+P704            BURGER BEEF              9607154                         0.31
+P704            BURGER BEEF              9607155                         0.31
+P704            BURGER BEEF              9607156                         0.31
+P707            FRIED BREAD              9607151                         0.05
+P707            FRIED BREAD              9607152                         0.05
+P707            FRIED BREAD              9607153                         0.04
+P707            FRIED BREAD              9607154                         0.04
+P707            FRIED BREAD              9607155                         0.04
+P707            FRIED BREAD              9607156                         0.04
+P709            BLACK PUDDING            9607151                         0.15
+P709            BLACK PUDDING            9607152                         0.15
+P709            BLACK PUDDING            9607153                         0.12
+P709            BLACK PUDDING            9607154                         0.12
+P709            BLACK PUDDING            9607155                         0.12
+P709            BLACK PUDDING            9607156                         0.12
+P710            SCRAMBLED EGGS           9607151                         0.15
+P710            SCRAMBLED EGGS           9607152                         0.15
+P710            SCRAMBLED EGGS           9607153                         0.15
+P710            SCRAMBLED EGGS           9607154                         0.15
+P710            SCRAMBLED EGGS           9607155                         0.15
+P710            SCRAMBLED EGGS           9607156                         0.15
+P2472           TOAST                    9607151                         0.10
+P2472           TOAST                    9607152                         0.10
+P2472           TOAST                    9607153                         0.08
+P2472           TOAST                    9607154                         0.08
+P2472           TOAST                    9607155                         0.08
+P2472           TOAST                    9607156                         0.08
+P152            MARMALADE,COOPERS 20GM   9607151                         0.10
+P152            MARMALADE,COOPERS 20GM   9607152                         0.10
+P152            MARMALADE,COOPERS 20GM   9607153                         0.08
+P152            MARMALADE,COOPERS 20GM   9607154                         0.08
+P152            MARMALADE,COOPERS 20GM   9607155                         0.08
+P152            MARMALADE,COOPERS 20GM   9607156                         0.08
+P153            JAM PORTION,ASSORTED     9607151                         0.10
+P153            JAM PORTION,ASSORTED     9607152                         0.10
+P153            JAM PORTION,ASSORTED     9607153                         0.08
+P153            JAM PORTION,ASSORTED     9607154                         0.08
+P153            JAM PORTION,ASSORTED     9607155                         0.08
+P153            JAM PORTION,ASSORTED     9607156                         0.08
+P828            CORNFLAKES               9607151                         0.30
+P828            CORNFLAKES               9607152                         0.30
+P828            CORNFLAKES               9607153                         0.24
+P828            CORNFLAKES               9607154                         0.24
+P828            CORNFLAKES               9607155                         0.24
+P828            CORNFLAKES               9607156                         0.24
+P830            WEETABIX                 9607151                         0.30
+P830            WEETABIX                 9607152                         0.30
+P830            WEETABIX                 9607153                         0.24
+P830            WEETABIX                 9607154                         0.24
+P830            WEETABIX                 9607155                         0.24
+P830            WEETABIX                 9607156                         0.24
+P1733           MIXED GRILL MINI         9607152                         1.15
+P1733           MIXED GRILL MINI         9607153                         0.78
+P1733           MIXED GRILL MINI         9607154                         0.78
+P1733           MIXED GRILL MINI         9607155                         0.78
+P1733           MIXED GRILL MINI         9607156                         0.78
+P559            COD BATTERED D FRIED     9607151                         1.25
+P559            COD BATTERED D FRIED     9607152                         1.25
+P559            COD BATTERED D FRIED     9607153                         0.81
+P559            COD BATTERED D FRIED     9607154                         0.81
+P559            COD BATTERED D FRIED     9607155                         0.81
+P559            COD BATTERED D FRIED     9607156                         0.81
+P572            PLAICE BREADED D FRIED   9607151                         1.30
+P572            PLAICE BREADED D FRIED   9607152                         1.30
+P572            PLAICE BREADED D FRIED   9607153                         0.65
+P572            PLAICE BREADED D FRIED   9607154                         0.65
+P572            PLAICE BREADED D FRIED   9607155                         0.65
+P572            PLAICE BREADED D FRIED   9607156                         0.65
+P647            HOKI BREADED             9607151                         1.25
+P647            HOKI BREADED             9607152                         1.25
+P647            HOKI BREADED             9607153                         0.70
+P647            HOKI BREADED             9607154                         0.70
+P647            HOKI BREADED             9607155                         0.70
+P647            HOKI BREADED             9607156                         0.70
+P1754           HOKI DEEP FRIED TART SCE 9607151                         1.30
+P1754           HOKI DEEP FRIED TART SCE 9607152                         1.30
+P1754           HOKI DEEP FRIED TART SCE 9607153                         0.87
+P1754           HOKI DEEP FRIED TART SCE 9607154                         0.87
+P1754           HOKI DEEP FRIED TART SCE 9607155                         0.87
+P1754           HOKI DEEP FRIED TART SCE 9607156                         0.87
+P1755           SEAFOOD RISOTTO          9607151                         0.98
+P1755           SEAFOOD RISOTTO          9607152                         0.98
+P1755           SEAFOOD RISOTTO          9607153                         0.65
+P1755           SEAFOOD RISOTTO          9607154                         0.65
+P1755           SEAFOOD RISOTTO          9607155                         0.65
+P1755           SEAFOOD RISOTTO          9607156                         0.65
+P1756           SALMON F/CAKE & PARS SCE 9607151                         1.00
+P1756           SALMON F/CAKE & PARS SCE 9607152                         1.00
+P1756           SALMON F/CAKE & PARS SCE 9607153                         0.37
+P1756           SALMON F/CAKE & PARS SCE 9607154                         0.37
+P1756           SALMON F/CAKE & PARS SCE 9607155                         0.37
+P1756           SALMON F/CAKE & PARS SCE 9607156                         0.37
+P1892           SEAFOOD BAKE             9607151                         1.00
+P1892           SEAFOOD BAKE             9607152                         1.00
+P1892           SEAFOOD BAKE             9607153                         0.75
+P1892           SEAFOOD BAKE             9607154                         0.75
+P1892           SEAFOOD BAKE             9607155                         0.75
+P1892           SEAFOOD BAKE             9607156                         0.75
+P1938           SMOKED HADDOCK BAKE      9607151                         1.05
+P1938           SMOKED HADDOCK BAKE      9607152                         1.05
+P1938           SMOKED HADDOCK BAKE      9607153                         0.40
+P1938           SMOKED HADDOCK BAKE      9607154                         0.40
+P1938           SMOKED HADDOCK BAKE      9607155                         0.40
+P1938           SMOKED HADDOCK BAKE      9607156                         0.40
+P2166           HADDOCK BREADED          9607151                         1.25
+P2166           HADDOCK BREADED          9607152                         1.25
+P2166           HADDOCK BREADED          9607153                         0.74
+P2166           HADDOCK BREADED          9607154                         0.74
+P2166           HADDOCK BREADED          9607155                         0.74
+P2166           HADDOCK BREADED          9607156                         0.74
+P1407           BURGER QUARTER POUND     9607151                         0.98
+P1407           BURGER QUARTER POUND     9607152                         0.98
+P1407           BURGER QUARTER POUND     9607153                         0.59
+P1407           BURGER QUARTER POUND     9607154                         0.59
+P1407           BURGER QUARTER POUND     9607155                         0.59
+P1407           BURGER QUARTER POUND     9607156                         0.59
+P1726           VEAL CUTLET BRDED TOM SCE9607151                         0.98
+P1726           VEAL CUTLET BRDED TOM SCE9607152                         0.98
+P1726           VEAL CUTLET BRDED TOM SCE9607153                         0.68
+P1726           VEAL CUTLET BRDED TOM SCE9607154                         0.68
+P1726           VEAL CUTLET BRDED TOM SCE9607155                         0.68
+P1726           VEAL CUTLET BRDED TOM SCE9607156                         0.68
+P2125           YORKSHIRE BOLOGNSE GIANT 9607151                         1.10
+P2125           YORKSHIRE BOLOGNSE GIANT 9607152                         1.10
+P2125           YORKSHIRE BOLOGNSE GIANT 9607153                         1.13
+P2125           YORKSHIRE BOLOGNSE GIANT 9607154                         1.13
+P2125           YORKSHIRE BOLOGNSE GIANT 9607155                         1.13
+P2125           YORKSHIRE BOLOGNSE GIANT 9607156                         1.13
+P1679           GAMMON ROAST PEACHES     9607151                         1.25
+P1679           GAMMON ROAST PEACHES     9607152                         1.25
+P1679           GAMMON ROAST PEACHES     9607153                         1.49
+P1679           GAMMON ROAST PEACHES     9607154                         1.49
+P1679           GAMMON ROAST PEACHES     9607155                         1.49
+P1679           GAMMON ROAST PEACHES     9607156                         1.49
+P1735           GAMMON & MUSTARD SAUCE   9607151                         1.30
+P1735           GAMMON & MUSTARD SAUCE   9607152                         1.30
+P1735           GAMMON & MUSTARD SAUCE   9607153                         0.96
+P1735           GAMMON & MUSTARD SAUCE   9607154                         0.96
+P1735           GAMMON & MUSTARD SAUCE   9607155                         0.96
+P1735           GAMMON & MUSTARD SAUCE   9607156                         0.96
+P1650           LANCASHIRE HOT POT       9607151                         1.15
+P1650           LANCASHIRE HOT POT       9607152                         1.15
+P1650           LANCASHIRE HOT POT       9607153                         0.98
+P1650           LANCASHIRE HOT POT       9607154                         0.98
+P1650           LANCASHIRE HOT POT       9607155                         0.98
+P1650           LANCASHIRE HOT POT       9607156                         0.98
+P1651           LAMB ROGAN JOSH          9607151                         1.00
+P1651           LAMB ROGAN JOSH          9607152                         1.00
+P1651           LAMB ROGAN JOSH          9607153                         0.78
+P1651           LAMB ROGAN JOSH          9607154                         0.78
+P1651           LAMB ROGAN JOSH          9607155                         0.78
+P1651           LAMB ROGAN JOSH          9607156                         0.78
+P1652           LIVER BRAISED            9607151                         1.05
+P1652           LIVER BRAISED            9607152                         1.05
+P1652           LIVER BRAISED            9607153                         0.41
+P1652           LIVER BRAISED            9607154                         0.41
+P1652           LIVER BRAISED            9607155                         0.41
+P1652           LIVER BRAISED            9607156                         0.41
+P1654           LAMB LEG ROAST           9607151                         1.30
+P1654           LAMB LEG ROAST           9607152                         1.30
+P1654           LAMB LEG ROAST           9607153                         1.38
+P1654           LAMB LEG ROAST           9607154                         1.38
+P1654           LAMB LEG ROAST           9607155                         1.38
+P1654           LAMB LEG ROAST           9607156                         1.38
+P1658           SHEPHERDS PIE            9607151                         0.98
+P1658           SHEPHERDS PIE            9607152                         0.98
+P1658           SHEPHERDS PIE            9607153                         0.63
+P1658           SHEPHERDS PIE            9607154                         0.63
+P1658           SHEPHERDS PIE            9607155                         0.63
+P1658           SHEPHERDS PIE            9607156                         0.63
+P1740           LAMB BOMBAY              9607151                         1.00
+P1740           LAMB BOMBAY              9607152                         1.00
+P1740           LAMB BOMBAY              9607153                         0.70
+P1740           LAMB BOMBAY              9607154                         0.70
+P1740           LAMB BOMBAY              9607155                         0.70
+P1740           LAMB BOMBAY              9607156                         0.70
+P1741           LAMB CULT & R/CURRENT SCE9607151                         1.20
+P1741           LAMB CULT & R/CURRENT SCE9607152                         1.20
+P1741           LAMB CULT & R/CURRENT SCE9607153                         0.50
+P1741           LAMB CULT & R/CURRENT SCE9607154                         0.50
+P1741           LAMB CULT & R/CURRENT SCE9607155                         0.50
+P1741           LAMB CULT & R/CURRENT SCE9607156                         0.50
+P1743           LAMB POT SPIN CURRY      9607151                         1.10
+P1743           LAMB POT SPIN CURRY      9607152                         1.10
+P1744           LAMB VEG & MINT CASSEROL 9607151                         1.20
+P1744           LAMB VEG & MINT CASSEROL 9607152                         1.20
+P1744           LAMB VEG & MINT CASSEROL 9607153                         1.01
+P1744           LAMB VEG & MINT CASSEROL 9607154                         1.01
+P1744           LAMB VEG & MINT CASSEROL 9607155                         1.01
+P1744           LAMB VEG & MINT CASSEROL 9607156                         1.01
+P1745           LAMB SHREWSBURY          9607151                         1.00
+P1745           LAMB SHREWSBURY          9607152                         1.00
+P1745           LAMB SHREWSBURY          9607153                         0.62
+P1745           LAMB SHREWSBURY          9607154                         0.62
+P1745           LAMB SHREWSBURY          9607155                         0.62
+P1745           LAMB SHREWSBURY          9607156                         0.62
+P1728           KIDNEY TURBIGO           9607151                         0.98
+P1728           KIDNEY TURBIGO           9607152                         0.98
+P1728           KIDNEY TURBIGO           9607153                         0.89
+P1728           KIDNEY TURBIGO           9607154                         0.89
+P1728           KIDNEY TURBIGO           9607155                         0.89
+P1728           KIDNEY TURBIGO           9607156                         0.89
+P638            TOAD IN THE HOLE         9607151                         1.00
+P638            TOAD IN THE HOLE         9607152                         1.00
+P638            TOAD IN THE HOLE         9607153                         0.49
+P638            TOAD IN THE HOLE         9607154                         0.49
+P638            TOAD IN THE HOLE         9607155                         0.49
+P638            TOAD IN THE HOLE         9607156                         0.49
+P656            SAUSAGE JUMBO SPICY BATT 9607151                         1.05
+P656            SAUSAGE JUMBO SPICY BATT 9607152                         1.05
+P656            SAUSAGE JUMBO SPICY BATT 9607153                         0.49
+P656            SAUSAGE JUMBO SPICY BATT 9607154                         0.49
+P656            SAUSAGE JUMBO SPICY BATT 9607155                         0.49
+P656            SAUSAGE JUMBO SPICY BATT 9607156                         0.49
+P657            SAUSAGE & TOMATO HOTPOT  9607151                         1.10
+P657            SAUSAGE & TOMATO HOTPOT  9607152                         1.10
+P657            SAUSAGE & TOMATO HOTPOT  9607153                         0.86
+P657            SAUSAGE & TOMATO HOTPOT  9607154                         0.86
+P657            SAUSAGE & TOMATO HOTPOT  9607155                         0.86
+P657            SAUSAGE & TOMATO HOTPOT  9607156                         0.86
+P1719           SAUSAGE PLAIT            9607151                         1.00
+P1719           SAUSAGE PLAIT            9607152                         1.00
+P1719           SAUSAGE PLAIT            9607153                         0.65
+P1719           SAUSAGE PLAIT            9607154                         0.65
+P1719           SAUSAGE PLAIT            9607155                         0.65
+P1719           SAUSAGE PLAIT            9607156                         0.65
+P662            TURKEY STEAK & BBQ SAUCE 9607151                         1.10
+P662            TURKEY STEAK & BBQ SAUCE 9607152                         1.10
+P662            TURKEY STEAK & BBQ SAUCE 9607153                         1.07
+P662            TURKEY STEAK & BBQ SAUCE 9607154                         1.07
+P662            TURKEY STEAK & BBQ SAUCE 9607155                         1.07
+P662            TURKEY STEAK & BBQ SAUCE 9607156                         1.07
+P663            CHICKEN CAJAN STIR FRY   9607151                         1.00
+P663            CHICKEN CAJAN STIR FRY   9607152                         1.00
+P663            CHICKEN CAJAN STIR FRY   9607153                         0.94
+P663            CHICKEN CAJAN STIR FRY   9607154                         0.94
+P663            CHICKEN CAJAN STIR FRY   9607155                         0.94
+P663            CHICKEN CAJAN STIR FRY   9607156                         0.94
+P1689           CHICKEN HICKORY          9607151                         1.10
+P1689           CHICKEN HICKORY          9607152                         1.10
+P1689           CHICKEN HICKORY          9607153                         0.69
+P1689           CHICKEN HICKORY          9607154                         0.69
+P1689           CHICKEN HICKORY          9607155                         0.69
+P1689           CHICKEN HICKORY          9607156                         0.69
+P1690           CHICKEN KORMA            9607151                         1.00
+P1690           CHICKEN KORMA            9607152                         1.00
+P1690           CHICKEN KORMA            9607153                         0.69
+P1690           CHICKEN KORMA            9607154                         0.69
+P1690           CHICKEN KORMA            9607155                         0.69
+P1690           CHICKEN KORMA            9607156                         0.69
+P1701           TURKEY CHIPPOLATA ROAST  9607151                         1.25
+P1701           TURKEY CHIPPOLATA ROAST  9607152                         1.25
+P1701           TURKEY CHIPPOLATA ROAST  9607153                         1.67
+P1701           TURKEY CHIPPOLATA ROAST  9607154                         1.67
+P1701           TURKEY CHIPPOLATA ROAST  9607155                         1.67
+P1701           TURKEY CHIPPOLATA ROAST  9607156                         1.67
+P1710           CHICKEN CHASSEUR         9607151                         1.20
+P1710           CHICKEN CHASSEUR         9607152                         1.20
+P1710           CHICKEN CHASSEUR         9607153                         1.00
+P1710           CHICKEN CHASSEUR         9607154                         1.00
+P1710           CHICKEN CHASSEUR         9607155                         1.00
+P1710           CHICKEN CHASSEUR         9607156                         1.00
+P1747           CHICKEN CREAMY LEMON     9607151                         1.00
+P1747           CHICKEN CREAMY LEMON     9607152                         1.00
+P1747           CHICKEN CREAMY LEMON     9607153                         0.75
+P1747           CHICKEN CREAMY LEMON     9607154                         0.75
+P1747           CHICKEN CREAMY LEMON     9607155                         0.75
+P1747           CHICKEN CREAMY LEMON     9607156                         0.75
+P1748           CHICKEN GOULASH          9607151                         1.10
+P1748           CHICKEN GOULASH          9607152                         1.10
+P1748           CHICKEN GOULASH          9607153                         0.52
+P1748           CHICKEN GOULASH          9607154                         0.52
+P1748           CHICKEN GOULASH          9607155                         0.52
+P1748           CHICKEN GOULASH          9607156                         0.52
+P1749           CHICKEN BHOONA           9607151                         1.00
+P1749           CHICKEN BHOONA           9607152                         1.00
+P1749           CHICKEN BHOONA           9607153                         0.71
+P1749           CHICKEN BHOONA           9607154                         0.71
+P1749           CHICKEN BHOONA           9607155                         0.71
+P1749           CHICKEN BHOONA           9607156                         0.71
+P1752           TURKEY AND VEG MADRAS    9607151                         1.05
+P1752           TURKEY AND VEG MADRAS    9607152                         1.05
+P1752           TURKEY AND VEG MADRAS    9607153                         1.12
+P1752           TURKEY AND VEG MADRAS    9607154                         1.12
+P1752           TURKEY AND VEG MADRAS    9607155                         1.12
+P1752           TURKEY AND VEG MADRAS    9607156                         1.12
+P1567           ROAST POTATOES           9607151                         0.25
+P1567           ROAST POTATOES           9607152                         0.25
+P1569           NEW POTATOES             9607151                         0.25
+P1569           NEW POTATOES             9607152                         0.25
+P1571           PARSLEY POTATOES         9607151                         0.25
+P1571           PARSLEY POTATOES         9607152                         0.25
+P1625           CHIPS                    9607151                         0.35
+P1625           CHIPS                    9607152                         0.35
+P1625           CHIPS                    9607153                         0.21
+P1625           CHIPS                    9607154                         0.21
+P1625           CHIPS                    9607155                         0.21
+P1625           CHIPS                    9607156                         0.21
+P1629           CROQUETTE POTATOES       9607151                         0.25
+P1629           CROQUETTE POTATOES       9607152                         0.25
+P1635           SAUTE POTATOES           9607151                         0.25
+P1635           SAUTE POTATOES           9607152                         0.25
+P1636           MINTED NEW POTATOES      9607151                         0.25
+P1636           MINTED NEW POTATOES      9607152                         0.25
+P1643           PARMENIER POTATOES       9607151                         0.25
+P1643           PARMENIER POTATOES       9607152                         0.25
+P1815           BOMBAY POTATOES          9607151                         0.25
+P1815           BOMBAY POTATOES          9607152                         0.25
+P1817           DICED POTATOES & PARSLEY 9607151                         0.25
+P1817           DICED POTATOES & PARSLEY 9607152                         0.25
+P1818           DICED THYME TOMATO POTATO9607151                         0.25
+P1818           DICED THYME TOMATO POTATO9607152                         0.25
+P1819           MASHED POTATO & ONIONS   9607151                         0.25
+P1819           MASHED POTATO & ONIONS   9607152                         0.25
+P1820           SPICY JACKET WEDGES      9607151                         0.25
+P1820           SPICY JACKET WEDGES      9607152                         0.25
+P521            CAULI FLORETS BUTTERED   9607151                         0.25
+P521            CAULI FLORETS BUTTERED   9607152                         0.25
+P530            LEEKS BRAISED FZN        9607151                         0.25
+P530            LEEKS BRAISED FZN        9607152                         0.25
+P544            PEAS MUSHY FSH           9607151                         0.25
+P544            PEAS MUSHY FSH           9607152                         0.25
+P551            SWEDE PUREE FZN          9607151                         0.25
+P551            SWEDE PUREE FZN          9607152                         0.25
+P689            BAKED BEANS              9607151                         0.25
+P689            BAKED BEANS              9607152                         0.25
+P1800           LEEKS CREAMED            9607151                         0.25
+P1800           LEEKS CREAMED            9607152                         0.25
+P1801           PEAS CREAMED MINTED      9607151                         0.25
+P1801           PEAS CREAMED MINTED      9607152                         0.25
+P1802           ONIONS WHITE CREAMED     9607151                         0.25
+P1802           ONIONS WHITE CREAMED     9607152                         0.25
+P1803           CAULIFLOWER D FRIED SPICY9607151                         0.25
+P1803           CAULIFLOWER D FRIED SPICY9607152                         0.25
+P1804           ORIENTAL MIXED VEG       9607151                         0.25
+P1804           ORIENTAL MIXED VEG       9607152                         0.25
+P1805           PEAS AND CORN            9607151                         0.25
+P1805           PEAS AND CORN            9607152                         0.25
+P1806           PLUM TOMATOES            9607151                         0.25
+P1806           PLUM TOMATOES            9607152                         0.25
+P1808           ONIONS ROASTED           9607151                         0.25
+P1808           ONIONS ROASTED           9607152                         0.25
+P1809           CELERY & BEANSPR STIR FRY9607151                         0.25
+P1809           CELERY & BEANSPR STIR FRY9607152                         0.25
+P1810           SWEETCORN & MANGETOUT    9607151                         0.25
+P1810           SWEETCORN & MANGETOUT    9607152                         0.25
+P1811           SWEETCORN & PEPPERS      9607151                         0.25
+P1811           SWEETCORN & PEPPERS      9607152                         0.25
+P1812           SWEETCORN & MUSHROOMS    9607151                         0.25
+P1812           SWEETCORN & MUSHROOMS    9607152                         0.25
+P1813           SWEETCORN & SPINACH      9607151                         0.25
+P1813           SWEETCORN & SPINACH      9607152                         0.25
+P2511           CABBAGE GREEN BUTT'D FSH 9607151                         0.25
+P2511           CABBAGE GREEN BUTT'D FSH 9607152                         0.25
+P2520           CABBAGE WHT BRAISED FSH  9607151                         0.25
+P2520           CABBAGE WHT BRAISED FSH  9607152                         0.25
+P2526           CAULIFLOWER POLONAISE FSH9607151                         0.25
+P2526           CAULIFLOWER POLONAISE FSH9607152                         0.25
+P2532           CABBAGE RED BRAISED FSH  9607151                         0.25
+P2532           CABBAGE RED BRAISED FSH  9607152                         0.25
+P2543           PEAS GARDEN FZN          9607151                         0.25
+P2543           PEAS GARDEN FZN          9607152                         0.25
+P2544           CAULIFLOWER FLORETS FZN  9607151                         0.25
+P2544           CAULIFLOWER FLORETS FZN  9607152                         0.25
+P2545           VEGETABLES MIXED FZN     9607151                         0.25
+P2545           VEGETABLES MIXED FZN     9607152                         0.25
+P2547           SPROUTS BUTTON FZN       9607151                         0.25
+P2547           SPROUTS BUTTON FZN       9607152                         0.25
+P2549           BEANS GREEN SLICED FZN   9607151                         0.25
+P2549           BEANS GREEN SLICED FZN   9607152                         0.25
+P2551           BROCCOLI FLORETS FZN     9607151                         0.25
+P2551           BROCCOLI FLORETS FZN     9607152                         0.25
+P2559           PARSNIPS ROASTED FZN     9607151                         0.25
+P2559           PARSNIPS ROASTED FZN     9607152                         0.25
+P2569           RATATOUILLE FZN          9607151                         0.25
+P2569           RATATOUILLE FZN          9607152                         0.25
+P664            CHEESE & POT&SP.ONION PIE9607151                         0.98
+P664            CHEESE & POT&SP.ONION PIE9607152                         0.98
+P664            CHEESE & POT&SP.ONION PIE9607153                         0.51
+P664            CHEESE & POT&SP.ONION PIE9607154                         0.51
+P664            CHEESE & POT&SP.ONION PIE9607155                         0.51
+P664            CHEESE & POT&SP.ONION PIE9607156                         0.51
+P670            VEG KEBAB & PITTA BREAD  9607151                         0.98
+P670            VEG KEBAB & PITTA BREAD  9607152                         0.98
+P670            VEG KEBAB & PITTA BREAD  9607153                         0.45
+P670            VEG KEBAB & PITTA BREAD  9607154                         0.45
+P670            VEG KEBAB & PITTA BREAD  9607155                         0.45
+P670            VEG KEBAB & PITTA BREAD  9607156                         0.45
+P671            VEGETARIAN TOAD IN HOLE  9607151                         1.00
+P671            VEGETARIAN TOAD IN HOLE  9607152                         1.00
+P671            VEGETARIAN TOAD IN HOLE  9607153                         0.59
+P671            VEGETARIAN TOAD IN HOLE  9607154                         0.59
+P671            VEGETARIAN TOAD IN HOLE  9607155                         0.59
+P671            VEGETARIAN TOAD IN HOLE  9607156                         0.59
+P1758           CELERY & CASHEW RISOTTO  9607151                         1.00
+P1758           CELERY & CASHEW RISOTTO  9607152                         1.00
+P1758           CELERY & CASHEW RISOTTO  9607153                         0.69
+P1758           CELERY & CASHEW RISOTTO  9607154                         0.69
+P1758           CELERY & CASHEW RISOTTO  9607155                         0.69
+P1758           CELERY & CASHEW RISOTTO  9607156                         0.69
+P1763           TOMATO & VEG WELLINGTON  9607151                         1.00
+P1763           TOMATO & VEG WELLINGTON  9607152                         1.00
+P1763           TOMATO & VEG WELLINGTON  9607153                         0.79
+P1763           TOMATO & VEG WELLINGTON  9607154                         0.79
+P1763           TOMATO & VEG WELLINGTON  9607155                         0.79
+P1763           TOMATO & VEG WELLINGTON  9607156                         0.79
+P1764           SAVOURY BREAD & BUTT PUD 9607151                         0.98
+P1764           SAVOURY BREAD & BUTT PUD 9607152                         0.98
+P1764           SAVOURY BREAD & BUTT PUD 9607153                         0.52
+P1764           SAVOURY BREAD & BUTT PUD 9607154                         0.52
+P1764           SAVOURY BREAD & BUTT PUD 9607155                         0.52
+P1764           SAVOURY BREAD & BUTT PUD 9607156                         0.52
+P1765           SWISS SWEET & SOUR CHEESE9607151                         1.05
+P1765           SWISS SWEET & SOUR CHEESE9607152                         1.05
+P1765           SWISS SWEET & SOUR CHEESE9607153                         0.51
+P1765           SWISS SWEET & SOUR CHEESE9607154                         0.51
+P1765           SWISS SWEET & SOUR CHEESE9607155                         0.51
+P1765           SWISS SWEET & SOUR CHEESE9607156                         0.51
+P1767           VEGETABLE MEXICANA       9607151                         0.98
+P1767           VEGETABLE MEXICANA       9607152                         0.98
+P1767           VEGETABLE MEXICANA       9607153                         0.46
+P1767           VEGETABLE MEXICANA       9607154                         0.46
+P1767           VEGETABLE MEXICANA       9607155                         0.46
+P1767           VEGETABLE MEXICANA       9607156                         0.46
+P1768           VEGETABLE RISOTTO        9607151                         0.98
+P1768           VEGETABLE RISOTTO        9607152                         0.98
+P1768           VEGETABLE RISOTTO        9607153                         0.59
+P1768           VEGETABLE RISOTTO        9607154                         0.59
+P1768           VEGETABLE RISOTTO        9607155                         0.59
+P1768           VEGETABLE RISOTTO        9607156                         0.59
+P1769           AUSTRIAN VEGEE STRUDEL   9607151                         1.00
+P1769           AUSTRIAN VEGEE STRUDEL   9607152                         1.00
+P1769           AUSTRIAN VEGEE STRUDEL   9607153                         0.55
+P1769           AUSTRIAN VEGEE STRUDEL   9607154                         0.55
+P1769           AUSTRIAN VEGEE STRUDEL   9607155                         0.55
+P1769           AUSTRIAN VEGEE STRUDEL   9607156                         0.55
+P1770           VEG COURSE GRAIN MUST PIE9607151                         0.98
+P1770           VEG COURSE GRAIN MUST PIE9607152                         0.98
+P1770           VEG COURSE GRAIN MUST PIE9607153                         0.33
+P1770           VEG COURSE GRAIN MUST PIE9607154                         0.33
+P1770           VEG COURSE GRAIN MUST PIE9607155                         0.33
+P1770           VEG COURSE GRAIN MUST PIE9607156                         0.33
+P1771           VEG & RED LENTIL BAKE    9607151                         0.98
+P1771           VEG & RED LENTIL BAKE    9607152                         0.98
+P1771           VEG & RED LENTIL BAKE    9607153                         0.52
+P1771           VEG & RED LENTIL BAKE    9607154                         0.52
+P1771           VEG & RED LENTIL BAKE    9607155                         0.52
+P1771           VEG & RED LENTIL BAKE    9607156                         0.52
+P1772           VOL AU VENT & RED LENTILS9607151                         0.98
+P1772           VOL AU VENT & RED LENTILS9607152                         0.98
+P1772           VOL AU VENT & RED LENTILS9607153                         0.55
+P1772           VOL AU VENT & RED LENTILS9607154                         0.55
+P1772           VOL AU VENT & RED LENTILS9607155                         0.55
+P1772           VOL AU VENT & RED LENTILS9607156                         0.55
+P1998           CHICK PEA CASSEROLE      9607151                         0.98
+P1998           CHICK PEA CASSEROLE      9607152                         0.98
+P2225           VEG PASTA BAKE           9607151                         0.98
+P2225           VEG PASTA BAKE           9607152                         0.98
+P2225           VEG PASTA BAKE           9607153                         0.33
+P2225           VEG PASTA BAKE           9607154                         0.33
+P2225           VEG PASTA BAKE           9607155                         0.33
+P2225           VEG PASTA BAKE           9607156                         0.33
+P2255           VEG SAMOSA CURRY SCE     9607151                         1.05
+P2255           VEG SAMOSA CURRY SCE     9607152                         1.05
+P2255           VEG SAMOSA CURRY SCE     9607153                         0.87
+P2255           VEG SAMOSA CURRY SCE     9607154                         0.87
+P2255           VEG SAMOSA CURRY SCE     9607155                         0.87
+P2255           VEG SAMOSA CURRY SCE     9607156                         0.87
+P2483           MUSHROOM CHEESE PANCAKE  9607151                         0.98
+P2483           MUSHROOM CHEESE PANCAKE  9607152                         0.98
+P2483           MUSHROOM CHEESE PANCAKE  9607153                         0.94
+P2483           MUSHROOM CHEESE PANCAKE  9607154                         0.94
+P2483           MUSHROOM CHEESE PANCAKE  9607155                         0.94
+P2483           MUSHROOM CHEESE PANCAKE  9607156                         0.94
+P675            PASTA SEAFOOD            9607151                         1.00
+P675            PASTA SEAFOOD            9607152                         1.00
+P675            PASTA SEAFOOD            9607153                         0.90
+P675            PASTA SEAFOOD            9607154                         0.90
+P675            PASTA SEAFOOD            9607155                         0.90
+P675            PASTA SEAFOOD            9607156                         0.90
+P677            PASTA BACON &FRESH TOMATO9607151                         1.00
+P677            PASTA BACON &FRESH TOMATO9607152                         1.00
+P677            PASTA BACON &FRESH TOMATO9607153                         0.70
+P677            PASTA BACON &FRESH TOMATO9607154                         0.70
+P677            PASTA BACON &FRESH TOMATO9607155                         0.70
+P677            PASTA BACON &FRESH TOMATO9607156                         0.70
+P718            MARCARONI CHEESE         9607151                         0.98
+P718            MARCARONI CHEESE         9607152                         0.98
+P718            MARCARONI CHEESE         9607153                         0.25
+P718            MARCARONI CHEESE         9607154                         0.25
+P718            MARCARONI CHEESE         9607155                         0.25
+P718            MARCARONI CHEESE         9607156                         0.25
+P2128           LASAGNE VERDI BEEF       9607151                         1.00
+P2128           LASAGNE VERDI BEEF       9607152                         1.00
+P2128           LASAGNE VERDI BEEF       9607153                         0.95
+P2128           LASAGNE VERDI BEEF       9607154                         0.95
+P2128           LASAGNE VERDI BEEF       9607155                         0.95
+P2128           LASAGNE VERDI BEEF       9607156                         0.95
+P1791           BUTTERSCOTCH TART H/M    9607151                         0.35
+P1791           BUTTERSCOTCH TART H/M    9607152                         0.35
+P1797           LEMON MERINGUE PIE H/M   9607151                         0.35
+P1797           LEMON MERINGUE PIE H/M   9607152                         0.35
+P459            BREAD BUTTER PUD         9607151                         0.35
+P459            BREAD BUTTER PUD         9607152                         0.35
+P459            BREAD BUTTER PUD         9607153                         0.45
+P459            BREAD BUTTER PUD         9607154                         0.45
+P459            BREAD BUTTER PUD         9607155                         0.45
+P459            BREAD BUTTER PUD         9607156                         0.45
+P460            BAKEWELL TART            9607151                         0.35
+P460            BAKEWELL TART            9607152                         0.35
+P460            BAKEWELL TART            9607153                         0.35
+P460            BAKEWELL TART            9607154                         0.35
+P460            BAKEWELL TART            9607155                         0.35
+P460            BAKEWELL TART            9607156                         0.35
+P469            GINGER APPLE SPONGE      9607151                         0.35
+P469            GINGER APPLE SPONGE      9607152                         0.35
+P469            GINGER APPLE SPONGE      9607153                         0.20
+P469            GINGER APPLE SPONGE      9607154                         0.20
+P469            GINGER APPLE SPONGE      9607155                         0.20
+P469            GINGER APPLE SPONGE      9607156                         0.20
+P472            GOOSEBERRY CRUMBLE       9607151                         0.35
+P472            GOOSEBERRY CRUMBLE       9607152                         0.35
+P473            JAM ROLY POLY            9607151                         0.35
+P473            JAM ROLY POLY            9607152                         0.35
+P473            JAM ROLY POLY            9607153                         0.32
+P473            JAM ROLY POLY            9607154                         0.32
+P473            JAM ROLY POLY            9607155                         0.32
+P473            JAM ROLY POLY            9607156                         0.32
+P476            LEMON SPONGE             9607151                         0.35
+P476            LEMON SPONGE             9607152                         0.35
+P480            RICE PUDDING             9607151                         0.35
+P480            RICE PUDDING             9607152                         0.35
+P489            APPLE SULTANA CRUMBLE    9607151                         0.35
+P489            APPLE SULTANA CRUMBLE    9607152                         0.35
+P490            SPOTTED DICK             9607151                         0.35
+P490            SPOTTED DICK             9607152                         0.35
+P490            SPOTTED DICK             9607153                         0.05
+P490            SPOTTED DICK             9607154                         0.05
+P490            SPOTTED DICK             9607155                         0.05
+P490            SPOTTED DICK             9607156                         0.05
+P683            FRUITS OF THE FOREST PIE 9607151                         0.35
+P683            FRUITS OF THE FOREST PIE 9607152                         0.35
+P683            FRUITS OF THE FOREST PIE 9607153                         0.32
+P683            FRUITS OF THE FOREST PIE 9607154                         0.32
+P683            FRUITS OF THE FOREST PIE 9607155                         0.32
+P683            FRUITS OF THE FOREST PIE 9607156                         0.32
+P1724           JAM SPONGE               9607151                         0.35
+P1724           JAM SPONGE               9607152                         0.35
+P1724           JAM SPONGE               9607153                         0.15
+P1724           JAM SPONGE               9607154                         0.15
+P1724           JAM SPONGE               9607155                         0.15
+P1724           JAM SPONGE               9607156                         0.15
+P1725           SYRUP SPONGE             9607151                         0.35
+P1725           SYRUP SPONGE             9607152                         0.35
+P1778           BEIGNETS                 9607151                         0.35
+P1778           BEIGNETS                 9607152                         0.35
+P1778           BEIGNETS                 9607153                         0.06
+P1778           BEIGNETS                 9607154                         0.06
+P1778           BEIGNETS                 9607155                         0.06
+P1778           BEIGNETS                 9607156                         0.06
+P1779           PINEAPPLE UPS DOWN PUD   9607151                         0.35
+P1779           PINEAPPLE UPS DOWN PUD   9607152                         0.35
+P1779           PINEAPPLE UPS DOWN PUD   9607153                         0.28
+P1779           PINEAPPLE UPS DOWN PUD   9607154                         0.28
+P1779           PINEAPPLE UPS DOWN PUD   9607155                         0.28
+P1779           PINEAPPLE UPS DOWN PUD   9607156                         0.28
+P1780           STEWED APPLE & CINAMMON  9607151                         0.35
+P1780           STEWED APPLE & CINAMMON  9607152                         0.35
+P1780           STEWED APPLE & CINAMMON  9607153                         0.11
+P1780           STEWED APPLE & CINAMMON  9607154                         0.11
+P1780           STEWED APPLE & CINAMMON  9607155                         0.11
+P1780           STEWED APPLE & CINAMMON  9607156                         0.11
+P1781           CHOC & ORANGE SPONGE     9607151                         0.35
+P1781           CHOC & ORANGE SPONGE     9607152                         0.35
+P1781           CHOC & ORANGE SPONGE     9607153                         0.15
+P1781           CHOC & ORANGE SPONGE     9607154                         0.15
+P1781           CHOC & ORANGE SPONGE     9607155                         0.15
+P1781           CHOC & ORANGE SPONGE     9607156                         0.15
+P1782           CHOCOLATE SHORTBREAD     9607151                         0.35
+P1782           CHOCOLATE SHORTBREAD     9607152                         0.35
+P1783           CHOC & MALLOW SPONGE     9607151                         0.35
+P1783           CHOC & MALLOW SPONGE     9607152                         0.35
+P1783           CHOC & MALLOW SPONGE     9607153                         0.22
+P1783           CHOC & MALLOW SPONGE     9607154                         0.22
+P1783           CHOC & MALLOW SPONGE     9607155                         0.22
+P1783           CHOC & MALLOW SPONGE     9607156                         0.22
+P1784           COFFEE SPONGE            9607151                         0.35
+P1784           COFFEE SPONGE            9607152                         0.35
+P1784           COFFEE SPONGE            9607153                         0.20
+P1784           COFFEE SPONGE            9607154                         0.20
+P1784           COFFEE SPONGE            9607155                         0.20
+P1784           COFFEE SPONGE            9607156                         0.20
+P1785           EVE'S PUDDING            9607151                         0.35
+P1785           EVE'S PUDDING            9607152                         0.35
+P1786           JAM TART                 9607151                         0.35
+P1786           JAM TART                 9607152                         0.35
+P1786           JAM TART                 9607153                         0.28
+P1786           JAM TART                 9607154                         0.28
+P1786           JAM TART                 9607155                         0.28
+P1786           JAM TART                 9607156                         0.28
+P1788           NELSON TART              9607151                         0.35
+P1788           NELSON TART              9607152                         0.35
+P1788           NELSON TART              9607153                         0.26
+P1788           NELSON TART              9607154                         0.26
+P1788           NELSON TART              9607155                         0.26
+P1788           NELSON TART              9607156                         0.26
+P1789           PEAR & CHOC CRUMBLE      9607151                         0.35
+P1789           PEAR & CHOC CRUMBLE      9607152                         0.35
+P1789           PEAR & CHOC CRUMBLE      9607153                         0.37
+P1789           PEAR & CHOC CRUMBLE      9607154                         0.37
+P1789           PEAR & CHOC CRUMBLE      9607155                         0.37
+P1789           PEAR & CHOC CRUMBLE      9607156                         0.37
+P1790           PEAR SPONGE              9607151                         0.35
+P1790           PEAR SPONGE              9607152                         0.35
+P130            PEARS,WILLIAM,FRESH      9607151                         0.30
+P130            PEARS,WILLIAM,FRESH      9607152                         0.30
+P130            PEARS,WILLIAM,FRESH      9607153                         0.22
+P130            PEARS,WILLIAM,FRESH      9607154                         0.22
+P130            PEARS,WILLIAM,FRESH      9607155                         0.22
+P130            PEARS,WILLIAM,FRESH      9607156                         0.22
+P133            ORANGE,FRESH,MEDIUM      9607151                         0.30
+P133            ORANGE,FRESH,MEDIUM      9607152                         0.30
+P133            ORANGE,FRESH,MEDIUM      9607153                         0.18
+P133            ORANGE,FRESH,MEDIUM      9607154                         0.18
+P133            ORANGE,FRESH,MEDIUM      9607155                         0.18
+P133            ORANGE,FRESH,MEDIUM      9607156                         0.18
+P138            BANANA,FRESH             9607151                         0.30
+P138            BANANA,FRESH             9607152                         0.30
+P138            BANANA,FRESH             9607153                         0.28
+P138            BANANA,FRESH             9607154                         0.28
+P138            BANANA,FRESH             9607155                         0.28
+P138            BANANA,FRESH             9607156                         0.28
+P139            APPLE,RED DELICIOUS      9607151                         0.30
+P139            APPLE,RED DELICIOUS      9607152                         0.30
+P139            APPLE,RED DELICIOUS      9607153                         0.20
+P139            APPLE,RED DELICIOUS      9607154                         0.20
+P139            APPLE,RED DELICIOUS      9607155                         0.20
+P139            APPLE,RED DELICIOUS      9607156                         0.20
+P140            APPLE,GRANNY SMITH       9607151                         0.30
+P140            APPLE,GRANNY SMITH       9607152                         0.30
+P140            APPLE,GRANNY SMITH       9607153                         0.24
+P140            APPLE,GRANNY SMITH       9607154                         0.24
+P140            APPLE,GRANNY SMITH       9607155                         0.24
+P140            APPLE,GRANNY SMITH       9607156                         0.24
+P283            ORANGES FRESH LARGE      9607151                         0.25
+P283            ORANGES FRESH LARGE      9607152                         0.25
+P284            ORANGE FRESH MEDIUM      9607151                         0.25
+P284            ORANGE FRESH MEDIUM      9607152                         0.25
+P287            KIWI FRUIT FRESH         9607151                         0.26
+P287            KIWI FRUIT FRESH         9607152                         0.26
+P71             COOKIE,CHOC CHIP GIANT   9607151                         0.35
+P71             COOKIE,CHOC CHIP GIANT   9607152                         0.35
+P186            TUC SAVOURY - TWIN PACK  9607151                         0.26
+P186            TUC SAVOURY - TWIN PACK  9607152                         0.26
+P265            COOKIES GIANT            9607151                         0.35
+P265            COOKIES GIANT            9607152                         0.35
+P264            COOKIES T/P              9607151                         0.20
+P264            COOKIES T/P              9607152                         0.20
+P348            FRUIT G/COOKIE           9607151                         0.35
+P348            FRUIT G/COOKIE           9607152                         0.35
+P2990           TEA PG 200ML             9607151                         0.20
+P2990           TEA PG 200ML             9607152                         0.20
+P2990           TEA PG 200ML             9607153                         0.08
+P2990           TEA PG 200ML             9607154                         0.08
+P2990           TEA PG 200ML             9607155                         0.08
+P2990           TEA PG 200ML             9607156                         0.08
+P3259           SPLIT CREAM DOUGHNUT     9607151                         0.40
+P3259           SPLIT CREAM DOUGHNUT     9607152                         0.40
+P3259           SPLIT CREAM DOUGHNUT     9607153                         0.35
+P3259           SPLIT CREAM DOUGHNUT     9607154                         0.35
+P3259           SPLIT CREAM DOUGHNUT     9607155                         0.35
+P3259           SPLIT CREAM DOUGHNUT     9607156                         0.35
+P163            FLAPJACK CHERRY & SULTANA9607151                         0.45
+P163            FLAPJACK CHERRY & SULTANA9607152                         0.45
+P164            FLAPJACK FINGER          9607151                         0.45
+P164            FLAPJACK FINGER          9607152                         0.45
+P202            COMBOS                   9607151                         0.56
+P202            COMBOS                   9607152                         0.56
+P343            FUDGE SLICE LUX          9607151                         0.45
+P343            FUDGE SLICE LUX          9607152                         0.45
+P3260           BELGIAN BUN              9607151                         0.40
+P3260           BELGIAN BUN              9607152                         0.40
+P3260           BELGIAN BUN              9607153                         0.33
+P3260           BELGIAN BUN              9607154                         0.33
+P3260           BELGIAN BUN              9607155                         0.33
+P3260           BELGIAN BUN              9607156                         0.33
+P3261           CHELSEA BUN              9607151                         0.35
+P3261           CHELSEA BUN              9607152                         0.35
+P3261           CHELSEA BUN              9607153                         0.30
+P3261           CHELSEA BUN              9607154                         0.30
+P3261           CHELSEA BUN              9607155                         0.30
+P3261           CHELSEA BUN              9607156                         0.30
+P3262           CARROT CAKE SLICE        9607151                         0.45
+P3262           CARROT CAKE SLICE        9607152                         0.45
+P3262           CARROT CAKE SLICE        9607153                         0.33
+P3262           CARROT CAKE SLICE        9607154                         0.33
+P3262           CARROT CAKE SLICE        9607155                         0.33
+P3262           CARROT CAKE SLICE        9607156                         0.33
+P168            YOGHURT,YOPLAIT DIET 125G9607151                         0.40
+P168            YOGHURT,YOPLAIT DIET 125G9607152                         0.40
+P169            YOGHURT,LOWFAT MIXED     9607151                         0.40
+P169            YOGHURT,LOWFAT MIXED     9607152                         0.40
+P1796           LEMON CHEESECAKE H/M     9607151                         0.35
+P1796           LEMON CHEESECAKE H/M     9607152                         0.35
+P1796           LEMON CHEESECAKE H/M     9607153                         0.35
+P1796           LEMON CHEESECAKE H/M     9607154                         0.35
+P1796           LEMON CHEESECAKE H/M     9607155                         0.35
+P1796           LEMON CHEESECAKE H/M     9607156                         0.35
+P1215           S/W CHEESE VEGE SALAD WT 9607151                         0.55
+P1215           S/W CHEESE VEGE SALAD WT 9607152                         0.55
+P1215           S/W CHEESE VEGE SALAD WT 9607153                         0.44
+P1215           S/W CHEESE VEGE SALAD WT 9607154                         0.44
+P1215           S/W CHEESE VEGE SALAD WT 9607155                         0.44
+P1215           S/W CHEESE VEGE SALAD WT 9607156                         0.44
+P2571           S/W HAM SALAD WT         9607151                         0.60
+P2571           S/W HAM SALAD WT         9607152                         0.60
+P2649           S/W TUNA SALAD TW        9607151                         0.70
+P2649           S/W TUNA SALAD TW        9607152                         0.70
+P2649           S/W TUNA SALAD TW        9607153                         0.54
+P2649           S/W TUNA SALAD TW        9607154                         0.54
+P2649           S/W TUNA SALAD TW        9607155                         0.54
+P2649           S/W TUNA SALAD TW        9607156                         0.54
+P1245           S/W CHEESE VEGE SALAD BR 9607151                         0.55
+P1245           S/W CHEESE VEGE SALAD BR 9607152                         0.55
+P1245           S/W CHEESE VEGE SALAD BR 9607153                         0.44
+P1245           S/W CHEESE VEGE SALAD BR 9607154                         0.44
+P1245           S/W CHEESE VEGE SALAD BR 9607155                         0.44
+P1245           S/W CHEESE VEGE SALAD BR 9607156                         0.44
+P2661           S/W TUNA SALAD BR        9607151                         0.70
+P2661           S/W TUNA SALAD BR        9607152                         0.70
+P2661           S/W TUNA SALAD BR        9607153                         0.54
+P2661           S/W TUNA SALAD BR        9607154                         0.54
+P2661           S/W TUNA SALAD BR        9607155                         0.54
+P2661           S/W TUNA SALAD BR        9607156                         0.54
+P2893           BREAD WT SLICED BUTTERED 9607151                         0.10
+P2893           BREAD WT SLICED BUTTERED 9607152                         0.10
+P2893           BREAD WT SLICED BUTTERED 9607153                         0.08
+P2893           BREAD WT SLICED BUTTERED 9607154                         0.08
+P2893           BREAD WT SLICED BUTTERED 9607155                         0.08
+P2893           BREAD WT SLICED BUTTERED 9607156                         0.08
+P2613           BAP HAM SALAD            9607151                         0.52
+P2613           BAP HAM SALAD            9607152                         0.52
+P2613           BAP HAM SALAD            9607153                         0.47
+P2613           BAP HAM SALAD            9607154                         0.47
+P2613           BAP HAM SALAD            9607155                         0.47
+P2613           BAP HAM SALAD            9607156                         0.47
+P2618           BAP TURKEY SALAD         9607151                         0.62
+P2618           BAP TURKEY SALAD         9607152                         0.62
+P2618           BAP TURKEY SALAD         9607153                         0.67
+P2618           BAP TURKEY SALAD         9607154                         0.67
+P2618           BAP TURKEY SALAD         9607155                         0.67
+P2618           BAP TURKEY SALAD         9607156                         0.67
+P2685           BAP TUNA SALAD           9607151                         0.60
+P2685           BAP TUNA SALAD           9607152                         0.60
+P2685           BAP TUNA SALAD           9607153                         0.58
+P2685           BAP TUNA SALAD           9607154                         0.58
+P2685           BAP TUNA SALAD           9607155                         0.58
+P2685           BAP TUNA SALAD           9607156                         0.58
+P2827           BAP TUNA MAYO            9607151                         0.47
+P2827           BAP TUNA MAYO            9607152                         0.47
+P2827           BAP TUNA MAYO            9607153                         0.52
+P2827           BAP TUNA MAYO            9607154                         0.52
+P2827           BAP TUNA MAYO            9607155                         0.52
+P2827           BAP TUNA MAYO            9607156                         0.52
+P2845           BAP CHEESE               9607151                         0.37
+P2845           BAP CHEESE               9607152                         0.37
+P2845           BAP CHEESE               9607153                         0.41
+P2845           BAP CHEESE               9607154                         0.41
+P2845           BAP CHEESE               9607155                         0.41
+P2845           BAP CHEESE               9607156                         0.41
+P2847           BAP CHEESE VEGE SALAD    9607151                         0.47
+P2847           BAP CHEESE VEGE SALAD    9607152                         0.47
+P2847           BAP CHEESE VEGE SALAD    9607153                         0.47
+P2847           BAP CHEESE VEGE SALAD    9607154                         0.47
+P2847           BAP CHEESE VEGE SALAD    9607155                         0.47
+P2847           BAP CHEESE VEGE SALAD    9607156                         0.47
+P2634           BAGT HAM SALAD           9607151                         0.90
+P2634           BAGT HAM SALAD           9607152                         0.90
+P2634           BAGT HAM SALAD           9607153                         0.72
+P2634           BAGT HAM SALAD           9607154                         0.72
+P2634           BAGT HAM SALAD           9607155                         0.72
+P2634           BAGT HAM SALAD           9607156                         0.72
+P2769           BAGT TUNA MAYO           9607151                         0.90
+P2769           BAGT TUNA MAYO           9607152                         0.90
+P2769           BAGT TUNA MAYO           9607153                         0.74
+P2769           BAGT TUNA MAYO           9607154                         0.74
+P2769           BAGT TUNA MAYO           9607155                         0.74
+P2769           BAGT TUNA MAYO           9607156                         0.74
+P2816           BAGT CHEESE VEGE SALAD   9607151                         0.90
+P2816           BAGT CHEESE VEGE SALAD   9607152                         0.90
+P2816           BAGT CHEESE VEGE SALAD   9607153                         0.62
+P2816           BAGT CHEESE VEGE SALAD   9607154                         0.62
+P2816           BAGT CHEESE VEGE SALAD   9607155                         0.62
+P2816           BAGT CHEESE VEGE SALAD   9607156                         0.62
+P9              CRISPS,WALKERS,SMKY BACON9607151                         0.25
+P9              CRISPS,WALKERS,SMKY BACON9607152                         0.25
+P143            CRISPS,WALKERS,SALT & VIN9607151                         0.25
+P143            CRISPS,WALKERS,SALT & VIN9607152                         0.25
+P144            CRISPS,WALKERS,R.SALTED  9607151                         0.25
+P144            CRISPS,WALKERS,R.SALTED  9607152                         0.25
+P145            CRISPS,WALKERS,PRAWN C   9607151                         0.25
+P145            CRISPS,WALKERS,PRAWN C   9607152                         0.25
+P146            CRISPS,WALKERS,CHEESE&O  9607151                         0.25
+P146            CRISPS,WALKERS,CHEESE&O  9607152                         0.25
+P147            CRISPS,WALKERS,CHICKEN   9607151                         0.25
+P147            CRISPS,WALKERS,CHICKEN   9607152                         0.25
+P392            WORCS SC WC              9607151                         0.25
+P392            WORCS SC WC              9607152                         0.25
+P88             LION BAR                 9607151                         0.26
+P88             LION BAR                 9607152                         0.26
+P94             YORKIE RAISIN & BISCUIT  9607151                         0.36
+P94             YORKIE RAISIN & BISCUIT  9607152                         0.36
+P98             TWIX BAR                 9607151                         0.24
+P98             TWIX BAR                 9607152                         0.24
+P100            PICNIC BAR               9607151                         0.28
+P100            PICNIC BAR               9607152                         0.28
+P105            SNICKERS                 9607151                         0.27
+P105            SNICKERS                 9607152                         0.27
+P106            MARS BAR                 9607151                         0.26
+P106            MARS BAR                 9607152                         0.26
+P107            MALTESERS BAG            9607151                         0.29
+P107            MALTESERS BAG            9607152                         0.29
+P110            M & M CHOCOLATE          9607151                         0.27
+P110            M & M CHOCOLATE          9607152                         0.27
+P111            M & M PEANUT             9607151                         0.27
+P111            M & M PEANUT             9607152                         0.27
+P112            GALAXY CARAMEL           9607151                         0.30
+P112            GALAXY CARAMEL           9607152                         0.30
+P115            KIT KAT 2 FINGER         9607151                         0.25
+P115            KIT KAT 2 FINGER         9607152                         0.25
+P116            BOUNTY,MILK              9607151                         0.28
+P116            BOUNTY,MILK              9607152                         0.28
+P117            BOUNTY,PLAIN             9607151                         0.28
+P117            BOUNTY,PLAIN             9607152                         0.28
+P119            CRUNCHIE BAR             9607151                         0.28
+P119            CRUNCHIE BAR             9607152                         0.28
+P285            LO BAR                   9607151                         0.32
+P285            LO BAR                   9607152                         0.32
+P207            FRUIT PASTILLES, TUBE    9607151                         0.24
+P207            FRUIT PASTILLES, TUBE    9607152                         0.24
+P209            OPAL FRUITS, TUBE        9607151                         0.25
+P209            OPAL FRUITS, TUBE        9607152                         0.25
+P210            MINTS, EXTRA STRONG, TUBE9607151                         0.27
+P210            MINTS, EXTRA STRONG, TUBE9607152                         0.27
+P212            POLO, PEPPERMINT, TUBE   9607151                         0.16
+P212            POLO, PEPPERMINT, TUBE   9607152                         0.16
+P178            COKE,DIET CAN 330ML      9607151                         0.40
+P178            COKE,DIET CAN 330ML      9607152                         0.40
+P179            COCA COLA CAN 330ML      9607151                         0.40
+P179            COCA COLA CAN 330ML      9607152                         0.40
+P180            SUNKIST ORANGE CAN 330ML 9607151                         0.40
+P180            SUNKIST ORANGE CAN 330ML 9607152                         0.40
+P182            LEMONADE,CAN 330ML       9607151                         0.40
+P182            LEMONADE,CAN 330ML       9607152                         0.40
+P183            SPRITE,DIET CAN 330ML    9607151                         0.40
+P183            SPRITE,DIET CAN 330ML    9607152                         0.40
+P184            LILT CAN 330ML           9607151                         0.40
+P184            LILT CAN 330ML           9607152                         0.40
+P185            LILT,DIET CAN 330ML      9607151                         0.40
+P185            LILT,DIET CAN 330ML      9607152                         0.40
+P189            COKE,DIET CONTOUR 500ML  9607151                         0.60
+P189            COKE,DIET CONTOUR 500ML  9607152                         0.60
+P190            COCA COLA CONTOUR BT 500M9607151                         0.60
+P190            COCA COLA CONTOUR BT 500M9607152                         0.60
+P191            SUNKIST BOTTLE 500ML     9607151                         0.60
+P191            SUNKIST BOTTLE 500ML     9607152                         0.60
+P192            LILT,BOTTLE 500ML        9607151                         0.60
+P192            LILT,BOTTLE 500ML        9607152                         0.60
+P2934           O/J CONC 200ML           9607151                         0.20
+P2934           O/J CONC 200ML           9607152                         0.20
+P2934           O/J CONC 200ML           9607153                         0.23
+P2934           O/J CONC 200ML           9607154                         0.23
+P2934           O/J CONC 200ML           9607155                         0.23
+P2934           O/J CONC 200ML           9607156                         0.23
+P2946           A/J NATURAL CONC 200ML   9607151                         0.20
+P2946           A/J NATURAL CONC 200ML   9607152                         0.20
+P2946           A/J NATURAL CONC 200ML   9607153                         0.23
+P2946           A/J NATURAL CONC 200ML   9607154                         0.23
+P2946           A/J NATURAL CONC 200ML   9607155                         0.23
+P2946           A/J NATURAL CONC 200ML   9607156                         0.23
+

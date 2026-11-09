@@ -1,0 +1,167 @@
+
+
+
+
+
+
+
+            Mr. R. Roark.
+            Managing Director,
+            The Software Link Inc.,
+            3577 Parkway Lane,
+            Norcross,
+            GEORGIA 30092.
+            U.S.A.
+
+                
+
+
+
+    Dear Rod,
+
+        I hope all is well with you in Georgia.
+
+        John Englezou and myself have been doing exaustive testing on 
+        the lan and have found it to perform well under most conditions.  
+        However there are, unfortunatly, some areas where more work is 
+        required.
+
+        1  When the lan is disconnected during a transfer, each of the
+           machines on the lan go into a retry loop.  During this period
+           the watchdog timer does not appear to be updated.  This has
+           the effect of causing the relay to click out just as the lan
+           is recovering,  thereby starting the retry loop again.
+
+           When the lan consists of 4 machines or less, this recovery
+           process takes approximately 5 minutes.  For networks with a
+           greater number of machines, the time becomes too long to be
+           practical.
+
+           I installed a device driver that updated the watch dog timer
+           every 20 seconds to see if this would resolve the problem,
+           and it did.
+
+           So if it is at all possible,  I would like you to update the
+           watchdog timer while within the retry loop.
+
+
+        2  The Post Office have informed us that the largest office
+           to be placed on the lan will consist of 22 machines. 
+           There is a possibility that at the start of the day there
+           could be 21 machines loading from the back office simultaniosly,
+           although this is an extreme condition, it is possible.  
+
+           The speed of loading is not as important as the evenness
+           of loading i.e. the first machine should take as long to
+           load as the last.
+
+
+
+
+
+
+
+
+           We set up a lan with 22 machines and started loading each of
+           them in turn,  when we reached 7 machines the lan started
+           failing.  This is caused by the closest machine to the
+           back office sharing equally between loading and passthru,
+           the next machine taking half this remaining time etc...
+
+           So if we look at the through put rates of the machines we see :
+             
+              敖Back Office                   
+              突Terminal 1    80   Kbps
+              突Terminal 2    40   Kbps
+              突Terminal 3    20   Kbps
+              突Terminal 4    10   Kbps
+              突Terminal 5     5   Kbps
+              突Terminal 6     2.5 Kbps
+              青Terminal 7     2.5 Kbps
+                            -------------
+                             160   Kbps
+
+           We decided to place a delay into each of the nodes between
+           packets so that they could devote more time to passthru.
+
+           The delays used where variable so that terminal 1 spent 90 %
+           of it's time in passthru mode, terminal 2 80% and so on.
+
+           This evened out the through put rates and allowed us to load
+           all the machines simultaniously.
+
+           For this method to be efficent the delay used must depend on
+           the number of nodes currently loading, otherwise a three
+           machine office will take as long to load as a 22 machine
+           office.
+
+           The other point is that the loading done in the test was
+           simulated (i.e. just transfering 1K blocks and delaying).
+           There is no way to insert delays between packets if an application 
+           were to be loaded from the network drive.
+
+           If it where possible for lanlink to insert these delays then
+           any lan activity would take account of the current loading.
+
+           We can see 3 ways of doing this.
+
+              1. have an extended service call to lanlink that sets a
+                 fixed delay period.
+
+              2. lanlink finds out how many machines are loading and
+                 adjusts a fixed delay automatically.
+
+              3. lanlink finds out it's position in the lan and adjusts 
+                 a variable delay automatically.
+
+
+
+
+
+
+
+
+           Option 1 would be OK but the application does not know
+           how many machines are on the network.
+
+           Option 2 would waste time on the end nodes.
+ 
+           Although option 3 is by far the most difficult it will
+           obviously yeald the best results.
+
+           With my limited knowledge of how lanlink works I can
+           only suggest one way in which option 3 may be achieved.
+
+           If, in the header packet, there was a byte that is
+           incremented by each passthru node, the node will know 
+           how many nodes there are above it.
+
+           If this number was multiplied by a delay factor i.e. 2
+           ticks, the node would wait longer depending on how many
+           machines there were above it.
+
+           The number stored in a node would have to be the maximum
+           passthru number it had received so that the node next to
+           it would not reset the number to zero.
+
+           If at the end of any transaction a node transmitted an
+           end of transaction code,  then each node below it could 
+           decrement the internally held maximum and thereby remain
+           in step.
+                
+
+        Obviously we will need to talk about these problems,  but I
+        hope this gives you an overview of the ares we are looking
+        at.
+           
+        Regards
+
+
+
+
+
+
+
+        Mark Durbin.
+
+

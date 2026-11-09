@@ -1,0 +1,12 @@
+   UnSoldPrLabel {
+      FitWidth
+      Title    { 'Un-Sold Printed Labels' }
+      PLURange { 090000017 }
+      FirstQuery { 'select * from txnlog where (RecType = "PrLabel")' }
+      SecondQuery { 'select Teller, Sum(ItemQuantity) as NoLabels, Sum(ItemQuantity*ItemValue)  as ValueOfLabels from reportresult group by Teller' } 
+      Columns  {
+         Teller                        { Heading { 'Clerk' } Width { -500 }  }
+         NoLabels                  { Heading { 'Number of Unsold Labels' } Width { -500 } Total Justify { Right } }
+         ValueOfLabels           { Heading { 'Value of Labels' } Width { -500 } Total  Justify { Right } }
+      }
+   }

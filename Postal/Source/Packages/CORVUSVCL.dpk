@@ -1,0 +1,59 @@
+package CorvusVCL;
+
+{$R *.RES}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $00400000}
+{$DESCRIPTION 'Corvus/GPCS VCL Components'}
+{$IMPLICITBUILD ON}
+
+requires
+  vcl30,
+  vclx30,
+  vcldb30,
+  VclSmp30;
+
+contains
+  CompExecU,
+  Bin2String,
+  TxnlogU,
+  CompInspector,
+  ComServ2,
+  CRC32,
+  Domain,
+  IPControl,
+  KGButton,
+  Mask2,
+  PadControl,
+  PadLines,
+  SubTree,
+  VersionInfo,
+  MethodNameU,
+  CompressU,
+  StretchU,
+  Utils,
+  GPCSGUID,
+  GPCSErrorLine,
+  GPCSBase_TLB;
+
+{$R *.RES}
+
+end.

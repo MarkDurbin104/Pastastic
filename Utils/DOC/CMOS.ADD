@@ -1,0 +1,29 @@
+        CMOS settings for the B.O.S. are as follows :-
+
+        Base Memory             -       1024K
+        Extended Memory         -       384K
+        Video Type              -       MDA
+        Number of Floppies      -       2
+        Diskette Drives         -       Primary   = 1.44M
+                                        Secondary = NONE
+        Fixed Disks             -       Primary   = TYPE 17
+                                        Secondary = NONE
+
+        CMOS settings for the C.T. are as follows :-
+
+        Base Memory             -       1024K
+        Extended Memory         -       384K
+        Video Type              -       MDA
+        Number of Floppies      -       2
+        Diskette Drives         -       Primary   = 1.44M
+                                        Secondary = NONE
+        Fixed Disks             -       Primary   = NONE
+                                        Secondary = NONE
+
+
+        All other CMOS information is Standard AT and is therefore
+        available in any AT technical reference.
+
+
+
+

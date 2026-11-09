@@ -1,0 +1,23 @@
+
+all: big.exe dosmem.exe memtest.exe memtest2.exe vidtest.exe keys.exe hello.exe
+
+big.exe: BIG.C
+	bcc286 -f- -G -O big.c
+
+dosmem.exe: DOSMEM.C
+	bcc286 -f- dosmem.c
+
+memtest.exe: MEMTEST.C
+	bcc286 -f- -G -O memtest.c
+
+memtest2.exe: MEMTEST2.CPP
+	bcc286 -f- -G -O memtest2.cpp
+
+vidtest.exe: VIDTEST.C FULLSCRN.C FULLSCRN.H
+	bcc286 -f- -I..\inc vidtest.c fullscrn.c
+
+keys.exe: KEYS.C
+	bcc286 -f- -I..\inc keys.c
+
+hello.exe: HELLO.C
+	bcc286 -f- hello.c

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical"
+	xmlns:base="base.*"
+	backgroundImage="{bgImage}"
+	width="800" height="600"
+	preloader="base.PreLoadBar"
+	keyFocusChange="event.preventDefault();focusManager.getNextFocusManagerComponent(event.shiftKey).setFocus()"
+	initialize="init()" horizontalAlign="left" viewSourceURL="srcview/index.html" verticalAlign="top" verticalGap="0" paddingLeft="0" paddingTop="0" paddingRight="0" paddingBottom="0">
+	
+	<mx:Style source="css/styles.css" />
+	
+	<mx:Script>
+		<![CDATA[
+			/* -----------------------------------------------------------------------------
+			IMPORT CLASSES
+			----------------------------------------------------------------------------- */
+			import mx.controls.Menu;
+			import mx.controls.Button;
+			import mx.containers.Canvas;
+			import mx.containers.VBox;
+ 	       	import mx.managers.ToolTipManager;
+			import mx.styles.StyleManager;
+			import mx.controls.Label;
+			import mx.controls.HRule;
+			import mx.containers.HBox;
+			import mx.containers.VBox;
+			import mx.containers.Panel;
+			import mx.core.Application;
+			import mx.rpc.events.ResultEvent;
+			import base.Menus;
+			import flash.ui.Keyboard;
+
+			/* -----------------------------------------------------------------------------
+			DECLARE VARIABLES
+			----------------------------------------------------------------------------- */
+			[Bindable]
+			[Embed(source="resources/BG.jpg")]
+			public var bgImage:Class;
+			public var mainPanel:VBox;
+	        var menus:Menus;
+			
+			/* -----------------------------------------------------------------------------
+			METHODS
+			----------------------------------------------------------------------------- */
+			public function handleKeyDown(event:KeyboardEvent) :void
+			{
+				var newKeyCode:uint = event.keyCode;
+			 
+				switch(newKeyCode)
+				{
+					case Keyboard.PAGE_UP: 
+						Application.application.verticalScrollPosition -= 200;
+						break;
+					case Keyboard.PAGE_DOWN:
+						Application.application.verticalScrollPosition += 200;
+						break;
+					case Keyboard.F1 :
+						Application.application.verticalScrollPosition = 0;
+						event.stopPropagation();
+						break;
+					case Keyboard.F10 :
+						Application.application.verticalScrollPosition -= 50;
+						event.stopPropagation();
+						break;
+					case Keyboard.UP :
+						Application.application.verticalScrollPosition -= 50;
+						break;
+					case Keyboard.DOWN :
+						Application.application.verticalScrollPosition += 50;
+						break;
+					case Keyboard.HOME :
+						homeClicked();
+						event.stopPropagation();
+						break;
+					case Keyboard.ESCAPE :
+						prevClicked();
+						event.stopPropagation();
+						break;
+				}
+			}
+			private function regetFocus(e:Event):void
+			{
+				if (mainPanel !=null) {
+			        mainCanvas.setFocus();
+				}
+			}
+			private function init():void 
+			{
+				var loader:URLLoader = new URLLoader(); 
+				loader.addEventListener(Event.COMPLETE, loadXML);
+				loader.load(new URLRequest("configuration/menus.xml"));
+				addEventListener(KeyboardEvent.KEY_DOWN, handleKeyDown);
+				mainCanvas.addEventListener(KeyboardEvent.KEY_DOWN, handleKeyDown);
+		        ToolTipManager.enabled = true;// Optional. Default value is true.
+		        ToolTipManager.showDelay = 1000;// Display immediately.
+        		ToolTipManager.hideDelay = 2000; // Hide after 3 seconds.
+        		ToolTipManager.showEffect = fadeIn;
+				ToolTipManager.hideEffect = fadeOut;
+
+		        StyleManager.getStyleDeclaration("ToolTip").setStyle("fontStyle","italic");
+		        StyleManager.getStyleDeclaration("ToolTip").setStyle("fontSize","19");
+		        StyleManager.getStyleDeclaration("ToolTip").setStyle("fontFamily","Arial");
+		        StyleManager.getStyleDeclaration("ToolTip").setStyle("color","#000060");
+				
+			}
+			private function prevClicked():void
+			{
+		        if (menus.currentMenu.length > 1) {
+					menus.currentMenu.pop();
+					mainCanvas.removeAllChildren();
+					mainCanvas.addChild(menus.currentMenu[menus.currentMenu.length-1]);
+			        if (menus.currentMenu.length < 2) {
+						prevButton.visible=false;
+						homeButton.visible=false;
+			        }
+		        }
+		        mainCanvas.setFocus();
+			}
+			private function homeClicked():void
+			{
+		        while (menus.currentMenu.length > 1) {
+					menus.currentMenu.pop();
+		        }
+				mainCanvas.removeAllChildren();
+				mainCanvas.addChild(menus.currentMenu[0]);
+				prevButton.visible=false;
+				homeButton.visible=false;
+				mainCanvas.setFocus();
+			}
+			// handler for retrieved XML data
+			private function loadXML(e:Event):void
+			{
+				var menuXML:XML=new XML(e.target.data);
+		        menus = new Menus(menuXML);
+		        menus.currentMenu.push(menus.mainMenu);
+		        menus.mainCanvas=mainCanvas;
+		        menus.prevBtn=prevButton;
+		        menus.homeBtn=homeButton;
+		        mainCanvas.addChild(menus.mainMenu);
+		        mainCanvas.setFocus();
+		 	}
+		]]>
+	</mx:Script>
+	<mx:Fade id="fadeIn" alphaFrom="0" alphaTo="1" duration="200"/>
+	<mx:Fade id="fadeOut" alphaFrom="1" alphaTo="0" duration="300"/>
+
+	<mx:VBox width="100%" verticalGap="0">
+		<mx:Button label="HTMLPage/buttons.html?newsrc=dmm/503.htm&quot;&amp;anchor=3_0" width="100%" height="5" styleName="gradientRectangleSkin" enabled="false"/>
+		<mx:Button label="Button" width="100%" height="5" styleName="gradientRectangleSkin" enabled="false"/>
+		<mx:Button label="Button" width="100%" height="5" styleName="gradientRectangleSkin" enabled="false"/>
+		<mx:Canvas width="100%">
+			<mx:VBox width="100%" x="0" y="0" verticalGap="0">
+				<mx:HBox id="titleBarBG" width="100%" horizontalGap="0" borderColor="#485798" backgroundColor="#485798">
+					<mx:Spacer width="23"/>
+					<mx:VBox verticalGap="0" horizontalAlign="right">
+						<mx:Label text="de-POS-it" fontFamily="Times New Roman" fontWeight="bold" fontStyle="italic" fontSize="36" color="#ffffd7"   height="40"/>
+						<mx:Label text="powered by iSocietas" fontFamily="Times New Roman" fontStyle="italic" fontSize="14" color="#ffffff"  />
+					</mx:VBox>
+					<mx:Spacer width="100%"/>
+					<mx:VBox verticalGap="0" horizontalAlign="center" verticalAlign="middle">
+						<mx:Spacer height="2"/>
+						<mx:Image source="resources/Small Web Logo.jpg" />
+						<mx:Label text="CYKOR SYSTEMS" fontFamily="Verdana" fontSize="10" color="#ffffff"  />
+					</mx:VBox>
+				</mx:HBox>
+			</mx:VBox>
+			<mx:HBox x="0" y="0" width="100%" horizontalGap="0" >
+				<mx:Spacer width="20"/>
+				<mx:Button id="homeButton" buttonMode="true" label="Home" width="160" height="80" styleName="gradientRectangleSkin" 
+					icon="@Embed('resources/Home.gif')" labelPlacement="top" visible="false" textIndent="8" click="homeClicked();"/>
+				<mx:Spacer width="20"/>
+				<mx:Button buttonMode="true" label="Quantity" width="80" height="80" styleName="gradientRectangleSkin" 
+					icon="@Embed('resources/Quantity.gif')" labelPlacement="top" textIndent="8"/>
+				<mx:Spacer width="20"/>
+				<mx:Button id="prevButton" buttonMode="true" label="Prev" width="80" height="80" styleName="gradientRectangleSkin" 
+					 icon="@Embed('resources/Prev.gif')" labelPlacement="top" textIndent="8" visible="false" click="prevClicked();"/>
+				<mx:Spacer width="20"/>
+				<mx:Button buttonMode="true" label="Undo" width="80" height="80" styleName="gradientRectangleSkin"  
+					labelPlacement="top" icon="@Embed('resources/Recycle.gif')" textIndent="8"/>
+				<mx:Spacer width="20"/>
+				<mx:Button buttonMode="true" label="Help" width="80" height="80" styleName="gradientRectangleSkin" 
+					icon="@Embed('resources/Help.gif')" labelPlacement="top" textIndent="8"/>
+				<mx:Spacer width="40"/>
+				<mx:Button buttonMode="true" label="Susp" width="80" height="80" styleName="gradientRectangleSkin"  
+					labelPlacement="top" icon="@Embed('resources/Suspend.gif')" textIndent="8"/>
+			</mx:HBox>
+		</mx:Canvas>
+	</mx:VBox>
+	<mx:HBox width="100%" height="500">
+		<mx:Spacer width="5"/>
+		<mx:Canvas width="75%" height="100%" id="mainCanvas">
+		</mx:Canvas>
+		<mx:Button enabled="false" width="4" height="100%" styleName="gradientRectangleSkin"/>
+		<mx:VBox height="100%" width="175" verticalAlign="middle" horizontalAlign="center" verticalGap="0">
+			<mx:Image source="resources/clock.png"/>
+		</mx:VBox>
+	</mx:HBox>
+</mx:Application>

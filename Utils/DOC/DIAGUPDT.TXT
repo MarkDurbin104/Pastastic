@@ -1,0 +1,56 @@
+Updating the diagnostics in any way requires the following :
+
+
+        Specifing the requirements
+
+        Modifying the source code
+
+                The code changes
+
+        Testing the DVT changes
+
+                Setting up a CT and or BOS
+
+                regression testing all affected areas
+
+                testing new functionality
+
+                changes & retesting.
+
+        Issuing the source code
+        
+                Updating the UK DVT Configuration Management.
+
+                Issuing the Source code to Camarillo.
+                        
+                Updating the US DVT Configuration Management.
+
+
+        Issuing the object code
+        
+                Updating the UK DVT Configuration Management.
+
+                Issuing the object code to Camarillo.
+                        
+                Issuing the object code to MKCC.
+
+                Issuing the object code to Factorys.
+
+                Updating the US DVT Configuration Management.
+
+
+        Modifying the DVT Documentation
+        
+                Running the New version through all screens
+                containing the version Number and capturing
+                the screens to disk.
+
+                incorporating the new screens into the 
+                textual documentation
+
+                Reprinting the documentation
+
+                Issuing the documentation to POCL
+
+                Issuing the documentation to Camarillo
+

@@ -1,0 +1,11 @@
+ /v -LC:\BC5\LIB -c -Tde -x +
+C:\BC5\LIB\c0l.obj+
+videokbd.obj+
+fileio.obj+
+config.obj+
+compkey.obj
+compkey.exe,compkey
+C:\BC5\LIB\emu.lib+
+C:\BC5\LIB\mathl.lib+
+C:\BC5\LIB\cl.lib
+

@@ -1,0 +1,24 @@
+
+Packing file of Generated Graphics
+
+Generated Graphics v 1.00
+
+(c)Unisys Ltd. by Mark Durbin
+
+
+1 Icons
+
+Disk #           Icon name             File name   Destination file path
+   1      E:\GENGRAPH\GENGRAPH.ICO    GENGRAPH.ICO \GENGRAPH
+
+8 Files
+
+Disk #  File name   Destination file path
+   1   GENGRAPH.EXE \GENGRAPH
+   1   GETDATA .DLL \GENGRAPH
+   1   PENNY   .DEF \GENGRAPH\DATA
+   1   PENNY   .STO \GENGRAPH\DATA
+   1   TABLEA  .DEF \GENGRAPH\DATA
+   1   TABLEA  .STO \GENGRAPH\DATA
+   1   TABLEB  .DEF \GENGRAPH\DATA
+   1   TABLEB  .STO \GENGRAPH\DATA

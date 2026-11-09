@@ -1,0 +1,22 @@
+Products {
+   CentralGenReport { 
+      Bitmap  { '..\Images\G_Reports.BMP' }
+      Domains {
+         PostOffice
+         StartDomainEdit
+         EndDomainEdit
+         UserName
+         ReportList
+      }
+      Items  { Complete }
+      Snippets  { 
+         CentralGenRepUses,
+         CentralGenRepVars,
+         CentralGenRepExecute,
+         CentralGenRepComplete,
+         CentralGenRepConst
+      }
+      SubGroup  { Central }
+      Title  { 'General Report' }
+   }
+}

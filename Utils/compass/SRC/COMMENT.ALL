@@ -1,0 +1,388 @@
+M COMPKEY.C
+F RunSearch
+S ========================================================================
+S Define Section
+S ========================================================================
+S ========================================================================
+S Declarations Section
+S ========================================================================
+S ========================================================================
+S Definitions Section
+S ========================================================================
+S =========================================================================
+S Run the Search Function
+D Run the Search Function
+R PLU selected or 0 for none
+
+M COMPKEY.C
+F InputLine
+S =========================================================================
+S Input a character string
+D Input a character string
+P Zero based X co-ordinate (origin Top left)
+P Zero based Y co-ordinate (origin Top left)
+P The attribute
+P The string to start with
+P The maximum width of the input string
+P The current keyboard cursor x co-ordinate (the flashing cursor)
+P The current keyboard cursor y co-ordinate 
+P The current keyboard cursor width 
+P The current keyboard cursor height 
+R The input string
+
+M COMPKEY.C
+F TitleBar
+S =========================================================================
+S Output the Title bar
+D Output the Title bar
+P The product code i.e. PLU
+P The product description
+P The 12 character product description for the key top
+P Value (price level) 1
+P Value (price level) 2
+P Value (price level) 3
+P Value (price level) 4
+P Value (price level) 5
+P Value (price level) 6
+P TRUE kitchen print == 'Y', FALSE kitchen print == 'N'
+P TRUE key is a MENU key, FALSE key is a Single Shot key
+
+M COMPKEY.C
+F StatusLine
+S =========================================================================
+S Output a series of status items in the status box
+D Output a series of status items in the status box
+P A series of string pairs the first is the key the second the action
+P TRUE if the status bar should FLASH
+
+M COMPKEY.C
+F KeyInd
+S =========================================================================
+S Output the key movement indicator
+D Output the key movement indicator i.e. show the key number, level and 
+D available movement keys
+P Zero based X co-ordinate (origin Top left)
+P Zero based Y co-ordinate (origin Top left)
+P The key number (department)
+P Bit flags of available movement keys, bit 4-left 3-right 2-up 1-down 
+P The current keyboard level (0-2)
+
+M COMPKEY.C
+F SetCurXY
+S =========================================================================
+S Set the cursor X and Y co-ordinates from the key number
+D Set the cursor X and Y co-ordinates from the key number
+P The List of keyboard layout information
+P The number of keys on the keyboard
+P The address of the integer to set to the X co-ordinate
+P The address of the integer to set to the Y co-ordinate
+
+M COMPKEY.C
+F KeyAtPos
+S =========================================================================
+S Return TRUE if there is a key at a given X/Y co-ordinate
+D Return TRUE if there is a key at a given X/Y co-ordinate
+P The List of keyboard layout information
+P The number of keys on the keyboard
+P The X co-ordinate of the key
+P The Y co-ordinate of the key
+R TRUE there is a key, FALSE there isn't
+
+M COMPKEY.C
+F DrawKey
+S =========================================================================
+S Draw one key with it's text
+D Draw one key with it's text
+P The List of keyboard layout information
+P The number of keys on the keyboard
+P The key index
+P The start X co-ordinate of the key
+P The start Y co-ordinate of the key
+P The keyboard overlay information
+P The current keyboard level
+P TRUE if the title bar should be draw as well (i.e. the current key)
+P The width in characters of the key
+P The height in characters of the key
+R The available movement key flags (see KeyInd()) if the title is drawn
+
+M COMPKEY.C
+F DrawMenu
+S =========================================================================
+S Draw a menu box on the right hand side
+D Draw a menu box on the right hand side
+P The current key
+P The keyboard overlay information
+P The current keyboard level
+
+M COMPKEY.C
+F ToggleState
+S =========================================================================
+S Toggle the state of a key between Menu and Single Shot
+D Toggle the state of a key between Menu and Single Shot
+P The key to toggle
+P The keyboard overlay information
+
+M COMPKEY.C
+F KeyGrid
+S =========================================================================
+S Draw the keyboard grid
+D Draw the keyboard grid
+P The current key
+P The keyboard layout information
+P The number of keys
+P The start X co-ordinate
+P The start Y co-ordinate
+P The keyboard overlay information
+P The current keyboard level
+P The key width in characters
+P The key height in characters
+
+M COMPKEY.C
+F main
+S =========================================================================
+S COMPKEY.EXE
+D COMPKEY.EXE
+R ErrorLevel = 0 on error 1 OK
+
+M FILEIO.C
+F CleanBuf
+S ========================================================================
+S Definitions Section
+S ========================================================================
+S =========================================================================
+S Remove any spaces at the start and end of a string
+D Remove any spaces at the start and end of a string
+P The padded string
+R The cleaned string
+
+M FILEIO.C
+F GetLong
+S =========================================================================
+S Get a LONG from an ASCII string
+D Get a LONG from an ASCII string given an offset and length
+P The source string
+P The offset of the start of the long
+P The length of the string containing a long
+P The address of the returned long
+R TRUE return value OK.  FALSE on error
+
+M FILEIO.C
+F GetInt
+S =========================================================================
+S Get a INT from an ASCII string
+D Get a INT from an ASCII string given an offset and length
+P The source string
+P The offset of the start of the INT
+P The length of the string containing a INT
+P The address of the returned INT
+R TRUE return value OK.  FALSE on error
+
+M FILEIO.C
+F GetString
+S =========================================================================
+S Get a String from an ASCII string
+D Get a String from an ASCII string given an offset and length
+P The source string
+P The offset of the start of the String
+P The length of the string containing a String
+P The address of the returned String
+R TRUE return value OK.  FALSE on error
+
+M FILEIO.C
+F LoadDepartment
+S =========================================================================
+S Load a department file into a linked list
+D Load a department file into a linked list
+P the file name
+P A pointer to the empty linked list i.e. *(deptlist)==NULL
+R TRUE if all OK. FALSE if memory or file error. 
+
+M FILEIO.C
+F LoadPLU
+S =========================================================================
+S Load a PLU file into a linked list
+D Load a PLU file into a linked list
+P the file name
+P A pointer to the empty linked list i.e. *(plulist)==NULL
+R TRUE if all OK. FALSE if memory or file error. 
+
+M FILEIO.C
+F SaveDepartment
+S =========================================================================
+S Save a department file from a linked list
+D Save a department file from a linked list and conditionally
+D free the memory associated with the list
+P The department file
+P The department linked list
+P TRUE if the memory associated with the list should be free'd
+R TRUE if OK, FALSE on file error or deptlist==NULL or deptlist empty
+
+M FILEIO.C
+F SavePLU
+S =========================================================================
+S Save a PLU file from a linked list
+D Save a PLU file from a linked list and conditionally
+D free the memory associated with the list
+P The PLU file
+P The PLU linked list
+P TRUE if the memory associated with the list should be free'd
+R TRUE if OK, FALSE on file error or plulist==NULL or plulist empty
+
+M FILEIO.C
+F LoadKeyDef
+S =========================================================================
+S Load the keyboard definitions
+D Load the keyboard definitions
+P file name 
+P keyboard overlay
+R TRUE on OK, FALSE on ERROR
+
+M FILEIO.C
+F LoadLayout
+S =========================================================================
+S Load a keyboard layout file
+D Load a keyboard layout file into an array of ULONGs in the format
+D bits 31-24 the line of the key
+D bits 23-16 the column of the key
+D bits 15-00 the key number (department)
+P The keyboard layout file
+P The address of an INT for the returned number of keys
+P The address of an INT for the returned key width in characters
+P The address of an INT for the returned key height in characters
+R a pointer to an array of ULONGs allocated from the heap
+
+M FILEIO.C
+F main
+S =========================================================================
+S main used for unit testing of FILEIO.C
+D Load PLUFile (argv[1]) Load DeptFile (argv[2])
+D list the contents of both on stdout
+D Save the PLU Linked list into "PLU.DAT" and free it's memory
+D Save the Dept. Linked list into "DEPT.DAT"  and free it's memory
+P should be 3
+P [0]=command [1]=PLUFile [2]=DeptFile
+R ErrLevel = 0,OK 1,Invalid args 2,PLU file error 3,DEPT file error
+
+M VIDEOKBD.C
+F RestFont
+S =========================================================================
+S Restore the VGA text font to default values
+D Restore the VGA text font to default values
+
+M VIDEOKBD.C
+F LoadFont
+S =========================================================================
+S Load the VGA font from a local array
+D Load the VGA font from a local array
+P The local array containing the font information
+
+M VIDEOKBD.C
+F GetFont
+S =========================================================================
+S Return the address of a VGA font mapping
+D Return the address of a VGA font mapping
+P The font type
+R The address of the font mapping
+
+M VIDEOKBD.C
+F GetKey
+S =========================================================================
+S Wait for and return a key from the keyboard
+D Wait for and return a key from the keyboard
+R The key pressed or if an extended key 0-the key pressed
+
+M VIDEOKBD.C
+F KeyCursor
+S =========================================================================
+S Flash a cursor of inverse video while waiting for a key press
+D Flash a cursor of inverse video while waiting for a key press
+P The x co-ordinate (Zero based) of the top-left corner
+P The y co-ordinate (Zero based) of the top-left corner
+P The width in characters of the cursor
+P The height in characters of the cursor
+
+M VIDEOKBD.C
+F Rectangle
+S =========================================================================
+S Draw a rectangle
+D Draw a rectangle using the character output device
+P First X Co-ordinate
+P First Y Co-ordinate
+P Second X Co-ordinate
+P Second Y Co-ordinate
+P The attribute of the box characters
+P The type of the box characters i.e. 0 = ÚÄ   1 = ÉÍ   2 = Ûß
+
+M VIDEOKBD.C
+F OutChXY
+S =========================================================================
+S Output a character of a given colour at an X/Y co-ordinate
+D Output a character of a given colour at an X/Y co-ordinate.  
+D NOTE: This function has no bounds checking and should not 
+D be called directly.  Use OutChar() to perform this function.
+P The X co-ordinate (Zero based - origin top left)
+P The Y co-ordinate (Zero based - origin top left)
+P The attribute
+P The character
+
+M VIDEOKBD.C
+F OutChar
+S =========================================================================
+S Output a character on the console
+D Output a character on the console at a given x and y co-ordinate.
+D Any character that falls outside the clipping viewport will be ignored.
+D use SetViewPort() to assign the clipping values.
+P Zero based X Co-ordinate (origin Top Left)
+P Zero based Y Co-ordinate (origin Top Left)
+P The character to output
+
+M VIDEOKBD.C
+F OutFormat
+S =========================================================================
+S Formatted String Output on the console
+D Formatted String Output on the console at a given x and y co-ordinate
+D using the same formatting commands as printf().
+D Any character that falls outside the clipping viewport will be ignored.
+D use SetViewPort() to assign the clipping values.
+P Zero based X Co-ordinate (origin Top Left)
+P Zero based Y Co-ordinate (origin Top Left)
+P The attribute
+P The format string. NOTE: must NOT result in string length > MAXSTRLEN
+P variable parameters
+
+M VIDEOKBD.C
+F SetViewPort
+S =========================================================================
+S Set the View Port clipping parameters
+D Set the View Port clipping parameters.
+D All subsequent video output will be clipped to these boundaries.
+P The minimum X co-ordinated
+P The minimum Y co-ordinated
+P The maximum X co-ordinated
+P The maximum Y co-ordinated
+P Zero to leave, The attribute to clear the area covered by the view port
+
+M VIDEOKBD.C
+F OutCentre
+S =========================================================================
+S Output a formatted string centred about an X/Y co-ordinate
+D Output a formatted string centred about an X/Y co-ordinate
+P Zero based X Co-ordinate (origin Top Left)
+P Zero based Y Co-ordinate (origin Top Left)
+P The attribute
+P The format string. NOTE: must NOT result in string length > MAXSTRLEN
+P variable parameters
+
+M VIDEOKBD.C
+F OutWrap
+S =========================================================================
+S Output a string with word wrap, centred.
+D Output a string with word wrap, centred.
+P Zero based X Co-ordinate (origin Top Left)
+P Zero based Y Co-ordinate (origin Top Left)
+P The maximum width of any line
+P The height (i.e. number of lines)
+P The attribute
+P The string
+R The actual height (i.e. number of lines) of the output string
+

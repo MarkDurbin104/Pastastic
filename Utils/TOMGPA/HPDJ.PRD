@@ -1,0 +1,27 @@
+NAME     [HP Deskjet 560C]
+FILE     [TEST.PRN]
+rem PORT     [P,1]
+FACING   [1]                            : 0=Page faces away 1=faces toward
+ORIENT   [1]                            : 0=Page Top Down   1=Bottom Down
+FACESTR  [Facing Away from you and Upside down]
+GDIRECT  [1]                            : Graphics Direction 1>>PCL 0=^^24pin
+STARTUP  [ESC,'E']                      : Reset printer
+PGSETUP  [ESC,'&','l',66,'P']           : 66 lines per page
+MICROX   [*5,ESC,'*','p',D,'X']
+NORMX    [' ']
+RMICROY  [*2,ESC,'*','p',D2,'Y']
+NORMY    [10,13]
+FORMFEED [12]
+LINEFEED [10,13]
+ATTRON1  [ESC,'(','s','0','B',ESC,'(','s','0','S']
+ATTRON2  [ESC,'(','s','3','B',ESC,'(','s','0','S']
+ATTRON3  [ESC,'(','s','0','B',ESC,'(','s','1','S']
+ATTRON4  [ESC,'(','s','3','B',ESC,'(','s','1','S']
+SIZE1    [ESC,'(','s','1','2','V']
+SIZE2    [ESC,'(','s','1','8','V']
+SIZE3    [ESC,'(','s','2','4','V']
+10CPI    [ESC,'&','k',48,'S']
+12CPI    [ESC,'&','k',51,'S']
+15CPI    [ESC,'&','k',50,'S']  : 15 CPI is not available. Set as 16.67CPI
+17CPI    [ESC,'&','k',50,'S']
+USER0    [ESC,'&','l',66,'P']  : Page length 66 lines

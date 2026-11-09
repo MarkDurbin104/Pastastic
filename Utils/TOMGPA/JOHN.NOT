@@ -1,0 +1,27 @@
+The back office system maintains 4 lock files (LOCK.DAT) in various directories
+these are (I assume) to make sure that the BO is not already runnung.  These
+lock files do not appear to be set to the correct state when leaving the program
+and must be deleted manually.  I have set up a batch file that deletes these
+files, and it must be run before EACH running of BO.
+
+If LVLO is run before BO there sometimes appears to be a confilct with one of 
+the files that BO is using.  Howevr if LVLO is run afterward there is no problem.
+
+I set up my system so that DOS had only 2.3M of free memory, and windows had
+a 10M swap file.  This appears to be fine with BO,CT & LVLO rnning symulatniously.
+
+The counter terminal program is not able to run under windows on a hercules
+screen because it automatically switches the screen in to CGA 40 column mode
+Therefore each of the counter terminals wil need to be fitted with a VGA
+controller and a Monochrome VGA screen. This screen will need to be powered 
+seperatly from the processor and will therefore take another mains power socket
+
+The CT keyboard may need to have a special device driver so that it works 
+properly with both the CT and LVLO applications.
+
+When the CT application is shipped for these mchines iT will  need to supplly
+the old printer (TM270) handling routines. And there may be issues with thw MAG 
+card opperation. I cannot quantify this until I have the new MAG card and keyboard
+(and the software tht uses it).
+
+

@@ -1,0 +1,273 @@
+
+
+
+
+
+
+
+
+
+
+
+                                   ECCO+
+                 SCREEN BLANKING UTILITY
+
+
+
+
+                 ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+                 ³ System Design     Copyright UNISYS 1991 ³
+                 ÃÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+                 ³ Project  ³       SCRNBLNK.SYS           ³
+                 ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+                 ³ Customer ³       iT                     ³
+                 ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+                 ³ Author   ³       Mark Durbin            ³
+                 ÃÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ´
+                 ³ Date     ³       28th August 1991       ³
+                 ÀÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+ECCO+ Screen Blanking Utility      UNISYS, 28 August 1991    Page 1
+
+Contents                                                   Page
+--------                                                   ----
+
+1.     Functional Specification                             2    
+
+2.     User Instructions and Procedures                     3
+
+3.     Technical Specification                              4
+
+4.     Test Specification                                   5
+
+5.     Design                                               6
+ECCO+ Screen Blanking Utility      UNISYS, 28 August 1991    Page 2
+
+1.     Functional Specification
+
+1.1    Introduction 
+
+1.1.1  Background
+
+       Schedule 2 in the main contract between UNISYS and The Post 
+       Office gives Mean Time Between Failure (MTBF) figures for the 
+       ECCO+ hardware.  The MTBFs for the VDUs were based on the 
+       assumption that a screen blanker would be implemented to 
+       prevent the occurence of 'burn-in' of the VDU screens.
+
+1.1.2  Requirement
+
+       A utility is required which will blank the screen after a short 
+       period of inactivity.  This period will be referred to as the 
+       timeout period.  The ability to vary the timeout period will be 
+       provided.  The same utility will work on both the CT and the BOP. 
+
+1.1.3  Terms and abbreviations
+
+       The terms "video adapter card", "3-in-1 adapter card" will refer
+       to the video hardware within a CT or BOP.  The term "timeout 
+       parameter" may be used to refer to the timeout period.
+
+       
+1.2    Basic functionality
+       
+1.2.1  The screen blanking functionality will be provided by a method, 
+       such as a device driver, which will be simple to install and 
+       unintrusive in operation.
+
+1.2.2  The timeout period will be variable via a parameter specified 
+       when the utility is installed.  Valid values will be a whole 
+       number of minutes between one and 59 minutes.  If the timeout
+       period parameter is omitted the timeout period will default to
+       five minutes.
+       
+1.2.3  The inactivity period refers to keyboard activity, where keyboard
+       activity is either the physical depression of keys, or, the
+       use of programming techniques resulting in the generation of 
+       keyboard interrupts.
+
+1.2.4  Once the screen has been blanked it will remain so until keyboard 
+       activity resumes, at which point the screen will be restored.
+
+1.2.5  The screen will be restored on the depression of any key on the
+       keyboard, including the 'shift' key, and the keystroke will be
+       processed as it would normally be.  That is, it will not be 
+       discarded.
+ECCO+ Screen Blanking Utility      UNISYS, 28 August 1991    Page 3
+
+2.     User Instructions and Procedures
+
+2.1    Installation
+
+2.1.1  The device driver is loaded via the normal method of the
+       CONFIG.SYS file.
+
+       The format is:
+
+       DEVICE=[path]SCRNBLNK.SYS [timeout]
+
+       where   [timeout] is a value between 1 and 59.  
+               If [timeout] is omitted a default value of 5 is used.
+
+
+2.1.2  Example CONFIG.SYS
+       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  
+       ³ ...                                                       ³
+       ³ DEVICE=C:\SCRNBLNK.SYS 10      ; Blank after 10 mins      ³  
+       ³ ...                                                       ³  
+       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+2.1.3  The following message is displayed when SCRNBLNK.SYS is installed,
+       with 10 minute timeout specified, as in the example above:
+
+       ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿  
+       ³ 10 Minute Screen Blanking Utility                         ³
+       ³ SCRNBLNK.SYS device driver Version 1.0                    ³  
+       ³ Copyright (c) UNISYS Limited 1991.                        ³  
+       ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+       
+2.2    Memory usage
+
+       SCRNBLNK.SYS memory map
+
+       0279 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ¿ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                       Device              ³
+                       Driver              ³
+                   Initialisation          ³
+                        Code               ³
+       00B5 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+                        Screen             ³  
+                  Interrupt Routine        ³
+       008E ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ³  
+                     Clock Tick            ³
+                  Interrupt Routine        ³
+       006E ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ³   Resident Portion
+                      Keyboard             ³   Of Device Driver
+                  Interrupt Routine        ³
+       0023 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ³
+                      Variables            ³      181 bytes
+       0012 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ³
+              Device Driver Header Block   ³
+       0000 ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+ECCO+ Screen Blanking Utility      UNISYS, 28 August 1991    Page 4
+
+3.     Technical Specification
+
+3.1    Video hardware
+
+3.1.1  The document "Magic Combo Chip 6190G2N Data Sheet" describes the 
+       video capabilities of the 3-in-1 adapter in the ECCO+ CT and BOP.
+       This document has been previously supplied to iT.
+       
+3.1.2  Mode control register
+
+       The video card has a Mode Control Register (MCR) with an I/O 
+       address of 3B8h (monochrome mode), or 3D8h (CGA mode).  Bit 3 of 
+       the 8-bit value of the MCR controls the blanking or enabling of
+       the display.  A value of 0 means blank the display, and a value 
+       of 1 means enable the display.
+       
+3.2    Device driver
+
+3.2.1  The screen blanking functionality will be provided by the device
+       driver, SCRNBLNK.SYS.  The device driver will work by hooking 
+       into the screen, clock tick and keyboard interrupt routines.
+
+3.2.2  Screen interrupt routine
+
+       The screen interrupt is 10h.  A routine will be chained to the
+       screen interrupt routine to keep track of any screen mode
+       changes.
+
+3.2.3  Clock tick interrupt routine
+
+       The clock tick interrupt is 1Ch.  A routine will be chained to the
+       clock timer interrupt routine to do the following:
+       
+       1.  increment a timeout variable value;
+       2.  compare the value with the timeout parameter;
+       3.  blank the display if the timeout period has been reached or
+           exceeded.
+
+3.2.4  Keyboard interrupt routine
+
+       The keyboard interrupt is 09h.  A routine will be chained to the
+       keyboard interrupt routine to do the following:
+       
+       1.  restore the display;
+       2.  reset the timeout variable value to zero.
+ECCO+ Screen Blanking Utility      UNISYS, 28 August 1991    Page 5
+
+5. Test Specification
+
+        The driver should be tested for functionality under all the 
+        following conditions:
+
+        The screen should blank after the specified or default ammount of 
+        time and should restore using any key.
+
+        All tests should be run under both MOS and DOS operating systems
+         
+        ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÂÄÄÄÄÂÄÄÄÄÂÄÄÄÄÂÄÄÄÄÂÄÄÄÄ¿
+        ³ Timeout Values                   ³None³  0 ³  1 ³ 30 ³ 59 ³ 60 ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode c40 no other drivers        ³  X ³  X ³  X ³  X ³  X ³  X ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode m80 no other drivers        ³  X ³  X ³  X ³  X ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode 80  no other drivers        ³  X ³  X ³  X ³  X ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode c40 loaded before ddi10.sys ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode m80 loaded before ddi10.sys ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ³
+        ³ Mode 80  loaded before ddi10.sys ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode c40 loaded after ddi10.sys  ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode m80 loaded after ddi10.sys  ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode 80  loaded after ddi10.sys  ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode c40 loaded before  ctkb.sys ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode m80 loaded before  ctkb.sys ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode 80  loaded before  ctkb.sys ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode c40 loaded after  ctkb.sys  ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode m80 loaded after  ctkb.sys  ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode 80  loaded after  ctkb.sys  ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode c40 loaded before  both     ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode m80 loaded before  both     ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode 80  loaded before  both     ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode c40 loaded after  both      ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode m80 loaded after  both      ³  X ³    ³    ³    ³    ³    ³
+        ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄÅÄÄÄÄ´
+        ³ Mode 80  loaded after  both      ³  X ³    ³    ³    ³    ³    ³
+        ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÁÄÄÄÄÁÄÄÄÄÁÄÄÄÄÁÄÄÄÄÁÄÄÄÄÙ
+ECCO+ Screen Blanking Utility      UNISYS, 28 August 1991    Page 6
+ECCO+ Screen Blanking Utility      UNISYS, 28 August 1991    Page 7
+ECCO+ Screen Blanking Utility      UNISYS, 28 August 1991    Page 8
+ECCO+ Screen Blanking Utility      UNISYS, 28 August 1991    Page 9
+ECCO+ Screen Blanking Utility      UNISYS, 28 August 1991    Page 10
+
+
+
+
+
+
+
+
+
+
+
+
+           
+

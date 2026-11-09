@@ -1,0 +1,15 @@
+; Help project file created by Helping Hand (c) 1995
+[Options]
+root=.
+BMROOT=.
+errorlog=test.err
+warning=3
+compress=off
+report=off
+title=Test
+[FILES]
+test.rtf
+[WINDOWS]
+main = "Test", ( 10, 10, 630, 470),,,(192,192,192)
+[CONFIG]
+BrowseButtons()

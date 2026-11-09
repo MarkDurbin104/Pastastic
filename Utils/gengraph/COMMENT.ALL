@@ -1,0 +1,414 @@
+M getdata.c
+F GasSeal
+S Draw a Gas Seal
+D Draw a Tempary Gas Seal facing left or right
+P x coord. of edge of rounded surface
+P y coord. of centre
+P TRUE if facing left i.e ||)- else -(||
+
+M getdata.c
+F outxy
+S formatted output at a given x/y coord.
+D formatted output at a given x/y coord.
+P X coord.
+P Y coord.
+P format aka printf
+P variable params
+R 
+
+M getdata.c
+F tube
+S Draw a BFT tube
+D Draw a BFT tube with either joint,gas seal or open end, printing the
+D numbering information above
+P X Coord. of left end
+P Y Coord.
+P tube status (bitmap) 8 - joint right, 4 - left, 2 - Occupied, 1 - Blocked.
+P start tube number
+P end tube number  (for grouped tubes)
+P length in 'depth' units
+R the mid point along the line
+
+M getdata.c
+F AddNAP
+S Add a NAP structure to G_nap
+D Add a NAP structure to the G_nap linked list (insert at beginning)
+P data string delimited with '$'
+
+M getdata.c
+F AddBFT_L
+S Add a BFT_L structure to G_nap
+D Add a BFT_L structure to the G_nap linked list (insert at beginning)
+P data string delimited with '$'
+
+M getdata.c
+F AddBFT_J
+S Add a BFT_J structure to G_nap
+D Add a BFT_J structure to the G_nap linked list (insert at beginning)
+P data string delimited with '$'
+
+M getdata.c
+F AddBFT
+S Add a BFT structure to G_nap
+D Add a BFT structure to the G_nap linked list (insert at beginning)
+P data string delimited with '$'
+
+M getdata.c
+F AddFB
+S Add a FB structure to G_nap
+D Add a FB structure to the G_nap linked list (insert at beginning)
+P data string delimited with '$'
+
+M getdata.c
+F AddFBP
+S Add a FBP structure to G_nap
+D Add a FBP structure to the G_nap linked list (insert at beginning)
+P data string delimited with '$'
+
+M getdata.c
+F AddBFT_BT
+S Add a BFT_BT structure to G_nap
+D Add a BFT_BT structure to the G_nap linked list (insert at beginning)
+P data string delimited with '$'
+
+M getdata.c
+F AddBFT_E
+S Add a BFT_E structure to G_nap
+D Add a BFT_E structure to the G_nap linked list (insert at beginning)
+P data string delimited with '$'
+
+M getdata.c
+F AddBFT_T
+S Add a BFT_T structure to G_nap
+D Add a BFT_T structure to the G_nap linked list (insert at beginning)
+P data string delimited with '$'
+
+M getdata.c
+F AddBFT_S
+S Add a BFT_S structure to G_nap
+D Add a BFT_S structure to the G_nap linked list (insert at beginning)
+P data string delimited with '$'
+
+M getdata.c
+F ReadDFile
+S Read the data file
+D Read a date file and fill the approp. linked list using the 
+D first letter of each line to determine the structure type
+P the filename (with full path)
+
+M getdata.c
+F FreeData
+S Free the data associated with the global linked lists
+D Free the data associated with the global linked lists
+P TRUE if all the lists free'd else just the G_nap_tl & G_bft_l lists
+
+M getdata.c
+F PrintData
+S Print the read data structure on stdout
+D Print the read data structure on stdout (for testing)
+
+M getdata.c
+F BFT_Cat
+S Return the BFT catagory
+D Return the BFT catagory i.e. alloc code, SPACE, BFT number -
+D used in the bottom line of the BFT description box.
+P the BFT code
+R the BFT catagory in a static string overwritten on each call
+
+M getdata.c
+F Cat
+S Return the Network Access Point catagory
+D Return the Network Access Point catagory 
+D i.e. F|A (FP/ACP), T|Y (T/Y Unit), NAP number
+P The NAP feature number
+R the NAP catagory in a static string overwritten on each call
+
+M getdata.c
+F FindJointNap
+S Find the NAP featnumb from a BFT joint ident.
+D Find the NAP featnumb from a BFT joint ident by traversing the BFT
+D joint list
+P The BFT joint ident
+R The NAP feature number.
+
+M getdata.c
+F Blocked
+S Return True if a tube is blocked
+D Return True if a tube is blocked by traversing the BFT Blocked Tubes list
+P BFT section ident
+P BFT tube number (1..n where n is 1|2|4|7)
+R TRUE if blocked else FALSE
+
+M getdata.c
+F Occupied
+S Return True if a tube is occupied
+D Return True if a tube is occupied by traversing the Fibre Bundle Parts list
+P BFT section ident
+P BFT tube number (1..n where n is 1|2|4|7)
+R TRUE if occupied else FALSE
+
+M getdata.c
+F Equipment
+S Return True if a tube has connected equipment in a given NAP
+D Return True if a tube has connected equipment in a given NAP
+D by traversing the BFT Equipment list
+P BFT section ident
+P BFT tube number (1..n where n is 1|2|4|7)
+P NAP feature number
+P TRUE if refering to the tube2 entry (i.e. the right hand side)
+R TRUE if occupied else FALSE
+
+M getdata.c
+F NumbTubes
+S Return the number of tubes in a BFT section
+D Return the number of tubes in a BFT section by traversing the BFT Types list
+P The tube type
+R The number of tubes (i.e. 1,2,4,7) or 0 if not found (NOTE for MJD use for 'UNKNOWN' lable in rosette)
+
+M getdata.c
+F AddTube
+S Add a tube to the nap tube list structure
+D Add a tube to the nap tube list structure setting it's initial
+D X/Y offsets and assigning it to the left or right hand side of the NAP box
+P This NAP's tubelist structure
+P The BFT Section IDent
+P The tube number
+P tube status (bitmap) 8 - joint right, 4 - left, 2 - Occupied, 1 - Blocked.
+P the Depth i.e. X offset in 1 box units
+P the LEFT or RIGHT side of the NAP
+
+M getdata.c
+F AddTubeList
+S Add the tube list to the start and end naps for a BFT
+D Add the tube list to the start and end naps for a BFT
+P Start NAP feature number
+P End NAP feature number
+P BFT section ident
+P The number of tubes
+P a pointer to an array of the tube stati
+P the Depth i.e. X offset in 1 box units
+
+M getdata.c
+F GetTubeInfo
+S Collect the tube information for one BFT section
+D Collect the tube information for one BFT section including the number of 
+D tubes, the status of each and the start offset within the NAP box
+P A BFT section structure
+P Start NAP feature number
+P End NAP feature number
+P the Depth i.e. X offset in 1 box units
+
+M getdata.c
+F TraceFrTo
+S Trace all BFT sections that pass between two NAP's
+D Trace all BFT sections that pass between two NAP's
+D NOTE: This function sets the flag traced for each section
+P Start NAP feature number
+P End NAP feature number
+P the Depth i.e. X offset in 1 box units
+
+M getdata.c
+F TraceFrom
+S Trace all BFT sections that from a NAP
+D Trace all BFT sections that from a NAP
+D NOTE: This function sets the flag traced for each section
+P NAP feature number
+P TRUE if trace upstream
+P the Depth i.e. X offset in 1 box units
+P a NAP_TL strucure of the parent to this nap (NULL if first NAP in list)
+
+M getdata.c
+F ClearTrace
+S Clear the 'traced' flag for all BFT sections
+D Clear the 'traced' flag for all BFT sections
+
+M getdata.c
+F TUnitId
+S Get a TUNIT NAP feature number from a nap number
+D Get a TUNIT NAP feature number from a nap number
+P The tunit nap number
+R The NAP feature number
+
+M getdata.c
+F FindELink
+S Find the tube connected via equipment to the passed tube.
+D Find the tube connected via equipment to the passed tube and return
+D it's tube_l structure. This function is used to generate all the
+D left and right tube connection dependancies for tube alignment.
+P the tube_l structure
+P The NAP feature number
+P The BFT sectio ident
+P The tube number
+R A connected tube or NULL
+
+M getdata.c
+F FindLink
+S Find a BFT section tube connected to the left or right hand side of a NAP
+D Find a BFT section tube connected to the left or right hand side of a NAP
+P The NAP feature number
+P The BFT sectio ident
+P The tube number
+P TRUE if connected to the right
+R The connected tube or NULL
+
+M getdata.c
+F SetSiblings
+S Setup the Sibling ling between NAPS
+D Setup the Sibling ling between NAPS ( used for moving lower NAP boxes out of the way)
+P The parent nap
+
+M getdata.c
+F AddTubeLinks
+S Generate all the left and right tube links for the diagram
+D Generate all the left and right tube links for the diagram
+
+M getdata.c
+F ListTubeLinks
+S List on stdout the links between all the tubes
+D List on stdout the links between all the tubes for diagnostics
+
+M getdata.c
+F TubeBore
+S Draw a BFT section rosette tube
+D Draw a BFT section rosette tube with an 
+D 'O' for Occupied and an 'X' for Blocked
+P The X coord.               
+P The Y coord.
+P The radius
+P The tube status (bitmap) 2 - Occupied, 1 - Blocked
+
+M getdata.c
+F DrawRosette
+S Draw a section rosette 
+D Draw a section rosette 
+P The X coord. 
+P The Y coord.
+P The number of tubes
+P The tube stati (bitmap) 2 - Occupied, 1 - Blocked
+
+M getdata.c
+F TubeBox
+S Draw the tube description box
+D Draw the tube description box
+P the BFT section ident
+P The left offset
+P The top offset
+
+M getdata.c
+F NapDepth
+S Find the 'depth' of a NAP
+D Find the 'depth' of a NAP i.e. the X offset in box increments
+P The NAP feature number
+R The depth or 0 if not found
+
+M getdata.c
+F DrawBFTSectionDiag
+S Draw the BFT Section Diagram
+D Draw the BFT Section Diagram
+
+M getdata.c
+F MoveTubesDown
+S Move all the lower tubes in this NAP down by a distance
+D Move all the lower tubes in this NAP down by a distance
+P The top tube link
+P The distance to move
+P TRUE if the whole section's tubes should be moved
+
+M getdata.c
+F MoveLowerNaps
+S Move all the NAP boxes below 'fn' down by a distance
+D Move all the NAP boxes below 'fn' down by a distance
+P The NAP feature number
+P The offset of the current tube
+P The distance to move by
+
+M getdata.c
+F AlignTubes
+S Align all tubes connected via left and right links
+D Align all tubes connected via left and right links by moving all tubes 
+D to the lowest tube's offset
+
+M getdata.c
+F swapnlist
+S Swap the NAP tube list to reverse the traversal order
+D Swap the NAP tube list to reverse the traversal order this is done 
+D because the NAP tubes are inserted at the begining of the list
+D and we wish to traverse from the first NAP
+
+M getdata.c
+F TraceT
+S Trace the Tubes from a given NAP
+D Trace the Tubes from a given NAP
+P The TUNIT nap number (NOT feat numb)
+P TRUE if tracing both up and down stream 
+P TRUE if a diagnostic list should be generated only
+P TRUE if the trace should not align the tubes
+
+M getdata.c
+F ListNaps
+S List the NAP numbers into the file TUNITLST.GGF
+D List the NAP numbers into the file TUNITLST.GGF using only the NAP's
+D that have downstream connections
+
+M getdata.c
+F main
+S Entry point for test harness
+D Entry point for test harness argv[1] input file [2] NAP number [3] list only
+P The number of arguments
+P The arguments
+R 1 if no args supplied else  0 i.e. NO ERROR
+
+M getdata.c
+F LibMain
+S 16 bit DLL entry point 
+D 16 bit DLL entry point 
+P handle instance - not used
+P param           - not used
+P param           - not used
+P args            - not used
+R Always TRUE     
+
+M getdata.c
+F WEP
+S 16 bit DLL Windows Exit Point
+D 16 bit DLL Windows Exit Point
+P param - not used
+R Always TRUE     
+
+M getdata.c
+F PasToCStr
+S Convert a standard 'PASCAL' string to an ASCIZ string
+D Convert a standard 'PASCAL' string to an ASCIZ string using the first 
+D byte as a length 
+D NOTE this needs modification for 32 bit as the string is null terminated 
+D and the length indicator is not held in the first bytes.
+P the 'PASCAL' string
+R static ASCIZ string overwritten on each call
+
+M getdata.c
+F MaxWidth
+S DLL exported function returning the width of the diagram
+D DLL exported function returning the width of the diagram
+R The diagram width NOTE: 16bit
+
+M getdata.c
+F MaxHeight
+S DLL exported function returning the Height of the diagram
+D DLL exported function returning the Height of the diagram
+R The diagram height NOTE: 16bit
+
+M getdata.c
+F LoadTable
+S Load the file specified (.IFD format) in to global structures and return NAP list
+D Load the file specified (.IFD format) in to global structures and return NAP list
+P (.IFD format) filename with full path and extension
+
+M getdata.c
+F Traverse
+S Traverse from a NAP to all subsiquent NAPs
+D Traverse from a NAP to all subsiquent NAPs 
+D MUST BE CALLED AFTER LoadTable()
+P TUNIT nap number
+P 1 if tubes should be grouped 
+P 1 if trace should go upstream
+

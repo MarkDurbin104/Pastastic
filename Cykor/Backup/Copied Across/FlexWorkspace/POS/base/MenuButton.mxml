@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	horizontalAlign="center"
+	verticalAlign="middle"
+	verticalGap="0"
+	borderStyle="none"
+	cornerRadius="8"
+	borderColor="#A6C0B5"
+	borderThickness="3"
+	backgroundAlpha="1"
+	buttonMode="true"
+    creationComplete = "createEffect(event);"
+    horizontalScrollPolicy = "off"
+    verticalScrollPolicy = "off"
+    backgroundImage="@Embed('../resources/Screen1.svg')"
+    backgroundSize="100%"
+>
+<mx:Script>
+        <![CDATA[
+        
+            import flash.events.Event;
+            import mx.effects.Zoom;
+        
+            private function createEffect(eventObj:Event):void {
+                // Define a new Zoom effect.
+                var zoomOver:Zoom = new Zoom();
+                zoomOver.duration = 20; 
+                zoomOver.zoomHeightTo = 1.05; 
+                zoomOver.zoomWidthTo = 1.05; 
+                var zoomOut:Zoom = new Zoom();
+                zoomOut.duration =200; 
+                zoomOut.zoomHeightTo = 1; 
+                zoomOut.zoomWidthTo = 1; 
+                
+                setStyle("rollOverEffect", zoomOver); 
+                setStyle("rollOutEffect", zoomOut); 
+            } 
+        ]]>
+    </mx:Script>
+	
+
+	
+</mx:VBox>

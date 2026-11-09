@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<nodeSet>
+  <view uin="cf2oqbw32k7u4dh_v">
+    <property name="$name" value="FileBlock" />
+    <property name="$defaultDiagram" value="True" />
+    <property name="$metaclass" value="Package Diagram" />
+    <reference referencedUin="csharp:e_class:src:FileBlock:FileBlock.WinForm">
+      <property name="$shortcutReference" value="true" />
+      <reference referencedUin="csharp:e_field:src:FileBlock:FileBlock.WinForm.components" />
+      <reference referencedUin="csharp:e_method:src:FileBlock:FileBlock.WinForm.WinForm()" />
+      <reference referencedUin="csharp:e_method:src:FileBlock:FileBlock.WinForm.Dispose(bool)" />
+      <reference referencedUin="csharp:e_method:src:FileBlock:FileBlock.WinForm.InitializeComponent()" />
+      <reference referencedUin="csharp:e_method:src:FileBlock:FileBlock.WinForm.Main()" />
+      <reference referencedUin="csharp:e_method:src:FileBlock:FileBlock.WinForm.button1_Click(object,System.EventArgs)" />
+      <reference referencedUin="csharp:e_field:src:FileBlock:FileBlock.WinForm.button1" />
+    </reference>
+  </view>
+</nodeSet>

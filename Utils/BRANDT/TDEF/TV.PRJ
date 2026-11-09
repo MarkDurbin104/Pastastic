@@ -1,0 +1,6 @@
+tv.c (tv.h,mouse.h)
+taskfile.c (tv.h)
+taskgraf.c (tv.h)
+taskdiag.c (tv.h)
+taskterm.c (tv.h,comms.h)
+comms.c (comms.h)

@@ -1,0 +1,1853 @@
+object MainPad: TScrollBox
+  Left = 0
+  Top = 0
+  Width = 1294
+  Height = 609
+  HorzScrollBar.Tracking = True
+  VertScrollBar.Tracking = True
+  Align = alClient
+  Color = clWindow
+  ParentColor = False
+  PopupMenu = UCSDForm.PopupMenu1
+  TabOrder = 0
+  object U0000: TUCNode
+    Caption = 'Normal Tasks'
+    Text = 'The clerk performs their normal tasks'
+    User = 'Clerk'
+    Verb = 'Performs'
+  end
+  object U0001: TUCNode
+    ParentNode = U0000
+    Caption = 'Logs On To System'
+    Text = 
+      'The clerk logs on to the system using the standard Windows NT pr' +
+      'ocedure.'#13#10'The system displays the menu of options, which may dif' +
+      'fer depending on the User who has logged on or the Workstation t' +
+      'hat is being used.'
+    User = 'Clerk'
+  end
+  object U0002: TUCNode
+    ParentNode = U0000
+    Caption = 'Begins Customer Serving Session'
+    Text = 'The clerk selects the service requested by the customer'
+    User = 'Clerk'
+  end
+  object U0003: TUCNode
+    ParentNode = U0000
+    Caption = 'Ends Customer Serving Session'
+    Text = 
+      'If the customer is required to pay for the service provided, the' +
+      ' clerk selects the method of payment requested by the customer a' +
+      'nd enters the details needed to complete the transaction.'#13#10'Any p' +
+      'ayments made from the clerk to the customer are made in cash.'#13#10'T' +
+      'he clerk either prints a receipt for the customer or finishes th' +
+      'e customer session without a receipt.'
+    User = 'Clerk'
+  end
+  object U0004: TUCNode
+    ParentNode = U0000
+    Caption = 'Admin Functions'
+    Text = 'The clerk selects the required admin function.'
+    User = 'Clerk'
+    Verb = 'Processes'
+  end
+  object U0005: TUCNode
+    ParentNode = U0000
+    Caption = 'Logs Off The System'
+    Text = 
+      'The clerk logs off from the system.'#13#10'The system will perform a W' +
+      'indows NT log-off function or return the User to the Windows NT ' +
+      'desktop.'
+    User = 'Clerk'
+  end
+  object U000A: TUCNode
+    ParentNode = U0002
+    Caption = 'Postal Item From "individual" Customer'
+    Text = 
+      'The clerk accepts the item from the customer and places it on th' +
+      'e electronic scale or enters the weight via the keyboard.'#13#10'Posta' +
+      'ge stamps must be sold to cover the total of the postage and any' +
+      ' additional services requested by the customer.'
+    User = 'Clerk'
+    Verb = 'Accepts '
+  end
+  object U0098: TUCNode
+    ParentNode = U0002
+    Caption = 'Postage Prepaid Mail'
+    User = 'Clerk'
+    Verb = 'Processes'
+  end
+  object U0037: TUCNode
+    ParentNode = U0002
+    Caption = 'Franked Postal Item'
+    Text = 
+      'The clerk accepts the item from the customer.'#13#10'No cash is accept' +
+      'ed at the counter to cover the postage or other charges levied a' +
+      'gainst any Franked Item accepted at the counter.'
+    User = 'Clerk'
+    Verb = 'Accepts '
+  end
+  object U0047: TUCNode
+    ParentNode = U0002
+    Caption = 'Government Postal Item'
+    Text = 
+      'The clerk accepts the item from the customer and places it on th' +
+      'e electronic scale or enters the weight via the keyboard.'#13#10'Posta' +
+      'ge must be charged to a specific government department, selected' +
+      ' from a list.'#13#10'No cash is accepted at the counter.'
+    User = 'Clerk'
+    Verb = 'Accepts '
+  end
+  object U0079: TUCNode
+    ParentNode = U0002
+    Caption = 'EMS'
+    Text = 
+      'The clerk accepts the item from the customer and places it on th' +
+      'e electronic scale or enters the weight via the keyboard.'#13#10'On co' +
+      'mpletion of the transaction, the system prints a receipt for the' +
+      ' customer.'
+    User = 'Clerk'
+    Verb = 'Processes'
+  end
+  object U006A: TUCNode
+    ParentNode = U0002
+    Caption = 'Bulk Mail'
+    Text = 
+      'Bulk Mail is accepted for domestic delivery only and at least 50' +
+      '0 items must be booked to obtain the discounted tariff.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U000C: TUCNode
+    ParentNode = U0002
+    Caption = 'Postal Item to Customer'
+    Text = 
+      'The item to be delivered to the customer is brought to the count' +
+      'er and the clerk enters the details into the system.'
+    User = 'Clerk'
+    Verb = 'Delivers'
+  end
+  object U008E: TUCNode
+    ParentNode = U0002
+    Caption = 'Savings Certificates'
+    Text = 
+      'The clerk accepts the request from the customer and selects the ' +
+      'required function.'
+    User = 'Clerk'
+    Verb = 'Processes'
+  end
+  object U0086: TUCNode
+    ParentNode = U0002
+    Caption = 'Postbanking'
+    Text = 
+      'The clerk accepts the request from the customer and selects the ' +
+      'required function for the type of account being processed.'
+    User = 'Clerk'
+    Verb = 'Processes'
+  end
+  object U000D: TUCNode
+    ParentNode = U0002
+    Caption = 'Money Order'
+    Text = 
+      'The clerk accepts the request from the customer and enters detai' +
+      'ls about the money order into the system.'#13#10'On completion of the ' +
+      'transaction the system must print a receipt for the customer.'
+    User = 'Clerk'
+    Verb = 'Processes'
+  end
+  object U0095: TUCNode
+    ParentNode = U0002
+    Caption = 'Pensions'
+    Text = 
+      'The clerk accepts the request from the customer and selects the ' +
+      'required function.'
+    User = 'Clerk'
+    Verb = 'Processes'
+  end
+  object U009B: TUCNode
+    ParentNode = U0002
+    Caption = 'Other Counter Services'
+    Text = 
+      'The clerk accepts the request from the customer and selects the ' +
+      'required function.'
+    User = 'Clerk'
+    Verb = 'Processes'
+  end
+  object U000B: TUCNode
+    ParentNode = U000A
+    Caption = 'International Postal Item From "individual" Customer'
+    Text = 
+      'The clerk enters the destination country of the item being accep' +
+      'ted and indicates whether the item is being posted airmail or su' +
+      'rface mail'
+    User = 'Clerk'
+    Verb = 'Accepts '
+  end
+  object U000E: TUCNode
+    ParentNode = U000A
+    Caption = 'Domestic Postal Item From "individual" Customer'
+    Text = 
+      'Domestic mail has a single tariff and makes no distinction betwe' +
+      'en airmail and surface mail.'
+    User = 'Clerk'
+    Verb = 'Accepts '
+  end
+  object U0042: TUCNode
+    ParentNode = U000B
+    Caption = 'International Letter'
+    Text = 
+      'The system calculates the postage based on the item'#39's size, the ' +
+      'item'#39's destination and whether the item is sent airmail or surfa' +
+      'ce mail.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0043: TUCNode
+    ParentNode = U000B
+    Caption = 'International Postcard'
+    Text = 
+      'The system calculates the postage based on the item'#39's weight, it' +
+      's destination and whether the item is sent airmail or surface ma' +
+      'il.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0045: TUCNode
+    ParentNode = U000B
+    Caption = 'International Aerogramme'
+    Text = 
+      'The system calculates the postage based on the item'#39's weight and' +
+      ' its destination.'#13#10'An aerogramme may only be sent by airmail.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0028: TUCNode
+    ParentNode = U000B
+    Caption = 'International Small Packets'
+    Text = 
+      'The system calculates the postage based on the item'#39's weight and' +
+      ' its destination.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0041: TUCNode
+    ParentNode = U000B
+    Caption = 'International Literature for the blind'
+    Text = 
+      'International Literature for the blind may only be sent by surfa' +
+      'ce mail and is accepted by the Post free of charge.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U00BD: TUCNode
+    ParentNode = U000B
+    Caption = 'International Parcel'
+    Text = 
+      'The system calculates the postage based on the item'#39's destinatio' +
+      'n, weight and whether the item is sent airmail or surface mail.'#13 +
+      #10'The system prints a receipt on completion of the transaction on' +
+      'ly if requested by the customer.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0053: TUCNode
+    ParentNode = U0042
+    Caption = 'Registration'
+    Text = 
+      'Registration of a postal item is an optional service that may be' +
+      ' requested by the customer.  If requested, the clerk enters the ' +
+      'information required to accept the service.'#13#10'The system calculat' +
+      'es and displays the additional fee to be charged.'#13#10'If the custom' +
+      'er requests registration, a receipt is always printed.'
+    User = 'Clerk'
+    Verb = 'Selects '
+  end
+  object U005C: TUCNode
+    ParentNode = U0042
+    Caption = 'Express Delivery'
+    Text = 
+      'Express Delivery of a postal item is an optional service that ma' +
+      'y be requested by the customer.'#13#10'Express Delivery is available t' +
+      'o a limited number of destination countries and the option must ' +
+      'only be displayed on screen if the destination country of the it' +
+      'erm being posted is among the list.'#13#10'No additional data is enter' +
+      'ed by the clerk when the service is requested.'#13#10'The system calcu' +
+      'lates and displays the additional fee to be charged.'#13#10'No custome' +
+      'r receipt is necessary if the customer requests express delivery' +
+      '.'
+    User = 'Clerk'
+    Verb = 'Selects '
+  end
+  object U005B: TUCNode
+    ParentNode = U0053
+    Caption = 'Advice of Delivery'
+    Text = 
+      'Advice of Delivery for a postal item is an optional service that' +
+      ' may be requested by the customer only if the item being booked ' +
+      'is registred.'#13#10'If requested, the clerk enters the information re' +
+      'quired to accept the service.'#13#10'The system calculates and display' +
+      's the additional fee to be charged.'#13#10'If the customer requests ad' +
+      'vice of delivery, a receipt is always printed.'
+    User = 'Clerk'
+    Verb = 'Selects'
+  end
+  object U0018: TUCNode
+    ParentNode = U0043
+    DuplicateOf = U005C
+  end
+  object U0019: TUCNode
+    ParentNode = U0045
+    DuplicateOf = U0053
+  end
+  object U001B: TUCNode
+    ParentNode = U0045
+    DuplicateOf = U005C
+  end
+  object U001A: TUCNode
+    ParentNode = U0019
+    DuplicateOf = U005B
+  end
+  object U002E: TUCNode
+    ParentNode = U0028
+    DuplicateOf = U0019
+  end
+  object U0033: TUCNode
+    ParentNode = U0028
+    DuplicateOf = U001B
+  end
+  object U0030: TUCNode
+    ParentNode = U002E
+    DuplicateOf = U001A
+  end
+  object U00BE: TUCNode
+    ParentNode = U00BD
+    Caption = 'Insurance'
+    Text = 
+      'Insurance of a postal item is an optional service that may be re' +
+      'quested by the customer.  If requested, the clerk enters the inf' +
+      'ormation required to accept the service.'#13#10'The system calculates ' +
+      'and displays the additional fee to be charged.'#13#10'If the customer ' +
+      'requests insurance, a receipt is always printed.'
+    User = 'Clerk'
+    Verb = 'Selects '
+  end
+  object U0034: TUCNode
+    ParentNode = U00BE
+    DuplicateOf = U001B
+  end
+  object U003D: TUCNode
+    ParentNode = U00BE
+    DuplicateOf = U001A
+  end
+  object U000F: TUCNode
+    ParentNode = U000E
+    Caption = 'Domestic Letter'
+    Text = 
+      'The system calculates the postage for a Domestic Letter based on' +
+      ' the item'#39's size.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0016: TUCNode
+    ParentNode = U000E
+    Caption = 'Domestic Postcard'
+    Text = 'The system calculates the postage for a Domestic Postcard.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0014: TUCNode
+    ParentNode = U000E
+    Caption = 'Domestic Small Packet'
+    Text = 
+      'The system calculates the postage for a Domestic Surface Small P' +
+      'acket.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0017: TUCNode
+    ParentNode = U000E
+    Caption = 'Domestic Literature for the blind'
+    Text = 
+      'The system calculates the postage for a Domestic Surface Literat' +
+      'ure for the blind.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U006F: TUCNode
+    ParentNode = U000E
+    Caption = 'Domestic Parcel'
+    Text = 
+      'The system calculates the postage for a Domestic Surface Parcel'#13 +
+      #10'The system does not print a receipt on completion of the transa' +
+      'ction.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0010: TUCNode
+    ParentNode = U000F
+    DuplicateOf = U0053
+  end
+  object U0011: TUCNode
+    ParentNode = U0010
+    DuplicateOf = U005B
+  end
+  object U0013: TUCNode
+    ParentNode = U0014
+    DuplicateOf = U0010
+  end
+  object U0015: TUCNode
+    ParentNode = U0013
+    DuplicateOf = U0011
+  end
+  object U0035: TUCNode
+    ParentNode = U006F
+    DuplicateOf = U00BE
+  end
+  object U00B6: TUCNode
+    ParentNode = U006F
+    Caption = 'Cash On Delivery'
+    Text = 
+      'Cash On Delivery is an optional service that may be requested by' +
+      ' the customer.  If requested, the clerk enters the information r' +
+      'equired to accept the service.'#13#10'The system calculates and displa' +
+      'ys the additional fee to be charged.'#13#10'If the customer requests C' +
+      'ash On Delivery, a receipt is always printed.'
+    User = 'Clerk'
+    Verb = 'Selects'
+  end
+  object U0036: TUCNode
+    ParentNode = U0035
+    DuplicateOf = U003D
+  end
+  object U0099: TUCNode
+    ParentNode = U0098
+    Caption = 'mail "on account"'
+    Text = 
+      'The clerk enters the details of the mail being accepted and the ' +
+      'account to be charged.'#13#10'The system calculates the total postage ' +
+      'payable, reduces the total by any discount applicable and shows ' +
+      'the total amount to be debited against the customer'#39's account.'#13#10 +
+      'On completion of the transaction, the system prints three copies' +
+      ' of the receipt.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U009A: TUCNode
+    ParentNode = U0098
+    Caption = 'Account Payment'
+    Text = 
+      'The clerk enters the details of the account to be credited.'#13#10'On ' +
+      'completion, the system must print a receipt for the customer.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0038: TUCNode
+    ParentNode = U0037
+    Caption = 'International Franked Postal Item'
+    Text = 
+      'The clerk enters the destination country of the item being accep' +
+      'ted.'#13#10'No fee is charged at the counter for Franked Mail.'#13#10'A cust' +
+      'omer receipt must be issued.'
+    User = 'Clerk'
+    Verb = 'Accepts '
+  end
+  object U0044: TUCNode
+    ParentNode = U0037
+    Caption = 'Domestic Franked Postal Item'
+    Text = 
+      'No fee is charged at the counter for Franked Mail.'#13#10'A customer r' +
+      'eceipt must be issued.'
+    User = 'Clerk'
+    Verb = 'Accepts '
+  end
+  object U0039: TUCNode
+    ParentNode = U0038
+    Caption = 'International Letter'
+    Text = 
+      'A franked letter brought to the counter must be registered.'#13#10'The' +
+      ' clerk enters the registration details required to accept the se' +
+      'rvice, and indicates whether the item is being posted airmail or' +
+      ' surface mail'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U003A: TUCNode
+    ParentNode = U0038
+    Caption = 'International Postcard'
+    Text = 
+      'A franked postcard brought to the counter must use the "Express ' +
+      'Delivery" service.'#13#10'Express Delivery is available to a limited n' +
+      'umber of destination countries and the option must only be displ' +
+      'ayed on screen if the destination country of the iterm being pos' +
+      'ted is among the list.'#13#10'No additional data is entered by the cle' +
+      'rk when the service is requested.'#13#10'No additional fee is charged.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U004A: TUCNode
+    ParentNode = U0039
+    DuplicateOf = U0036
+  end
+  object U003B: TUCNode
+    ParentNode = U0039
+    DuplicateOf = U0033
+  end
+  object U0046: TUCNode
+    ParentNode = U0044
+    Caption = 'Domestic Letter'
+    Text = 
+      'A franked letter brought to the counter must be registered.'#13#10'The' +
+      ' clerk enters the registration details required to accept the se' +
+      'rvice.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U003C: TUCNode
+    ParentNode = U0046
+    DuplicateOf = U004A
+  end
+  object U0048: TUCNode
+    ParentNode = U0047
+    Caption = 'International Postal Item'
+    Text = 
+      'The clerk enters the destination country of the item being accep' +
+      'ted and indicates whether the item is being posted airmail or su' +
+      'rface mail'#13#10'A customer receipt must be issued.'
+    User = 'Clerk'
+    Verb = 'Accepts '
+  end
+  object U0051: TUCNode
+    ParentNode = U0047
+    Caption = 'Domestic Postal Item'
+    Text = 'A customer receipt must be issued.'
+    User = 'Clerk'
+    Verb = 'Accepts '
+  end
+  object U0049: TUCNode
+    ParentNode = U0048
+    Caption = 'International Letter'
+    Text = 
+      'A "Government Mail" letter brought to the counter must be regist' +
+      'ered.'#13#10'The clerk enters the registration details required to acc' +
+      'ept the service, and indicates whether the item is being posted ' +
+      'airmail or surface mail'#13#10'The destination country entered by the ' +
+      'clerk must be among the list of countries where this type of mai' +
+      'l may be sent.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U004D: TUCNode
+    ParentNode = U0048
+    Caption = 'International Postcard'
+    Text = 
+      'A "Government Mail" postcard brought to the counter must use the' +
+      ' "Express Delivery" service.'#13#10'Express Delivery is available to a' +
+      ' limited number of destination countries and the destination cou' +
+      'ntry entered by the clerk must be one of these countries.'#13#10'No ad' +
+      'ditional data is entered by the clerk when the service is reques' +
+      'ted.'#13#10'No additional fee is charged.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U004E: TUCNode
+    ParentNode = U0048
+    Caption = 'International Small Packet'
+    Text = 
+      'A "Government Mail" small packet brought to the counter must be ' +
+      'registered.'#13#10'The clerk enters the registration details required ' +
+      'to accept the service, and indicates whether the item is being p' +
+      'osted airmail or surface mail'#13#10'The destination country entered b' +
+      'y the clerk must be among the list of countries where this type ' +
+      'of mail may be sent.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U005A: TUCNode
+    ParentNode = U0048
+    Caption = 'International Parcel'
+    Text = 
+      'The system calculates the postage based on the item'#39's destinatio' +
+      'n, weight and whether the item is sent airmail or surface mail.'#13 +
+      #10'The system prints a receipt on completion of the transaction on' +
+      'ly if requested by the customer.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U004B: TUCNode
+    ParentNode = U0049
+    DuplicateOf = U004A
+  end
+  object U004C: TUCNode
+    ParentNode = U0049
+    DuplicateOf = U003B
+  end
+  object U004F: TUCNode
+    ParentNode = U004E
+    DuplicateOf = U004B
+  end
+  object U0050: TUCNode
+    ParentNode = U004E
+    DuplicateOf = U004C
+  end
+  object U005E: TUCNode
+    ParentNode = U005A
+    DuplicateOf = U0035
+  end
+  object U005D: TUCNode
+    ParentNode = U005E
+    DuplicateOf = U0034
+  end
+  object U005F: TUCNode
+    ParentNode = U005E
+    DuplicateOf = U0036
+  end
+  object U0052: TUCNode
+    ParentNode = U0051
+    Caption = 'Domestic Letter'
+    Text = 
+      'A "Government Mail" letter brought to the counter must be regist' +
+      'ered.'#13#10'The clerk enters the registration details required to acc' +
+      'ept the service and the system calculates the additional fee to ' +
+      'be charged.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0055: TUCNode
+    ParentNode = U0051
+    Caption = 'Domestic Small Packet'
+    Text = 
+      'A "Government Mail" small packet brought to the counter must be ' +
+      'registered.'#13#10'The clerk enters the registration details required ' +
+      'to accept the service and the system calculates the additional f' +
+      'ee to be charged.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0060: TUCNode
+    ParentNode = U0051
+    Caption = 'Domestic Parcel'
+    Text = 
+      'The system calculates the postage based on the item'#39's weight.'#13#10'T' +
+      'he system prints a receipt on completion of the transaction only' +
+      ' if requested by the customer.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0054: TUCNode
+    ParentNode = U0052
+    DuplicateOf = U004B
+  end
+  object U0056: TUCNode
+    ParentNode = U0055
+    DuplicateOf = U0054
+  end
+  object U0061: TUCNode
+    ParentNode = U0060
+    DuplicateOf = U005E
+  end
+  object U0062: TUCNode
+    ParentNode = U0061
+    DuplicateOf = U005F
+  end
+  object U007A: TUCNode
+    ParentNode = U0079
+    Caption = 'Domestic EMS from Cash Customer'
+    Text = 
+      'The system calculates the postage for Domestic EMS'#13#10'The clerk mu' +
+      'st accept cash to cover postage for the item. Stamps cannot be s' +
+      'old to cover the postage.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U007B: TUCNode
+    ParentNode = U0079
+    Caption = 'Domestic EMS from Contract Customer'
+    Text = 
+      'The Clerk enters details about the contract customer being serve' +
+      'd'#13#10'The system calculates the postage for Domestic EMS'#13#10'Stamps ca' +
+      'nnot be sold to cover the postage.'#13#10'Payment may be made in cash ' +
+      'or "on credit".  Payment cannot be made by cheque.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U007C: TUCNode
+    ParentNode = U0079
+    Caption = 'International EMS from Cash Customer'
+    Text = 
+      'The clerk enters the country of destination for the item.'#13#10'The s' +
+      'ystem calculates the postage for Domestic EMS'#13#10'The clerk must ac' +
+      'cept cash to cover postage for the item. Stamps cannot be sold t' +
+      'o cover the postage.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U007D: TUCNode
+    ParentNode = U0079
+    Caption = 'International EMS from Contract Customer'
+    Text = 
+      'The Clerk enters details about the contract customer being serve' +
+      'd'#13#10'The clerk enters the country of destination for the item and ' +
+      'the system then calculates the postage required.'#13#10'Stamps cannot ' +
+      'be sold to cover the postage.'#13#10'Payment may be made in cash or "o' +
+      'n credit".  Payment cannot be made by cheque.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0057: TUCNode
+    ParentNode = U006A
+    Caption = 'Letter'
+    Text = 
+      'The clerk enters the size and weight of one of the letters being' +
+      ' booked and the total number of letters to be posted.'#13#10'The syste' +
+      'm calculates the fee for each item and the total fee to be charg' +
+      'ed to the customer.'#13#10'The fee may be paid in cash or cheque.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0058: TUCNode
+    ParentNode = U006A
+    Caption = 'Postcard'
+    Text = 
+      'The clerk enters the size and weight of one of the postcards bei' +
+      'ng booked and the total number of letters to be posted.'#13#10'The sys' +
+      'tem calculates the fee for each item and the total fee to be cha' +
+      'rged to the customer.'#13#10'The fee may be paid in cash or cheque.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0059: TUCNode
+    ParentNode = U006A
+    Caption = 'Small Packet'
+    Text = 
+      'The clerk enters the size and weight of one of the packets being' +
+      ' booked and the total number of letters to be posted.'#13#10'The syste' +
+      'm calculates the fee for each item and the total fee to be charg' +
+      'ed to the customer.'#13#10'The fee may be paid in cash or cheque.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0070: TUCNode
+    ParentNode = U000C
+    Caption = 'Letter'
+    Text = 
+      'The system cannot display any charges due from the customer unti' +
+      'l at least one of the optional fees is selected.'
+    User = 'Clerk'
+    Verb = 'Delivers'
+  end
+  object U0071: TUCNode
+    ParentNode = U000C
+    Caption = 'Parcel'
+    Text = 
+      'The system displays the handling charges due and the clerk enter' +
+      's any additional charges to be applied.'
+    User = 'Clerk'
+    Verb = 'Delivers'
+  end
+  object U00B7: TUCNode
+    ParentNode = U000C
+    Caption = 'Postcard'
+    Text = 
+      'The system cannot display any charges due from the customer unti' +
+      'l at least one of the optional fees is selected.'
+    User = 'Clerk'
+    Verb = 'Delivers'
+  end
+  object U00B8: TUCNode
+    ParentNode = U000C
+    Caption = 'Aerogramme'
+    Text = 
+      'The system cannot display any charges due from the customer unti' +
+      'l at least one of the optional fees is selected.'
+    User = 'Clerk'
+    Verb = 'Delivers'
+  end
+  object U006B: TUCNode
+    ParentNode = U000C
+    Caption = 'EMS'
+    Text = 
+      'On completion of the transaction, the system must produce a rece' +
+      'ipt.'
+    User = 'Clerk'
+    Verb = 'Delivers'
+  end
+  object U00B5: TUCNode
+    ParentNode = U0070
+    Caption = 'Registered POOC'
+    Text = 
+      'A fee is charge for any letter that is marked as registered, but' +
+      ' posted out of course (POOC).'#13#10'If selected by the clerk, the cle' +
+      'rk enters the fee to be charged to the customer.'#13#10'The system dis' +
+      'plays the fee to be charged and adds it to any other fee payable' +
+      ' by the customer for the delivery of the item.'#13#10'If POOC is charg' +
+      'ed, special Postage Due stamps must be sold to the value of the ' +
+      'amount received from the customer.'#13#10'If POOC is charged, a receip' +
+      't is always printed.'
+    User = 'Clerk'
+    Verb = 'Selects '
+  end
+  object U00B4: TUCNode
+    ParentNode = U0070
+    DuplicateOf = U0077
+  end
+  object U00BF: TUCNode
+    ParentNode = U0070
+    DuplicateOf = U0026
+  end
+  object U00C0: TUCNode
+    ParentNode = U0070
+    DuplicateOf = U00BC
+  end
+  object U0020: TUCNode
+    ParentNode = U0071
+    Caption = 'Demurrage'
+    Text = 
+      'If demurrage is due on a parcel handed to the customer, the cler' +
+      'k enters the fee to be collected.'#13#10'The fee is added to any other' +
+      ' fees due and the total fee payable by the custromer is displaye' +
+      'd on the screen.'
+    User = 'Clerk'
+    Verb = 'Collects'
+  end
+  object U0025: TUCNode
+    ParentNode = U0071
+    Caption = 'COD Trade Charge'
+    Text = 
+      'If the parcel is handed to the customer as Cash on Delivery the ' +
+      'clerk will enter the COD Trade Charge to be collected.'#13#10'This fee' +
+      ' is added to any other fee due and the total is displayed oin th' +
+      'e screen.'
+    User = 'Clerk'
+    Verb = 'Collects'
+  end
+  object U00C2: TUCNode
+    ParentNode = U0071
+    Caption = 'COD Handling Charge'
+    Text = 
+      'COD Handling Charges apply to international mail only.'#13#10'When the' +
+      ' parcel is handed to the customer the clerk enters the fee to be' +
+      ' collected.'#13#10'This fee is added to any other fee due and the tota' +
+      'l is displayed oin the screen.'
+    User = 'Clerk'
+    Verb = 'Collects'
+  end
+  object U0026: TUCNode
+    ParentNode = U0071
+    Caption = 'Customs Handling Charges'
+    Text = 
+      'Customs Handling Charges apply to international mail only.'#13#10'When' +
+      ' an international item is handed to the customer the clerk will ' +
+      'enter any Customs Handling Charges to be collected.'
+    User = 'Clerk'
+    Verb = 'Collects'
+  end
+  object U00BC: TUCNode
+    ParentNode = U0071
+    Caption = 'Customs Duty'
+    Text = 
+      'Customs Handling Charges apply to international mail only.'#13#10'When' +
+      ' an international item is handed to the customer the clerk will ' +
+      'enter any Customs Charges to be collected.'
+    User = 'Clerk'
+    Verb = 'Collects'
+  end
+  object U00B9: TUCNode
+    ParentNode = U00B7
+    Caption = 'Insufficient Postage'
+    Text = 
+      'Insufficient Postage may be charged against any item being deliv' +
+      'ered to a customer where the postage attached to the item is ins' +
+      'ufficient to cover the actual charges incurred.  If selected by ' +
+      'the clerk, the clerk enters the fee to be charged to the custome' +
+      'r.'#13#10'The system displays the fee to be charged and adds it to any' +
+      ' other fee payable by the customer for the delivery of the item.' +
+      #13#10'If Insufficient Postage is charged, special Postage Due stamps' +
+      ' must be sold to the value of the amount received from the custo' +
+      'mer.'#13#10'If Insufficient Postage is charged, a receipt is always pr' +
+      'inted.'
+    User = 'Clerk'
+    Verb = 'Selects '
+  end
+  object U00BA: TUCNode
+    ParentNode = U00B8
+    DuplicateOf = U00B5
+  end
+  object U00BB: TUCNode
+    ParentNode = U00B8
+    DuplicateOf = U00B9
+  end
+  object U0072: TUCNode
+    ParentNode = U00B8
+    DuplicateOf = U00BF
+  end
+  object U00C1: TUCNode
+    ParentNode = U00B8
+    DuplicateOf = U00C0
+  end
+  object U00C3: TUCNode
+    ParentNode = U006B
+    DuplicateOf = U00C0
+  end
+  object U008F: TUCNode
+    ParentNode = U008E
+    Caption = 'Application for Certificate'
+    Text = 
+      'The clerk enters information regarding the customer purchase. Th' +
+      'e customer request certificates for a specific value(eg. P400) b' +
+      'ut the system will not show the denominations to be issued.'#13#10'The' +
+      ' total amount of the certificates should not exceed P50000.'#13#10'Pay' +
+      'ment by the customer may be made by cash or cheque.'#13#10'When the tr' +
+      'ansaction is completed, two copies of the receipt must be printe' +
+      'd.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0090: TUCNode
+    ParentNode = U008E
+    Caption = 'Certificate (Full payment)'
+    Text = 
+      'The clerk enters information regarding the customer redeeming th' +
+      'e certificate and the certificate details.'#13#10'The system must calc' +
+      'ulate the interest payable on the certifficate and display the t' +
+      'otal to be paid to the customer (certificate value plus interest' +
+      ').'#13#10'For payments between P1001 and P5000 the clerk must enter an' +
+      ' authorisation code issued by Bank of Botswana.'#13#10'The maximum pay' +
+      'ment that can be made is P5000 pula.'#13#10'No receipt is printed on c' +
+      'ompletion of the transaction.'
+    User = 'Clerk'
+    Verb = 'Pays'
+  end
+  object U0064: TUCNode
+    ParentNode = U008E
+    Caption = 'Certificate (Partial payment)'
+    Text = 
+      'The clerk enters information regarding the customer redeeming th' +
+      'e certificate, the certificate details and the amount to be paid' +
+      ' to th ecustomer.  The amount to be paid nmust be in multiples o' +
+      'f P50.'#13#10'The system must calculate the interest payable on the ce' +
+      'rtifficate and display the total to be paid to the customer (int' +
+      'erest plus partial payment requested).'#13#10'For payments between P10' +
+      '01 and P5000 the clerk must enter an authorisation code issued b' +
+      'y Bank of Botswana.'#13#10'The maximum payment that can be made is P50' +
+      '00 pula.'#13#10'No receipt is printed on completion of the transaction' +
+      '.'
+    User = 'Clerk'
+    Verb = 'Pays'
+  end
+  object U0087: TUCNode
+    ParentNode = U0086
+    Caption = 'Opens Account'
+    Text = 
+      'The clerk enters the details of the new account to be opened.'#13#10'T' +
+      'he minimum deposit when opening an Ordinary or Trust account is ' +
+      'P20.  For a Special Account the minimum deposit is P200.'#13#10'Paymen' +
+      't for the initial deposit amount may be made by cash or cheque.'#13 +
+      #10'When the transaction is completed, the system must print a cust' +
+      'omer receipt and a New Account Particulars card.'
+    User = 'Clerk'
+  end
+  object U0088: TUCNode
+    ParentNode = U0086
+    Caption = 'Deposit'
+    Text = 
+      'The clerk enters the details of the account to be credited and t' +
+      'he amount to be deposited.'#13#10'The minimum deposit is P5 for  any t' +
+      'ype of account.'#13#10'Payment for the deposit amount may be made by c' +
+      'ash or cheque.'#13#10'When the transaction is completed, two copies of' +
+      ' the receipt must be printed.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0089: TUCNode
+    ParentNode = U0086
+    Caption = 'Withdrawal (Trust Account)'
+    Text = 
+      'The clerk enters the details of the account to be debited and th' +
+      'e amount to be withdrawn.'#13#10'The clerk must enter the warrant refe' +
+      'rence for any withdrawal from this type of account.'#13#10'Payment of ' +
+      'the withdrawal to the customer may only be made in cash.'#13#10'When t' +
+      'he transaction is completed, two copies of the receipt must be p' +
+      'rinted.'
+    User = 'Clerk'
+    Verb = 'Pays'
+  end
+  object U0065: TUCNode
+    ParentNode = U0086
+    Caption = 'Withdrawal (Normal and Special Accounts)'
+    Text = 
+      'The clerk enters the details of the account to be debited and th' +
+      'e amount to be withdrawn.'#13#10'The clerk must enter the warrant refe' +
+      'rence for any withdrawal greater than P500.'#13#10'Payment of the with' +
+      'drawal to the customer may only be made in cash.'#13#10'When the trans' +
+      'action is completed, two copies of the receipt must be printed.'
+    User = 'Clerk'
+    Verb = 'Pays'
+  end
+  object U008A: TUCNode
+    ParentNode = U0086
+    Caption = 'Closes Account'
+    Text = 
+      'The clerk must capture the Customer Name, Account number, the am' +
+      'ount of withdrawal and the warrant reference.'#13#10'When the transact' +
+      'ion is completed, the system must print a customer receipt.'
+    User = 'Clerk'
+  end
+  object U008B: TUCNode
+    ParentNode = U0086
+    Caption = 'SAYE Deposit'
+    Text = 
+      'The system should be able to capture the Account number, the cus' +
+      'tomer name and the amount of deposit.'#13#10'There are no minimum or m' +
+      'aximum limits for the deposit.'#13#10'Payment may be made by cash or c' +
+      'heque.'#13#10'When the transaction is completed, the system must print' +
+      ' a customer receipt.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0081: TUCNode
+    ParentNode = U000D
+    Caption = 'Issues Domestic Money Order'
+    Text = 
+      'The system calculates the charges for a domestic money order and' +
+      ' displays the total amount to be paid by the customer.'
+    User = 'Clerk'
+  end
+  object U0082: TUCNode
+    ParentNode = U000D
+    Caption = 'Pays Domestic Money Order'
+    Text = 
+      'The clerk accepts the request for payment from the customer and ' +
+      'enters details about the money order into the system.'#13#10'No receip' +
+      't is printed on completion of this transaction.'
+    User = 'Clerk'
+  end
+  object U0083: TUCNode
+    ParentNode = U000D
+    Caption = 'Domestic Money Order Modification'
+    Text = 
+      'The clerk accepts the request to change the details of the domes' +
+      'tic money order into the system.'#13#10'The system calculates and disp' +
+      'lays the appropriate charges.'#13#10'A receipt is printed on completio' +
+      'n of this transaction.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0084: TUCNode
+    ParentNode = U000D
+    Caption = 'Domestic Money Order Refund'
+    Text = 
+      'The clerk accepts the request for refund from the customer and e' +
+      'nters details of the money order into the system.'#13#10'The system ca' +
+      'lculates the second commission payable and displays the amount t' +
+      'o be refunded to the customer.'#13#10'On completion of the transaction' +
+      ' the system must print a receipt for the customer.'
+    User = 'Clerk'
+    Verb = 'Pays'
+  end
+  object U0096: TUCNode
+    ParentNode = U0095
+    Caption = 'Pension Payment (normal payment)'
+    Text = 
+      'The clerk enters the details of the Pension Payment Voucher, the' +
+      ' identification details of the customer and the amount to be pai' +
+      'd.'#13#10'Payment must be made to the pensioner in cash.'#13#10'No receipt i' +
+      's issued on completion of the transaction.'
+    User = 'Clerk'
+    Verb = 'Makes'
+  end
+  object U0066: TUCNode
+    ParentNode = U0095
+    Caption = 'Pension Payment (arrears payment)'
+    Text = 
+      'The clerk enters the details of the Pension Payment Voucher, the' +
+      ' identification details of the customer and the amount to be pai' +
+      'd.'#13#10'Payment must be made to the pensioner in cash.'#13#10'No receipt i' +
+      's issued on completion of the transaction.'
+    User = 'Clerk'
+    Verb = 'Makes'
+  end
+  object U001C: TUCNode
+    ParentNode = U009B
+    Caption = 'Postal Order Transactions'
+    User = 'Clerk'
+    Verb = 'Processes'
+  end
+  object U001D: TUCNode
+    ParentNode = U009B
+    Caption = 'PO Box and Private Bag Transactions'
+    User = 'Clerk'
+    Verb = 'Processes'
+  end
+  object U001E: TUCNode
+    ParentNode = U009B
+    Caption = 'Group Funeral Scheme Transationss'
+    User = 'Clerk'
+    Verb = 'Processes'
+  end
+  object U00A3: TUCNode
+    ParentNode = U009B
+    Caption = 'Phone Cards'
+    Text = 
+      'The clerk enters the denomination and serial number of the card ' +
+      'being sold'#13#10'The system displays the fee to be paid.'#13#10'No receipt ' +
+      'is issued on completion of the transaction.'
+    User = 'Clerk'
+    Verb = 'Sells'
+  end
+  object U00A4: TUCNode
+    ParentNode = U009B
+    Caption = 'General Refund'
+    Text = 
+      'The clerk enters the details of the Refund Voucher presented for' +
+      ' payment.'#13#10'The system displays the amount to be paid to the cust' +
+      'omer.'#13#10'A receipt must be issued on request from the customer on ' +
+      'completion of the transaction.'
+    User = 'Clerk'
+    Verb = 'Pays'
+  end
+  object U00A5: TUCNode
+    ParentNode = U009B
+    Caption = 'Exchange of stamps and stationery'
+    Text = 
+      'The clerk enters the details of the stamps and stationery being ' +
+      'returned by the customer and the stamps to be provided in exchan' +
+      'ge.'#13#10'The custoemr will always receive stamps and stationery in r' +
+      'eturn, but only to 90% of the value presented to the Post Office' +
+      '.'#13#10'A receipt must be issued on request by the customer on comple' +
+      'tion of the transaction.'
+    User = 'Clerk'
+    Verb = 'Processes'
+  end
+  object U00A6: TUCNode
+    ParentNode = U009B
+    Caption = 'Registration of Newspaper'
+    Text = 
+      'The clerk enters the details of the company requesting the regis' +
+      'tration and the Newspaper being registered.'#13#10'The system calculat' +
+      'es and displays the fee to be paid to the customer.'#13#10'Payment by ' +
+      'the customer may be made by cash or cheque.'#13#10'A miscellaneous rec' +
+      'eipt is issued on completion of the transaction.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0069: TUCNode
+    ParentNode = U009B
+    Caption = 'Advertising Leaflets'
+    Text = 
+      'The clerk enters the details of the company presenting the leafl' +
+      'ets and the total number of leaflets being posted.'#13#10'The system c' +
+      'alculates and displays the fee to be paid to the customer.'#13#10'Paym' +
+      'ent by the customer may be made by cash or cheque.'#13#10'A miscellane' +
+      'ous receipt is issued on completion of the transaction.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U009C: TUCNode
+    ParentNode = U001C
+    Caption = 'Postal Order'
+    Text = 
+      'The clerk scans the barcode or enters the details of the serial ' +
+      'number of the Postal Order being issued.'#13#10'The system must displa' +
+      'y the denomination and serial number of the Postal Order.'#13#10'The s' +
+      'ystem calculates the commission and displays the the total to be' +
+      ' paid by the customer.'#13#10'Payment by the customer must be accepted' +
+      ' as cash only.'#13#10'A receipt must be issued if requested by the cus' +
+      'tomer.'
+    User = 'Clerk'
+    Verb = 'Issues'
+  end
+  object U009D: TUCNode
+    ParentNode = U001C
+    Caption = 'Domestic Postal Order'
+    Text = 
+      'The clerk scans the barcode or enters the details of the serial ' +
+      'number of the Postal Order being paid.'#13#10'The system must display ' +
+      'the denomination and serial number of the Postal Order.'#13#10'The cle' +
+      'rk enters the details of the Postal Order being paid and the ide' +
+      'ntification details of the customer presenting the Postal Order.' +
+      #13#10'A receipt must be issued if requested by the customer.'
+    User = 'Clerk'
+    Verb = 'Pays'
+  end
+  object U009E: TUCNode
+    ParentNode = U001C
+    Caption = 'International Postal Order'
+    Text = 
+      'The clerk enters the details of the Postal Order being paid (dat' +
+      'e of issue, country of origin and face value) and the identifica' +
+      'tion details of the customer presenting the Postal Order.'#13#10'The s' +
+      'ystem converts the foreign currency amount to local currency and' +
+      ' displays the amount to be paid to the customer.'#13#10'A receipt must' +
+      ' be issued if requested by the customer.'
+    User = 'Clerk'
+    Verb = 'Pays'
+  end
+  object U00A0: TUCNode
+    ParentNode = U001D
+    Caption = 'PO Box Yearly Rental'
+    Text = 
+      'The clerk enters the details of the Post Office Box for which re' +
+      'ntal is due - Post Office, Box Number, customer name, customer i' +
+      'dentification.'#13#10'The customer may pay rental for more than one ye' +
+      'ar in a single counter transaction.'#13#10'The system must allow the c' +
+      'lerk to charge the customer an additional fee for late payment o' +
+      'f the yearly rental.  The system must charge this additional fee' +
+      ' only once,  regardless of how nmany years'#39' rental is being paid' +
+      ' by the customer.'#13#10'The system calculates and displays the total ' +
+      'fee to be paid by the customer.'#13#10'Payment by the customer may be ' +
+      'made by cash or cheque.'#13#10'On completion of the transaction a misc' +
+      'ellaneous receipt is issued.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U00A1: TUCNode
+    ParentNode = U001D
+    Caption = 'Replacement PO Box Lock Payment'
+    Text = 
+      'The clerk enters the details of the Post Office Box lock being r' +
+      'eplaced - Post Office, Box Number, customer name, customer ident' +
+      'ification.'#13#10'The system calculates and displays the fee to be pai' +
+      'd.'#13#10'Payment by the customer may be made by cash or cheque.'#13#10'On c' +
+      'ompletion of the transaction a miscellaneous receipt is issued.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U00A2: TUCNode
+    ParentNode = U001D
+    Caption = 'Private Bag Annual Rental'
+    Text = 
+      'The clerk enters the details of the Private Bag being rented - P' +
+      'ost Office, Bag Number, customer name, customer identification.'#13 +
+      #10'The customer may pay rental for more than one year in a single ' +
+      'counter transaction.'#13#10'The system must allow the clerk to charge ' +
+      'the customer an additional fee for late payment of the yearly re' +
+      'ntal.  The system must charge this additional fee only once, reg' +
+      'ardless of how nmany years'#39' rental is being paid by the customer' +
+      '.'#13#10'The system calculates and displays the total fee to be paid b' +
+      'y the customer.'#13#10'Payment by the customer may be made by cash or ' +
+      'cheque.'#13#10'On completion of the transaction a miscellaneous receip' +
+      't is issued.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0067: TUCNode
+    ParentNode = U001D
+    Caption = 'PO Box Quarterly Rental'
+    Text = 
+      'The clerk enters the details of the Post Office Box for which re' +
+      'ntal is due - Post Office, Box Number, customer name, customer i' +
+      'dentification.'#13#10'The customer may pay rental for a minimum of one' +
+      ' and a maximum of three quarters in a single counter transaction' +
+      '.'#13#10'The system must allow the clerk to charge the customer an add' +
+      'itional fee for late payment of the rental.  The system must add' +
+      ' this additional fee to the total fee only once, regardless of h' +
+      'ow nmany quarterly rents are being paid by the customer.'#13#10'The sy' +
+      'stem calculates and displays the total fee to be paid by the cus' +
+      'tomer.'#13#10'Payment by the customer may be made by cash or cheque.'#13#10 +
+      'On completion of the transaction a miscellaneous receipt is issu' +
+      'ed.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0068: TUCNode
+    ParentNode = U001D
+    Caption = 'Private Bag Quarterly Rental'
+    Text = 
+      'The clerk enters the details of the Private Bag for which rental' +
+      ' is due - Post Office, Bag Number, customer name, customer ident' +
+      'ification.'#13#10'The customer may pay rental for a minimum of one and' +
+      ' a maximum of three quarters in a single counter transaction.'#13#10'T' +
+      'he system must allow the clerk to charge the customer an additio' +
+      'nal fee for late payment of the rental.  The system must add thi' +
+      's additional fee to the total fee only once, regardless of how n' +
+      'many quarterly rents are being paid by the customer.'#13#10'The system' +
+      ' calculates and displays the total fee to be paid by the custome' +
+      'r.'#13#10'Payment by the customer may be made by cash or cheque.'#13#10'On c' +
+      'ompletion of the transaction a miscellaneous receipt is issued.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U001F: TUCNode
+    ParentNode = U001E
+    Caption = 'Group Funeral Scheme Payment'
+    Text = 
+      'The clerk enters the details of the Funeral Scheme, the customer' +
+      ' name, customer identification and the amount being paid.'#13#10'Payme' +
+      'nt by the customer may be made by cash only.'#13#10'A receipt must be ' +
+      'issued on completion of the transaction.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0021: TUCNode
+    ParentNode = U001E
+    Caption = 'RIPC Payment'
+    Text = 
+      'The clerk enters the details of the customer name, customer iden' +
+      'tification and the amount being paid.'#13#10'Payment by the customer m' +
+      'ay be made by cash only.'#13#10'A receipt must be issued on completion' +
+      ' of the transaction.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U0022: TUCNode
+    ParentNode = U001E
+    Caption = 'Ipolokeng Payment'
+    Text = 
+      'The clerk enters the details of the customer name, customer iden' +
+      'tification and the month for which payment is being made.'#13#10'Payme' +
+      'nt may be made for multiple months, and the clerk must capture a' +
+      ' receipt nunber for each month being paid.'#13#10'An optional Policy F' +
+      'ee may also be charged by the clerk.'#13#10'A receipt must be issued o' +
+      'n completion of the transaction.'
+    User = 'Clerk'
+    Verb = 'Accepts'
+  end
+  object U007E: TUCNode
+    ParentNode = U0004
+    Caption = 'Reports'
+    Text = 'The clerk selects the required report to be printed'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U0073: TUCNode
+    ParentNode = U0004
+    Caption = 'Parcels Delivered By Other Offices'
+    Text = 
+      'The clerk records the details of parcels delivered by Sub Post O' +
+      'ffice reporting to GPO.'
+    User = 'Clerk'
+    Verb = 'Records'
+  end
+  object U00A7: TUCNode
+    ParentNode = U0004
+    Caption = 'Stock and Cash Transfers'
+    User = 'Clerk'
+    Verb = 'Processes'
+  end
+  object U008D: TUCNode
+    ParentNode = U007E
+    Caption = 'EMS Reports'
+    Text = 'The clerk selects the required report to be printed'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U00C4: TUCNode
+    ParentNode = U007E
+    Caption = 'Letters Reports'
+    Text = 'The clerk selects the required report to be printed'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U00C5: TUCNode
+    ParentNode = U007E
+    Caption = 'Parcels Reports'
+    Text = 'The clerk selects the required report to be printed'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U0012: TUCNode
+    ParentNode = U007E
+    Caption = 'Financial Reports'
+    Text = 'The clerk selects the required report to be printed'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U007F: TUCNode
+    ParentNode = U008D
+    Caption = 'EMS End of Day Report'
+    Text = 
+      'The clerk enters the date for which the report is required'#13#10'On c' +
+      'ompletion the report prints on the clerk'#39's receipt printer.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U0080: TUCNode
+    ParentNode = U008D
+    Caption = 'EMS Accepted from Contract Customers Report'
+    Text = 
+      'The clerk enters the date range for which the report is required' +
+      '.'#13#10'On completion the report prints on the clerk'#39's receipt printe' +
+      'r.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U0078: TUCNode
+    ParentNode = U008D
+    Caption = 'EMS Items Handed to Sorting Centre Report'
+    Text = 
+      'The clerk enters the startring date and time and the ending date' +
+      ' and time for which the report is required.'#13#10'On completion the r' +
+      'eport prints on the clerk'#39's receipt printer.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U006C: TUCNode
+    ParentNode = U00C4
+    Caption = 'Letters End of Day Report'
+    Text = 'The clerk enters the date for which the report is required.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U006D: TUCNode
+    ParentNode = U00C4
+    Caption = 'Registered Letters Delivered Report'
+    Text = 
+      'The clerk enters either a single date or a single month for whic' +
+      'h the report is required.'#13#10'On completion the report prints on th' +
+      'e clerk'#39's receipt printer.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U006E: TUCNode
+    ParentNode = U00C4
+    Caption = 'Registered Letters Handed to Sorting Centre Report'
+    Text = 
+      'The clerk enters the startring date and time and the ending date' +
+      ' and time for which the report is required.'#13#10'On completion the r' +
+      'eport prints on the clerk'#39's receipt printer.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U0074: TUCNode
+    ParentNode = U00C5
+    Caption = 'Parcels End of Day Report'
+    Text = 'The clerk enters the date for which the report is required'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U0075: TUCNode
+    ParentNode = U00C5
+    Caption = 'Parcels Accepted and Postage Collected Report'
+    Text = 
+      'The clerk enters either a single date or a single month for whic' +
+      'h the report is required.'#13#10'On completion the report prints on th' +
+      'e clerk'#39's receipt printer.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U0076: TUCNode
+    ParentNode = U00C5
+    Caption = 'Parcels Delivered and Charges Collected Report'
+    Text = 
+      'The clerk enters either a single date or a single month for whic' +
+      'h the report is required.'#13#10'On completion the report prints on th' +
+      'e clerk'#39's receipt printer.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U0085: TUCNode
+    ParentNode = U0012
+    Caption = 'Money Order Journal'
+    Text = 
+      'The clerk enters the date for which the report is required.'#13#10'On ' +
+      'completion the report prints on the clerk'#39's receipt printer.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U008C: TUCNode
+    ParentNode = U0012
+    Caption = 'Summary of Savings Bank Deposits and Withdrawals'
+    Text = 
+      'The clerk enters the date range for which the report is required' +
+      '.'#13#10'On completion the report prints on the clerk'#39's laser printer.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U0091: TUCNode
+    ParentNode = U0012
+    Caption = 'Certificates Issued and Redeemed Journal'
+    Text = 
+      'The clerk enters the date range for which the report is required' +
+      '.'#13#10'On completion the report prints on the clerk'#39's laser printer.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U0092: TUCNode
+    ParentNode = U0012
+    Caption = 'Monthly Summary of Certificates Issued and Redeemed'
+    Text = 
+      'The clerk enters the month for which the report is required.'#13#10'On' +
+      ' completion the report prints on the clerk'#39's laser printer.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U0093: TUCNode
+    ParentNode = U0012
+    Caption = 'Pension Payments Journal'
+    Text = 
+      'The clerk enters the date range for which the report is required' +
+      '.'#13#10'On completion the report prints on the clerk'#39's receipt printe' +
+      'r.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U0094: TUCNode
+    ParentNode = U0012
+    Caption = 'Monthly Summary of Pension Payments'
+    Text = 
+      'The clerk enters the month for which the report is required.'#13#10'On' +
+      ' completion the report prints on the clerk'#39's laser printer.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U0097: TUCNode
+    ParentNode = U0012
+    Caption = 'Monthly Summary of Payments of Pension Arrears'
+    Text = 
+      'The clerk enters the date range for which the report is required' +
+      '.'#13#10'On completion the report prints on the clerk'#39's laser printer.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U009F: TUCNode
+    ParentNode = U0012
+    Caption = 'Postal Orders Paid Journal'
+    Text = 
+      'The clerk enters the date range for which the report is required' +
+      '.'#13#10'On completion the report prints on the clerk'#39's receipt printe' +
+      'r.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U00AB: TUCNode
+    ParentNode = U0012
+    Caption = 'Cash Account'
+    Text = 
+      'The clerk enters the date range for which the report is required' +
+      '.'#13#10'On completion the report prints on the clerk'#39's receipt printe' +
+      'r.'
+    User = 'Clerk'
+    Verb = 'Prints'
+  end
+  object U00A8: TUCNode
+    ParentNode = U00A7
+    Caption = 'Cash to Main Stock'
+    Text = 
+      'The clerk enters the amount to be remitted (by denomination).'#13#10'T' +
+      'he system prints the "Details of Remittance" form.'
+    User = 'Clerk'
+    Verb = 'Remits'
+  end
+  object U00A9: TUCNode
+    ParentNode = U00A7
+    Caption = 'Stock from Main Stock'
+    Text = 
+      'The clerk enters the details of the stock required into the syst' +
+      'em and completes the transaction.'#13#10'On completion the system prin' +
+      'ts a stock requisition form.'
+    User = 'Clerk'
+    Verb = 'Requests'
+  end
+  object U0077: TUCNode
+    Caption = 'Insufficient Postage'
+    Text = 
+      'Insufficient Postage may be charged against any item being deliv' +
+      'ered to a customer where the postage attached to the item is ins' +
+      'ufficient to cover the actual charges incurred.  If selected by ' +
+      'the clerk, the clerk enters the fee to be charged to the custome' +
+      'r.'#13#10'The system displays the fee to be charged and adds it to any' +
+      ' other fee payable by the customer for the delivery of the item.' +
+      #13#10'If Insufficient Postage is charged, special Postage Due stamps' +
+      ' must be sold to the value of the amount received from the custo' +
+      'mer.'#13#10'If Insufficient Postage is charged, a receipt is always pr' +
+      'inted.'
+    User = 'Clerk'
+    Verb = 'Selects '
+  end
+  object U0006: TUCNode
+    Caption = 'Normal Tasks'
+    Text = 'The Main Stock Supervisor performs their normal tasks'
+    User = 'Main Stock Supervisor'
+    Verb = 'Performs'
+  end
+  object U0007: TUCNode
+    ParentNode = U0006
+    Caption = 'Logs On To System'
+    Text = 
+      'The Main Stock Supervisor logs on to the system using the standa' +
+      'rd Windows NT procedure.'#13#10'The system displays the menu of option' +
+      's, which may differ depending on the User who has logged on or t' +
+      'he Workstation that is being used.'
+    User = 'Main Stock Supervisor'
+  end
+  object U0008: TUCNode
+    ParentNode = U0006
+    Caption = 'Admin Functions'
+    Text = 'The Main Stock Supervisor selects the required admin function.'
+    User = 'Main Stock Supervisor'
+    Verb = 'Processes '
+  end
+  object U0009: TUCNode
+    ParentNode = U0006
+    Caption = 'Logs Off The System'
+    Text = 
+      'The Main Stock Supervisor logs off from the system.'#13#10'The system ' +
+      'will perform a Windows NT log-off function or return the User to' +
+      ' the Windows NT desktop.'
+    User = 'Main Stock Supervisor'
+  end
+  object U00AD: TUCNode
+    ParentNode = U0008
+    Caption = 'Reports'
+    Text = 
+      'The Main Stock Supervisor selects the required report to be prin' +
+      'ted'
+    User = 'Main Stock Supervisor'
+    Verb = 'Prints'
+  end
+  object U00AE: TUCNode
+    ParentNode = U0008
+    Caption = 'Cash to Clerk'
+    Text = 
+      'The Main Stock Supervisor enters the details of the counter cler' +
+      'k to receive the cash and the amount to be remitted.'#13#10'The system' +
+      ' prints the "Details of Remittance" form.'
+    User = 'Main Stock Supervisor'
+    Verb = 'Remits'
+  end
+  object U00AF: TUCNode
+    ParentNode = U0008
+    Caption = 'Cash/Cheques to Bank'
+    Text = 
+      'The Main Stock Supervisor enters the details of the cash (by den' +
+      'omination) and the cheques to be remitted.'#13#10'The system prints th' +
+      'e "Details of Remittance" form.'
+    User = 'Main Stock Supervisor'
+    Verb = 'Remits'
+  end
+  object U00B0: TUCNode
+    ParentNode = U0008
+    Caption = 'Cash from Bank'
+    Text = 
+      'The Main Stock Supervisor enters the details of the cash receive' +
+      'd from the bank.'#13#10'On completion of the transaction the system pr' +
+      'ints a Miscellaneous Receipt.'
+    User = 'Main Stock Supervisor'
+    Verb = 'Receives'
+  end
+  object U00B1: TUCNode
+    ParentNode = U0008
+    Caption = 'Cash to Other Offices'
+    Text = 
+      'The Main Stock Supervisor enters the details of the Post Office ' +
+      'to receive the cash and the amount to be remitted (by denominati' +
+      'on).'#13#10'The system prints four copies of the "Details of Remittanc' +
+      'e" form.'
+    User = 'Main Stock Supervisor'
+    Verb = 'Remits'
+  end
+  object U00B2: TUCNode
+    ParentNode = U0008
+    Caption = 'Cash from other Offices'
+    Text = 
+      'The Main Stock Supervisor enters the details of the cash and che' +
+      'ques received from another Post Office.'#13#10'On completion of the tr' +
+      'ansaction the system prints a Miscellaneous Receipt.'
+    User = 'Main Stock Supervisor'
+    Verb = 'Receives'
+  end
+  object U00B3: TUCNode
+    ParentNode = U0008
+    Caption = 'Cash from Clerk'
+    Text = 
+      'The Main Stock Supervisor enters the details of the cash and che' +
+      'ques received from the Counter Clerk.'#13#10'On completion of the tran' +
+      'saction the system prints a Miscellaneous Receipt.'
+    User = 'Main Stock Supervisor'
+    Verb = 'Receives'
+  end
+  object U00AC: TUCNode
+    ParentNode = U00AD
+    Caption = 'Cash Account'
+    Text = 
+      'The Cash Account clerk selects either the specific counter clerk' +
+      ' for which the cash account should be printed or requests the ca' +
+      'sh account for the branch.'#13#10'On completion the report prints on t' +
+      'he clerk'#39's laser printer.'
+    User = 'Main Stock Supervisor'
+    Verb = 'Prints'
+  end
+  object U002D: TUCNode
+    Caption = 'Normal Tasks'
+    Text = 
+      'The Main Stock Transactions Supervisor performs their normal tas' +
+      'ks'
+    User = 'Main Stock Transactions Supervisor'
+    Verb = 'Performs'
+  end
+  object U002F: TUCNode
+    ParentNode = U002D
+    Caption = 'Logs On To System'
+    Text = 
+      'The Main Stock Transactions Supervisor logs on to the system usi' +
+      'ng the standard Windows NT procedure.'#13#10'The system displays the m' +
+      'enu of options, which may differ depending on the User who has l' +
+      'ogged on or the Workstation that is being used.'
+    User = 'Main Stock Transactions Supervisor'
+  end
+  object U0031: TUCNode
+    ParentNode = U002D
+    Caption = 'Admin Functions'
+    Text = 
+      'The Main Stock Transactions Supervisor selects the required admi' +
+      'n function.'
+    User = 'Main Stock Transactions Supervisor'
+    Verb = 'Processes '
+  end
+  object U0032: TUCNode
+    ParentNode = U002D
+    Caption = 'Logs Off The System'
+    Text = 
+      'The Main Stock Transactions Supervisor logs off from the system.' +
+      #13#10'The system will perform a Windows NT log-off function or retur' +
+      'n the User to the Windows NT desktop.'
+    User = 'Main Stock Transactions Supervisor'
+  end
+  object U0063: TUCNode
+    ParentNode = U0031
+    Caption = 'Stock From Headquarters'
+    Text = 
+      'The Main Stock Transactions Supervisor enters the details of the' +
+      ' stock received from Headquarters.'#13#10'On completion of the transac' +
+      'tion the system prints a Miscellaneous Receipt.'
+    User = 'Main Stock Transactions Supervisor'
+    Verb = 'Receives'
+  end
+  object U00AA: TUCNode
+    ParentNode = U0031
+    Caption = 'Stock to Clerk'
+    Text = 
+      'The Main Stock Transactions Supervisor enters the details of the' +
+      ' clerk who will receive the stock and the stock to be remitted.'#13 +
+      #10'On completion, the system prints a "Details of Remittance" form' +
+      '.'
+    User = 'Main Stock Transactions Supervisor'
+    Verb = 'Remits'
+  end
+  object U0023: TUCNode
+    Caption = 'Normal Tasks'
+    Text = 'The EMS Supervisor performs their normal tasks'
+    User = 'EMS Supervisor'
+    Verb = 'Performs'
+  end
+  object U0024: TUCNode
+    ParentNode = U0023
+    Caption = 'Logs On To System'
+    Text = 
+      'The EMS Supervisor logs on to the system using the standard Wind' +
+      'ows NT procedure.'#13#10'The system displays the menu of options, whic' +
+      'h may differ depending on the User who has logged on or the Work' +
+      'station that is being used.'
+    User = 'EMS Supervisor'
+  end
+  object U0027: TUCNode
+    ParentNode = U0023
+    Caption = 'Admin Functions'
+    Text = 'The EMS Supervisor selects the required admin function.'
+    User = 'EMS Supervisor'
+    Verb = 'Processes '
+  end
+  object U0029: TUCNode
+    ParentNode = U0023
+    Caption = 'Logs Off The System'
+    Text = 
+      'The EMS Supervisor logs off from the system.'#13#10'The system will pe' +
+      'rform a Windows NT log-off function or return the User to the Wi' +
+      'ndows NT desktop.'
+    User = 'EMS Supervisor'
+  end
+  object U002A: TUCNode
+    ParentNode = U0027
+    Caption = 'New EMS Contract Customer'
+    Text = 
+      'The EMS Supervisor enters the details of the new EMS contarct cu' +
+      'stomer to be added to the system.'#13#10
+    User = 'EMS Supervisor'
+    Verb = 'Adds'
+  end
+  object U002C: TUCNode
+    ParentNode = U0027
+    Caption = 'Existing EMS Contract Customer'
+    Text = 
+      'The EMS Supervisor selects the EMS contarct customer to be updat' +
+      'ed.'#13#10'On completion of the changes the system must update the con' +
+      'tract customer details in the database.'
+    User = 'EMS Supervisor'
+    Verb = 'Modifies'
+  end
+  object U002B: TUCNode
+    ParentNode = U0027
+    Caption = 'Old EMS Contract Customer'
+    Text = 
+      'The EMS Supervisor enters the details of the EMS contarct custom' +
+      'er to be deleted from the system.'#13#10'The system must confirm that ' +
+      'the customer is to be deleted from the system before completion.'
+    User = 'EMS Supervisor'
+    Verb = 'Deletes'
+  end
+  object U003E: TUCNode
+    ParentNode = U0027
+    Caption = 'EMS Contract Customer Statement'
+    Text = 
+      'The EMS Supervisor enters the customer name and the start and en' +
+      'd dates for the report.'#13#10'The report will print on a laser printe' +
+      'r'
+    User = 'EMS Supervisor'
+    Verb = 'Prints'
+  end
+  object U003F: TUCNode
+    ParentNode = U0027
+    Caption = 'EMS Contract Customer Invoice'
+    Text = 
+      'The EMS Supervisor enters the customer name and the start and en' +
+      'd dates for the report.'#13#10'The report will print on a laser printe' +
+      'r'
+    User = 'EMS Supervisor'
+    Verb = 'Prints'
+  end
+  object U0040: TUCNode
+    ParentNode = U0027
+    Caption = 'EMS Contract Customer Transaction'
+    Text = 
+      'The EMS Supervisor enters the customer name and the details of t' +
+      'he transaction being processed.'
+    User = 'EMS Supervisor'
+    Verb = 'Processes'
+  end
+  object TUCConfig
+    Left = 0
+    Top = 0
+    Width = 0
+    Height = 0
+    Introduction = 
+      'This document identifies the requirements of each of the typical' +
+      ' '#13#10'interactions between one of the many users of the system and ' +
+      'the '#13#10'system itself.'#13#10#13#10'It is intended to explain in everyday la' +
+      'nguage what the system expects '#13#10'to receive as input from the Us' +
+      'er and what the system will provide '#13#10'either as an "internal" pr' +
+      'ocess (e.g. calculating postage), a deliverable '#13#10'to the User (e' +
+      '.g. displaying the total cash due from the customer) or a '#13#10'deli' +
+      'verable to the customer (e.g. printing a receipt).'#13#10#13#10'Each secti' +
+      'on in the document describes a typical "scenario" '#13#10'encountered ' +
+      'during a working day by one of the Post'#39's personnel.  '#13#10#13#10'Each s' +
+      'cenario involves a User and their interaction with the computer ' +
+      #13#10'system.  The Users identified and involved throughout this doc' +
+      'ument '#13#10'are'#13#10#13#10'·   Counter Clerk'#13#10'·   Strongroom Supervisor'#13#10'·  ' +
+      ' Cash Account Clerk'#13#10#13#10'It is important to understand that the do' +
+      'cument does not refer to a '#13#10'specific User of the system.  In th' +
+      'e context of this document the word '#13#10'"User" refers to a group o' +
+      'f one or more people who perform the same '#13#10'function.  For examp' +
+      'le, each Counter Clerk in the CPO will perform at '#13#10'least one, b' +
+      'ut quite possibly more than one, of the scenarios shown '#13#10'below ' +
+      'that involve "Counter Clerk".'#13#10#13#10'While the Post'#39's customers obvi' +
+      'ously have an impact on the system in '#13#10'that it would not be use' +
+      'd without them, they do not interact directly with '#13#10'the softwar' +
+      'e.  Therefore the Customer is not included as a member of '#13#10'any ' +
+      'of the groups of Users mentioned above.'#13#10
+    OutputFile = 'C:\UseCase.doc'
+    TemplateFile = 'D:\PSL\Projects\Document Templates\CORVUS Use Case template.dot'
+    HeadingStyle = 'Heading 1'
+    NormalStyle = 'Normal'
+    EmphasisStyle = 'Message Header'
+  end
+end

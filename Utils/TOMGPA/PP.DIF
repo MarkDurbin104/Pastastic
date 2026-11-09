@@ -1,0 +1,128 @@
+Comparing files PP.C and i:pp.c
+****** PP.C
+    }
+    G_actnbuf[G_numan  ].n=STRDUP(name);
+    G_actnbuf[G_numan  ].t=(CHAR)t;
+****** i:pp.c
+    }
+    G_actnbuf[G_numan  ].n=strdup(name);
+    G_actnbuf[G_numan  ].t=(CHAR)t;
+******
+
+****** PP.C
+}
+
+void  pstack(void)
+****** i:pp.c
+}
+/*
+void  pstack(void)
+******
+
+****** PP.C
+{
+    UCHAR *s;
+    LONG p;
+    p=0L;
+    while (p<G_sp) {
+        s=(G_tokbuffer+p);
+        switch (*s) {
+            case TCONSTANT : p++;                         break;
+****** i:pp.c
+{
+    UCHAR *s,*p;
+    p=G_tokspace;
+    while (p<(&tokenval(G_sp))) {
+        s=p;
+        switch (*p) {
+            case TCONSTANT : p++;                         break;
+******
+
+****** PP.C
+            case DCONSTANT : p+=sizeof(double);           break;
+            case CCONSTANT : while (*(G_tokbuffer+p+1)) p++; p++; break;
+        }
+****** i:pp.c
+            case DCONSTANT : p+=sizeof(double);           break;
+            case CCONSTANT : while (*(p+1)) p++; p++;     break;
+        }
+******
+
+****** PP.C
+        p++;
+        switch (*(G_tokbuffer+p)) {
+            case TABLE     : cdprintf("\n");                break;
+****** i:pp.c
+        p++;
+        switch (*p) {
+            case TABLE     : cdprintf("\n");                break;
+******
+
+****** PP.C
+    }
+}
+LONG  statadd(CHAR *name)
+****** i:pp.c
+    }
+} */
+LONG  statadd(CHAR *name)
+******
+
+****** PP.C
+            read(fd,tmp,9);
+                    G_actnbuf[i].n=STRDUP(tmp);
+        }
+****** i:pp.c
+            read(fd,tmp,9);
+                    G_actnbuf[i].n=strdup(tmp);
+        }
+******
+
+****** PP.C
+            if (tmp[0]=='G') {
+                G_actmaplst[i++]=STRDUP(&tmp[2]);
+            } else if (tmp[0]=='U') {
+                G_ufunclst[j++]=STRDUP(&tmp[2]);
+            }
+****** i:pp.c
+            if (tmp[0]=='G') {
+                G_actmaplst[i++]=strdup(&tmp[2]);
+            } else if (tmp[0]=='U') {
+                G_ufunclst[j++]=strdup(&tmp[2]);
+            }
+******
+
+****** PP.C
+#endif
+        t = getenv("GPACFG");
+        if (t != NULL)
+        {
+                strcpy(tmp,t);
+        }
+   if (argc<2) {
+                if (t==NULL) {
+                        printf("PP Config\n");
+****** i:pp.c
+#endif
+        strcpy(tmp,getenv("GPACFG"));
+    if (argc<2) {
+                if (tmp==NULL) {
+                        printf("PP Config\n");
+******
+
+****** PP.C
+    if (argc==3) {
+                pstack();
+            for (i=0;i<G_numan;i++) {
+****** i:pp.c
+    if (argc==3) {
+//              pstack();
+            for (i=0;i<G_numan;i++) {
+******
+
+****** PP.C
+
+****** i:pp.c
+******
+
+

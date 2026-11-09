@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dependencies>
+  <parents>
+    <parent url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-model.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg11-attribs.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-framework.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-core-attrib.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-container-attrib.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-viewport-attrib.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-paint-attrib.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-opacity-attrib.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-graphics-attrib.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-docevents-attrib.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-graphevents-attrib.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-animevents-attrib.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-xlink-attrib.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-extresources-attrib.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-structure.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-conditional.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-image.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-style.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-shape.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-text.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-marker.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-profile.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-gradient.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-pattern.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-clip.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-mask.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-filter.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-cursor.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-hyperlink.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-view.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-script.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-animation.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-font.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-extensibility.mod"/>
+    </parent>
+    <parent url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-framework.mod">
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-datatypes.mod"/>
+      <child url="http://www.w3.org/Graphics/SVG/1.1/DTD/svg-qname.mod"/>
+    </parent>
+  </parents>
+</dependencies>

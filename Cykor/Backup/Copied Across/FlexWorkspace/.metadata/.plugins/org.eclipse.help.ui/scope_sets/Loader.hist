@@ -1,0 +1,5 @@
+#Wed Apr 09 20:15:57 BST 2008
+__DEFAULT__=false
+org.eclipse.help.ui.localSearch.master=true
+org.eclipse.help.ui.localSearch.workingSet=Default
+expression=Loader

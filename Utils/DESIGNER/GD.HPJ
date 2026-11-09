@@ -1,0 +1,16 @@
+[OPTIONS]
+CONTENTS=main_index
+TITLE=gd.exe
+COMPRESS=true
+WARNING=2
+
+[FILES]
+mainhelp.rtf      ; main topics
+toolbar.rtf       ; toolbar topics
+keys.rtf          ; keyboard topics
+
+[BITMAPS]
+helpicon.bmp
+
+[MAP]
+#include <gd.rh>

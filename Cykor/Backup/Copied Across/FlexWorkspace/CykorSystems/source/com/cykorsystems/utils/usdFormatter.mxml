@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:CurrencyFormatter xmlns:mx="http://www.adobe.com/2006/mxml"
+		precision="2" 
+        currencySymbol="$" 
+        decimalSeparatorFrom="."
+        decimalSeparatorTo="." 
+        useNegativeSign="true" 
+        useThousandsSeparator="true" 
+        alignSymbol="left"/>

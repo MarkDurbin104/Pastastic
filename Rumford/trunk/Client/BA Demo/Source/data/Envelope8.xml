@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vuitResult>
+	<status>OK</status>
+	<image>EnvelopeScan8.jpg</image>
+	<physicalAttributes>
+		<weight>7.5</weight>
+		<length>12</length>
+		<width>9</width>
+		<height>0.2</height>
+		<units>US</units>
+	</physicalAttributes>
+	<postage/>
+	<services>
+		<service>
+			<imageLocation>365, 180</imageLocation>
+			<serviceCode><![CDATA[LC315711685US]]></serviceCode>
+		</service>
+	</services>
+	<destination>
+		<zipCode>K1A 0B1</zipCode>
+		<country>Canada</country>
+		<rawString></rawString>
+		<imageLocation>160, 180, 250, 220</imageLocation>
+		<address>
+			<name>Fred Bloggs</name>
+			<line1>2701 Riverside Dr.</line1>
+			<line2></line2>
+			<line3></line3>
+			<city>Ottawa</city>
+			<state>Ontario</state>
+			<zip>K1A 0B1</zip>
+			<telephone></telephone>
+			<email></email>
+		</address>
+	</destination>
+	<origin>
+		<zipCode>94106</zipCode>
+		<country>USA</country>
+		<rawString></rawString>
+		<imageLocation>88, 125, 182, 160</imageLocation>
+		<address>
+			<name>Paul Yarin</name>
+			<line1>Blackdust Design</line1>
+			<line2>1026 S Santa Fe Ave #303</line2>
+			<line3></line3>
+			<city>Los Angeles</city>
+			<state>CA</state>
+			<zip>90021-1772</zip>
+			<telephone></telephone>
+			<email></email>
+		</address>
+	</origin>
+</vuitResult>

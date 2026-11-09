@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml"
+	verticalAlign="middle" 
+    horizontalScrollPolicy = "off"
+    verticalScrollPolicy = "off"
+	>
+	<mx:Script>
+		<![CDATA[
+			public function hasBorder(onOff:Boolean):void{
+				if (onOff) {
+					setStyle("verticalAlign","middle");
+					setStyle("borderStyle","solid"); 
+					setStyle("borderThickness","1"); 
+					setStyle("cornerRadius","10"); 
+					setStyle("alpha","1"); 
+					setStyle("backgroundColor","#008000");
+					setStyle("backgroundAlpha","0.1");
+					image.width=110;
+					image.visible=true;
+				} else {
+					setStyle("borderStyle","none"); 
+					setStyle("alpha","1"); 
+					setStyle("backgroundAlpha","0.0");
+					image.width=0;
+					image.visible=false;
+				}
+			}
+		]]>
+	</mx:Script>
+	<mx:String id="title"></mx:String>
+	<mx:String id="picture"></mx:String>
+	<mx:VBox visible="false"  verticalGap="0" id="image" horizontalAlign="center" verticalAlign="middle" width="110" height="94" >
+		<mx:Image source="{picture}"/>
+		<mx:Label text="{title}"  fontSize="14" fontWeight="bold" color="#132367" />
+	</mx:VBox>
+</mx:HBox>

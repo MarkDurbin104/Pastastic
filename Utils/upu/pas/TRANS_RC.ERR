@@ -1,0 +1,9 @@
+Borland C++ 5.0 Copyright (c) 1987, 1996 Borland International
+trans_rc.c:
+Warning trans_rc.c 161: Parameter 'adjust' is never used in function GenStringList
+Warning trans_rc.c 216: Parameter 'adjust' is never used in function GenTransList
+Warning trans_rc.c 226: Parameter 'adjust' is never used in function GenETransList
+Warning trans_rc.c 256: Parameter 'ifile1' is never used in function SaveResource
+Warning trans_rc.c 256: Parameter 'ifile2' is never used in function SaveResource
+Warning trans_rc.c 256: Parameter 'ofile' is never used in function SaveResource
+Warning trans_rc.c 256: Parameter 'basedir' is never used in function SaveResource

@@ -1,0 +1,14 @@
+pkzip src100c 1.00c\*.*
+pkzip src100d 1.00d\*.*
+pkzip src100e 1.00e\*.*
+pkzip src100f 1.00f\*.*
+pkzip src101  1.01\*.*
+pkzip src100g 1.00g\*.*
+pkzip src100h 1.00h\*.*
+pkzip src101a 1.01a\*.*
+pkzip src100j 1.00j\*.*
+pkzip src110b 1.10b\*.*
+pkzip src110c 1.10c\*.*
+pkzip src110d 1.10d\*.*
+pkzip src110e 1.10e\*.*
+pkzip allsrc src*.zip

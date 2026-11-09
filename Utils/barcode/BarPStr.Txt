@@ -1,0 +1,29 @@
+Impression d'étiquettes de l'UPU munies de codes à barres EMS
+Indicateur de service
+Pays
+Nombre d'étiquettes nécessaire
+Début d'impression des étiquettes
+Fin d'impression des étiquettes
+Début d'impression
+Message d'erreur
+Un autre programme occupe le port de communication
+L'imprimante est éteinte ou déconnectée
+L'imprimante est à court d'étiquettes
+Le ruban de l'imprimante doit être changé
+La tête d'impression est restée levée
+L'imprimante est surchauffée
+L'imprimante n'est pas à la température voulue
+L'imprimante affiche un message d'erreur mécanique
+L'imprimante est en "pause"
+Annulation de l'impression
+Pays
+Décompte des étiquettes
+Date
+Etiquettes mal imprimées
+Départ
+Fin
+Rapport par volume
+Rapport par pays
+Rapport par date
+Début d'impression des étiquettes
+

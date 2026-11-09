@@ -1,0 +1,6 @@
+[Compiler]
+UnitAliases=WinTypes=Windows;WinProcs=Windows;DbiProcs=BDE;DbiTypes=BDE;DbiErrs=BDE;
+
+[Directories]
+OutputDir=C:\Build
+UnitOutputDir=E:\CorvusV3\Corvus\Binary\Other

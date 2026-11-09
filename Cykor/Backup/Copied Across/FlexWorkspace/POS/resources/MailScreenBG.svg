@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 13.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 14948)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1024px"
+	 height="768px" viewBox="0 0 1024 768" enable-background="new 0 0 1024 768" xml:space="preserve">
+<g id="Background">
+	<rect fill="#ECF5E7" width="1024" height="768"/>
+	<g>
+		<path fill="#F5FAF4" d="M168,578c0,11-9,20-20,20H65c-11,0-20-9-20-20V152c0-11,9-20,20-20h83c11,0,20,9,20,20V578z"/>
+	</g>
+	<g>
+		<path fill="#F5FAF4" d="M303,578c0,11-9,20-20,20h-83c-11,0-20-9-20-20V152c0-11,9-20,20-20h83c11,0,20,9,20,20V578z"/>
+	</g>
+	<g>
+		<path fill="#F5FAF4" d="M438,578c0,11-9,20-20,20h-83c-11,0-20-9-20-20V152c0-11,9-20,20-20h83c11,0,20,9,20,20V578z"/>
+	</g>
+	<g>
+		<path fill="#F5FAF4" d="M573,578c0,11-9,20-20,20h-83c-11,0-20-9-20-20V152c0-11,9-20,20-20h83c11,0,20,9,20,20V578z"/>
+	</g>
+	<g>
+		<path fill="#F5FAF4" d="M708,578c0,11-9,20-20,20h-83c-11,0-20-9-20-20V152c0-11,9-20,20-20h83c11,0,20,9,20,20V578z"/>
+	</g>
+	<g>
+		<path fill="#F5FAF4" d="M843,578c0,11-9,20-20,20h-83c-11,0-20-9-20-20V152c0-11,9-20,20-20h83c11,0,20,9,20,20V578z"/>
+	</g>
+	<g>
+		<path fill="#F5FAF4" d="M978,578c0,11-9,20-20,20h-83c-11,0-20-9-20-20V152c0-11,9-20,20-20h83c11,0,20,9,20,20V578z"/>
+	</g>
+	<path fill="#F5FAF4" d="M958,631H65c-11,0-20,9-20,20v117h933V651C978,640,969,631,958,631z"/>
+</g>
+</svg>

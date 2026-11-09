@@ -1,0 +1,4 @@
+http://cykor.homedns.org/cgi-bin/EchoService_CGI.exe/soap/IEchoService
+http://localhost:1024/EchoService_WAD.EchoService/soap/IEchoService
+http://localhost/cgi-bin/EchoService_CGI.exe/soap/IEchoService
+http://<your-web-server>/scripts/EchoService_CGI.exe/soap/IEchoService

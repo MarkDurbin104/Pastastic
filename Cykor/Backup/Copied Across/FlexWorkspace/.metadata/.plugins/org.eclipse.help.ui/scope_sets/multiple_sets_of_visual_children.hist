@@ -1,0 +1,5 @@
+#Sat Apr 26 10:06:13 BST 2008
+__DEFAULT__=false
+org.eclipse.help.ui.localSearch.master=true
+org.eclipse.help.ui.localSearch.workingSet=Default
+expression=multiple sets of visual children

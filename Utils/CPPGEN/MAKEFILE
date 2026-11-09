@@ -1,0 +1,80 @@
+#
+# Borland C++ IDE generated makefile
+#
+.AUTODEPEND
+
+
+#
+# Borland C++ tools
+#
+IMPLIB  = Implib
+BCC     = Bcc +BccW16.cfg 
+TLINK   = TLink
+TLIB    = TLib
+BRC     = Brc
+TASM    = Tasm
+#
+# IDE macros
+#
+
+
+#
+# Options
+#
+IDE_LFLAGS =  -LE:\BC45\LIB
+IDE_RFLAGS = 
+LLATW16_cppgutildlib =  -Twd -c -C
+RLATW16_cppgutildlib =  -31
+BLATW16_cppgutildlib = 
+CNIEAT_cppgutildlib = -IE:\BC45\INCLUDE -D
+LNIEAT_cppgutildlib = -x
+LEAT_cppgutildlib = $(LLATW16_cppgutildlib)
+REAT_cppgutildlib = $(RLATW16_cppgutildlib)
+BEAT_cppgutildlib = $(BLATW16_cppgutildlib)
+
+#
+# Dependency List
+#
+Dep_cppgutil = \
+   cppgutil.lib
+
+cppgutil : BccW16.cfg $(Dep_cppgutil)
+  echo MakeNode 
+
+cppgutil.lib : cppgutil.dll
+  $(IMPLIB) $@ cppgutil.dll
+
+
+Dep_cppgutilddll = \
+   cppgutil.obj
+
+cppgutil.dll : $(Dep_cppgutilddll)
+  $(TLINK)   @&&|
+ /v $(IDE_LFLAGS) $(LEAT_cppgutildlib) $(LNIEAT_cppgutildlib) +
+E:\BC45\LIB\c0dl.obj+
+cppgutil.obj
+$<,$*
+E:\BC45\LIB\import.lib+
+E:\BC45\LIB\mathwl.lib+
+E:\BC45\LIB\cwl.lib
+
+|
+
+cppgutil.obj :  cppgutil.c
+  $(BCC)   -P- -c @&&|
+ $(CEAT_cppgutildlib) $(CNIEAT_cppgutildlib) -o$@ cppgutil.c
+|
+
+# Compiler configuration file
+BccW16.cfg : 
+   Copy &&|
+-R
+-v
+-vi
+-H
+-H=cppgutil.csm
+-ml
+-WD
+| $@
+
+

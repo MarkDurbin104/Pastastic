@@ -1,0 +1,268 @@
+#--------------------------------------------------------------------------
+#
+#       File:           makefile
+#
+#       Purpose:        Makefile for DVT program(s)
+#
+#       Author:         Paul Encarnacion
+#                       Unisys, EISG, Postal Programs
+#                       5151 Camino Ruiz
+#                       Camarillo, CA 93010
+#                       (805)987-6811 
+#
+#       Date of Origin: 2-1-1991
+#
+#       Copyright (c) 1991  Unisys Corp.
+#
+#       $Log:   Z:\CM\F\BPO\DVT\VCS\MAKEFILE.__V  $
+#  
+#     Rev 1.0   06 Feb 1991 11:15:14   PJE
+#  Initial revision.
+#
+#--------------------------------------------------------------------------
+DEBUG=1
+
+.SILENT:
+
+ASM=MASM $* /MX /B63;
+
+!IF $(DEBUG)
+COMP=CL /c /AL /Zp /Zi /Od /nologo
+!ELSE
+COMP=CL /c /AL /Zp /Ot /nologo
+!ENDIF        
+
+#
+#	Inference Rules
+#
+
+.ASM.OBJ:
+	$(ASM)
+
+.C.OBJ:
+	$(COMP) $<
+
+.C.OBU:
+        $(COMP) /Fo$*.OBU $<
+
+.C.OBF:
+        $(COMP) /DFACTORY /Fo$*.OBF $<
+
+all:    FDVT.EXE UDVT.EXE CTKB.SYS DDI10.SYS M80.COM C40.COM
+
+fact:   FDVT.EXE 
+#
+#       Modules
+#
+
+DVT.OBU:        DVT.C           GLOBALS.H \
+                                ECCODEFS.H \
+                                DVTMSGS.H \
+                                BPOKEYS.H \
+                                DVTPROT.H
+
+DVT.OBF:        DVT.C           GLOBALS.H \
+                                ECCODEFS.H \
+                                DVTMSGS.H \
+                                BPOKEYS.H \
+                                DVTPROT.H
+
+DVTWN.OBJ:      DVTWN.C         BPOKEYS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H \
+                                ECCODEFS.H
+
+DVTUTILS.OBJ:   DVTUTILS.C
+
+DVTROM.OBU:     DVTROM.C        ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H 
+
+DVTROM.OBF:     DVTROM.C        ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H 
+
+DVTRAM.OBU:     DVTRAM.C        ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H 
+
+DVTRAM.OBF:     DVTRAM.C        ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H 
+
+EXTMEM.OBJ:     EXTMEM.C
+
+RAMTEST.OBJ:    RAMTEST.ASM
+
+CMOS.OBJ:       CMOS.ASM
+
+DVTCMOS.OBU:    DVTCMOS.C       ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H 
+
+DVTCMOS.OBF:    DVTCMOS.C       ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H 
+
+DISK.OBJ:       DISK.C          ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H 
+
+DVTFLOPY.OBU:   DVTFLOPY.C      ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H 
+
+DVTFLOPY.OBF:   DVTFLOPY.C      ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H 
+
+DVTCLOCK.OBJ:   DVTCLOCK.C      ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H 
+
+DVTCOMM.OBU:    DVTCOMM.C       ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H 
+
+DVTCOMM.OBF:    DVTCOMM.C       ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H 
+
+DVTPRINT.OBJ:   DVTPRINT.C      ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H 
+
+DVTPPRN.OBJ:    DVTPPRN.C       ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H 
+
+DVTFIXED.OBU:   DVTFIXED.C      ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H
+
+DVTFIXED.OBF:   DVTFIXED.C      ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H
+
+DVTKB.OBJ:      DVTKB.C         ECCODEFS.H \
+                                GLOBALS.H \
+                                DVTMSGS.H
+
+KEYBOARD.OBJ:   KEYBOARD.ASM
+
+VMKBMCR.OBJ:    VMKBMCR.C
+
+DVTVIDEO.OBJ:   DVTVIDEO.C      ECCODEFS.H \
+                                DVTMSGS.H \
+                                GLOBALS.H
+
+DVTLOG.OBJ:     DVTLOG.C        ECCODEFS.H \
+                                GLOBALS.H
+
+DVTUTILS.OBJ:   DVTUTILS.C      ECCODEFS.H
+
+DVTFMT.OBJ:     DVTFMT.C
+
+VIDEO.OBJ:      VIDEO.ASM
+
+CMOS.OBJ:       CMOS.ASM  
+
+#
+#       Executable
+#
+
+FDVT.EXE:       DVT.OBF \
+                DVTROM.OBF \
+                DVTRAM.OBF \
+                DVTCOMM.OBF \
+                DVTFIXED.OBF \
+                DVTFLOPY.OBF \
+                DVTCMOS.OBF \
+                RAMTEST.OBJ \
+                EXTMEM.OBJ \
+                DVTWN.OBJ \
+                DISK.OBJ \
+                DVTCLOCK.OBJ \
+                DVTUTILS.OBJ \
+                DVTPRINT.OBJ \
+                DVTPPRN.OBJ \
+                DVTKB.OBJ \
+                KEYBOARD.OBJ \
+                VMKBMCR.OBJ \
+                DVTVIDEO.OBJ \
+                VIDEO.OBJ \
+                CMOS.OBJ \
+                DVTLOG.OBJ \
+                DVTFMT.OBJ \
+                FDVT.LNK
+                LINK @FDVT.LNK
+
+UDVT.EXE:       DVT.OBU \
+                DVTROM.OBU \
+                DVTRAM.OBU \
+                DVTCOMM.OBU \
+                DVTFIXED.OBU \
+                DVTFLOPY.OBU \
+                DVTCMOS.OBU \
+                DVTUTILS.OBJ \
+                RAMTEST.OBJ \
+                EXTMEM.OBJ \
+                DVTWN.OBJ \
+                DISK.OBJ \
+                DVTCLOCK.OBJ \
+                DVTPRINT.OBJ \
+                DVTPPRN.OBJ \
+                DVTKB.OBJ \
+                KEYBOARD.OBJ \
+                VMKBMCR.OBJ \
+                DVTVIDEO.OBJ \
+                VIDEO.OBJ \
+                CMOS.OBJ \
+                DVTLOG.OBJ \
+                DVTFMT.OBJ \
+                UDVT.LNK
+                LINK @UDVT.LNK
+
+#
+#       Device Drivers
+#
+
+CTKB.OBJ:       CTKB.ASM        MOSTCB.INC \
+                                MOSSCBDF.INC
+                MASM $*;
+
+CTKB.SYS:       CTKB.OBJ
+                LINK $*;
+                EXE2BIN $* $*.SYS
+
+M80.OBJ:        M80.ASM         4080.INC \
+                                ISMOS.INC
+                MASM $*;
+
+M80.COM:        M80.OBJ
+                LINK $*;
+                EXE2BIN $* $*.COM
+
+C40.OBJ:        C40.ASM         4080.INC \
+                                ISMOS.INC
+                MASM $*;
+
+C40.COM:        C40.OBJ
+                LINK $*;
+                EXE2BIN $* $*.COM
+
+DDI10.OBJ:      DDI10.ASM         
+                MASM $*;
+
+DDI10.SYS:      DDI10.OBJ
+                LINK $*;
+                EXE2BIN $* $*.SYS
+
+SETWDT.OBJ:     SETWDT.ASM
+                MASM $*;
+
+SETWDT.COM:     SETWDT.OBJ
+                LINK $*;
+                EXE2BIN $* $*.COM
+
+

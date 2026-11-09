@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE book SYSTEM "configuration.dtd" [
+  <!ENTITY menus SYSTEM "menus.xml">
+  <!ENTITY products SYSTEM "products.xml">
+  <!ENTITY domains SYSTEM "domains.xml">
+]>
+<configuration>
+  <title>The Wit and Wisdom of George W. Bush</title>
+  &menus;
+  &products;
+  &domains;
+</configuration>

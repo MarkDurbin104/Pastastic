@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vuitResult>
+	<status>OK</status>
+	<itemType>Invoice</itemType>
+	<payee>O2 Telecommunications</payee>
+	<image>O2 Burd.jpg</image>
+	<postage/>
+	<services/>
+	<addressee>
+		<country>UNITED KINGDOM</country>
+		<rawString>MR DARK BIRD 15 HASH ROAD BADMARN BURY SG15 5SE</rawString>
+		<imageLocation>50, 180, 120, 230</imageLocation>
+		<address>
+			<name>MR DARK BIRD</name>
+			<line1>15 HASH ROAD</line1>
+			<line2></line2>
+			<line3>BADMARN</line3>
+			<city></city>
+			<state>BURY</state>
+			<zip>SG15 5SE</zip>
+			<telephone></telephone>
+			<email></email>
+		</address>
+	</addressee>
+	<account>
+		<imageLocation>385, 158, 435, 170</imageLocation>
+		<number>1088287510</number>
+	</account>
+	<invoice>
+		<imageLocation>365, 180, 435, 190</imageLocation>
+		<number>1088287510-0150</number>
+	</invoice>
+	<amount>
+		<imageLocation>215, 325, 270, 345</imageLocation>
+		<value>30.49</value>
+		<currency>GBP</currency>
+	</amount>
+</vuitResult>

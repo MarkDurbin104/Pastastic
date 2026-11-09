@@ -1,0 +1,54 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{fadc94c0-bc44-47f8-b01b-67787f1588fc}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="..\BASimulator\BASimulator.dproj" />
+    <Projects Include="..\VU.iTService\ServiceTestHarness.dproj" />
+    <Projects Include="TestHarmess.dproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+  <BorlandProject xmlns=""> <Default.Personality> </Default.Personality> </BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="TestHarmess">
+    <MSBuild Projects="TestHarmess.dproj" Targets="" />
+  </Target>
+  <Target Name="TestHarmess:Clean">
+    <MSBuild Projects="TestHarmess.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="TestHarmess:Make">
+    <MSBuild Projects="TestHarmess.dproj" Targets="Make" />
+  </Target>
+  <Target Name="BASimulator">
+    <MSBuild Projects="..\BASimulator\BASimulator.dproj" Targets="" />
+  </Target>
+  <Target Name="BASimulator:Clean">
+    <MSBuild Projects="..\BASimulator\BASimulator.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="BASimulator:Make">
+    <MSBuild Projects="..\BASimulator\BASimulator.dproj" Targets="Make" />
+  </Target>
+  <Target Name="ServiceTestHarness">
+    <MSBuild Projects="..\VU.iTService\ServiceTestHarness.dproj" Targets="" />
+  </Target>
+  <Target Name="ServiceTestHarness:Clean">
+    <MSBuild Projects="..\VU.iTService\ServiceTestHarness.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="ServiceTestHarness:Make">
+    <MSBuild Projects="..\VU.iTService\ServiceTestHarness.dproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="TestHarmess;BASimulator;ServiceTestHarness" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="TestHarmess:Clean;BASimulator:Clean;ServiceTestHarness:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="TestHarmess:Make;BASimulator:Make;ServiceTestHarness:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

@@ -1,0 +1,66 @@
+# Makefile for FPMTIME
+# Use Microsoft NMAKE
+# or Borland MAKE
+# !!! Be sure to set the right variable below
+# depending on your compiler
+
+# Some versions of MSC 7.0 can't properly compile
+# floating point constants and will
+# erroneously report a C2177 error on any program
+# that contains floating point constants when you
+# compile in a Windows DOS box -- if this happens
+# try compiling the program without Windows running
+
+BORLAND=1
+MICROSOFT=0
+
+!if $(BORLAND)
+CC=bcc
+COPT=-WE -2 -v -w-par -w-aus -c -DTITLE=FPMTIME
+LD=tlink
+LOPT=-v -x -c -P- -Twe
+AS=tasm
+AOPT=-ml
+!endif
+
+!if $(MICROSOFT)
+CC=cl
+COPT=-Zi -c -GA -Zp -G2
+LD=link
+LOPT=/CO
+AS=masm
+AOPT=-ml
+!endif
+
+
+!if $(MICROSOFT)
+fpmtime.exe : fpmtime.obj fpmc.obj fpm32.obj pmwin.obj\
+  mscint.obj
+        $(LD) $(LOPT) fpmtime.obj fpmc.obj fpm32.obj\
+        pmwin.obj mscint.obj,,,slibcew libw,pmwin.def
+        rc -t pmwin.rc fpmtime.exe
+
+mscint.obj : mscint.c
+    $(CC) $(COPT) mscint.c
+
+!else
+fpmtime.exe : fpmtime.obj fpmc.obj fpm32.obj pmwin.obj
+        $(LD) $(LOPT) c0ws fpmtime.obj fpmc.obj fpm32.obj\
+        pmwin.obj,fpmtime,,mathws import cws,pmwin.def
+        rc -t pmwin.rc fpmtime.exe
+!endif
+
+fpmtime.obj : fpmtime.c fpm32.h
+        $(CC) $(COPT) fpmtime.c
+
+fpmc.obj : fpmc.c fpm32.h
+        $(CC) $(COPT) fpmc.c
+
+pmwin.obj : pmwin.c pmwin.h
+        $(CC) $(COPT) pmwin.c
+
+fpm32.obj : fpm32.asm
+        $(AS) $(AOPT) fpm32.asm;
+
+
+

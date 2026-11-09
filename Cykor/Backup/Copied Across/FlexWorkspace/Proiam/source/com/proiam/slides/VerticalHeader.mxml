@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CanvasButtonAccordionHeader 
+	xmlns="flexlib.containers.accordionClasses.*" 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:filters="flash.filters.*"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off">
+
+	<mx:VBox styleName="mainBox" width="100%" height="100%" 	verticalAlign="bottom" horizontalAlign="left" >
+		<mx:Text id="targetData" text="{data.description}" styleName="description"	height="24" selectable="false" />
+		<mx:Label text="{data.title}" styleName="title" height="24" />
+	</mx:VBox>
+	
+	<filters>
+		<filters:DropShadowFilter angle="90" alpha=".1" blurX="0" distance="3" />
+	</filters>
+</CanvasButtonAccordionHeader>

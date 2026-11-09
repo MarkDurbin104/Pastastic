@@ -1,0 +1,16 @@
+PROJECT
+	E:\SRC\ERPOLY\ERASEPLY.C
+		DoPolyErase
+		erase_polygon
+		ErasePoints
+		EraseRect
+		EraseType
+		GetAngle
+		GetPointsofIntersection
+		GetUpLowBounds
+		gmli_get_value
+		Imcmp
+		LibMain
+		LoadPoints
+		msg_issue
+		YAdjRect

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vuitResult>
+	<status>OK</status>
+	<image>EnvelopeScan4.jpg</image>
+	<physicalAttributes>
+		<weight>20.0</weight>
+		<length>13.0</length>
+		<width>9.0</width>
+		<height>0.03</height>
+		<units>metric</units>
+	</physicalAttributes>
+	<destination>
+		<zipCode>02476</zipCode>
+		<country>USA</country>
+		<rawString>Jonathan A. Zdziarksi 3069 Heritage Rd. Milledgeville GA 31061</rawString>
+		<imageLocation>240, 200, 440, 250</imageLocation>
+		<address>
+			<name>Jonathan A. Zdziarksi</name>
+			<line1>3069 Heritage Rd.</line1>
+			<line2></line2>
+			<line3></line3>
+			<city>Milledgeville</city>
+			<state>GA</state>
+			<zip>31061</zip>
+			<telephone></telephone>
+			<email></email>
+		</address>
+	</destination>
+
+</vuitResult>

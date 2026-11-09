@@ -1,0 +1,16 @@
+?S None Available
+?R void
+?C strlen,write,
+?U 
+?D None Available
+void writevar(int fd,void *p,int size)
+{
+	if (p==NULL) {
+		size=0;
+		write(fd,&size,sizeof(size));
+	} else {
+        if (size==(-1)) size=strlen(p)+1;
+		write(fd,&size,sizeof(size));
+		write(fd,p,size);
+	}
+}

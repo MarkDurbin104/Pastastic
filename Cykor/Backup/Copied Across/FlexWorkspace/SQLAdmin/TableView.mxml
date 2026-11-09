@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MDIPanel xmlns:mx="http://www.adobe.com/2006/mxml" xmlns="*" width="400" height="500"
+	creationComplete="titleIcon=iconTable">
+	
+	<mx:Script>
+		<![CDATA[
+
+		import mx.controls.Alert;
+		import mx.collections.ArrayCollection;
+		
+		[Bindable]
+		private var columns:ArrayCollection;
+		
+		[Bindable]
+		private var rows:ArrayCollection;
+		
+		[Bindable]
+		private var _table:Object;
+		
+		private var retrievedData:Boolean = false;
+		
+		[Embed(source="assets/icon_table.png")]
+		private static var iconTable:Class;
+
+		public function set table(table:Object):void
+		{
+			_table = table;
+			title = table.name;
+
+			/*
+			var result:Object = ExternalInterface.call("executeSQL", "PRAGMA table_info("+table.name+")");
+			if (result.success)
+			{
+				columns = new ArrayCollection(result.data);
+			}
+			else
+			{
+				Alert.show(result.message);
+			}
+			*/
+		}		
+
+		public function changeHandler():void
+		{
+			if (tn.selectedIndex == 1 && !retrievedData)
+			{
+				retrieveData();
+				retrievedData = true;
+			}
+		}
+		
+		public function retrieveData():void
+		{
+			var result:Object = db.executeQuery("SELECT * FROM " + _table.name);
+			if (result.success)
+			{
+				rows = new ArrayCollection(result.data);
+			}
+			else
+			{
+				Alert.show(result.message, "Error");
+			}
+		}		
+			
+		]]>
+	</mx:Script>
+	
+	<Database id="db"/>
+
+	<mx:TabNavigator id="tn" width="100%" height="100%" change="changeHandler()">
+		
+		<!--
+		<mx:Canvas label="Columns">
+			<mx:DataGrid dataProvider="{columns}" width="100%" height="100%">
+				<mx:columns>
+					<mx:DataGridColumn dataField="name" headerText="Name"/>
+					<mx:DataGridColumn dataField="type" headerText="Type"/>
+					<mx:DataGridColumn dataField="notnull" headerText="Not Null"/>
+					<mx:DataGridColumn dataField="pk" headerText="PK"/>
+					<mx:DataGridColumn dataField="dflt_value" headerText="Default"/>
+				</mx:columns>
+			</mx:DataGrid>
+		</mx:Canvas>
+		-->
+		
+		<mx:Canvas label="SQL">
+			<mx:TextArea id="sql" text="{_table.sql}"  top="4" left="4" right="4" bottom="4"/>
+		</mx:Canvas>
+		
+		<mx:Canvas label="Data">
+			<mx:DataGrid dataProvider="{rows}" top="4" left="4" right="4" bottom="40"/>
+			<mx:Button label="Refresh" click="retrieveData()" bottom="8" left="4"/>
+		</mx:Canvas>
+	
+	</mx:TabNavigator>
+	
+</MDIPanel>

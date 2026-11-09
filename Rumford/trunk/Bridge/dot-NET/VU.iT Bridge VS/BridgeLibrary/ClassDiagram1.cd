@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="VU.iT.Bridge.BaseLib">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAEIAAEAAAIAAAIAACAAQAAAmBgAAEABGEBQAAUA=</HashCode>
+      <FileName>BridgeLib.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VU.iT.Bridge.BridgeDatabase">
+    <Position X="3.25" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>IUAAAAAAAAABAAABAAAEAEAgCAIAAAEBAAAAAAQAAAA=</HashCode>
+      <FileName>BridgeSQLiteIO.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="VU.iT.Bridge.BridgeException">
+    <Position X="6.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAABCAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>BridgeLib.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

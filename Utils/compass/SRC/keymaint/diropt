@@ -1,0 +1,649 @@
+Comparing files dir1 and dir2
+****** dir1
+
+ Volume in drive H is SCSI       
+
+Directory of H:\C\WINNT351
+
+.              <DIR>        11/05/96   0:00 .
+..             <DIR>        11/05/96   0:00 ..
+SYSTEM32       <DIR>        11/05/96   0:00 SYSTEM32
+SYSTEM         <DIR>        11/05/96   0:04 SYSTEM
+REPAIR         <DIR>        11/05/96   0:05 REPAIR
+WRITE    EXE       245,120  26/05/95  10:57 WRITE.EXE
+****** dir2
+
+ Volume in drive C has no label
+ Volume Serial Number is 3A23-1AFD
+
+Directory of C:\WINNT351
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+SYSTEM32       <DIR>        22/04/96  19:58 SYSTEM32
+SYSTEM         <DIR>        22/04/96  19:58 SYSTEM
+REPAIR         <DIR>        22/04/96  19:58 REPAIR
+WRITE    EXE       245,120  26/05/95  10:57 WRITE.EXE
+******
+
+****** dir1
+QBASIC   PIF           545  22/04/96  20:01 QBASIC.PIF
+MSAPPS         <DIR>        11/05/96   0:05 MSAPPS
+UNWISE   EXE        30,048  29/09/95  20:37 UNWISE.EXE
+****** dir2
+QBASIC   PIF           545  22/04/96  20:01 QBASIC.PIF
+MSAPPS         <DIR>        25/04/96  13:14 MSAPPS
+UNWISE   EXE        30,048  29/09/95  20:37 UNWISE.EXE
+******
+
+****** dir1
+USER000  ACL         6,083  07/05/96  22:43 User000.acl
+DELETE   LST             0  01/07/96  19:53 DELETE.LST
+RWSSETUP SEM             0  03/07/96  13:06 RWSSETUP.SEM
+        55 file(s)      1,386,366 bytes
+
+Directory of H:\C\WINNT351\MSAPPS
+
+.              <DIR>        11/05/96   0:05 .
+..             <DIR>        11/05/96   0:05 ..
+MSCREATE DIR             0  25/04/96  13:14 MSCREATE.DIR
+MSINFO         <DIR>        11/05/96   0:05 MSInfo
+MSGRAPH5       <DIR>        11/05/96   0:05 Msgraph5
+PROOF          <DIR>        11/05/96   0:05 Proof
+TEXTCONV       <DIR>        11/05/96   0:05 Textconv
+GRPHFLT        <DIR>        11/05/96   0:05 Grphflt
+ARTGALRY       <DIR>        11/05/96   0:05 Artgalry
+WORDART        <DIR>        11/05/96   0:05 Wordart
+         1 file(s)              0 bytes
+****** dir2
+USER000  ACL         6,083  07/05/96  22:43 User000.acl
+RWSSETUP SEM             0  03/07/96  13:06 RWSSETUP.SEM
+        54 file(s)      1,386,366 bytes
+
+Directory of C:\WINNT351\MSAPPS
+
+.              <DIR>        25/04/96  13:14 .
+..             <DIR>        25/04/96  13:14 ..
+MSCREATE DIR             0  25/04/96  13:14 MSCREATE.DIR
+MSINFO         <DIR>        25/04/96  13:14 MSInfo
+MSGRAPH5       <DIR>        07/05/96  22:41 Msgraph5
+PROOF          <DIR>        07/05/96  22:42 Proof
+TEXTCONV       <DIR>        07/05/96  22:42 Textconv
+GRPHFLT        <DIR>        07/05/96  22:42 Grphflt
+ARTGALRY       <DIR>        07/05/96  22:42 Artgalry
+WORDART        <DIR>        07/05/96  22:42 Wordart
+         1 file(s)              0 bytes
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\MSAPPS\Artgalry
+
+.              <DIR>        11/05/96   0:05 .
+..             <DIR>        11/05/96   0:05 ..
+MSCREATE DIR             0  07/05/96  22:42 MSCREATE.DIR
+****** dir2
+
+Directory of C:\WINNT351\MSAPPS\Artgalry
+
+.              <DIR>        07/05/96  22:42 .
+..             <DIR>        07/05/96  22:42 ..
+MSCREATE DIR             0  07/05/96  22:42 MSCREATE.DIR
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\MSAPPS\Grphflt
+
+.              <DIR>        11/05/96   0:05 .
+..             <DIR>        11/05/96   0:05 ..
+MSCREATE DIR             0  07/05/96  22:42 MSCREATE.DIR
+****** dir2
+
+Directory of C:\WINNT351\MSAPPS\Grphflt
+
+.              <DIR>        07/05/96  22:42 .
+..             <DIR>        07/05/96  22:42 ..
+MSCREATE DIR             0  07/05/96  22:42 MSCREATE.DIR
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\MSAPPS\Msgraph5
+
+.              <DIR>        11/05/96   0:05 .
+..             <DIR>        11/05/96   0:05 ..
+MSCREATE DIR             0  07/05/96  22:41 MSCREATE.DIR
+****** dir2
+
+Directory of C:\WINNT351\MSAPPS\Msgraph5
+
+.              <DIR>        07/05/96  22:41 .
+..             <DIR>        07/05/96  22:41 ..
+MSCREATE DIR             0  07/05/96  22:41 MSCREATE.DIR
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\MSAPPS\MSInfo
+
+.              <DIR>        11/05/96   0:05 .
+..             <DIR>        11/05/96   0:05 ..
+MSCREATE DIR             0  25/04/96  13:14 MSCREATE.DIR
+****** dir2
+
+Directory of C:\WINNT351\MSAPPS\MSInfo
+
+.              <DIR>        25/04/96  13:14 .
+..             <DIR>        25/04/96  13:14 ..
+MSCREATE DIR             0  25/04/96  13:14 MSCREATE.DIR
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\MSAPPS\Proof
+
+.              <DIR>        11/05/96   0:05 .
+..             <DIR>        11/05/96   0:05 ..
+MSCREATE DIR             0  07/05/96  22:42 MSCREATE.DIR
+****** dir2
+
+Directory of C:\WINNT351\MSAPPS\Proof
+
+.              <DIR>        07/05/96  22:42 .
+..             <DIR>        07/05/96  22:42 ..
+MSCREATE DIR             0  07/05/96  22:42 MSCREATE.DIR
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\MSAPPS\Textconv
+
+.              <DIR>        11/05/96   0:05 .
+..             <DIR>        11/05/96   0:05 ..
+MSCREATE DIR             0  07/05/96  22:42 MSCREATE.DIR
+****** dir2
+
+Directory of C:\WINNT351\MSAPPS\Textconv
+
+.              <DIR>        07/05/96  22:42 .
+..             <DIR>        07/05/96  22:42 ..
+MSCREATE DIR             0  07/05/96  22:42 MSCREATE.DIR
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\MSAPPS\Wordart
+
+.              <DIR>        11/05/96   0:05 .
+..             <DIR>        11/05/96   0:05 ..
+MSCREATE DIR             0  07/05/96  22:42 MSCREATE.DIR
+****** dir2
+
+Directory of C:\WINNT351\MSAPPS\Wordart
+
+.              <DIR>        07/05/96  22:42 .
+..             <DIR>        07/05/96  22:42 ..
+MSCREATE DIR             0  07/05/96  22:42 MSCREATE.DIR
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\REPAIR
+
+.              <DIR>        11/05/96   0:05 .
+..             <DIR>        11/05/96   0:05 ..
+SYSTEM   _          26,807  22/04/96  20:01 SYSTEM._
+****** dir2
+
+Directory of C:\WINNT351\REPAIR
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+SYSTEM   _          26,807  22/04/96  20:01 SYSTEM._
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM
+
+.              <DIR>        11/05/96   0:04 .
+..             <DIR>        11/05/96   0:04 ..
+VGASYS   FON         7,280  26/05/95  10:57 VGASYS.FON
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+VGASYS   FON         7,280  26/05/95  10:57 VGASYS.FON
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32
+
+.              <DIR>        11/05/96   0:00 .
+..             <DIR>        11/05/96   0:00 ..
+CONFIG         <DIR>        11/05/96   0:00 CONFIG
+DRIVERS        <DIR>        11/05/96   0:00 DRIVERS
+OS2            <DIR>        11/05/96   0:00 OS2
+RAS            <DIR>        11/05/96   0:01 RAS
+SPOOL          <DIR>        11/05/96   0:01 SPOOL
+WINS           <DIR>        11/05/96   0:01 WINS
+DHCP           <DIR>        11/05/96   0:01 DHCP
+KBDUS    DLL         6,432  26/05/95  10:57 KBDUS.DLL
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+CONFIG         <DIR>        22/04/96  19:58 CONFIG
+DRIVERS        <DIR>        22/04/96  19:58 DRIVERS
+OS2            <DIR>        22/04/96  19:58 OS2
+RAS            <DIR>        22/04/96  19:58 RAS
+SPOOL          <DIR>        22/04/96  19:58 SPOOL
+WINS           <DIR>        22/04/96  19:58 WINS
+DHCP           <DIR>        22/04/96  19:58 DHCP
+KBDUS    DLL         6,432  26/05/95  10:57 KBDUS.DLL
+******
+
+****** dir1
+PUBOLE32 DLL        72,704  06/10/95   0:00 PUBOLE32.DLL
+REPL           <DIR>        11/05/96   0:04 Repl
+SFMATCFG DLL        44,848  26/05/95  10:57 SFMATCFG.DLL
+****** dir2
+PUBOLE32 DLL        72,704  06/10/95   0:00 PUBOLE32.DLL
+REPL           <DIR>        07/05/96  22:47 Repl
+SFMATCFG DLL        44,848  26/05/95  10:57 SFMATCFG.DLL
+******
+
+****** dir1
+       865 file(s)     48,059,715 bytes
+
+Directory of H:\C\WINNT351\SYSTEM32\CONFIG
+
+.              <DIR>        11/05/96   0:00 .
+..             <DIR>        11/05/96   0:00 ..
+DEFAULT            114,688  03/07/96  12:58 DEFAULT
+SYSTEM             421,888  03/07/96  13:21 SYSTEM
+SOFTWARE           417,792  03/07/96  13:21 SOFTWARE
+SYSTEM   LOG         1,024  22/04/96  19:59 SYSTEM.LOG
+SOFTWARE LOG         1,024  03/07/96  13:21 SOFTWARE.LOG
+DEFAULT  LOG         1,024  03/07/96  13:21 DEFAULT.LOG
+SECURITY            16,384  03/07/96  12:58 SECURITY
+SECURITY LOG         1,024  03/07/96  13:21 SECURITY.LOG
+SYSTEM   ALT       421,888  03/07/96  13:21 SYSTEM.ALT
+SAM                 16,384  03/07/96  12:59 SAM
+SAM      LOG         1,024  03/07/96  13:21 SAM.LOG
+USERDEF            114,688  19/03/96  15:11 UserDef
+APPEVENT EVT        65,536  03/07/96  13:21 AppEvent.Evt
+SECEVENT EVT        65,536  23/04/96   8:29 SecEvent.Evt
+ADMIN000           397,312  03/07/96  13:21 ADMIN000
+ADMIN000 LOG         1,024  03/07/96  13:21 ADMIN000.LOG
+SYSEVENT EVT        65,536  03/07/96  13:21 SysEvent.Evt
+        17 file(s)      2,123,776 bytes
+
+Directory of H:\C\WINNT351\SYSTEM32\DHCP
+
+.              <DIR>        11/05/96   0:01 .
+..             <DIR>        11/05/96   0:01 ..
+         0 file(s)              0 bytes
+****** dir2
+TRANS_RC DLL        85,604  09/07/96  18:18 TRANS_RC.DLL
+       866 file(s)     48,145,319 bytes
+
+Directory of C:\WINNT351\SYSTEM32\CONFIG
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+DEFAULT            114,688  14/07/96   0:45 DEFAULT
+SYSTEM             421,888  14/07/96   1:02 SYSTEM
+SOFTWARE           417,792  14/07/96   1:02 SOFTWARE
+SYSTEM   LOG         1,024  22/04/96  19:59 SYSTEM.LOG
+SOFTWARE LOG         1,024  14/07/96   1:02 SOFTWARE.LOG
+DEFAULT  LOG         1,024  14/07/96   1:02 DEFAULT.LOG
+SECURITY            16,384  14/07/96   0:45 SECURITY
+SECURITY LOG         1,024  14/07/96   1:02 SECURITY.LOG
+SYSTEM   ALT       421,888  14/07/96   1:02 SYSTEM.ALT
+SAM                 16,384  14/07/96   0:45 SAM
+SAM      LOG         1,024  14/07/96   1:02 SAM.LOG
+USERDEF            114,688  19/03/96  15:11 UserDef
+APPEVENT EVT        65,536  14/07/96   1:02 AppEvent.Evt
+SECEVENT EVT        65,536  23/04/96   8:29 SecEvent.Evt
+ADMIN000           417,792  14/07/96   1:02 ADMIN000
+ADMIN000 LOG         1,024  14/07/96   1:02 ADMIN000.LOG
+SYSEVENT EVT        65,536  14/07/96   1:02 SysEvent.Evt
+        17 file(s)      2,144,256 bytes
+
+Directory of C:\WINNT351\SYSTEM32\DHCP
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+         0 file(s)              0 bytes
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\DRIVERS
+
+.              <DIR>        11/05/96   0:00 .
+..             <DIR>        11/05/96   0:00 ..
+ETC            <DIR>        11/05/96   0:00 ETC
+KBDCLASS SYS         9,456  26/05/95  10:57 KBDCLASS.SYS
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\DRIVERS
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+ETC            <DIR>        22/04/96  19:58 ETC
+KBDCLASS SYS         9,456  26/05/95  10:57 KBDCLASS.SYS
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\DRIVERS\ETC
+
+.              <DIR>        11/05/96   0:00 .
+..             <DIR>        11/05/96   0:00 ..
+HOSTS                  737  26/05/95  10:57 HOSTS
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\DRIVERS\ETC
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+HOSTS                  737  26/05/95  10:57 HOSTS
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\OS2
+
+.              <DIR>        11/05/96   0:00 .
+..             <DIR>        11/05/96   0:00 ..
+DLL            <DIR>        11/05/96   0:00 DLL
+OSO001   009       108,095  26/05/95  10:57 OSO001.009
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\OS2
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+DLL            <DIR>        22/04/96  19:58 DLL
+OSO001   009       108,095  26/05/95  10:57 OSO001.009
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\OS2\DLL
+
+.              <DIR>        11/05/96   0:00 .
+..             <DIR>        11/05/96   0:00 ..
+DOSCALLS DLL        12,646  26/05/95  10:57 DOSCALLS.DLL
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\OS2\DLL
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+DOSCALLS DLL        12,646  26/05/95  10:57 DOSCALLS.DLL
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\RAS
+
+.              <DIR>        11/05/96   0:01 .
+..             <DIR>        11/05/96   0:01 ..
+SWITCH   INF        10,097  26/05/95  10:57 SWITCH.INF
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\RAS
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+SWITCH   INF        10,097  26/05/95  10:57 SWITCH.INF
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\Repl
+
+.              <DIR>        11/05/96   0:04 .
+..             <DIR>        11/05/96   0:04 ..
+EXPORT         <DIR>        11/05/96   0:04 Export
+IMPORT         <DIR>        11/05/96   0:04 Import
+         0 file(s)              0 bytes
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\Repl
+
+.              <DIR>        07/05/96  22:47 .
+..             <DIR>        07/05/96  22:47 ..
+EXPORT         <DIR>        07/05/96  22:47 Export
+IMPORT         <DIR>        07/05/96  22:47 Import
+         0 file(s)              0 bytes
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\Repl\Export
+
+.              <DIR>        11/05/96   0:04 .
+..             <DIR>        11/05/96   0:04 ..
+SCRIPTS        <DIR>        11/05/96   0:04 Scripts
+         0 file(s)              0 bytes
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\Repl\Export
+
+.              <DIR>        07/05/96  22:47 .
+..             <DIR>        07/05/96  22:47 ..
+SCRIPTS        <DIR>        07/05/96  22:47 Scripts
+         0 file(s)              0 bytes
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\Repl\Export\Scripts
+
+.              <DIR>        11/05/96   0:04 .
+..             <DIR>        11/05/96   0:04 ..
+         0 file(s)              0 bytes
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\Repl\Export\Scripts
+
+.              <DIR>        07/05/96  22:47 .
+..             <DIR>        07/05/96  22:47 ..
+         0 file(s)              0 bytes
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\Repl\Import
+
+.              <DIR>        11/05/96   0:04 .
+..             <DIR>        11/05/96   0:04 ..
+SCRIPTS        <DIR>        11/05/96   0:04 Scripts
+         0 file(s)              0 bytes
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\Repl\Import
+
+.              <DIR>        07/05/96  22:47 .
+..             <DIR>        07/05/96  22:47 ..
+SCRIPTS        <DIR>        07/05/96  22:47 Scripts
+         0 file(s)              0 bytes
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\Repl\Import\Scripts
+
+.              <DIR>        11/05/96   0:04 .
+..             <DIR>        11/05/96   0:04 ..
+         0 file(s)              0 bytes
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\Repl\Import\Scripts
+
+.              <DIR>        07/05/96  22:47 .
+..             <DIR>        07/05/96  22:47 ..
+         0 file(s)              0 bytes
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\SPOOL
+
+.              <DIR>        11/05/96   0:01 .
+..             <DIR>        11/05/96   0:01 ..
+DRIVERS        <DIR>        11/05/96   0:01 DRIVERS
+PRTPROCS       <DIR>        11/05/96   0:01 PRTPROCS
+PRINTERS       <DIR>        11/05/96   0:01 PRINTERS
+         0 file(s)              0 bytes
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\SPOOL
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+DRIVERS        <DIR>        22/04/96  19:58 DRIVERS
+PRTPROCS       <DIR>        22/04/96  19:58 PRTPROCS
+PRINTERS       <DIR>        22/04/96  20:01 PRINTERS
+         0 file(s)              0 bytes
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\SPOOL\DRIVERS
+
+.              <DIR>        11/05/96   0:01 .
+..             <DIR>        11/05/96   0:01 ..
+W32X86         <DIR>        11/05/96   0:01 W32X86
+         0 file(s)              0 bytes
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\SPOOL\DRIVERS
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+W32X86         <DIR>        22/04/96  19:58 W32X86
+         0 file(s)              0 bytes
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\SPOOL\DRIVERS\W32X86
+
+.              <DIR>        11/05/96   0:01 .
+..             <DIR>        11/05/96   0:01 ..
+1              <DIR>        11/05/96   0:01 1
+         0 file(s)              0 bytes
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\SPOOL\DRIVERS\W32X86
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+1              <DIR>        22/04/96  19:58 1
+         0 file(s)              0 bytes
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\SPOOL\DRIVERS\W32X86\1
+
+.              <DIR>        11/05/96   0:01 .
+..             <DIR>        11/05/96   0:01 ..
+         0 file(s)              0 bytes
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\SPOOL\DRIVERS\W32X86\1
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+         0 file(s)              0 bytes
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\SPOOL\PRINTERS
+
+.              <DIR>        11/05/96   0:01 .
+..             <DIR>        11/05/96   0:01 ..
+         0 file(s)              0 bytes
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\SPOOL\PRINTERS
+
+.              <DIR>        22/04/96  20:01 .
+..             <DIR>        22/04/96  20:01 ..
+         0 file(s)              0 bytes
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\SPOOL\PRTPROCS
+
+.              <DIR>        11/05/96   0:01 .
+..             <DIR>        11/05/96   0:01 ..
+W32X86         <DIR>        11/05/96   0:01 W32X86
+         0 file(s)              0 bytes
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\SPOOL\PRTPROCS
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+W32X86         <DIR>        22/04/96  19:58 W32X86
+         0 file(s)              0 bytes
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\SPOOL\PRTPROCS\W32X86
+
+.              <DIR>        11/05/96   0:01 .
+..             <DIR>        11/05/96   0:01 ..
+WINPRINT DLL        11,536  26/05/95  10:57 WINPRINT.DLL
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\SPOOL\PRTPROCS\W32X86
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+WINPRINT DLL        11,536  26/05/95  10:57 WINPRINT.DLL
+******
+
+****** dir1
+
+Directory of H:\C\WINNT351\SYSTEM32\WINS
+
+.              <DIR>        11/05/96   0:01 .
+..             <DIR>        11/05/96   0:01 ..
+         0 file(s)              0 bytes
+****** dir2
+
+Directory of C:\WINNT351\SYSTEM32\WINS
+
+.              <DIR>        22/04/96  19:58 .
+..             <DIR>        22/04/96  19:58 ..
+         0 file(s)              0 bytes
+******
+
+****** dir1
+Total files listed:
+     1,196 file(s)     66,892,925 bytes
+        95 dir(s)       8,519,680 bytes free
+****** dir2
+Total files listed:
+     1,196 file(s)     66,999,009 bytes
+        95 dir(s)     167,411,712 bytes free
+******
+
+

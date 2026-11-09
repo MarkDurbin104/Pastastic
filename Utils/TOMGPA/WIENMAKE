@@ -1,0 +1,107 @@
+.SILENT
+.AUTODEPEND
+
+BCPATH        = \BC\   #  CHANGE THIS LINE TO \BC4\ or D:\BORLANDC\ etc...
+
+MODEL         = l
+LINKPARMS     = -Txe -v -L$(BCPATH)LIB
+LINK32PARMS   = -Tpe -ax -v -L$(BCPATH)LIB
+NORM32LIBS    = DPMI32+CW32
+NORMLIBS      = DPMI16+EMUX+MATHWL+CWL
+STDLIBS       = EMU+MATHL+CL
+GPALIBS       = GPA+$(NORMLIBS)
+TEMPFILE      = TEMPFILE.GPA
+
+PP32OBJS      = PP,CONFIG,CONTROL,FORMHAND,ACTIONC,DST,GLOBAL,
+FR32OBJS      = FR,CONFIG,CONTROL,FORMHAND,ACTIONC,
+GOBJS         = GPRIM.OBJ $(BCPATH)LIB\PKWARE.OBJ
+OBJS          = GPAMAIN.OBJ
+INCS          = INSTRUCT.H KEYNAMES.H KEYDEF.H SCANCODE.H
+BOTH1         = CONFIG,CONTROL,ACTIONC,FUNCTION,DST,MONEY,ARITH,
+BOTH2         = GLOBAL,ACTIONS,LANG,MESSAGE,CALC,TRANSLOG,FORMHAND,
+BOTH3         = FORMPROC,MENUPROC,TABPROC,FLDPROC,REPPROC,
+DEVS          = KBD,VFON,PDX,CAPRN,DISK,SCALE,OSS, #MOUSE,8255,COMM,STAMP,HERC,NET,
+
+BOTHDEPS      = $(BOTH1) $(BOTH2) $(BOTH3)
+LIBDEPS       = $(OBJS) $(BOTHDEPS:,=.OBJ )
+INCDEPS       = $(INCS) $(BOTHDEPS:,=.H )   $(DEVS:,=DEV.H )
+
+.C.OBJ:
+	      BCC -DWIEN -WX -ml -O2 -Ot -Ox -Oi -G -d -w -v -c { $< }
+
+.C.O32:
+	      BCC32 -DWIEN -WX -w -d -v -c -o$*.O32 $<
+
+ALL:          BGPAHEAD.EXE    \
+ 	      BLIBLIST.EXE    \
+              GPA.H           \
+              GPA.EXE         \
+              REC.EXE         \
+              PLAY.EXE        \
+              FR.EXE          \
+              PP.EXE          \
+              GPA.BIN
+
+BGPAHEAD.OBJ: BGPAHEAD.C
+              BCC -ml -c BGPAHEAD.C 
+
+BGPAHEAD.EXE: BGPAHEAD.OBJ
+	      TLINK C0L+BGPAHEAD,BGPAHEAD,,$(STDLIBS)
+
+BLIBLIST.OBJ: BLIBLIST.C
+              BCC -ml -c BLIBLIST.C 
+
+BLIBLIST.EXE: BLIBLIST.OBJ
+	      TLINK C0L+BLIBLIST,BLIBLIST,,$(STDLIBS)
+
+GPA.H:        $(INCDEPS) BGPAHEAD.EXE TYPES.H
+	      BGPAHEAD GPA.H <<! 
+$** 
+!
+
+START.OBJ:    START.C
+              BCC -ml -c START.C 
+
+START.OBR:    START.C
+              BCC -ml -c -oSTART.OBR -DRECORDING START.C 
+
+START.OBP:    START.C
+              BCC -ml -c -oSTART.OBP -DPLAYBACK START.C 
+
+GPA.EXE:      START.OBJ
+	      TLINK C0L+START,GPA,START.MAP,$(STDLIBS)
+
+REC.EXE:      START.OBR
+	      TLINK C0L+START.OBR,REC,,$(STDLIBS)
+
+PLAY.EXE:     START.OBP
+	      TLINK C0L+START.OBP,PLAY,,$(STDLIBS)
+
+GPA.BIN:      GPA.H GPA.OBJ GPA.LIB $(DEVS:,=DEV.OBJ ) $(GOBJS)
+	      TLINK $(LINKPARMS) @&&!
+	      C0X $* $(DEVS:,=DEV.OBJ ) $(GOBJS),GPA.BIN,GPABIN.MAP,$(GPALIBS)+PXENGWIN
+!
+#              DEL GPA.BIN
+#              REN GPA.EXE GPA.BIN
+#              COPY START.EXE GPA.EXE
+#	      $(COMPRESS)
+
+PP.EXE:       $(PP32OBJS:,=.O32 )
+	      TLINK32 $(LINK32PARMS) @&&!
+	      C0X32+$(PP32OBJS:,=.O32 ),$*,,$(NORM32LIBS)
+!
+	      $(COMPRESS)
+
+FR.EXE:       $(FR32OBJS:,=.O32 )
+	      TLINK32 $(LINK32PARMS) @&&!
+	      C0X32+$(FR32OBJS:,=.O32 ),$*,,$(NORM32LIBS)
+!
+	      $(COMPRESS)
+
+.PRECIOUS:    GPA.LIB
+GPA.LIB:      $(LIBDEPS)
+	      BLIBLIST $(TEMPFILE) $*.LIB <<! 
+	      $? 
+!
+              TLIB /E $* @$(TEMPFILE)
+	      DEL $(TEMPFILE)

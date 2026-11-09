@@ -1,0 +1,84 @@
+{   ษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+    บ                                                               บ
+    บ      New York World's Fair - 1939 - Trylon and Perisphere     บ
+    บ                                                               บ
+    บ                By Roger T. Stevens - 2/18/90                  บ
+    บ                                                               บ
+    ศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+}
+
+FILE_NAME = NYWF39.RAW
+
+{  PATTERNS USED}
+
+PATTERN ( x_size = 60,                 { CHECKERED GROUND }
+          y_size = 60,
+          name   = CHECK,
+          RECTANGLE (
+            start_x = 0,
+            start_y = 0,
+            end_x   = 30,
+            end_y   = 30,
+            diff    = (.1,1.0,.4),
+            dither  = 0,
+          )
+          RECTANGLE (
+            start_x = 30,
+            start_y = 30,
+            end_x   = 60,
+            end_y   = 60,
+            diff    = (.1,1.0,.1),
+            dither  = 0,
+          )
+        )
+{ *********************  OBJECTS  ********************* }
+{ ** ground ** }
+PARALLELOGRAM ( loc  = (  -10000, 0,  -10000),
+                v1   = (20000, 0,    0),
+                v2   = (  0, 0, 20000),
+                diff = (  .8, .8, 0),
+                dither  = 0,
+                pattern = CHECK
+                xmult = 1
+                ymult = 1
+              )
+
+SPHERE ( loc = (350, 30, -40),
+         radius = 30,
+         diff = (1.0,1.0,1.0),
+       )
+BEGIN_BBOX
+	TRIANGLE (
+	loc = (380,0,20),
+	v1 = (60,0,0),
+	v2 = (30,150,17),
+	diff = (1.0,1.0,1.0),
+	xmult = 1.5,
+	ymult = 1.5,	
+     )
+	TRIANGLE (
+	loc = (380,0,20),
+	v1 = (30,0,52),
+	v2 = (30,150,17),
+	diff = (1.0,1.0,1.0),
+	xmult = 1.5,
+	ymult = 1.5,	
+     )
+END_BBOX
+{ ** An observer ** }
+OBSERVER ( loc    = (-80 , 70, -40),
+           lookat = (200, 70, 0)
+         )
+{ ** A lamp ** }
+LAMP ( loc = (0, 150, 120),
+       radius = 5,
+       dist = 200
+     )
+SKY  ( horiz  = (0, .2, .9),
+       zenith = (0, .2, .9),
+       dither = 1
+     )
+XRES = 320
+YRES = 200
+
+FOC_LENGTH = 120

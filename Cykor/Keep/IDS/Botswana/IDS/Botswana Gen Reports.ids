@@ -1,0 +1,206 @@
+Domains {
+
+  ReportType {
+     Title  { 'Journal/Summary' }
+     Prompt { 'Journal/Summary' }
+     Hint   { 'Select Report Type' }
+     Error  { 'Select Journal or Summary' }
+     Format {
+        PickList { 'PickList.ReportType' }
+     }
+  }
+}
+
+Products {
+
+  BaseReport {
+     DontBuild
+     BasedOn { BaseAdministration }
+     Domains {
+          UserName
+     }
+  }
+
+
+  BaseTxnReport {
+     DontBuild
+     BasedOn { BaseReport }
+     Domains {
+        StartDomainEdit
+        EndDomainEdit
+     }
+  }
+
+
+   DailyTrans {
+      BasedOn { BaseAdministration }
+      SubGroup { 'Reports' }
+      Caption { 'End-of-day Transactions' }
+      BitMap {  '..\IMAGES\P_Cash.bmp' }
+      Description  { 'End-of-day Transactions' }
+      Title        { 'End-of-day Transactions' }
+      Prompt       { 'End-of-day Transactions' }
+      Hint         { 'End-of-day Transactions' }
+      Items {
+          'Complete'
+      }
+      PrintList { Summary, 'ClerkTrans' }
+   }
+    PrintCash {
+        BasedOn { BaseAdministration }
+	SubGroup { 'Reports' }
+        Caption { 'Print Cash' }
+        BitMap {  '..\IMAGES\P_Cash.bmp' }
+        Description  { 'Print Cash' }
+        Title        { 'Print Cash' }
+        Prompt       { 'Print Cash' }
+        Hint         { 'Print Cash' }
+        PLU          { PLU_PrintCash }
+        Items {
+           'Complete'
+        }
+        PrintList { Summary, 'TanCash' }
+     }
+
+    PrintCheques {
+        BasedOn { BaseAdministration }
+	SubGroup { 'Reports' }
+        Caption { 'Print Cheques' }
+        BitMap {  '..\IMAGES\cheque.bmp' }
+        Description  { 'Print Cheques' }
+        Title        { 'Print Cheques' }
+        Prompt       { 'Print Cheques' }
+        Hint         { 'Print Cheques' }
+        PLU          { PLU_PrintCheques }
+        Items {
+           'Complete'
+        }
+        PrintList { Summary, 'GuernseyCheques' }
+     }
+
+   PrintStamps {
+        BasedOn { BaseAdministration }
+	SubGroup { 'Reports' }
+        Caption { 'Print Stamps' }
+        BitMap {  '..\IMAGES\Stamps.bmp' }
+        Description  { 'Print Stamps' }
+        Title        { 'Print Stamps' }
+        Prompt       { 'Print Stamps' }
+        Hint         { 'Print Stamps' }
+        PLU          { PLU_PrintStamps }
+        Items {
+           'Complete'
+        }
+        PrintList { Detail, 'TanStamps' }
+     }
+
+     PrintStock {
+        BasedOn { BaseAdministration }
+	SubGroup { 'Reports' }
+        Caption { 'Print Stock' }
+        BitMap {  '..\IMAGES\P_UserStock.bmp' }
+        Description  { 'Print Stock' }
+        Title        { 'Print Stock' }
+        Prompt       { 'Print Stock' }
+        Hint         { 'Print Stock' }
+        PLU          { PLU_PrintStock }
+        Items {
+           'Complete'
+        }
+        PrintList { Detail, 'GuernseyStock' }
+   }
+
+    PrintPostBank {
+        BasedOn { BaseAdministration }
+	SubGroup { 'Reports' }
+        Caption { 'Print NSB' }
+        BitMap {  '..\IMAGES\G_NationalSavings.bmp' }
+        Description  { 'Print NSB' }
+        Title        { 'Print NSB' }
+        Prompt       { 'Print NSB' }
+        Hint         { 'Print NSB' }
+        PLU          { PLU_PrintPostBank }
+        Items {
+         'Complete'
+        }
+      PrintList { Detail, 'GuernseyPostBank' }
+   }
+    PrintGiroBank {
+        BasedOn { BaseAdministration }
+	SubGroup { 'Reports' }
+        Caption { 'Print Girobank' }
+        BitMap {  '..\IMAGES\G_GiroBank.bmp' }
+        Description  { 'Print Girobank' }
+        Title        { 'Print Girobank' }
+        Prompt       { 'Print Girobank' }
+        Hint         { 'Print Girobank' }
+        PLU          { PLU_PrintGiroBank }
+        Items {
+         'Complete'
+        }
+      PrintList { Detail, 'GuernseyGiroBank' }
+   }
+
+  PrintGiroDep {
+    BasedOn     { BaseAdministration          }
+    SubGroup    { 'Reports'                   }
+    Caption     { 'Print Girobank Deposits'   }
+    BitMap      {  '..\IMAGES\G_GiroBank.bmp' }
+    Description { 'Print Girobank'            }
+    Title       { 'Print Girobank Deposits'   }
+    Prompt      { 'Print Girobank Deposits'   }
+    Hint        { 'Print Girobank Deposits'   }
+    PLU         { PLU_PrintGiroBankDeposit    }
+    Items       {   'Complete' }
+    Snippets    { PrintGiroAUTOUSES, PrintGiroDepLOGVAR, PrintGiroDepLOG }
+  }
+
+  PrintGiroWith {
+    BasedOn     { BaseAdministration          }
+    SubGroup    { 'Reports'                   }
+    Caption     { 'Print Girobank Withdrawals'   }
+    BitMap      {  '..\IMAGES\G_GiroBank.bmp' }
+    Description { 'Print Girobank'            }
+    Title       { 'Print Girobank Withdrawals'   }
+    Prompt      { 'Print Girobank Withdrawals'   }
+    Hint        { 'Print Girobank Withdrawals'   }
+    PLU         { PLU_PrintGiroBankWithdrawal    }
+    Items       {   'Complete' }
+    Snippets    { PrintGiroAUTOUSES, PrintGiroWithLOGVAR, PrintGiroWithLOG }    
+}
+
+    PrintTVLicence {
+        BasedOn { BaseAdministration }
+	SubGroup { 'Reports' }
+        Caption { 'Print TV Licence' }
+        BitMap {  '..\IMAGES\P_RepPTVPayment.bmp' }
+        Description  { 'Print TV Licences' }
+        Title        { 'Print TV Licences' }
+        Prompt       { 'Print TV Licences' }
+        Hint         { 'Print TV Licences' }
+        PLU          { PLU_PrintTVLicence }
+        Items {
+         'Complete'
+        }
+      PrintList { Detail, 'GuernseyTVLic' }
+   }
+    PrintStateRec {
+        BasedOn { BaseAdministration }
+	SubGroup { 'Reports' }
+        Caption { 'Print States Receipts' }
+        BitMap {  '..\IMAGES\P_States.bmp' }
+        Description  { 'Print States Receipts' }
+        Title        { 'Print States Receipts' }
+        Prompt       { 'Print States Receipts' }
+        Hint         { 'Print States Receipts' }
+        PLU          { PLU_PrintStateRec }
+        Items {
+         'Complete'
+        }
+      PrintList { Summary, 'GuernseyStateRec' }
+   }
+
+
+
+}
+

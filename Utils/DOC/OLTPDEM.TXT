@@ -1,0 +1,13 @@
+bar scan utility with key interrupt. ret TRUE for barcode FALSE for
+keyboard
+
+print series 39 bar and address label from command line args
+using any of     $%+ -./ 0123456789 ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+find out about scanners
+
+find out parcel pricing information.  and write cost calc from Zone
+Type & Wgt return price in pence.
+
+
+

@@ -1,0 +1,53 @@
+[BuildAll]
+Y
+[Aliases]
+WinTypes=Windows
+WinProcs=Windows
+DbiProcs=BDE
+DbiTypes=BDE
+DbiErrs=BDE
+
+[InDCUDirs]
+D:\MinDelphi
+E:\Indigo3\Automation
+E:\CorvusV3\Corvus\Source\Base Type Library
+E:\CorvusV3\Corvus\Source\Support Components\Error Handler
+E:\CorvusV3\Corvus\Source\Support Components\DatabaseServer
+E:\CorvusV3\Corvus\Source\Utility Components\Diskette Management
+E:\CorvusV3\Corvus\Source\Packages
+E:\CorvusV3\Corvus\Source\Packages\PasZLib
+E:\Corvus\Source\Utility Components\UserManager
+E:\Projects\Pakistan\RefServer
+E:\Projects\Pakistan\Reports
+
+[InPASDirs]
+D:\MinDelphi
+E:\Indigo3\Automation
+E:\CorvusV3\Corvus\Source\Packages
+E:\CorvusV3\Corvus\Source\Packages\PasZLib
+E:\CorvusV3\Corvus\Source\Base Type Library
+E:\CorvusV3\Corvus\Source\Support Components\Error Handler
+E:\CorvusV3\Corvus\Source\Support Components\DatabaseServer
+E:\CorvusV3\Corvus\Source\Component Designer\Product Designer
+E:\CorvusV3\Corvus\Source\Utility Components\Diskette Management
+E:\CorvusV3\Corvus\Source\Utility Components\UserManager
+E:\Projects\Pakistan\RefServer
+E:\Projects\Pakistan\Reports
+E:\CorvusV3\Corvus\Source\Base Components
+
+[Packages]
+ 
+[OutEXEDir]
+C:\Build\CorvusService
+[OutDCUDir]
+E:\CorvusV3\Corvus\Binary\Other
+[CommandLine]
+D:\MinDelphi\DCC32
+[Projects]
+E:\CorvusV3\Corvus\Source\Support Applications\Shirika\MsgStore
+
+[CondDef]
+BuildingDLL=1;EXCMAGIC_GUI=1
+
+[DebugInfo]
+Y

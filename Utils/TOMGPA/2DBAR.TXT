@@ -1,0 +1,37 @@
+
+
+
+
+
+V11 2D bar code data contents
+
+The data returned by the scanner is a caret (^) delimited stream
+of information. There are no maximum field sizes but in practice no
+2D bar code created so far has any field exceeding 20 characters.
+
+In the following format information all field names within quotes are strings of
+variable length (the quotes do not exist in the data stream). X's
+are field identifier codes - to be advised.
+
+"Address line 1"^
+"Address line 2"^
+"Address line 3"^
+"Address line 4"X^
+"Registration Number"CX^  : C - check digit, a single alphanumeric character
+"Taxation Class"X^                          
+"Vehicle Make"X^
+"Engine Capacity"X^
+"Weight"X^
+"Conf?"X^
+"Seating Capacity"X^
+"Cost of twelve month duty"X^
+"Cost of six month duty"X^
+"Internal MVL control codes"
+
+
+
+To extract the Registration number find the characters between the fourth
+and fifth carets and discard the last two characters.
+
+Start Date - this is not available.
+

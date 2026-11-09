@@ -1,0 +1,15 @@
+#Mon Mar 17 13:09:07 GMT 2008
+com.objfac.xmleditor.color.javaslc=128,128,255
+com.objfac.xmleditor.color.starttag=0,0,160
+com.objfac.xmleditor.dtdpub=-//W3C//DTD%20XHTML%201.0%20Transitional//EN -//ANT 1.5.1/DTD//EN -//OASIS//DocBook 
+com.objfac.xmleditor.color.attr=128,0,0
+com.objfac.xmleditor.color.comment\#bold=true
+com.objfac.xmleditor.color.value=0,128,0
+com.objfac.xmleditor.color.javamlc=128,128,255
+com.objfac.xmleditor.dtdsys=http\://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd http\://xmlbuddy.com/DTD/ant151.dtd http\://www.docbook.org/xml/4.2/docbookx.dtd http\://www.docbook.org/xml/4.2/docbookx.dtd 
+eclipse.preferences.version=1
+com.objfac.xmleditor.dtdroot=html project book chapter 
+com.objfac.editors_mapped=true
+com.objfac.xmleditor.color.comment=128,128,255
+com.objfac.xmleditor.color.javaslc\#bold=true
+com.objfac.xmleditor.color.javamlc\#bold=true

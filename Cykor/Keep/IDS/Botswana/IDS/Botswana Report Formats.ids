@@ -1,0 +1,1663 @@
+// Fixed column names available in any report
+// 'TransactionID'
+// 'RecordID'
+// 'WSNumber'
+// 'OfficeCode'
+// 'AccountingPeriod'
+// 'TransactionType'
+// 'DateTime'
+// 'Teller'
+// 'ProgramID'
+// 'ProgramVersion'
+// 'PLU'
+// 'ItemPrice'
+// 'ItemQuantity'
+// 'ItemValue'
+// 'Description'
+
+// Typical First Query:
+// FirstQuery { 'select * from txnlog where (RecType = ''TxnLine'' or RecType = ''TxnTotal'')' }
+// Typical Second Query:
+// SecondQuery { 'select Description,ItemValue from ReportResult where PLU in ( 12345678,2345678 )' }
+
+// DummyReport {
+//    Alias { 'PSL' }  // default is PSL                                   
+//    TableName { 'ReportResult' } // default is ReportResult
+//    FirstQuery { 'select * from txnlog where (RecType = ''TxnLine'' or RecType = ''TxnTotal'')' } // default takes username office workstation periods into account
+//    SecondQuery { 'select Description,ItemValue from ReportResult where PLU in (123456,234567 )' } // default uses Column names and PLURanges
+//    FitWidth // Fit to paper (no need to define Widths for each column)
+//    ColumnLines // place a line between each column
+//    RowLines // place a line between each Row
+//    Landscape // rotate the paper
+//    Title    { 'Dummy Report' } // appears at top of report
+//    PLURange { 12345678,2345678 } // main product PLUs
+//    Columns {
+//       Description {  // Column Name
+//          Heading { 'The Description' } // Column Heading
+//          Justify { Left } // Column Justification Left Right Centre - default is Left
+//          Width   { 4000 } // Column Width in 100th mm i.e. 1000 = 1cm
+//       }
+//       ItemPrice {
+//          Heading { 'Item Price' }
+//          Justify { Right }
+//          Width   { 4000 }
+//          Currency  // format as money
+//          Total // Total up this column at the end of the report
+//       }
+//    }
+// }
+
+Reports {
+   WeeklyProdSum {
+      FitWidth
+      Landscape
+      ColumnLines
+      RowLines
+      HeaderCallBack { WeeklyProdSum,3000 }
+      Title { 'Sales Summary - Weekly' }
+      DataExtractor { 'SalesSum.WeekByProd' }
+      UseRanges {
+         SavingBankDeposit        ,BSBLostBookFees              ,CustomsHandlingCharges  ,
+         CustomsDutyFeesBotswana  ,CustomsDutyFeesSouthAfrica   ,CODTradeCharges         ,
+         CODHandlingCharges       ,EMSReceiptsIndividual        ,EMSReceiptsContract     ,
+         EMSContractAccountPayment,POBagReceipts                ,POBoxReceipts           ,
+         BulkPosting              ,NationalSavingCertificates   ,GroupFuneralBLI         ,
+         IpolokengBLI             ,RIPC                         ,RegistrationofNewspapers,
+         MoneyOrderInlandIssued   ,MoneyOrderForeignIssued      ,MoneyOrderCommission    ,
+         MoneyOrderOtherCharges   ,MoneyOrderTransmissionCharges,PostalOrderCommission   ,
+         UnaddressedLeaflets      ,CustomerFax                  ,BusinessReply           ,
+         FrankingMachine          ,WaterAffairs                 ,WaterUtilities          ,
+         HousingCorporation       ,ElectricityDOE               ,ElectricityBPC          ,
+         BotswanaTelecom          ,MiscellaneousReceipts        ,ImprestandTravelReceipts,
+         WesternUnion             ,PostageLabels
+         Line
+         StampsItems              ,RetailItems                  ,BWCourier               ,
+         Merchandise              ,PostalOrders                 ,PhilFirstDayCovers      ,
+         PhilSouvenirSheets       ,PhilYearPacks                ,PhilOtheritems          ,
+         Line
+         MoneyOrderInlandPaid     ,MoneyOrderForeignPaid        ,MoneyOrderBulkPaid      ,
+         MoneyOrderInlandRefund   ,PostOrdPaidInland            ,PostOrdPaidUK           ,
+         PostOrdPaidOtherForeign  ,PostOrdPaidBulk              ,SavingsBankWithdrawals  ,
+         NationalSavingsCertsPaid ,Refunds                      ,PensionsPaidRSA         ,
+         OldAgePensionBotswana    ,DiscountToVendors            ,MiscellaneousPayments   ,
+         WesternUnion             ,Imprestandtravelclaims       ,SalariesPP              ,
+         WagesIndustrialClass     ,TemporaryStaff               ,DeathClaim              ,
+         Humana                   ,
+         Line
+         Other
+      }
+      Columns  {
+         Description { Width { 4600 } }
+         MonVal      { Width { 1500 } Total Justify { Right } BlankZeros Round }
+         MonQty      { Width { 1200 } Total Justify { Right } BlankZeros       }
+         TueVal      { Width { 1500 } Total Justify { Right } BlankZeros Round }
+         TueQty      { Width { 1200 } Total Justify { Right } BlankZeros       }
+         WedVal      { Width { 1500 } Total Justify { Right } BlankZeros Round }
+         WedQty      { Width { 1200 } Total Justify { Right } BlankZeros       }
+         ThuVal      { Width { 1500 } Total Justify { Right } BlankZeros Round }
+         ThuQty      { Width { 1200 } Total Justify { Right } BlankZeros       }
+         FriVal      { Width { 1500 } Total Justify { Right } BlankZeros Round }
+         FriQty      { Width { 1200 } Total Justify { Right } BlankZeros       }
+         SatVal      { Width { 1500 } Total Justify { Right } BlankZeros Round }
+         SatQty      { Width { 1200 } Total Justify { Right } BlankZeros       }
+         TotVal      { Width { 1600 } Total Justify { Right } BlankZeros Round }
+         TotQty      { Width { 1300 } Total Justify { Right } BlankZeros       }
+      }
+   }
+
+   MonthlyProdSum {
+      FitWidth
+      Landscape
+      ColumnLines
+      RowLines
+      HeaderCallBack { MonthlyProdSum,3000 }
+      Title { 'Sales Summary - Monthly' }
+      DataExtractor { 'SalesSum.MonthByProd' }
+      UseRanges {
+         SavingBankDeposit        ,BSBLostBookFees              ,CustomsHandlingCharges  ,
+         CustomsDutyFeesBotswana  ,CustomsDutyFeesSouthAfrica   ,CODTradeCharges         ,
+         CODHandlingCharges       ,EMSReceiptsIndividual        ,EMSReceiptsContract     ,
+         EMSContractAccountPayment,POBagReceipts                ,POBoxReceipts           ,
+         BulkPosting              ,NationalSavingCertificates   ,GroupFuneralBLI         ,
+         IpolokengBLI             ,RIPC                         ,RegistrationofNewspapers,
+         MoneyOrderInlandIssued   ,MoneyOrderForeignIssued      ,MoneyOrderCommission    ,
+         MoneyOrderOtherCharges   ,MoneyOrderTransmissionCharges,PostalOrderCommission   ,
+         UnaddressedLeaflets      ,CustomerFax                  ,BusinessReply           ,
+         FrankingMachine          ,WaterAffairs                 ,WaterUtilities          ,
+         HousingCorporation       ,ElectricityDOE               ,ElectricityBPC          ,
+         BotswanaTelecom          ,MiscellaneousReceipts        ,ImprestandTravelReceipts,
+         WesternUnion             ,PostageLabels
+         Line
+         StampsItems              ,RetailItems                  ,BWCourier               ,
+         Merchandise              ,PostalOrders                 ,PhilFirstDayCovers      ,
+         PhilSouvenirSheets       ,PhilYearPacks                ,PhilOtheritems          ,
+         Line
+         MoneyOrderInlandPaid     ,MoneyOrderForeignPaid        ,MoneyOrderBulkPaid      ,
+         MoneyOrderInlandRefund   ,PostOrdPaidInland            ,PostOrdPaidUK           ,
+         PostOrdPaidOtherForeign  ,PostOrdPaidBulk              ,SavingsBankWithdrawals  ,
+         NationalSavingsCertsPaid ,Refunds                      ,PensionsPaidRSA         ,
+         OldAgePensionBotswana    ,DiscountToVendors            ,MiscellaneousPayments   ,
+         WesternUnion             ,Imprestandtravelclaims       ,SalariesPP              ,
+         WagesIndustrialClass     ,TemporaryStaff               ,DeathClaim              ,
+         Humana                   ,
+         Line
+         Other
+      }
+      Columns  {
+         Description { Width { 4600 } }
+         W1Val       { Width { 1500 } Total Justify { Right } BlankZeros Round }
+         W1Qty       { Width { 1200 } Total Justify { Right } BlankZeros       }
+         W2Val       { Width { 1500 } Total Justify { Right } BlankZeros Round }
+         W2Qty       { Width { 1200 } Total Justify { Right } BlankZeros       }
+         W3Val       { Width { 1500 } Total Justify { Right } BlankZeros Round }
+         W3Qty       { Width { 1200 } Total Justify { Right } BlankZeros       }
+         W4Val       { Width { 1500 } Total Justify { Right } BlankZeros Round }
+         W4Qty       { Width { 1200 } Total Justify { Right } BlankZeros       }
+         W5Val       { Width { 1500 } Total Justify { Right } BlankZeros Round }
+         W5Qty       { Width { 1200 } Total Justify { Right } BlankZeros       }
+         W6Val       { Width { 1500 } Total Justify { Right } BlankZeros Round }
+         W6Qty       { Width { 1200 } Total Justify { Right } BlankZeros       }
+         TotVal      { Width { 1600 } Total Justify { Right } BlankZeros Round }
+         TotQty      { Width { 1300 } Total Justify { Right } BlankZeros       }
+      }
+   }
+   DailySavingsDepSum {
+      FitWidth
+      ColumnLines
+      RowLines
+      Header { 'HeadFoot.Standard' }
+      Title { 'Savings Bank Breakdown' }
+      DataExtractor { 'SalesSum.DayByProd' }
+      UseRanges {
+         SavingBank1
+         SavingBank2
+         SavingBank3
+         SavingBank4
+         SavingBank5
+         SavingBank6
+         SavingBank7
+         SavingBank8
+      }
+      Columns  {
+         Description { Heading { 'Description' }  }
+         Value       { Heading { 'Value' }      Total Justify { Right } BlankZeros  Currency }
+         Quantity    { Heading { 'Quantity' }   Total Justify { Right } BlankZeros           }
+      }
+   }
+
+
+   DailyProdSum {
+      FitWidth
+      ColumnLines
+      RowLines
+      Header { 'HeadFoot.Standard' }
+      Title { 'Sales Summary - Daily' }
+      DataExtractor { 'SalesSum.DayByProd' }
+      UseRanges {
+         SavingBankDeposit        ,BSBLostBookFees              ,CustomsHandlingCharges  ,
+         CustomsDutyFeesBotswana  ,CustomsDutyFeesSouthAfrica   ,CODTradeCharges         ,
+         CODHandlingCharges       ,EMSReceiptsIndividual        ,EMSReceiptsContract     ,
+         EMSContractAccountPayment,POBagReceipts                ,POBoxReceipts           ,
+         BulkPosting              ,NationalSavingCertificates   ,GroupFuneralBLI         ,
+         IpolokengBLI             ,RIPC                         ,RegistrationofNewspapers,
+         MoneyOrderInlandIssued   ,MoneyOrderForeignIssued      ,MoneyOrderCommission    ,
+         MoneyOrderOtherCharges   ,MoneyOrderTransmissionCharges,PostalOrderCommission   ,
+         UnaddressedLeaflets      ,CustomerFax                  ,BusinessReply           ,
+         FrankingMachine          ,WaterAffairs                 ,WaterUtilities          ,
+         HousingCorporation       ,ElectricityDOE               ,ElectricityBPC          ,
+         BotswanaTelecom          ,MiscellaneousReceipts        ,ImprestandTravelReceipts,
+         WesternUnion             ,PostageLabels
+         Line
+         StampsItems              ,RetailItems                  ,BWCourier               ,
+         Merchandise              ,PostalOrders                 ,PhilFirstDayCovers      ,
+         PhilSouvenirSheets       ,PhilYearPacks                ,PhilOtheritems          ,
+         Line
+         MoneyOrderInlandPaid     ,MoneyOrderForeignPaid        ,MoneyOrderBulkPaid      ,
+         MoneyOrderInlandRefund   ,PostOrdPaidInland            ,PostOrdPaidUK           ,
+         PostOrdPaidOtherForeign  ,PostOrdPaidBulk              ,SavingsBankWithdrawals  ,
+         NationalSavingsCertsPaid ,Refunds                      ,PensionsPaidRSA         ,
+         OldAgePensionBotswana    ,DiscountToVendors            ,MiscellaneousPayments   ,
+         WesternUnion             ,Imprestandtravelclaims       ,SalariesPP              ,
+         WagesIndustrialClass     ,TemporaryStaff               ,DeathClaim              ,
+         Humana                   ,
+         Line
+         Other
+      }
+      Columns  {
+         Description { Heading { 'Description' }  }
+         Value       { Heading { 'Value' }      Total Justify { Right } BlankZeros  Currency }
+         Quantity    { Heading { 'Quantity' }   Total Justify { Right } BlankZeros           }
+      }
+   }
+
+  CashAccountAdjustments {
+    FitWidth
+    ColumnLines
+    RowLines
+    Title       { 'Cash Account Adjustments' }
+    FirstQuery  { 'select * from txnlog where (RecType = ''CashAccAdj'') and :TellerCondition: and :OfficeCondition:'  }
+    SecondQuery { 'select OfficeCode,Person,DateDet,CashAccountLine,AdjustmentAmount,AdjustmentType from ReportResult' }
+    Columns  {
+      OfficeCode       { Width { 1000 } Heading { 'Office Code'       } }
+      Person           { Width { 2000 } Heading { 'Person'            } }
+      DateDet          { Width { 2000 } Heading { 'Date'              } }
+      CashAccountLine  { Width { 5000 } Heading { 'Cash Account Line' } }
+      AdjustmentAmount { Width { 3500 } Heading { 'Adjustment Amount' } Currency Justify { Right } }
+      AdjustmentType   { Width { 3000 } Heading { 'Adjustment Type'   } Justify { Centre } }
+    }
+  }
+
+  PrintedLabels {
+    FitWidth
+    Title { 'Printed Labels' }
+    FirstQuery {
+      ' select * from txnlog '
+      ' where rectype="PrLabel"'
+      ' and :TellerCondition: and :OfficeCondition: '
+      ' and (                                          '
+      '       ( plu BETWEEN 020000000 AND 059999999)   '
+      '    or ( plu IN (070000100,070000110) )         '
+      '    or ( plu BETWEEN 091000000 AND 091000300)   '
+      '     )                                          '
+      ' order by datetime'
+    }
+    SecondQuery {
+      ' select teller, description, sum(itemquantity) as discrepancy, itemvalue, plu, guid from ReportResult '
+      ' where transactiontype=''PrLabel'''
+      ' group by plu, teller, guid, description, itemvalue'
+      ' having sum(itemquantity) <> 0 '
+      ' order by plu'
+    }
+    Columns {
+      Teller      { Heading { 'User' } }
+      Description { Heading { 'Description' } Width { 6000 }  }
+      Discrepancy { Heading { 'Discrepancy' }  }
+      ItemValue   { Heading { 'Value' }  Currency Total }
+    }
+  }
+
+//-------------------------------- Cheque Payment ------------------------------
+   PCheque {
+      FitWidth
+      Title    { 'Cheque Payment' }
+      PLURange { 6100000 }
+      Columns  {
+         AccountNumber             { Heading { 'Account Number' } }
+         ChequeNumber              { Heading { 'Cheque Number' } }
+         AmountPaid                { Heading { 'Amount Paid' } Justify { Right } Total}
+      }
+   }
+//--------------------------- Franking Machine Refill --------------------------
+   PFrankingMachine {
+      Landscape
+      Title    { 'Franking Machine Refill' }
+      RowLines
+      ColumnLines
+      PLURange { 050031004 }
+      FitWidth
+      Columns  {
+     	   LineNumber                { Heading { 'No.'              } LineNumber }
+     	   DateTime                  { Heading { 'Date         Time'} }
+         CustomerName              { Width { 5000 } Heading { 'Customer Name' } }
+         FrankingMachineLicenceNo  { Heading { 'Licence No' } Text Justify { Right } }
+         AmountPaid                { Heading { 'Amount Paid' } Currency Justify { Right } Total }
+      }
+   }
+//-----------------------Customer Voucher-------------------------------------
+   PCustomerVoucher {
+      FitWidth
+      Title    { 'Customer Voucher' }
+      PLURange { 050031006 }
+      Columns  {
+         AmountPaid                { Heading { 'Amount Paid' } Justify { Right } }
+         CustomerName              { Heading { 'Customer Name' } }
+         VoucherNumber             { Heading { 'Voucher Number' } }
+         ReasonForRefund           { Heading { 'Reason For Refund' } }
+      }
+   }
+//--------------News Paper Registration  -------------------------------------
+ PRegOfNewsPapers { Title    { 'Registration of Newspapers' }
+                    FitWidth
+                    PLURange { 050031009 }
+                    Columns  { NewspaperName      { Heading { 'Newspaper Name' } }
+                               RegistrationAmount { Heading { 'Registration Amount' } Justify {Right} Total }
+                              }
+                   }
+//----------------------------- Unaddressed Leaflets ---------------------------
+   PAccUnaddrAdvtLeaflets {
+     Title    { 'Unaddressed Leaflets' }
+     FitWidth
+     PLURange { 050031010 }
+     Columns  { CompanyName       { Heading { 'Company Name'       }                         }
+               LeafletCost       { Heading { 'Leaflet Cost'       } Justify { Right }       }
+               NumberOfLeaflets  { Heading { 'Number Of Leaflets' } Justify { Right } Total }
+               TotalAmountToPay  { Heading { 'Total'              } Justify { Right } Total }
+              }
+  }
+//-------------------Business Reply-------------------------------------
+   PBusinessReply {
+      FitWidth
+      Title    { 'Business Reply' }
+      PLURange { 050031012 }
+      Columns  { CompanyName       { Heading { 'Company Name'    } }
+                 LetterSize        { Heading { 'Letter Size'     } }
+                 LetterCost        { Heading { 'Letter Cost'     } Justify { Right } }
+                 NumberOfReplies   { Heading { 'No. Of Replies'  } Justify { Right } Total }
+                 TotalAmountToPay  { Heading { 'Amount Paid'     } Justify { Right } Total }
+                }
+   }
+
+//--------------------------------- Customer Fax -------------------------------
+// This report covers both domestic and international
+   PCustomerFax {
+      FitWidth
+      Title    { 'Customer Fax' }
+      PLURange { 050031011 }
+      Columns  { FaxDestination    { Heading { 'Destination'  }                         }
+                 PageCost          { Heading { 'Cost / Page'  } Justify { Right }       }
+                 NumberOfPages     { Heading { 'No. Of Pages' } Justify { Right } Total }
+                 TotalAmountToPay  { Heading { 'Total Paid'   } Justify { Right } Total }
+                }
+   }
+//---------------------------- Miscellaneous Receipt ---------------------------
+   PMiscReceipt {
+      FitWidth
+      Title    { 'Miscellaneous Receipt' }
+      PLURange { 050032001 }
+      Columns  { ReasonForReceipt  { Heading { 'Reason For Receipt' }                         }
+                 Amount            { Heading { 'Amount'             } Justify { Right } Total }
+                }
+   }
+//---------------------------- Miscellaneous Payment ---------------------------
+   PMiscPayment {
+      FitWidth
+      Title    { 'Miscellaneous Payment' }
+      PLURange { 050032002 }
+      Columns  { ReasonForPayment  { Heading { 'Reason For Payment' }                         }
+                 Amount            { Heading { 'Amount'             } Justify { Right } Total }
+                }
+   }
+//-------------------------- Imprest and travel Claims -------------------------
+   PClaims {
+      FitWidth
+      Title    { 'Imprest and travel Claims' }
+      PLURange { 050033002 }
+      Columns  { PayeeName            { Heading { 'Payee Name'           }                         }
+                 PayeeIdentification  { Heading { 'Payee Identification' }                         }
+                 Comment              { Heading { 'Comment'              }                         }
+                 AmountPaid           { Heading { 'Amount Paid'          } Justify { Right } Total }
+                }
+   }
+//------------------------------- Pay Staff Cheque -----------------------------
+   PPayStaffCheque {
+      FitWidth
+      Title    { 'Pay Staff Cheque' }
+      PLURange { 050034001 }
+      Columns  { PayeeName            { Heading { 'Payee Name'           }                         }
+                 PayeeIdentification  { Heading { 'Payee Identification' }                         }
+                 ChequeNumber         { Heading { 'Cheque Number'        }                         }
+                 AmountPaid           { Heading { 'Amount Paid'          } Justify { Right } Total }
+                }
+   }
+//---------------------------------- Pay Salary --------------------------------
+   PPaySalary {
+      FitWidth
+      Title    { 'Pay Salary' }
+      PLURange { 050033001 }
+      Columns  { PayeeName     { Heading { 'Payee Name'     }                         }
+                 PayrollNumber { Heading { 'Payroll Number' } Justify { Right }       }
+                 AmountPaid    { Heading { 'Amount Paid'    } Justify { Right } Total }
+                }
+   }
+//-------------------------- Pay Wages Industrial Class ------------------------
+   PPayWagesIC {
+      FitWidth
+      Title    { 'Pay Wages Industrial Class' }
+      PLURange { 050033003 }
+      Columns  { PayeeName     { Heading { 'Payee Name'     }                         }
+                 PayrollNumber { Heading { 'Payroll Number' } Justify { Right }       }
+                 AmountPaid    { Heading { 'Amount Paid'    } Justify { Right } Total }
+                }
+   }
+
+//----------------------------- Pay Temporary Staff ----------------------------
+   PPayTempStaff {
+      FitWidth
+      Title    { 'Pay Temporary Staff' }
+      PLURange { 050033004 }
+      Columns  { PayeeName     { Heading { 'Payee Name'   }                         }
+                 Comment       { Heading { 'Comment'      }                         }
+                 AmountPaid    { Heading { 'Amount Paid'  } Justify { Right } Total }
+                }
+   }
+//--------------------------------- Death Claim --------------------------------
+   PPayDeathClaim {
+      FitWidth
+      Title    { 'Pay Death Claim' }
+      PLURange { 050033005 }
+      Columns  { PayeeName     { Heading { 'Payee Name'   }                         }
+                 Comment       { Heading { 'Comment'      }                         }
+                 AmountPaid    { Heading { 'Amount Paid'  } Justify { Right } Total }
+                }
+   }
+//--------------------------- Private Box Annual Rent --------------------------
+   PPrivBoxAnnualRent {
+      FitWidth
+      Title    { 'PO Box - Annual Rent' }
+      PLURange { 030000015 }
+      Columns  { Location                  { Heading { 'Location'         }                         }
+                 PrivateBoxNumber          { Heading { 'Box No.'       }                         }
+                 CustomerName              { Heading { 'Customer Name'    }                         }
+                 PaymentPeriod             { Heading { 'Payment Period'   }                         }
+                 Years                     { Heading { 'Years'            } Justify { Right }       }
+                 AnnualRentalFee           { Heading { 'Annual Rent'    } Justify { Right }       }
+                 GrossFee                  { Heading { 'Total'         } Justify { Right } Total Currency }
+                 Feeforlatepaymentofrental { Heading { 'Late pay fee' } Justify { Right } Total Currency }
+                }
+   }
+//------------------------- Private Box - Quarterly Rent -----------------------
+   PPBQuarterRent {
+      FitWidth
+      Title    { 'PO Box - Quarterly Rent' }
+      PLURange { 030000016 }
+      Columns  { Location                  {  Heading { 'Location'      }                         }
+                 PrivateBoxNumber          {  Heading { 'Box No.'       }                         }
+                 CustomerName              {  Heading { 'Customer Name' }                         }
+                 Quarter                   {  Heading { 'Quarter'       }                         }
+                 StandardFee               {  Heading { 'Standard Fee'  } Justify { Right } Total }
+                 Feeforlatepaymentofrental {  Heading { 'Late fee'      } Justify { Right } Total }
+                }
+   }
+//------------------------ Private Box - New Lock and Key ----------------------
+   PPBNewLockKey {
+      FitWidth
+      Title    { 'PO Box - New Lock and Key' }
+      PLURange { 030000013 }
+      Columns  { Location                  { Heading { 'Location'      } }
+                 PrivateBoxNumber          { Heading { 'Box Number'    } }
+                 CustomerName              { Heading { 'Customer Name' } }
+                 LockFee                   { Heading { 'Fee'           } Justify {Right} Total }
+      }
+   }
+
+//---------------------------- Private Bag - Purchase --------------------------
+   PBagNewRental {
+      FitWidth
+      Title    { 'Private Bag - Purchase' }
+      PLURange { 030000034 }
+
+      Columns  { Location               { Heading { 'Location'      }                       }
+                 PrivateBagNumber       { Heading { 'Bag No.'       }                       }
+                 CustomerName           { Heading { 'Customer Name' }                       }
+                 PrivateBagPurchaseFee  { Heading { 'Purchase'      } Justify {Right} Total }
+                 AnnualRentalFee        { Heading { 'Annual Rent'   } Justify {Right} Total }
+                 StandardFee            { Heading { 'Qtrly Rent'    } Justify {Right} Total }
+                }
+   }
+//--------------------------- Private Bag Annual Rent --------------------------
+   PPrivBagAnnualRent {
+      FitWidth
+      Title    { 'Private Bag - Annual Rent' }
+      PLURange { 30000030 }
+      Columns  { Location          { Heading { 'Location'      }                         }
+                 PrivateBagNumber  { Heading { 'Bag No.'       }                         }
+                 CustomerName      { Heading { 'Customer Name' }                         }
+                 Years             { Heading { 'Years'         } Justify { Centre }      }
+                 GrossFee          { Heading { 'Total Fee'     } Justify { Right } Total }
+                 BagPenalty        { Heading { 'Late pay fee'  } Justify { Right } Total }
+             }
+   }
+//------------------------- Private Bag - Quarterly Rent -----------------------
+   PPBagQuarterRent {
+      FitWidth
+      Title    { 'Private Bag - Quarterly Rent' }
+      PLURange { 30000031 }
+      Columns  { Location          { Heading { 'Location'      }                         }
+                 PrivateBagNumber  { Heading { 'Bag No.'       }                         }
+                 CustomerName      { Heading { 'Customer Name' }                         }
+                 Quarter           { Heading { 'Quarter'       }                         }
+                 StandardFee       { Heading { 'Standard Fee'  } Justify { Right } Total }
+                 BagPenalty        { Heading { 'Late pay fee'  } Justify { Right } Total }
+                }
+   }
+//---------------------------- New Bag Lock and Keys ---------------------------
+   PBagNewLockKey {
+      FitWidth
+      Title    { 'Private Bag - New Bag Lock and Keys' }
+      PLURange { 030000014 }
+      Columns  { Location          { Heading { 'Location'      } }
+                 PrivateBagNumber  { Heading { 'Bag No.'       } }
+                 CustomerName      { Heading { 'Customer Name' } }
+                 LockFee           { Heading { 'Fee'           } Justify {Right} Total }
+                }
+   }
+
+//--------------------------- Bulk Money Order Payment -------------------------
+   PBulkMOPayment {
+      FitWidth
+      Title    { 'Bulk Money Order Payment' }
+      PLURange { 050021017 }
+      Columns  {
+         BulkMoneyOrderCompanies   { Heading { 'BulkMoneyOrderCompanies' } }
+         RepresentativeName        { Heading { 'RepresentativeName' } }
+         RepresentativeIdentificat { Heading { 'RepresentativeIdentificat' } }
+         Comment                   { Heading { 'Comment' } }
+         Amount                    { Heading { 'Amount' } Justify { Right } }
+      }
+   }
+//------------------------------ BSB - SAYE Deposit ----------------------------
+   PBankSAYEDep {
+      FitWidth
+      Title    { 'BSB - SAYE Deposit' }
+      PLURange { 090000230 }
+      Columns  {
+         AccountHolder             { Heading { 'AccountHolder' } }
+         AccountNumber             { Heading { 'Account Number' } Justify { Right } }
+         Amount                    { Heading { 'Amount' } Justify { Right } Total }
+      }
+   }
+//----------------------------- BSB - Lost Bank Book ---------------------------
+   PLostBankBook {
+      FitWidth
+      Title    { 'BSB - Lost Bank Book' }
+      PLURange { 090000240 }
+      Columns  {
+         AccountHolder             { Heading { 'AccountHolder' } }
+         AccountNumber             { Heading { 'Account Number' } Justify { Right } }
+         CustomerIdentification    { Heading { 'Customer Id' } }
+         BankAccount               { Heading { 'Account Type' } }
+         BSBLostBookFee            { Heading { 'Lost Book Fee' } Total Justify {Right}}
+      }
+   }
+//---------------------------- Normal Pension Payment --------------------------
+   PNormalPayments {
+      Header { 'HeadFoot.CentralHeader' }
+//      FitWidth
+      Title    { 'Normal Pension Payments' }
+      PLURange { 050040001 }
+      Columns  {
+         CustomerName              { Heading { 'Name' } Width { -500 } }
+         OmangNumber               { Heading { 'Omang No' } Width { -250 } Text }
+//         PaymentPeriod             { Heading { 'Payment Period' } }
+         VoucherNumber             { Heading { 'Voucher No' } Width { -250 } Text }
+         Amount                    { Heading { 'Amount' } Width { -250 } Justify { Right } Total Currency }
+         AmountPaid                { Heading { 'Remarks' } Width {-600 } Justify { Centre } }
+      }
+   }
+//--------------------------- Arrears Pension Payment --------------------------
+   PArrearsPayments {
+      Header { 'HeadFoot.CentralHeader' }
+//      FitWidth
+      Title    { 'Arrears Pension Payments' }
+      PLURange { 050040002 }
+      Columns  {
+         CustomerName              { Heading { 'Name' } Width { -500 } }
+         OmangNumber               { Heading { 'Omang No' } Width { -250 } Text }
+//         PaymentPeriod             { Heading { 'Payment Period' } }
+         VoucherNumber             { Heading { 'Voucher No' } Width { -250 } Text }
+         Amount                    { Heading { 'Amount' } Width { -250 } Justify { Right } Total Currency }
+         AmountPaid                { Heading { 'Remarks' } Width {-600 } Justify { Centre } }
+      }
+   }
+//--------------------------- Month Summary Pension Payment --------------------------
+   PSummaryPayments {
+      Header { 'HeadFoot.CentralHeaderSummary' }
+//      FitWidth
+      Title    { 'Summary Pension Payments' }
+      CSVFile  { 'C:\Botswana\Database\CentralRepMonthlyPension.csv' }
+      //SecondQuery { ' select cast('''' as Char (20)) as Fx1, sum(ItemQuantity) as Quantity1, '
+      //              ' sum(ItemValue) as TxnValue1, cast(Datetime as Date) as DateX, '
+      //              ' cast(''0'' as Integer) as Quantity2, cast(''0'' as Money) as TxnValue2, '
+      //              ' cast('''' as Char (20)) as Fx2 '
+      //              ' from ReportResult '
+      //              ' where PLU = 050040001 '
+      //              ' union select cast('''' as Char (20)), cast(''0'' as Integer) , cast(''0'' as Money), '
+      //              ' cast(Datetime as Date), '
+      //              ' sum(ItemQuantity), sum(ItemValue) , '
+      //              ' cast('''' as Char (20)) '
+      //              ' from ReportResult '
+      //              ' where PLU = 050040002 '
+      //              ' group by DateX' }
+      PLURange { 050040001, 050040002 }
+      Columns  {
+         //ItemQuantity       { Heading { 'Norm Pay' } Width { -200 } Justify { Right } Total }
+         //Amount             { Heading { 'Value' } Width { -200 } Justify { Right } Total Currency }
+         //TotalFee                    { Width {-100 } }
+         ItemQuantity           { Heading { 'Normal Pay' } Width { -200 } Justify { Right } Total }
+         Amount                 { Heading { 'Value' } Width { -210 } Justify { Right } Total Currency }
+         DateTime               { Heading { 'Date' } Width { -340 } Justify { Centre } Text }
+         ItemQuantity2          { Heading { 'Arrears Pay' } Width { -190 } Justify { Right } Total }
+         Amount2                { Heading { 'Value' } Width { -210 } Justify { Right } Total Currency }
+         Remark                 { Heading { 'Remarks' } Width {-650 } Justify { Centre } }
+      }
+   }
+//------------------------- South Africa Pension Payment -----------------------
+   PSAPayments {
+      FitWidth
+      Title    { 'South Africa Pension Payment' }
+      PLURange { 050040003 }
+      Columns  {
+         CustomerName              { Heading { 'Customer Name' } }
+         PayeeIdentification       { Heading { 'Payee Identification' } }
+         VoucherNumber             { Heading { 'Voucher Number' } }
+         PaymentPeriod             { Heading { 'Payment Period' } }
+         Amount                    { Heading { 'Amount' } Justify { Right }}
+         CurrentExchangeRate       { Heading { 'Exchange Rate' }  Justify { Right } }
+         TotalFee                  { Heading { 'Total Fee' }   Justify { Right } Total }
+      }
+   }
+
+//---------------- Parcels Accepted Report Domestic ----------------------------
+   PParcelsAcceptedDom {
+      Header { 'HeadFoot.CentralHeaderSummary' }
+      Title    { 'Parcels Accepted - Domestic' }
+      CSVFile  { 'C:\Botswana\Database\CentralRepParcelsAcc.csv' }
+      PLURange { '50010000,50010001,50010002,50010003' }
+      Columns  {
+         DateTime             { Heading { 'Date' } Width { -200 } }
+         ItemQuantity         { Heading { 'No. Parcels' }  Width { -210 } Justify { Right } Total }
+         Amount               { Heading { 'Postage Fees' } Width { -340 } Justify { Right } Total Currency }
+         TotalFee             { Heading { 'Other Fees' }   Width { -210 } Justify { Right } Total Currency }
+         Description          { Heading { 'Remarks' } Width {-650 } Justify { Centre } }
+      }
+   }
+
+//------------------ Parcels Accepted Report International ---------------------
+// exact copy of PParcelsAcceptedDom except for title
+   PParcelsAcceptedInt {
+      Header { 'HeadFoot.CentralHeaderSummary' }
+      Title    { 'Parcels Accepted - International' }
+      CSVFile  { 'C:\Botswana\Database\CentralRepParcelsAcc.csv' }
+      PLURange { '50010000,50010001,50010002,50010003' }
+      Columns  {
+         DateTime             { Heading { 'Date' } Width { -200 } }
+         ItemQuantity         { Heading { 'No. Parcels' }  Width { -210 } Justify { Right } Total }
+         Amount               { Heading { 'Postage Fees' } Width { -340 } Justify { Right } Total Currency }
+         TotalFee             { Heading { 'Other Fees' }   Width { -210 } Justify { Right } Total Currency }
+         Description          { Heading { 'Remarks' } Width {-650 } Justify { Centre } }
+      }
+   }
+
+//---------------------------------Aerogramme-------------------------------------
+   PAirAerogramme {
+      FitWidth
+      Title    { 'Aerogramme' }
+      PLURange { 050000003 }
+      Columns  {
+         StandardFee               { Heading { 'Standard Fee' } }
+         DestinationCountry        { Heading { 'DestinationCountry' } }
+         RecipientName             { Heading { 'RecipientName' } }
+         RegisteredNumber          { Heading { 'RegisteredNumber' } }
+         Quantity                  { Heading { 'Quantity' } Justify { Right } }
+         RegisteredNumberUpTo      { Heading { 'RegisteredNumberUpTo' } }
+         RegistrationFee           { Heading { 'RegistrationFee' } }
+      }
+   }
+//----------------------------- Saving Certificates ----------------------------
+   PNatSavCert {
+      FitWidth
+      ColumnLines
+      RowLines
+      Title    { 'Saving Certificates Issued' }
+      PLURange { 090000100 }
+      Columns  { CustomerName { Heading { 'Customer Name' }                         }
+                 OmangNumber  { Heading { 'Omang Number'  } Justify { Right }       }
+                 Amount       { Heading { 'Amount'        } Justify { Right } Total }
+      }
+   }
+//----------------------- Savings Certificate Full Payment ---------------------
+   PNatSavCertFPay {
+      FitWidth
+      Title    { 'Savings Certificate Full Payment' }
+      PLURange { 090000101 }
+      Columns  { CustomerName       { Heading { 'Customer Name'      }                       }
+                 OmangNumber        { Heading { 'Omang Number'       }                       }
+                 CertificateNumber  { Heading { 'Certificate Number' }                       }
+                 DateOfIssue        { Heading { 'Date Of Issue'      }                       }
+                 CertificateValue   { Heading { 'Certificate Value'  } Justify {Right}       }
+                 MonthsDifference   { Heading { 'Months Difference'  } Justify {Right}       }
+                 HiddenPayment      { Heading { 'Hidden Payment'     } Justify {Right}       }
+                 InterestValue      { Heading { 'Interest Value'     } Justify {Right} Total }
+                }
+   }
+//----------------------- Savings Certificate Part Payment ---------------------
+   PNatSavCertPPay {
+      FitWidth
+      Title    { 'Savings Certificate Part Payment' }
+      PLURange { 090000102 }
+      Columns  { CustomerName       { Heading { 'Customer Name'      }                   }
+                 CertificateNumber  { Heading { 'Certificate Number' }                   }
+                 OmangNumber        { Heading { 'OmangNumber'        }                   }
+                 DateOfIssue        { Heading { 'Date Of Issue'      }                   }
+                 CertificateValue   { Heading { 'CertificateValue'   }                   }
+                 Amount             { Heading { 'Amount'             } Justify { Right } }
+                 MonthsDifference   { Heading { 'MonthsDifference'   }                   }
+                 HiddenPayment      { Heading { 'Hidden Payment'     }                   }
+                 InterestValue      { Heading { 'Interest Value'     }                   }
+                }
+   }
+
+  CentralRepMonthlyCert {
+//    FitWidth
+    Header { 'HeadFoot.CentralRepMonthlyCert' }
+    Title    { 'Savings Certificate Monthly Summary' }
+    CSVFile  { 'C:\Botswana\Database\CentralRepMonthlyCert.csv' }
+    Columns {
+      Date        { Heading { 'Date'            } Width {-200 } }
+      IssuedTrans { Heading { 'Number Issued'   } Width {-280 } Justify { Right } Total }
+      Issued      { Heading { 'Issued Amount'   } Width {-280 } Justify { Right } Total Currency }
+      PaidTrans   { Heading { 'Number Paid'     } Width {-280 } Justify { Right } Total }
+      Paid        { Heading { 'Paid Amount'     } Width {-280 } Justify { Right } Total Currency }
+      Remarks     { Heading { 'Remarks'         } Width {-500 } Justify { Centre } }
+    }
+  }
+
+  CentralRepCertJournal {
+//    FitWidth
+    Header    { 'HeadFoot.CentralRepCertJournal' }
+    Title     { 'Savings Certificate Journal (Issued)' }
+    PLURange  { 090000100 }
+    Columns {
+      DateTime     { Heading { 'Date'            } Width {-350 } }
+      CustomerName { Heading { 'Name'            } Width {-350 } Justify { Left  } }
+      OmangNumber  { Heading { 'Omang Number '   } Width {-280 } Justify { Left  } }
+      ItemValue    { Heading { 'Value'           } Width {-280 } Justify { Right } Total Currency}
+      Remarks      { Heading { 'Remarks'         } Width {-550 } Justify { Centre  } }
+    }
+  }
+
+  CentralRepMonthlyBank {
+//    FitWidth
+    Header    { 'HeadFoot.CentralRepMonthlyBank' }
+    Title     { 'Bank Monthly Summary' }
+    CSVFile   { 'C:\Botswana\Database\CentralRepMonthlyBank.csv' }
+    Columns {
+      DepNum  { Heading { 'Trans'       } Width {-200 } Justify { Right } Total }
+      DepAmt  { Heading { 'Deposits'    } Width {-260 } Justify { Right } Total Currency }
+      Period  { Heading { 'Date'        } Width {-300 } Justify { Right  } }
+      WithNum { Heading { 'Trans'       } Width {-200 } Justify { Right } Total }
+      WithAmt { Heading { 'Withdrawals' } Width {-260 } Justify { Right } Total Currency }
+      Remarks { Heading { 'Remarks'     } Width {-550 } Justify { Centre } }
+    }
+  }
+
+  CentralRepBankJournal {
+//    FitWidth
+    Header    { 'HeadFoot.CentralRepBankJournal' }
+    Title     { 'Bank Transaction Journal' }
+    CSVFile   { 'C:\Botswana\Database\CentralRepBankJournal.csv' }
+    Columns {
+      AccountNumber { Heading { 'Account No'  } Width {-220 } Justify { Right } }
+      DepAmount     { Heading { 'Deposits'    } Width {-260 } Justify { Right } Total Currency }
+      WithAmount    { Heading { 'Withdrawals' } Width {-280 } Justify { Right } Total Currency }
+      Remarks       { Heading { 'Remarks'     } Width {-850 } Justify { Centre } }
+    }
+  }
+
+//------------------------------- Letter Delivery ------------------------------
+   PStandardLetterDel {
+      FitWidth
+      Landscape
+      Title    { 'Letter Delivery' }
+      PLURange { 050020001 }
+      Columns  {
+         CustomerName              {  Heading { 'Customer Name' } }
+         IdentityNumber            {  Heading { 'IdentityNumber' } }
+         CountryofOrigin           {  Heading { 'CountryofOrigin' } }
+         StampFee                  {  Heading { 'Stamp Fee' } }
+         CashFee                   {  Heading { 'Cash Fee' } }
+         RegisterFee               {  Heading { 'RegisterFee' } }
+         InsufficientPostageFee    {  Heading { 'InsufficientPostageFee' } Justify { Right } }
+         CustomsDutyFee            {  Heading { 'Customs Duty Fee' } Justify { Right } }
+         CMisc42Number             {  Heading { 'C Misc 42 Number' } }
+         ManifestNumber            {  Heading { 'Manifest Number' } }
+      }
+   }
+//------------------------------- Parcel Delivery ------------------------------
+   PParcelsDel {
+      FitWidth
+      Title    { 'Parcel Delivery' }
+      PLURange { 050020006 }
+      Columns  {
+         CustomerName              { Heading { 'Customer Name' } }
+         IdentityNumber            { Heading { 'IdentityNumber' } }
+         CountryofOrigin           { Heading { 'CountryofOrigin' } }
+         StampFee                  { Heading { 'Stamp Fee' } }
+         CashFee                   { Heading { 'Cash Fee' } }
+         ArrivalDate               { Heading { 'ArrivalDate' } }
+         NumberofDays              { Heading { 'NumberofDays' } }
+         DemurrageFee              { Heading { 'DemurrageFee' } }
+         CustomsDutyFee            { Heading { 'Customs Duty Fee' } Justify { Right } }
+         CMisc42Number             { Heading { 'C Misc 42 Number' } }
+         ManifestNumber            { Heading { 'Manifest Number' } }
+      }
+   }
+//----------------------------- COD Parcel Delivery ----------------------------
+   PCODParcelDel {
+      FitWidth
+      Title    { 'COD Parcel Delivery' }
+      PLURange { 050020007 }
+      Columns  { CustomerName     { Heading { 'Customer Name'     }                         }
+                 CountryofOrigin  { Heading { 'Origin Country'   }                         }
+                 CODNumber        { Heading { 'COD Number'        }                         }
+                 CODTradeCharge   { Heading { 'Trade Charge'  } Justify { Right } Total }
+                 CODHandlingFee   { Heading { 'Handling Fee'    } Justify { Right } Total }
+                 DemurrageFee     { Heading { 'Demurrage'      } Justify { Right } Total }
+                 CustomsDutyFee   { Heading { 'Customs Duty'  } Justify { Right } Total }
+                }
+   }
+//         CMisc42Number             { Heading { 'C Misc 42 Number' } }
+//         ManifestNumber            { Heading { 'Manifest Number' } }
+
+//--------------------------------- EMS Delivery -------------------------------
+   PEMSDel {
+      FitWidth
+      Title    { 'EMS Delivery' }
+      PLURange { 050020010 }
+      Columns  { CustomerName     { Heading { 'Customer Name'     }                         }
+                 CountryofOrigin  { Heading { 'Country of Origin' }                         }
+                 CMisc42Number    { Heading { 'C Misc 42 Number'  }                         }
+                 ManifestNumber   { Heading { 'Manifest Number'   }                         }
+                 CustomsDutyFee   { Heading { 'Customs Duty'      } Justify { Right } Total }
+                }
+   }
+
+//--------------------------- Postal Orders Issued -------------------------------------
+   PPostalOrderIssue {
+      Header { 'HeadFoot.GenericCentralHeader' }
+      Title    { 'Postal Orders Issued' }
+      PLURange { '5100001 - 5101000' }
+      Columns  {
+         SerialNumber             { Heading { 'Serial Number' } Width { -240 } Text Justify { Right } }
+         PostalOrderValue         { Heading { 'P.O. Value' } Width { -400 } Justify { Right } Total Currency }
+         Commission               { Heading { 'Commission' } Width { -350 } Justify { Right } Total Currency }
+         TotalFee                 { Heading { 'Fee' } Width { -350 } Justify { Right } Total Currency }
+      }
+   }
+
+//--------------------------- Postal Orders Paid -------------------------------------
+   PPostalOrderPay {
+      Header { 'HeadFoot.GenericCentralHeader' }
+      Title    { 'Postal Orders Paid' }
+      PLURange { 050021051 }
+      Columns  {
+         SerialNumber              { Heading { 'Serial Number' } Width { -240 } Text Justify { Right } }
+         OfficeCode                { Heading { 'Issuing Office' } Width { -350 } Justify { Centre } }
+         PostalOrder               { Heading { 'Postal Order' }  Width { -340 } }
+         PostalOrderValue          { Heading { 'P. O. Value' } Width { -340 } Justify { Right } Total Currency }
+      }
+   }
+//--------------------------- Int Postal Orders Paid -------------------------------------
+   PIntPostalOrderPay {
+      Header { 'HeadFoot.GenericCentralHeader' }
+      Title    { 'International Postal Orders Paid' }
+      PLURange { '050021052, 050021053' }
+      Columns  {
+         SerialNumber              { Heading { 'Serial Number' } Width { -320 } Text Justify { Right } }
+         CountryOfOrigin           { Heading { 'Country Of Origin' } Width { -340 } Justify { Right } }
+         CurrentExchangeRate       { Heading { 'Current Exchange Rate' }  Width { -440 } Justify { Right } }
+         PostalOrderValue          { Heading { 'Foreign Value' } Width { -280 } Justify { Right } Currency }
+         TotalFee                  { Heading { 'Local Value' } Width { -350 } Justify { Right } Total Currency }
+      }
+   }
+//-------------------------- Botswana Courier Products -------------------------
+  PBWCourierSales { Title    { 'Botswana Courier Products' }
+                    PLURange { 9118190  9118200  9118210
+                               9118220  9118230  9118240
+                               9118250  9118260  9118270
+                               9118280  9118290  9118300
+                               9118310  9118320  9118330
+                               9118340  9118350
+                              }
+                    FitWidth
+                    Columns  { Description  { Heading { 'Description' } }
+                               ItemPrice    { Heading { 'Unit Price' }  Justify {Right} }
+                               ItemQuantity { Heading { 'Qty Sold' } Justify {Right} }
+                               ItemValue    { Heading { 'Total Value' } Justify {Right} Total }
+                              }
+                   }
+//----------------------------- Merchandise Products ---------------------------
+  PMerchandiseSales { Title    { 'Merchandise Products' }
+                      PLURange { 9118360  9118370  9118380  9118390
+                                 9118400  9118410  9118420  9118430
+                                 9118440  9118450  9118455  9118460
+                                 9118470  9118480  9118490  9118500
+                                 9118510  9118520  9118530  9118540
+                                 9118550  9118560  9118570  9118580
+                                 9118590  9118600  9118605  9118610
+                                }
+                      FitWidth
+                      Columns  { Description  { Heading { 'Description' } }
+                                 ItemPrice    { Heading { 'Unit Price' }  Justify {Right} }
+                                 ItemQuantity { Heading { 'Qty Sold' } Justify {Right} }
+                                 ItemValue    { Heading { 'Total Value' } Justify {Right} Total }
+                                }
+                     }
+//------------------------------- Retail Products ------------------------------
+  PRetailOtherSales { Title    { 'Retail Products' }
+                      PLURange { 9118010  9118020  9118030
+                                 9118040  9118050  9118060
+                                 9118070  9118080  9118090
+                                 9118100  9118110  9118120
+                                 9118130  9118140  9118150
+                                 9118160  9118170  9118180
+                                }
+                      FitWidth
+                      Columns  { Description  {  Heading { 'Description' } }
+                                 ItemPrice    {  Heading { 'Unit Price' }  Justify {Right} }
+                                 ItemQuantity {  Heading { 'Qty Sold' } Justify {Right} }
+                                 ItemValue    {  Heading { 'Total Value' } Justify {Right} Total }
+                                }
+                     }
+//---------------------------------------  -------------------------------------
+//------------------------------ International EMS -----------------------------
+   PIntEMS {
+      Title    { 'EMS - International' }
+      FitWidth
+      PLURange { 050050003 }
+      Columns  {
+         InternationalEMSIdentifie { Heading { 'EMS Identifier' } }
+         DestinationCountry        { Heading { 'Destination' } }
+         StandardFee               { Heading { 'Fee' } Justify {Right} Total}
+      }
+   }
+//--------------------------------- Domestic EMS -------------------------------
+   PDomEMS {
+      FitWidth
+      Title    { 'EMS - Domestic' }
+      PLURange { 050050001 }
+      Columns  {
+         DomesticEMSIdentifier     { Heading { 'EMS Identifier' } }
+         StandardFee               { Heading { 'Fee' } Justify {Right} Total}
+      }
+   }
+//------------------------- Int. EMS Contract (Account) ------------------------
+   PIntEMSContract {
+      FitWidth
+      Title    { 'EMS Contract Int. - (Account)' }
+      PLURange { 050050004 }
+      Columns  { CustomerName                  { Heading { 'Customer'    }                       }
+                 InternationalEMSIdentifie     { Heading { 'Item ID'     }                       }
+                 DestinationCountry            { Heading { 'Destination' }                       }
+                 Weight                        { Heading { 'Weight'      } Justify {Right}       }
+                 StandardFee                   { Heading { 'Fee'         } Justify {Right} Total }
+                }
+   }
+//-------------------------- Dom EMS Contract (account) ------------------------
+   PDomEMSContract {
+      FitWidth
+      Title    { 'EMS Contract Dom - (account)' }
+      PLURange { 050050002 }
+      Columns  { CustomerName             {  Heading { 'Customer'   }                       }
+                 DomesticEMSIdentifier    {  Heading { 'Item ID'    }                       }
+                 Weight                   {  Heading { 'Weight'     } Justify {Right}       }
+                 StandardFee              {  Heading { 'Fee'        } Justify {Right} Total }
+                }
+   }
+//----------------------- Int. EMS Contract (cash/cheque) ----------------------
+   PIntEMSContractCash {
+      FitWidth
+      Title    { 'EMS Contract Int. - (cash/cheque)' }
+      PLURange { 050050006 }
+      Columns  { CustomerName                  { Heading { 'Customer'   }                       }
+                 InternationalEMSIdentifie     { Heading { 'Item ID'    }                       }
+                 DestinationCountry            { Heading { 'Destination' }                       }
+                 Weight                        { Heading { 'Weight'      } Justify {Right}       }
+                 StandardFee                   { Heading { 'Fee'         } Justify {Right} Total }
+                }
+   }
+//------------------------ Dom EMS Contract (cash/cheque) ----------------------
+   PDomEMSContractCash {
+      FitWidth
+      Title    { 'EMS Contract Dom - (cash/cheque)' }
+      PLURange { 050050005 }
+      Columns  { CustomerName             { Heading { 'Customer'   }                       }
+                 DomesticEMSIdentifier    { Heading { 'Item ID'    }                       }
+                 Weight                   { Heading { 'Weight'     } Justify {Right}       }
+                 StandardFee              { Heading { 'Fee'        } Justify {Right} Total }
+                }
+   }
+//------------------------ Charge To Account - Government ----------------------
+   PAccountGOVPay {
+      FitWidth
+      Title    { 'Charge To Account - Government' }
+      PLURange { 060010021 }
+      Columns  {
+         Amount                    { Heading { 'Amount' } }
+         Descriptionofpayment      { Heading { 'Description Of Payment' } }
+         CustomerName              { Heading { 'Customer Name' } }
+      }
+   }
+
+//-----------  Money Orders Issued
+
+////------------------------------- Inland M.O. Issued -----------------------------
+   PMOIssuedInland {
+//      FitWidth
+      Header { 'HeadFoot.GenericCentralHeader' }
+      Landscape
+      ColumnLines
+      RowLines
+      Title    { 'Money Orders Issued - Inland' }
+      PLURange { 50021001 }
+      Columns  {
+         No                       {  Heading { 'No.' } LineNumber Width { -80 } }
+         DateTime                 {  Heading { 'Date          Time' } Width { -340 } }
+         OrderNumber              {  Heading { 'Serial No.'  }  Text  Width { -240 }  }
+         PaymentOffice            {  Heading { 'Payment Office' } Width { -300 }  }
+         ItemValue                {  Heading { 'Value'          } Width { -260 } Justify {Right} Total Currency }
+         Commission               {  Heading { 'Commmission'    } Width { -260 } Justify {Right} Total Currency }
+         AdvicePaymentFee         {  Heading { 'AOP Fee'        } Width { -240 } Justify {Right} Total Currency }
+         AdviseRecipientFee       {  Heading { 'Adv Rec Fee'    } Width { -240 } Justify {Right} Total Currency }
+         TransmissionFee          {  Heading { 'Trans Fee'      } Width { -240 } Justify {Right} Total Currency }
+      }
+    }
+//------------------------------ Foreign M.O. Issued -----------------------------
+   PMOIssuedForeign {
+      Header { 'HeadFoot.GenericCentralHeader' }
+//      FitWidth
+      Title    { 'Money Orders Issued - Foreign' }
+      PLURange { 50021005 }
+      Columns  {
+                 DateTime            { Heading { 'Date          Time' } Width { -340 } }
+                 OrderNumber         { Heading { 'Serial No.'  }  Text Width { -240 } }
+                 DestinationCountry  { Heading { 'Destination Country' } Width { -450 } }
+                 MoneyOrderValue     { Heading { 'Value'               } Width { -240 } Justify {Right} Total Currency }
+                 Commission          { Heading { 'Comm.'               } Width { -240 } Justify {Right} Total Currency }
+                 TransmissionFee     { Heading { 'Trans Fee'           } Width { -240 } Justify {Right} Total Currency }
+                }
+   }
+
+//-----------  Money Order Payments
+
+////------------------------------- Inland M.O. Paid -----------------------------
+   PMOForcePaid {
+      Header { 'HeadFoot.GenericCentralHeader' }
+//      FitWidth
+      Title    { 'Money Orders Paid - Inland' }
+      PLURange { 050021002 }
+      Columns  {
+                 DateTime                 { Heading { 'Date          Time' } Width { -340 } }
+                 OrderNumber              { Heading { 'Serial No.'  } Text Width { -240 } }
+                 Identification           { Heading { 'Identification' } Width { -350 } }
+                 IssuingOffice            { Heading { 'Issuing Office' } Width { -300 } }
+                 ItemValue                { Heading { 'Value'          } Width { -240 } Justify {Right} Total Currency }
+                }
+    }
+//------------------------------ Foreign M.O. Paid -----------------------------
+   PIntMoneyOrderPaid {
+      Header { 'HeadFoot.GenericCentralHeader' }
+//      FitWidth
+      Title    { 'Money Orders Paid - Foreign' }
+      PLURange { 050021006 }
+      Columns  {
+                 DateTime         { Heading { 'Date         Time'}  Width { -340 } }
+                 OrderNumber      { Heading { 'Serial No.'     } Text Width { -240 } }
+                 Identification   { Heading { 'Identification'    } Width { -350 } }
+                 CountryOfOrigin  { Heading { 'Country Of Origin' } Width { -350 } }
+                 ItemValue        { Heading { 'Value'             } Width { -240 } Justify {Right} Total Currency }
+                }
+   }
+
+//----------------------------- Change of Recipient ----------------------------
+   PChangeRecipient {
+      FitWidth
+      Title    { 'Money Order - Change of Recipient' }
+      PLURange { 050021019 }
+      Columns  {
+         OrderNumber              { Heading { 'Order Number' } Justify { Right } }
+         Value                     { Heading { 'Value' } Justify { Right } }
+         OriginalFamilyName        { Heading { 'OriginalFamilyName' } }
+         OriginalAddress           { Heading { 'OriginalAddress' } }
+         NewFamilyName             { Heading { 'NewFamilyName' } }
+         NewAddress                { Heading { 'NewAddress' } }
+         NewTelephoneNumber        { Heading { 'NewTelephoneNumber' } }
+         StandardFee               { Heading { 'Standard Fee' } }
+      }
+   }
+//--------------------------- Cease Payment and Refund -------------------------
+   PCeasePayment {
+      FitWidth
+      Title    { 'Cease Payment and Refund' }
+      PLURange { 050021009 }
+      Columns  {
+         SerialNumber              { Heading { 'Serial Number' } Justify { Right } }
+         Value                     { Heading { 'Value' } Justify { Right } }
+         PaymentOffice             { Heading { 'PaymentOffice' } }
+         IssueDate                 { Heading { 'IssueDate' } }
+         RefundFee                 { Heading { 'RefundFee' } }
+         TotalFee                  { Heading { 'Total Fee' } }
+      }
+   }
+//------------------------------ Money Order Refund ----------------------------
+   PMoneyOrderRefund {
+      FitWidth
+      Title    { 'Money Order Refund' }
+      PLURange { 050021004 }
+      Columns  {
+         SerialNumber              { Heading { 'Serial Number' } Justify { Right } }
+         Value                     { Heading { 'Value' } Justify { Right } }
+         PaymentOffice             { Heading { 'PaymentOffice' } }
+         IssueDate                 { Heading { 'IssueDate' } }
+      }
+   }
+//------------------------ Advice of Payment after issue -----------------------
+   PAdviceOfPaymentAfterIssue {
+      FitWidth
+      Title    { 'Advice of Payment after issue' }
+      PLURange { 050021018 }
+      Columns  {
+         SerialNumber              { Heading { 'Serial Number' } Justify { Right } }
+         PayeesName                { Heading { 'PayeesName' } }
+         PaymentOffice             { Heading { 'PaymentOffice' } }
+         ValueDet                     { Heading { 'Value' } Justify { Right } }
+         AdvicePaymentFee          { Heading { 'AdvicePaymentFee' } }
+      }
+   }
+
+//-------------------------- BSB - Ordinary A/C Deposit ------------------------
+   PBankOrdDep {
+      FitWidth
+      Title    { 'BSB - Ordinary A/C Deposit' }
+      PLURange { 90000201 }
+      Columns  { Description    { Heading { 'Description'    }                         }
+                 AccountNumber  { Heading { 'Account Number' } Justify { Right }       }
+                 AccountHolder  { Heading { 'Account Holder' }                         }
+                 ItemValue      { Heading { 'Amount'         } Justify { Right } Total Currency  }
+                }
+   }
+//------------------------- BSB - Ordinary A/C Withdraw ------------------------
+   PBankOrdWith {
+      FitWidth
+      Title    { 'BSB - Ordinary A/C Withdraw' }
+      PLURange { 090000202 }
+      Columns  { Description    { Heading { 'Description'    }                         }
+                 AccountNumber  { Heading { 'Account Number' } Justify { Right }       }
+                 AccountHolder  { Heading { 'Account Holder' }                         }
+                 ItemValue      { Heading { 'Amount'         } Justify { Right } Total }
+                }
+   }
+//---------------------------- Close Ordinary Account --------------------------
+   PBankOrdClose {
+      FitWidth
+      Title    { 'Close Ordinary Account' }
+      PLURange { 090000204 }
+      Columns  { Description    { Heading { 'Description'    }                         }
+                 AccountNumber  { Heading { 'Account Number' } Justify { Right }       }
+                 AccountHolder  { Heading { 'Account Holder' }                         }
+                 ItemValue      { Heading { 'Amount'         } Justify { Right } Total }
+                }
+   }
+//-------------------------- Open New Ordinary Account -------------------------
+   PBankOrdOpen {
+      FitWidth
+      Title    { 'Open New Ordinary Account' }
+      PLURange { 090000203 }
+      Columns  { Description    { Heading { 'Description'    }                         }
+                 AccountNumber  { Heading { 'Account Number' } Justify { Right }       }
+                 AccountHolder  { Heading { 'Account Holder' }                         }
+                 ItemValue      { Heading { 'Amount'         } Justify { Right } Total }
+                }
+   }
+//--------------------------- BSB - Trust A/C Deposit --------------------------
+   PBankTrsDep {
+      FitWidth
+      Title    { 'BSB - Trust A/C Deposit' }
+      PLURange { 090000211 }
+      Columns  { Description    { Heading { 'Description'    }                         }
+                 AccountNumber  { Heading { 'Account Number' } Justify { Right }       }
+                 AccountHolder  { Heading { 'Account Holder' }                         }
+                 ItemValue      { Heading { 'Amount'         } Justify { Right } Total }
+                }
+   }
+//--------------------------- BSB - Trust A/C Withdraw -------------------------
+   PBankTrsWith {
+      FitWidth
+      Title    { 'BSB - Trust A/C Withdraw' }
+      PLURange { 090000212 }
+      Columns  { Description    { Heading { 'Description'    }                         }
+                 AccountNumber  { Heading { 'Account Number' } Justify { Right }       }
+                 AccountHolder  { Heading { 'Account Holder' }                         }
+                 ItemValue      { Heading { 'Amount'         } Justify { Right } Total }
+                }
+   }
+//----------------------------- Close Trust Account ----------------------------
+   PBankTrsClose {
+      FitWidth
+      Title    { 'Close Trust Account' }
+      PLURange { 090000214 }
+      Columns  { Description    { Heading { 'Description'    }                         }
+                 AccountNumber  { Heading { 'Account Number' } Justify { Right }       }
+                 AccountHolder  { Heading { 'Account Holder' }                         }
+                 ItemValue      { Heading { 'Amount'         } Justify { Right } Total }
+                }
+   }
+//---------------------------- Open New Trust Account --------------------------
+   PBankTrsOpen {
+      FitWidth
+      Title    { 'Open New Trust Account' }
+      PLURange { 090000213 }
+      Columns  { Description    { Heading { 'Description'    }                         }
+                 AccountNumber  { Heading { 'Account Number' } Justify { Right }       }
+                 AccountHolder  { Heading { 'Account Holder' }                         }
+                 ItemValue      { Heading { 'Amount'         } Justify { Right } Total }
+                }
+   }
+//-------------------------- BSB - Special A/C Deposit -------------------------
+   PBankSpcDep {
+      FitWidth
+      Title    { 'BSB - Special A/C Deposit' }
+      PLURange { 090000221 }
+      Columns  { Description    { Heading { 'Description'    }                         }
+                 AccountNumber  { Heading { 'Account Number' } Justify { Right }       }
+                 AccountHolder  { Heading { 'Account Holder' }                         }
+                 ItemValue      { Heading { 'Amount'         } Justify { Right } Total }
+                }
+   }
+//-------------------------- BSB - Special A/C Withdraw ------------------------
+   PBankSpcWith {
+      FitWidth
+      Title    { 'BSB - Special A/C Withdraw' }
+      PLURange { 090000222 }
+      Columns  { Description    { Heading { 'Description'    }                         }
+                 AccountNumber  { Heading { 'Account Number' } Justify { Right }       }
+                 AccountHolder  { Heading { 'Account Holder' }                         }
+                 ItemValue      { Heading { 'Amount'         } Justify { Right } Total }
+                }
+   }
+//---------------------------- Close Special Account ---------------------------
+   PBankSpcClose {
+      FitWidth
+      Title    { 'Close Special Account' }
+      PLURange { 090000224 }
+      Columns  { Description    { Heading { 'Description'    }                         }
+                 AccountNumber  { Heading { 'Account Number' } Justify { Right }       }
+                 AccountHolder  { Heading { 'Account Holder' }                         }
+                 ItemValue      { Heading { 'Amount'         } Justify { Right } Total }
+                }
+   }
+//--------------------------- Open New Special Account -------------------------
+   PBankSpcOpen {
+      FitWidth
+      Title    { 'Open New Special Account' }
+      PLURange { 090000223 }
+      Columns  { Description    { Heading { 'Description'    }                         }
+                 AccountNumber  { Heading { 'Account Number' } Justify { Right }       }
+                 AccountHolder  { Heading { 'Account Holder' }                         }
+                 ItemValue      { Heading { 'Amount'         } Justify { Right } Total }
+                }
+   }
+//----------------------- Government Customer Transaction ----------------------
+   PCustGOVTransact {
+      FitWidth
+      Title    { 'Government Customer Transaction' }
+      PLURange { 060010026 }
+      Columns  {
+         CustomerType              { Heading { 'Customer Type' } }
+         CustomerName              { Heading { 'Customer Name' } }
+         TransactionType           { Heading { 'Transaction Type' } }
+         Amount                    { Heading { 'Amount' } Justify { Right } }
+      }
+   }
+
+//----------------------------------- R.I.P.C. ---------------------------------
+   PRIPC {
+      FitWidth
+      Title    { 'R.I.P.C.' }
+      PLURange { 060030007 }
+      Columns  {
+         CustomerName              { Heading { 'Customer Name' } }
+         CustomerNumber            { Heading { 'Customer Number' } }
+         AmountPaid                { Heading { 'Amount Paid' } Justify { Right } Total }
+      }
+   }
+//----------------------------- Group Funeral Scheme ---------------------------
+   PFuneralScheme {
+      FitWidth
+      Title    { 'Group Funeral Scheme' }
+      PLURange { 060030008 }
+      Columns  {
+         AccountNumber             { Heading { 'Acc.Number' } Justify { Right } }
+         SchemeName                { Heading { 'SchemeName' } }
+         CustomerName              { Heading { 'Customer Name' } }
+         AmountPaid                { Heading { 'Amount Paid' } Justify { Right } Total }
+      }
+   }
+//------------------------ Ipolokeng Funeral Scheme(BLI) -----------------------
+   PIpolokengScheme {
+      FitWidth
+      Title    { 'Ipolokeng Funeral Scheme(BLI)' }
+      PLURange { 060030009 }
+      Columns  {
+         ContractNumber            { Heading { 'ContractNumber' } }
+         CustomerName              { Heading { 'Customer Name' } }
+         NumberOfMonthstopay       { Heading { 'Number Of Months' } Justify { Right } }
+         MonthlyCost               { Heading { 'Monthly Cost' } }
+         TotalAmountToPay          { Heading { 'Total Amount' } Total }
+         IpolokengJoiningFee       { Heading { 'Joining Fee' } Total }
+      }
+   }
+//----------------------- Elec Bill Payment - Dep of Elec ----------------------
+   PElecBillPayDOE {
+      FitWidth
+      Title    { 'Elec Bill Payment - Dep of Elec' }
+      PLURange { 060030001 }
+      Columns  {
+         ElectricityBillAccountNum { Heading { 'Account No.' } }
+         CustomerName              { Heading { 'Customer Name' } }
+         BillDate                  { Heading { 'Bill Date' } }
+         AmountPaid                { Heading { 'Amount Paid' } Justify { Right } Total }
+      }
+   }
+//--------------------------- Elec Bill Payment - BPC --------------------------
+   PElecBillPayBPC {
+      FitWidth
+      Title    { 'Elec Bill Payment - BPC' }
+      PLURange { 060030001 }
+      Columns  {
+         ElectricityBillAccountNum { Heading { 'Account No' } }
+         CustomerName              { Heading { 'Customer Name' } }
+         BillDate                  { Heading { 'Bill Date' } }
+         AmountPaid                { Heading { 'Amount Paid' } Justify { Right } Total }
+      }
+   }
+//----------------------------- Telecom Bill Payment ---------------------------
+   PTelecomBillPayment {
+      FitWidth
+      Title    { 'Telecom Bill Payment' }
+      PLURange { 060030002 }
+      Columns  {
+         TelecomAccountNumber      { Heading { 'Account Number' } }
+         CustomerTelephoneNumber   { Heading { 'Telephone Number' } }
+         CustomerName              { Heading { 'Customer Name' } }
+         TelecomBillingPeriod      { Heading { 'Billing Period' } }
+         AmountPaid                { Heading { 'Amount Paid' } Justify { Right } Total }
+      }
+   }
+//------------------------- Botswana Housing Corporation -----------------------
+   PHousing {
+      FitWidth
+      Title    { 'Botswana Housing Corporation' }
+      PLURange { 060030004 }
+      Columns  {
+         AccountNumber             { Heading { 'Account Number' } Justify { Right } }
+         CustomerName              { Heading { 'Customer Name' } }
+         AmountPaid                { Heading { 'Amount Paid' } Justify { Right } Total }
+      }
+   }
+//-------------------------------- Water Affairs -------------------------------
+   PWaterAffair {
+      FitWidth
+      Title    { 'Water Affairs' }
+      PLURange { 060030005 }
+      Columns  {
+         AccountNumber             { Heading { 'Account Number' } Justify { Right } }
+         CustomerName              { Heading { 'Customer Name' } }
+         AmountPaid                { Heading { 'Amount Paid' } Justify { Right } Total }
+      }
+   }
+//------------------------------- Water Utilities ------------------------------
+   PWaterUtility {
+      FitWidth
+      Title    { 'Water Utilities' }
+      PLURange { 060030006 }
+      Columns  {
+         CustomerName              { Heading { 'Customer Name' }  Justify { Left } }
+         AccountNumber             { Heading { 'Account Number' } Justify { Right } }
+         AmountPaid                { Heading { 'Amount Paid' } Justify { Right } Total }
+      }
+   }
+   
+}
+
+//
+//----------------------------- End of Reports ---------------------------
+//
+HeadersFooters {
+  Standard {
+    Height     { 3000 }
+    FontSize   { 280 }
+    Items {
+      Logo        { Type { Bitmap } Position {    500,   0 } Data { 'C:\Botswana\GreyLogo.bmp'             }        }
+      System      { Type { Text   } Position { Centre,   0 } Data { ':SysTitle:'                           } Bold FontSize { 375 } }
+      PageNOfN    { Type { Text   } Position { Right ,   0 } Data { 'Page :PageNumber: of :NumberOfPages:' } Bold   }
+      Title       { Type { Text   } Position { Centre, 500 } Data { ':Title:'                              } Bold   }
+      OfficeNameL { Type { Text   } Position {   3000,1000 } Data { 'Office Name::'                        } }
+      OfficeNameT { Type { Text   } Position {   5200,1000 } Data { ':OfficeName:'                         } Bold   }
+      OfficeCodeL { Type { Text   } Position {   3000,1500 } Data { 'Office Code::'                        } }
+      OfficeCodeT { Type { Text   } Position {   5200,1500 } Data { ':OfficeCode:'                         } Bold   }
+      DateTimeL   { Type { Text   } Position {   6200,1000 } Data { 'Date::'                               } CoordinateSystem { TopRight } }
+      DateTimeT   { Type { Text   } Position {   2700,1000 } Data { ':NowDT:'                              } Bold   CoordinateSystem { TopRight } }
+      UserL       { Type { Text   } Position {   6200,1500 } Data { 'User::'                               } CoordinateSystem { TopRight } }
+      UserT       { Type { Text   } Position {   4000,1500 } Data { ':User:'                               } Bold   CoordinateSystem { TopRight } }
+    }
+  }
+
+  CentralHeader {
+    Height     { 3500 }
+    FontSize   { 280 }
+    Items {
+      Logo        { Type { Bitmap } Position {    500,    0 } Data { 'C:\Botswana\GreyLogo.bmp'             }        }
+      System      { Type { Text   } Position { Centre,    0 } Data { ':SysTitle:'                           } Bold FontSize { 375 } }
+      PageNOfN    { Type { Text   } Position { Right ,    0 } Data { 'Page :PageNumber: of :NumberOfPages:' } Bold   }
+      Title       { Type { Text   } Position { Centre,  500 } Data { ':Title:'                              } Bold   }
+      Title2      { Type { Text   } Position { Centre, 1000 } Data { ':Form.ReportType: Report for :Form.StartDomainEdit:' } Bold   }
+      OfficeNameL { Type { Text   } Position {    2500,1500 } Data { 'Printed by Office:: '                 } }
+      OfficeNameT { Type { Text   } Position {    5500,1500 } Data { ':OfficeName:'                         } Bold   }
+      OfficeCodeL { Type { Text   } Position {    2500,2000 } Data { 'Printed for Office:: '                } }
+      OfficeCodeT { Type { Text   } Position {    5500,2000 } Data { ':Form.PostOffice: (:OfficeCode:)'     } Bold   }
+      DateTimeL   { Type { Text   } Position {   14000,1500 } Data { 'Date:: '                              }  }
+      DateTimeT   { Type { Text   } Position {   15000,1500 } Data { ':NowDT:'                              } Bold }
+      UserL       { Type { Text   } Position {   14000,2000 } Data { 'User:: '                              }  }
+//      UserT       { Type { Text   } Position {   4000,1500 } Data { ':User:'                                } Bold }
+      UserT       { Type { Text   } Position {  15000,2000 } Data { ':Form.UserName:'                       } Bold }
+    }
+  }
+
+    GenericCentralHeader {
+    Height     { 3500 }
+    FontSize   { 280 }
+    Items {
+      Logo        { Type { Bitmap } Position {    500,    0 } Data { 'C:\Botswana\GreyLogo.bmp'             }        }
+      System      { Type { Text   } Position { Centre,    0 } Data { ':SysTitle:'                           } Bold FontSize { 375 } }
+      PageNOfN    { Type { Text   } Position { Right ,    0 } Data { 'Page :PageNumber: of :NumberOfPages:' } Bold   }
+      Title       { Type { Text   } Position { Centre,  500 } Data { ':Title:'                              } Bold   }
+      Title2      { Type { Text   } Position { Centre, 1000 } Data { 'Report for :Form.StartDomainEdit:'    } Bold   }
+      OfficeNameL { Type { Text   } Position {    2500,1500 } Data { 'Printed by Office:: '                 } }
+      OfficeNameT { Type { Text   } Position {    5500,1500 } Data { ':OfficeName:'                         } Bold   }
+      OfficeCodeL { Type { Text   } Position {    2500,2000 } Data { 'Printed for Office:: '                } }
+      OfficeCodeT { Type { Text   } Position {    5500,2000 } Data { ':Form.PostOffice: (:OfficeCode:)'     } Bold   }
+      DateTimeL   { Type { Text   } Position {   14000,1500 } Data { 'Date:: '                              }  }
+      DateTimeT   { Type { Text   } Position {   15000,1500 } Data { ':NowDT:'                              } Bold }
+      UserL       { Type { Text   } Position {   14000,2000 } Data { 'User:: '                              }  }
+//      UserT       { Type { Text   } Position {   4000,1500 } Data { ':User:'                                } Bold }
+      UserT       { Type { Text   } Position {  15000,2000 } Data { ':Form.UserName:'                       } Bold }
+    }
+  }
+
+  CentralHeaderSummary {
+    Height     { 3500 }
+    FontSize   { 280 }
+    Items {
+      Logo        { Type { Bitmap } Position {    500,    0 } Data { 'C:\Botswana\GreyLogo.bmp'             }        }
+      System      { Type { Text   } Position { Centre,    0 } Data { ':SysTitle:'                           } Bold FontSize { 375 } }
+      PageNOfN    { Type { Text   } Position { Right ,    0 } Data { 'Page :PageNumber: of :NumberOfPages:' } Bold   }
+      Title       { Type { Text   } Position { Centre,  500 } Data { ':Title:'                              } Bold   }
+      Title2      { Type { Text   } Position { Centre, 1000 } Data { 'For Month :Form.ReportingMonth:' } Bold   }
+      OfficeNameL { Type { Text   } Position {    2500,1500 } Data { 'Printed by Office:: '                 } }
+      OfficeNameT { Type { Text   } Position {    5500,1500 } Data { ':OfficeName:'                         } Bold   }
+      OfficeCodeL { Type { Text   } Position {    2500,2000 } Data { 'Printed for Office:: '                } }
+      OfficeCodeT { Type { Text   } Position {    5500,2000 } Data { ':Form.PostOffice: (:OfficeCode:)'     } Bold   }
+      DateTimeL   { Type { Text   } Position {   14000,1500 } Data { 'Date:: '                              }  }
+      DateTimeT   { Type { Text   } Position {   15000,1500 } Data { ':NowDT:'                              } Bold }
+      UserL       { Type { Text   } Position {   14000,2000 } Data { 'User:: '                              }  }
+      UserT       { Type { Text   } Position {  15000,2000 } Data { ':Form.UserName:'                       } Bold }
+    }
+  }
+  
+  CentralRepMonthlyCert {
+    Height     { 3000 }
+    FontSize   { 280 }
+    Items {
+      Logo        { Type { Bitmap } Position {    500,   0 } Data { 'C:\Botswana\GreyLogo.bmp'             }        }
+      System      { Type { Text   } Position { Centre,   0 } Data { ':SysTitle:'              } Bold FontSize { 375 } }
+      PageNOfN    { Type { Text   } Position { Right ,   0 } Data { 'Page :PageNumber: of :NumberOfPages:' } Bold   }
+      Title       { Type { Text   } Position { Centre, 500 } Data { ':Title: :ReportMonth:'                } Bold   }
+      OfficeNameL { Type { Text   } Position {   3000,1000 } Data { 'Office Name::'                        } }
+      OfficeNameT { Type { Text   } Position {   5200,1000 } Data { ':OfficeName:'                         } Bold   }
+      OfficeCodeL { Type { Text   } Position {   3300,1500 } Data { 'For Office::'                        } }
+      OfficeCodeT { Type { Text   } Position {   5200,1500 } Data { ':Form.PostOffice: (:OfficeCode:)'     } Bold   }
+      DateTimeL   { Type { Text   } Position {   6200,1000 } Data { 'Date::'                               } CoordinateSystem { TopRight } }
+      DateTimeT   { Type { Text   } Position {   2700,1000 } Data { ':NowDT:'                              } Bold   CoordinateSystem { TopRight } }
+      UserL       { Type { Text   } Position {   6200,1500 } Data { 'User::'                               } CoordinateSystem { TopRight } }
+      UserT       { Type { Text   } Position {   4000,1500 } Data { ':Form.UserName:'                      } Bold   CoordinateSystem { TopRight } }
+    }
+  }
+
+  CentralRepCertJournal {
+    Height     { 3000 }
+    FontSize   { 280 }
+    Items {
+      Logo        { Type { Bitmap } Position {    500,   0 } Data { 'C:\Botswana\GreyLogo.bmp'             }        }
+      System      { Type { Text   } Position { Centre,   0 } Data { ':SysTitle:'              } Bold FontSize { 375 } }
+      PageNOfN    { Type { Text   } Position { Right ,   0 } Data { 'Page :PageNumber: of :NumberOfPages:' } Bold   }
+      Title       { Type { Text   } Position { Centre, 500 } Data { ':Title: from :FromDate: to :ToDate:'  } Bold   }
+      OfficeNameL { Type { Text   } Position {   3000,1000 } Data { 'Office Name::'                        } }
+      OfficeNameT { Type { Text   } Position {   5200,1000 } Data { ':OfficeName:'                         } Bold   }
+      OfficeCodeL { Type { Text   } Position {   3300,1500 } Data { 'For Office::'                        } }
+      OfficeCodeT { Type { Text   } Position {   5200,1500 } Data { ':Form.PostOffice: (:OfficeCode:)'                         } Bold   }
+      DateTimeL   { Type { Text   } Position {   6200,1000 } Data { 'Date::'                               } CoordinateSystem { TopRight } }
+      DateTimeT   { Type { Text   } Position {   2700,1000 } Data { ':NowDT:'                              } Bold   CoordinateSystem { TopRight } }
+      UserL       { Type { Text   } Position {   6200,1500 } Data { 'User::'                               } CoordinateSystem { TopRight } }
+      UserT       { Type { Text   } Position {   4000,1500 } Data { ':Form.UserName:'                      } Bold   CoordinateSystem { TopRight } }
+    }
+  }
+
+  CentralRepMonthlyBank {
+    Height     { 3000 }
+    FontSize   { 280 }
+    Items {
+      Logo        { Type { Bitmap } Position {    500,   0 } Data { 'C:\Botswana\GreyLogo.bmp'             }        }
+      System      { Type { Text   } Position { Centre,   0 } Data { ':SysTitle:'              } Bold FontSize { 375 } }
+      PageNOfN    { Type { Text   } Position { Right ,   0 } Data { 'Page :PageNumber: of :NumberOfPages:' } Bold   }
+      Title       { Type { Text   } Position { Centre, 500 } Data { ':Form.BankAccType: Monthly Summary for :Form.ReportingMonth:'         } Bold   }
+      OfficeNameL { Type { Text   } Position {   3000,1000 } Data { 'Office Name::'                        } }
+      OfficeNameT { Type { Text   } Position {   5200,1000 } Data { ':OfficeName:'                         } Bold   }
+      OfficeCodeL { Type { Text   } Position {   3300,1500 } Data { 'For Office::'                        } }
+      OfficeCodeT { Type { Text   } Position {   5200,1500 } Data { ':Form.PostOffice: (:OfficeCode:)'                         } Bold   }
+      DateTimeL   { Type { Text   } Position {   6200,1000 } Data { 'Date::'                               } CoordinateSystem { TopRight } }
+      DateTimeT   { Type { Text   } Position {   2700,1000 } Data { ':NowDT:'                              } Bold   CoordinateSystem { TopRight } }
+      UserL       { Type { Text   } Position {   6200,1500 } Data { 'User::'                               } CoordinateSystem { TopRight } }
+      UserT       { Type { Text   } Position {   4000,1500 } Data { ':Form.UserName:'                               } Bold   CoordinateSystem { TopRight } }
+    }
+  }
+
+  CentralRepBankJournal {
+    Height     { 3000 }
+    FontSize   { 280 }
+    Items {
+      Logo        { Type { Bitmap } Position {    500,   0 } Data { 'C:\Botswana\GreyLogo.bmp'             }        }
+      System      { Type { Text   } Position { Centre,   0 } Data { ':SysTitle:'              } Bold FontSize { 375 } }
+      PageNOfN    { Type { Text   } Position { Right ,   0 } Data { 'Page :PageNumber: of :NumberOfPages:' } Bold   }
+      Title       { Type { Text   } Position { Centre, 500 } Data { ':Form.BankAccType: Transaction Journal:: :Form.StartDomainEdit:' } Bold   }
+      OfficeNameL { Type { Text   } Position {   3000,1000 } Data { 'Office Name::'                        } }
+      OfficeNameT { Type { Text   } Position {   5200,1000 } Data { ':OfficeName:'                         } Bold   }
+      OfficeCodeL { Type { Text   } Position {   3300,1500 } Data { 'For Office::'                      } }
+      OfficeCodeT { Type { Text   } Position {   5200,1500 } Data { ':Form.PostOffice: (:OfficeCode:)'     } Bold   }
+      DateTimeL   { Type { Text   } Position {   6200,1000 } Data { 'Date::'                               } CoordinateSystem { TopRight } }
+      DateTimeT   { Type { Text   } Position {   2700,1000 } Data { ':NowDT:'                              } Bold   CoordinateSystem { TopRight } }
+      UserL       { Type { Text   } Position {   6200,1500 } Data { 'User::'                               } CoordinateSystem { TopRight } }
+      UserT       { Type { Text   } Position {   4000,1500 } Data { ':Form.UserName:'                      } Bold   CoordinateSystem { TopRight } }
+    }
+  }
+
+}
+Ranges {
+   SavingBank1             { Title { 'Saving Bank Deposit 1'         } PLURange { '002009020' } }
+   SavingBank2             { Title { 'Saving Bank Deposit 2'         } PLURange { '090000201' } }
+   SavingBank3             { Title { 'Saving Bank Deposit 3'         } PLURange { '090000203' } }
+   SavingBank4             { Title { 'Saving Bank Deposit 4'         } PLURange { '090000211' } }
+   SavingBank5             { Title { 'Saving Bank Deposit 5'         } PLURange { '090000213' } }
+   SavingBank6             { Title { 'Saving Bank Deposit 6'         } PLURange { '090000221' } }
+   SavingBank7             { Title { 'Saving Bank Deposit 7'         } PLURange { '090000223' } }
+   SavingBank8             { Title { 'Saving Bank Deposit 8'         } PLURange { '090000230' } }
+
+
+   SavingBankDeposit             { Title { 'Saving Bank Deposit'         } PLURange { '002009020,090000201,090000203,090000211,090000213,090000221,090000223,090000230' } }
+   BSBLostBookFees               { Title { 'BSB Lost Book Fees'          } PLURange { '002009030,090000240'                                                             } }
+   CustomsHandlingCharges        { Title { 'Customs Handling Charges'    } PLURange { '002009040,050020101'                                                             } }
+   CustomsDutyFeesBotswana       { Title { 'Customs Duty Botswana'       } PLURange { '002009050,050020102'                                                             } }
+   CustomsDutyFeesSouthAfrica    { Title { 'Customs Duty South Africa'   } PLURange { '002009060,050020103'                                                             } }
+   CODTradeCharges               { Title { 'COD Trade Charges'           } PLURange { '002009070,050020009'                                                             } }
+   CODHandlingCharges            { Title { 'COD Handling Charges'        } PLURange { '002009080,050020008'                                                             } }
+   EMSReceiptsIndividual         { Title { 'EMS Individual Receipts'     } PLURange { '002009090,050050001,050050003'                                                   } }
+   EMSReceiptsContract           { Title { 'EMS Contract Receipts'       } PLURange { '002009100,050050005,050050006'                                                   } }
+   EMSContractAccountPayment     { Title { 'EMS Contract Acct. Pay'      } PLURange { '002009105,090000005'                                                             } }
+   POBagReceipts                 { Title { 'PO Bag Receipts'             } PLURange { '002009110,030000030-030000039'                                                   } }
+   POBoxReceipts                 { Title { 'PO Box Receipts'             } PLURange { '002009120,030000010-030000019,50031003'                                          } }
+   BulkPosting                   { Title { 'Bulk Posting'                } PLURange { '002009130,050000250-050000254'                                                   } }
+   NationalSavingCertificates    { Title { 'National Saving Cert'        } PLURange { '002009140,090000100'                                                             } }
+   GroupFuneralBLI               { Title { 'Group Funeral (BLI)'         } PLURange { '002009150,060030008'                                                             } }
+   IpolokengBLI                  { Title { 'Ipolokeng (BLI)'             } PLURange { '002009160,060030009'                                                             } }
+   RIPC                          { Title { 'R.I.P.C.'                    } PLURange { '002009170,060030007'                                                             } }
+   RegistrationofNewspapers      { Title { 'Registration of Newspapers'  } PLURange { '002009180,050031009'                                                             } }
+   MoneyOrderInlandIssued        { Title { 'Money Order Inland Issued'   } PLURange { '002009190,050021001'                                                             } }
+   MoneyOrderForeignIssued       { Title { 'Money Order Foreign Iss.'    } PLURange { '002009200,050021005'                                                             } }
+   MoneyOrderCommission          { Title { 'Money Order Commission'      } PLURange { '002009210,000100003'                                                             } }
+   MoneyOrderOtherCharges        { Title { 'Money Order Other charges'   } PLURange { '002009220,050021008,050021009,050021015-050021016,050021018,050021019'           } }
+   MoneyOrderTransmissionCharges { Title { 'Money Order Tran. Charges'   } PLURange { '002009230,050021013-050021014'                                                   } }
+   PostalOrderCommission         { Title { 'Postal Order Commission'     } PLURange { '002009240,000100021'                                                             } }
+   UnaddressedLeaflets           { Title { 'Unaddressed Leaflets'        } PLURange { '002009250,050031010'                                                             } }
+   CustomerFax                   { Title { 'Customer Fax'                } PLURange { '002009260,050031011'                                                             } }
+   BusinessReply                 { Title { 'Business Reply'              } PLURange { '002009270,050031012'                                                             } }
+   FrankingMachine               { Title { 'Franking Machine'            } PLURange { '002009280,050031004'                                                             } }
+   WaterAffairs                  { Title { 'Water Affairs'               } PLURange { '002009290,060030005'                                                             } }
+   WaterUtilities                { Title { 'Water Utilities'             } PLURange { '002009300,060030006'                                                             } }
+   HousingCorporation            { Title { 'Housing Corporation'         } PLURange { '002009310,060030004'                                                             } }
+   ElectricityDOE                { Title { 'Electricity DOE'             } PLURange { '002009320,060030000'                                                             } }
+   ElectricityBPC                { Title { 'Electricity BPC'             } PLURange { '002009330,060030001'                                                             } }
+   BotswanaTelecom               { Title { 'Botswana Telecom'            } PLURange { '002009340,060030002'                                                             } }
+   MiscellaneousReceipts         { Title { 'Miscellaneous Receipts'      } PLURange { '002009350,050032001'                                                             } }
+   ImprestandTravelReceipts      { Title { 'Imprest and Travel Receipts' } PLURange { '002009355,050033006'                                                             } }
+   WesternUnion                  { Title { 'Western Union'               } PLURange { '002009360'                                                                       } }
+   PostageLabels                 { Title { 'Postage Labels'              } PLURange { '002009370,50010000'                                                              } }
+   StampsItems                   { Title { 'Stamps Items'                } PLURange { '002009420,9010005-9019999,9020005-9020125'                                       } }
+   RetailItems                   { Title { 'Retail Items'                } PLURange { '002009430,9118000-9118180'                                                       } }
+   BWCourier                     { Title { 'BW Courier'                  } PLURange { '002009440,9118190-9118350'                                                       } }
+   Merchandise                   { Title { 'Merchandise'                 } PLURange { '002009450,9118360-9118999'                                                       } }
+   PostalOrders                  { Title { 'Postal Orders'               } PLURange { '002009460,5100005-5101000'                                                       } }
+   PhilFirstDayCovers            { Title { 'Phil. First Day Covers'      } PLURange { '002009470,7000400-7000460'                                                       } }
+   PhilSouvenirSheets            { Title { 'Phil. Souvenir Sheets'       } PLURange { '002009480,7000360-7000396'                                                       } }
+   PhilYearPacks                 { Title { 'Phil. Year Packs'            } PLURange { '002009490,7000300-7000350'                                                       } }
+   PhilOtheritems                { Title { 'Phil. Other items'           } PLURange { '002009500,7000010-7000295'                                                       } }
+   MoneyOrderInlandPaid          { Title { 'Money Order Inland Paid'     } PLURange { '002009510,050021002'                                                             } }
+   MoneyOrderForeignPaid         { Title { 'Money Order Foreign Paid'    } PLURange { '002009520,050021006'                                                             } }
+   MoneyOrderBulkPaid            { Title { 'Money Order Bulk Paid'       } PLURange { '002009530,050021017'                                                             } }
+   MoneyOrderInlandRefund        { Title { 'Money Order Inland Refund'   } PLURange { '002009540,050021004'                                                             } }
+   PostOrdPaidInland             { Title { 'Post Ord Paid Inland'        } PLURange { '002009550,050021051'                                                             } }
+   PostOrdPaidUK                 { Title { 'Post Ord Paid UK'            } PLURange { '002009560,050021052'                                                             } }
+   PostOrdPaidOtherForeign       { Title { 'Post Ord Paid Foreign'       } PLURange { '002009570,050021053'                                                             } }
+   PostOrdPaidBulk               { Title { 'Post Ord Paid Bulk'          } PLURange { '050021054'                                                                       } }
+   SavingsBankWithdrawals        { Title { 'Savings Bank Withdrawals'    } PLURange { '002009580,090000202,090000204,090000212,090000214,090000222,090000224'           } }
+   NationalSavingsCertsPaid      { Title { 'National Savings Certs Paid' } PLURange { '002009590,090000101,090000102'                                                   } }
+   Refunds                       { Title { 'Refunds'                     } PLURange { '002009600,050031006,050031020'                                                   } }
+   PensionsPaidRSA               { Title { 'Pensions Paid RSA'           } PLURange { '002009610,050040003'                                                             } }
+   OldAgePensionBotswana         { Title { 'Old Age Pension Botswana'    } PLURange { '002009620,050040001,050040002'                                                   } }
+   DiscountToVendors             { Title { 'Discount To Vendors'         } PLURange { '002009630,060020011'                                                             } }
+   MiscellaneousPayments         { Title { 'Miscellaneous Payments'      } PLURange { '002009640,050032002'                                                             } }
+   WesternUnion                  { Title { 'Western Union'               } PLURange { '002009650'                                                                       } }
+   Imprestandtravelclaims        { Title { 'Imprest and travel claims'   } PLURange { '002009660,050033002'                                                             } }
+   SalariesPP                    { Title { 'Salaries P&P'                } PLURange { '002009670,050033001'                                                             } }
+   WagesIndustrialClass          { Title { 'Wages Industrial Class'      } PLURange { '002009680,050033003'                                                             } }
+   TemporaryStaff                { Title { 'Temporary Staff'             } PLURange { '002009690,050033004'                                                             } }
+   DeathClaim                    { Title { 'Death Claim'                 } PLURange { '002009700,050033005'                                                             } }
+   Humana                        { Title { 'Humana'                      } PLURange { '002009705,050033007'                                                             } }
+   Other                         { Title { 'Other'                       } PLURange { *                                                                                 } }
+   Line                          { Title { ' '                           } PLURange { 99999999                                                                          } }
+}
+
+//
+//----------------------------- End of File ---------------------------
+//
+
+

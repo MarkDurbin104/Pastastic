@@ -1,0 +1,6 @@
+NAME            GPA
+DESCRIPTION     'UNISYS Generic Postal Architecture Run-Time'
+CODE            PRELOAD MOVEABLE DISCARDABLE
+DATA            PRELOAD MOVEABLE
+STACKSIZE       8192
+HEAPSIZE        4096

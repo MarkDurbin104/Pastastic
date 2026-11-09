@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<slides:OneDayItem xmlns:slides="com.proiam.slides.*" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="130" height="138"
+	backgroundImage="@Embed(source='embedded/LgButton.png')" 
+	backgroundSize="100%"
+	styleName="normalItem">
+</slides:OneDayItem>

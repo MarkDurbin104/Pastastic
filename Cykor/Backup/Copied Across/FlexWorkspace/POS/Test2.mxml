@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:c="com.tappernimer.components.*" layout="absolute" xmlns:cykor="cykor.uiutils.*">
+	<mx:Image x="100" y="100" id="image1" source="file:///C|/FlexWorkspace/Proiam/source/resources/graphics/menus/Image11.png" scaleContent="true" visible="true"/>
+	<c:VerticalReflection id="reflection1" 
+		referenceComponent="{image1}" x="{image1.x}" y="{image1.y+image1.height}" 
+		filterArray="{new Array(new BlurFilter())}"/>
+	<mx:Image x="264" y="144" id="image2" source="file:///C|/FlexWorkspace/Proiam/source/resources/graphics/menus/Image11.png" scaleContent="true" visible="true"/>
+	<c:VerticalReflection id="reflection2" 
+		referenceComponent="{image2}" x="{image2.x}" y="{image2.y+image2.height}" 
+		filterArray="{new Array(new BlurFilter())}"/>
+</mx:Application>

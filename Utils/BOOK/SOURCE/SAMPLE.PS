@@ -1,0 +1,44 @@
+%!PS-Adobe-2.0
+%%Title: A Sample Program
+%%Creator: Marv Luse
+
+% image origin in points
+/xorg 72 def
+/yorg 72 def
+
+% image size in points
+/xsiz 216 def
+/ysiz 288 def
+
+% image dimensions
+/width 354 def
+/height 446 def
+/depth 8 def
+
+% a scan line buffer
+/scanline width string def
+
+% a procedure to read the image data
+/readimg
+{
+       currentfile scanline readhexstring pop
+}
+def
+
+% set image origin
+xorg yorg translate
+
+% set image size
+xsiz ysiz scale
+
+% render the image
+width height depth
+[ width 0 0 height neg 0 height ]
+readimg
+image
+1A5B1A5B238599FF00FF00FF00...
+       :
+554040556BFFAAFF00234599CE...
+
+% render the page and eject
+showpage

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="1.5.0" prefix="AC_OETags.js" extends="" parent="" >
+	<file path="C:/FlexWorkspace/POS/bin/Cykor.html" creation="1">
+		<item repl="index" display="index [object]" chrno="3466" />
+	</file>
+	<file path="C:/FlexWorkspace/POS/html-template/index.template.html" creation="2">
+		<item repl="${application}" display="${application} [object]" chrno="3440" />
+	</file>
+</completion>

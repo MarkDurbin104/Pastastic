@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="1.5.0" prefix="AC_OETags.js" extends="" parent="" >
+	<file path="C:/FlexWorkspace/Cykor/bin/Cykor-profile.html" creation="1">
+		<item repl="Cykor" display="Cykor [object]" chrno="3681" />
+	</file>
+	<file path="C:/FlexWorkspace/Cykor/bin/Cykor.html" creation="2">
+		<item repl="Cykor" display="Cykor [object]" chrno="3491" />
+	</file>
+	<file path="C:/FlexWorkspace/Cykor/bin/index.html" creation="1">
+		<item repl="Cykor" display="Cykor [object]" chrno="3491" />
+	</file>
+	<file path="C:/FlexWorkspace/Cykor/html-template/index.template.html" creation="2">
+		<item repl="${application}" display="${application} [object]" chrno="3587" />
+	</file>
+</completion>

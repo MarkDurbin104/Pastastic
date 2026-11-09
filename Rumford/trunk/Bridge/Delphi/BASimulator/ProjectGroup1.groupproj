@@ -1,0 +1,44 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{716c4adb-75d2-49e0-aa4e-2ced28042a33}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="..\VU.iTService\ServiceTestHarness.dproj" />
+    <Projects Include="BASimulator.dproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+  <BorlandProject xmlns=""> <Default.Personality> </Default.Personality> </BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="BASimulator">
+    <MSBuild Projects="BASimulator.dproj" Targets="" />
+  </Target>
+  <Target Name="BASimulator:Clean">
+    <MSBuild Projects="BASimulator.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="BASimulator:Make">
+    <MSBuild Projects="BASimulator.dproj" Targets="Make" />
+  </Target>
+  <Target Name="ServiceTestHarness">
+    <MSBuild Projects="..\VU.iTService\ServiceTestHarness.dproj" Targets="" />
+  </Target>
+  <Target Name="ServiceTestHarness:Clean">
+    <MSBuild Projects="..\VU.iTService\ServiceTestHarness.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="ServiceTestHarness:Make">
+    <MSBuild Projects="..\VU.iTService\ServiceTestHarness.dproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="BASimulator;ServiceTestHarness" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="BASimulator:Clean;ServiceTestHarness:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="BASimulator:Make;ServiceTestHarness:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

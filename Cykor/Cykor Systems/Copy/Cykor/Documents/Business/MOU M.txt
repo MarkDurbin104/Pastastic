@@ -1,0 +1,452 @@
+
+
+
+
+
+
+MEMORANDUM OF AGREEMENT FOR THE SETUP OF A DEVELEOPMENT AND TRAINING CENTER 
+
+
+
+Made and entered into between
+
+
+
+BOTSWANA POSTAL SERVICES
+
+
+And
+
+
+CYKOR SYSTEMS LIMITED
+
+
+
+
+
+
+
+
+
+
+
+                                                                                                                               
+
+MEMORANDUM OF AGREEMENT FOR THE SETUP OF A DEVELOPMENT AND A TRAINING CENTRE
+
+Made and entered into between
+
+BOTSWANA POSTAL SERVICES
+
+a Commercial Organisation of the Government of Botswana established in terms of section 3(1) of the Botswana Postal Services Act No 22 of 1989
+
+represented herein by
+
+
+DINEO EDRED PULE
+Director General
+
+duly authorised thereto by Resolution of the Board
+of Management
+hereinafter referred to as
+“BotswanaPost”
+
+and
+
+Cykor Systems
+
+a body corporate duly incorporated and registered in the United Kingdom
+
+represented herein by
+
+
+
+Mark Durbin
+(Managing Director)
+
+duly authorised
+
+hereinafter referred to as
+“Cykor Systems”
+
+
+
+
+
+
+
+
+
+
+
+WHEREAS BotswanaPost wishes to finalise the development of the counter automation system in order  to render a more efficient, speedy and effective service to the public and is desirous of securing the services of expert developers  and solution providers in the field of postal service automation/computerisation.
+
+AND WHEREAS Mark Durbin of CYKOR SYSTEMS has the knowledge, experience and expertise required to provide such services and solutions, and to that end consensus has been reached between the parties.
+
+AND WHEREAS it is desirable to record what has been agreed upon.
+
+NOW THEREFORE THESE PRESENTS WITNESSETH
+
+AND IT IS HEREBY AGREED AS FOLLOWS;
+
+1. 	DEFINITIONS
+
+The following terms and expressions shall have the meanings ascribed to them hereunder unless the context specifically requires otherwise.
+
+BUSINESS DAY - shall mean a day on which banks are open for business in the relevant place;
+
+COMPUTERS - shall mean and include transaction computers used at Post Office Counters, Data collection computers in Post Masters’ Offices, Network Computers in District Offices, Host Computers in Headquarters and Data Distributing Computers installed at Sections of Headquarters.
+
+COUNTER AUTOMATION - shall mean the computerisation of the counter services offered by BotswanaPost.
+
+IT STAFF - shall mean Information Technology Staff employed by BotswanaPost.
+
+PARTIES - shall mean the parties to this Agreement.
+
+PRODUCTS – shall mean all modules developed for Botswana Post or for other participating countries as specified in the memorandum of agreement between PAPU and CYKOR SYSTEMS.
+
+PROJECT - shall mean the development and testing  and training of all modules as outlined in the memorandum  of agreement between PAPU and CYKOR SYSTEMS.
+
+
+SOFTWARE - shall mean modules developed and/or customised by  CYKOR SYSTEMS or  the developing teams from the participating countries.
+
+SERVICES – Shall mean the services to be provided by CYKOR SYSTEMS and the developing teams.
+
+CONSORTIUM  -  shall mean the participating countries in the project.
+ 
+C.D.T. - Shall mean Component Design Toolkit
+
+
+
+
+2. 	SUBJECT MATTER
+
+2.1	BotswanaPost hereby accepts the responsibility of establishing a training and  development centre for CYKOR SYSTEMS to train and develop and finalize the counter automation project involving all the affected Postal Administrations and other African Post who could join at a later stage. 
+CYKOR SYSTEMS accepts this offer on this basis that it will work with Botswana Post to establish a fully functional development center.
+
+2.2	The  services required to be provided by CYKOR SYSTEMS shall include documentation of source, training on the software architecture, training on the use of the source code, troubleshooting and fixing bugs that exist in the software modules, development of  the new modules as described in the memorandum of agreement between PAPU and CYKOR SYSTEMS.
+
+
+3.	SCOPE
+
+3.1	The scope of the services to be provided under this agreement shall constitute a final stage of the Counter Automation Project and shall include the four (4) phases more fully described the memorandum of agreement between PAPU and CYKOR SYSTEMS.
+
+3.2	In case extra services beyond the scope of the original project proposal are desired by BotswanaPost or the participating member countries to be delivered by CYKOR SYSTEMS, a separate agreement on that shall be negotiated between parties.
+
+
+4.	DURATION OF CONTRACT
+
+4.1	The duration of this agreement shall be one and half years commencing on the day of the signing of this agreement.
+
+4.2	The duration of this agreement shall extend to the completion of all four phases of the project specified in memorandum of agreement between PAPU and CYKOR SYSTEMS not withstanding clause 4.1
+
+4.3	If duration of agreement is extended in terms of clause 4.2 hereof, the party responsible for the delay shall bear the resulting cost and if CYKOR SYSTEMS cause such delays BotswanaPost and the participating member countries shall be entitled to recover any losses as per clause 8.2.
+
+4.4	There shall be a defined given time in each phase as specified in the memorandum of agreement between PAPU and Cykor systems.
+
+4.5	CYKOR SYSTEMS shall finish this project within one and half years which should include the time between each phase that shall be used to give BotswanaPost and the participating members the opportunity to verify the results of each phase and to give CYKOR SYSTEMS and the development teams time to make any necessary corrections.
+
+
+
+
+5.	OBJECTIVES
+
+The objectives of this agreement in respect of the project shall be the following:
+
+5.1	The provision of documentation for the source code of all modules and training manuals
+
+5.2	Empower the local developers with skills to manage and develop their own modules  
+
+5.3	Reduce dependency on third parties
+
+5.4	Make every reasonable effort to remove any bugs that exists in the software
+
+5.5	Make every reasonable effort to finalise incomplete and malfunctioning modules
+
+5.6	Develop additional functionality, such as PO Box management, as outlined in the PAPU memorandum of agreement with Cykor Systems.
+
+
+6.	OBLIGATIONS OF CYKOR SYSTEMS
+
+CS shall:
+
+6.1	Train and help the teams to deliver a reliable, efficient and complete software solution aimed at improving the standard, quality and efficacy of BotswanaPost and other participating member countries business operations.
+
+6.2	Provide time-related schedules including a planned delivery scheme with a deadline  date  of completion of each phase of the Project.
+
+6.5	Provide BotswanaPost and other countries with advice and recommendations regarding the flow of information with regard to the new changes or  developments done to finalise the project.
+
+6.6	Work with developers from participating countries to produce a system having the capacity to ensure security of data and reduction of frauds at all user levels which shall include measures to:
+
+6.6.1	Prevent counter clerks doing any function except capturing data,
+
+6.6.2	Enable only the supervisor to attend to rectification of errors during data capturing
+
+6.6.3	Prevent supervisors from editing/changing/amending data after final balancing and reconciliation at the end of each day.
+
+6.6.4	Provide for the recording of all rectifications or changes and amendments made by Supervisors in all post offices each day.
+
+6.6.5	Ensure data security at all user levels and during data transfer e.g. Data encryption.
+                   
+                       6.6.    Include VAT on the counters application receipt and VAT reg. Number 
+
+
+Data Capturing & System Flexibility
+
+6.7.	Upon the completion of development and training BotswanaPost and other countries shall be able to distribute new programmes as well as sending messages from host computers at Headquarters to Post Office Computers through district office computers.
+
+6.8	      Downloading of data from Headquarters to Post Offices for purposes of payment of       old age pensions and other systems as necessary. CS will assist BPS in the design of         manual administrative procedures for post offices including those without a                  computerised infrastructure.
+
+6.9    Upon completion of the training and development BotswanaPost and other countries shall be able to add, delete and modify products and download all new products from Headquarters to all Post Offices within the network.
+
+Data Retention
+
+6.10	  Provide advice and recommendations on preservation of data with specifications of retention time of such data in all Workstations, Back Office Servers, District Servers and Central Servers at Headquarters. BotswanaPost and other countries will define the period of preservation as this affects the choice of the database.
+
+6.11   Provide off-line capability in the event of server failure or network disconnection.
+
+6.12  Upload all the data to any new computer that is connected to the network.
+
+6.13  Provide a system capable of producing reports at all user levels in a format 
+required by the consortium.
+
+6.14      Provide interfacing capability with other systems e.g. Accounting Systems, Human Resources Systems, IPS, MIS, Payroll Systems, Third Party Systems (e.g. Botswana Savings Bank), and others maintaining data integrity and compatibility with other system software. All interfaces shall be delivered at ASCII level. 
+
+6.15 Ensure that customer display unit reflects all relevant information from the
+counter clerks computer.
+
+6.16  In the event of District Offices and Headquarters not being integrated into the
+networking system immediately, create a method of transferring data from Post Offices to District Offices and Headquarters.
+
+6.17	 Transferring data from non-computerised offices to computerised offices and
+  vice versa in respect of Money Order transactions via means of data entry facilities.
+
+6.18	 CS shall provide a troubleshooting guideline for the software so as to enable                the consortium to distinguish between software, network and hardware faults.
+
+6.19	 Provide ability of modules to be migrated to new technology such as Dot Net architecture from Microsoft with a minimum of changes. 
+
+7.	 OBLIGATIONS OF BOTSWANAPOST
+
+BotswanaPost shall:
+
+7.1	Shall be the host of the development centre.
+
+7.2	The following hardware shall be provided in the development center: Computers for  all the trainees developers from the participating counties, one computer shall be attached all the hardware used at the counter to enable compatibility testing during development.
+
+Should any member country need specialised hardware for testing and use in their own country, they will be responsible for the acquisition of that hardware  
+
+7.3	Provide a local area network linked all the computers.
+
+7.4	Along with the other consortium members; provide feedback to CS regarding work supplied, in a timely fashion so as not to impede the development progress.
+
+7.5	Along with the other consortium members; provide adequate numbers of suitable personnel for the development teams.
+8.	
+
+8.1	CS shall provide (based upon the help text supplied by consortium) the following manuals:
+-	Counter System Clerk Operations Manual
+-	Back Office Supervisor Operations Manual
+-	Central Administrator Operations Manual
+-	Money Order System Operations Manual
+-	Pensions Operations Manual
+-	Configuration Guide
+-	Installation Guide
+-	Troubleshooting Guide
+-	Data Transfer/Protocol Formats
+
+8.2	In order to facilitate the successful completion of each phase CS shall submit to           BotswanaPost and the consortium with monthly progress reports during each phase and at the completion of each phase before stepping into the next, demonstrating how  the completed software operates in each phase.
+               
+            8.3   BotswanaPost and other members shall evaluate the results of each completed phase                                       following  the evaluation criteria, agreed upon at the commencement of the same phase.
+
+8.4	CS shall be allowed to proceed to the next  immediate phase after CS offers Botswana Post            and other members the previous completed phase and they have accepted it in writing.
+
+
+
+9.0	COMPLETION OF COUNTER AUTOMATION
+
+9.1 In the event of any delay in completion of the Project caused by CS, BotswanaPost and                     other members  shall not be liable for any costs arising from such delay, unless the services               have been changed and/or extended at the request and/or stipulated time has been                     exceeded by an act of BotswanaPost and the members.
+
+9.2	In the event CS completes the project earlier than stipulated in the memorandum of               agreement to the satisfaction of BotswanaPost and other members, the consortium shall            have the discretion to release CS without any alteration
+
+
+10.0	TERMINATION
+
+10.1	This agreement shall expire at the end of the period specified in the memorandum of agreement.
+
+10.2	Parties may terminate this agreement by mutual consent at any time.
+
+11.0	TERMINATION FOR BREACH
+
+In the event of either party committing a breach of any material term of this agreement the aggrieved party may terminate this agreement with immediate effect by giving written notice to the other party if,
+
+11.1	That other party:
+
+11.1.1	has breached any material term of this agreement where the breach is not capable of being remedied; or
+
+11.1.2	has breached any provision of this agreement where the breach is capable of being remedied and has failed to remedy such breach within 7 days after receiving written notice requiring it so to do, and
+
+11.1.3	has not given notice in accordance with clause 21.1 hereof, or 
+
+11.2	an order has been made for the winding up or dissolution of that other party or a              receiver or similar official is appointed in relation to all of its assets, or
+
+11.3	that other party ceases to carry on business
+ 
+12. NOTICE AND TERMINATION AFTER FORCE MAJEURE
+
+12.1	If either party is in breach or  default of any obligation under this Agreement (other than an obligation to pay money) and the breach or default arises in whole or in part as a         consequence of an event of force majeure, then the party unable to perform its obligations shall promptly give written notice to the other party of the reason for its  failure to perform its obligations.
+
+13.2	The party giving notice under clause 21.1 must use all reasonable endeavours to:
+
+13.2.1	Mitigate or avoid the effect of the event of force majeure; and
+
+13.2.2	Remove the cause of the event of force majeure; and
+
+13.2.3	Perform its obligations under this Agreement.
+
+13.3	If the party giving notice under clause 21.1 remains unable to perform the obligation in   respect of which it is in breach upon the expiry of 1 month from the date of occurrence of the breach, the other party shall be entitled to terminate this Agreement on 7 days’ written notice.
+
+
+13. EFFECT OF TERMINATION
+
+Termination of this Agreement does not affect the accrued rights, liabilities or obligations of a Party.
+
+
+14. NOTICES
+
+Giving of Notices
+
+14.1	Any notice given by one party under this Agreement to the other party must be:  
+
+14.1.1	In writing ; and
+
+14.1.2	Addressed to the address of the other party specified in clause 30 or as altered                               by notice given in accordance with this clause ; and
+
+14.1.3	Left at, or sent by pre-paid airmail post to, that addresses or sent by facsimile transmission or e-mail.
+
+
+
+
+
+
+
+
+
+
+14.2	A notice in accordance with clause 23.1 shall be deemed received:
+
+14.2.1	If left at the recipient’s address, on the day of delivery; or
+
+14.2.2	If sent by pre-paid airmail post, 7 business days after the date of posting; or
+
+14.2.3	If sent by facsimile transmission, on the day of the transmission is made (but only if the sender has a confirmation report specifying a facsimile number of the recipient, the number of pages sent, and the date of transmission); or 
+
+15.2.4	If sent by e-mail, on the day the transmission is made (but only if the sender has an e-mailed notification-confirming receipt by the recipient and the date of transmission).  
+
+14.3	Notwithstanding clause 23.2, a notice left at the recipient’s address, or transmitted by facsimile or e-mail:
+
+14.3.1	before 9.00 a.m. or after 4.30 p.m. on a business day in the place where the recipient is located ; or
+
+14.3.2	on a day which is not a business day in the place where the recipient is located, shall be deemed to have been received on the next business day in that place. 
+
+
+15.	DISPUTE RESOLUTION
+
+15.1	If any dispute or difference of any kind whatsoever shall arise between the parties such dispute or difference shall be referred to an Arbitrator in Botswana for settlement whose decision shall be final.
+15.2	Such arbitration shall be heard and determined in Botswana.
+
+15.3	Any arbitration or dispute resolution should be under UNCITRAL rules
+
+
+16.	NON-VARIATION
+
+This agreement together with Schedules “One to Five” ” shall constitute the whole agreement between the parties and no modification, variation or alteration thereto shall be valid unless made in writing and signed by both parties hereto.
+
+
+17.	NON-WAIVER
+
+No relaxation or indulgence granted by one party to the other shall be construed as a waiver by it of any of its rights hereunder.
+ 
+18.	ASSIGNMENT 
+
+Neither party may assign or transfer any of its rights under this Agreement without prior written consent of the other party.
+
+
+19.	SEVERABILITY
+
+If any provision of this Agreement shall be held to be invalid or unenforceable, it shall be severed from the Agreement and the remaining provisions shall remain in full force and effect and the parties promptly shall negotiate in good faith a replacement.
+
+20. 	GOVERNING LAW
+
+The terms of this agreement shall be construed and interpreted, and all the respective rights and duties of the parties shall be determined in accordance with the laws of the Republic of Botswana.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+21. 	DOMICILIUM CITANDI ET EXECUTANDI
+
+The parties hereby choose domicilium citandi et executandi as follows:-
+
+BotswanaPost
+Poso House
+Khama Crescent                                    
+Plot no. 8841
+Gaborone.
+depule@Botspost.co.bw
+
+Cykor Systems
+104 Bath Road
+Banbury
+Oxfordshire OX16 0TR
+United Kingdom
+Contracts@CykorSystems.com
+
+THE PARTIES ACKNOWLEDGE THAT THEY HAVE READ AND UNDERSTOOD THE TERMS OF THIS SUPPLY AGREEMENT.
+
+Executed on behalf of Botswana Postal Services by:					
+
+Authorised Signature:______________________________
+
+Name:¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬¬__________________________________________
+
+Title:___________________________________________		
+
+Date:___________________________________________
+Executed on behalf of Cykor Systems Limited by:					
+
+Authorised Signature: _____________________________
+
+Name:_________________________________________	
+
+Title:__________________________________________
+
+Date:__________________________________________
+

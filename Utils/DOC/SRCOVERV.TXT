@@ -1,0 +1,440 @@
+
+
+
+
+
+Unisys Ltd. 22 Southwark Bridge Road London SE1 9HB    
+
+Document Number
+
+Document Generic Postal Architecture - Design Concepts and Source Code Overview
+Date
+20th November 1995
+Version
+1.00a
+Author
+Mark Durbin
+
+Authorised for issue by
+Name and position
+Signature
+Date
+
+Controlled copy distribution
+This document is issued by Unisys Ltd. on a controlled copy basis.
+This copy has been issued to 
+Name
+Signature
+Date
+
+
+
+
+CONTENTS   
+CONTENTS	
+INTRODUCTION	
+Why GPA (WHY NOT C.O.T.S.) ?	
+About this document	
+MAIN LOGICAL COMPONENTS	
+Form	
+Datastore	
+Action	
+Device	
+Localization	
+
+INTRODUCTION 
+This introduction has been divided into two parts, the first explaining some background information about GPA and the second describing this document. 
+Why GPA (WHY NOT C.O.T.S.) ? 
+GPA was designed to meet two needs. The first was to supply a postal point of sale program with specific functionality to the Polish post office (running in Polish).  This program had a logical specification and was due for delivery in ten weeks, unfortunately the physical design & coding had not been initiated and the software it was to be based on was not capable of the required functionality.
+As Unisys were following leads of the same nature as the Polish system in many other countries, the second need was to avoid this position in the future,  by providing a software platform for postal point of sale that could be easily configured for language/location, hardware, operating system, database and peripherals,  therefore the name - Generic 
+Postal Architecture.  
+At the time (and possibly still today) there was not a COTS software package that met with the above criteria. 
+About this document 
+The intention of this document is to describe the underlying source code and data structures that form GPA, the concepts behind them and reasons for any deviation from the original design.  So that anyone wishing to maintain GPA should be able to ascertain sufficient information to point them in the right direction.  GPA is divided, as many 4GE s are, into a development and runtime systems. The development system s outputs are interpreted by the runtime system.  
+As the main emphasis of the document is maintenance, the focus must be upon the runtime system as this is where any problems (from the user's point of view) will appear.  However the interfaces between the development and runtime systems are covered in detail. Aspects of the development system are mentioned where it aids clarity.  
+This document should be read in conjunction with the following documents:    
+MAIN LOGICAL COMPONENTS 
+Form 
+A form is any screen display or printed report.  There are several types of Form, each is broken down into multiple form-fields, each form-field having a behavioral classification, format and attributes describing style, 
+positioning and optional associated datastore reference, variable and action. 
+Datastore 
+A datastore is a representation of a table in the physical database. Consisting of the structure of the records  i.e. the order, format, type and length of the data elements within the record, and the primary and secondary indexes onto that table.  The data types referred to within a datastore definition are mapped at runtime into the physical data types available from the database. 
+Action 
+An action is a 4GL macro or function defined in a textual form and then tokenized into reverse polish notation for easy and fast interpretation by the runtime system.  This gives the control of an interpreted language without most of the speed penalties. An action can however consist of a single Form or actions may be written in a 3GL and compiled/linked with the runtime system for speed critical or other special requirements. 
+Device 
+A device is a code module containing all the references to, and data regarding, one particular system dependent element or type of element within the physical the runtime system. This can be any part of the runtime environment that can be logically separated from the other parts i.e. the database access, the screen access, a particular peripheral or some operating system dependent sections of code. The intention is that any physical part of the system that may change between implementations is placed in a device. 
+Localization 
+Localization falls in to two main categories the country/location and the language/dialect spoken. The former is unlikely to change within an implementation but there may be a requirement for multiple languages within one local. e.g. Wales or India. The country information consists of  general configuration information including date type ( GREGORIAN / JULIAN / ARABIC / PERSIAN or CHINESE),  time/money/weight formats and the specification of up to ten language sections. The language sections contain font, keyboard logical/physical mapping, all textual information, including the names of months/days etc. and system error messages. The font contains a picture of each character, the left/right anchoring (or up/down for Chinese etc.) any diacritic marks (spacing or non-spacing) and the contextual analysis information for script languages such as Persian, Hebrew and Arabic.  The language section should contain all the  strings  used within the 4GL (CAPTURE has the text strings hard coded into the 4GL but as it is unlikely to be run in any other language so this is not necessarily a problem). 
+ARCHITECTURE   
+figure 1  
+Once the configuration and language information has been loaded, the Forms, Actions and Datastores are loaded. The first form (named  logon ) is then processed. All processes communicate with each other via the standard passed/returned values in function calls and via global variables. 
+The devices, however, may only be accessed via the message process.  Each device has a device type i.e. the VGA and HERC devices both have the device type OUTPUT1.  
+Devices with the same device type receive the same message codes and are therefore interchangeable. 
+Devices with the same device type may be logically grouped in the device map, so that a message for one device goes to all the devices within the same logical group.  
+e.g. 
+If there was a need to update a local (PARADOX) database and a remote (ORACLE) database simultaneously, then the DBM logical group would contain PARADOX and ORACLE device names.  When a message was sent to DBM it would be relayed to both PARADOX and ORACLE (the return value from the message would be that returned by the LAST physical device in the logical group).  
+INTER-PROCESS MESSAGING 
+The message process has responsibility for routing all messages to and from all the devices, this is achieved via the sendmsg() function.  Each device has a physical name and at least one logical group name, messages are sent to logical groups and the message process looks up the logical group in the device mapping and relays the message to each physical device in that group.  The logical groups may change during execution to allow information to be redirected.  
+example:
+	sending process     message process     devices     sendmsg( screen ,...)   lookup  screen
+                 sendmsg( VGA ,...)    VGA device     
+
+Therefore to change from VGA to a new type of screen would only require the new device and a change in the device mapping file.   
+The sendmsg function requires at least two parameters, the first is the logical group name and the second is the message code.  If the message code denotes that there should be additional parameters, then these follow.  A typical sendmsg function call looks like this:   
+sendmsg( OUTPUT1 ,MESSAGE_O,10,10, The time is %d:%d ,9,30);  
+that is, send a message to the OUTPUT1 group (display device) the message code is MESSAGE_O (output). The MESSAGE_O message places data on the device at an x,y co-ordinate (in this case 10,10) the rest of the data takes the same form as the printf() function.  
+The original intention was that each device would have an input, output, control and reset (IOC & R) message.  With each of these message types calling a different function within the device. The message would have then been split down into sub-types under those four categories.  
+However This has now been changed so that there is only one entry point into each device (the control function) and each message code is considered a sub-type of that function.  The only problem this causes is in the naming of message codes.    
+All message codes are defined in types.h,  message codes like MESSAGE_O may be sent to several different device types. While this does not cause a problem, if the name MESSAGE_O was changed for something more reasonable i.e. DISPLAY_DATA, then a new message would need to be defined for each device type that uses MESSAGE_O, all the calling points would need to be changed as well. 
+DESIGNER-RUNTIME INTERFACE STRUCTURE 
+The data passed between the design tools and the runtime system is in the form of flat files containing either  C  structures or textual information.  These files define the behavior of the system and a broken down into 7 main areas: 
+Configuration - various global vars
+The configuration file is the starting point for GPA.  It defines all the information regarding paths, filenames, screen savers etc. for the runtime system.  
+The configuration file must have the extension  .CFG  and may be passed to the runtime system in one of two ways;  The GPACFG environment variable may bet set to reflect the path and name of the configuration file, or the configuration filename may be passed as argv[1].  
+If the configuration file is passed as a command line parameter, the current directory must contain the configuration file and the argument should not contain the .CFG extension. 
+e.g.   
+C:\STARTUP>  GPA FRED    
+NOT  
+C:\> GPA \STARTUP\FRED.CFG  
+
+GPACFG should be defined by concatenating the path and the configuration file name 
+e.g.   
+set GPACFG = \STARTUP\FRED  
+Note: If you specify a drive letter it will be ignored.  
+The configuration file is a plain ASCII text file with each line containing a keyword followed by some parameter setting(s).  
+If a keyword is unrecognized, it is assumed to be a comment and therefore discarded.  There are a number of valid keywords available for use in the a configuration file for a full list please refer to section ????nnn??? in the document ???????????????????.  
+The configuration file is read buy the function readconfig() in config.c, as each keyword is recognized, various global variables are set to reflect the values found. The global variables of interest within this section of the document are
+
+Name
+Keyword
+
+Use Value Ranges
+G_system
+SYSTEM
+The system base name e.g.  CAPTURE any 1-7 letter string (case is not significant)
+G_database
+DATABASE
+The base path (from the config path) of the database DOS path terminated with a  \
+G_config
+CONFIG
+The base path (from the config path) of the data files output from the design tools DOS path terminated with a  \
+
+
+Forms - G_fid, G_numidx & G_form 
+The Forms are stored as 'C' structures in the file accessed via the global variables G_system and G_config the form file name is made up from the path in G_config and a filename made up of the 1-7 letter string in G_system followed by the letter  N  and the extension  .DAT . 
+e.g.  if G_config =  CONFDIR\  and G_system =  TESTSYS . Then the file containing the form information is named   CONFDIR\TESTSYSN.DAT .  
+The file contains the form structures as outlined below :  
+There are two structures associated with forms. These are FORM and FORMF (defined in types.h):  
+FORM structure 
+Each form is defined by a FORM structure giving it s name, the number of formfields on the form (numitem), the user access level required to process the form, the top/left and bottom/right co-ordinates of the form (bounds), the form type, the form attributes(attribs), the current formfield being processed (curitem) and a pointer to a list of FORMF structures (items) that refer to the formfields.    
+typedef struct {		// Form Structure    
+	CHAR	name[9];	// form name    
+	UCHAR	numitem;	// the number of items    
+	INT16	access;	// form access level    
+	WIN	bounds;	// form boundaries    
+	INT16	type;		// form type    
+	CHAR	attribs;	// form attributes     
+	INT16	curitem;	// the current item     
+	FORMF	*items;	// the list of items    
+} FORM;  
+name		must be no longer than 8 characters and the terminating NULL. 
+numitem	must reflect the length of the array pointed to by items. 
+access		is set to Zero by default (any user may process) and may contain any value between 0-9.
+bounds	is Currently unused. 
+type		may be one of six values (defined in formhand.h):      
+		F_NORM - a plain screen form      
+		F_SERVE - a screen form used for point of sale      
+		F_PROMPT - a screen form for use on small VDU s      
+		F_MENU - a screen menu      
+		F_REPORT - a plain paper report      
+		F_PPFORM - a report for output on pre-printed stationary 
+attribs		is Currently unused. 
+curitem	is only valid during form processing and reflects the offset in the items array of the current 
+		formfield being processed. When valid, it contains a number between -1 and numitem+1. 
+items		must point to a valid address containing numitem FORMF structures.   
+
+
+FORMF structure 
+Each formfield is defined by a FORMF structure giving it s name, form field type, a unique identifier (ident) (unique within a form), an x,y co-ordinate (pos) in character offset from top/left origin, the formfield colour attributes (attrib), The formfield font size, The formfield classification (class), The action associated with a formfield (func), the input or output data (item), and the input picture format (fmt).     
+typedef struct {		// Form Field Structure
+	CHAR	name[9];	// field name
+	CHAR	type[9];	// field type
+	UCHAR	ident;	// unique field identifier
+	XYPNT	pos;		// x/y co-ordinates
+	CHAR	attrib;	// field attributes
+	UCHAR	size;		// field size
+	INT16	class;	// item classification
+	CHAR	func[9];	// validation function
+	CHAR	item[60];	// item
+	CHAR	fmt[40];	// input format
+} FORMF;
+name		must be no longer than 8 characters and the terminating NULL. 
+type		must be no longer than 8 characters and the terminating NULL.This element is no longer used to hold type information and is instead used to hole the VARIABLE name associated with the form field. (the name  type  was never changed!) 
+ident		is set to a value within the form designer and is used to reference a formfield.
+pos		is a positive offset. attrib  if MSN >0 background colour=palette[MSN] otherwise foreground      colour=palette[LSN]. size   0=single height & width, 1=single height double width, 2=double height & width. 
+class		may be one of ten values (defined in formhand.h):
+		FF_MAND - the field requires mandatory input
+		FF_OPTI  - the field is optional
+		FF_SRCH - the field contains the information required by            a primary search.
+		FF_TEXT - the field is a text output field
+		FF_MSRH - combination of FF_MAND and FF_SRCH
+		FF_MSEC - combination of FF_MAND and FF_SECS
+		FF_WAIT - this field is display only but requires a key press for the form processing to proceed.      
+		FF_DISP  - a display data only field      
+		FF_SECS - the field contains the information required by a secondary search.      
+		FF_TABL - this field is the outline of a table containing the references to all of the fields within the table.     Each of the above will be OR ed with FF_TBLF if the field referred to is contained within a table. 
+func		this may contain  "", "NONE", "NONE    " or a valid action name 
+item		this may contain one of three possible types of information depending on the formfield class.  If the class is FF_TEXT then this will contain the text reference name.  If class is FF_TABL then this will contain the unique identifiers of the fields contained in the table. If class is NOT FF_TEXT OR FF_TABL then this may contain a reference to a datastore field in the format table.field. 
+fmt		If class is FF_TABL then this will contain a formatted string of bytes defining the border style and column lengths of the table. If not it will contain the input/output picture  for the field i.e.  XX-999.AA.
+
+
+The FORM and FORMF structures are read from the form file by the function loadform() which calls getformidx() both functions are in formhand.c. The format of the form file is as follows:
+Name
+Size (Bytes)
+Value/description
+Signature
+2
+0x5A4B
+Version
+2
+The current version is 1
+FormSize
+2
+The number of bytes In a FORM structure (currently 25)
+FormFieldSize
+2
+The number of bytes In a FORMF structure (currently 134)
+Then for each form this section is repeated until the end of the file is reached
+Formname
+9
+The form name
+Formnumitem
+1
+The number of form fields
+Formaccess
+2
+The access level
+Formbounds
+4
+The boundaries
+Formtype
+2
+The type
+Formattribs
+1
+The attributes
+Formcuritem
+2
+The current item
+Formitems
+4
+Undefined value - for the formfield structure array pointer
+Then for each form field specified in Formnumitem this section is repeated
+FormFieldname
+9
+The form field name
+FormFieldtype
+9
+The form field variable name
+FormFieldident
+1
+The form field unique identifier
+FormFieldpos
+2
+The form field x.y co-ordinate (in characters)
+FormFieldattrib
+1
+The form field attribute
+FormFieldsize
+1
+The form field size
+FormFieldclass
+2
+The form field classification
+FormFieldfunc
+9
+The form field function (action)
+FormFielditem
+60
+The form field data item
+FormFieldfmt
+40
+The form field picture format
+End Of File
+
+All the forms are loaded by the first call to loadform and placed in an array of pointers to FORM called G_fid the number of forms in this array is defined by G_numidx.  As each form is processed it s definition is copied from G_fid into a FORM structure called G_form.  
+
+Datastores - G_store, G_nums, G_lib & G_numl 
+The Datastores are stored as 'C' structures in the file accessed via the global variables G_system and G_config the datastore file name is made up from the path in G_config and a filename made up of the 1-7 letter string in G_system followed by the letter  D  and the extension  .DAT . e.
+g.  if G_config =  CONFDIR\  and G_system =  TESTSYS . Then the file containing the datastore information is named   CONFDIR\TESTSYSD.DAT .  The file contains the datastore structures as outlined below :  There are two structures associated with datastore. These are STORE and LSTOREF (defined in 
+types.h):  STORE structure Each datastore is defined by a STORE structure giving it s name, the num
+ber of fields in the datastore (numitem), the primary key fields (key), the secondary key fields (s
+key) and up to 32 library indexes (li) that define the fields in the datastore.     typedef struct 
+{ // datastore    CHAR name[9]; // name    ULONG key;  // primary key - bit field (limits to 32 fie
+lds)    ULONG skey;  // secondary key bit field    UCHAR numitem; // number of fields in the datast
+ore    INT16 li[32]; // library indexes (LSTOREF)   } STORE;  name  maximum of 8 characters plus th
+e termination NULL. key   32 bits each, one set if a field is in the primary key skey  32 bits each
+, one set if a field is in the secondary key numitem a number between 1 and 32 specifying the valid
+ entries in the li array li    up to 32(numitem) library indexes, each referring to an entry in the
+ data      dictionary   LSTOREF structure Each datastore field is defined in the data dictionary by
+ an LSTOREF structure giving it s name, data type and length (len).    typedef struct {  // Data di
+ctionary field reference    CHAR name[9]; // name    CHAR type;  // e.g. A, X, 9.....    UCHAR len;
+  // length of field   } LSTOREF;  name  maximum of 8 characters plus the termination NULL. type   
+the data type may be one of the following:       9   - Numeric       A   - Alpha       D   - Date  
+     K   - Key stroke       L   - Lowercase alpha       M   - Money       P   - Password       T   
+Time       U   - Uppercase alpha       W  - Weight       X   - Alphanumeric with spaces       Z  
+Alphanumeric without spaces len  The actual length of the data field i.e.  99  would be length=2 The STORE and LSTOREF structures are read from the datastore file by the function loadsdata() whi
+ch is defined in dst.c. The format of the datastore file is as follows:  Name Size (Bytes) Value/de
+scription  NumStores 2 The number of STORE structures in the file  Then for each store this section
+ is repeated until NumStores is reached      Storename 9 The datastore name     StorePkey 4 The pri
+mary key     StoreSkey 4 The secondary key     Storenumitem 1 The number of datastore fields     St
+oreLi 64 The library indexes (32 * 2 bytes)  NumLStoreF 2 The number of LSTOREF structures in the f
+ile  Then for each LSTOREF this section is repeated until NumLStoresF is reached      Fieldname 9 T
+he data dictionary field name     FieldType 1 The data dictionary field type     FieldLength 1 The 
+data dictionary field length  End Of File     All the stores are loaded by the call to loadsdata() 
+and placed in an array of STORE s called G_store the length of G_store is G_nums . loadsdata also f
+ills an array of LSTOREF s called G_lib with length G_numl. To aid access speed when G_store and G_
+lib have been loaded the function loadsdata() then parses each library item and (depending on it s 
+type and length) sets the type to one of the following:   type=1 data length = 2 bytes  type=2 data
+length = 4 bytes  type=3 data length = len bytes  Actions - G_nbuf & G_numn The Actions are stored
+as  C  structures in the file accessed via the global variables G_system and G_config the action f
+ile name is made up from the path in G_config and a filename made up of the 1-7 letter string in G_
+system followed by the letter  I  and the extension  .DAT . e.g.  if G_config =  CONFDIR\  and G_sy
+stem =  TESTSYS . Then the file containing the action information is named   CONFDIR\TESTSYSI.DAT .
+The file contains the action structures as outlined below :  There is one structure associated wi
+th actions. This is NAMEINDEX (defined in types.h):  NAMEINDEX structure Each action is defined by 
+a NAMEINDEX structure giving it s name (n), type (t), token or variable buffer (b), a debug flag (d
+) and the offset in the datablock from when it was loaded (o).    typedef struct { // action name a
+rray    CHAR d;   // debug flag    CHAR t;   // type    CHAR n[9];  // name    ULONG o;   // offset
+ in the buffer    UCHAR *b;  // tokens or variable buffer   } NAMEINDEX;    n  name maximum of 8 ch
+aracters plus the termination NULL. t  the type may be one of four values (defined in instruct.h)  
+STATNAME - Static variable    VARIABLE - Normal variable    ANAME - Action    TABLE  - Lookup tab
+le b  the buffer containing either action tokens or the variable data space. d  a flag set to 1 if 
+this action is to be debugged (currently unused) o  the offset in the action file of the buffer (no
+t used after loading)  The NAMEINDEX structures are read from the action file by the function loada
+ctions () which is defined in actionc.c. The format of the action file is as follows:  Name Size (B
+ytes) Value/description  Signature 2 0x5A5A  NumActions 2 The number of STORE structures in the fil
+e  Then for each action this section is repeated until NumActions is reached      ActionDebug 1 The
+ action debug flag     ActionType 1 Tha action type     ActionOffset 4 The offset of the action in 
+in bytes from ActionDBlock below     Actionname 9 The action name  SizeDBlock 4 The size (in bytes)
+of the datablock ActionDBlock  ActionDBlock  SizeDBlock The action tokens and variable buffers  En
+d Of File     All the actions are loaded by the call to loadactions() and placed in an array of IND
+EXNAME s called G_nbuf the length of G_nbuf is G_numn. Each element of G_nbuf has the buffer (b) po
+pulated seperatly from the ActionDBlock and the offset (o) is no longer used.  Language The languag
+e file is a plain ASCII text file with each line containing a keyword followed by some parameter se
+tting(s).  If a keyword is unrecognized, it is assumed to be a comment and therefore discarded.  Th
+ere are a number of valid keywords available for use in the a language file for a full list please 
+refer to section ????nnn??? in the document ???????????????????.  The language file is read as one 
+block buy the function readlang () in config.c, and passed one line at a time to langln(config.c) a
+s each keyword is recognized, various global variables are set to reflect the values found. Font Ke
+yboard         function - module mapping Form Processing  Form handling    FORMHAND.C module struct
+ure  loadform   --getfedata  +--isform   +--getformidx  atextstr  ficmp  freeform  freeformidx  fre
+etext  fsort  loadformidx  +--getfedata  loadtext  +--freetext  orderform   --fsort  +--usort Form 
+processing  FORMPROC.C module structure  runform   --blankform   --prformname   --prformref     +--
+textstr   --validdt   --loaditem   --srchitem     +--fillform     +--loadffld        +--remtspace  
+fillform  +--updatest  clrform  fillfields  +--remtspace  findid  getitem  initform  +--clrform 
+ redrawform Menu processing  MENUPROC.C module structure  runmenu   --drawmenu  +--menucur  Report 
+processing  REPPROC.C module structure  runreport  +--dopage    --poutput    --tableoutput       --
+tablepbdr       --printtab         +--poutput      +--calctab   +--fillpform    +--loadpffld Table 
+processing  TABPROC.C module structure  tableinput   --checkflds   --gettabledata   --getnumrec   -
+tablebdr   --tabredraw      --readrecnum        +--getnumrec     +--getflddata   --setcheck   --al lto   --outfield      --readrecnum     +--getflddata   --finred      --tablebdr      --allto      -
+tablecur      --getnumrec      --tabredraw     +--outfield   --tablecur   --movecur      --firstfi
+eld      --lastfield     +--getnumrec   --upnamedatest   --readrecnum   --delrec     +--readrecnum 
+  --inputrec     +--upnamedatest   --lastfield   --flushtab  +--editfield    --getrecnum    --readr
+ecnum   +--getflddata  Field processing  FLDPROC.C module structure  inputstr   --chkfmt   --output
+keyname      --dstr        +--twodig      --tstr        +--twodig     +--applyformat       
+ +--chkfmt   --putcur     +--applyformat   --prdate   --prweight      --putcur     +--output  +--ch
+klen   +--applyformat Transaction log  TRANSLOG.C Transaction functions  FUNCTION.C Money processin
+g  MONEY.C Calculator  CALC.C module structure  proccalc   --resetaddlist   --dispaddlist     +--pr
+total   --helplist   --addline      --addon      --takeoff      --mulby      --divby      --addnewl
+ine     +--dispaddlist   --addtotln      --addnewline     +--dispaddlist   --prtotal  +--printaddli
+st Action Processing  Action loading/access  ACTIONC.C module structure  loadactions   --freeaction
+s     +--actionbuf  +--actiontype  actiondeb  actionname  actionofs  ancmp  findname   --actionname
+  +--ancmp  setactionbuf Action processing  ACTIONS.C module structure  inttok   --isdefstr   --equ
+als      --setvarib     +--setstatic         --getvarib        +--setvarib   --skip     +--ptok    
+    +--mprintf   --cpush   --savestatic      --isaction     +--getvarib   --restorestatics      --i
+saction     +--setstatic   --getvarib   --inttok   --psd   --cpop   --loadnewform      --dumpstate 
+savestate      --reststate     +--setdsacc   --subaction      --isaction      --loadnewform +--runtokens         --mprintf         --inttok        +--pstack   --keystroke   --dateswap   -
+fmtmatch   --runaction     +--subaction   --isfcdcode   --divspec   --delst   --disphotkeys     +-
+hotkeynav   --ptok  +--pstack Arithmetic operations  ARITH.C Token definition  INSTRUCT.H Global v ariable access  GLOBAL.C module structure  isglobal  +--findgname  getglobal  printglob  setglobal 
+Keyboard definitions  KEYDEF.H  KEYNAMES.H 3GL Actions access  CAPFUNC.H    FUNC.H CAPGPA.C  FUNCTI
+ON.C  General Processing  Configuration loading  CONFIG.C module structure  readconfig   --loaddefa
+ults     +--setvar   --setvar  +--readlang   +--langln    +--setvar  clrconfig   --clrvar  +--clrco
+nfigmem  datestr   --orddto  +--memleft  datetonum   --getday   --getmon   --getyear  +--orddfrom  
+getoffdet  readkeys  readoffdet  setoffdet  +--writeoffdet Datastore loading/setup  DST.C Message p
+rocessing  MESSAGE.C module structure  sendmsg   --sendmsg   --runbact      --actatpos     +--sendm
+sg   --finddev   --graphic      --passon      --actatpos      --sendmsg     +--addbkey     +--sendm
+sg  +--passon  adddev  asigndev   --devinlist   --finddg   --adddev  +--finddev  closedevices  init
+devices   --asigndev  +--finddev  prdevlist  restdevices  savedevices  Language loading/switching  
+LANG.C module structure  swaplang   --addlangname   --setuplmap  +--restoreform  adddevname  justbu
+tt  +--langstr    --setoplang   +--langtext  scmp Memory management  CONTROL.C module structure  my
+free   --myfreecheck     +--addrfind   --mymalloc   --mylist   --myrealloc   --mystrdup  +--bde  en
+dcheck  funcentry  funcexit  +--prchanges  memerr  memsig  OUTPB  OUTPW  +--OUTPB  setbase Definiti
+on of all Types  TYPES.H General include file  GPA.H (Generated by BGPAHEAD)  Devices  Keyboard & R
+eal Mode Access  SCANCODE.H KBDDEV.C module structure  kbd_control   --getkey      --checkkbbuf    
+runklfuncs         --realcmd        +--pokekey           +--realcmd     +--checkhot        +--p
+okekey   --keyflush   --kbd_startup      --setuprealbuf        +--realcmd      --ogetch      --poke
+key     +--loadkeymap   --kbd_shutdown     +--clearrealmode        +--realcmd   --kbd_restartup    
+ +--realcmd   --kbd_tmpshutdown     +--realcmd   --keyhit      --checkkbbuf     +--runklfuncs   --f
+keyhit     +--checkkbbuf   --fastgetkey     +--checkkbbuf   --repkey   --pokekey   --pokehkey      
+pokekey     +--skipnexthot   --peekkey      --checkkbbuf      --runklfuncs     +--checkhot   --ad
+dklfunc   --delklfunc   --addhotkey   --runklfuncs   --checkhot   --realcmd  +--loadkeymap  Screen 
+ TINTEXT.H VFONDEV.C module structure  vfscr_control   --addscrcmd     +--resetscrrec   --scr_reset
+cursor   --blank   --vfdbox   --vfdline   --scr_startup   --scr_restartup   --scr_shutdown    
+ +--resetscrrec    --scr_tmpshutdown   --drawlogo   --vfsink   --vfraise   --readfont   --isnew  +-
+-playscrcmds    --scr_reset    --cursor    --blank    --vfdbox    --vfdline    --drawlogo    --vfsi
+nk    --vfraise    --readfont   +--resetscrrec  setlights GPRIM.C  Database  PXENGINE.H PDXDEV.C mo
+dule structure pdx_control  --stinit    +--prerror  --msinit  --stexit    +--stcloseall    +--msclo
+se  --msexit  --streinit    +--stcloseall  --msreinit     --msexit    +--msinit  --msexist    +--ge
+tsnum  --stexist    +--dbexist    +--tabname  --stcreate     --mscreate     --dbexist     --tabname
+    +--prerror  --stdelete     --msdelete       +--getsnum     --stclose       +--msclose     --dbe
+xist     --tabname    +--prerror  --stopen     --msopen     --closeoldest       +--stclose     --st
+create     --tabname    +--prerror  --stclose  --stcloseall  --stnumrec     --msnumrec       +--get
+snum    +--stopen  --strecnum     --msrecnum       +--getsnum    +--stopen  --stread     --msread  
+     +--getsnum     --stopen    +--prerror  --stwrite     --mswrite        --getsnum        --mssrc
+hbuf          +--mscmp       +--msinsertrec          +--mscmp     --stopen     --prerror    +--stfl
+ush  --stdelrec     --msdelrec        --getsnum        --msread       +--msdeleterec     --stread  
+  +--prerror  --setupsel    +--stquickget     --msquickget     --stopen    +--dottrunc  --stsrch   
+stquickget     --mssrch        --getsnum       +--mssrchbuf     --stopen    +--prerror  --stsrc
+hp     --mssrchp        --getsnum       +--mssrchbuf     --stopen    +--prerror  --stbsslist     --
+msbsslist        --getsnum       +--mssrchbuf     --stnumrec     --stopen     --stquickget     --se
+lectrange       +--stquickget    +--totalflds  --stbsplist     --msbsplist        --getsnum       +
+mssrchbuf     --stopen     --selectrange    +--totalflds  --stssslist     --stopen     --stquickg
+et    +--selectrange  --stget    +--stquickget  --stquickget  --stquickput     --msquickput     --s
+topen    +--prerror  --stblank     --msblank       +--getsnum     --stopen    +--prerror  --stempty
+msempty       +--msdelete     --prerror    +--tabname  --stput    +--stquickput  --stflush  
+stgetrec     --stopen    +--prerror  --stputrec     --stopen    +--prerror  --sendrec    +--stget
+rec +--stmovedata     --stquickget    +--stquickput  Disk  PKWARE.H DISKDEV.C module structure  dis
+_control   --genufile     +--findfile      --freefind     +--fncmp   --setdinfo      --setpass     
+createcrcfile      --crcchk     +--calccheck   --formatdisk      --getdiskinfo        +--resetdi
+sk      --format_track        +--resetdisk     +--write_ss     +--resetdisk   --putdinfo      --cal
+ccheck     +--writedd   --getdinfo      --readdd     +--calccheck   --newdd   --datechk   --findfil
+e   --delfile     +--findfile   --renamefiles     +--findfile   --copyfile     +--findfile   --copy
+renfile     +--findfile   --freefind   --zipit      --findfile      --buf_init        +--buff_alloc
+buf_lseek        +--buf_flush      --sys_compress         --readbuff        +--buf_writebuf
+f           +--buf_write              +--buf_flush      --buf_close        +--buf_flush      --buf_
+write      --mangle     +--csum     +--csumcore  +--unzipit    --csum    --freefind    --mangle   +
+uncompress     --ustore     --readbuff    +--writebuff   Printing  CAPRNDEV.C module structure  p
+rn_control   --prn_reset   --prn_output      --flagerr        +--testpr      --putprn     +--addpli
+ne      --swithin     +--plcmp   --prn_startup      --prn_shutdown        +--freeprseqs      --getp
+rseqs         --freeprseqs        +--checkln           +--applyseq              +--getseqtok       
+          +--xtoi     +--prn_reset   --preol     +--sendseq      --seqset      --repeat     +--send
+seqln        +--putprn   --preop     +--sendseq   --movetoy      --seqset     +--sendseq   --prn_sh
+utdown   --outputform      --flagerr      --sendseq      --seqset      --movetoy      --movetox    
+seqset        +--sendseq      --setsize        +--sendseq      --setattr        +--sendseq  
+putprn     +--preop   --ppbox     +--prn_output   --ppline     +--prn_output   --ppline_plain
+     +--prn_output   --testpr   --flagerr   --sendseqn     +--sendseq   --buildplist     +--getprna
+me  +--pgblock    --prn_output    --putprn    --get3at   +--preol  Operating System services  OSSDE
+V.C module structure  oss_control  criticalerrorhandler      --savemsgregion    +--restmsgregion   
+releaseexceptionhandler   setexceptionhandler  setprotmodeint       +--criticalerrorhandlerSerial  
+Communications  COMMDEV.C module structure  comm_control   --rxstr     +--rxchar      --timeout    
+rxnotready     +--inchar   --rxstr     +--rxchar   --txstr     +--txchar      --timeout      --
+txnotready     +--outchar   --initport     +--setbaud  +--endport  Real to Protected Mode interface
+  Start up / playback / record  START.C module structure main apifunc   --pushkey     +--insertk  +
+setflags   +--sendkbdata beep bufferkey  +--placekey   +--movebp buildkeylist   --keyname  +--mov ebp criticalerrorhandler criticalerrorhandler  +--beep finrecorder getfreediskspace mykeyb  +--buff
+erkey scrcrc setplayback ticker   --scrcrc   --setflags  +--bufferkey Interface definitions  REALPR
+OT.H Error handling  EXCEPT.ASM Memory control / debugging  Configuration & Global structures  4GL 
+pre-parsing (tokenizing)  Implementation differences  (CAPTURE)  Austria (CTOS & Serve Customer)  T
+aiwan (Self Service)  UNISYS  Confidential Page   PAGE  20     DATE  \l  17/11/95           EMBED P
+Brush          device mapping screen  = VGA     
+

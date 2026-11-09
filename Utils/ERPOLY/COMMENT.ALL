@@ -1,0 +1,77 @@
+M ERASEPLY.C
+F erase_polygon
+S                        Function Definition Section                       */
+S erase a polygon using rectangular regions - called by GML
+D This function is called repeatedly to collect arguments off the command
+D line from GMLI on the first call the three parameters "add" the
+D number of polygons and the increment size should be passed. On subsequent 
+D calls the parameters should be the X and Y co-ordinates of one point in the
+D polygon.  When all the points have been collected this function then
+D calls DoPolyErase to do the work and then it frees the memory allocated 
+D for the polygon points and returns FALSE.
+D Any failure will also return FALSE
+R TRUE if more parameters are required else FALSE
+
+M ERASEPLY.C
+F GetUpLowBounds
+S Get the upper and lower bounds of the polygon
+D Get the upper and lower bounds of the polygon
+P The address of returned top Y co-ordinate
+P The address of returned bottom Y co-ordinate
+P The polygon points
+P The number of points in the polygon
+
+M ERASEPLY.C
+F Imcmp
+S Integer compare function for qsort()
+D Integer compare function for qsort()
+P The address of the first integer
+P The address of the second integer
+R a<b - (-1) a==b - 0 a>b - 1
+
+M ERASEPLY.C
+F GetPointsofIntersection
+S Get all the points along a line that are intersected by the polygon
+D Get all the points along a line that are intersected by the polygon,
+D returning a list sorted from left to right
+P The Y co-ordinate if the line
+P The polygon points
+P The number of points in the polygon
+R a sorted list of points, (-1) indicating the end of the list             
+
+M ERASEPLY.C
+F DoPolyErase
+S Erase the polygon by rectangular region
+D Erase the polygon by passing over each point in the polygon in the 
+D direction top to bottom and marking all the intersecting blocks for
+D deletion once the entire polygon has been covered,
+D any adjacent rectangles of the same width are merged.
+P The polygon points
+P The number of points in the polygon
+P The minimum height of each rectangle
+R always TRUE
+
+M ERASEPLY.C
+F GetAngle
+S Get the angle between two points
+D Get the angle between two points
+P The X coordinate of the first point
+P The Y coordinate of the first point
+P The second point
+R The angle between the two points
+
+M ERASEPLY.C
+F YAdjRect
+S Merge two adjacent rectangles of the same height
+D Merge two adjacent rectangles of the same height
+P The Current rectangle
+P The list of all rectangles
+R TRUE if the rectangle was merged with an adjacent one
+
+M ERASEPLY.C
+F EraseRect
+S Call the GMLI erase_region command for each rectangle in the list
+D Call the GMLI erase_region command for each rectangle in the list, as each
+D region is erased free the memory associated with the rectangle's list entry
+P The first element in the rectangle point list
+

@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical"
+	xmlns:base="base.*"
+	xmlns:mails="mails.*"
+	width="800" height="620"
+	preloader="base.PreLoadBar"
+	pageTitle="iSocietas"
+    backgroundColor="0xE7F3DF"
+	keyFocusChange="event.preventDefault();focusManager.getNextFocusManagerComponent(event.shiftKey).setFocus()"
+	initialize="init()" horizontalAlign="left" verticalAlign="top" verticalGap="0" 
+	paddingLeft="0" paddingTop="0" paddingRight="0" paddingBottom="0"
+	creationComplete="creatComplete()"  backgroundImage="{startBGImage}">
+	
+	<mx:Style source="css/styles.css" />
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.charts.chartClasses.DataDescription;
+			/* -----------------------------------------------------------------------------
+			IMPORT CLASSES
+			----------------------------------------------------------------------------- */
+			import mx.controls.Menu;
+			import mx.controls.Button;
+			import mx.containers.Canvas;
+			import mx.containers.VBox;
+ 	       	import mx.managers.ToolTipManager;
+			import mx.styles.StyleManager;
+			import mx.controls.Label;
+			import mx.controls.HRule;
+			import mx.containers.HBox;
+			import mx.containers.VBox;
+			import mx.containers.Panel;
+			import mx.core.Application;
+			import mx.rpc.events.ResultEvent;
+			import base.Menus;
+			import flash.ui.Keyboard;
+			import flash.net.SharedObject;
+			import base.StageDetection;
+			import mails.MailService;
+			import mails.Weight;
+			import mails.WeightType;
+			
+			/* -----------------------------------------------------------------------------
+			DECLARE VARIABLES
+			----------------------------------------------------------------------------- */
+			[Bindable]
+			[Embed(source="resources/BG.jpg")]
+			public var bgImage:Class;
+			[Bindable]
+			[Embed(source="resources/LoginBG.jpg")]
+			public var startBGImage:Class;
+			[Bindable]
+			public var tmpBGImage:Class=startBGImage;
+			[Bindable]
+			[Embed(source="resources/MailScreenBG.svg",mimeType="image/svg")]
+			public var MailsScreen:Class;
+			
+			public var mainPanel:VBox;
+	        public var menus:Menus;
+	        public var menuXML:XML=null;
+	        public var passwords:XML=null;
+	        public var creationIsComplete:Boolean=false;
+	        public var localConfiguration:SharedObject;
+			public var stageDetect:StageDetection;
+			public var mailService:MailService = new MailService;
+     
+			/* -----------------------------------------------------------------------------
+			METHODS
+			----------------------------------------------------------------------------- */
+   			public function handleKeyDown(event:KeyboardEvent) :void
+			{
+				var newKeyCode:uint = event.keyCode;
+			 
+				switch(newKeyCode)
+				{
+					case Keyboard.PAGE_UP: 
+						Application.application.verticalScrollPosition -= 200;
+						break;
+					case Keyboard.PAGE_DOWN:
+						Application.application.verticalScrollPosition += 200;
+						break;
+					case Keyboard.F1 :
+						Application.application.verticalScrollPosition = 0;
+						event.stopPropagation();
+						break;
+					case Keyboard.F10 :
+						Application.application.verticalScrollPosition -= 50;
+						event.stopPropagation();
+						break;
+					case Keyboard.UP :
+						Application.application.verticalScrollPosition -= 50;
+						break;
+					case Keyboard.DOWN :
+						Application.application.verticalScrollPosition += 50;
+						break;
+					case Keyboard.HOME :
+						homeClicked();
+						event.stopPropagation();
+						break;
+					case Keyboard.ESCAPE :
+						event.stopPropagation();
+						event.preventDefault();
+						prevClicked();
+						break;
+				}
+			}
+			public function stageEventListener(event:Event):void
+			{
+				login.stage.scaleMode=StageScaleMode.SHOW_ALL;
+				login.stage.align = StageAlign.TOP_LEFT;
+			}			
+			private function setStageScaleMode(target:DisplayObject):void
+			{
+				var parent:DisplayObject = target;
+				while (parent) {
+					if (parent is Stage) {
+						Stage(parent).scaleMode=StageScaleMode.SHOW_ALL;
+						break;
+					} else {
+						parent = parent.parent;
+					}
+				}				
+			}
+			private function init():void 
+			{
+				var passwordsLoader:URLLoader = new URLLoader(); 
+				passwordsLoader.addEventListener(Event.COMPLETE,loadPasswords);
+				passwordsLoader.load(new URLRequest("configuration/password.xml"));
+				var configLoader:URLLoader = new URLLoader(); 
+				configLoader.addEventListener(Event.COMPLETE,loadXML);
+				configLoader.load(new URLRequest("configuration/menus.xml"));
+				localConfiguration=SharedObject.getLocal("iSocietasConfiguration");
+				var user:String = localConfiguration.data.LoggedIn;
+				if ((localConfiguration.hasOwnProperty("LoggedIn")) && (user != null) && (user!= "")) {
+					userName.text=localConfiguration.data.LoggedIn;
+				}
+			}
+			private function prevClicked():void
+			{
+				menus.previous(mainCanvas);
+			}
+			private function homeClicked():void
+			{
+				menus.home(mainCanvas);
+			}
+			private function loadPasswords(e:Event):void
+			{
+				passwords=new XML(e.target.data);						
+		 	}
+			// handler for retrieved XML data
+			private function loadXML(e:Event):void
+			{
+				menuXML=new XML(e.target.data);						
+				if (creationIsComplete) {
+			        menus = new Menus(menuXML,mainCanvas,prevButton,homeButton);
+					menus.vs=appFrames;
+					menus.fs=formState;
+				}
+		 	}
+			private function loginReady():void
+			{
+					stageDetect=new StageDetection(login);
+					stageDetect.addEventListener(StageDetection.ADDED_TO_STAGE, stageEventListener);
+			}
+			private function creatComplete():void
+			{
+					creationIsComplete=true;
+					addEventListener(KeyboardEvent.KEY_DOWN, handleKeyDown);
+					mainCanvas.addEventListener(KeyboardEvent.KEY_DOWN, handleKeyDown);
+					
+			        ToolTipManager.enabled = true;
+			        ToolTipManager.showDelay = 1000;
+	        		ToolTipManager.hideDelay = 2000;
+	        		ToolTipManager.showEffect = fadeIn;
+					ToolTipManager.hideEffect = fadeOut;
+	
+			        StyleManager.getStyleDeclaration("ToolTip").setStyle("fontStyle","italic");
+			        StyleManager.getStyleDeclaration("ToolTip").setStyle("fontSize","19");
+			        StyleManager.getStyleDeclaration("ToolTip").setStyle("fontFamily","Arial");
+			        StyleManager.getStyleDeclaration("ToolTip").setStyle("color","#000060");
+					if (menuXML != null) {
+			        	menus = new Menus(menuXML,mainCanvas,prevButton,homeButton);
+ 						menus.vs=appFrames;
+ 						menus.fs=formState;
+					}	
+					var user:String = localConfiguration.data.LoggedIn;
+					if ((user == null) || (user == "")) {
+						userName.setFocus();
+					} else {
+						userName.text=user;
+			 			var date:Date = new Date;
+			 			dateDisplay.text=date.toDateString();
+						userNameDisplay.text=user;
+						appFrames.selectedIndex=1;
+						startBGImage=bgImage;
+					}
+			}
+			private function zipChanged(wLB:String,wOZ:String,fromZip:String,toZip:String):String
+			{
+				var weight:Weight = new Weight(Number(wLB)*16+Number(wOZ),WeightType.OUNCES);
+				weight.outputType=WeightType.LBOZ;
+				if ((fromZip.length > 4) && (toZip.length > 4)) {
+					var xml:XML=mailService.availableServices(weight,fromZip,toZip);
+					return xml.toXMLString();
+				}
+				return "";
+			}
+			import crypto.MD5;
+			import crypto.Hex;
+			private function toHash(data:String):String
+			{
+				var md5:MD5 = new MD5;
+				var src:ByteArray = new ByteArray;
+				src.writeMultiByte(data,"UTF-8");
+				var digest:ByteArray = md5.hash(src);
+				return Hex.fromArray(digest).toUpperCase();
+			}
+		 	private function checkPassword():void
+		 	{
+		 		if (passwords != null) {
+		 			for each (var passwd:XML in passwords.password) {
+		 				
+		 				if (passwd.@username.toUpperCase() == userName.text.toUpperCase()) {
+		 					if (passwd.@MD5 == toHash(password.text)) {
+								startBGImage=bgImage;
+					 			appFrames.selectedIndex=1;
+					 			userNameDisplay.text=userName.text.toUpperCase();
+					 			var date:Date = new Date;
+					 			dateDisplay.text=date.toDateString();
+								localConfiguration.data.LoggedIn=userName.text.toUpperCase();
+					 			password.text='';
+		 					}
+		 					break;
+		 				}
+		 			}
+		 		} else {
+						startBGImage=bgImage;
+			 			appFrames.selectedIndex=1;
+			 			userNameDisplay.text=userName.text.toUpperCase();
+			 			date=new Date;
+			 			dateDisplay.text=date.toDateString();
+						localConfiguration.data.LoggedIn=userName.text.toUpperCase();
+			 			password.text='';
+			 	}
+		 	}
+		]]>
+	</mx:Script>
+	<mx:Fade id="fadeIn" alphaFrom="0" alphaTo="1" duration="200"/>
+	<mx:Fade id="fadeOut" alphaFrom="1" alphaTo="0" duration="300"/>
+	<mx:WipeRight id="wipeRight" duration="500"/>
+	<mx:WipeLeft id="wipeLeft" duration="500"/>
+	<mx:Parallel id="wipeIn"  >
+		<mx:WipeLeft duration="200"/>
+		<mx:WipeDown duration="200"/>
+	</mx:Parallel>
+	<mx:Parallel id="wipeOut"  >
+		<mx:WipeRight duration="200"/>
+		<mx:WipeUp duration="200"/>
+	</mx:Parallel>
+	<mx:ViewStack id="appFrames" width="100%" height="100%" creationPolicy="all" selectedIndex="0">
+		<mx:Canvas id="login" label="Logon Screen" width="100%" height="100%"  backgroundImage="{tmpBGImage}" backgroundSize="100%" initialize="loginReady()">
+			<mx:Label y="275" text="User Name" fontSize="12" fontWeight="bold" textAlign="right" width="100" horizontalCenter="-100" fontFamily="Verdana" color="#000080"/>
+			<mx:TextInput y="273" fontSize="12" fontFamily="Verdana" color="#000080" fontWeight="bold" change="checkPassword()" id="userName" horizontalCenter="40"/>
+			<mx:Label y="303" text="Password" fontSize="12" fontWeight="bold" textAlign="right" width="100" horizontalCenter="-100" fontFamily="Verdana" color="#000080"/>
+			<mx:TextInput y="301" displayAsPassword="true" fontSize="12" fontFamily="Verdana" color="#000080" fontWeight="bold" change="checkPassword()" id="password" horizontalCenter="40"/>
+		</mx:Canvas>
+		<mx:VBox width="100%" height="100%" horizontalAlign="left" verticalAlign="top" verticalGap="0" >
+			<mx:VBox label="Main View" width="100%" verticalGap="0">
+				<mx:Button  width="100%" height="5" styleName="gradientRoundBaseSkin" enabled="false"/>
+				<mx:Button width="100%" height="5" styleName="gradientRoundBaseSkin" enabled="false"/>
+				<mx:Button width="100%" height="5" styleName="gradientRoundBaseSkin" enabled="false"/>
+				<mx:Canvas width="100%">
+					<mx:VBox width="100%" x="0" y="0" verticalGap="0">
+						<mx:HBox id="titleBarBG" width="100%" horizontalGap="0" borderColor="#2963A2" backgroundColor="#2963A2">
+							<mx:Spacer width="23"/>
+							<mx:VBox verticalGap="0" horizontalAlign="right">
+								<mx:Image source="@Embed('resources/Home.gif')"/>	
+ 							</mx:VBox>
+							<mx:Spacer width="100%"/>
+							<mx:VBox verticalGap="0" horizontalAlign="center" verticalAlign="middle">
+								<mx:Spacer height="2"/>
+								<mx:Image source="@Embed('resources/Small Web Logo.jpg')" />
+							</mx:VBox>
+						</mx:HBox>
+					</mx:VBox>
+					<mx:HBox x="0" y="0" width="100%" horizontalGap="0" >
+						<mx:Spacer width="20"/>
+						<mx:Button id="homeButton" buttonMode="true" label="Home" width="160" height="80" styleName="gradientRoundBaseSkin" 
+							icon="@Embed('resources/Home.gif')" labelPlacement="top" visible="false" textIndent="8" click="homeClicked();"/>
+						<mx:Spacer width="20"/>
+						<mx:Button buttonMode="true" label="Quantity" width="80" height="80" styleName="gradientRoundBaseSkin" 
+							icon="@Embed('resources/roundRectBtn.svg')" labelPlacement="top" textIndent="8" />
+						<mx:Spacer width="20"/>
+						<mx:Button id="prevButton" buttonMode="true" label="Prev" width="80" height="80" styleName="gradientRoundBaseSkin" 
+							 icon="@Embed('resources/Prev.gif')" labelPlacement="top" textIndent="8" visible="false" click="prevClicked();"/>
+						<mx:Spacer width="20"/>
+						<mx:Button buttonMode="true" label="Undo" width="80" height="80" styleName="gradientRoundBaseSkin"  
+							labelPlacement="top" icon="@Embed('resources/Recycle.gif')" textIndent="8"/>
+						<mx:Spacer width="20"/>
+						<mx:Button buttonMode="true" label="Help" width="80" height="80" styleName="gradientRoundBaseSkin" 
+							icon="@Embed('resources/Help.gif')" labelPlacement="top" textIndent="8"/>
+						<mx:Spacer width="40"/>
+						<mx:Button buttonMode="true" label="Susp" width="80" height="80" styleName="gradientRoundBaseSkin"  
+							labelPlacement="top" icon="@Embed('resources/Suspend.gif')" textIndent="8" />
+					</mx:HBox>
+				</mx:Canvas>
+			</mx:VBox>
+			<mx:ViewStack id="formState" width="100%" height="100%" >
+				<mx:HBox showEffect="wipeOut" hideEffect="wipeIn"  label="menu" width="100%" height="520" horizontalScrollPolicy="off" verticalScrollPolicy="off" verticalGap="0" >
+					<mx:Spacer width="5"/>
+					<mx:VBox>
+						<mx:Canvas height="100%" id="mainCanvas" horizontalScrollPolicy="off" verticalScrollPolicy="off"/>
+			  			<mx:Spacer width="600" height="1"/>
+					</mx:VBox>
+					<mx:Button enabled="false" width="4" height="100%"/>
+					<mx:Canvas height="100%" width="100%" >
+						<mx:Image source="resources/clock.png" horizontalCenter="0" verticalCenter="0"/>
+						<mx:Label y="343" horizontalCenter="0" textAlign="center" id="stockUnitDisplay" text="None" fontWeight="bold"/>
+						<mx:Label y="301" horizontalCenter="0" textAlign="center" id="userNameDisplay" fontWeight="bold"/>
+						<base:Clock width="85" height="85"  id="clock" alpha="1" horizontalCenter="-2" verticalCenter="-82"/>
+						<mx:Label y="257" horizontalCenter="0" textAlign="center" id="dateDisplay" fontWeight="bold"/>
+					</mx:Canvas>
+				</mx:HBox>
+				<mx:VBox label="mails" showEffect="wipeIn" hideEffect="wipeOut" width="100%" height="100%" horizontalScrollPolicy="off" verticalScrollPolicy="off" verticalGap="0" >
+					<mx:Spacer height="10" width="100%"/>
+					<mx:HBox width="100%" height="100%" horizontalGap="0" verticalAlign="middle">
+						<mx:Spacer width="15" height="100%"/>
+						<mx:Canvas width="100%" height="100%" horizontalScrollPolicy="off" verticalScrollPolicy="off" >
+							<mx:HBox x="0" y="0" width="100%" height="100%" horizontalGap="0" horizontalScrollPolicy="off" verticalScrollPolicy="off" >
+								<mx:Panel width="110" height="100%" layout="absolute" cornerRadius="20" title="Tomorrow" id="day0" borderThicknessLeft="2" borderThicknessRight="2" borderThicknessTop="0" borderThicknessBottom="0" borderThickness="0" fontSize="12" fontFamily="Verdana" backgroundAlpha=".5" backgroundColor="#FFFFFF" alpha=".5" textAlign="center" headerHeight="20">
+								</mx:Panel>
+								<mx:Panel width="110" height="100%" layout="absolute" cornerRadius="20" title="Saturday" id="day1" borderThicknessLeft="2" borderThicknessRight="2" borderThicknessTop="0" borderThicknessBottom="0" borderThickness="0" fontSize="12" fontFamily="Verdana" backgroundAlpha=".5" backgroundColor="#C0C0C0" alpha=".5" textAlign="center"  headerHeight="20">
+								</mx:Panel>
+								<mx:Panel width="110" height="100%" layout="absolute" cornerRadius="20" title="Monday" id="day2" borderThicknessLeft="2" borderThicknessRight="2" borderThicknessTop="0" borderThicknessBottom="0" borderThickness="0" fontSize="12" fontFamily="Verdana" backgroundAlpha=".5" backgroundColor="#FFFFFF" alpha=".5" textAlign="center" headerHeight="20">
+								</mx:Panel>
+								<mx:Panel width="110" height="100%" layout="absolute" cornerRadius="20" title="Tuesday" id="day3" borderThicknessLeft="2" borderThicknessRight="2" borderThicknessTop="0" borderThicknessBottom="0" borderThickness="0" fontSize="12" fontFamily="Verdana" backgroundAlpha=".5" backgroundColor="#C0C0C0" alpha=".5" textAlign="center" headerHeight="20">
+								</mx:Panel>
+								<mx:Panel width="110" height="100%" layout="absolute" cornerRadius="20" title="Wednesday" id="day4" borderThicknessLeft="2" borderThicknessRight="2" borderThicknessTop="0" borderThicknessBottom="0" borderThickness="0" fontSize="12" fontFamily="Verdana" backgroundAlpha=".5" backgroundColor="#FFFFFF" alpha=".5" textAlign="center" headerHeight="20">
+								</mx:Panel>
+								<mx:Panel width="110" height="100%" layout="absolute" cornerRadius="20" title="Thursday" id="day5" borderThicknessLeft="2" borderThicknessRight="2" borderThicknessTop="0" borderThicknessBottom="0" borderThickness="0" fontSize="12" fontFamily="Verdana" backgroundAlpha=".5" backgroundColor="#C0C0C0" alpha=".5" textAlign="center" headerHeight="20">
+								</mx:Panel>
+								<mx:Panel width="110" height="100%" layout="absolute" cornerRadius="20" title="Friday" id="day6" borderThicknessLeft="2" borderThicknessRight="2" borderThicknessTop="0" borderThicknessBottom="0" borderThickness="0" fontSize="12" fontFamily="Verdana" backgroundAlpha=".5" backgroundColor="#FFFFFF" alpha=".5" textAlign="center" headerHeight="20">
+								</mx:Panel>
+							</mx:HBox>
+							<mx:VBox x="0" y="0" width="100%" height="100%" verticalGap="2" horizontalScrollPolicy="off" verticalScrollPolicy="off" >
+								<mx:Spacer height="20" width="100%"/>
+								<mx:HBox width="100%" horizontalGap="2" horizontalScrollPolicy="off" verticalScrollPolicy="off"  height="25%">
+									<base:MailPanel price="$10.99" description="Some description data here" iconSource="configuration\images\SIExpressMail.gif" width="108" borderStyle="none"  shadowDirection="right" shadowDistance="4"/>
+									<base:MailPanel iconSource="configuration\images\SIExpressMail.gif" width="108" borderStyle="none"/>
+									<base:MailPanel width="218"  iconSource="configuration\images\SIExpressMail.gif" borderStyle="none"/>
+									<mx:Spacer height="100%" width="218"/>
+									<base:MailPanel width="218"  iconSource="configuration\images\SIExpressMail.gif"/>
+								</mx:HBox>
+								<mx:HBox width="100%" horizontalGap="2" horizontalScrollPolicy="off" verticalScrollPolicy="off" height="25%">
+									<base:MailPanel iconSource="configuration\images\SExpressMail.gif" width="108"/>
+									<base:MailPanel iconSource="configuration\images\SExpressMail.gif" width="108"/>
+									<base:MailPanel iconSource="configuration\images\SExpressMail.gif" width="108"/>
+									<base:MailPanel width="328"  iconSource="configuration\images\SIExpressMail.gif"/>
+								</mx:HBox>
+								<mx:HBox width="100%" horizontalGap="2" horizontalScrollPolicy="off" verticalScrollPolicy="off" height="25%">
+									<base:MailPanel iconSource="configuration\images\SIExpressMail.gif" width="108"/>
+									<base:MailPanel iconSource="configuration\images\SIExpressMail.gif" width="108"/>
+									<mx:Spacer height="100%" width="218"/>
+									<base:MailPanel width="438"  iconSource="configuration\images\SIExpressMail.gif"/>
+								</mx:HBox>
+								<mx:HBox width="100%" horizontalGap="2" horizontalScrollPolicy="off" verticalScrollPolicy="off" height="25%">
+									<mx:Spacer height="100%" width="328"/>
+									<base:MailPanel width="438"  iconSource="configuration\images\SIExpressMail.gif"/>
+								</mx:HBox>
+							</mx:VBox>
+						</mx:Canvas>
+						<mx:Spacer width="15" height="100%"/>
+					</mx:HBox>
+					<mx:Spacer height="10" width="100%"/>
+					<mx:HBox width="100%" height="80" verticalAlign="middle">
+						<mx:Label text="Weight:" fontSize="18" color="#004080"/>
+						<mx:TextInput fontSize="18" width="50" color="#004080" backgroundAlpha="0.88" text="2" textAlign="right" id="weightPounds">
+							<mx:change>zone.text=zipChanged(weightPounds.text,weightOunces.text,sourceZip.text,destZip.text)</mx:change>
+						</mx:TextInput>
+						<mx:Label text="lb" fontSize="18" color="#004080"/>
+						<mx:TextInput fontSize="18" width="36" color="#004080" backgroundAlpha="0.88" text="1" textAlign="right" id="weightOunces">
+							<mx:change>zone.text=zipChanged(weightPounds.text,weightOunces.text,sourceZip.text,destZip.text)</mx:change>
+						</mx:TextInput>
+						<mx:Label text="oz" fontSize="18" color="#004080"/>
+						<mx:VBox horizontalAlign="right">
+							<mx:HBox>
+								<mx:Label text="Source:" fontSize="18" color="#004080"/>
+								<mx:TextInput fontSize="18" width="76" color="#004080" backgroundAlpha="0.88" text="90210" textAlign="right" id="sourceZip" change="zone.text=zipChanged(weightPounds.text,weightOunces.text,sourceZip.text,destZip.text)"/>
+							</mx:HBox>
+							<mx:HBox>
+								<mx:Label text="Destination:" fontSize="18" color="#004080"/>
+								<mx:TextInput fontSize="18" width="76" color="#004080" backgroundAlpha="0.88" text="02142" textAlign="right" id="destZip" change="zone.text=zipChanged(weightPounds.text,weightOunces.text,sourceZip.text,destZip.text)"/>
+							</mx:HBox>
+						</mx:VBox>
+						<mx:TextArea id="zone" wordWrap="true" editable="false" backgroundAlpha="0.0" width="100%" height="100%"/>
+					</mx:HBox>
+					<mx:Spacer height="10" width="100%"/>
+				
+				</mx:VBox>
+			</mx:ViewStack>
+		</mx:VBox>
+	</mx:ViewStack>
+</mx:Application>

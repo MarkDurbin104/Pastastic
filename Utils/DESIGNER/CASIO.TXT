@@ -1,0 +1,47 @@
+a)   ON/OFF
+
+    The OM/OFF switch has three positions:
+
+        1       "power off"     -  OFF
+        2       "play"          -  (normal) Play mode
+        3       "record"        -  record mode
+
+        In position 3 (record mode) the keyboard can be set to play back
+        the a tune recorded by you. 
+
+        If the keyboard has been left switched ON for more than 5 minutes
+        without any key presses, the power light will automatically go out
+        and the keyboard will switch off.  To switch the keyboard back on
+        move the ON/OFF switch to OFF and back to ON.
+
+
+b)   VOICE SELECT
+
+    The VOICE SELECT switch has four positions:
+
+        1       "normal"
+        2       "solo 1"
+        3       "solo 2"
+        4       "chord"
+
+    When switch (a) is in the "play" mode the position of this switch selects
+    between normal play and chord play, where positions 1,2 and 3 have the 
+    same effect.
+
+    When switch (a) is in "record" mode the position of this switch selects
+    which voice you are currently recording.
+
+        "normal" & "solo 1" both record  the first  voice
+        "solo 2"                 records the second voice
+        "chord"                  records the chord and rhythm
+
+c)  VOLUME CONTROL
+
+d)  portamento and vibrato
+
+        Portamento sets how the keyboard responds between two key-presses.
+
+        i.e
+        
+                
+

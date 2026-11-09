@@ -1,0 +1,649 @@
+4.1 Messaging.
+
+4.1.1 Introduction.
+Each of the functions performed by OSCAR on the file space can be controlled by messages passed to the card
+via the serial line.  Each command has a unique identifier and is performed independently.  Thus the action of a given
+command does not depend upon the proceeding commands.  Obviously the result of a command will depend upon the
+preceding commands.
+The message protocol described here conforms to ISO/IEC 7816/3  T=0. Here we briefly touch on the aspects of
+ISO/IEC 7816/3 that directly affect the operation of an OSCAR Smart Card.   For more complete detail see the ISO
+specification.
+4.1.2 Line protocol.
+The elementary time unit (ETU) is 372/CLK.  Each character consists of 1 start bit, 8 bits of data,  1 Parity bit, 1
+stop bit and 1 guard bit.  Data bits are presented serially 1 bit per ETU least significant bit first with Mark = +5V and
+Space = 0V. Parity is Even.  Thus each character takes 11 ETUs (12 including guard time).
+If a parity error occurs the receiver places a Space on the line for 1 ETU starting 1/2 ETU into the stop bit and
+continuing 1/2 ETU into the Guard time.  The transmitter observes the line between Stop and Guard bits and if the
+line is low a retransmission of the character is performed after a hold off of 2 ETUs.
+Using the standard 3.5792 MHz CLK the data is presented at 9600 baud, 8 bits per word, even parity and with 2
+stop bits.
+
+4.1.3 Command Protocol.
+Superimposed on the line protocol a command protocol controls access to the card.  Each command is presented
+as a 5 byte instruction request of the form:- CLA,INS,P1,P2,P3  followed by data if required.
+
+4.1.3.1 Command Header.  CLA, INS, P1, P2, P3.
+CLA,  Instruction Class.  6 classes of instruction are used by OSCAR.
+	CLA
+	10h	status functions.
+	11h	data object selection.
+	12h	data object generation.
+	13h	read functions
+	14h	write functions
+	15h	encryption functions
+
+INS, Instruction.  Within each class the instruction is identified here.  The direction of any data to be transferred
+can be deduced from the class and instruction values.
+P1,P2, are parameters passed to the instruction,  usually in the form of an offset within a file.
+P3 is the size of the data block to be sent or received.  For read operation P3 = 0 is interpreted as 256 bytes to
+read.  For write operations P3 = 0 is interpreted as no writes to perform.
+
+
+4.1.3.2 Procedure Bytes. ACK, NULL, SW1.
+Following the command the card will respond with a procedure byte. ACK, NULL or SW1.
+ACK.  Since the VPP is not used on OSCAR cards only 2 ACK values can be expected.  ACK = INS  or ACK =
+~INS.  If ACK = INS all the remaining data bytes (Total = P3) are to be transmitted.  If ACK = ~INS the next byte is
+to be transmitted.  In practice commands requiring a lot of data to be passed to the card will request the data 1 byte at
+a time,  and commands sending data from the card,  or requesting a few bytes to be sent,  will send the lot all at once.
+NULL ='60h'.  This byte is sent to reset the work waiting time out.  If nothing is heard from the card after 9600
+ETUs it is assumed to have become 'unresponsive' and in need of a reset.  If however a command takes longer than
+9600 ETUs to complete it may send NULLs every now and again to prevent time out.  No other action is taken on
+reception of a NULL.
+SW1= '6xh' or '9xh'. End of sequence byte, this marks the end of the command.  SW1 may be sent before all the
+data has been taken or sent.  SW1 is always followed by 1 extra byte, SW2.
+The combination of SW1 & SW2 indicated the finishing status of the command as shown in the following table..
+SW1	SW2	Status
+
+90h	00h	Normal/Successful ending.
+
+6Eh	xxh	Unknown CLA.
+6Dh	xxh	Unknown INS.
+6Bh	xxh	P1,P2 incorrect.
+67h	xxh	P3, length incorrect.
+6Fh	xxh	General undefined error.
+
+90h	01h	Success ... But Request result next.
+91h	xxh	Command related errors
+	00h	Raw card, unformatted.
+	01h	Unknown virtual card.
+	02h	Unknown file.
+	03h	No permission.
+	04h	No room.
+	05h	Attempt to duplicate.
+	06h	Phantom card, read blocked.
+	07h	No read permission.
+	08h	No write permission.
+	09h	No password file.
+	0Ah	Bad password, attack counter
+inc'ed.
+	0Bh	Block will overflow file bounds.
+	0Ch	No encryption key defined.
+	0Dh	RDRES too late.
+	0Eh	Password is Locked.
+	0Fh	Read or Write to encrypted file.
+
+
+5. Messages.
+All messages, with the exception of RESET, are divided into 1 of 6 'Classes'.  All commands within a class
+perform related tasks. Eg. status requests, or cryptographic functions.  Similarly all instructions within a class have the
+same I/O properties. Eg.  all status instructions read data and all selection instructions write data.  No instructions
+have both I and O but all the security instructions Input data generating an 8 byte result that can be output by a
+RDRES instruction from the Read class.
+
+5.1 Hardware generated messages.
+Only reset falls into this category and is returned by the card after the card RST line has been activated.
+
+5.1.1 RESET.
+Generated by hardware.
+Response.
+
+Initial Character	3Bh	1
+T0	0fh	1
+historical chars		15
+
+Reset is defined by ISO 7816-3,  and may change in accordance with this standard.  Future releases of OSCAR
+may support more protocols than just T=0,  such enhancements will be reflected in the reset message.
+Therefore it is important that the reader does not assume all OSCAR cards will exactly respond as above.
+However all OSCAR cards will support T=0 with all the default parameters as the default protocol, and all OSCAR
+cards will send 15 historical characters.
+
+
+5.2 Class 10h:  Status Instructions.
+The status instructions in this class all output data from the card.
+CDIR & FDIR commands are unique in that the volume of data they generate may not be known to the reader
+when the request is made.  As such it is impossible to accurately tell the size of the data field in P3.  However using P1
+& P2 to indicate where to start and P3 to indicate the size of the field it is possible to collect all the output with normal
+CLA,INS... instruction packets.
+P1,2 = 0 & P3 = 10 will collect the first 10 bytes of the message.
+P1,2 = 10 & P3 = 10 will collect the second 10 bytes of the message.
+P1,2 = 20 & P3 = 10 will collect the third 10 bytes of the message.
+In general P1,P2 = x | 0 <= x < 2^16, and P3 = y | 1<= y <=256,   will result in y chars being read starting at the
+xth in the output message.  space between the last message character and the end of the receive buffer will be packed
+with NULLs (00h).
+On a known card with a known card/file structure the size of the returned data record will not vary.  Only on
+cards where new Virtual cards can be created or Files created & deleted will the record size vary.
+
+
+5.2.1 INS 0: FRCARD.
+This command requests the amount of free space available, in the physical card, to make more virtual cards in.
+Message out.
+
+CLA	10h	1
+INS	00h	1
+P1	00h	1
+P2	00h	1
+P3	02h	1
+DATA
+free space lsb,msb	x	2
+
+
+
+5.2.2 INS 2: CDIR.
+This command requests a list of the current virtual cards in the physical card.
+Message out.
+
+CLA	10h	1
+INS	02h	1
+P1,2  record offset	x	2
+P3  window size	x	1
+DATA		
+
+The format of the returned data is as follows.
+any number of
+	'C'	1
+card name	n	1
+
+followed by
+	00h	1
+
+
+5.2.3 INS 4: FRFILE.
+This routine returns the free space in the currently selected virtual card,  its name, and the currently selected file.
+Message out.
+
+CLA	10h	1
+INS	04h	1
+P1	00h	1
+P2	00h	1
+P3	04h	1
+DATA	x	4
+
+The format of the returned data is as follows.
+
+current virtual card	n	1
+current selected file	n	1
+free space lsb,msb	n	2
+
+
+5.2.4 INS 6: FDIR.
+This routine returns the names, sizes and properties of all the files in the currently selected card.
+Message out.
+
+CLA	10h	1
+INS	06h	1
+P1,2  record offset	x	2
+P3  window size	x	1
+DATA	
+
+The format of the returned data is as follows.
+any number of
+	'F'	1
+file name	n	1
+file size lsb,msb	n	2
+file attributes	n	1
+
+followed by
+	00h	1
+
+
+5.3 Class 11h:  Selection Instructions.
+All selection instructions input data to the card.  As usual success or failure is indicated by SW1,2 at the end of
+the instruction.
+
+5.3.1 INS 0: SELCARD.
+This command selects a new virtual card as the current working card.
+Message out.
+CLA	11h	1
+INS	00h	1
+P1, virtual card number	x	1
+P2	00h	1
+P3	00h	1
+
+
+
+5.3.2 INS 2: SELFILE.
+This command selects a file (00h.. ffh) as the current working file to which all file related commands apply.
+Message out.
+CLA	11h	1
+INS	02h	1
+P1, working file name	x	1
+P2	00h	1
+P3	00h	1
+
+
+
+5.3.3 INS 4: SELPWD.
+This command matches the indicated password with the encrypted password in the data block.  If successful the
+password permission is enabled.
+Message out.
+CLA	11h	1
+INS	04h	1
+P1, password # (1..6)	x	1
+P2	00h	1
+P3	08h	1
+DATA
+encrypted password	binary	8
+
+
+5.3.4 INS 6: SELMAC.
+This command selects an 8 byte field form the currently selected file to act as the MAC Key.  As the file contents
+are neither altered or disclosed the selection is independent of the read/write attributes.
+Message out.
+
+CLA	11h	1
+INS	06h	1
+P1, P2 offset	x	2
+P3	00h	1
+
+
+
+5.3.5 INS 8: DSELPWD.
+This command allows the password permission for the selected password to be disabled (when enabled). This has
+no effect when password permission is not enabled.
+Message out.
+CLA	11h	1
+INS	08h	1
+P1,password#(1..6)	x	1
+P2	00h	1
+P3	00h	1
+
+
+5.3.6 INS A: SELETU.
+This command allows the elementary time unit to be altered according to the selected serial clock applied to the
+card.
+P1=0	etu=clk/372 (default)
+P1=1	etu=clk/186
+P1=2	etu=clk/510
+P1=3	etu=clk/255
+Message out
+
+CLA	11h	1
+INS	0Ah	1
+P1	0...3	1
+P2	0	1
+P3	0	1
+
+
+5.4 Class 12h:  Generation Instructions.
+All instructions in this class transfer data to the card.  After presentation of the instruction header the card will
+ACK to request the data or SW1,2 to indicate an error.  After data transfer SW1,2 will indicate success or failure.
+
+5.4.1 INS 0: MKCARD.
+Make card makes a new virtual card of the size requested.  Obviously there are also memory overheads in
+making a new card.  They are 77 bytes for the card structures and password file.  In order to make a card with 100
+bytes of file space 177 bytes of card space must be available.  See FRCARD.
+Message out.
+CLA	12h	1
+INS	00h	1
+P1	00h	1
+P2	00h	1
+P3	03h	1
+DATA
+Card name	0..254	1
+Card Size lsb,msb	n	2
+
+
+5.4.2 INS 2: MKFILE.
+Make file like make card incurs some overheads beyond the size of the file.  They are 6 bytes to hold name, size,
+and working pointers.  Hence to create a file of 10 bytes 16 bytes of free file space are needed.  See FRFILE.
+Message out.
+
+CLA	12h	1
+INS	02h	1
+P1	00h	1
+P2	00h	1
+P3	03h	1
+DATA
+File Size lsb,msb	n	2
+File attribute Byte	n	1
+
+
+5.4.3 INS 4: RMFILE.
+Remove file will remove the reference to the selected file from the file descriptor table and free up the space it
+occupied in memory for other files to use.  Garbage collection ensures that the file space does not become fragmented.
+The memory once occupied by removed files is filled with zeros to wipe out all ghost.
+Message out.
+
+CLA	12h	1
+INS	04h	1
+P1	00h	1
+P2	00h	1
+P3	00h	1
+
+5.4.4 INS 6: CHAT.
+An attribute value for either read or write can be written to the attribute byte of a file.  Attributes in the range 0 to
+Fh can be written.  Read or Write attribute is selected by the second parameter 'R','W'.
+Only Read or Write attribute can be changed in any one instruction,  to change both 2 CHAT commands are
+required.
+Message out.
+
+CLA	12h	1
+INS	06h	1
+P1, new attribute	x	1
+P2,	'R'|'W'	1
+P3	00h	1
+
+
+5.5 Class 13h:  Read Instructions.
+All read instructions cause the card to output data.  After presentation of the instruction there will be an ACK
+then the data will follow.  SW1,2 indicate all the usual success and error conditions.
+
+5.5.1 INS 0: READC.
+Read data in clear from the currently selected file.  If the file has read encrypted attribute set then the instruction
+will fail.
+CLA	13h	1
+INS	00h	1
+P1, P2 file offset	x	2
+P3, Record size	x	1
+DATA	binary	x
+
+5.5.2 INS 2: READE.
+Read data encrypted from the currently selected file.  Always reads 8 byte field.  Data is encrypted with the
+current session key before being sent to the reader.
+
+CLA	13h	1
+INS	02h	1
+P1, P2 file offset	x	2
+P3, Record size	08h	1
+DATA
+	binary	8
+
+
+5.5.3 INS 4: RDRES.
+This instruction reads the 8 byte contents of the result register as filled by a Class 15 encryption function.  If any
+other instruction has been executed since the completion of the encryption them this instruction will return all 00's.
+
+CLA	13h	1
+INS	04h	1
+P1	00h	1
+P2	00h	1
+P3	08h	1
+DATA
+result	binary	8
+
+
+
+5.5.4 INS 6: RDVER
+This command reads the version data. The version data is 15 bytes long and is composed of the version number
+and the EEPROM memory size. The version is stored in ROM.
+
+CLA	13h	1
+INS	06h	1
+P1	00h	1
+P2	00h	1
+P3	0Fh	1
+DATA
+Version data	binary	15
+
+
+
+5.6 Class 14h:  Write Instructions.
+Write instructions all cause the card to input data and store it.  After presentation of the instruction the card will
+ACK to request the data and as usual SW1,2 indicate completion status.
+
+5.6.1 INS 0: WRITEC.
+Write data to the currently selected file.  If the file has write attribute set to encrypted then the instruction will
+fail..
+CLA	14h	1
+INS	00h	1
+P1, P2 file offset	x	2
+P3, Record size	x	1
+DATA
+data to write	binary	x
+
+
+5.6.2 INS 2: WRITEE.
+Write data encrypted data to the currently selected file.  The data field will be decrypted by the current session
+key before being stored in the file.
+
+CLA	14h	1
+INS	02h	1
+P1, P2 file offset	x	2
+P3, Record size	08h	1
+DATA
+data to write	binary	8
+
+
+5.6.3 INS 4: NEWPWD.
+This instruction replaces a password in the password file subject to the appropriate permissions.
+
+CLA	14h	1
+INS	04h	1
+P1, password # (1..6)	x	1
+P2	00h	1
+P3	08h	1
+DATA
+encrypted password	binary	8
+
+
+5.7 Class 15h:  Encryption Instructions.
+This class of instructions forms a special group of commands.  All of them take data as input and generate an
+eight byte result.  The result is stored in a special volatile register.  This register can only be read by the RDRES
+command.  Any other instruction after a Class 15 instruction voids the value in the register.
+Because of the RDRES method of returning results all Class 15 instructions are data input instructions to the
+card.
+
+
+5.7.1 INS 0: SELKEY.
+Here the indicated 8 byte field within the currently selected file is used as the base for the encryption key.  The
+card generates an 8 byte pseudo random sequence,  held in the result register,  to be XOR-ed with the contents of the
+indicated field.  This function generates the Encryption key.
+
+CLA	15h	1
+INS	00h	1
+P1,P2 field offset	x	2
+P3	00h	1
+
+
+5.7.2 INS 2: ENCDAT.
+Eight bytes are taken in by the card, and  encrypted. The resulting 8 bytes are stored in the result register.
+
+CLA	15h	1
+INS	02h	1
+P1 En/De-crypt	'E'	1
+P2	00h	1
+P3	08h	1
+DATA
+string to cypher	binary	8
+
+
+
+5.7.3 INS 4: MAC.
+The data block is taken by the MAC function generator and a MAC value placed in the RDRES holding register.
+The MAC function is simply The first 8 bytes of data encrypted with the MAC key, subsequent 8 byte blocks are in
+turn XOR'ed with the previous result and DES encrypted themselves.  The final block is filled with zeros if necessary
+to make a full 8 bytes, XOR'ed and Encrypted as usual.  The first 4 bytes of the result are significant and are returned
+by the RDRES.
+
+CLA	15h	1
+INS	04h	1
+P1	00h	1
+P2	00h	1
+P3	x	1
+DATA
+message 	binary	x
+
+
+6. Considerations.
+Open free access to a blank card is easy for the distributor,  but difficult for unauthorised third parties.
+Access to all features is possible so long as they have not been deliberately locked.
+Failure to protect passwords by an institution controlling a virtual card does not affect the security of any of the
+other virtual cards within the device.
+No commands allow direct access to the card's memory.
+All reading and writing to files is confined to the file.  It is not possible to read or write outside the limits of a
+file.
+A distributor can, in future card releases include more virtual cards in his cards and still maintain compatibility
+with previously released cards.
+OSCAR is 'FUTURE PROOF'.
+
+
+7. Appendices
+
+7.1 Instruction CLA and INS Numbers.
+
+CLA	INS	FUNCTION
+10h	00h	FRCARD
+	02h	CDIR
+	04h	FRFILE
+	06h	FDIR
+11h	00h	SELCARD
+	02h	SELFILE
+	04h	SELPWD
+	06h	SELMAC
+	08h	DSELPWD
+	0Ah	SELETU
+12h	00h	MKCARD
+	02h	MKFILE
+	04h	RMFILE
+	06h	CHAT
+13h	00h	READC
+	02h	READE
+	04h	RDRES
+	06h	RDVER
+14h	00h	WRITEC
+	02h	WRITEE
+	04h	NEWPWD
+15h	00h	SELKEY
+	02h	ENCDAT
+	04h	MAC
+
+
+
+7.2 Error Numbers
+
+SW1	SW2	Meaning
+
+	Successfully
+	completed
+	instructions
+90h	00h	Normal/Successful ending.
+	01h	Success ... but request result next.
+
+	Protocol
+	Errors	
+6Eh	xxh	Unknown CLA.
+6Dh	xxh	Unknown INS.
+6Bh	xxh	P1,P2 incorrect.
+67h	xxh	P3, length incorrect
+6Fh	xxh	General Undefined error.
+
+	Command
+	related
+	errors	
+91h	00h	Raw card, unformatted.
+	01h	Unknown virtual card.
+	02h	Unknown file.
+	03h	No permission
+	04h	No room.
+	05h	Attempt to duplicate.
+	06h	Phantom card, read blocked.
+	07h	No read permission.
+	08h	No write permission.
+	09h	No password file.
+	0Ah	Bad password, attack counter
+		incremented.
+	0Bh	Block will overflow file bounds.
+	0Ch	No encryption key defined.
+	0Dh	RDRES too late.
+	0Eh	Password is locked.
+	0Fh	Clear Read or Write to encrypted
+		file.
+
+
+
+8. OSCAR IC Cards Interface
+
+8.1 General
+This section should be read in conjunction with ISO7816.
+
+8.2 ISO7816/1
+All OSCAR smart cards conform to this part of the specification.
+
+8.3 ISO7816/2
+All OSCAR smart cards conform to all parts of the specification.
+
+8.3.1 Contact position
+The 'lower' position for contacts is used. This has the contacts on the front of the card, that is, on the opposite
+side to any magnetic stripe as defined by ISO 7810.
+All contact positions are present. The following defines the active contacts:
+C1	Vcc
+C2	RST
+C3	CLK
+C4	not used
+C5	GND
+C6	not used
+C7	I/O
+C8	not used
+
+
+8.4 ISO7816/3
+
+8.4.1 Operating procedure
+
+8.4.1.1 Connection and activation
+Connection and activation of the card is in accordance with ISO7816/3 sections 5.0 and 5.1.
+
+8.4.1.2 Reset of the card
+All OSCAR cards must be reset in accordance with ISO7816/3 section 5.2 for asynchronous answering.
+If Vdd falls below 4.5V an internal reset will be generated that is maintained until Vdd is restored and an
+external reset is supplied. Similarly the card remains in reset, until external reset is asserted, if Vdd is applied with
+external reset held unasserted.
+Clock rate can reduce to zero without mis-operation.
+
+8.4.1.3 Deactivation of contacts
+Deactivation should be in accordance with ISO7816/3 section 5.4.
+
+8.4.2 Answer to reset
+The card operates in asynchronous half duplex mode.
+
+8.4.2.1 Bit duration
+In accordance with ISO7816/3 section 6.1.1. The expected value of f1 is 3.5795 MHz which yields a
+communication rate of 9600 baud.
+
+8.4.2.2 Character frame during answer to reset
+In accordance with ISO7816/3 section 6.1.2.
+
+8.4.2.3 Error detection and character repetition
+In accordance with ISO7816/3 section 6.1.3.
+
+8.4.2.4 Structure and content
+In accordance with ISO7816/3 section 6.1.4.
+
+8.4.2.5 Structure of TS
+In accordance with ISO7816/3 section 6.1.4.1. where the direct convention is used i.e. Z=1, A=0, ba=b1 (lsb
+first). The content of TS is therefore coded as x3B.
+8.4.2.6 Format character T0
+The value of T0 shall be x0F. This is interpreted as follows:-
+TA1:
+TA1 is not returned meaning that the default value of x11 must be assumed. This codes the clock frequency
+divider F1 as 0001 which selects F=372. Similarly the clock adjust factor D1 is coded as 0001 which selects D=1.
+TB1:
+TB1 is not returned since the programming pin Vpp is not utilised. However strictly interpreted from ISO7816/3
+this means that the default values of I=50 and P=5 must be assumed.
+TC1:
+TC1 is not returned meaning that the default value for N is 0. This means that all characters are 11 bits long with
+1 etu guard time.
+TD1:
+TD1 is not returned meaning that the default value of 00h must be assumed. This codes the protocol type to T=0
+as defined in clause 8 of ISO7816/3. Also Yi+1 defaults to null indicating that no further interface information is
+available.
+K:
+K is coded as 0Fh which means that 15 historical characters will be sent. These have been nominally divided into
+7 characters of 'manufacturer's message' and eight characters of 'card distributor's message'.
+
+8.4.2.7 TCK
+TCK, the block check character, is not returned.
+
+8.4.3 Protocol type
+According to clause 8 of ISO7816/3
+

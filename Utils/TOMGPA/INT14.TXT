@@ -1,0 +1,40 @@
+
+    Initialize USART (Int 14/00)
+
+ INT 14 - SERIAL I/O
+     AH = 00h
+     AL = initializing parameters
+         7 - 6 - 5      4 - 3     2    1 - 0
+         -BAUD RATE-    PARITY   STOP   WORD
+                     BITS  LENGTH
+         000  110 bd    00 none  0: 1   00: 5
+         001  150 bd    01 odd   1: 2   01: 6
+         010  300 bd    11 even     10: 7
+         011  600 bd            11: 8
+         100 1200 bd
+         101 2400 bd
+         110 4800 bd
+         111 9600 bd (4800 on PCjr)
+     DX = port number (0-3)
+
+ Return: AH = RS-232 status code bits
+         0: data ready
+         1: overrun error
+         2: parity error
+         3: framing error
+         4: break detected
+         5: transmission buffer register empty
+         6: transmission shift register empty
+         7: time out--if set, other bits invalid
+     AL = modem status bits
+         0: delta Clear-To-Send
+         1: delta Data-Set-Ready
+         2: trailing edge of ring detected
+         3: change in receive line signal detected
+         4: Clear-To-Send
+         5: Data-Set-Ready
+         6: ring detected
+         7: receive line signal detected
+
+ SeeAlso: AH=05h
+

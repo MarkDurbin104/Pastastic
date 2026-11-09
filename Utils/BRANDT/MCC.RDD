@@ -1,0 +1,64 @@
+TaskDefine Dictionary Report For Cell mcc              Page 1
+Name            Type Length Description
+
+Access          i    23                                             
+Act_Started     i    2      No. of jobs running on machine          
+Act_Unstarted   i    2      No. of jobs waiting at a machine        
+Actual_Qty      i    2                                              
+Approved_By     C    14                                             
+Batch_No        C    6                                              
+Batch_Text      C    80                                             
+BfM_No          C    6                                              
+BfM_Par_Batch   C    6                                              
+Build_Loc       C    6                                              
+Comp_Qty        i    2                                              
+Counter         i    2                                              
+Curr_Mach       C    8                                              
+Curr_Op_No      C    4                                              
+Curr_Op_stat    i    2                                              
+Elapsed_Time    l    4                                              
+Expected_Qty    i    2                                              
+Finish_Time     l    4                                              
+Group           C    20                                             
+Labelled_Qty    i    2                                              
+Layout_Iss_No   i    2                                              
+Layout_No       C    8                                              
+Loc_Contents    C    1                                              
+Loc_Desc        C    30                                             
+Loc_Type        C    1                                              
+Location_Id     C    6                                              
+Mach_cnt        i    2                                              
+Mach_id         C    8                                              
+Mach_stat       i    2                                              
+Max_Started     i    2      Limit of running jobs at a machine      
+Max_Unstarted   i    2      Limit of waiting jobs at a machine      
+Menu            i    2                                              
+Next_Mach       C    8                                              
+Next_Op_No      C    4                                              
+No_Mess_line    i    2                                              
+Oper_No         C    4                                              
+Par_Period_No   C    5                                              
+Part_Iss_No     i    2                                              
+Part_No         C    16     Part Number                             
+Part_Type       C    1                                              
+Password        C    13                                             
+Period_No       C    5                                              
+Port_Id         i    2                                              
+Priority        i    2                                              
+Qty_Good        i    2                                              
+Qty_Rework      i    2                                              
+Qty_Scrapped    i    2                                              
+Quantity        i    2                                              
+ST_No           i    2                                              
+ST_Type         C    1                                              
+Source_Loc      C    6                                              
+Start_Time      l    4                                              
+Sub_Mach_Id     C    1                                              
+TTY_Name        C    32                                             
+Target_Loc      C    6                                              
+Term_Id         C    6                                              
+Unbinned_Qty    i    2                                              
+User_Id         C    14                                             
+User_No         i    2                                              
+Workcentre      C    8                                              
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="700" height="400"
+	title="Local Configuration" 
+	color="#1A4B86" 
+    paddingTop="10" paddingLeft="10" paddingRight="10" paddingBottom="10"
+	fontSize="12" fontFamily="Verdana" fontWeight="bold" 
+	click="event.stopPropagation()"
+	>
+	<mx:Script>
+		<![CDATA[
+			import com.cykorsystems.utils.Configuration;
+            public function commit(event:MouseEvent):void {
+				Configuration.localAddress=zipCode.text;
+				Configuration.useCrossesOnSecondary=useCrossesOnSecondary.selected;
+				Configuration.highlightSecondary=highlightSecondary.selected;
+				Configuration.fadeProductsOnDeselect=fadeProductsOnDeselect.selected;
+				Configuration.highlightExpress=highlightExpress.selected;
+				visible=false;
+                event.stopPropagation();
+            }
+            public function cancel(event:MouseEvent):void {
+				visible=false;
+                event.stopPropagation();
+            }
+			public function show():void {
+				zipCode.text=Configuration.localAddress;
+				useCrossesOnSecondary.selected=Configuration.useCrossesOnSecondary;
+				highlightSecondary.selected=Configuration.highlightSecondary;
+				fadeProductsOnDeselect.selected=Configuration.fadeProductsOnDeselect;
+				highlightExpress.selected=Configuration.highlightExpress;
+				visible=true;				
+			}
+		]]>
+	</mx:Script>
+
+    <mx:Form width="100%" height="100%">
+<!--        <mx:FormHeading label="Enter values into the form."/> -->
+
+        <mx:FormItem label="This machine's ZIP Code" fontWeight="bold">
+            <mx:TextInput id="zipCode" width="200"/>
+        </mx:FormItem>
+
+        <mx:FormItem label="Use crosses on Secondary Items" fontWeight="bold">
+            <mx:CheckBox id="useCrossesOnSecondary"/>
+        </mx:FormItem>
+        
+        <mx:FormItem label="Highlight Secondary Items" fontWeight="bold">
+            <mx:CheckBox id="highlightSecondary"/>
+        </mx:FormItem>
+        
+        <mx:FormItem label="Fade Products On De-select" fontWeight="bold">
+            <mx:CheckBox id="fadeProductsOnDeselect"/>
+        </mx:FormItem>
+        
+        <mx:FormItem label="Highlight Express" fontWeight="bold">
+            <mx:CheckBox id="highlightExpress"/>
+        </mx:FormItem>
+
+    </mx:Form>
+	<mx:HBox horizontalAlign="right" width="100%">
+	  	<mx:Button label="Save Changes" click="commit(event);"/>
+	  	<mx:Button label="Cancel" click="cancel(event);"/>
+	</mx:HBox>
+
+	<mx:ZipCodeValidator source="{zipCode}" property="text"  domain="US Only"/>
+    
+</mx:Panel>

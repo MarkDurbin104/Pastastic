@@ -1,0 +1,118 @@
+SQL> select * from bft_types;
+
+BFT 7 RFH 5/3.5                                                                 
+Blown Fibre Tubing 7 Bore RFH (5mm Diam)                                        
+          30              7                     5                   3.5         
+                                                                                
+BFT 1                                                                           
+Blown Fibre Tubing 1 Bore (Conversion Default?)                                 
+          10              1                                                     
+                                                                                
+BFT 2                                                                           
+Blown Fibre Tubing 2 Bore (Conversion Default?)                                 
+          20              2                                                     
+                                                                                
+BFT 4                                                                           
+Blown Fibre Tubing 4 Bore (Conversion Default?)                                 
+          20              4                                                     
+                                                                                
+BFT 7                                                                           
+Blown Fibre Tubing 7 Bore (Conversion Default?)                                 
+          30              7                                                     
+                                                                                
+UNK                                                                             
+Unknown                                                                         
+           0              7                                                     
+                                                                                
+BFT 4 PE MK 1 8/6                                                               
+Blown Fibre Tubing 4 Bore PE (8mm Diam)                                         
+          20              4                     8                     6         
+                                                                                
+BFT 7 PE MK 1 8/6                                                               
+Blown Fibre Tubing 7 Bore PE (8mm Diam)                                         
+          30              7                     8                     6         
+                                                                                
+BFT 2 PE MK 2 8/6                                                               
+Blown Fibre Tubing 2 Bore PE (8mm Diam)                                         
+          20              2                     8                     6         
+                                                                                
+BFT 4 PE MK 2 8/6                                                               
+Blown Fibre Tubing 4 Bore PE (8mm Diam)                                         
+          20              4                     8                     6         
+                                                                                
+BFT 7 PE MK 2 8/6                                                               
+Blown Fibre Tubing 7 Bore PE (8mm Diam)                                         
+          30              7                     8                     6         
+                                                                                
+BFT 2 PE MK 2 5/3.5                                                             
+Blown Fibre Tubing 2 Bore PE (5mm Diam)                                         
+          20              2                     5                   3.5         
+                                                                                
+BFT 4 PE MK 2 5/3.5                                                             
+Blown Fibre Tubing 4 Bore PE (5mm Diam)                                         
+          20              4                     5                   3.5         
+                                                                                
+BFT 7 PE MK 2 5/3.5                                                             
+Blown Fibre Tubing 7 Bore PE (5mm Diam)                                         
+          30              7                     5                   3.5         
+                                                                                
+BFT 1 PVC MK 1 8/6                                                              
+Blown Fibre Tubing 1 Bore PVC (8mm Diam)                                        
+          10              1                     8                     6         
+                                                                                
+BFT 2 PVC MK 1 8/6                                                              
+Blown Fibre Tubing 2 Bore PVC (8mm Diam)                                        
+          20              2                     8                     6         
+                                                                                
+BFT 4 PVC MK 1 8/6                                                              
+Blown Fibre Tubing 4 Bore PVC (8mm Diam)                                        
+          20              4                     8                     6         
+                                                                                
+BFT 7 PVC MK 1 8/6                                                              
+Blown Fibre Tubing 7 Bore PVC (8mm Diam)                                        
+          30              7                     8                     6         
+                                                                                
+BFT 1 PVC MK 2 8/6                                                              
+Blown Fibre Tubing 1 Bore PVC (8mm Diam)                                        
+          10              1                     8                     6         
+                                                                                
+BFT 2 PVC MK 2 8/6                                                              
+Blown Fibre Tubing 2 Bore PVC (8mm Diam)                                        
+          20              2                     8                     6         
+                                                                                
+BFT 4 PVC MK 2 8/6                                                              
+Blown Fibre Tubing 4 Bore PVC (8mm Diam)                                        
+          20              4                     8                     6         
+                                                                                
+BFT 7 PVC MK 2 8/6                                                              
+Blown Fibre Tubing 7 Bore PVC (8mm Diam)                                        
+          30              7                     8                     6         
+                                                                                
+BFT 1 PVC MK 2 5/3.5                                                            
+Blown Fibre Tubing 1 Bore PVC (5mm Diam)                                        
+          10              1                     5                   3.5         
+                                                                                
+BFT 2 PVC MK 2 5/3.5                                                            
+Blown Fibre Tubing 2 Bore PVC (5mm Diam)                                        
+          20              2                     5                   3.5         
+                                                                                
+BFT 4 PVC MK 2 5/3.5                                                            
+Blown Fibre Tubing 4 Bore PVC (5mm Diam)                                        
+          20              4                     5                   3.5         
+                                                                                
+BFT 7 PVC MK 2 5/3.5                                                            
+Blown Fibre Tubing 7 Bore PVC (5mm Diam)                                        
+          30              7                     5                   3.5         
+                                                                                
+BFT 1 RFH 5/3.5                                                                 
+Blown Fibre Tubing 1 Bore RFH (5mm Diam)                                        
+          10              1                     5                   3.5         
+                                                                                
+BFT 4 RFH 5/3.5                                                                 
+Blown Fibre Tubing 4 Bore RFH (5mm Diam)                                        
+          20              4                     5                   3.5         
+                                                                                
+
+28 rows selected.
+
+SQL> spool off

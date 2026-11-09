@@ -1,0 +1,990 @@
+//******************************************************************************************//
+//*                                                                                        *//
+//*                           Botswana Postal Service                                      *//
+//*                                                                                        *//
+//*                            Certificates Products                                       *//
+//*                                                                                        *//
+//******************************************************************************************//
+
+PickLists
+{
+  SavCertValues { A { 50 }
+                  B { 250 }
+                  C { 500 }
+                 }
+}
+
+LookUps {
+
+  CertValues {
+   Range {   5       8       11       14      17      20      23       26       29       32       35     36      }
+   A   {  '0.00'  '2.45'  '3.70'   '5.00'  '6.35'  '7.70'  '9.10'  '10.50'  '12.00'  '13.45'  '15.00'  '16.55'      }
+   B  {  '0.00' '12.20' '18.55' '25.00'  '31.65' '38.45' '45.40'  '52.50'  '59.80'  '67.30'  '74.95'  '82.75'       }
+   C  {  '0.00' '24.40' '37.05' '50.00'  '63.30' '76.85' '90.75' '105.00' '119.60' '134.55' '149.85' '165.50' }
+   }
+   
+}
+Domains {
+
+   PaymentAmount {
+             Title  { 'Amount' }
+             Prompt { 'Amount' }
+             Hint   { 'Enter the Amount' }
+             Error  { 'Enter a Valid Amount' }
+          //   DefaultValue { 50 }
+             Format { Currency { 0,999999999 } }
+             InputFrom {'Keyboard'}
+        }
+   
+   SavingsAmount {
+          Title  { 'Amount' }
+          Prompt { 'Amount' }
+          Hint   { 'Enter the Amount' }
+          Error  { 'Enter a Valid Amount' }
+//          DefaultValue { 50 }
+          Format { Currency { 0,50000 } }
+          InputFrom {'Keyboard'}
+     }
+     
+    CertificateNumber {
+          Title  { ' Certificate Number ' }
+          Prompt { ' Certificate Number ' }
+          Hint   { ' Enter the Certificate Number ' }
+          Error  { ' Enter valid format (ABC)9999999 Certificate Number' }
+          Format { Mask { '[ABC]9999999' }  }
+          InputFrom {'Keyboard'}
+
+     }
+     
+     DateOfIssue {
+          Title  { 'Date Of Issue' }
+          Prompt { 'Date Of Issue' }
+          Hint   { ' Enter the Date Of Issue ' }
+          Error  { ' Enter a valid Date Of Issue ' }
+          Format { Date }
+          InputFrom {'Keyboard'}
+          }
+      CertValue {
+          Title  { 'Certificate Value' }
+          Prompt { 'Certificate Value' }
+          Format { PickList { 'PickList.SavCertValues' } }
+       }
+      MonthsDiff {
+          Title  { 'Months Difference' }
+          Prompt { 'Months Difference' }
+          Hint   { 'Months Difference' }
+          Error  { 'Invalid Months Difference' }
+       }           
+
+       InterestValue
+       {
+          Title     { 'Interest Value' }
+          Prompt    { 'Interest Value' }
+          InputFrom { Params         }
+          TotalIn   { TotalFee }
+       } 
+       HiddenPayment
+       {
+           Title     { 'Hidden Payment' }
+           Prompt    { 'Hidden Payment' }
+           TotalIn   { TotalFee }
+       } 
+
+       
+ }
+
+Products
+{
+
+   NatSavCert {
+          BasedOn     { BaseCertificates }
+          BitMap      { '..\images\P_SavCertificate.bmp' }
+          Caption     { 'Saving Certificates' }
+          Description { 'Saving Certificates' }
+          Title       { 'Saving Certificates' }
+          Domains {
+            CustomerName
+            CustID_Number
+            SavingsAmount
+          }
+          Snippets { NatSavCertPostVal,NatSavCertLog }
+          //Customer { 'Sav. Certificate','^','Total ','P',SavingsAmount }
+          PLU         {  PLU_NatSavCert }
+    }
+
+
+ NatSavCertFPay {
+          BasedOn     { BaseCertificates }
+          BitMap      { '..\images\P_SavCertificate.bmp' }
+          Caption     { 'Savings Certificate Full Payment' }
+          Description { 'Savings Certificate Full Payment' }
+          Title       { 'Savings Certificate Full Payment' }
+          items {
+            'Complete'
+            'Next Certificate'
+          }
+          Domains {
+            CustomerName
+            CustID_Number
+            CertificateNumber
+            DateOfIssue
+            CertValue
+            MonthsDiff
+            HiddenPayment
+            InterestValue { MonthsDiff,CertValue,'LookUp.CertValues' }
+    }
+    Snippets { NatSavCertFPayPreVal
+               NatSavCertFPayVarVal
+               NatSavCertFPayVal
+               NatSavCertFPayPosVal
+               NatSavCertFPayExecute
+               NotifyCertVars
+               NotifyCert
+               FlagCert
+               CertCertUses
+               LogCertFPayVars
+               NatSavCertFPayLog
+             }
+    //Customer { 'Sav.Cert Full Payment.','^','Total ','P',TotalFee }
+    PLU         {  PLU_NatSavCertFPay }
+
+  }
+
+NatSavCertPPay {
+          BasedOn     { BaseCertificates }
+      BitMap      { '..\images\P_SavCertificate.bmp' }
+          Caption     { 'Savings Certificate Part Payment' }
+          Description { 'Savings Certificate Part Payment' }
+          Title       { 'Savings Certificate Part Payment' }
+          Domains {
+            CustomerName
+            CertificateNumber
+            CustID_Number
+            DateOfIssue
+            CertValue
+            PaymentAmount
+            MonthsDiff
+            HiddenPayment         
+            InterestValue { MonthsDiff,CertValue,'LookUp.CertValues' }
+    }
+   Snippets { NatSavCertPPayPreVal, NatSavCertFPayVarVal,NatSavCertFPayVal,NatSavCertPPayPostVal, NatSavCertPPayExecute, NatSavCertPPayLog }
+   //Customer { 'Sav.Cert Part. Payment.','^','Total ','P',TotalFee }
+   PLU         {  PLU_NatSavCertPPay }
+
+  }
+
+}
+
+Snippets {
+
+      NatSavCertPostVal {
+       InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+             CodeBlock {
+             [*
+
+                   If Result then
+                   begin
+                     if (StrToIntDef(SavingsAmount.Text, 0) < 50) or (StrToIntDef(SavingsAmount.Text, 0) > 50000)  then
+                     begin
+                        Result := False ;
+                        MoveFocusTo(SavingsAmount);
+                     end
+                     else
+                     begin
+                       if StrToIntDef(SavingsAmount.Text,0) mod 50 = 0 then
+                       begin
+                         Result := True
+                       end
+                       else
+                       begin
+                         Result := False;
+                         MoveFocusTo(SavingsAmount);
+                       end;
+                     end;
+                   end;
+
+             *]
+         }
+       }
+
+       NatSavCertFPayPreVal {
+              InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+                    CodeBlock {
+                    [*
+                        Result:=CheckMaskEdits(Self);
+                        MonthsDif := 0 ;
+                        try
+
+                   Date2 := Date;
+                   Date1 := StrToDateTime( DateOfIssue.Text );
+
+                   DecodeDate( Date1, YearWork, MonthWork, DayWork ) ;
+                   if YearWork > 2050 then
+                   begin
+                      YearWork := YearWork - 100 ;
+                      Date1 := EncodeDate( YearWork, MonthWork, DayWork ) ;
+                   end ;
+
+                   if Date2 <= Date1 then
+                   begin
+                      result := false;
+                      MoveFocusTo( DateOfIssue );
+                   end
+                   else
+                   begin
+
+
+                      DateWork := Date1 ;
+                      DecodeDate( DateWork, YearWork, MonthWork, DayWork ) ;
+                      while DateWork < Date2 do
+                      begin
+
+                         if MonthWork = 12 then
+                         begin
+                            MonthWork := 1 ;
+                            Inc( YearWork );
+                         end
+                         else
+                            Inc( MonthWork ) ;
+
+                         FoundDay := False ;
+                         DayTry := DayWork ;
+
+                         while not FoundDay do
+                         begin
+                            try
+                               // Endcode Date brakes if there is not  31 in the moth
+                               DateWork := EncodeDate( YearWork, MonthWork, DayTry ) ;
+                               FoundDay := True ;
+                            except
+                               Dec( DayTry );
+                            end ;
+                         end ;
+
+                         if DateWork <= Date2 then
+                            Inc( MonthsDif ) ;
+                     end ;
+
+                   end ;
+
+
+                except
+                   MonthsDif := 0;
+                   result :=false;
+                end ;
+
+                //HiddenPayment.Text := CertValue.Text ;
+                MonthsDiff.Text := IntToStr(MonthsDif);
+
+                  *]
+                }
+       }
+
+
+   NatSavCertFPayPostVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+
+       if not result and (MonthsDif= 0) and ( CurrentFieldName= 'DateOfIssue' )then
+          MoveFocusTo( DateOfIssue );
+      *]
+      }
+    }
+
+
+   NatSavCertFPayVarVal {
+      InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+      CodeBlock {
+      [*
+         var
+         Date1,Date2:TDateTime;
+         DateWork : TDateTime ;
+         YearWork, MonthWork, DayWork, DayTry : word;
+         MonthsDif  : integer  ;
+         FoundDay : boolean ;
+         I : integer ;
+         MonthCal : integer;
+         InterestTotal : Real ;
+
+       *]
+       }
+    }
+
+
+   NatSavCertPPayExecute {
+         InsertBetween { '{SetProgStart}','{SetProgEnd}' }
+         CodeBlock {
+         [*
+             ProdForm.HiddenPayment.Ignore := TRUE ;
+             ProdForm.CertValue.enabled:=false;
+         *]
+         }
+      }
+   NatSavCertFPayExecute {
+         InsertBetween { '{SetProgStart}','{SetProgEnd}' }
+         CodeBlock {
+         [*
+             ProdForm.HiddenPayment.Ignore := TRUE ;
+             ProdForm.CertValue.enabled:=false;
+              AdditionalInfo:='';
+         *]
+         }
+      }
+  NatSavCertLog {
+         InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+         CodeBlock {     
+         [*  
+            TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               FQuantity*StrToCurrDef(ProdForm.SavingsAmount.Text,0), // Value
+               StrToCurrDef(ProdForm.SavingsAmount.Text,0), // Price
+               Get_Description, // Description
+               '', // Additional Info
+               Get_ProgramID, // ProgID
+               Enumerate(ProdForm)); // Domain Info
+         Inc(Index);
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0, // Value
+               0, // Price
+               'Customer Name - ', // Description
+               ProdForm.CustomerName.Text, // Additional Info
+               Get_ProgramID, // ProgID
+               ''); // Domain Info
+         Inc(Index);
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0, // Value
+               0, // Price
+               'Omang No. - ', // Description
+               ProdForm.CustID_Number.Text, // Additional Info
+               Get_ProgramID, // ProgID
+               ''); // Domain Info
+         Inc(Index);
+         if CombineList <> nil then
+       CombineList.LogTransactions(Index,TxnLog);
+         *]
+         }
+      }
+
+//  NatSavCertFPayLog {
+//         InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+//         CodeBlock {
+//         [*
+//
+//        TxnLog.LogTransaction(
+//             Index,
+//             FQuantity, // Quantity
+//             Get_PLU, // PLU
+//             FQuantity*(-StrToCurrDef(ProdForm.HiddenPayment.Text,0)), // Value
+//             -StrToCurrDef(ProdForm.HiddenPayment.Text,0), // Price
+//             Get_Description+'  ', // Description
+//                 '',
+//             Get_ProgramID, // ProgID
+//             Enumerate(ProdForm)); // Domain Info
+//        Inc(Index);
+//        TxnLog.LogTransaction(
+//                       Index,
+//                       FQuantity, // Quantity
+//                       Get_PLU, // PLU
+//                       0, // Value
+//                       0, // Price
+//                       'Certificate Number. -       ', // Description
+//                       ProdForm.CertificateNumber.Text, // Additional Info
+//                       Get_ProgramID, // ProgID
+//                       ''); // Domain Info
+//        Inc(Index);
+//        TxnLog.LogTransaction(
+//                       Index,
+//                       FQuantity, // Quantity
+//                       Get_PLU, // PLU
+//                       0, // Value
+//                       0, // Price
+//                       'Customer Name. -       ', // Description
+//                       ProdForm.CustomerName.Text, // Additional Info
+//                       Get_ProgramID, // ProgID
+//                       ''); // Domain Info
+//        Inc(Index);
+//        TxnLog.LogTransaction(
+//               Index,
+//               FQuantity, // Quantity
+//               Get_PLU, // PLU
+//               0, // Value
+//               0, // Price
+//               'Omang Number. -       ', // Description
+//               ProdForm.CustID_Number.Text, // Additional Info
+//               Get_ProgramID, // ProgID
+//               ''); // Domain Info
+//        Inc(Index);
+//        TxnLog.LogTransaction(
+//               Index,
+//               FQuantity, // Quantity
+//               Get_PLU, // PLU
+//               0, // Value
+//               0, // Price
+//               'Date Of Issue. -      ', // Description
+//               ProdForm.DateOfIssue.Text, // Additional Info
+//               Get_ProgramID, // ProgID
+//               ''); // Domain Info
+//        Inc(Index);
+//        TxnLog.LogTransaction(
+//               Index,
+//               FQuantity, // Quantity
+//               Get_PLU, // PLU
+//               -StrToCurrDef(ProdForm.InterestValue.Text,0), // Value
+//               -StrToCurrDef(ProdForm.InterestValue.Text,0), // Price
+//               'Interest Value. -     ', // Description
+//               '', // Additional Info
+//               Get_ProgramID, // ProgID
+//               ''); // Domain Info
+//         Inc(Index);
+//         if CombineList <> nil then
+//            CombineList.LogTransactions(Index,TxnLog);
+//         *]
+//         }
+//      }
+
+ NatSavCertPPayPreVal {
+              InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+                    CodeBlock {
+                    [*
+            Result:=CheckMaskEdits(Self);
+            MonthsDif := 0 ;
+            try
+
+            Date2 := Date;
+            Date1 := StrToDateTime( DateOfIssue.Text );
+            DecodeDate( Date1, YearWork, MonthWork, DayWork ) ;
+            if YearWork > 2050 then
+            begin
+                YearWork := YearWork - 100 ;
+                Date1 := EncodeDate( YearWork, MonthWork, DayWork ) ;
+            end ;
+
+
+            if Date2 < Date1 then
+                result := false
+            else
+            begin
+
+              DateWork := Date1 ;
+              DecodeDate( DateWork, YearWork, MonthWork, DayWork ) ;
+              while DateWork < Date2 do
+              begin
+                if MonthWork = 12 then
+                begin
+                  MonthWork := 1 ;
+                  Inc( YearWork );
+                end
+              else
+               Inc( MonthWork ) ;
+
+             FoundDay := False ;
+             DayTry := DayWork ;
+
+             while not FoundDay do
+             begin
+                try
+                   // Endcode Date brakes if there is not  31 in the moth
+                   DateWork := EncodeDate( YearWork, MonthWork, DayTry ) ;
+                   FoundDay := True ;
+                except
+                   Dec( DayTry );
+                end ;
+             end ;
+
+            if DateWork <= Date2 then
+              Inc( MonthsDif ) ;
+            end ;
+
+            end ;
+
+
+            except
+              MonthsDif := 0;
+              result :=false;
+            end ;
+
+              if (MonthsDif= 0) and (DateOfIssue.Text <> '') then
+              begin
+                Result := False ;
+                MoveFocusTo( DateOfIssue );
+              end;
+
+            if PaymentAmount.Text <> ''  then
+            begin
+              if ((StrToIntDef(PaymentAmount.Text,0) mod 50) <> 0) or (StrToIntDef(PaymentAmount.Text, 0) > StrToIntDef(CertValue.Text, 0)) then
+              begin
+                Result := False ;
+                MoveFocusTo(PaymentAmount);
+              end;
+            end;
+
+            //HiddenPayment.Text := PaymentAmount.Text ;
+            MonthsDiff.Text := IntToStr(MonthsDif);
+
+              *]
+            }
+       }
+
+
+   NatSavCertPPayPostVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+       HiddenPayment.Text := PaymentAmount.Text ;
+       if not result and (MonthsDif= 0) and ( CurrentFieldName= 'DateOfIssue' )then
+          MoveFocusTo( DateOfIssue );
+       if Result and
+         ((PaymentAmount.Text <> '') and
+         (StrToIntDef(PaymentAmount.Text, 0) >= StrToIntDef(CertValue.Text, 0))) then
+       begin
+           Result := False;
+       end;
+
+      try
+         InterestTotal:=InterestTotal*StrToCurr(PaymentAmount.Text)/StrToCurr(CertValue.Text);
+      except
+      end ;
+      if PaymentAmount.Text = '' then
+         InterestValue.Text := ''
+      else
+         InterestValue.Text:= CurrToStrF( InterestTotal, ffNumber, 2 );
+
+       if Result and (StrToIntDef(PaymentAmount.Text, 0) = 0) then
+          Result := False;
+      *]
+      }
+    }
+
+    NatSavCertFPayPosVal {
+          InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+          CodeBlock {
+          [*
+            HiddenPayment.Text := CertValue.Text ;
+         *]
+      }
+    }
+
+    NatSavCertFPayVal {
+          InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+          CodeBlock {
+          [*
+
+            if ( CertificateNumber.Text <> '') then
+            begin
+               I :=0;
+               while ( I < CertValue.Items.count -1 ) and (TStringObject(CertValue.Items.Objects[I]).Value<>Copy(CertificateNumber.Text,1,1)) do
+                  Inc( I );
+               if (TStringObject(CertValue.Items.Objects[I]).Value=Copy(CertificateNumber.Text,1,1)) then
+               begin
+                  CertValue.ItemIndex:=I;
+               end ;
+            end ;
+
+            InterestTotal:=0;
+            if ( CertValue.Text <> '' ) and  ( MonthsDiff.Text <> '' ) then
+            begin
+               MonthCal := StrToInt( MonthsDiff.Text );
+               
+               if ( MonthCal > 36 ) then MonthCal:=36; // Ibo says!
+         
+               while ( MonthCal > 36 ) do
+               begin
+                  InterestTotal := InterestTotal + StrToCurrDef( LookUp(TStringObject(CertValue.Items.Objects[CertValue.ItemIndex]).Value,'36','CertValues',MonthsDiff,Result), 0 );
+                  Dec( MonthCal, 36 );
+               end ;
+               InterestTotal := InterestTotal + StrToCurrDef( LookUp(TStringObject(CertValue.Items.Objects[CertValue.ItemIndex]).Value,IntToStr(MonthCal),'CertValues',MonthsDiff,Result), 0 );
+               InterestValue.Text:= CurrToStrF( InterestTotal, ffNumber, 2 );
+            end;
+// Date of issue cannot be before '23/06/99'
+//  This test assumes the system will not be in place after 2040!
+            if ( DateOfIssue.Text <> '') then
+            begin
+              if    (Copy(DateOfIssue.Text,7,2) > '40')
+                and (StrToDate(DateOfIssue.Text)<StrToDate('23/06/99')) then
+              begin
+               result := false;
+               MoveFocusTo( DateOfIssue );
+              end ;
+           end ;
+           *]
+           }
+    }
+
+      
+  NatSavCertPPayLog {
+         InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+         CodeBlock {     
+         [*
+         
+            TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               FQuantity*(-StrToCurrDef(ProdForm.HiddenPayment.Text,0)), // Value
+               -StrToCurrDef(ProdForm.HiddenPayment.Text,0), // Price
+               Get_Description+'  ', // Description
+               '', // Additional Info
+               Get_ProgramID, // ProgID
+               Enumerate(ProdForm)); // Domain Info
+         Inc(Index);
+      TxnLog.LogTransaction(
+                       Index,
+                       FQuantity, // Quantity
+                       Get_PLU, // PLU
+                       0, // Value
+                       0, // Price
+                       'Certificate Number. -       ', // Description
+                       ProdForm.CertificateNumber.Text, // Additional Info
+                       Get_ProgramID, // ProgID
+                       ''); // Domain Info
+         Inc(Index);
+        TxnLog.LogTransaction(
+                       Index,
+                       FQuantity, // Quantity
+                       Get_PLU, // PLU
+                       0, // Value
+                       0, // Price
+                       'Customer Name. -       ', // Description
+                       ProdForm.CustomerName.Text, // Additional Info
+                       Get_ProgramID, // ProgID
+                       ''); // Domain Info
+        Inc(Index);
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0, // Value
+               0, // Price
+               'Omang Number. -       ', // Description
+               ProdForm.CustID_Number.Text, // Additional Info
+               Get_ProgramID, // ProgID
+               ''); // Domain Info
+         Inc(Index);
+    //    TxnLog.LogTransaction(
+    //           Index,
+    //           FQuantity, // Quantity
+    //           0, // PLU
+    //           0, // Value
+    //           0, // Price
+    //           'Certificate Number. - ', // Description
+    //           ProdForm.CertificateNumber.Text, // Additional Info
+    //           '', // ProgID
+    //           ''); // Domain Info
+    //     Inc(Index);
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0, // Value
+               0, // Price
+               'Date Of Issue. -      ', // Description
+               ProdForm.DateOfIssue.Text, // Additional Info
+               Get_ProgramID, // ProgID
+               ''); // Domain Info
+         Inc(Index);        
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               -StrToCurrDef(ProdForm.InterestValue.Text,0), // Value
+               -StrToCurrDef(ProdForm.InterestValue.Text,0), // Price
+               'Interest Value. -     ', // Description
+               '', // Additional Info
+               Get_ProgramID, // ProgID
+               ''); // Domain Info
+         Inc(Index);
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);       
+         *]
+         }
+      }
+
+   //---------------------------------------------------------------------------
+
+   ///////// Bermuda -----------------------------------------------------------
+
+   //---------------------------------------------------------------------------
+
+   LogCertFPayVars {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+
+            SL:TPackStringList;
+            I:Integer;
+            CustomerName:String;
+            CustID_Number:String;
+            CertificateNumber:String;
+            DateOfIssue:String;
+            CertValue:String;
+            //MonthsDiff:Integer;
+            HiddenPayment:String;
+            InterestValue:String;
+
+      *]
+      }
+   }
+   NatSavCertFPayLog  {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+
+           if (ProdForm.Validate) and (StrToIntDef(ProdForm.CertValue.Text,0) <> 0) then
+           begin
+              SL:=TPackStringList.Create;
+              SL.PackText:=AdditionalInfo;
+              SL.Add(ProdForm.CustomerName.Text);
+              SL.Add(ProdForm.CustID_Number.Text);
+              SL.Add(ProdForm.CertificateNumber.Text);
+              SL.Add(ProdForm.DateOfIssue.Text);
+              SL.Add(ProdForm.CertValue.Text);
+              //SL.Add(ProdForm.MonthsDiff.Text);
+              SL.Add(ProdForm.HiddenPayment.Text);
+              SL.Add(ProdForm.InterestValue.Text);
+              AdditionalInfo:=SL.PackText;
+              SL.Free;
+           end;
+
+           if AdditionalInfo <> '' then
+           begin
+
+              SL:=TPackStringList.Create;
+              SL.PackText:=AdditionalInfo;
+              for I:=0 to ((SL.Count-1) div 7) do
+              begin
+                 CustomerName       := SL[I*7+0] ;
+                 CustID_Number      := SL[I*7+1] ;
+                 CertificateNumber  := SL[I*7+2] ;
+                 DateOfIssue        := SL[I*7+3] ;
+                 CertValue          := SL[I*7+4] ;
+                 //MonthsDiff         := StrToIntDef(SL[I*7+5],0) ;
+                 HiddenPayment      := SL[I*7+5] ;
+                 InterestValue      := SL[I*7+6] ;
+
+                 if Index = 0 then
+                 begin
+                       TxnLog.LogTransaction(Index,0,Get_PLU,
+                                             0,0,
+                                             Get_Description,
+                                             '',
+                                             Get_ProgramID,
+                                             '' {AdditionalInfo} );
+                       Inc(Index);
+
+                       TxnLog.LogTransaction(Index,0,Get_PLU,
+                                             0,0,
+                                             'Omang Number -',
+                                             CustID_Number,
+                                             Get_ProgramID,
+                                             '' {AdditionalInfo} );
+                        Inc(Index);
+                       TxnLog.LogTransaction(Index,0,Get_PLU,
+                                             0,0,
+                                             'Customer Name -',
+                                             CustomerName,
+                                             Get_ProgramID,
+                                             '' {AdditionalInfo} );
+                        Inc(Index);
+
+
+                 end;
+
+                 TxnLog.LogTransaction(
+                          Index,
+                          FQuantity, // Quantity
+                          Get_PLU, // PLU
+                          -StrToCurrDef(HiddenPayment,0), // Value
+                          -StrToCurrDef(HiddenPayment,0), // Price
+                          'Certificate. -', // Description
+                          CertificateNumber, // Additional Info
+                          Get_ProgramID, // ProgID
+                          ''); // Domain Info
+                 Inc(Index);
+
+                 TxnLog.LogTransaction(
+                          Index,
+                          0, // Quantity
+                          Get_PLU, // PLU
+                          0, // Value
+                          0, // Price
+                          'Date Of Issue. -', // Description
+                          DateOfIssue, // Additional Info
+                          Get_ProgramID, // ProgID
+                          ''); // Domain Info
+                 Inc(Index);
+
+                 TxnLog.LogTransaction(
+                        Index,
+                        FQuantity, // Quantity
+                        Get_PLU, // PLU
+                        -StrToCurrDef(InterestValue,0), // Value
+                        -StrToCurrDef(InterestValue,0), // Price
+                        'Interest Value', // Description
+                        '', // Additional Info
+                        Get_ProgramID, // ProgID
+                        ''); // Domain Info
+                  Inc(Index);
+
+
+                 //TxnLog.LogTransaction(Index,Quantity,0,
+                 //                      HiddenPayment,HiddenPayment),
+                 //                      ,'','','');
+                 //   TValue   :=TValue+HiddenPayment;
+                    Inc(Index);
+              end;
+              SL.Free;
+              AdditionalInfo:='';
+           end;
+
+      *]
+      }
+   }
+
+//   ValidBulk {
+//      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+//      CodeBlock {
+//      [*
+//         Result:=CheckMaskEdits(Self);
+//         BulkDestination.ItemIndex:=BulkDestination.Items.IndexOf(BulkDestination.Text);
+//         if BulkDestination.ItemIndex >= 0 then
+//            NoTotStandardFee.Text:=LookUp(TStringObject(BulkDestination.Items.Objects[BulkDestination.ItemIndex]).Value,Weight.Text,'Bulk',Weight,Result);
+//         if Quantity.Text <> '' then
+//         begin
+//            ServiceCharge.Text:=Quantity.Text+' @ 5¢/item = '+CurrToStrF(StrToIntDef(Quantity.Text,0)*0.05,ffNumber,2);
+//            if NoTotStandardFee.Text <> '' then
+//            begin
+//               TotalFee.Text:=CurrToStrF(StrToIntDef(Quantity.Text,0)*(0.05+StrToCurrDef(NoTotStandardFee.Text,0)),ffNumber,2);
+//               if CustomerName.Text <> '' then
+//                   Result:=True
+//                else
+//                   Result:=False;
+//            end;
+//         end;
+//      *]
+//      }
+//   }
+
+   NotifyCertVars {
+      InsertBetween { '{NotifyVarStart}','{NotifyVarEnd}' }
+      CodeBlock {
+      [*
+         SL:TPackStringList;
+      *]
+      }
+   }
+
+   NotifyCert {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+         if Name = 'Next Certificate' then
+         begin
+            if ProdForm.Validate then
+            begin
+
+               if StrToIntDef(ProdForm.CertValue.Text,0) <> 0 then
+               begin
+                  SL:=TPackStringList.Create;
+                  SL.PackText:=AdditionalInfo;
+                  SL.Add(ProdForm.CustomerName.Text);
+                  SL.Add(ProdForm.CustID_Number.Text);
+                  SL.Add(ProdForm.CertificateNumber.Text);
+                  SL.Add(ProdForm.DateOfIssue.Text);
+                  SL.Add(ProdForm.CertValue.Text);
+                  //SL.Add(ProdForm.MonthsDiff.Text);
+                  SL.Add(ProdForm.HiddenPayment.Text);
+                  SL.Add(ProdForm.InterestValue.Text);
+
+                  AdditionalInfo:=SL.PackText;
+                  SL.Free;
+               end;
+
+               ProdForm.CertificateNumber.Text:='';
+               ProdForm.DateOfIssue.Text:='';
+               ProdForm.CertValue.Text:='';
+               //ProdForm.MonthsDiff.Text:='';
+               ProdForm.HiddenPayment.Text:='';
+               ProdForm.InterestValue.Text:='' ;
+               ProdForm.TotalFee.Text:='0.00';
+
+               MoveFocusTo(ProdForm.CertificateNumber);
+               FlagComplete(ProdForm.Validate);
+               FUIEventSink.DataChanged(Self,GetFormData(ProdForm),not ValidateOK);
+            end;
+            Exit;
+         end;
+      *]
+      }
+   }
+
+   FlagCert {
+      InsertBetween { '{EnableCompleteStart}','{EnableCompleteEnd}' }
+      CodeBlock {
+      [*
+         if Value then
+         begin
+            FUIEventSink.DisplayItemInfo(Self,0,'','Complete',0,0,False,False);
+            FUIEventSink.DisplayItemInfo(Self,1,'',Get_Item(1),0,0,True,False);
+         end
+         else
+         begin
+            FUIEventSink.DisplayItemInfo(Self,0,'','',0,0,True,False);
+            FUIEventSink.DisplayItemInfo(Self,1,'','',0,0,True,False);
+         end;
+      *]
+      }
+   }
+
+  CertCertUses {
+    InsertBetween { '{UsesStart}','{UsesEnd}' }
+    CodeBlock {
+      [*
+         uses StringUtil;
+      *]
+    }
+  }
+
+
+}
+
+
+
+
+
+//   BulkMail {
+//      Title { 'Bulk Mail' }
+//      Bitmap { '..\images\BulkMail.bmp' }
+//      SubGroup     { 'Bulk Mail' }
+//      Items {
+//         'Complete'
+//         'Next Items'
+//      }
+//      PLU          { PLU_BULK }
+//      Domains {
+//         Weight
+//         CustomerName
+//         BulkDestination
+//         Quantity
+//         NoTotStandardFee { Weight,BulkDestination,'LookUp.Bulk' }
+//         ServiceCharge
+//         TotalFee
+//      }
+//      Customer { 'Bulk Mail $',TotalFee }
+//      Snippets { LogBulkVars,LogBulk,
+//ValidBulk,
+//NotifyBulkVars,NotifyBulk,
+//FlagBulk,
+//BulkBoxUses }
+//   }
+

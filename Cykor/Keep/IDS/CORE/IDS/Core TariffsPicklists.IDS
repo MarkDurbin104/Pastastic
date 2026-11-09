@@ -1,0 +1,65 @@
+// things for core products which need to be defined for each individual project
+
+PickLists {
+//   MFIssueOffices {
+//      Sorted
+//      O1000 {'MF Office 1'}
+//      O1002 {'MF Office 1'}
+//   }
+//   MoneyOrderOffices {
+//      Sorted
+//      O1000 {'MO Office 1'}
+//      O1002 {'MO Office 2'}
+//   }
+   IntMoneyOrderCountries {
+      Sorted
+      Items   {
+        'Country 1'
+        'Country 2'
+      }
+   }
+}
+
+LookUps {
+//   DomMoneyOrder {
+//      SubGroup { MoneyOrders }
+//      Range    {   50   100   150   200   250    300    350    400    450    500  }
+//      Value    { 2.35  4.75  6.00  7.50  8.75  10.00  11.25  13.50  15.60  16.85   }
+//   }
+   IntMoneyOrder {
+      SubGroup { MoneyOrders }
+      Range    {   50   100   150    200    250    300    350    400    450    500 }
+      Value    {  5.60  7.50  9.35  11.25  13.75  16.85  19.60 22.50 25.00  28.00  }
+   }
+//   EMSMonFax {
+//     SubGroup { 'EMS' }
+//     Range { 80000, 500000, 100000000 }
+//     Value {  4000, 'Trunc(LookVal/20)', '25000 + Trunc((LookVal-500000)/100)' }
+//   }
+//   EMSMFTxFee {
+//     SubGroup { 'EMS' }
+//     Range { 100000000 }
+//     Value { 2000 }
+//   }
+}
+Groups {
+   MOClerkMain {
+      Title { 'Money Orders' }
+      Caption { 'Money Orders' }
+      Prompt { 'Select a Service or Menu' }
+      Hint { 'Select a service by pressing a Function Key^or by using the arrow keys and pressing [ENTER]' }
+      Bitmap { '..\..\core\images\P_MonOrd.bmp' }
+      Items {
+         'Product.COREDomMoneyOrder'
+         'Product.COREDomMoneyOrderPay'
+        // 'Product.COREDomMoneyOrderMod'
+        // 'Product.COREDomMoneyOrderRefund'
+         'Product.COREChangePayeeName'
+         'Product.COREChangePayeeLocation'
+         'Product.CORECeasePaymnet'
+         'Product.COREPaymentCopy'
+        // 'Exit'
+        // 'Shutdown WorkStation'
+      }
+   }
+}

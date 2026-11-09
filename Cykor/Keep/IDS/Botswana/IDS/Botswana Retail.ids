@@ -1,0 +1,67 @@
+//****************************************************************************************//
+//**                                                                                    **//
+//**                              Retail Products                                       **//
+//**                                                                                    **//
+//****************************************************************************************//
+
+Products
+{
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  StampSales { BasedOn     { BaseDomestic                               }
+               RegDesc     { 'CORVUS StampSales Product'                }
+               Caption     { 'Stamp Sales'                              }
+               Description { 'Stamp Sales'                              }
+               Title       { 'Stamp Sales'                              }
+               BitMap      { '..\images\P_Stamp3.bmp' }
+               Items       { 'Complete'                                 }
+               Domains     { StampsList }
+               Snippets    { StampValidateVars
+                             StampValidate
+                             StampSwapVars
+                             StampFillList
+                             StampEnableComplete
+                             StampSwapTo
+                             StampOverrideDec
+                             StampOverrideDef      }
+              }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+Int.EMS {
+		BasedOn { BaseDomestic }
+      	RegDesc { 'GPCS Int.EMS Product' }
+      	Caption { 'International EMS }
+      	BitMap { '..\images\P_.bmp' }
+      	Description  { 'International EMS' }
+      	Title        { 'International EMS' }
+}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+Dom.EMS {
+		BasedOn { BaseDomestic }
+      	RegDesc { 'GPCS Dom.EMS Product' }
+      	Caption { 'Domestic EMS }
+      	BitMap { '..\images\P_.bmp' }
+      	Description  { 'Domestic EMS' }
+      	Title        { 'Domestic EMS' }
+}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+}

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off">
+	
+	<mx:Script>
+		<![CDATA[
+
+		import mx.containers.HBox;
+		import mx.effects.Move;
+		import mx.effects.Parallel;
+		import mx.effects.Iris;
+		import mx.effects.Zoom;
+		import mx.effects.Resize;
+		import mx.events.EffectEvent;
+
+		private var	uniquePanels:Object = new Object();
+		
+		[Bindable]
+		public var taskBar:HBox;
+			
+		public function openPanel(panelClass:Class, uniqueId:String=null):MDIPanel
+		{
+			if (uniqueId && uniquePanels[uniqueId])
+			{
+				showPanel(uniquePanels[uniqueId]);
+				return uniquePanels[uniqueId];
+			}
+
+			var panel:MDIPanel = new panelClass();
+
+			if (uniqueId)
+			{
+				uniquePanels[uniqueId] = panel;
+			}
+			
+			panel.addEventListener(MDIPanel.MINIMIZE, minimizeHandler);
+			panel.addEventListener(MDIPanel.MAXIMIZE, maximizeHandler);
+			panel.addEventListener(MDIPanel.RESTORE, restoreDownHandler);
+			panel.addEventListener(MDIPanel.CLOSE, closeHandler);
+			
+			addChild(panel);
+			return panel;
+		}	
+		
+		public function showPanel(panel:MDIPanel):void
+		{
+			var minimizedButtonIndex:int = minimizedPanels.getItemIndex(panel);
+			if (minimizedButtonIndex < 0)
+			{
+				setChildIndex(panel, numChildren - 1);
+			}
+			else
+			{
+				restoreUp(panel, minimizedButtonIndex);
+			}
+		}
+
+
+		protected function minimizeHandler(event:Event):void
+		{
+			var panel:MDIPanel = event.target as MDIPanel;
+			var xTo:int = 0;
+			if (minimizedPanels.length > 0)
+			{
+				var lastChild:DisplayObject = taskBar.getChildAt(minimizedPanels.length -1);
+				xTo = lastChild.x + lastChild.width + 2;
+			}
+			xTo -= panel.width / 2;			
+			var startX:int = panel.x;
+			var startY:int = panel.y;
+			var p:Parallel = new Parallel();
+			var m:Move = new Move(panel);
+			m.xTo = xTo;
+			m.yTo = height;
+			var i:Iris = new Iris(panel);
+			i.showTarget = false;
+			p.addChild(i);
+			p.addChild(m);
+			p.duration = 300;
+			p.addEventListener(EffectEvent.EFFECT_END,
+				function (event:Event):void
+				{
+					panel.visible = false;
+					panel.x = startX;
+					panel.y = startY;
+					minimizedPanels.addItem(panel);	
+				});
+			p.play();
+		}
+
+		protected function maximizeHandler(event:Event):void
+		{
+			var panel:MDIPanel = event.target as MDIPanel;
+			var p:Parallel = new Parallel();
+			var m:Move = new Move(panel);
+			m.xTo = 0;
+			m.yTo = 0;
+			var r:Resize = new Resize(panel);
+			r.widthTo = width;
+			r.heightTo = height;
+			r.hideChildrenTargets = [panel];
+			p.addChild(m);
+			p.addChild(r);
+			p.duration = 300;
+			p.addEventListener(EffectEvent.EFFECT_END,
+				function (event:Event):void
+				{
+					panel.setStyle("cornerRadius", 0);
+				});
+			p.play();
+		}
+
+		protected function restoreDownHandler(event:Event):void
+		{
+			var panel:MDIPanel = event.target as MDIPanel;
+			var p:Parallel = new Parallel();
+			var m:Move = new Move(panel);
+			m.xTo = panel.originalX;
+			m.yTo = panel.originalY;
+			var r:Resize = new Resize(panel);
+			r.widthTo = panel.originalWidth;
+			r.heightTo = panel.originalHeight;
+			r.hideChildrenTargets = [panel];
+			p.addChild(m);
+			p.addChild(r);
+			p.duration = 300;
+			p.addEventListener(EffectEvent.EFFECT_END,
+				function (event:Event):void
+				{
+					panel.setStyle("cornerRadius", panel.originalCornerRadius);
+				});
+			p.play();
+		}
+
+		protected function closeHandler(event:Event):void
+		{
+			removeChild(event.target as MDIPanel);
+		}
+		
+		public function tilePanels():void
+		{
+			var lastX:int = - 310;
+			var lastY:int = 8;
+			
+			for (var i:int=0; i<getChildren().length; i++)
+			{
+				var panel:MDIPanel = getChildAt(i) as MDIPanel;
+				panel.width = 310;
+				panel.height = 300;
+				lastX += panel.width + 8;
+				if (lastX + panel.width + 8 > width)
+				{
+					lastX = 8;
+					lastY += panel.height + 8;
+				}
+				panel.x = lastX;
+				panel.y = lastY;
+				if (panel.maximized)
+				{
+					panel.maximized = false;
+					panel.setStyle("cornerRadius", panel.originalCornerRadius);
+				}					
+				if (panel.minimized)
+				{
+					panel.visible = true;
+					panel.minimized = false;
+				}
+			}
+			minimizedPanels.removeAll();
+		}
+		
+
+		public function restoreUp(panel:MDIPanel, taskBarButtonIndex:Number):void
+		{
+			setChildIndex(panel, numChildren - 1); 
+			panel.visible = true;
+			var p:Parallel = new Parallel();
+			var m:Move = new Move(panel);
+			m.xFrom = taskBar.getChildren()[taskBarButtonIndex].x - panel.width / 2;
+			m.yFrom = height;
+			var i:Iris = new Iris(panel);
+			i.showTarget = true;
+			p.addChild(i);
+			p.addChild(m);
+			p.duration = 300;
+			p.addEventListener(EffectEvent.EFFECT_END,
+				function (event:Event):void
+				{
+					minimizedPanels.removeItemAt(taskBarButtonIndex);
+					panel.minimized = false;
+				});
+			p.play();
+		}
+		
+		public function removeAllPanels():void
+		{
+			uniquePanels = new Object();
+			minimizedPanels.removeAll();
+			removeAllChildren();
+		}
+
+		]]>
+	</mx:Script>
+
+	<mx:ArrayCollection id="minimizedPanels"/>
+	
+</mx:Canvas>

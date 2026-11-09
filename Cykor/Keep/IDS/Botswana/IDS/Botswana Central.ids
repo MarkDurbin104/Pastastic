@@ -1,0 +1,545 @@
+Users {
+   Central {
+      Items {
+         'Group.Central'
+         'Group.Central__A'
+         'Group.CentralCashAccount'
+      }
+   }
+}
+Groups {
+   Central__A {
+      BitMap  { '..\images\G_Altkey.bmp'   }
+      Title { 'ALT-HOTKEYS'            }
+      Items {
+         ' '
+         '  '
+         '   '
+         'Exit'
+      }
+   }
+   CentralCashAccount {
+      BitMap  { '..\IMAGES\G_SuperReports.bmp' }
+      Caption  { 'Cash Accounts' }
+      Hint  { 'Select a menu item by pressing the Function Key^or by using the [Up] and [Down] arrows and [Enter]' }
+      Items  {
+         'Product.FullCashAccount'
+         'Product.AnOfficeCashAccount'
+      }
+      Title  { 'Cash Accounts' }
+   }
+   Central {
+      BitMap  { '..\IMAGES\G_SuperReports.bmp' }
+      Caption  { 'Central Reports' }
+      Hint  { 'Select a menu item by pressing the Function Key^or by using the [Up] and [Down] arrows and [Enter]' }
+      Items  {
+         'Product.CentralRepMonthlyCert',
+         'Product.CentralRepBankAcc',
+         'Product.CentralRepPensions',
+         'Product.CentralRepPostalOrder',
+         'Product.CentralRepPostalOrderInt',
+         'Product.CentralRepMoneyOrder',
+         'Product.CentralRepMoneyOrderInt',
+         'Product.CentralRepParcels',
+         'Product.CentralGenReport'
+         'Group.CentralCashAccount'
+      }
+      Title  { 'Central Reports' }
+   }
+}
+Products {
+  CentralGenReport {
+    Title   { 'General Report' }
+    Bitmap  { '..\Images\G_Reports.BMP' }
+    Domains {
+      PostOffice
+      StartDomainEdit
+      EndDomainEdit
+      UserName
+      ReportList
+    }
+    Items  { Complete }
+    Snippets  {
+      CentralGenRepUses,
+      CentralGenRepVars,
+      CentralGenRepExecute,
+      CentralGenRepComplete,
+      CentralGenRepConst
+    }
+    SubGroup  { 'Central' }
+  }
+
+  CentralRepBankAcc {
+    Title   { 'Bank Accounts Report' }
+    BasedOn { CentralBaseMonthlyReport }
+    Bitmap  { '..\Images\RepSumOfDepAndWidth.bmp' }
+    Domains {
+      PostOffice
+      StartDomainEdit
+      BankAccType
+    }
+    Snippets  {
+      CentralRepTxnTranslateUSES,
+      CentralRepJourSumStartVAL,
+      CentralRepMonthlyBankLOGVAR,
+      CentralRepPRELOG
+      CentralRepMonthlyBankLOG
+    }
+  }
+
+  CentralRepMoneyOrder {
+    Title   { 'Money Order Report' }
+    BasedOn { CentralBaseStockReport }
+    Bitmap  { '..\Images\RepMoneyOrderJournal.bmp' }
+    Domains {
+      PostOffice
+      StartDomainEdit
+      IssuePaid
+    }
+    Snippets  {
+      CentralRepTxnTranslateUSES
+//      CentralRepMoneyOrdLOGVAR
+      CentralGenericPRELOG
+      CentralRepMoneyOrdLOGNew
+    }
+  }
+
+  CentralRepMoneyOrderInt {
+    Title  { 'Foreign Money Order Report' }
+    BasedOn  { CentralBaseStockReport }
+    Bitmap  { '..\Images\RepMoneyOrderJournal.bmp' }
+    Domains {
+      PostOffice
+      StartDomainEdit
+      IssuePaid
+    }
+    Snippets  {
+      CentralRepTxnTranslateUSES,
+//      CentralRepMoneyOrdLOGVAR,
+      CentralGenericPRELOG
+      CentralRepMoneyOrdLOGIntNew
+    }
+  }
+
+  CentralRepMonthlyCert {
+    Title   { 'Certificates Issued and Redeemed' }
+    BasedOn { CentralBaseMonthlyReport }
+    Bitmap  { '..\Images\RepMthlyJournalSavCertificate.bmp' }
+    Domains {
+      PostOffice
+      StartDomainEdit
+      EndDomainEdit
+    }
+    Snippets {
+      CentralRepTxnTranslateUSES,
+      CentralRepJourSumStartEndVAL,
+      CentralRepMonthlyCertLOGVAR,
+      CentralRepMonthlyCertLOG
+    }
+  }
+
+  CentralRepParcels {
+    Title   { 'Parcels Accepted Report' }
+    BasedOn { CentralBaseStockReport }
+    Bitmap  { '..\Images\P_RepParcel.bmp' }
+    Domains {
+      PostOffice
+      ReportingMonth
+      DomIntReport
+    }
+    Snippets {
+      CentralRepTxnTranslateUSES
+      CentralRepParcelsAccLOGVAR
+      CentralGenericPRELOG
+      CentralRepParcelsAccLOG
+    }
+  }
+
+  CentralRepPensions {
+    Title   { 'Pensions Report' }
+    BasedOn { CentralBaseMonthlyReport }
+    Bitmap  { '..\Images\RepMthlySumPensionPayment.bmp' }
+    Domains {
+      PostOffice
+      StartDomainEdit
+      PensionType
+    }
+    Snippets  {
+      CentralRepTxnTranslateUSES,
+      CentralRepJourSumPensionStartVAL,
+      CentralRepPensionLOGVAR,
+      CentralRepPRELOG
+      CentralRepPensionLOG
+    }
+  }
+
+  CentralRepPostalOrder {
+    Title   { 'Postal Order Report' }
+    BasedOn { CentralBaseStockReport }
+    Bitmap  { '..\Images\RepPostalOrderJournal.bmp' }
+    Domains {
+      PostOffice
+      StartDomainEdit
+      IssuePaid
+    }
+    Snippets {
+       CentralRepTxnTranslateUSES
+       CentralGenericPRELOG
+       CentralRepPostOrdLOGNew
+    }
+  }
+
+  CentralRepPostalOrderInt {
+    Title   { 'Foreign Postal Order Pay Report' }
+    BasedOn { CentralBaseStockReport }
+    Bitmap  { '..\Images\RepPostalOrderJournal.bmp' }
+    Domains {
+      PostOffice
+      StartDomainEdit
+    }
+    Snippets {
+      CentralRepTxnTranslateUSES
+      CentralGenericPRELOG
+      CentralRepPostOrdLOGInt
+    }
+  }
+
+  CentralBaseMonthlyReport {
+    BasedOn  { CentralBaseStockReport }
+    Domains {
+      ReportType
+      ReportingMonth
+    }
+    DontBuild
+  }
+
+  CentralBaseStockReport {
+    Domains {
+      UserName
+    }
+    DontBuild
+    Items  { Complete }
+    Snippets  { CentralGetClerkList }
+    SubGroup  { 'Central' }
+  }
+
+
+  SubOfficeAcc {
+     SubGroup { 'Cash Account' }
+     Caption { 'Sub-Office Cash Account' }
+     BitMap {  '..\IMAGES\P_OrderPrint.bmp' }
+     Description  { 'Sub-Office Cash Account' }
+     Title        { 'Sub-Office Cash Account' }
+     Snippets {
+        SubOfficeVAL
+        SubOfficeEXEC
+        SubOfficeGET
+        SubOfficeSET
+        SubOfficeLOGVAR
+        SubOfficeLOG
+     }
+     Domains {
+        EntryDate
+        OfficeCode
+        OfficeAccList
+     }
+     Items {
+        'Complete'
+     }
+  }
+  NATellerAcc {
+     SubGroup { 'Cash Account' }
+     Caption { 'Non-Automated Teller Cash Account' }
+     BitMap {  '..\IMAGES\P_OrderPrint.bmp' }
+   //  BitMap {  '..\IMAGES\NATellerAcc.bmp' }
+     Description  { 'Non-Automated Teller Cash Account' }
+     Title        { 'Non-Automated Teller Cash Account' }
+     Snippets {
+        SubTellerVAL
+        SubTellerEXEC
+        SubOfficeGET
+        SubTellerSET
+        SubTellerLOGVAR
+        SubTellerLOG
+     }
+     Domains {
+        EntryDate
+        TellerName
+        OfficeAccList
+     }
+     Items {
+        'Complete'
+     }
+  }
+
+
+}
+
+Domains {
+   EntryDate {
+      Title  { 'Cash Account Date' }
+      Prompt { 'Cash Account Date' }
+      Hint   { 'Enter Date of Cash Account' }
+      Error  { 'Enter Valid Cash Account Date' }
+      DefaultValue {'Now'}
+      Format {
+         Date
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   TellerName {
+      Title  { 'Teller Name' }
+      Prompt { 'Teller Name' }
+      Hint   { 'Enter the Teller''s Name' }
+      Error  { 'Enter a Valid Teller''s Name' }
+      Format {
+         Mask { 'xxxxxxxxxxxxxxxxxxxx' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   OfficeAccList {
+      Title { 'Enter the Value' }
+      Prompt { 'Enter the Value' }
+      Hint { 'Please Enter the Value,^against each Cash Account Line' }
+      Error { 'Invalid Value - Please Re-Enter' }
+      Format {
+         List { 'CashAcc',Declare }
+      }
+   }
+}
+
+Snippets {
+
+   SubOfficeVAL {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         Result:=TRUE;
+         if (EntryDate.Text = '') or (OfficeCode.Text = '') then
+           Result:=FALSE;
+      *]
+      }
+   }
+
+   SubOfficeEXEC {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.OfficeAccList,UIEventSink.User,'CashAcc,Declare') then
+            begin
+               ProdForm.OfficeAccList.Clear;
+               ProdForm.OfficeAccList.Text:='No Stock Available';
+            end;
+         end;
+         ProdForm.EntryDate.Text:=FormatDateTime('dd/mm/yy',Now-1);
+         ProdForm.OfficeCode.Ignore:=False;
+         ProdForm.EntryDate.Ignore:=False;
+         ProdForm.OfficeAccList.Ignore:=True;
+      *]
+      }
+   }
+
+   SubOfficeGET {
+      InsertBetween { '{ListGetDataStart}','{ListGetDataEnd}' }
+      CodeBlock {
+      [*
+         if ProdForm.OfficeAccList.Ignore = True then
+            Result:=GetFormData(ProdForm)
+         else
+            Result:=ProdForm.OfficeAccList.LineEditData;
+      *]
+      }
+   }
+
+   SubOfficeSET {
+      InsertBetween { '{ListSetDataStart}','{ListSetDataEnd}' }
+      CodeBlock {
+      [*
+         if ProdForm.OfficeAccList.Ignore = True then
+            SetFormData(Value,ProdForm)
+         else
+            ProdForm.OfficeAccList.SetLineEditData(Value);
+         ProdForm.CurrentLine:=FUIEventSink.CurrentLine;
+         if not FlagComplete(ProdForm.Validate) then FlagError:=True;
+
+         if (not FlagError) and (ProdForm.OfficeAccList.Ignore) then
+         begin
+            ProdForm.OfficeCode.Ignore:=True;
+            ProdForm.EntryDate.Ignore:=True;
+		// populate list based on office & date
+            ProdForm.OfficeAccList.Ignore:=False;
+         end;
+         if ProdForm.OfficeAccList.Ignore = True then
+            Result:=GetFormData(ProdForm)
+         else
+            Result:=ProdForm.OfficeAccList.LineEditData;
+      *]
+      }
+   }
+
+   SubOfficeLOGVAR {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+           I,
+           TempOfficeCode : Integer;
+           Value          : Currency;
+           OfficeAccLine  : TPackStringList;
+      *]
+      }
+   }
+
+   SubOfficeLOG {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+        OfficeAccLine:=TPackStringList.Create;
+        TempOfficeCode := TxnLog.Office;                             // store office code
+        TxnLog.Office := StrToIntDef(ProdForm.OfficeCode.Text, -1);  // set office code
+        try
+           for I:=0 to ProdForm.OfficeAccList.Items.Count-1 do
+           begin
+              OfficeAccLine.PackText:=ProdForm.OfficeAccList.Items[I];
+              Value:=StrToCurrdef(OfficeAccLine[1],0);
+              if Value > 0 then
+              begin
+                 TxnLog.WriteTransaction(
+                    '*CashAcc',                                     // Type
+                    0,                                              // Index
+                    0,                                              // Quantity
+                    StrToIntDef(OfficeAccLine[8],9000000),          // plu
+                    Value,                                          // Value
+                    Value,                                          // Price
+                    OfficeAccLine[9],                               // Description
+                    IntToStr(StrToPeriod(ProdForm.EntryDate.Text)), // Additional
+                    OfficeAccLine[5],                               // ProgID
+                    ''                                              // DomInfo
+                 );
+              end;
+           end;
+        finally
+           TxnLog.Office := TempOfficeCode;                             // reset office code
+           OfficeAccLine.Free;
+        end;
+      *]
+      }
+   }
+
+   SubTellerVAL {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         Result:=TRUE;
+         if (EntryDate.Text = '') or (TellerName.Text = '') then
+           Result:=FALSE;
+      *]
+      }
+   }
+
+   SubTellerEXEC {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         if UIEventSink <> nil then
+         begin
+            if not GetAvailableStock(ProdForm.OfficeAccList,UIEventSink.User,'CashAcc,Declare') then
+            begin
+               ProdForm.OfficeAccList.Clear;
+               ProdForm.OfficeAccList.Text:='No Stock Available';
+            end;
+         end;
+         ProdForm.EntryDate.Text:=FormatDateTime('dd/mm/yy',Now-1);
+         ProdForm.TellerName.Ignore:=False;
+         ProdForm.EntryDate.Ignore:=False;
+         ProdForm.OfficeAccList.Ignore:=True;
+      *]
+      }
+   }
+
+
+   SubTellerSET {
+      InsertBetween { '{ListSetDataStart}','{ListSetDataEnd}' }
+      CodeBlock {
+      [*
+         if ProdForm.OfficeAccList.Ignore = True then
+            SetFormData(Value,ProdForm)
+         else
+            ProdForm.OfficeAccList.SetLineEditData(Value);
+         ProdForm.CurrentLine:=FUIEventSink.CurrentLine;
+         if not FlagComplete(ProdForm.Validate) then FlagError:=True;
+
+         if (not FlagError) and (ProdForm.OfficeAccList.Ignore) then
+         begin
+            ProdForm.TellerName.Ignore:=True;
+            ProdForm.EntryDate.Ignore:=True;
+		// populate list based on office & date
+            ProdForm.OfficeAccList.Ignore:=False;
+         end;
+         if ProdForm.OfficeAccList.Ignore = True then
+            Result:=GetFormData(ProdForm)
+         else
+            Result:=ProdForm.OfficeAccList.LineEditData;
+      *]
+      }
+   }
+
+   SubTellerLOGVAR {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+           I              : Integer;
+           TempTellerName : String;
+           Value          : Currency;
+           OfficeAccLine  : TPackStringList;
+      *]
+      }
+   }
+
+   SubTellerLOG {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+        OfficeAccLine:=TPackStringList.Create;
+        TempTellerName := TxnLog.User;                 // store TellerName code
+        TxnLog.User := ProdForm.TellerName.Text;       // set TellerName code
+        try
+           for I:=0 to ProdForm.OfficeAccList.Items.Count-1 do
+           begin
+              OfficeAccLine.PackText:=ProdForm.OfficeAccList.Items[I];
+              Value:=StrToCurrdef(OfficeAccLine[1],0);
+              if Value > 0 then
+              begin
+                 TxnLog.WriteTransaction(
+                    '*CashAcc',                                     // Type
+                    0,                                              // Index
+                    0,                                              // Quantity
+                    StrToIntDef(OfficeAccLine[8],9000000),          // plu
+                    Value,                                          // Value
+                    Value,                                          // Price
+                    OfficeAccLine[9],                               // Description
+                    IntToStr(StrToPeriod(ProdForm.EntryDate.Text)), // Additional
+                    OfficeAccLine[5],                               // ProgID
+                    ''                                              // DomInfo
+                 );
+              end;
+           end;
+        finally
+           TxnLog.User := TempTellerName;                             // reset office code
+           OfficeAccLine.Free;
+        end;
+      *]
+      }
+   }
+
+}
+
+

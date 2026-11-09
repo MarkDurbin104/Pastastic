@@ -1,0 +1,447 @@
+Constants {
+   PLU_ExpOrdPaid { 090000011 }
+}
+Products {
+   PayMoneyOrder { 
+      SubGroup  { MoneyOrder }
+      BitMap  { '..\IMAGES\i3Pay.bmp' }
+      Caption  { 'Pay Money Order' }
+      Description  { 'Pay Money Order' }
+      Domains {
+         PMOSerialNumber
+         PMOSeries
+         PMOIdentification
+         PMOMOValue
+         PMOMOIssueOffice
+         PMOMOIssueDate
+         PMOMOResultsList
+      }
+      Items  { Complete }
+      LogAs  { PMOExpress }
+      PLU  { PLU_ExpOrdPaid }
+      Snippets  { 
+         PMOMOPaidExec,
+         PMOClassesUses,
+         PMOExpOrdPaidLogVars,
+         PMOMOrdLogPaid,
+         PMOMOPaidValidate,
+         PMOMOPaidEnableComplete,
+         PMOMOPaidSearchClick,
+         PMOMOPaidCompleteResitem,
+         PMOMOPaidTriggerDec,
+         PMOExpMOPaidTriggerDef,
+         PMOMOPaidUses,
+         PMOMOPrivVar,
+         PMOMOPaidTerminate,
+         PMOMOPaidItemCount
+      }
+      Title  { 'Pay Money Order' }
+   }
+}
+Domains {
+   PMOIdentification {
+      Error  { 'Invalid Identification' }
+      Format {
+      Mask {
+         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+      }
+      }
+      Hint  { 'Enter Details of Identification Used^e.g PASSPORT No. 500161289 or ID CARD 1234567' }
+      InputFrom  { Keyboard }
+      Prompt  { 'Enter Details of Identification Used' }
+      Title  { Identification }
+   }
+   PMOMOIssueDate {
+      Error  { 'Invalid issue date range' }
+      Format {
+         None
+      }
+      Hint  { 'Enter the issue date range in the format^050201-080201 or 050201 i.e. 5th Feb 2001' }
+      InputFrom  { Keyboard }
+      Prompt  { 'Enter the issue date range' }
+      Title  { 'Issue Date' }
+   }
+   PMOMOIssueOffice {
+      Error  { 'Select the Issuing Office' }
+      Format {
+      PickList {
+         'PickList.MoneyOrderOffices'
+      }
+      }
+      Hint  { 'Select the Issuing Office' }
+      InputFrom  { Keyboard }
+      Prompt  { 'Issuing Office' }
+      Title  { 'Issuing Office' }
+   }
+   PMOMOResultsList {
+      Error  { 'Invalid Money Order' }
+      Format {
+      PickList {
+         ''
+      }
+      }
+      Hint  { 'Select a Money Order from the list' }
+      InputFrom  { Keyboard }
+      Prompt  { 'Results List' }
+      Title  { 'Results List' }
+   }
+   PMOMOValue {
+      Error  { 'Enter a Valid Value' }
+      Format {
+      Mask {
+         xxxxxxxxxxxxxxxxxxxx
+      }
+      }
+      Hint  { 'Enter the Value' }
+      InputFrom  { Keyboard }
+      Prompt  { Value }
+      Title  { Value }
+   }
+   PMOSerialNumber {
+      Error  { 'Enter a Valid Serial Number' }
+      Format {
+      Range {
+         '0, 9999999'
+      }
+      }
+      Hint  { 'Enter the Serial Number' }
+      InputFrom  { Keyboard }
+      Prompt  { 'Serial Number' }
+      Title  { 'Serial Number' }
+   }
+   PMOSeries {
+      Error  { 'Enter a Valid Money Order Series' }
+      Format {
+         none
+      }
+      Hint  { 'Enter the Money Order Series' }
+      InputFrom  { Keyboard }
+      Prompt  { 'Money Order Series' }
+      Title  { 'Money Order Series' }
+   }
+}
+LogFormats {
+   PMOExpress { 'Name,SerialNumber',Value }
+}
+Snippets {
+   PMOClassesUses {
+      InsertBetween  { '{UsesStart}','{UsesEnd}' }
+      CodeBlock  { [*
+//         uses Classes;
+      *]
+      }
+   }
+   PMOExpMOPaidTriggerDef {
+      InsertBetween  { '{OverrideDefStart}','{OverrideDefEnd}' }
+      CodeBlock  { [*
+          procedure {PClass}TExpOrdPaidProduct.TriggerBarCode(Value:String);
+          begin
+             GetMOValues(Value);
+          end;
+          procedure {PClass}TExpOrdPaidProduct.PopulateMOList(IncludePaid:Boolean);
+          var
+            MOItemList:TPackStringList;
+            MoneyOrder:TMoneyOrder;
+          begin
+             MoneyOrder:=TMoneyOrder.Create;
+             MOItemList:=TPackStringList.Create;
+             MOItemList.CommaText:=MoneyOrder.ListFileContents(ProdForm.PMOSerialNumber.Text,0);
+             if MOItemList.Count = 1 then
+             begin
+                MoneyOrder.Series:=MoneyOrder.FindInList(MOItemList[0]);
+                FillForm(MoneyOrder.Series,MoneyOrder.Serial,MoneyOrder.Value,MoneyOrder.IssueOffice,PeriodToDate(MoneyOrder.IssuePeriod));
+             end
+             else if MOItemList.Count > 1 then
+             begin
+                ProdForm.PMOMOResultsList.Items.CommaText:=MOItemList.CommaText;
+                ProdForm.PMOMOResultsList.Ignore    :=False;
+                ProdForm.PMOSeries.Ignore           :=True;
+                ProdForm.PMOSerialNumber.Ignore     :=True;
+                ProdForm.PMOMOIssueOffice.Ignore    :=True;
+                ProdForm.PMOMOIssueDate.Ignore      :=True;    
+                ProdForm.PMOMOValue.Ignore          :=True;
+                FUIEventSink.DisplayItemInfo(Self,0,'','',0,0,True,False);
+                FUIEventSink.DisplayItemInfo(Self,1,'','',0,0,True,False);
+                FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+             end;
+             MoneyOrder.Free;
+          end;
+          procedure {PClass}TExpOrdPaidProduct.FillForm(Series,SerialNo:String;Value:Currency;IssueOffice:Integer;IssueDate:TDateTime);
+          //var
+          //  IO:String;
+          //  I:Integer;
+          begin
+             ProdForm.PMOSerialNumber.Text :=SerialNo;
+             ProdForm.PMOSeries.Text       :=Series;
+             ProdForm.PMOMOValue.Text      :=CurrToStrF(Value,ffFixed,0);
+             ProdForm.PMOMOIssueOffice.Text:=CodeToName(ProdForm.PMOMOIssueOffice,IssueOffice);
+
+             ProdForm.PMOMOIssueDate.Text        :=DateToStr(IssueDate);
+
+             ProdForm.PMOMOResultsList.Ignore    :=True;
+             ProdForm.PMOSerialNumber.Ignore     :=False;
+             ProdForm.PMOSeries.Ignore           :=False;
+             ProdForm.PMOIdentification.Ignore   :=False;
+             ProdForm.PMOMOIssueOffice.Ignore    :=False;
+             ProdForm.PMOMOIssueDate.Ignore      :=False;
+             ProdForm.PMOMOValue.Ignore          :=False;
+
+             ProdForm.PMOSerialNumber.Enabled     :=False;
+             ProdForm.PMOMOIssueOffice.Enabled    :=False;
+             ProdForm.PMOSeries.Enabled           :=False;
+             ProdForm.PMOMOIssueDate.Enabled      :=False;
+             ProdForm.PMOMOValue.Enabled          :=False;
+             FlagComplete(ProdForm.Validate);
+             FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+          end;
+
+          procedure {PClass}TExpOrdPaidProduct.GetMOValues(Value:String);
+          var
+            Index:Integer;
+            MoneyOrder:TMoneyOrder;
+          begin
+             MoneyOrder:=TMoneyOrder.Create;
+             Index:=ProdForm.PMOMOResultsList.Items.IndexOf(Value);
+             if Index >=0 then
+             begin
+                MoneyOrder.Series:=MoneyOrder.FindInList(Value);
+                FillForm(MoneyOrder.Series,MoneyOrder.Serial,MoneyOrder.Value,MoneyOrder.IssueOffice,PeriodToDate(MoneyOrder.IssuePeriod));
+             end;
+          end;
+          function {PClass}TExpOrdPaidProduct.MOPaidSlip:String;
+          var
+             SL:TStringList;
+          begin
+             SL:=TPackStringList.Create;
+             SL.Add('"Money Order Authorization Form",""');
+             SL.Add('"",""');
+             SL.Add('"Status OK",""');
+             SL.Add('"Series","'       +ProdForm.PMOSeries.Text       +'"');
+             SL.Add('"Serial Number","'+ProdForm.PMOSerialNumber.Text +'"');
+             SL.Add('"Value","'        +ProdForm.PMOMOValue.Text      +'"');
+             SL.Add('"Issue Office","' +ProdForm.PMOMOIssueOffice.Text+'"');
+             SL.Add('"Issue Date","'   +ProdForm.PMOMOIssueDate.Text  +'"');
+             SL.Add('"",""');
+             SL.Add('"I Certify that I am the designated",""');
+             SL.Add('"recipient of the above Money Order",""');
+             SL.Add('"",""');
+             SL.Add('"",""');
+             SL.Add('"",""');
+             SL.Add('"Name:",""');
+             SL.Add('"","__________________________________"');
+             SL.Add('"",""');
+             SL.Add('"",""');
+             SL.Add('"",""');
+             SL.Add('"Signature:",""');
+             SL.Add('"","__________________________________"');
+             SL.Add('"",""');
+             SL.Add('"FOR OFFICIAL USE:",""');
+             SL.Add('"",""');
+             SL.Add('"",""');
+             SL.Add('"Authorised by:",""');
+             SL.Add('"","__________________________________"');
+             Result:=SL.CommaText;
+             SL.Free;
+          end;
+       *]
+      }
+   }
+   PMOExpOrdPaidLogVars {
+      InsertBetween  { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock  { [*
+         var
+            ResultList:String;
+            ReceiptPrinter:IDevice;
+      *]
+      }
+   }
+   PMOMOPaidCompleteResitem {
+      InsertBetween  { '{ItemResStart}','{ItemResEnd}' }
+      CodeBlock  { [*
+         riItemBase     :
+            if (ProdForm.PMOMOResultsList.Ignore) and (ProdForm.PMOIdentification.Ignore) then
+               Result:='Search'
+            else if ValidateOK and (ProdForm.PMOMOResultsList.Ignore) then
+               Result:=ResItem00
+            else
+               Result:='';
+         riItemBase+1   :
+//            if (ProdForm.PMOMOResultsList.Ignore) and (ProdForm.PMOIdentification.Ignore) then
+//               Result:='Search Paid'
+//            else
+               Result:='';
+      *]
+      }
+   }
+   PMOMOPaidEnableComplete {
+      InsertBetween  { '{EnableCompleteStart}','{EnableCompleteEnd}' }
+      CodeBlock  { [*
+         if (ProdForm.PMOMOResultsList.Ignore) and (ProdForm.PMOIdentification.Ignore) then
+         begin
+            FUIEventSink.DisplayItemInfo(Self,0,'','Search',0,0,True,False);
+            FUIEventSink.DisplayItemInfo(Self,1,'','',0,0,True,False);
+//            FUIEventSink.DisplayItemInfo(Self,1,'','Search Paid',0,0,True,False);
+         end
+         else if (Value) and (ProdForm.PMOMOResultsList.Ignore) then
+         begin
+            FUIEventSink.DisplayItemInfo(Self,0,'','Complete',0,0,False,False);
+            FUIEventSink.DisplayItemInfo(Self,1,'','',0,0,True,False);
+         end
+         else
+         begin
+            FUIEventSink.DisplayItemInfo(Self,0,'','',0,0,True,False);
+            FUIEventSink.DisplayItemInfo(Self,1,'','',0,0,True,False);
+         end;
+      *]
+      }
+   }
+   PMOMOPaidExec {
+      InsertBetween  { '{IsListStart}','{IsListEnd}' }
+      CodeBlock  { [*
+         ProdForm.PMOSerialNumber.Ignore     :=False;
+         ProdForm.PMOMOIssueOffice.Ignore    :=True ;
+         ProdForm.PMOMOIssueDate.Ignore      :=True ;    
+         ProdForm.PMOMOValue.Ignore          :=True ;
+         ProdForm.PMOSeries.Ignore           :=True ;
+         ProdForm.PMOIdentification.Ignore   :=True ;
+         ProdForm.PMOMOResultsList.Ignore    :=True ;
+
+         GetOrderOfficeList( ProdForm.PMOMOIssueOffice );
+         //I3UINode:=CreateI3UINode('Normal');
+         //ProdForm.MOIssueOffice.Items.Clear;
+         //for I:=0 to I3UINode.OfficeNode.Count-1 do
+         //   ProdForm.MOIssueOffice.Items.AddObject(I3UINode.OfficeNode.Office[I].Name,TStringObject.Create('O' + IntToStr(I3UINode.OfficeNode.Office[I].Code)));
+         //I3UINode.Free;
+      *]
+      }
+   }
+   PMOMOPaidItemCount {
+      InsertBetween  { '{ItemResCountStart}','{ItemResCountEnd}' }
+      CodeBlock  { [*
+       riCount        : Result:='2';
+      *]
+      }
+   }
+   PMOMOPaidSearchClick {
+      InsertBetween  { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock  { [*
+         if Name = 'Search' then
+         begin
+            PopulateMOList(False);
+            Exit;
+//         end
+//         else if Name = 'Search Paid' then
+//         begin
+//            PopulateMOList(True);
+//            Exit;
+         end;
+      *]
+      }
+   }
+   PMOMOPaidTerminate {
+      InsertBetween  { '{TerminateCleanUpStart}','{TerminateCleanUpEnd}' }
+      CodeBlock  { [*
+      if MoneyOrders <> nil then
+      begin
+         MoneyOrders.Free;
+         MoneyOrders:=nil;
+      end;
+      *]
+      }
+   }
+   PMOMOPaidTriggerDec {
+      InsertBetween  { '{OverrideDecStart}','{OverrideDecEnd}' }
+      CodeBlock  { [*
+          procedure TriggerBarCode(Value:String); override;
+          procedure PopulateMOList(IncludePaid:Boolean);
+          procedure FillForm(Series,SerialNo:String;Value:Currency;IssueOffice:Integer;IssueDate:TDateTime);
+          procedure GetMOValues(Value:String);
+          function MOPaidSlip:String;
+       *]
+      }
+   }
+   PMOMOPaidUses {
+      InsertBetween  { '{AutoUsesStart}','{AutoUsesEnd}' }
+      CodeBlock  { [*
+         MODefinitionsU,MOSupportU,StringUtil,ShareDataU,I3UIParseU,UIDllSupportU,
+      *]
+      }
+   }
+   PMOMOPaidValidate {
+      InsertBetween  { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock  { [*
+//         if not PMOIdentification.Ignore then
+//            Result:=CheckMaskEdits(Self)
+//         else
+//            Result:=True;
+
+         if not PMOIdentification.Ignore then
+            Result:=CheckMaskEdits(Self)
+         else
+            Result:=True;
+         if PMOMOIssueOffice.Text='' then
+         begin
+            PMOMOIssueOffice.Text:='Invalid Money Order';
+            BaseProduct.UIEventSink.ReferenceData('SET(ErrorText,Not A Valid Money Order Issuing Office)');
+            Result:=FALSE;
+         end;
+      *]
+      }
+   }
+   PMOMOPrivVar {
+      InsertBetween  { '{PrivVarDecStart}','{PrivVarDecEnd}' }
+      CodeBlock  { [*
+        MoneyOrders:TMoneyOrders;
+      *]
+      }
+   }
+   PMOMOrdLogPaid {
+      InsertBetween  { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock  { [*
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                               0-StrToCurrDef(ProdForm.PMOMOValue.Text,0),
+                               0-StrToCurrDef(ProdForm.PMOMOValue.Text,0),
+                               Get_Description,ProdForm.PMOSerialNumber.Text,Get_ProgramID,
+                               Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.LogTransaction(Index,FQuantity,0,
+                           0,0,'Issue Office '+ProdForm.PMOMOIssueOffice.Text+' ('+GetCodeFromOList(ProdForm.PMOMOIssueOffice )+')',
+                           '','Issue Office','');
+         Inc(Index);
+         ResultList:=MOPaidSlip;
+         TxnLog.WriteTransaction('*MOPaid',0,0,0,StrToCurrDef(ProdForm.PMOMOValue.Text,0),0,
+                               ProdForm.PMOSeries.Text,ProdForm.PMOSerialNumber.Text,'MOPaid','');
+         TxnLog.WriteTransaction('MOPaid',0,0,0,0-StrToCurrDef(ProdForm.PMOMOValue.Text,0),0,
+                               ProdForm.PMOSeries.Text,ProdForm.PMOSerialNumber.Text,'MOPaid Complete',ResultList);
+
+         PayMO(ProdForm.PMOSeries.Text,0,DateToPeriod(Now),TxnLog);
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+
+         try
+            ReceiptPrinter:=FUIEventSink.GetComponentReference('ReceiptPreview'+ResultList) as IDevice;
+            if ReceiptPrinter <> nil then
+            begin
+               if GetGPCSRegString('','MOReceiptCount','0') = '2' then
+               begin
+                  ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+                  ReceiptPrinter.WriteDevice(dcList5Data,ResultList,1);
+                  ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+                  ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+                  ReceiptPrinter.WriteDevice(dcList5Data,ResultList,1);
+                  ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+               end
+               else if GetGPCSRegString('','MOReceiptCount','0') = '1' then
+               begin
+                  ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+                  ReceiptPrinter.WriteDevice(dcList5Data,ResultList,1);
+                  ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+               end;
+            end;
+         finally
+            ReceiptPrinter := nil;
+         end ;
+      *]
+      }
+   }
+}

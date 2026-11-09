@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"  
+	verticalScrollPolicy="off" horizontalScrollPolicy="off" xmlns:slides="com.proiam.slides.*" xmlns:filters="flash.filters.*"
+	width="300" height="768"
+	rollOver="{onMenuRollOver(event)}" rollOut="{onMenuRollOut(event)}"
+	>
+<mx:Metadata>
+        [Event(name="MenuVisible", type="flash.events.Event")]
+        [Event(name="MenuExpanded", type="flash.events.Event")]
+        [Event(name="MenuIn", type="flash.events.Event")]
+</mx:Metadata>
+<mx:Script>
+	<![CDATA[
+			private function onMenuRollOver(event:MouseEvent):void {
+				dispatchEvent(new Event("MenuVisible"));
+				currentState="Expanded";
+			}
+			private function onMenuRollOut(event:MouseEvent):void {
+				dispatchEvent(new Event("MenuIn"));
+				currentState=null;
+			}
+			
+	]]>
+</mx:Script>
+	<mx:Canvas id="menuBar" 
+		x="276" y="744" width="106" height="768" verticalScrollPolicy="off" horizontalScrollPolicy="off"
+		backgroundColor="#DADDF0" borderStyle="solid" borderColor="#A8AADA" cornerRadius="10" fontFamily="Verdana" color="#989ACA" fontWeight="bold" fontSize="15" borderThickness="5" >
+		<mx:Label text="MENU" x="2" y="0" id="label1" width="92"/>
+	</mx:Canvas>
+
+	<!--slides:SlideMenuFrame id="bg1" backgroundColor="#DAE7DD" borderColor="#8FB898" tone="#8FB898" x="300" y="24" />
+	<slides:SlideMenuFrame id="bg2" backgroundColor="#DAE7DD" borderColor="#8FB898" tone="#8FB898" x="300" y="24" />
+	<slides:SlideMenuFrame id="bg3" backgroundColor="#D9E7E7" borderColor="#8DBBB0" tone="#8DBBB0" x="300" y="24" />
+	<slides:SlideMenuFrame id="bg4" backgroundColor="#E6E4D7" borderColor="#BBAD92" tone="#BBAD92" x="300" y="24" /-->
+
+	<slides:SlideMenuFrame id="bg1" backtone="#DAE7DD" foretone="#8FB898" x="300" y="24" />
+	<slides:SlideMenuFrame id="bg2" backtone="#DAE7DD" foretone="#8FB898" x="300" y="24" />
+	<slides:SlideMenuFrame id="bg3" backtone="#D9E7E7" foretone="#8DBBB0" x="300" y="24" />
+	<slides:SlideMenuFrame id="bg4" backtone="#E6E4D7" foretone="#BBAD92" x="300" y="24" />
+	
+	<slides:MenuTab id="menu1"  backgroundColor="#DAE7DD"  borderColor="#8FB898" color="#8FB898" 
+		rollOver="currentState='OverMenu1';	 dispatchEvent(new Event('MenuExpanded'));"  y="31" x="300"
+		title="Retail" source="resources/menu/Retail.png" caption="Retail&#xa;Sales" />
+
+	<slides:MenuTab id="menu2" backgroundColor="#DAE7DD"  borderColor="#8FB898" color="#8FB898" 
+		rollOver="currentState='OverMenu2';  dispatchEvent(new Event('MenuExpanded'));" y="195" x="300"
+		title="Stamps" source="resources/menu/Stamps.png" caption="Stamp&#xa;Sales"/>
+
+	<slides:MenuTab id="admin" backgroundColor="#D9E7E7"  borderColor="#8DBBB0" color="#8DBBB0" 
+		rollOver="currentState='OverAdmin';  dispatchEvent(new Event('MenuExpanded'));" y="359" x="300"
+		title="Admin" source="resources/menu/Admin.png" caption="Stock&#xa;Reports&#xa;End of Day"/>
+
+	<slides:MenuTab id="basket" backgroundColor="#E6E4D7"  borderColor="#BBAD92" color="#BBAD92" 
+		rollOver="currentState='OverBasket';  dispatchEvent(new Event('MenuExpanded'));" y="523" x="300"
+					title="Basket" source="resources/menu/Basket.png" caption="Items&#xa;&#xa;Total" interleave="12&#xa;&#xa;$14.56"/>
+
+	<mx:states>
+		<mx:State name="PopOut">
+			<mx:SetProperty target="{menuBar}" name="y" value="0"/>
+			<mx:SetProperty target="{menuBar}" name="x" value="194"/>
+		</mx:State>
+		<mx:State name="Expanded" basedOn="PopOut" >
+			<mx:SetProperty target="{menuBar}" name="x" value="200"/>
+			<mx:SetProperty target="{menu1}" name="x" value="210"/>
+			<mx:SetProperty target="{menu2}" name="x" value="210"/>
+			<mx:SetProperty target="{admin}" name="x" value="210"/>
+			<mx:SetProperty target="{basket}" name="x" value="210"/>
+		</mx:State>
+		<mx:State name="OverMenu1" basedOn="Expanded">
+			<mx:SetProperty target="{bg1}" name="x" value="15"/>
+			<mx:SetProperty target="{menu1}" name="filters" value="{null}"/>
+			<mx:SetStyle target="{menu1}" name="backgroundAlpha" value="0"/>
+			<mx:SetStyle target="{menu1}" name="borderStyle" value="none"/>
+		</mx:State>
+		<mx:State name="OverMenu2" basedOn="Expanded">
+			<mx:SetProperty target="{bg2}" name="x" value="15"/>
+			<mx:SetProperty target="{menu2}" name="filters" value="{null}"/>
+			<mx:SetStyle target="{menu2}" name="backgroundAlpha" value="0"/>
+			<mx:SetStyle target="{menu2}" name="borderStyle" value="none"/>
+		</mx:State>
+		<mx:State name="OverAdmin" basedOn="Expanded">
+			<mx:SetStyle target="{admin}" name="borderColor"/>
+			<mx:SetProperty target="{bg3}" name="x" value="15"/>
+			<mx:SetProperty target="{admin}" name="filters" value="{null}"/>
+			<mx:SetStyle target="{admin}" name="backgroundAlpha" value="0"/>
+			<mx:SetStyle target="{admin}" name="borderStyle" value="none"/>
+		</mx:State>
+		<mx:State name="OverBasket" basedOn="Expanded">
+			<mx:SetProperty target="{bg4}" name="x" value="15"/>
+			<mx:SetProperty target="{basket}" name="filters" value="{null}"/>
+			<mx:SetStyle target="{basket}" name="backgroundAlpha" value="0"/>
+			<mx:SetStyle target="{basket}" name="borderStyle" value="none"/>
+		</mx:State>
+	</mx:states>
+	<mx:transitions>
+		<mx:Transition fromState="" toState="Expanded" >
+			<mx:Parallel >
+				<mx:Move target="{menuBar}" xTo="200" xFrom="276" yTo="0" yFrom="744" duration="200"  />
+				<mx:Move target="{menu1}" xFrom="300" xTo="210" duration="200"  startDelay="50" />
+				<mx:Move target="{menu2}" xFrom="300" xTo="210" duration="200" startDelay="50"  />
+				<mx:Move target="{admin}" xFrom="300" xTo="210" duration="200" startDelay="50"  />
+				<mx:Move target="{basket}" xFrom="300" xTo="210" duration="200" startDelay="50" />
+			</mx:Parallel>
+		</mx:Transition>
+		<mx:Transition toState="OverMenu1"  >
+			<mx:Move target="{bg1}" xFrom="210" xTo="15" duration="200"  />
+		</mx:Transition>
+		<mx:Transition toState="OverMenu2"  >
+			<mx:Move target="{bg2}" xFrom="210" xTo="15" duration="200"  />
+		</mx:Transition>
+		<mx:Transition toState="OverAdmin"  >
+			<mx:Move target="{bg3}" xFrom="210" xTo="15" duration="200"  />
+		</mx:Transition>
+		<mx:Transition toState="OverBasket"  >
+			<mx:Move target="{bg4}" xFrom="210" xTo="15" duration="200"  />
+		</mx:Transition>
+	</mx:transitions>
+	<mx:filters>
+		<filters:DropShadowFilter angle="45" alpha=".1" distance="4" blurX="0" blurY="0"/>
+	</mx:filters>
+</mx:Canvas>

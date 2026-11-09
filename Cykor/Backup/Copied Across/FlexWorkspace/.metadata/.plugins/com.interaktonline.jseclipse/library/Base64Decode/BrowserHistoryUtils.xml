@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="1.5.0" prefix="BrowserHistoryUtils" extends="" parent="" >
+	<file path="C:/FlexWorkspace/Base64Decode/bin-debug/history/history.js" creation="1207693806531">
+		<item repl="addEvent()" display="addEvent(elm, evType, fn, useCapture)" chrno="1" />
+	</file>
+	<file path="C:/FlexWorkspace/Base64Decode/html-template/history/history.js" creation="1207693806531">
+		<item repl="addEvent()" display="addEvent(elm, evType, fn, useCapture)" chrno="1" />
+	</file>
+</completion>

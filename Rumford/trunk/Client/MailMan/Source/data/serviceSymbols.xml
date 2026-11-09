@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+<symbols>
+	<elements >
+		<circle shapeName="NOTDot"  x="5" y="5" radius="5" color="0xFFFFEE" lineThickness="2" />
+		<circle shapeName="SecNOTDot"  x="5" y="5" radius="5" color="0xCCFFCC" lineThickness="2" />
+		<circle shapeName="PriNOTDot"  x="5" y="5" radius="5" color="0xFFCC99" lineThickness="2" />
+
+
+		<rectangle shapeName="PriBox"  x="0"	 y="0" width="120" height="70" lineThickness="2" color="0xFFCC99"/> 
+		<polygon shapeName="PriService"  lineThickness="2" > 
+			<point	x="0"		y="0"		/>
+			<point	x="0"		y="70"		/>
+			<point	x="120"	y="70"	/>
+			<point	x="120"	y="0"	/>
+			<point	x="0"		y="0"		/>
+			
+			<mpoint	x="0"		y="10"	/>
+			<point	x="0"		y="30"	/>
+			<point	x="20"	y="30"	/>
+			<point	x="20"	y="10"	/>
+			<point	x="0"		y="10"	/>
+			
+			<mpoint	x="14"		y="14"	/>
+			<point	x="6"		y="14"	/>
+			<point	x="6"		y="20"	/>
+			<point	x="14"		y="20"	/>
+			<point	x="14"		y="26"	/>
+			<point	x="6"		y="26"	/>
+
+			<mpoint	x="110"	y="10"	/>
+			<point	x="110"	y="30"	/>
+			<point	x="120"	y="30"	/>
+			<point	x="120"	y="10"	/>
+			<point	x="110"	y="10"	/>
+			
+			<mpoint	x="0"		y="40"	/>
+			<point	x="0"		y="60"	/>
+			<point	x="20"	y="60"	/>
+			<point	x="20"	y="40"	/>
+			<point	x="0"		y="40"	/>
+			
+			<mpoint	x="14"		y="44"	/>
+			<point	x="6"		y="44"	/>
+			<point	x="6"		y="50"	/>
+			<point	x="14"		y="50"	/>
+			<mpoint	x="6"		y="51"	/>
+			<point	x="6"		y="56"	/>
+			<point	x="14"		y="56"	/>
+
+			<mpoint	x="110"	y="40"	/>
+			<point	x="110"	y="60"	/>
+			<point	x="120"	y="60"	/>
+			<point	x="120"	y="40"	/>
+			<point	x="110"	y="40"	/>
+		</polygon> 
+		<text shapeName="ServiceTitle" x="0" y="0" width="90" height="70" text="Service Name"/>
+		<composite shapeName="PrimaryService"  >
+			<PriBox/>
+			<PriNOTDot x="125" y="50" />
+			<PriService/>
+			<ServiceTitle x="20" y="0" />
+		</composite>
+		<rectangle shapeName="SecBox"  x="0"	 y="0" width="120" height="70" lineThickness="2" color="0xCCFFCC"/> 
+		<polygon shapeName="SecService"  lineThickness="2" > 
+			<point	x="0"		y="0"		/>
+			<point	x="0"		y="70"		/>
+			<point	x="120"	y="70"	/>
+			<point	x="120"	y="0"	/>
+			<point	x="0"		y="0"		/>
+			
+			<mpoint	x="0"		y="10"	/>
+			<point	x="0"		y="30"	/>
+			<point	x="20"	y="30"	/>
+			<point	x="20"	y="10"	/>
+			<point	x="0"		y="10"	/>
+			
+			<mpoint	x="14"		y="14"	/>
+			<point	x="6"		y="14"	/>
+			<point	x="6"		y="20"	/>
+			<point	x="14"		y="20"	/>
+			<point	x="14"		y="26"	/>
+			<point	x="6"		y="26"	/>
+
+			<mpoint	x="110"	y="10"	/>
+			<point	x="110"	y="30"	/>
+			<point	x="120"	y="30"	/>
+			<point	x="120"	y="10"	/>
+			<point	x="110"	y="10"	/>
+			
+			<mpoint	x="0"		y="40"	/>
+			<point	x="0"		y="60"	/>
+			<point	x="20"	y="60"	/>
+			<point	x="20"	y="40"	/>
+			<point	x="0"		y="40"	/>
+			
+			<mpoint	x="14"		y="44"	/>
+			<point	x="6"		y="44"	/>
+			<point	x="6"		y="50"	/>
+			<point	x="14"		y="50"	/>
+			<mpoint	x="6"		y="51"	/>
+			<point	x="6"		y="56"	/>
+			<point	x="14"		y="56"	/>
+
+			<mpoint	x="110"	y="40"	/>
+			<point	x="110"	y="60"	/>
+			<point	x="120"	y="60"	/>
+			<point	x="120"	y="40"	/>
+			<point	x="110"	y="40"	/>
+		</polygon> 
+		<composite shapeName="SecondaryService"  >
+			<SecBox/>
+			<SecNOTDot x="125" y="50" />
+			<SecService/>
+			<ServiceTitle x="20" y="0" />
+		</composite>
+		<text shapeName="LookText" x="0" y="0" width="100" height="40" xJustify="center" yJustify="center" text="Lookup Name"/>
+		<polygon shapeName="LookBox"  lineThickness="2" color="0xFFFFEE"> 
+				<point	x="80"	y="60"	/>
+				<point	x="0"		y="20"		/>
+				<point	x="0"		y="100"	/>
+				<point	x="80"	y="60"	/>
+				<mpoint	x="15"	y="70"	/>
+				<point	x="15"	y="65"	/>
+				<point	x="20"	y="65"	/>
+				<point	x="20"	y="60"	/>
+				<point	x="25"	y="60"	/>
+				<point	x="25"	y="55"	/>
+				<point	x="30"	y="55"	/>
+				<point	x="30"	y="50"	/>
+				<point	x="35"	y="50"	/>
+		</polygon> 
+		<composite shapeName="LookUp" >
+			<LookBox/>
+			<LookText x="30" y="0" />
+		</composite>
+		<text shapeName="InText" x="0" y="0" width="120" height="40" text="INPUT"/>
+		<rectangle shapeName="InBox"  x="0"	 y="0" width="120" height="40" lineThickness="2" color="0x99CCFF"/> 
+		<composite shapeName="Input" >
+			<InBox/>
+			<InText x="0" y="0" />
+		</composite>
+		<rectangle shapeName="Output"  x="0"	 y="0" width="120" height="40" lineThickness="2" color="0xFFFFEE" cornerRadius="10"/> 
+		<circle shapeName="Oval"  x="0"	 y="0" width="120" height="40" lineThickness="2" color="0xFFFFEE"/> 
+		<text shapeName="FeeText" x="0" y="0" width="120" height="40" text="FEE"/>
+		<rectangle shapeName="FeeBox"  x="0"	 y="0" width="120" height="40" lineThickness="2" cornerRadius="40" color="0xCCFFFF"/> 
+		<!--polygon shapeName="FeeBox"  lineThickness="2" color="0xCCFFFF"> 
+			<point	x="20"		y="0"		/>
+			<point	x="100"		y="0"		/>
+			<point	x="120"		y="20"	controlx="120" controly="0" />
+			<point	x="100"		y="40"	controlx="120" controly="40" />
+			<point	x="20"		y="40"	/>
+			<point	x="0"			y="20"	controlx="0" controly="40" />
+			<point	x="20"		y="0"		controlx="0" controly="0" />
+		</polygon--> 
+		<composite shapeName="Fee" >
+			<FeeBox/>
+			<FeeText x="0" y="0" />
+		</composite>
+
+		<text shapeName="GateType" x="0" y="0" width="60" height="60" text=""/>
+		<polygon shapeName="ANDBox"  lineThickness="2" color="0xFFFFEE"  > 
+			<point	x="30"	y="0" 	/>
+			<point	x="0"	y="0"	/>
+			<point	x="0"	y="60"	/>
+			<point	x="30"	y="60"	/>
+			<point	x="60" y="30"	controlx="60"	controly="60"/>
+			<point	x="30" y="0"	controlx="60"	controly="0"/>
+		</polygon> 
+		<composite shapeName="ANDGate" >
+			<ANDBox/>
+			<GateType x="0" y="0" />
+		</composite>
+		<composite shapeName="NANDGate"  >
+			<ANDBox/>
+			<NOTDot x="65" y="30" />
+			<GateType x="0" y="0" />
+		</composite>
+		<polygon shapeName="ORBox"  lineThickness="2" color="0xFFFFEE" > 
+				<point	x="0"		y="0"	/>
+				<point	x="60"	y="30"	controlx="40"	controly="0"/>
+				<point	x="0"		y="60"	controlx="40"	controly="60"/>
+				<point	x="0"		y="0"		controlx="10"	controly="30"/>
+		</polygon> 
+		<composite shapeName="ORGate" >
+			<ORBox/>
+			<GateType x="0" y="0" />
+		</composite>
+		<composite shapeName="NORGate"  >
+			<ORBox/>
+			<NOTDot x="65" y="30" />
+			<GateType x="0" y="0" />
+		</composite>
+		<polygon shapeName="XORBox"  lineThickness="2" color="0xFFFFEE"  > 
+				<point	x="10"	y="0"	/>
+				<point	x="70"	y="30"	controlx="50"	controly="0"/>
+				<point	x="10"	y="60"	controlx="50"	controly="60"/>
+				<point	x="10"	y="0"		controlx="20"	controly="30"/>
+				<mpoint	x="0"	y="60"	/>
+				<point	x="0"	y="0"	controlx="10"	controly="30"/>
+		</polygon> 
+		<composite shapeName="XORGate"  >
+			<XORBox/>
+			<GateType x="10" y="0" />
+		</composite>
+		<composite shapeName="XNORGate"  >
+			<XORBox/>
+			<NOTDot x="75" y="30" />
+			<GateType x="10" y="0" />
+		</composite>
+		<polygon shapeName="NOTTriangle"  lineThickness="2" color="0xFFFFEE"> 
+				<point	x="40"	y="20"	/>
+				<point	x="0"		y="0"		/>
+				<point	x="0"		y="40"	/>
+				<point	x="40"	y="20"	/>
+		</polygon> 
+		<text shapeName="NOTText" x="0" y="0" width="30" height="40" />
+		<composite shapeName="NOTGate"  >
+			<NOTTriangle/>
+			<NOTDot x="45" y="20" />
+			<NOTText x="0" y="0" />
+		</composite>
+	</elements>
+</symbols>

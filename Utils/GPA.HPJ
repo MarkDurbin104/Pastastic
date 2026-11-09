@@ -1,0 +1,24 @@
+; Help project file created by Helping Hand (c) 1995
+[Options]
+root=.
+BMROOT=.
+errorlog=gpa.err
+warning=3
+compress=false
+report=1
+title=gpa
+
+
+[FILES]
+gpa.rtf
+
+
+[WINDOWS]
+main = "gpa", ( 0, 0, 640, 480),,,(192,192,192)
+
+
+[CONFIG]
+BrowseButtons()
+
+
+[MAP]

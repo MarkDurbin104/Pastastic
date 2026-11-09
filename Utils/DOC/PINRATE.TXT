@@ -1,0 +1,52 @@
+
+
+
+
+
+
+
+
+        F.A.O. Mrs. J. Rivers.
+        The Post Office.
+        Purchasing and Supply Office.
+        Counters Western Territory HQ.
+        86 Lionel Street,
+        BIRMINGHAM.
+        B3 1HQ.
+
+
+
+
+
+                                                24th January 1992.
+
+        Dear Jenny,
+
+                Please find attached the requested power ratings and 
+        voltages available at the rear of the Counter terminal.
+
+                Could you please copy them to all relevant parties.
+
+                Regards,
+
+
+
+
+
+
+
+        Mark Durbin.
+
+
+
+        Counter terminal 
+
+                COM port 1  Pin 12 - +5  Volts @ 2 Amps (maximum)                
+                COM port 2  Pin 12 - +5  Volts @ 2 Amps (maximum)                
+                COM port 3  Pin 12 - +5  Volts @ 2 Amps (maximum)                
+
+                Scale Port  Pin 2  - +12 Volts @ 800 milli Amps (maximum)                
+                Scale Port  Pin 4  - +5  Volts @ 2 Amps (maximum)                
+                Scale Port  Pin 6  - -12 Volts @ 300 milli Amps (maximum)                
+
+

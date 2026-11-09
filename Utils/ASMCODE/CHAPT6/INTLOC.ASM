@@ -1,0 +1,75 @@
+;
+;       Program IntLoc ( Chapter 6 )
+;
+page    59,132
+;
+;                        Program   IntLoc
+;                        ÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
+;
+;                    Voronezh, 30 January 91
+;                    ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+;
+;       This is a sample of an assembler program that uses a simple
+;       DOS service.  It outputs  the  table of interrupts onto the
+;       system  output  device  and reports where the corresponding
+;       handler is located.  The letter B means BIOS, the  letter
+;       D - DOS, the letter N - not set (dummy handler).
+;
+.model small
+.stack
+.data
+tbint   db      16 dup ('xx-X ') , '$'
+HexSym  db      '0','1','2','3','4','5','6','7'
+        db      '8','9','A','B','C','D','E','F'
+NumInt  db      0
+NumIntL db      0
+.code
+        mov     ax,@data
+        mov     ds,ax
+
+        mov     cx,16           ; Line cunter
+Rows:                           ; Lynes cycle starts here
+        push    cx              ; Save outward counter
+        mov     di,0            ; Counter within line
+        mov     cx,16           ; Columns cunter
+        mov     al,NumInt
+        mov     NumIntL,al
+Intrs:                          ;
+        mov     al,NumintL      ; Load interrupt number
+        mov     ah,35h          ; Get interrupt vector (DS:BX)
+        int     21h             ; DOS sevice call
+        mov     dx,es           ; Segment addres of interrupt handler
+        cmp     dx,0A000h       ; Compare it to the BIOS start address
+        ja      InBios          ; If DX is greater - handler is in BIOS
+        mov     tbint[di+3],'D' ; Set indicator 'DOS'
+        jmp     DoneInd         ; To the end of block
+InBios: mov     tbint[di+3],'B' ; Set indicator 'BIOS'
+DoneInd:                        ; This is the end of block
+
+        cmp     byte ptr es:[bx],0CFh   ; First instruction IRET?
+        jne     PresHan                 ; If not - handler presented
+        mov     tbint[di+3],'N' ; Set indicator 'Not set'
+PresHan:                        ;
+        mov     ah,0            ; AL keeps the interrupt number
+        mov     dl,16           ; Prepare to converting AL to symbols
+        div     dl              ; AX / 16
+
+        mov     bx,offset HexSym
+        xlat
+        mov     byte ptr tbint[di],al   ;    symbol into output line
+        mov     al,ah
+        xlat
+        mov     byte ptr tbint[di+1],al   ;    symbol into output line
+
+        add     di,5            ; Next position in the line
+        add     NumIntL,16      ; Increase interrupt number
+        loop    Intrs           ; Next step - next interrupt
+        pop     cx              ; Restore cycle counter
+        mov     ah,09           ; Function 09 - output string
+        mov     dx,offset tbint ; Addres of string in DS:DX
+        int     21h             ; Output one string
+        inc     NumInt          ;
+        loop    Rows            ; Next step - next string
+        mov     ax,4C00h
+        int     21h
+        end                     ;

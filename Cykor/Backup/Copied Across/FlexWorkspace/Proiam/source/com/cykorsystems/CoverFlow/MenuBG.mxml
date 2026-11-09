@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" verticalGap="0">
+	<mx:String id="title"></mx:String>
+	<mx:String id="picture"></mx:String>
+	<mx:HBox horizontalAlign="left" verticalAlign="middle" creationPolicy="all">
+		<mx:Image scaleContent="true" height="50"   source="{picture}"/>
+		<mx:Label fontSize="18" fontWeight="bold" color="#0000A0"  text="{title}" />
+	</mx:HBox>
+</mx:VBox>

@@ -1,0 +1,216 @@
+kbddev.c
+
+#ifdef WIEN
+PUBLIC INT G_hotKeyAction;
+PUBLIC INT G_FKeyDis;
+PUBLIC INT G_FKeyAct;
+PUBLIC CHAR G_FKeyactname[9];
+#endif //WIEN
+
+checkhot
+
+				    G_hotkey[i].disabled=1;
+                if(((k==F02)||(k==F03)||(k==F04)||(k==F05)||(k==F06)
+                   ||(k==F07)||(k==F08)||(k==F09))&&(G_FKeyDis)) {
+                  strcpy(G_FKeyactname,G_hotkey[i].n);
+                  G_FKeyAct=i;
+                }
+                else {
+   				    sendmsg("HOTKEY",k,G_hotkey[i].n);
+#ifdef WIEN
+                   G_HotKeyAction=1;
+#endif//WIEN
+                }
+      		    if (G_hotkey[i].disabled==1) G_hotkey[i].disabled=0;
+		   	    RETURNV(1);
+			    } else if (G_hotkey[i].disabled==2) {
+				    G_hotkey[i].disabled=0;
+				    RETURNV(0);
+			    }
+		    }
+        }
+	}
+
+
+function.c
+
+#ifdef WIEN
+PUBLIC INT G_FKeyDis;
+PUBLIC INT G_FKeyAct;
+PUBLIC CHAR G_FKeyactname[9];
+#endif//WIEN
+
+
+INT MyProdlist(void)
+{
+  INT xit=0,i=0;
+  CHAR buffer[40];
+  INT k,nt;
+  INT tft=G_form.type;
+  G_innext=1;
+  buffer[0]=0;
+  prdate();
+  G_FKeyDis=1;
+  while (!xit) {
+    nt=G_numt;
+    if ((i==0)&&(!G_numt)) {
+  	   sendmsg("OUTPUT1",MESSAGE_0);
+	 } else {
+	 	sendmsg("OUTPUT1",MESSAGE_1);
+	 }
+    switch (k=(INT)sendmsg("INPUT1",MESSAGE_i)) {
+      case ESC :
+           voidlog(0);
+           sendmsg("INPUT1",MESSAGE_e);
+           break;
+
+      case ENDCUST :
+           G_qnty=atoi(buffer);
+           if (G_qnty==0) G_qnty=1;
+           sendmsg("INPUT1",MESSAGE_r,k);
+           logprod(1);
+           G_edepth=i=0;
+           buffer[i]=0;
+           G_qnty=0;
+           G_prod=-1;
+           if (G_numt<(NUMLOGENT)) G_tindex++;
+       	  displog(0);
+			  nt=G_numt;
+           runaction("ENDCUST");
+           runaction("AFENDCUS");
+           sendmsg("OUTPUT1",MESSAGE_A,1);
+           sendmsg("OUTPUT1",MESSAGE_S,3);
+           sendmsg("OUTPUT1",MESSAGE_o,G_tarea[0]+1,G_tarea[1]+1,"%s",G_moneys);
+           output(G_tarea[0]+6,G_tarea[1]+1,G_globs[0],15,"M",3,0);
+           sendmsg("OUTPUT1",MESSAGE_A,0);
+           sendmsg("INPUT1",MESSAGE_e);
+           break;
+
+      case MODIFY :
+           modlogval(0);
+           sendmsg("INPUT1",MESSAGE_e);
+           break;
+
+      case PRINT :
+           if (!receipt()) beep();
+           sendmsg("INPUT1",MESSAGE_e);
+           break;
+
+      case EXIT_K :
+           removelogt(0);
+           G_exitkey=EXIT_K;
+           xit=1;
+           sendmsg("INPUT1",MESSAGE_e);
+           sendmsg("OUTPUT1",MESSAGE_0);
+           break;
+
+      case BKSP :
+           if (i>0) {
+             buffer[--i]=0;
+             output(90,0,buffer,38,"9",1,0);
+           }
+           else {
+             beep();
+           }
+           break;
+
+      case LANGSWITCH :
+           if(G_FKeyAct>=0) {
+             G_qnty=atoi(buffer);
+             if (G_qnty==0) G_qnty=1;
+             if (G_edepth>4) RETURNV(0);
+             G_numeks[G_edepth]=0;
+             G_edepth++;
+             G_loglev=G_tindex;
+             runaction(G_FKeyactname);
+             fkeysetupaction(G_prod);
+             G_edepth=i=0;
+             buffer[i]=0;
+             G_qnty=0;
+             G_prod=-1;
+             if (G_numt<(NUMLOGENT)) G_tindex++;
+				 displog(0);
+				 nt=G_numt;
+             G_FKeyAct=-1;
+           }
+           break;
+
+      default :
+           if (chkfmt('9',k)) {
+             if (i<4) {
+               buffer[i++]=(CHAR)k;
+               buffer[i]=0;
+               output(90,0,buffer,38,"9",1,0);
+             }
+             else {
+               beep();
+             }
+           }
+           else {
+             G_qnty=atoi(buffer);
+             if (G_qnty==0) G_qnty=1;
+             sendmsg("INPUT1",MESSAGE_r,k);
+             if (getaction(0,k)) {
+               G_edepth=i=0;
+               buffer[i]=0;
+               G_qnty=0;
+               G_prod=-1;
+               if (G_numt<(NUMLOGENT)) G_tindex++;
+				   displog(0);
+				   nt=G_numt;
+             }
+             else {
+               sendmsg("INPUT1",MESSAGE_e);
+               beep();
+             }
+	        }
+    }
+		
+    if (nt!=G_numt) displog(0);
+  }
+  G_FKeyDis=0;
+  G_innext=0;
+  RETURNV(1);
+}
+
+INT fkeysetupaction(INT prod)
+{
+    CHAR tmp[20];
+    CHAR act[20];
+    INT i,j,k,err,*p;
+	ENTRY(1220);
+
+    if (G_edepth>4) RETURNV(0);
+    
+//    if (!getprod(prod)) RETURNV(0);
+//    if (!sendmsg("DBM",MESSAGE_g,PROD_S,ACTI,act)) RETURNV(0);
+//    if (act[0]==0) RETURNV(0);
+
+    G_numeks[G_edepth]=0;
+    G_edepth++;
+    G_loglev=G_tindex;
+    G_prod=prod;
+//    runaction(act);
+    G_prod=0;
+    G_loglev=0;
+    G_edepth--;
+    cleanup();
+
+    RETURNV(1);
+}
+
+function.h
+PUBLIC INT            fkeysetupaction(INT prod);
+PUBLIC INT             MyProdlist    (void);
+
+config.h
+PUBLIC INT 	            G_FKeyDis         INIT(0)//1...Action ist Hotkeyaction
+PUBLIC INT 	            G_FKeyAct         INIT(-1)//1...Action ist Hotkeyaction
+PUBLIC CHAR             G_FKeyactname[9]     INIT("\0\0\0\0\0\0\0\0\0");
+
+
+global.h
+    { "GHOTKACT"       , 'I' , (void *)(&(G_HotKeyAction ))  }, // 98
+    { "GFKEYDIS"       , 'I' , (void *)(&(G_FKeyDis ))  }, // 99
+
+

@@ -1,0 +1,2 @@
+BEEPService /UNINSTALL
+pause

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="SearchDialog.ScopePart">
+		<item key="scope" value="0"/>
+	</section>
+	<section name="Search">
+		<list key="Search.enabledPageIds">
+			<item value="org.eclipse.search.internal.ui.text.TextSearchPage"/>
+		</list>
+		<list key="Search.processedPageIds" value="org.eclipse.search.internal.ui.text.TextSearchPage">
+			<item value="org.eclipse.search.internal.ui.text.TextSearchPage"/>
+		</list>
+	</section>
+	<section name="TextSearchPage">
+		<item key="HISTORY_SIZE" value="12"/>
+		<item key="CASE_SENSITIVE" value="true"/>
+		<item key="SEARCH_DERIVED" value="false"/>
+		<item key="REG_EX_SEARCH" value="false"/>
+		<section name="HISTORY4">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="mySubject"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.xml"/>
+				<item value="*.mxml"/>
+				<item value="*.as"/>
+			</list>
+		</section>
+		<section name="HISTORY9">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="true"/>
+			<item key="textPattern" value="please join my group"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.as"/>
+			</list>
+		</section>
+		<section name="HISTORY0">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="iSocietas"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.html"/>
+				<item value="*.mxml"/>
+				<item value="*.js *.*"/>
+				<item value="*.as"/>
+				<item value="*.htm"/>
+			</list>
+		</section>
+		<section name="HISTORY10">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="true"/>
+			<item key="textPattern" value=".com"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.as"/>
+			</list>
+		</section>
+		<section name="HISTORY2">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="ApplicationControlBar"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.html"/>
+				<item value="*.mxml"/>
+				<item value="*.js *.*"/>
+				<item value="*.as"/>
+				<item value="*.htm"/>
+			</list>
+		</section>
+		<section name="HISTORY5">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="mrn.com"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.xml"/>
+				<item value="*.mxml"/>
+				<item value="*.as"/>
+			</list>
+		</section>
+		<section name="HISTORY7">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="muc#user"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.as"/>
+			</list>
+		</section>
+		<section name="HISTORY3">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="AC_FL_RunContent"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.html"/>
+				<item value="*.mxml"/>
+				<item value="*.as"/>
+				<item value="*.htm"/>
+				<item value="*.js"/>
+			</list>
+		</section>
+		<section name="HISTORY1">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="version_major"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.html"/>
+				<item value="*.mxml"/>
+				<item value="*.js *.*"/>
+				<item value="*.as"/>
+				<item value="*.htm"/>
+			</list>
+		</section>
+		<section name="HISTORY6">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="flizzash"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.xml"/>
+				<item value="*.mxml"/>
+				<item value="*.as"/>
+			</list>
+		</section>
+		<section name="HISTORY11">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="true"/>
+			<item key="textPattern" value="iSocie"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.as"/>
+			</list>
+		</section>
+		<section name="HISTORY8">
+			<item key="isRegExSearch" value="false"/>
+			<item key="scope" value="0"/>
+			<item key="ignoreCase" value="false"/>
+			<item key="textPattern" value="Please"/>
+			<list key="workingSets">
+			</list>
+			<list key="fileNamePatterns">
+				<item value="*.as"/>
+			</list>
+		</section>
+	</section>
+	<section name="org.eclipse.search.text.FileSearchResultPage">
+	</section>
+</section>

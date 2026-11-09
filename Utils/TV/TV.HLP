@@ -1,0 +1,52 @@
+                    	TASK VIEW HELP FACILITY
+
+
+    Function Keys :
+
+        O           -  Omit Layer.
+        I           -  Insert Layer.
+        S           -  Step Through Layers.
+        S           -  Show All Layers.
+        P           -  Print Part Number.
+        D           -  Screen Dump To Printer.
+        Q           -  Return To File List.
+
+    Viewing Keys :
+
+        UP ARROW    -  Scroll Drawing Down.
+        DOWN ARROW  -  Scroll Drawing Up.
+        LEFT ARROW  -  Pan Drawing Right.
+        RIGHT ARROW -  Pan Drawing Left.
+        INSERT      -  Zoom Out Of Drawing.
+        DEL         -  Zoom In To Drawing.
+        CTRL-BREAK  -  Exit Task View.
+
+
+    Text Keys :
+
+        T           -  Show Text Window.
+        HOME        -  Move To Top Of Text.
+        END         -  Move To End Of Text.
+        PGDN        -  Page Down Through Text.
+        PGUP        -  Page Up Through Text.
+        0           -  Toggle Text Window Between
+                       Opaque And Transparent.
+        1-9         -  Select Different Text Windows.
+        CTRL-BREAK  -  Clear Text Window.
+
+    Help Keys :
+
+        H           -  Show Help Window.
+
+        All Other Key Presses Are The
+        The Same As Text Mode.
+
+    Terminal Keys
+
+        C           -  Select Terminal Mode.
+        ESC         -  Clear Terminal Mode.
+
+        Any Other Keys Used In Terminal Mode
+        Are Not Interpreted By Task View.
+
+

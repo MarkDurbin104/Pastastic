@@ -1,0 +1,12 @@
+[Compiler]
+W=1
+D=1
+UnitAliases=WinTypes=Windows;WinProcs=Windows;DbiProcs=BDE;DbiTypes=BDE;DbiErrs=BDE;
+
+[Linker]
+DebugInfo=1
+[Directories]
+OutputDir=C:\Botswana\CorvusService
+UnitOutputDir=E:\CorvusV3\Corvus\Binary\Other
+UsePackages=0
+Conditionals=

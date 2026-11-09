@@ -1,0 +1,30 @@
+01/08/2000 2:38:58 PM - Scanning TxnLog - please wait
+01/08/2000 2:39:01 PM - Ready to Truncate - backup Txnlog before proceeding
+01/08/2000 2:39:04 PM - Truncating - First period <933>, Last Period <933>, Number Periods to Keep <1>
+01/08/2000 2:39:04 PM - Path <C:\Tan\Database>
+01/08/2000 2:39:04 PM - Txnlog backup started
+01/08/2000 2:39:04 PM - Copied <C:\Tan\Database\txnlog.db> to <C:\Tan\Database\Bak_txnlog.db>
+01/08/2000 2:39:04 PM - Copied <C:\Tan\Database\txnlog.mb> to <C:\Tan\Database\Bak_txnlog.mb>
+01/08/2000 2:39:04 PM - Copied <C:\Tan\Database\txnlog.PX> to <C:\Tan\Database\Bak_txnlog.PX>
+01/08/2000 2:39:04 PM - Copied <C:\Tan\Database\txnlog.XG0> to <C:\Tan\Database\Bak_txnlog.XG0>
+01/08/2000 2:39:04 PM - Copied <C:\Tan\Database\txnlog.YG0> to <C:\Tan\Database\Bak_txnlog.YG0>
+01/08/2000 2:39:04 PM - Txnlog backup complete
+01/08/2000 2:39:04 PM - Creating table <C:\Tan\Database\newtxnlog>
+01/08/2000 2:39:04 PM - Created table <C:\Tan\Database\newtxnlog>
+01/08/2000 2:39:04 PM - Altering Table parameters <C:\Tan\Database\newtxnlog>
+01/08/2000 2:42:12 PM - Altered Table parameters <C:\Tan\Database\newtxnlog>
+01/08/2000 2:42:14 PM - Transferring data
+01/08/2000 2:42:18 PM - Transfer complete
+01/08/2000 2:42:18 PM - Renaming files
+01/08/2000 2:42:21 PM - Copied <C:\Tan\Database\newtxnlog.DB> to <C:\Tan\Database\txnlog.DB>
+01/08/2000 2:42:21 PM - Copied <C:\Tan\Database\newtxnlog.MB> to <C:\Tan\Database\txnlog.MB>
+01/08/2000 2:42:21 PM - Copied <C:\Tan\Database\newtxnlog.PX> to <C:\Tan\Database\txnlog.PX>
+01/08/2000 2:42:21 PM - Copied <C:\Tan\Database\newtxnlog.XG0> to <C:\Tan\Database\txnlog.XG0>
+01/08/2000 2:42:21 PM - Copied <C:\Tan\Database\newtxnlog.YG0> to <C:\Tan\Database\txnlog.YG0>
+01/08/2000 2:42:21 PM - Deleted file <C:\Tan\Database\newtxnlog.DB>
+01/08/2000 2:42:21 PM - Deleted file <C:\Tan\Database\newtxnlog.MB>
+01/08/2000 2:42:21 PM - Deleted file <C:\Tan\Database\newtxnlog.PX>
+01/08/2000 2:42:21 PM - Deleted file <C:\Tan\Database\newtxnlog.XG0>
+01/08/2000 2:42:21 PM - Deleted file <C:\Tan\Database\newtxnlog.YG0>
+01/08/2000 2:42:21 PM - Truncate complete - database size changed from 3888k to 3888k 
+01/08/2000 2:42:21 PM - Ready to Truncate - backup Txnlog before proceeding

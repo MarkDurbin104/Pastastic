@@ -1,0 +1,84 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{53eb0374-922d-479a-affc-f639c5d73299}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Projects Include="BASimulator\BASimulator.dproj" />
+    <Projects Include="GetFileList\GetFileList.dproj" />
+    <Projects Include="TestHarmess\TestHarmess.dproj" />
+    <Projects Include="TrayIcon\VUiTServiceController.dproj" />
+    <Projects Include="VU.iTService\ServiceTestHarness.dproj" />
+    <Projects Include="VU.iTService\VU.iTService.dproj" />
+  </ItemGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+<BorlandProject xmlns=""><Default.Personality></Default.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="BASimulator">
+    <MSBuild Projects="BASimulator\BASimulator.dproj" Targets="" />
+  </Target>
+  <Target Name="BASimulator:Clean">
+    <MSBuild Projects="BASimulator\BASimulator.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="BASimulator:Make">
+    <MSBuild Projects="BASimulator\BASimulator.dproj" Targets="Make" />
+  </Target>
+  <Target Name="VUiTServiceController">
+    <MSBuild Projects="TrayIcon\VUiTServiceController.dproj" Targets="" />
+  </Target>
+  <Target Name="VUiTServiceController:Clean">
+    <MSBuild Projects="TrayIcon\VUiTServiceController.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="VUiTServiceController:Make">
+    <MSBuild Projects="TrayIcon\VUiTServiceController.dproj" Targets="Make" />
+  </Target>
+  <Target Name="ServiceTestHarness">
+    <MSBuild Projects="VU.iTService\ServiceTestHarness.dproj" Targets="" />
+  </Target>
+  <Target Name="ServiceTestHarness:Clean">
+    <MSBuild Projects="VU.iTService\ServiceTestHarness.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="ServiceTestHarness:Make">
+    <MSBuild Projects="VU.iTService\ServiceTestHarness.dproj" Targets="Make" />
+  </Target>
+  <Target Name="VU_iTService">
+    <MSBuild Projects="VU.iTService\VU.iTService.dproj" Targets="" />
+  </Target>
+  <Target Name="VU_iTService:Clean">
+    <MSBuild Projects="VU.iTService\VU.iTService.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="VU_iTService:Make">
+    <MSBuild Projects="VU.iTService\VU.iTService.dproj" Targets="Make" />
+  </Target>
+  <Target Name="GetFileList">
+    <MSBuild Projects="GetFileList\GetFileList.dproj" Targets="" />
+  </Target>
+  <Target Name="GetFileList:Clean">
+    <MSBuild Projects="GetFileList\GetFileList.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="GetFileList:Make">
+    <MSBuild Projects="GetFileList\GetFileList.dproj" Targets="Make" />
+  </Target>
+  <Target Name="TestHarmess">
+    <MSBuild Projects="TestHarmess\TestHarmess.dproj" Targets="" />
+  </Target>
+  <Target Name="TestHarmess:Clean">
+    <MSBuild Projects="TestHarmess\TestHarmess.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="TestHarmess:Make">
+    <MSBuild Projects="TestHarmess\TestHarmess.dproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="BASimulator;VUiTServiceController;ServiceTestHarness;VU_iTService;GetFileList;TestHarmess" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="BASimulator:Clean;VUiTServiceController:Clean;ServiceTestHarness:Clean;VU_iTService:Clean;GetFileList:Clean;TestHarmess:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="BASimulator:Make;VUiTServiceController:Make;ServiceTestHarness:Make;VU_iTService:Make;GetFileList:Make;TestHarmess:Make" />
+  </Target>
+  <Import Condition="Exists('$(MSBuildBinPath)\Borland.Group.Targets')" Project="$(MSBuildBinPath)\Borland.Group.Targets" />
+</Project>

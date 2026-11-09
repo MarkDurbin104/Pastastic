@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<diagram>
+  <elements definedIn="serviceSymbols.xml">
+    <service ServiceTitle="PrimaryService" x="330" y="65" name="PrimaryService" style="PrimaryService"/>
+    <service ServiceTitle="SecondaryService" x="328" y="142" name="SecondaryService" style="SecondaryService"/>
+    <lookup LookText="LookUp" x="330" y="220" name="LookUp" style="LookUp"/>
+    <input InText="Input" x="330" y="305" name="Input" style="Input"/>
+    <fee FeeText="Fee" x="330" y="350" name="Fee" style="Fee"/>
+    <gate GateType="AND" x="502" y="68" name="ANDGate" style="ANDGate"/>
+    <gate GateType="NAND" x="592" y="71" name="NANDGate" style="NANDGate"/>
+    <gate GateType="OR" x="695" y="83" name="ORGate" style="ORGate"/>
+    <gate GateType="NOR" x="820" y="62" name="NORGate" style="NORGate"/>
+    <gate GateType="XOR" x="510" y="163" name="XORGate" style="XORGate"/>
+    <gate GateType="XNOR" x="596" y="184" name="XNORGate" style="XNORGate"/>
+    <gate GateType="NOT" x="728" y="178" name="NOTGate" style="NOTGate"/>
+  </elements>
+</diagram>

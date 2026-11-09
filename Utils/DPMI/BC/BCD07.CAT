@@ -1,0 +1,95 @@
+
+LIB 7 "DPMI Programming", BcppDOS file descriptions.
+
+
+!LONG!
+
+
+LIB 7
+
+[76424,2231]    Lib:7
+16MOUS.ZIP/Bin  Bytes:   1566, Count:   57, 25-Jul-94
+
+  Title   : Simulate real mode interrupt example
+  Keywords: DPMI 16 MOUSE SIMULATE REAL MODE INTERRUPT
+
+  Example of how to call DPMI function 300h (simulate real mode
+  interrupt). This example calls mouse interrupt 0x33, function 9, to change
+  the  graphics cursor.
+
+[76424,2231]    Lib:7
+SLFMOD.ZIP/Bin  Bytes:    896, Count:   56, 25-Jul-94
+
+  Title   : 32-bit DPMI self modifying code example
+  Keywords: SELF MODIFYING CODE 32 DPMI
+
+  Self modifying code example for 32-bit DPMI
+
+[76030,303]     Lib:7
+INT32.ZIP/Bin   Bytes:   5598, Count:   80, 24-Jul-94
+
+  Title   : 32bit interrupt thunk code
+  Keywords: INTERRUPT 32BIT POWERPAK POWERPACK
+
+  Library and source code to allow developers to use 16bit style
+  C/C++ interrupt functions in 32bit mode.  See README for complete
+  details. Library is pre-built, but requires assembler to be rebuilt.
+
+[76702,1063]    Lib:7
+LINEAR.ZIP/Bin  Bytes:   2208, Count:  102, 23-Jul-94
+
+  Title   : Access DPMI32 video memory from DS (no selectors)
+  Keywords: DPMI DPMI32 LINEAR ADDRESS
+
+  Example of how to call DPMI functions to map physical memory ranges
+  into your DPMI32 process address space.  This allows you to access video
+  (text or graphics) memory via an offset into your DS.  IOW no selector
+  loads.
+
+[70152,3410]    Lib:7
+SWLM32.C/Text   Bytes:   4451, Count:  118, 15-Jul-94
+
+  Title   : Improved lowmem32.c pgm
+  Keywords: DPMI DOS32 DOS LOW POWERPACK SCREEN BIOS ASM 1M
+
+  This file is an improved version of Borland's lowmem32.c example. Use this
+  file to access memory below 1M using PowerPack's DOS 32 extender. Using
+  Borland's DOS 32 extender, you cannot directly access low memory using C
+  pointers. This routine uses asm to get/set low memory. Improvements are:
+  faster get/set operations using 8, 16, and 32 operations. You don't have to
+  use offset and selector parameters - only a C pointer. Also, you can use
+  either low or high mem address values, works with either.
+
+[72617,132]     Lib:7
+BCD07.NEW/Text  Bytes:    310, Count:   16, 15-Jul-94
+
+  Title   : List of files recently uploaded to this library
+  Keywords: BCD07 NEW CATALOG CAT SCA BRO DES LIB FILE DESCRIPTION
+
+  This ASCII file contains descriptions of files uploaded to this library
+  in the last 30 days or so. It is updated on the 1st and 15th of each
+  month. Instead of DOWnloading this entire ASCII file every two weeks, you
+  may choose to open a capture buffer and READ the first half of it every
+  two weeks, pressing Ctrl-P when you start seeing descriptions you have
+  already captured. Or you could download the entire file once a month.
+
+[72617,132]     Lib:7
+BCD07.ZIP/Bin   Bytes:    345, Count:   26, 15-Jul-94
+
+  Title   : Catalog of all files in this library
+  Keywords: BCD07 CATALOG CAT SCA BRO DES LIB FILE DESCRIPTION
+
+  This file catalogs all the long descriptions of file in this library "". It
+  is updated on the 1st and 15th of every month, compressed in ZIP format to
+  minimize your download time.
+
+[76424,2231]    Lib:7
+32TIMR.ZIP/Bin  Bytes:   1018, Count:  188, 08-Jul-94
+
+  Title   : 32-bit DPMI timer interrupt handler
+  Keywords: 32 BIT DPMI TIMER INTERRUPT ISR HANDLER
+
+  Example of a 32-bit timer interrupt handler (INT 0x08)
+
+
+

@@ -1,0 +1,1119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:slides="com.proiam.slides.*"
+	width="{mailScreenWidth}" 
+	height="{mailScreenHeight}"   
+	top="0" 
+	currentState="{(selectedProduct!=null)?(InputRequired==true)?'PrimarySelInputReq':'PrimarySelected':null}"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"  xmlns:filters="flash.filters.*" >
+	<mx:states>
+		<mx:State name="PrimarySelected">
+			<mx:SetProperty target="{bgCanvas}" name="visible" value="false"/>
+			<mx:SetProperty target="{secServiceCanvas}" name="currentState" value="PrimarySelected"/>
+			<mx:SetProperty target="{featuresBox}" name="x" value="250"/>
+			<mx:SetProperty target="{featuresBox}" name="visible" value="true"/>
+			<mx:SetProperty target="{selectedBox}" name="visible" value="true"/>
+			<mx:SetProperty target="{numInput}" name="x" value="520"/>
+			<mx:SetProperty target="{numInput}" name="y" value="84"/>
+			<mx:SetProperty target="{numInput}" name="visible" value="true"/>
+			<mx:RemoveChild target="{canvas1}"/>
+		</mx:State>
+		<mx:State name="PrimarySelInputReq" basedOn="PrimarySelected" enterState="selectDialogue()">
+			<mx:SetProperty target="{numInput}" name="visible" value="true"/>
+			<mx:SetProperty target="{numInput}" name="x" value="232"/>
+			<mx:SetProperty target="{numInput}" name="y" value="84"/>
+		</mx:State>
+		<mx:State name="AltHelp">
+			<mx:SetProperty target="{featuresBox}" name="x" value="-220"/>
+			<mx:SetProperty target="{helpBox}" name="x" value="7"/>
+			<mx:SetProperty target="{helpBox}" name="currentState" value="AltHelp"/>
+			<mx:SetStyle target="{canvas1}" name="backgroundImage" value="@Embed('embedded/HelpButtonDownG2.png')"/>
+		</mx:State>
+		<mx:State name="BaseHelp">
+			<mx:SetProperty target="{featuresBox}" name="x" value="-220"/>
+			<mx:SetProperty target="{helpBox}" name="x" value="802"/>
+			<mx:SetProperty target="{dayBar}" name="x" value="7"/>
+			<mx:SetProperty target="{mailsGrid}" name="x" value="7"/>
+			<mx:SetStyle target="{canvas1}" name="backgroundImage" value="@Embed('embedded/HelpButtonDown.png')"/>
+		</mx:State>
+		<mx:State name="JustCal">
+			<mx:RemoveChild target="{featuresBox}"/>
+			<mx:RemoveChild target="{secServiceCanvas}"/>
+			<mx:RemoveChild target="{canvas1}"/>
+			<mx:SetProperty target="{mailsGrid}" name="x" value="10"/>
+			<mx:SetProperty target="{mailsGrid}" name="width" value="1004"/>
+			<mx:SetProperty target="{mailsGrid}" name="height" value="680"/>
+			<mx:SetProperty target="{dayBar}" name="x" value="10"/>
+			<mx:SetProperty target="{dayBar}" name="width" value="1004"/>
+		</mx:State>
+	</mx:states>
+	<mx:transitions>
+	    <mx:Transition id="ShowInput" fromState="PrimarySelected" toState="PrimarySelInputReq">
+			<mx:Parallel duration="1000" >
+			    <mx:Move target="{numInput}" yFrom="84" yTo="84" xFrom="520" xTo="232"/>
+			</mx:Parallel>
+	    </mx:Transition>
+	    <mx:Transition id="HideInput" fromState="PrimarySelInputReq" toState="PrimarySelected">
+			<mx:Parallel duration="500" >
+			    <mx:Move target="{numInput}" yFrom="84" yTo="84" xFrom="232" xTo="520"/>
+			</mx:Parallel>
+	    </mx:Transition>
+	    <mx:Transition id="ShowAltHelp" toState="AltHelp">
+			<mx:Parallel duration="250" >
+			    <mx:Move target="{helpBox}" xFrom="-220" xTo="7" />
+			    <mx:Move target="{featuresBox}" xFrom="7" xTo="-220" />
+			</mx:Parallel>
+	    </mx:Transition>
+	    <mx:Transition id="HideAltHelp" fromState="AltHelp" toState="">
+			<mx:Parallel duration="250" >
+			    <mx:Move target="{featuresBox}" xFrom="-220" xTo="7" />
+			    <mx:Move target="{helpBox}" xFrom="7" xTo="-220" />
+			</mx:Parallel>
+	    </mx:Transition>
+	    <mx:Transition id="ShowHelp" toState="BaseHelp">
+			<mx:Parallel duration="250" >
+				<mx:Move target="{dayBar}" xFrom="226" xTo="7" />
+			    <mx:Move target="{helpBox}" xFrom="1025" xTo="803" />
+			    <mx:Move target="{featuresBox}" xFrom="7" xTo="-220" />
+				<mx:Move target="{mailsGrid}" xFrom="222" xTo="3" />
+			</mx:Parallel>
+	    </mx:Transition>
+	    <mx:Transition id="HideHelp" fromState="BaseHelp" toState="">
+			<mx:Parallel duration="250" >
+				<mx:Move target="{dayBar}" xFrom="7" xTo="226" />
+			    <mx:Move target="{featuresBox}" xFrom="-220" xTo="7" />
+			    <mx:Move target="{helpBox}" xFrom="803" xTo="1025" />
+				<mx:Move target="{mailsGrid}" xFrom="3" xTo="222" />
+			</mx:Parallel>
+	    </mx:Transition>
+	</mx:transitions>
+	<mx:Metadata>
+    [Event(name="ShrinkMe", type="flash.events.Event")]
+    [Event(name="showShoppingBasket", type="flash.events.Event")]
+	</mx:Metadata>
+	<mx:Script>
+		<![CDATA[
+			public var resourceURL:String="resources";
+			
+			import com.proiam.mails.SecondaryMailService;
+			import com.proiam.mails.MailServiceGroup;
+			import com.proiam.mails.MailServices;
+			import com.proiam.mails.LookUp;
+			import com.proiam.mails.MailService;
+			import com.proiam.mails.ItemData;
+			import com.proiam.base.ShrinkStackData;
+			import mx.effects.Resize;
+			import mx.events.EffectEvent;
+			import mx.effects.Parallel;
+			import mx.effects.Move;
+			import com.cykorsystems.utils.Configuration;
+			import mx.core.UIComponent;
+			import com.cykorsystems.utils.usdFormatter;
+			import mx.formatters.Formatter;
+			
+			public const mailScreenWidth:Number=1024;
+			public const mailScreenHeight:Number=768;
+			
+			[Bindable]
+			public var topGap:int=80; 
+
+			[Bindable]
+			public var selectedProduct:OneDayBase=null;
+			
+			public var receiptItem:ReceiptItem=null;
+			private var selectedSecondaryServices:Array=new Array();
+			private var stackData:Array=new Array();
+			private var savedItemData:ItemData;
+			private var savedService:String;
+			private var savedMailServices:MailServices;
+			private var savedLookups:Array;
+			
+			import com.cykorsystems.utils.Configuration;
+			private function selectDialogue():void {
+				numInput.currentState=Configuration.useAlternateInputDialog?null:"Alternate";
+			}
+			
+			public function tariffNamed(name:String,tariffs:Array):LookUp {
+				if ((tariffs != null) && (name != "")) {
+					for each(var lookup:LookUp in tariffs) {
+						if (lookup.tariffName == name) return lookup;
+					}
+				}
+				return null;
+			}
+			private function secondaryServiceSelected(serviceName:String):Boolean {
+				var result:Boolean=false;
+				for (var i:int=0;i<selectedSecondaryServices.length;i++) {
+					if (selectedSecondaryServices[i] == serviceName) {
+						result=!result;
+					}
+				}
+				return result;
+			}
+			private function addInSecondary(secondaryServices:Array,mailService:MailService,primaryEnabled:Array,primaryAvailable:Boolean):void {
+				for (var i:int=0;i<mailService.services.length;i++) {
+					var index:int=secondaryServices.indexOf(mailService.services[i]);
+					if (index < 0) {
+						primaryEnabled.push(primaryAvailable);
+						secondaryServices.push(mailService.services[i]);
+					} else {
+						if (primaryAvailable) primaryEnabled[index]=true;
+					}
+				}
+			}
+			private function supportsSecondaryServices(mailItem:MailService):Boolean {
+				if (selectedSecondaryServices.length==0) return true;
+				for (var i:int=0;i<selectedSecondaryServices.length;i++) {
+					if ((secondaryServiceSelected(selectedSecondaryServices[i]))
+					&& (mailItem.services.indexOf(selectedSecondaryServices[i]) < 0)) {
+						return false;
+					}
+				}
+				return true;
+			}
+			private var hidden:Array= new Array();
+			private function findSlot(slots:Array,x:int,itemLength:int,itemHeight:int):int {
+				if (itemHeight==1) {
+					for (var i:int=0;i<slots.length;i++) {
+						if (slots[i].length<=x) {
+							for (var j:int=slots[i].length;j<x;j++) slots[i].push(0);
+							for (j=0;j<itemLength;j++) slots[i].push(1);
+							return i;
+						}
+					}
+					slots.push(new Array());
+					i=slots.length-1
+					for (j=0;j<x;j++) slots[i].push(0);
+					for (j=0;j<itemLength;j++) slots[i].push(1);
+					return i;
+				} else {
+					for (i=0;i<slots.length-1;i++) {
+						if ((slots[i].length<=x)&&(slots[i+1].length<=x)) {
+							for (j=slots[i].length;j<x;j++) slots[i].push(0);
+							for (j=0;j<itemLength;j++) slots[i].push(1);
+							for (j=slots[i+1].length;j<x;j++) slots[i+1].push(0);
+							for (j=0;j<itemLength;j++) slots[i+1].push(1);
+							return i;
+						}
+					}
+					if ((slots.length>0)&&(slots[slots.length-1].length<=x)) {
+						for (j=slots[i].length;j<x;j++) slots[i].push(0);
+						for (j=0;j<itemLength;j++) slots[i].push(1);
+						slots.push(new Array());
+						i=slots.length-1
+						for (j=0;j<x;j++) slots[i].push(0);
+						for (j=0;j<itemLength;j++) slots[i].push(1);
+						return i-1;
+					}
+					slots.push(new Array());
+					i=slots.length-1
+					for (j=0;j<x;j++) slots[i].push(0);
+					for (j=0;j<itemLength;j++) slots[i].push(1);
+					slots.push(new Array());
+					i=slots.length-1
+					for (j=0;j<x;j++) slots[i].push(0);
+					for (j=0;j<itemLength;j++) slots[i].push(1);
+					return i-1;
+				}
+			}
+			
+			private function getCurrentState():int {
+				if (selectedBox.x < 0) {
+					if (featuresBox.x < 0) {
+						return 0; // None Showing
+					}
+					return 1; // Features showing
+				}
+				return 2; // Service Showing
+			}
+			private function setPanels():int {
+				return(1);
+				if (selectedProduct != null) {
+					showSelected(); 
+					return 2;
+				} else {
+					if (featuresBox.background.numChildren != 0) {
+						showFeatured(); 
+						return 1;
+					} else {
+						showNone();
+						return 0;
+					}
+				}
+			}
+			private function showSelected():void {
+				moveToState(2);
+			} 
+			private function showFeatured():void {
+				moveToState(1);
+			} 
+			private function showNone():void {
+				moveToState(0);
+			} 
+			private function moveToState(nextState:int):void {
+				var currentState:int=getCurrentState();
+				switch (currentState) {
+					case 0 : // None Showing
+						switch (nextState) {
+							case 1 : // Features showing
+								MoveIn(featuresBox); 
+								// F->	M-> 
+								break; 
+							case 2 : // Service Showing 
+								MoveIn(selectedBox); 
+								break; 
+						}
+						break; 
+					case 1 : // Features showing 
+						switch (nextState) {
+							case 0 : // None Showing
+								MoveOut(featuresBox); 
+								break; 
+							case 2 : // Service Showing
+								swapBoxes(featuresBox,selectedBox); 
+								break; 
+						}
+						break; 
+					case 2 : // Service Showing 
+						switch (nextState) {
+							case 0 : // None Showing
+								MoveOut(selectedBox); 
+								break; 
+							case 1 : // Features showing 
+								swapBoxes(selectedBox,featuresBox); 
+								break; 
+						}
+						break; 
+				}
+			}
+			private function MoveIn(sideBar:Canvas):void {
+				MoveOut(sideBar,true);
+			} 
+			private function MoveOut(sideBar:Canvas,reversed:Boolean=false):void {
+				var parallel:Parallel=new Parallel();
+				
+				var m1:Move=new Move();				
+				m1.xFrom=12;
+				m1.xTo=0-(sideBar.width+1);
+				m1.target=sideBar;
+				parallel.addChild(m1);
+				
+				var m2:Move=new Move();
+				m2.xFrom=sideBar.width+15;
+				m2.xTo=5;
+				m2.target=mailsGrid;
+				parallel.addChild(m2);
+				
+				var r2:Resize=new Resize();
+				r2.widthFrom=(mailScreenWidth-sideBar.width)-20;
+				r2.widthTo=mailScreenWidth-10;
+				r2.target=mailsGrid;
+				parallel.addChild(r2);
+
+				var m3:Move=new Move();
+				m3.xFrom=sideBar.width+20;
+				m3.xTo=10;
+				m3.target=dayBar;
+				parallel.addChild(m3);
+
+				var r3:Resize=new Resize();
+				r3.widthFrom=(mailScreenWidth-sideBar.width)-20;
+				r3.widthTo=mailScreenWidth-10;
+				r3.target=mailsGrid;
+				parallel.addChild(r3);
+
+				parallel.duration=500;
+				parallel.play(null,reversed);
+			} 
+			private function swapBoxes(current:Canvas,swapTo:Canvas):void {
+				var parallel:Parallel=new Parallel();
+				
+				var m1:Move=new Move();				
+				m1.xFrom=12;
+				m1.xTo=0-(current.width+1);
+				m1.target=current;
+				parallel.addChild(m1);
+				
+				var m2:Move=new Move();
+				m2.xFrom=0-(swapTo.width+1);
+				m2.xTo=12;
+				m2.target=swapTo;
+				parallel.addChild(m2);
+
+				parallel.duration=500;
+				parallel.play(null);
+			}
+			 
+			private var formatter:usdFormatter=new usdFormatter();
+			private var days:Array;
+			private var domestic:Boolean=true;
+			private var alreadySelectedItems:Array;
+			
+			[Bindable]
+			public var InputRequired:Boolean;
+			public var InputValue:Number;
+			
+			public function SetupCalendar(item:ItemData,service:String,mailServices:MailServices=null,Lookups:Array=null,clearOldValues:Boolean=true,alreadySelected:Array=null):void {
+
+				mailsGrid.removeAllChildren();
+				secServiceCanvas.additional.removeAllChildren();
+				featuresBox.background.removeAllChildren();
+				if (mailServices==null) return;
+				
+				if (clearOldValues) {
+					//featuresBox.x=7;//-1-featuresBox.width;
+					//selectedBox.x=7;//-1-selectedBox.width;
+					InputRequired=false;
+					InputValue=0;
+					numInput.cV="0";
+					selectedProduct=null;
+				}
+				
+				savedItemData=item;
+				savedService=service
+				savedMailServices=mailServices;
+				savedLookups=Lookups;
+
+				if (clearOldValues) {
+					selectedSecondaryServices=new Array();
+					hidden=new Array();
+				}
+				
+				alreadySelectedItems=alreadySelected;
+				if ((alreadySelected!=null)&&(alreadySelected.length > 0)&&(selectedSecondaryServices.length==0)) {
+					for (var a:int=0;a<alreadySelected.length;a++) {
+						if (alreadySelected[a]!="")
+						   selectedSecondaryServices.push(alreadySelected[a]);
+					}
+				}
+				var fadeItems:Boolean=Configuration.fadeProductsOnDeselect;
+				var dayItem:Canvas;
+				var featuredItem:FeaturedItem;
+				var calLine:CalendarLine;
+				//var calLines:Array=new Array();
+				var i:int;
+				domestic=(item.destination.country=="USA");
+				var serviceLevel:int=1;
+				var secondaryServices:Array=new Array;
+				var primaryEnabled:Array=new Array;
+				
+				var itemType:String=item.dimensions.itemType(item.weight.weightInOunces);
+
+				days=new Array();
+				if (domestic) {
+					var FirstServiceLevel:int			=int(service.substr(0,1));
+					var PackageServiceLevel:int	=int(service.substr(1,1));
+					var PriorityServiceLevel:int		=int(service.substr(2,1));
+					var ExpressServiceLevel:int	=1;
+				} else {
+					FirstServiceLevel				=6;
+					var GXGServiceLevel:int	=1;
+					PriorityServiceLevel			=5;
+					ExpressServiceLevel		=3;
+				}
+ 				var index:int=0;
+				for (i=0;i<mailServices.services.length;i++) {
+					var mailService:MailService=mailServices.services[i];
+					if ((!(mailService is SecondaryMailService)) && 
+						(mailService.appliableTypes.indexOf(itemType) >=0) &&
+						(((domestic) && (mailService.isDomestic)) || ((!domestic) && (mailService.isInternational)))) {
+
+						var price:Number=0;
+						var tariff:LookUp=tariffNamed(mailService.tariff,Lookups);
+						if (tariff != null) {
+							var tariffColumn:String;
+							if (mailService.tariffMultiColumn) {
+								tariffColumn=mailService.tariffColumn+' '+service.substr(3,1);
+							} else {
+								tariffColumn=mailService.tariffColumn;
+							}
+							var weight:Number;
+							if (mailService.tariffType == 'g') {
+								weight=item.weight.weightInGrams;
+							} else if (mailService.tariffType == 'lb') {
+								weight=item.weight.weightInPounds;
+							} else {
+								weight=item.weight.weightInOunces;
+							}
+							price=tariff.lookUpValue(weight,tariffColumn);
+						}
+						if  (price >= 0) {
+							if (mailService.isDomestic) {
+								serviceLevel=1;
+								switch (mailService.type) { 
+									case "Express" 		: serviceLevel=ExpressServiceLevel; break;
+									case "Priority" 		: serviceLevel=PriorityServiceLevel; break;
+									case "First" 			: serviceLevel=FirstServiceLevel; break;
+									case "Package"		: serviceLevel=PackageServiceLevel; break;
+								}
+								if (serviceLevel>6) serviceLevel=6;
+								featuredItem=null;
+ 								switch (serviceLevel) { 
+									case 1 : 	 	
+										if ((mailService.shortName == "ExpressPOtoAddrFlatRate") || (mailService.shortName == "PriorityMail")) {
+											featuredItem=new FeaturedItem();
+											dayItem=new FeaturedOneDayItem(); 	
+										} else {
+											dayItem=new OneDayItem();
+										}
+										break;
+									case 2 : 
+										if ((mailService.shortName == "ExpressPOtoAddrFlatRate") || (mailService.shortName == "PriorityMail")) {
+											featuredItem=new FeaturedItem();
+											dayItem=new FeaturedOneDayItem(); 	
+										} else {
+											dayItem=new OneDayItem();
+										}
+										break;
+									case 3 : dayItem=new TwoDayItem();	break; 
+									default: dayItem=new ThreeDayItem(); 
+								}
+								if (selectedProduct!=null) featuredItem=null; 
+								while (days.length < serviceLevel) days.push(new Array());
+								days[serviceLevel-1].push(dayItem);
+							} else {
+								serviceLevel=1;
+								var daysService:int=1;
+								switch (mailService.type) { 
+									case "GXG"			: serviceLevel=GXGServiceLevel; 			daysService=3;break;
+									case "Express" 		: serviceLevel=ExpressServiceLevel;		daysService=3; break;
+									case "Priority" 		: serviceLevel=PriorityServiceLevel; 		daysService=4;break;
+									case "First" 			: serviceLevel=FirstServiceLevel; 			daysService=5;break;
+								}
+								if (serviceLevel>6) serviceLevel=6;
+								// international service levels
+								featuredItem=null;
+								dayItem=new TwoDayItem(); 
+								//dayItem.width=((108*serviceLevel)+(5*(serviceLevel-1)));
+								(dayItem as OneDayItem).itemWidth=daysService;
+								while (days.length < serviceLevel) days.push(new Array());
+								days[serviceLevel-1].push(dayItem);
+							}
+							if (!supportsSecondaryServices(mailService)) {
+								if (featuredItem !=null) featuredItem=null;
+								if ((fadeItems)&&(hidden.indexOf(mailService.shortName) == -1)) {
+									(dayItem as OneDayItem).alpha=1;
+									(dayItem as OneDayItem).fadeToAlpha(0,1500);
+								} else {
+									(dayItem as OneDayItem).alpha=0;
+									hidden.push(mailService.shortName);
+								}
+								addInSecondary(secondaryServices,mailService,primaryEnabled,false);
+							} else {
+								if ((fadeItems)&&(hidden.indexOf(mailService.shortName) != -1)) {
+									(dayItem as OneDayItem).alpha=0;
+									(dayItem as OneDayItem).fadeToAlpha(1,1000);
+								} else {
+									(dayItem as OneDayItem).alpha=1;
+									hidden.push(mailService.shortName);
+								}
+								addInSecondary(secondaryServices,mailService,primaryEnabled,true);
+							}
+							(dayItem as OneDayItem).service=mailService;
+							(dayItem as OneDayItem).caption=mailService.caption;
+							(dayItem as OneDayItem).hint=mailService.fullName;
+							(dayItem as OneDayItem).iconSource=resourceURL+"/graphics/mails_icons/"+mailService.iconFile;
+							(dayItem as OneDayItem).price=formatter.format(price);
+							mailService.priceValue=price;
+							/*if (Configuration.highlightSecondary) {
+								dayItem.addEventListener(MouseEvent.MOUSE_OVER,overPrimService);
+								dayItem.addEventListener(MouseEvent.MOUSE_OUT,outPrimService);
+							}*/
+							dayItem.addEventListener(MouseEvent.CLICK,clickPrimService);
+							if (featuredItem != null) {
+								featuredItem.x=8;
+								featuredItem.y=3+(featuresBox.background.numChildren*(3+featuredItem.height));
+								featuresBox.background.addChild(featuredItem);
+								featuredItem.service=mailService;
+								featuredItem.caption=mailService.caption;
+								featuredItem.hint	=mailService.fullName;
+								featuredItem.price=formatter.format(price)+"   ";
+								featuredItem.iconSource=resourceURL+"/graphics/mails_icons/featured/"+mailService.iconFile;
+								/*if (Configuration.highlightSecondary) {
+									featuredItem.addEventListener(MouseEvent.MOUSE_OVER,overPrimService);
+									featuredItem.addEventListener(MouseEvent.MOUSE_OUT,outPrimService);
+								}*/
+								featuredItem.addEventListener(MouseEvent.CLICK,clickPrimService);
+								featuresBox.background.height=3+(featuresBox.background.numChildren*(3+featuredItem.height))
+							}
+							index++;
+						}
+					}
+				}
+				if ((selectedProduct != null) && (!supportsSecondaryServices(selectedProduct.service))) {
+					selectedProduct=null;
+				} 
+				if (featuresBox.background.numChildren < 2) {
+					var rnum:int=int(Math.random()*1.99)%2;
+					if ((featuresBox.background.numChildren == 0) || (rnum==0)) {
+						featuredItem=new FeaturedItem();
+						featuredItem.x=8;
+						featuredItem.y=3+(featuresBox.background.numChildren*(3+featuredItem.height));
+						featuresBox.background.addChild(featuredItem);
+						featuredItem.price="";
+						featuredItem.iconSource=resourceURL+"/graphics/mails_icons/featured/"+"SinatraStamps.png";
+						featuresBox.background.height=3+(featuresBox.background.numChildren*(3+featuredItem.height));
+					}
+					if (featuresBox.background.numChildren == 1) {
+						featuredItem=new FeaturedItem();
+						featuredItem.x=8;
+						featuredItem.y=3+(featuresBox.background.numChildren*(3+featuredItem.height));
+						featuresBox.background.addChild(featuredItem);
+						featuredItem.price="";
+						//if ((int(Math.random()*1.99)%2) == 0) {
+						//	featuredItem.iconSource=resourceURL+"/graphics/mails_icons/featured/"+"No Pets.png";
+						//} else {
+							featuredItem.iconSource=resourceURL+"/graphics/mails_icons/featured/"+"BenAndJerrys.png";
+						//}
+						featuresBox.background.height=5+(featuresBox.background.numChildren*(3+featuredItem.height));
+					}
+				}
+				redrawDays(true);
+				var servicesAdded:Array=new Array();
+				for (i=0;i<secondaryServices.length;i++) {
+					var serviceName:String=secondaryServices[i];
+					var ms:MailService;
+					var serviceText:String=serviceName;
+					
+					for (var j:int=0;j<mailServices.services.length;j++) {
+						ms=mailServices.services[j];
+						if (ms.shortName==serviceName) {
+							serviceText=ms.fullName;
+							break;
+						}
+					}
+					var inServiceGroup:Boolean=false;
+					for (j=0;j<mailServices.serviceGroups.length;j++) {
+						var serviceGroup:MailServiceGroup=mailServices.serviceGroups[j];
+						if (serviceGroup.services.indexOf(serviceName) >=0) {
+							serviceText=serviceGroup.fullName;
+							inServiceGroup=true;
+							break;
+						}
+					}
+					if (servicesAdded.indexOf(serviceText) < 0) {
+						servicesAdded.push(serviceText);
+						var secItem:AdditionalItem=new AdditionalItem();
+						secServiceCanvas.additional.addChild(secItem);
+						secItem.caption=serviceText;
+						secItem.price=ms.price;
+						secItem.hint=ms.hint;
+						secItem.service=ms;
+						secItem.iconSource=resourceURL+"/graphics/mails_icons/"+ms.iconFile;
+						//secItem.iconSource=ms.iconImage.source;
+						secItem.currentState=(selectedProduct==null)?null:"PrimarySelected";
+						if (secondaryServiceSelected(serviceName)) {
+							secItem.tick.visible=true;
+						} else {
+							secItem.tick.visible=false;
+						}
+						if (!primaryEnabled[i]) {
+							secItem.available=false;
+						} else {
+							secItem.available=true;
+						}
+						secItem.addEventListener(MouseEvent.MOUSE_OVER,overSecService);
+						secItem.addEventListener(MouseEvent.MOUSE_OUT,outSecService);
+						secItem.addEventListener(MouseEvent.CLICK,clickSecService);
+					}
+				}
+				hidden=new Array();
+				for (i=0;i<mailServices.services.length;i++) {
+					mailService=mailServices.services[i];
+					if (!supportsSecondaryServices(mailService)) {
+						hidden.push(mailService.shortName);
+					}
+				}
+			}
+			private function onResize(event:Event):void {
+				redrawDays(false,false);
+			}
+			private function redrawDays(insert:Boolean=false,setupPanels:Boolean=true):void {
+				if (days == null) return;
+
+				var slots:Array=new Array();
+				var dayItem:OneDayItem;
+				var numDays:int;
+				if (domestic) {
+					numDays=7;
+				} else {
+					numDays=9;
+				}
+				var daySpace:int=5;
+				var leftOffset:int=5;
+				var topOffset:int=40;
+				
+				if (setupPanels) {
+//					if (setPanels() == 0) {
+//						mailsGrid.width=mailScreenWidth-10;
+//					} else {
+						//mailsGrid.width=(mailScreenWidth-featuresBox.width)-20;
+						//mailsGrid.x=featuresBox.width+10;
+						//dayBar.x=featuresBox.width+15;
+//					}
+				}
+				var dayWidth:int=((mailsGrid.width-daySpace)/numDays)-daySpace;
+
+				if (domestic) {
+					with (db0) { visible=true; width=dayWidth; fontSize=14; }
+					with (db1) { visible=true; width=dayWidth; fontSize=14; }
+					with (db2) { visible=true; width=dayWidth; fontSize=14; }
+					with (db3) { visible=true; width=dayWidth; fontSize=14; }
+					with (db4) { visible=true; width=dayWidth; fontSize=14; }
+					with (db5) { visible=true; width=dayWidth; fontSize=14; }
+					with (db6) { visible=true; width=dayWidth; fontSize=14; }
+					with (db7) { visible=false; width=dayWidth; fontSize=14; }
+					with (db8) { visible=false; width=dayWidth; fontSize=14; }
+					with (db9) { visible=false; width=dayWidth; fontSize=14; }
+				} else {
+					with (db0) { visible=true; width=dayWidth; fontSize=12; }
+					with (db1) { visible=true; width=dayWidth; fontSize=12; }
+					with (db2) { visible=true; width=dayWidth; fontSize=12; }
+					with (db3) { visible=true; width=dayWidth; fontSize=12; }
+					with (db4) { visible=true; width=dayWidth; fontSize=12; }
+					with (db5) { visible=true; width=dayWidth; fontSize=12; }
+					with (db6) { visible=true; width=dayWidth; fontSize=12; }
+					with (db7) { visible=true; width=dayWidth; fontSize=12; }
+					with (db8) { visible=true; width=dayWidth; fontSize=12; }
+					with (db9) { visible=false; width=dayWidth; fontSize=12; }
+				}
+				
+				var itemWidth:int=1;
+				var itemHeight:int=1;
+				var dayXOfs:int=0;
+				mailsGrid.graphics.clear();
+				for (var day:int=0;day<days.length;day++) {
+					var dayList:Array=days[day];
+					var maxItemWidth:int=dayWidth;
+					var setdayWidth:int=0;
+					for (var j:int=0;j<dayList.length;j++) {
+						dayItem=dayList[j];
+						itemHeight=1;
+						itemWidth=dayItem.itemWidth;
+						 if (insert)	mailsGrid.addChild(dayItem);
+						dayItem.width=(dayWidth*itemWidth)+(daySpace*(itemWidth-1));  
+						dayItem.x=leftOffset+dayXOfs;
+						dayItem.y=topOffset+findSlot(slots,day,itemWidth,itemHeight)*(103+4);
+					}
+					with (mailsGrid.graphics) {
+						beginFill(0xF5FAF4,1);
+						lineStyle(1,0xF5FAF4);
+						drawRoundRect(leftOffset+dayXOfs,topOffset-35,dayWidth,mailsGrid.height-12,20,20);
+						endFill();
+					}
+					dayXOfs+=maxItemWidth+daySpace;
+				}
+				for (;day<numDays;day++) {
+					with (mailsGrid.graphics) {
+						beginFill(0xF5FAF4,1);
+						lineStyle(1,0xF5FAF4);
+						drawRoundRect(leftOffset+dayXOfs,topOffset-35,dayWidth,mailsGrid.height-12,20,20);
+						endFill();
+					}
+					dayXOfs+=dayWidth+daySpace;
+				}
+			}
+			public function  popScreenFromStack():Boolean {
+				if (stackData.length > 0) {
+					var ssd:ShrinkStackData=stackData.pop();
+					while (selectedSecondaryServices.length > 0) selectedSecondaryServices.pop();
+					for (var i:int=0;i<ssd.selectedServices.length;i++) {
+						selectedSecondaryServices.push(ssd.selectedServices[i]);
+					}
+					selectedProduct=ssd.selectedProduct;
+					ssd.selectedServices=null;
+					ssd=null;
+					SetupCalendar(savedItemData,savedService,savedMailServices,savedLookups,false,alreadySelectedItems);
+					updateSecList();
+					return true;					
+				}
+				return false;
+			}
+			
+			private function listConflictingItems(secServiceName:String,all:Boolean=false):Array {
+				var result:Array=new Array;
+				if ((selectedProduct!=null)&&(selectedProduct.service.services.indexOf(secServiceName) == -1)) {
+					result.push(selectedProduct.service.shortName);
+				}
+				for (var i:int=0;i<secServiceCanvas.additional.numChildren;i++) {
+					if (secServiceCanvas.additional.getChildAt(i) is AdditionalItem) {
+						var secItem:AdditionalItem=AdditionalItem(secServiceCanvas.additional.getChildAt(i));
+						if ((result.indexOf(secItem.service.shortName) == -1) 
+						&& (secItem.service.shortName != secServiceName) && ((secItem.tick.visible)||all)) {
+							for (var j:int=0;j<mailsGrid.numChildren;j++) {
+								var priItem:OneDayBase=OneDayBase(mailsGrid.getChildAt(j));
+								var mailService:MailService=priItem.service;
+								if ((!(mailService is SecondaryMailService)) &&
+									 ((mailService.services.indexOf(secItem.service.shortName) == -1) &&
+									   ( mailService.services.indexOf(secServiceName) != -1))) {
+										result.push(secItem.service.shortName);
+										break;
+								}
+							}
+						}
+					}
+				}
+				return result;
+			}
+			private function showConflictFlags(secServiceName:String):void {
+				var conflictingMailServices:Array=listConflictingItems(secServiceName,false);
+				var secItem:AdditionalItem;
+				for (var i:int=0;i<secServiceCanvas.additional.numChildren;i++) {
+					if (secServiceCanvas.additional.getChildAt(i) is AdditionalItem) {
+						secItem=AdditionalItem(secServiceCanvas.additional.getChildAt(i));
+						if (conflictingMailServices.indexOf(secItem.service.shortName)!=-1) {
+							secItem.conflictCheck.visible=true;
+						}
+					}
+				}
+				for (i=0;i<mailsGrid.numChildren;i++) {
+					var priItem:OneDayItem=OneDayItem(mailsGrid.getChildAt(i));
+					if (conflictingMailServices.indexOf(priItem.service.shortName)!=-1) {
+						priItem.conflictCheck.visible=true;
+					}
+				}
+			}
+			private function removeConflict(secServiceName:String):void {
+				var conflictingMailServices:Array=listConflictingItems(secServiceName);
+				trace(conflictingMailServices.join(","));
+				var secItem:AdditionalItem;
+				for (var i:int=0;i<secServiceCanvas.additional.numChildren;i++) {
+					if (secServiceCanvas.additional.getChildAt(i) is AdditionalItem) {
+						secItem=AdditionalItem(secServiceCanvas.additional.getChildAt(i));
+						if ((secItem.service.shortName != secServiceName) && (secItem.tick.visible)
+						   && (conflictingMailServices.indexOf(secItem.service.shortName)!=-1)) {
+									selectedSecondaryServices.push(secItem.service.shortName);
+						}
+					}
+				}
+			}
+			private function selectCheapest():void {
+				var minval:Number=99999999;
+				var cheapest:OneDayItem=null;
+				for (var i:int=0;i<mailsGrid.numChildren;i++) {
+					var priItem:OneDayItem=OneDayItem(mailsGrid.getChildAt(i));
+					if ((priItem.service.priceValue < minval) && (hidden.indexOf(priItem.service.shortName)==-1)) {
+						minval=priItem.service.priceValue;
+						cheapest=priItem;	
+					}
+				}
+				if (cheapest != null) {
+					selectedProduct=cheapest;
+					selectedBox.service=selectedProduct.service;
+					selectedBox.caption=selectedProduct.caption;
+					selectedBox.hint	=selectedProduct.service.hint;
+					selectedBox.iconSource=resourceURL+"/graphics/mails_icons/selected/"+selectedProduct.service.iconFile;
+					selectedBox.addEventListener("CancelClicked",cancelSelect);
+					selectedBox.addEventListener("AddClicked",addToBasket);
+					updateSecList();
+					//setPanels();
+				}
+			}
+			private function hideInConflictDialogue():void {
+				if (selectedProduct != null) return;
+				var secItem:AdditionalItem;
+				for (var i:int=0;i<mailsGrid.numChildren;i++) {
+					if (mailsGrid.getChildAt(i) is OneDayItem)
+						(mailsGrid.getChildAt(i) as OneDayItem).conflictCheck.visible=false;
+				}
+				for (i=0;i<secServiceCanvas.additional.numChildren;i++) {
+					if (secServiceCanvas.additional.getChildAt(i) is AdditionalItem) {
+						secItem=AdditionalItem(secServiceCanvas.additional.getChildAt(i));
+						if (secItem.currentState !=null) {
+							secItem.currentState=(selectedProduct==null)?null:"PrimarySelected";
+							secItem.conflictCheck.visible=false;
+							secItem.validateNow();
+						} else if (secItem.conflictCheck.visible) {
+							secItem.conflictCheck.visible=false;
+							secItem.validateNow();
+						}
+					}
+				}
+				secServiceCanvas.additional.validateNow();
+			}
+			private function inConflictAutoClose(event:Event):void {
+				hideInConflictDialogue();
+			}
+			private function inputRequired():Boolean {
+				for (var i:int=0;i<secServiceCanvas.additional.numChildren;i++) {
+					if (secServiceCanvas.additional.getChildAt(i) is AdditionalItem) {
+						var secItem:AdditionalItem=AdditionalItem(secServiceCanvas.additional.getChildAt(i));
+						var secService:MailService=secItem.service;
+						//if ((secService.requiresInput) && (secItem.tick.visible) && (InputValue==0)) return true;
+						if ((secService.shortName=="Insurance") && (secItem.tick.visible) && (InputValue==0)) return true;
+					}
+				}
+				return false;
+			}
+			private function clickSecService(event:MouseEvent):void {
+				var secItem:AdditionalItem=AdditionalItem(event.currentTarget);
+				var secService:MailService=secItem.service;
+				
+				// can't de-select applied service (barcode found on item)
+				if ((alreadySelectedItems!=null)&&(alreadySelectedItems.indexOf(secService.shortName) != -1)) return;
+				
+				// in Conflict resoultion cancelled
+				if (secItem.cancelClicked) {
+					secItem.cancelClicked=false;
+					hideInConflictDialogue();
+					return;
+				}
+				// if secondary service has no entry sign OR have already selected a product and this secondary service does not apply to that product
+				// AND we're not already in conflict resolution
+				if (((!secItem.available)||((selectedProduct!=null)&&(selectedProduct.service.services.indexOf(secService.shortName) == -1)))
+				&&(secItem.currentState == null)) {
+					hideInConflictDialogue();
+					secItem.currentState="inConflictResolution";
+					secItem.addEventListener("inConflictAutoClose",inConflictAutoClose);
+					showConflictFlags(secService.shortName);
+				} else {
+					var ssd:ShrinkStackData=new ShrinkStackData(selectedProduct,selectedSecondaryServices);
+					stackData.push(ssd);
+					if ((secService.requiresInput) && (secItem.tick.visible)) {
+						InputValue=0;
+						numInput.cV="0";
+					}
+					if (secItem.currentState == null) {
+						hideInConflictDialogue(); 
+						dispatchEvent(new Event("ShrinkMe"));
+					} else {
+						dispatchEvent(new Event("ShrinkMe"));
+						if (secItem.currentState=="inConflictResolution") {
+							removeConflict(secService.shortName);
+						}
+						secItem.currentState=(selectedProduct==null)?null:"PrimarySelected";
+					}
+					selectedSecondaryServices.push(secService.shortName);
+					SetupCalendar(savedItemData,savedService,savedMailServices,savedLookups,false,alreadySelectedItems);
+					updateSecList();
+				}
+			}
+			private function outSecService(event:MouseEvent):void {
+				for (var i:int=0;i<mailsGrid.numChildren;i++) {
+					var item:DisplayObject=mailsGrid.getChildAt(i);
+					if (item is OneDayItem) {
+						// (item as OneDayItem).tick.visible=false;
+					}
+				}
+			}
+			
+			private function overSecService(event:MouseEvent):void {
+				var secService:MailService=AdditionalItem(event.currentTarget).service;
+				for (var i:int=0;i<mailsGrid.numChildren;i++) {
+					var item:DisplayObject=mailsGrid.getChildAt(i);
+					if (item is OneDayItem) {
+						var ms:MailService=(item as OneDayItem).service;
+						if ((ms != null) && (ms.hasService(secService.shortName))) {
+							//(item as OneDayItem).tick.visible=true;
+						} else {
+							//(item as OneDayItem).tick.visible=false;
+						} 
+					}
+				}
+			}
+			private function serviceButton(serviceName:String):AdditionalItem  {
+				for (var i:int=0;i<secServiceCanvas.additional.numChildren;i++) {
+					if (secServiceCanvas.additional.getChildAt(i) is AdditionalItem) {
+						var secItem:AdditionalItem=AdditionalItem(secServiceCanvas.additional.getChildAt(i));
+						var secService:MailService=secItem.service;
+						if (secService.shortName==serviceName) return secItem;
+					}
+				}
+				return null;
+			}
+			private function insuredFee(amount:Number):Number {
+				if (amount <= 50) { 				return(1.7);
+				} else if (amount <= 100) {	return(2.15);
+				} else if (amount <= 200) {	return(2.6);
+				} else if (amount <= 300) {	return(4.6);
+				} else if (amount <= 400) {	return(5.55);
+				} else if (amount <= 500) {	return(7.45);
+				} else {										return(7.45+int((amount-500)/100)*0.95);
+				} 
+			}
+			private function updateSecList():void {
+				if (selectedProduct == null) return;
+				var secList:Array=new Array();
+				var overallPrice:Number=0;
+				for (var i:int=0;i<selectedProduct.service.services.length;i++) {
+					var serviceName:String=selectedProduct.service.services[i];
+					if (secondaryServiceSelected(serviceName)) {
+						var secItem:AdditionalItem=serviceButton(serviceName);
+						for (var j:int=0;j<savedMailServices.services.length;j++) {
+							var ms:MailService=savedMailServices.services[j];
+							if (ms.shortName==serviceName) {
+								var serviceText:String=ms.receiptCaption;
+								var servicePrice:Number;
+								var addInfo:String="";
+								if (ms.requiresInput) { 
+									if (InputValue!=0) {
+										servicePrice=insuredFee(InputValue);
+										addInfo="Item insured for $"+InputValue;
+										secItem.currentState="PrimarySelected";
+									} else {
+										addInfo="Additional information needed...";
+										secItem.currentState="PendingInput";
+										servicePrice=Number(ms.price.slice(ms.price.lastIndexOf("$")+1));
+									}
+								} else {
+									servicePrice=Number(ms.price.slice(ms.price.lastIndexOf("$")+1));
+								}
+								if (secItem!=null) {
+									secItem.price=formatter.format(servicePrice);							
+									secItem.addInfo=addInfo;
+								}
+								overallPrice+=servicePrice;
+								secList.push({caption:serviceText,price:formatter.format(servicePrice)});
+								break;
+							}
+						}
+					}
+				}
+				overallPrice+=selectedProduct.service.priceValue;
+				selectedBox.price="Service Price "+selectedProduct.price;
+				selectedBox.totalprice="Total Price "+formatter.format(overallPrice);
+				selectedBox.secondaryList.items=secList;
+				InputRequired=inputRequired();
+			}
+			private function clickPrimService(event:MouseEvent):void {
+				if (OneDayBase(event.currentTarget).alpha!=0) {
+					if (OneDayBase(event.currentTarget) == selectedProduct) {
+						selectedProduct=null;
+					} else {
+						var ssd:ShrinkStackData=new ShrinkStackData(selectedProduct,selectedSecondaryServices);
+						stackData.push(ssd);
+						dispatchEvent(new Event("ShrinkMe"));
+
+						selectedProduct=OneDayBase(event.currentTarget);
+						selectedBox.service=selectedProduct.service;
+						selectedBox.caption=selectedProduct.caption;
+						selectedBox.hint	=selectedProduct.service.hint;
+						selectedBox.iconSource=resourceURL+"/graphics/mails_icons/selected/"+selectedProduct.service.iconFile;
+						selectedBox.addEventListener("CancelClicked",cancelSelect);
+						selectedBox.addEventListener("AddClicked",addToBasket);
+						InputValue=0;
+						SetupCalendar(savedItemData,savedService,savedMailServices,savedLookups,false,alreadySelectedItems);
+						updateSecList();
+					}
+					//setPanels();
+				}
+			}
+			private function cancelSelect(event:Event):void {
+				//dispatchEvent(new Event("PopItem"));
+				var ssd:ShrinkStackData=new ShrinkStackData(selectedProduct,selectedSecondaryServices);
+				stackData.push(ssd);
+				dispatchEvent(new Event("ShrinkMe"));
+				selectedProduct=null;
+				//setPanels();
+			}
+			private function addToBasket(event:Event):void {
+				receiptItem=new ReceiptItem;
+				if (selectedProduct == null) return;
+				var secList:Array=new Array();
+				var overallPrice:Number=0;
+				for (var i:int=0;i<selectedBox.secondaryList.items.length;i++) {
+					var priceStr:String=selectedBox.secondaryList.items[i].price;
+					var servicePrice:Number=Number(priceStr.slice(priceStr.indexOf("$")+1));
+					overallPrice+=servicePrice;
+					secList.push(selectedBox.secondaryList.items[i]);
+				}
+				if (secList.length == 0) secList=null;
+				overallPrice+=selectedProduct.service.priceValue;
+				receiptItem.price=selectedProduct.price;
+				receiptItem.title=selectedProduct.service.receiptCaption;
+				receiptItem.totalPrice=formatter.format(overallPrice);
+				receiptItem.totalPriceValue=overallPrice;
+				receiptItem.items=secList;
+				//SetupCalendar(savedItemData,savedService,savedMailServices,savedLookups,true,alreadySelectedItems);
+				dispatchEvent(new Event("showShoppingBasket"));
+			}
+			private function overPrimService(event:MouseEvent):void {
+				return;
+				var item:OneDayItem=OneDayItem(event.currentTarget);
+				//mailsGrid.setChildIndex(item,mailsGrid.numChildren-1);
+				if (item.alpha != 0)  {
+					var mailService:MailService=item.service;
+					for (var i:int=0;i<additional.numChildren;i++) {
+						var child:AdditionalItem=AdditionalItem(additional.getChildAt(i));
+						//highlightService(child,mailService.services.indexOf(child.service.shortName)>=0);
+					}
+				}
+			}
+			private function outPrimService(event:MouseEvent):void {
+				return;
+				var mailService:MailService=OneDayItem(event.currentTarget).service;
+				for (var i:int=0;i<additional.numChildren;i++) {
+					var child:AdditionalItem=AdditionalItem(additional.getChildAt(i));
+					//highlightService(child,false);
+				}
+			}
+			private function updateValue():void {
+				InputValue=int(numInput.cV);
+				updateSecList();				
+			}
+			private function numInputCancel():void {
+				for (var i:int=0;i<secServiceCanvas.additional.numChildren;i++) {
+					if (secServiceCanvas.additional.getChildAt(i) is AdditionalItem) {
+						var secItem:AdditionalItem=AdditionalItem(secServiceCanvas.additional.getChildAt(i));
+						var secService:MailService=secItem.service;
+						if ((secService.requiresInput) && (secItem.tick.visible)) {
+							var ssd:ShrinkStackData=new ShrinkStackData(selectedProduct,selectedSecondaryServices);
+							stackData.push(ssd);
+							dispatchEvent(new Event("ShrinkMe"));
+							selectedSecondaryServices.push(secService.shortName);
+							SetupCalendar(savedItemData,savedService,savedMailServices,savedLookups,false,alreadySelectedItems);
+							updateSecList();
+							return;
+						}
+					}
+				}
+			}
+			private function onHelpCancelClick(event:Event):void {
+				if ((currentState == "BaseHelp") || (currentState == "AltHelp")) {
+					currentState=null;
+				} 
+			}
+			private function onHelpClicked(event:Event):void {
+				if (currentState == null) {
+					helpBox.helptext=	"1) Ask the customer when the item needs to be delivered by.\n\n"+ 
+													"2) Look across the grid to find the delivery day required.\n\n"+
+													"3) Read down the column to see products that match the delivery requirement.\n\n"+
+													"4) Touch the secondary services buttons below to find only services that offer the requested secondary service.\n\n"+
+													"5) Touch a primary service."
+					if (Configuration.useAlternateHelpDialog) {
+						currentState="AltHelp";
+					} else {
+						currentState="BaseHelp";
+					}
+				} else {
+					currentState=null;
+				}
+			}
+		]]>
+	</mx:Script>
+	<mx:Canvas backgroundColor="#E4F2DF" width="1024" height="688" top="80" />
+	<mx:Canvas id="mailsGrid" x="222" width="798" height="474" horizontalScrollPolicy="off" verticalScrollPolicy="off" y="82" resize="onResize(event)" visible="{selectedProduct==null}" />
+	<mx:Canvas id="bgCanvas" x="0" y="0" width="1024" height="100%" horizontalScrollPolicy="off" verticalScrollPolicy="off" styleName="embVerdanaStyle">
+		<mx:HBox width="798" horizontalGap="5" verticalAlign="top" horizontalAlign="left" id="dayBar" x="226" y="84"  visible="{selectedProduct==null}"  horizontalScrollPolicy="off" verticalScrollPolicy="off">
+			<slides:DayButton id="db0" offset="0" height="33"/>
+			<slides:DayButton id="db1" offset="1" height="33"/>
+			<slides:DayButton id="db2" offset="2" height="33"/>
+			<slides:DayButton id="db3" offset="3" height="33"/>
+			<slides:DayButton id="db4" offset="4" height="33"/>
+			<slides:DayButton id="db5" offset="5" height="33"/> 
+			<slides:DayButton id="db6" offset="6" height="33"/>
+			<slides:DayButton id="db7" offset="7" height="33"/>
+			<slides:DayButton id="db8" offset="8" height="33"/>
+			<slides:DayButton id="db9" offset="9" height="33"/>
+		</mx:HBox>
+	</mx:Canvas>
+	<slides:HelpCard id="helpBox" x="-220" y="84"  visible="true" CancelClicked="onHelpCancelClick(event)"/>
+	<slides:FeaturesTab id="featuresBox" x="7" y="84"  visible="true"/>
+	<slides:SelectedCard id="selectedBox" x="7" y="84"  visible="false" inputComplete="{!InputRequired}"/>
+	<slides:NumInput id="numInput" x="234" y="84" okClicked="updateValue();" cancelClicked="numInputCancel();" visible="false"/>
+	<slides:SecondaryServices id="secServiceCanvas" BargainClicked="selectCheapest();" 
+		primaryService="{selectedProduct==null?null:selectedProduct.service}" 
+	/>
+	<mx:Canvas x="951" y="8" width="62" height="62" backgroundSize="100%" backgroundImage="@Embed('embedded/HelpButtonUpAlt.png')" id="canvas1" click="onHelpClicked(event)"/>
+</mx:Canvas>

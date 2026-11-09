@@ -1,0 +1,597 @@
+                         dis86 - Interactive 8086 Disassembler
+
+   (C) COPYRIGHT 1985, 86 by James R. Van Zandt,  ALL RIGHTS RESERVED
+
+
+
+
+You are encouraged to copy and distribute this program freely, provided:
+
+	1)	No fee is charged beyond the actual cost for such copying and
+		distribution.
+
+	2)	It is distributed ONLY in its original, unmodified state.
+
+If you like this program, and find it of use, then your contribution will
+be appreciated.  A current version program disk and printed documentation are
+available if you send $50 to:
+
+			James R. Van Zandt
+			27 Spencer Dr.
+			Nashua NH 03062
+
+SYNOPSIS
+
+–Dis86 is a full-screen, interactive disassembler of object code for
+the 8086, 8087, 8088, 80186, 80286, and 80386 (products of Intel), and 
+the V20 and V30 (products of NEC).  The 80386 disassemblies include 32 
+bit operands and addresses.  Dis86 implements the concept of a "current 
+location: and allows use of the cursor keys to change it.  Code can come 
+from a .EXE file (in which case the header is properly interpreted), any 
+other file (assumed to have no header), or anywhere in main memory 
+(0000:0000 - F000:FFFF).  Dis86 can install changes, even in a .EXE 
+file, makint it a convenient way to install patches.  Versions are 
+available for the IBM PC (and clones) and Z-100.
+
+
+STARTING THE DISASSEMBLER
+
+To disassemble a file, give the file name (optionally preceded by a path 
+name) on the command line:
+
+		A>dis86 foo.exe
+
+To disassemble from RAM, use an empty command line:
+
+		A>dis86
+
+There are no command line switches.
+
+
+FILE HEADER INFORMATION
+
+For a .EXE file, the information in the file header will be displayed 
+when the program is first run and in response to the H command (see 
+below).
+
+
+DISPLAY SCREEN
+
+During disassembly, the screen will resemble the following:
+
+        0000:0100      e9 01 90            jmp            9104
+        0000:0103      55                  push           bp       
+        0000:0104      8b ec               mov            bp,sp    
+        0000:0106      83 ec 0e            sub            sp,0e    
+        
+                                  ...
+        
+        0000:012C      50                  push           ax         
+        0000:012D      b8 69 00            mov            ax,0069    
+        0000:0130      50                  push           ax         
+        0000:0131      e8 e9 5c            call           5e1d       
+        dis86 1.00 - A SHAREWARE software product  (c) 1986, James R. Van Zandt
+        >
+        ... 0000:0100  0000:0100  0000:0100  
+
+Lines 1 through 21 are the disassembled code.  Each line starts with
+the current address, followed by the actual bytes being disassembled. 
+The rest of the line is the assembly language equivalent, if any, of
+the code.  The display for A (ASCII), B (byte), and D (data) formats is
+similar.  All numbers are shown in hexadecimal.
+
+Line 22 is a message and prompt line showing, for example, the
+arguments needed for some commands.  Line 23 has the prompt.  Typed
+characters are echoed on the rest of this line.  Line 24 has three
+addresses, which are the first three entries in the stack (see the
+'cursor right' and 'cursor left' commands below).
+
+
+CURSOR KEYS
+
+The "current location" is the address displayed on the first line
+of disassembly.  The cursor keys are used to adjust the current 
+location.
+
+The up and down cursor keys (8 and 2 on the numeric pad) are used to
+move the current location a small amount (note that they are not
+inverses):
+
+		<up>     moves up by one byte (lower address)
+		<down>   moves down by one line (higher address)
+
+
+The <pg up> and <pg dn> keys (9 and 3 on the numeric pad) move the
+current location by larger amounts.  In C (code) format, they move by
+32 bytes.  In the other formats, they move by 11 lines on the screen. 
+They will not move the cursor out of the disassembly buffer. 
+Otherwise, they are inverses.:
+
+		<pg up>   moves up by 32 bytes (lower address)
+		<pg dn>   moves down by 32 bytes (higher address)
+
+
+The above keys change only the current location.  Other commands change 
+the current location by potentially large amounts, but first save it in 
+a stack.  The first three addresses in the stack are shown on the 
+command line at the bottom of the screen.
+
+If the instruction at the current location is a jump, call, or a
+reference to a data location, the cursor right key (6 on the numeric pad)
+will push the current location on the stack and go to the referenced
+location.  For a data reference, the disassembly format is changed to D
+(hex and ASCII).
+
+		<right>   follows a jump, call, or data reference
+
+
+The cursor left or left arrow key (4 on the numeric pad) will pop the
+last address off the stack.  Note that right arrow followed by left
+arrow will return you to the same address, whereas left arrow
+(returning, let us say, to address X) followed by right arrow will only
+return you to the same address if there is an appropriate jump or call
+at X.
+
+		<left>    pops address stack
+
+A–fter using the right arrow or one of the commands A, B, C, D, or G (in
+next section) to go to a new address, and using the left arrow key to
+pop the stack, you will sometimes want to return to the previous
+address.  The stack no longer holds the address.  However, the left
+arrow key saves the current location in a special "previous state"
+before popping the stack.
+
+To return to the address stored in the "previous state", type shift
+right arrow on a Z-100, or control right arrow on an IBM PC.
+
+		<shift><right>   returns to "previous state"   (Z-100)
+		<cntrl><right>   returns to "previous state"   (IBM)
+
+
+In summary, the unshifted keys on the numeric pad are:
+
+<home> top of file          ^   up 1 byte         <pg up>  up 32 bytes 
+                            |         
+ 
+<--    pop addr stack                             -->      follow jump/call
+ 
+                            |         
+<end>  end of file          v  down 1 line        <pg dn>  down 32 bytes  
+ 
+ 
+<ins>  setup options 
+
+On the Z-100, the four keys with arrows on them may be used in addition
+to the 2, 4, 6, and 8 on the numeric pad.
+
+
+LETTER COMMANDS FOR MOVING THE CURSOR
+
+There are five letter commands to change the display format and/or
+disassembly address:
+
+	A	ASCII data
+	B	byte data (hex)
+	D	data (both hex bytes and ASCII)
+	C	code
+	G	goto
+
+These commands may be in upper or lower case.  Each may be followed by:
+
+	<ret>		Only the display format changes.
+
+	A <expression> <ret>
+			The current location changes to the specified address.
+
+	S <expression> <expression> <expression> <ret>
+			The disassembler searches from the current
+			address to the end of the buffer for the
+			specified sequence of hex bytes.  If an
+			expression has a segment specified using the
+			':' operator (below), the segment is ignored.
+
+	S T [string] <ret>
+			The disassembler searches from the current
+			address to the end of the buffer for the
+			specified ASCII string.  Cases are not
+			distinct, and the high order bit is ignored. 
+			The string can also be introduced by a double
+			quote.
+
+	S R <expression> <ret>
+			The disassembler searches from the current
+			address to the end of the buffer for a
+			reference (jump or call) to the specified
+			address.
+
+An <expression> can involve any of these items:
+
+	hex numbers	(either upper or lower case letters)
+	cs, ds, es, ss, fs, gs
+			currently assumed segment register values
+	$		current location
+	@		offset of top address on the stack
+	'x'		single characters
+	"jkl;"		multiple character strings
+
+...and any of these operators:
+
+	+ - * /		add, subtract, multiply, divide
+	:		separate segment and offset
+
+Note that G with no address is a noop.  There are two ways to ask for a string
+search.  For example,
+
+	S T jones
+
+	S "Jones"
+
+In the first search, cases are not distinct and the high order bit
+is ignored.  In the second search, the high order bit must be 0 and
+the cases must match.
+
+
+OPTIONS
+
+The 'O' command or <ins> (0 on the numeric pad) brings up menus for
+changing setup options and allows the user to reset the disassembly
+window.  Use <space> or <ins> to move to the next screen, or <esc> to
+return to disassembly.
+
+In the first options menu, use the right and left cursor keys or <ret>
+to change the entries.  The first item shows the processor which is
+supposed to execute the code being disassembled.  There is some
+conflict in op codes between the V20 and V30 on one hand and the 80286
+and 80386 on the other.  That is, the two families use the same op
+codes for different instructions.  Dis86 selects the instruction
+appropriate for the chip shown in this menu.  In addition, instructions
+not implemented by the indicated chip will be flagged.  The other item
+on the first menu lets the user specify 16 or 32 bit mode for the
+80386.  In the 16 bit mode the 80386 is similar to the 8086.  In the 32
+bit mode arithmetic is performed in 32 bit registers and all address
+offsets are 32 bits.  (The 80386 itself selects the mode based on a bit
+in the segment table entry for the code segment.)
+
+In the second options menu, change an entry by typing over it.  The two
+items are the byte value which matches anything in a byte or character
+search (the "wild card" byte) and the number of bytes displayed on each
+line for the A, B, or D formats.  The latter value can also be set
+using the W command.
+
+The last options display is a small map of the code being disassembled
+which will resemble the following:
+
+		ds= -10
+		cs=0000
+		|                  ss=0960
+		es= -10            |
+		| cursor=0000:0453 |
+		CCCCCCCCCCCCCCcccccccccccccc
+		^0000:0000
+		             ^0000:6144
+
+The Cs represent the code being disassembled.  The capital Cs are the
+portion of code in the disassembly window (see discussion below).  The
+assumed values for the segment registers, the current location (labeled
+"cursor"), and the beginning and end addresses of the disassembly
+window are also shown.  The window can be adjusted using the right and
+left cursor keys.
+
+By using the <ins> key to enter the options menu and to step from one
+menu to the next, you can leave your right hand on the numeric pad.
+
+
+MISCELLANEOUS COMMANDS
+
+The 'P' command is used to print a disassembly listing to a file.  The
+first time this command is used, it prompts for a file name.  The
+default file name is "printout".  To actually send the listing to a
+printer, specify the filename "prn".  If the file already exists the
+new information will be appended.  The file is automatically closed
+before the disassembler exits.  The command also prompts for the
+beginning and end addresses of the code to be printed.  The default
+addresses print the current screen.  When the printing is finished, the
+current address is advanced to the first byte not printed.  Thus, you
+can repeat the sequence
+
+		P <ret> <ret>
+
+to print a large section.
+
+Enter 'R' to display and/or change the assumed segment register values.
+Entries may be full expressions.  For example, to copy the value from SS 
+into DS, use the cursor keys to select the DS register and type
+
+		ss <ret>
+
+
+The 'S' command selects a new segment register value for displaying 
+addresses.  The new register is shown on the message line.  The actual 
+address being disassembled is not changed (see "segmentation" below).
+
+The 'W' command is used to set the number of bytes displayed on each
+line for the A, B, and D formats.  This is useful for displaying
+tables.  For example, when dis86 is executed without a file, it
+displays bytes starting at address 0000:0000 and the width is set to
+four so each interrupt vector is shown on a separate line.
+
+Type '?' to get a series of help screens.  Type <esc> to return to the
+disassembly, or any other key to advance to the next screen
+
+The 'E' command allows the user to modify the program being
+disassembled.  Changes are initially made only in the disassembly
+buffer.  Before the buffer is overwritten or the disassembler
+terminates, the user is asked whether the changes are to be written to
+the file or RAM area being disassembled.  The values entered may be
+given in hex expressions or ASCII.  Values too large to fit into a byte
+are assumed to be words or double words.  Here are some examples:
+
+	45 67 'A'            =>  45 67 41
+
+	2ea+3                =>  ed 02
+
+	9c/3                 =>  34
+
+	"Alpha Beta" 0d 0a   =>  41 6c 70 68 61 20 42 65 74 61 0d 0a
+
+
+Enter 'Q' to stop the disassembler and return to DOS.
+
+
+TYPING REQUESTED DATA
+
+Many commands supply default entries for requested data.  If you decide
+to accept the default, just enter <ret>.  For editing entries,
+you can position the cursor using the left and right cursor keys to
+move by one character, <home> (7 on the numeric pad) to move to the
+left end of the string, or <end> (1 on the numeric pad) to move to the
+right end.  Use the <del> or <backspace> keys to delete incorrect
+characters, or just type characters to be inserted.  (There is no
+"replace" typing mode.) In every case but one, you can also edit the
+default entry by making <right>, <end>, or <del> your first keystroke. 
+The exception is the default for the byte search function.
+
+
+DISASSEMBLY WINDOW
+
+The disassembler uses a buffer to hold the code being disassembled. 
+For most purposes, this disassembly window is transparent to the user. 
+If the user requests an address within the file but outside the
+disassembly window, the appropriate code is automatically read in.  The
+existence of the window is apparent in only three cases: 
+
+	1.	If the disassembler is started near the end of the window 
+		and reaches the end before it fills the screen, the
+		rest of the screen will be left blank.
+
+	2.	The searches are done only from the current location to the
+		end of the buffer.
+
+	3.	If the contents of the buffer has been changed (see 'E'
+		command) the user is asked whether they should be
+		written out before the buffer is overwritten or control 
+		is returned to DOS.
+
+
+LOAD ADDRESS
+
+Code from a .COM file is displayed as though its Program Segment Prefix
+were at 0000:0000 and its load address were 0000:0100.
+
+Code from a .EXE file is displayed as though its load address were
+0000:0000.  This puts its Program Segment Prefix is 10 paragraphs or
+100 (hex) bytes lower.  This is somewhat awkward, because the DS and ES
+registers are initialized to point to the PSP.  The disassembler
+displays this segment value as -10.  The advantage of a load address of
+0000:0000 is that no relocation is necessary.  The bytes displayed are
+exactly the same as those in the file.  This also means that the code
+can be modified (see below for the 'E' command) and written back to the
+file without being "unrelocated".
+
+
+SEGMENTATION
+
+Addresses are displayed in segment:offset form, using the current
+assumed value of the current segment register.  The current segment 
+register can be selected using the 'S' command to step among the 
+available registers (CS, SS, DS, ES, FS, and GS - the last two only with 
+80386 code).  Changing segment registers or their values does not move 
+the disassembler cursor.  Only the displayed segment and offset values 
+will change to reflect the new assumptions.  A legal offset will be
+displayed as a four digit hex number (0000 to FFFF).  Other offsets
+(negative, or greater than 64K) will also be calculated and displayed
+correctly, although they are illegal on the 8086.  Illegal offsets will
+have more than four digits.  
+
+The segment register values are initialized as indicated in the file 
+header (for .EXE files) or to zero (for other files or RAM).  The 
+disassembler has no way of determining the values which may be set 
+during execution.  For example, the initialization code for DeSmet C 
+programs reset DS to the same value as the initial SS before executing 
+main().
+
+The assumed segment register values can be altered in two ways.  Any 
+segment register can be changed using the register menu reached by the 
+'R' command.  In addition, when the right arrow key is used to follow a 
+far call or jump, the new code segment value is loaded into the CS 
+register.  When the user specifies a new segment value on an A, B, C, D, 
+or G command, that value is used for subsequent displays but none of the 
+assumed segment register values is changed.
+
+The segmentation models of the protected modes of the 80286 and 80386 
+are not supported.
+
+
+ALIGNMENT
+
+Dis86 will correctly disassemble code if started on the first byte of an 
+instruction.  If started in the middle of an instruction, it will 
+disassemble that instruction and perhaps several more incorrectly.  In 
+this case the disassembler is said to be out of alignment with the 
+object code.  The disassembler will tend to correct its alignment if it 
+continues long enough.  8086 instructions tend to be longer than, for 
+example, those for the 8080, so the disassembler will tend to stay out 
+of alignment for more bytes.  Generally speaking, the alignment will be 
+correct after the first half dozen lines.
+
+
+SUMMARY
+
+Here are all the letter commands:
+
+A nnnn      ASCII data
+B nnnn      byte date (hex)
+C nnnn      code (disassembly)
+D nnnn      data (hex and ASCII)
+E           enter new data (follow with a series of hex expressions)
+
+G nnnn      goto address nnnn
+H           display file header information (for .EXE files only)
+O           change setup options
+P           print disassembly listing to file
+Q           quit to DOS
+
+R           change segment register values
+S           select a new segment register
+W           set bytes of data per line for A, B, and D formats
+X           exchange current address (at top of screen) with top of stack
+?           display help screens
+
+
+EXAMPLE 1
+
+In the examples, <left>, <right>, <up>, and <down> refer to the four
+cursor keys (4, 6, 8, and 2 on the numeric pad, plus the four arrow
+keys on the Z-100 keyboard).  <pg up> and <pg dn> refer to the 9 and 3
+on the numeric pad.
+
+To investigate the bootstrap code, type
+
+	A>dis86 <ret>
+
+and press
+
+	<space>
+
+to advance to the disassembly display, which will be a D (data) format 
+display of the interrupt vectors.  Next type
+
+	c a ffff:0000 <ret>
+
+(for Code format at the Address ffff:0000).  On an IBM, the ROM release 
+date and machine ID appear in the last 16 bytes of the ROM.  To see 
+them, type
+
+	D <ret>
+
+The release data is at addresses ffff:0005 - ffff:000c in ASCII.  The 
+machine ID is at ffff:000e.  Some of the possible values are:
+
+	ff	IBM PC
+	fe	IBM XT and Portable IBM PC
+	fd	IBM PCjr
+	fc	IBM AT
+	2d	Compaq
+	9a	Compaq-Plus
+
+Return to code format by typing
+
+	C <ret>
+
+One of the instructions displayed will almost certainly be a jump.  If 
+so, press
+
+	<down>
+
+enough times to bring the jump to the top line, then
+
+	<right>
+
+to follow the jump.  Note that the previous addresses were pushed onto 
+the stack, as shown on the bottom line.  To return to the most recent 
+address, press
+
+	<left>
+
+To leave the disassembler, press
+
+	Q
+
+
+EXAMPLE 2
+
+For a second example, let us disassemble the disassembler itself.  Begin 
+by typing
+
+	A>dis86 dis86.exe <ret>
+
+Note the header information, including the entry point of 0000:0000 and 
+the initial stack location of approximately 09e0:9eb8.  Proceed to the 
+disassembly screen by typing
+
+	<space>
+
+The disassembler starts in C (code) format at the entry point, which is 
+a jump to the initialization code.  To follow the jump, type
+
+	<right>
+
+One of the early instructions in the initialization code refers to the 
+first location in the stack segment.  Bring this location to the top of 
+the screen by typing
+
+	<pg dn> <down> <down>
+
+and follow the reference by typing
+
+	<right>
+
+Since it was a data reference, the disassembler automatically switched 
+to D (data) format.  Also, the addresses are displayed using the value 
+of segment register SS.  Note that the two previous addresses have been 
+pushed onto the stack, as shown at the bottom of the screen.  Return to 
+the most recent one by typing
+
+	<left>
+
+The initialization code gets rather involved, but one of its functions
+is to initialize DS to the same value as SS.  To reflect this, use the
+R command:
+
+	R
+
+DS is the first register in the list, so you need only enter the 
+appropriate value:
+
+	ss <ret> <space>
+
+The code for the main program immediately followed the jump at 
+0000:0000.  To return there, type
+
+	<left>
+
+Send a copy of this screen to the file "printout" by typing
+
+	P <ret> <ret> <ret>
+
+To inspect the data segment, type
+
+	A ds:0 <ret>
+
+To display more characters on each line, use the W command:
+
+	W 60 <ret>
+
+Use the search command to find one of the messages:
+
+	G S T hime <ret>
+
+This string won't be found.  To correct the spelling to "home" and try 
+again, type
+
+	G S T <right> o <del> <ret>
+
+Once again, leave the disassembler by pressing
+
+	Q
+                                                                                 

@@ -1,0 +1,18 @@
+; Help project file created by DOCU (c) Cykor Systems 1996
+[Options]
+root=.
+BMROOT=.
+errorlog=DOCUTEMP.ERR
+warning=1
+compress=HIGH
+report=1
+title=erase_polygon() 'C' Programmers Reference
+
+[FILES]
+DOCUTEMP.RTF
+
+[WINDOWS]
+main = "erase_polygon() 'C' Programmers Reference",,,(255,255,248),(192,192,192)
+[CONFIG]
+BrowseButtons()
+

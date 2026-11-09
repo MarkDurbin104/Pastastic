@@ -1,0 +1,96 @@
+SQL> select * from blown_fibre_tubing;
+
+         0 BFTNIKI2             ZNH               76 ON   PA                    
+CONNECT 3                                                                       
+           -1096                                                                
+                                                                                
+         0 BFTPAUL1             ZNH             1345 ON   EX                    
+SECTION 1                                                                       
+                                                                                
+                                                                                
+         0 BFT3                 ZNH             4546 ON   EX                    
+EMPTY BFT                                                                       
+                                                                                
+                                                                                
+         0 BFTNIKI1             ZNH               12 ON   PA                    
+
+CONNECT BFT                                                                     
+           -1090                                                                
+                                                                                
+      1090 BFTNIKI1             ZNH               12 ON   PA                    
+CONNECT BFT                                                                     
+                                                                                
+                                                                                
+      1096 BFTNIKI2             ZNH               76 ON   PA                    
+CONNECT 3                                                                       
+                                                                                
+                                                                                
+         0 BFT5                 ZNH             6657 ON   EX                    
+FOR SPLIT                                                                       
+
+                                                                                
+                                                                                
+         0 BFT6                 ZNH            65254 ON   PA                    
+DFGHDFGHDFGHDFH                                                                 
+           -1098                                                                
+                                                                                
+      1098 BFT6                 ZNH            65254 ON   PA                    
+DFGHDFGHDFGHDFH                                                                 
+                                                                                
+                                                                                
+         0 BFTNIKI              ZNH                3 ON   PA                    
+DISCONNECT                                                                      
+           -1105                                                                
+
+                                                                                
+      1105 BFTNIKI              ZNH                3 ON   PA                    
+DISCONNECT                                                                      
+                                                                                
+                                                                                
+         0 BFT3010              ZNH                1 ON   PA                    
+XX                                                                              
+           -1136                                                                
+                                                                                
+      1136 BFT3010              ZNH                1 ON   PA                    
+XX                                                                              
+                                                                                
+                                                                                
+
+         0 BFT302               ZNH                2 ON   PA                    
+X                                                                               
+           -1136                                                                
+                                                                                
+      1136 BFT302               ZNH                2 ON   PA                    
+X                                                                               
+                                                                                
+                                                                                
+         0 BFT AAA              ZNH                1 ON   PA                    
+NOTE: BFT AAA                                                                   
+           -1137                                                                
+                                                                                
+      1137 BFT AAA              ZNH                1 ON   PA                    
+
+NOTE: BFT AAA                                                                   
+                                                                                
+                                                                                
+         0 BFT BBB              ZNH                1 ON   PA                    
+BBB                                                                             
+           -1137                                                                
+                                                                                
+      1137 BFT BBB              ZNH                1 ON   PA                    
+BBB                                                                             
+                                                                                
+                                                                                
+         0 CCC                  ZNH                1 ON   PA                    
+CCC                                                                             
+
+           -1137                                                                
+                                                                                
+      1137 CCC                  ZNH                1 ON   PA                    
+CCC                                                                             
+                                                                                
+                                                                                
+
+21 rows selected.
+
+SQL> spool off

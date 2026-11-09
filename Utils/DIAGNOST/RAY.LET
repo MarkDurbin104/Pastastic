@@ -1,0 +1,22 @@
+         F.A.O. Ray Jackson.
+         P.O.C.L.
+         Business Systems.
+         Ext. 1408
+
+    Ray, 
+        Please find enclosed a new copy of the 2.13 BOP diagnostics.
+        This solves the problem in th modem test by sending the 
+        initialisation command "ATX4E0V0" twice and only waiting
+        for a response to the second command.
+        	Regards,
+
+    	Mark Durbin.
+	
+
+
+
+
+
+
+
+

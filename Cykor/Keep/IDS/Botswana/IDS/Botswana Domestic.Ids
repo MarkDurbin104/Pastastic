@@ -1,0 +1,228 @@
+//****************************************************************************************//
+//**                                                                                    **//
+//**                          Domestic Mail Products                                    **//
+//**                                                                                    **//
+//****************************************************************************************//
+
+
+Products
+{
+
+//**                                                                                    **//
+//**                          Domestic Surface Mail                                     **//
+//**                                                                                    **//
+//
+//------------------------------------------------------------------------------------------
+//
+
+  DomSurLetter       { BasedOn      { BaseDomestic                                     }
+                       RegDesc      { 'CORVUS DomSurLetter Product'                    }
+                       Caption      { 'Domestic Surface Letter'                        }
+                       BitMap       { '..\images\P_DomSurLetter.bmp' }
+                       Description  { 'Domestic Surface Letter'                        }
+                       Title        { 'Domestic Surface Letter'                        }
+                       Domains      {  StandardFee { Weight,'LookUp.DomSurLetter' }    }
+                       Items        { 'Product.DomRegArticle'
+                                      'Product.AdviceDelivery'
+                                      'Product.ExpressDelivery'
+                                    }
+                       LogAs        { DomMail                                          }
+                     }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  DomSurSmallPacket  {  BasedOn     { BaseDomestic                                          }
+                        RegDesc     { 'CORVUS DomSurSmallPacket Product'                    }
+                        Caption     { 'Domestic Surface Small Packet'                       }
+                        BitMap      { '..\images\P_DomSurSmallPacket.bmp' }
+                        Description { 'Domestic Surface Small Packet'                       }
+                        Title       { 'Domestic Surface Small Packet'                       }
+                        Domains     {  StandardFee { Weight,'LookUp.DomSurSmallPacket' }    }
+                        Items       {
+                                       'Product.DomRegArticle'
+                                       'Product.AdviceDelivery'
+                                       'Product.ExpressDelivery'
+                                    }
+                        LogAs       { DomMail                                               }
+                       }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  DomSurPrintedPaper { BasedOn     { BaseDomestic                                           }
+                       RegDesc     { 'CORVUS DomSurPrintedPaper Product'                    }
+                       Caption     { 'Domestic Surface Printed Paper'                       }
+                       BitMap      { '..\images\P_DomSurPrintedPaper.bmp' }
+                       Description { 'Domestic Surface Printed Paper'                       }
+                       Title       { 'Domestic Surface Printed Paper'                       }
+                       Domains     { StandardFee { Weight,'LookUp.DomSurPrintedPaper' }     }
+                       Items       {   'Product.DomRegArticle'
+                                       'Product.AdviceDelivery'
+                                       'Product.ExpressDelivery'
+                                   }
+                       LogAs       { DomMail                                                }
+                      }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  DomSurBlindLit { BasedOn     { BaseDomestic                                       }
+                   RegDesc     { 'CORVUS DomSurBlindLit Product'                    }
+                   Caption     { 'Domestic Surface Blind Literature'                }
+                   BitMap      { '..\images\P_DomSurBlindLit.bmp' }
+                   Description { 'Domestic Surface Blind Literature'                }
+                   Title       { 'Domestic Surface Blind Literature'                }
+                   Domains     { StandardFee { Weight,'LookUp.DomSurBlindLit' }     }
+                   LogAs       { DomMail                                            }
+                  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  DomSurPostcard { BasedOn     { BaseDomestic                                       }
+                   RegDesc     { 'CORVUS DomSurPostcard Product'                    }
+                   Caption     { 'Domestic Surface Postcard'                        }
+                   BitMap      { '..\images\P_DomSurPostcard.bmp' }
+                   Description { 'Domestic Surface Postcard'                        }
+                   Title       { 'Domestic Surface Postcard'                        }
+                   Domains     { StandardFee { Weight,'LookUp.DomSurPostCard' }     }
+                   Items       {
+                                 'Product.ExpressDelivery'
+                               }
+                   LogAs       { DomMail                                            }
+                  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//  DomSurParcel { BasedOn     { BaseDomestic                                     }
+//                 RegDesc     { 'CORVUS DomSurParcel Product'                    }
+//                 Caption     { 'Domestic Surface Parcel'                        }
+//                 BitMap      { '..\images\P_DomSurParcel.bmp' }
+//                 Description { 'Domestic Surface Parcel'                        }
+//                 Title       { 'Domestic Surface Parcel'                        }
+//                 Domains     {  DomParcelID
+//                                StandardFee { Weight
+//                                             'LookUp.DomSurParcel' }            }
+//                 Items        { 'Product.DomRegArticle'
+//                                'Product.AdviceDelivery'
+//                                'Product.ExpressDelivery'
+//                                'Product.DomParInsurance'                          }
+//                 LogAs       { DomPar                                           }
+//                }
+
+
+
+//**                                                                                    **//
+//**                            Domestic Air Mail                                       **//
+//**                                                                                    **//
+//
+//------------------------------------------------------------------------------------------
+//
+
+  DomAirLetter { BasedOn     { BaseDomestic                                     }
+                 RegDesc     { 'CORVUS DomAirLetter Product'                    }
+                 Caption     { 'Domestic Air Letter'                            }
+                 BitMap      { '..\images\P_DomAirLetter.bmp' }
+                 Description { 'Domestic Air Letter'                            }
+                 Title       { 'Domestic Air Letter'                            }
+                 Domains     { StandardFee { Weight
+                                             'LookUp.DomAirLetter' }            }
+                 Items       {
+                               'Product.DomRegArticle'
+                               'Product.AdviceDelivery'
+                               'Product.ExpressDelivery'
+                        }
+                 LogAs       { DomMail                                          }
+                }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  DomAirPostcard { BasedOn     { BaseDomestic                                       }
+                   RegDesc     { 'CORVUS DomAirPostcard Product'                    }
+                   Caption     { 'Domestic Air Postcard'                            }
+                   BitMap      { '..\images\P_DomAirPostcard.bmp' }
+                   Description { 'Domestic Air Postcard'                            }
+                   Title       { 'Domestic Air Postcard'                            }
+                   Domains     { StandardFee { Weight
+                                               'LookUp.DomAirPostCard' }            }
+                   Items       {
+                                  'Product.ExpressDelivery'
+                        }
+                   LogAs       { DomMail                                            }
+                  }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  DomAirAerogramme { BasedOn     { BaseDomestic                                         }
+                     RegDesc     { 'CORVUS DomAirAerogramme Product'                    }
+                     Caption     { 'Domestic Air Aerogramme'                            }
+                     BitMap      { '..\images\P_DomAirAerogramme.bmp' }
+                     Description { 'Domestic Air Aerogramme'                            }
+                     Title       { 'Domestic Air Aerogramme'                            }
+                     Domains     { StandardFee { Weight
+                                                 'LookUp.DomAirAerogramme' }            }
+                     Items       {
+                                   'Product.DomRegArticle'
+                                   'Product.AdviceDelivery'
+                                   'Product.ExpressDelivery'
+                                 }
+                     LogAs       { DomMail                                              }
+                    }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  DomAirPrintedPaper { BasedOn     { BaseDomestic                                           }
+                       RegDesc     { 'CORVUS DomAirPrintedPaper Product'                    }
+                       Caption     { 'Domestic Air Printed Paper'                           }
+                       BitMap      { '..\images\P_DomAirPrintedPaper.bmp' }
+                       Description { 'Domestic Air PrintedPaper'                            }
+                       Title       { 'Domestic Air PrintedPaper'                            }
+                       Domains     { StandardFee { Weight
+                                                   'LookUp.DomAirPrintedPaper' }            }
+                       Items       {
+                                      'Product.DomRegArticle'
+                                      'Product.AdviceDelivery'
+                                      'Product.ExpressDelivery'
+                                    }
+                       LogAs       { DomMail                                                }
+                      }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+//  DomAirParcel { BasedOn     { BaseDomestic                                     }
+//                 RegDesc     { 'CORVUS DomAirParcel Product'                    }
+//                 Caption     { 'Domestic Air Parcel'                            }
+//                 BitMap      { '..\images\P_DomAirParcel.bmp' }
+//                 Description { 'Domestic Air Parcel'                            }
+//                 Title       { 'Domestic Air Parcel'                            }
+//                 Domains     { DomParcelID
+//                               StandardFee { Weight 'LookUp.DomAirParcel' }     }
+//                 Items       {
+//                               'Product.DomRegArticle'
+//                               'Product.AdviceDelivery'
+//                               'Product.ExpressDelivery'
+//                               'Product.DomParInsurance'
+//                              }
+//                 LogAs       { DomMail                                          }
+//	}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+}

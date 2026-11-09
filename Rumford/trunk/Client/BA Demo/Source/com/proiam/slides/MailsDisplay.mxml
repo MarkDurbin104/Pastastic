@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
+	width="1024" height="768"
+	creationComplete="callLater(LoadMailsData)"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	>
+	<mx:Script>
+		<![CDATA[
+	        public var resourceURL:String="resources";
+	        
+			import com.proiam.mails.MailServices;
+			import com.proiam.mails.MailService;
+			import flash.display.DisplayObject;
+			import flash.display.Stage;
+			import flash.display.StageDisplayState;
+			import flash.geom.Rectangle;
+			
+			import mx.controls.ProgressBar;
+	        public var mailServices:MailServices;
+	        
+			private function LoadMailsData():void {
+				mailServices=new MailServices(resourceURL+"/mailservices.xml",onMailsLoadComplete);
+			}
+			private function onMailsLoadComplete(event:Event):void {
+				var idx:int=0;
+				for (var i:int=0;i<mailServices.serviceGroups.length;i++) {
+					var mailService:MailService=mailServices.serviceGroups[i];
+					mailsgrid.addChild(mailService);
+					mailService.x=5+int(idx%6)*170;
+					mailService.y=int(idx/6)*95;
+					idx++;
+				}
+				for (i=0;i<mailServices.services.length;i++) {
+					mailService=mailServices.services[i];
+					mailsgrid.addChild(mailService);
+					mailService.x=5+int(idx%6)*170;
+					mailService.y=int(idx/6)*95;
+					idx++;
+				}
+			}
+			private function onLoadClick(event:Event):void {
+				LoadMailsData();
+			}
+		     import flash.net.*;
+		     public function openNewWindow(event:MouseEvent):void {
+		        var url:URLRequest = new URLRequest("http://mysite.com/index.jsp");
+		        var uv:URLVariables = new URLVariables();
+		        url.method = "GET";
+		        uv.name = "fred";
+		        url.data = uv;
+		        navigateToURL(url,"_blank");
+		     }
+		     public function downloadInstaller(event:MouseEvent):void {
+		        var u:URLRequest = new URLRequest("ServiceTestHarness.exe");
+		        navigateToURL(u,"_top");
+		     }
+
+		]]>
+	</mx:Script>
+	<mx:Canvas id="mailsgrid" backgroundColor="#ECF5E7" width="1024" height="688" top="80" left="0" verticalScrollPolicy="off" horizontalScrollPolicy="off" />
+	<mx:Button x="835" y="736" label="Download Bridge" click="downloadInstaller(event);"/>
+<!--	<mx:Button x="38" y="106" label="Load Mails Data" click="onLoadClick(event);" id="loadButton"/> -->
+</mx:Canvas>

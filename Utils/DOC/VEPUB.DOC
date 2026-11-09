@@ -1,0 +1,131 @@
+/***********************************************************************
+*
+*   ECCO+
+*
+*   File Name:          $Workfile:   VEPUBLIC.DH  $
+*
+*   Descriptive Name:   VE public definitions
+*
+*   Author:             Mark Durbin (Unisys)
+*
+*   Date of Origin:     4-12-1990
+*
+*   Copyright:          Copyright THE POST OFFICE 1990
+*
+*   Contents List:      
+*
+*   Notes:              
+*
+*
+*   $Log:   Z:\cm\g\eccorel\inc\vcs\vepublic.dhv  $
+*   
+***********************************************************************/
+#ifndef PVEPUBLIC_DH
+#define PVEPUBLIC_DH
+
+#include <sybios.h>
+#include <syio.h>
+#include <systdio.h>
+#include <sytypes.h>
+#include <systat.h>
+#include <syfcntl.h>
+#include <sydos.h>
+
+#include <sypublic.dh>
+
+/***********************************************************************
+*
+*   DATA HEADER
+*
+*   Data Group Name:    BIOS ERROR CONDITIONS
+*
+*   Synopsis:           
+*
+*   Description:        
+*
+*   Notes:              
+*
+***********************************************************************/
+#define DVE_WRITE_PROTECTED    0x00
+#define DVE_UNKNOWN_UNIT       0x01
+#define DVE_DRIVE_NOT_READY    0x02
+#define DVE_UNKOWN_COMMAND     0x03
+#define DVE_CRC_ERROR          0x04
+#define DVE_BAD_REQUEST_LENGTH 0x05
+#define DVE_SEEK_ERROR         0x06
+#define DVE_UNKNOWN_MEDIA      0x07
+#define DVE_SECTOR_NOT_FOUND   0x08
+#define DVE_PR_OUT_OF_PAPER    0x09
+#define DVE_WRITE_FAULT        0x0A
+#define DVE_READ_FAULT         0x0B
+#define DVE_GENERAL_FAILURE    0x0C
+/***********************************************************************
+*
+*   TYPE HEADER
+*
+*   Type Group Name:    STATUS
+*
+*   Synopsis:           
+*
+*   Description:        
+*
+*   Notes:              
+*
+***********************************************************************/
+#define DVE_ERROR       6000                /* base error for VE      */
+#define DVE_BADHANDLER (DVE_ERROR+1)        /* Bad handler            */
+#define DVE_NOHANDLER  (DVE_ERROR+2)        /* No handler             */
+
+/***********************************************************************
+*
+*   DATA HEADER
+*
+*   Data Group Name:    BIOS CALL VALUES
+*
+*   Synopsis:           
+*
+*   Description:        
+*
+*   Notes:              
+*
+***********************************************************************/
+#define DVE_DOS_GETVECT        0x24
+#define DVE_BIOS_PRCHR         0x0E
+#define DVE_BIOS_VDU           0x10
+#define DVE_KEYBRD_READ        _KEYBRD_READ
+#define DVE_ABORT              _HARDERR_ABORT
+#define DVE_RETRY              _HARDERR_RETRY
+#define DVE_IGNORE             _HARDERR_IGNORE
+#define DVE_FAIL               _HARDERR_FAIL 
+/***********************************************************************
+*
+*   TYPE HEADER
+*
+*   Type Group Name:    FPTR
+*
+*   Synopsis:           function pointer
+*
+*   Description:        
+*
+*   Notes:              
+*
+***********************************************************************/
+typedef VOID (*FPTR) ();
+/***********************************************************************
+*
+*   TYPE HEADER
+*
+*   Type Group Name:    IFPTR
+*
+*   Synopsis:           interrupt function pointer
+*
+*   Description:        
+*
+*   Notes:              
+*
+***********************************************************************/
+typedef VOID (_interrupt *IFPTR) ();
+
+#endif  /* PVEPUBLIC_DH */
+
+

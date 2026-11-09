@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="130" height="103"
+	creationComplete="createEffect(event);"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	backgroundImage="@Embed(source='embedded/GreenItemButton.svg')" 
+ 	backgroundSize="100%"  
+	styleName="secondaryItem" xmlns:filters="flash.filters.*">
+	<mx:Script>
+        <![CDATA[
+        	import com.proiam.mails.MailService;
+        
+            import flash.events.Event;
+            import mx.effects.Zoom;
+            
+        	private var _caption:String;
+        	private var _price:String;
+        	private var _iconSource:Object;
+            
+            [Bindable]
+            [Inspectable(defaultValue="")]
+            public function get caption():String
+            {
+            	return _caption;
+            }
+            public function set caption(value:String):void
+            {
+            	_caption=value;
+            }
+        	
+            
+            [Bindable]
+            [Inspectable(defaultValue="")]
+            public function get price():String
+            {
+            	return _price;
+            }
+            public function set price(value:String):void
+            {
+            	_price=value;
+            }
+            
+            [Bindable]
+            [Inspectable(defaultValue=null)]
+            public function get iconSource():Object
+            {
+            	return _iconSource;
+            }
+            public function set iconSource(value:Object):void
+            {
+            	_iconSource=value;
+            }
+
+            private function createEffect(eventObj:Event):void {
+                // Define a new Zoom effect.
+                return;
+                var zoomOver:Zoom = new Zoom();
+                zoomOver.duration = 20; 
+                zoomOver.zoomHeightTo = 1; 
+                zoomOver.zoomWidthTo = 1; 
+                var zoomOut:Zoom = new Zoom();
+                zoomOut.duration =200; 
+                zoomOut.zoomHeightTo = 1; 
+                zoomOut.zoomWidthTo = 1; 
+                
+                setStyle("rollOverEffect", zoomOver); 
+                setStyle("rollOutEffect", zoomOut); 
+            } 
+        ]]>
+    </mx:Script>
+	<mx:Text text="{price}" bottom="6" textAlign="right" styleName="embVerdanaStyle" color="#000000" left="9" width="115"/>
+	<mx:Text text="{caption}" width="85%" selectable="false" styleName="embVerdanaStyle" top="8" textAlign="center" horizontalCenter="0"/>		
+	<mx:Image source="{iconSource}" height="32" width="48" scaleContent="true" alpha="0.75" bottom="25" horizontalCenter="0"/>
+	<mx:filters>
+		<filters:DropShadowFilter angle="45" alpha=".1" distance="4" blurX="0" blurY="0"/>
+	</mx:filters>
+</mx:Canvas>

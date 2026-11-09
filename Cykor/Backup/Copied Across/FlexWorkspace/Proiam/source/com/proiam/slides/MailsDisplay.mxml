@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
+	width="100%" height="100%"
+	creationComplete="callLater(LoadMailsData)"
+	backgroundColor="#ECF5E7">
+	<mx:Script>
+		<![CDATA[
+			import flash.display.DisplayObject;
+			import flash.display.Stage;
+			import flash.display.StageDisplayState;
+			import flash.geom.Rectangle;
+			
+			import mx.controls.ProgressBar;
+			import com.proiam.mails.MailService;
+			import com.proiam.mails.MailServices;
+	        public var mailServices:MailServices;
+	        
+			private function LoadMailsData():void {
+				mailServices=new MailServices("resources/mailservices.xml",onMailsLoadComplete);
+			}
+			private function onMailsLoadComplete(event:Event):void {
+				var idx:int=0;
+				for (var i:int=0;i<mailServices.serviceGroups.length;i++) {
+					var mailService:MailService=mailServices.serviceGroups[i];
+					addChild(mailService);
+					mailService.x=5+int(idx%6)*170;
+					mailService.y=80+int(idx/6)*95;
+					idx++;
+				}
+				for (i=0;i<mailServices.services.length;i++) {
+					mailService=mailServices.services[i];
+					addChild(mailService);
+					mailService.x=5+int(idx%6)*170;
+					mailService.y=80+int(idx/6)*95;
+					idx++;
+				}
+			}
+			public function go(display:DisplayObject):void {
+				var stage:Stage = display.stage;
+				if (stage.displayState == StageDisplayState.FULL_SCREEN) {
+					display.stage.displayState = StageDisplayState.NORMAL;
+				} else {
+			//		stage["fullScreenSourceRect"] = new Rectangle(0, 0, stage.width, stage.height);
+					stage.displayState = StageDisplayState.FULL_SCREEN;
+				}
+			}
+			private function onLoadClick(event:Event):void {
+/* 				loadButton.visible=false; */
+				LoadMailsData();
+			}
+		     import flash.net.*;
+		     public function openNewWindow(event:MouseEvent):void {
+		        var url:URLRequest = new URLRequest("http://mysite.com/index.jsp");
+		        var uv:URLVariables = new URLVariables();
+		        url.method = "GET";
+		        uv.name = "fred";
+		        url.data = uv;
+		        navigateToURL(url,"_blank");
+		     }
+		     public function downloadInstaller(event:MouseEvent):void {
+		        var u:URLRequest = new URLRequest("VU.iT.exe");
+		        navigateToURL(u,"_top");
+		     }
+
+		]]>
+	</mx:Script>
+	<mx:Button x="835" y="736" label="Download Service Installer" click="downloadInstaller(event);"/>
+	<mx:Button x="721" y="736" label="Go Full Screen" click="go(this);"/>
+<!--	<mx:Button x="38" y="106" label="Load Mails Data" click="onLoadClick(event);" id="loadButton"/> -->
+</mx:Canvas>

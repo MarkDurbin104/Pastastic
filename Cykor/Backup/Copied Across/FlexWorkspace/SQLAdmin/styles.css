@@ -1,0 +1,96 @@
+@font-face
+{
+    src: url("assets/MyriadWebPro.ttf");
+    font-family: myriad;
+    font-style: normal;
+    font-weight: normal;
+}
+
+@font-face
+{
+    src: url("assets/MyriadWebPro-Bold.ttf");
+    font-family: myriad;
+    font-style: normal;
+    font-weight: bold;
+}
+
+Application {
+	background-color:#535353;
+	paddingTop:0;
+	paddingBottom:0;
+	paddingLeft:0;
+	paddingRight:0;
+	vertical-gap:0;
+}
+
+ApplicationControlBar {
+	color: #EEEEEE;
+}
+
+Button {
+	corner-radius: 0;	
+}
+
+TabNavigator {
+	cornerRadius: 0;
+	tabStyleName: "myTabs";
+	firstTabStyleName: "myTabs";
+	lastTabStyleName: "myTabs";
+	selectedTabTextStyleName: "mySelectedTabs";
+}
+
+.myTabs {
+   cornerRadius: 0;
+}
+
+.mySelectedTabs {
+}
+
+.menuBarButton {
+	font-family: myriad;
+	corner-radius:2;
+    font-family: myriad; 
+	label-gap:0;
+}
+
+.title
+{
+	color:#535353;	
+    font-family: myriad; 
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.logo
+{
+	font-family: myriad;
+	color:#FFFFFF;	
+    font-family: myriad; 
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+Panel {
+	title-style-name: panelTitle;
+	roundedBottomCorners: true;
+	headerColors: #666666, #666666;   
+	borderAlpha: 1;
+	header-style-name: headerStyle;
+	borderColor: #FFFFFF;
+	headerHeight: 36;
+	border-thickness-left:4;	
+	border-thickness-right:4;	
+	corner-radius: 4;
+}
+
+.panelTitle
+{
+	color:#CCCCCC;	
+    font-family: myriad; 
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+.taskBarButton {
+	corner-radius: 2;	
+}

@@ -1,0 +1,42 @@
+# Makefile for CopyBuilder 386
+# If you have trouble with Intel's MAKE running other
+# programs in some DPMI environments, try another make
+# or do this:
+#
+# MAKE -n >script.bat
+# Then edit script.bat to remark out the copyright info and
+# execute the script batch file
+
+CC=icc
+CCOPTS=/c /g
+LD=icc
+LDOPTS=/g
+
+cb386.exe : cb386.obj disp.obj histo.obj fileio.obj display.obj\
+           dirpick.obj diskio.obj reboot.obj
+         $(LD) $(LDOPTS) cb386.obj disp.obj histo.obj fileio.obj\
+           display.obj dirpick.obj diskio.obj reboot.obj
+
+cb386.obj : cb386.c cb386.h display.h
+         $(CC) $(CCOPTS) cb386.c
+
+disp.obj : disp.c cb386.h display.h
+         $(CC) $(CCOPTS) disp.c
+
+histo.obj : histo.c cb386.h display.h
+         $(CC) $(CCOPTS) histo.c
+
+fileio.obj : fileio.c cb386.h display.h
+         $(CC) $(CCOPTS) fileio.c
+
+diskio.obj : diskio.c cb386.h display.h
+         $(CC) $(CCOPTS) diskio.c
+
+display.obj : display.c display.h
+         $(CC) $(CCOPTS) display.c
+
+dirpick.obj : dirpick.c display.h
+         $(CC) $(CCOPTS) dirpick.c
+
+reboot.obj : reboot.c
+         $(CC) $(CCOPTS) reboot.c

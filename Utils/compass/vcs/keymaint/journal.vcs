@@ -1,0 +1,317 @@
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960612, 215744, vcs -i
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960612, 215744, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960612, 215744, vcs -i
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960612, 215744, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960612, 215744, vcs -i
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960612, 215744, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960612, 215744, vcs -i
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960612, 215744, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960612, 215744, vcs -i
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960612, 215744, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960612, 215744, vcs -i
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960612, 215744, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960612, 215744, vcs -i
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960612, 215744, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960612, 215744, vcs -i
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960612, 215744, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960612, 215744, vcs -i
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960612, 215744, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960612, 215744, vcs -i
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960612, 215744, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960612, 215744, vcs -i
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960612, 215744, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960612, 215744, vcs -i
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960612, 215744, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960612, 215744, vcs -i
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960612, 215744, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960612, 215744, vcs -i
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960612, 215746, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960612, 215802, vcs -v\1.00c:1.0
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960612, 215802, vcs -v\1.00c:1.0
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960612, 215802, vcs -v\1.00c:1.0
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960612, 215804, vcs -v\1.00c:1.0
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960612, 215804, vcs -v\1.00c:1.0
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960612, 215804, vcs -v\1.00c:1.0
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960612, 215804, vcs -v\1.00c:1.0
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960612, 215804, vcs -v\1.00c:1.0
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960612, 215804, vcs -v\1.00c:1.0
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960612, 215804, vcs -v\1.00c:1.0
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960612, 215804, vcs -v\1.00c:1.0
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960612, 215804, vcs -v\1.00c:1.0
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960612, 215804, vcs -v\1.00c:1.0
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960612, 215804, vcs -v\1.00c:1.0
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960612, 220032, put -r1.1 -v1.00d -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960612, 220032, put -r1.1 -v1.00d -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960612, 220032, put -r1.1 -v1.00d -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960612, 220032, put -r1.1 -v1.00d -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960612, 220032, put -r1.1 -v1.00d -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960612, 220032, put -r1.1 -v1.00d -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960612, 220032, put -r1.1 -v1.00d -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960612, 220032, put -r1.1 -v1.00d -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960612, 220032, put -r1.1 -v1.00d -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960612, 220032, put -r1.1 -v1.00d -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960612, 220032, put -r1.1 -v1.00d -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960612, 220032, put -r1.1 -v1.00d -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960612, 220034, put -r1.1 -v1.00d -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960612, 220034, put -r1.1 -v1.00d -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960612, 220128, put -r1.2 -v1.00e -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960612, 220128, put -r1.2 -v1.00e -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960612, 220128, put -r1.2 -v1.00e -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960612, 220128, put -r1.2 -v1.00e -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960612, 220128, put -r1.2 -v1.00e -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960612, 220128, put -r1.2 -v1.00e -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960612, 220128, put -r1.2 -v1.00e -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960612, 220128, put -r1.2 -v1.00e -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960612, 220130, put -r1.2 -v1.00e -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960612, 220130, put -r1.2 -v1.00e -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960612, 220130, put -r1.2 -v1.00e -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960612, 220130, put -r1.2 -v1.00e -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960612, 220130, put -r1.2 -v1.00e -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960612, 220130, put -r1.2 -v1.00e -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960612, 220752, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960612, 220752, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960612, 220752, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960612, 220752, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960612, 220752, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960612, 220754, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960612, 220754, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960612, 220754, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960612, 220754, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960612, 220754, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960612, 220754, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960612, 220754, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960612, 220754, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960612, 220754, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960613, 161606, put -r1.4 -v1.00f -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960613, 161624, put -r1.4 -v1,00f -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960613, 161624, put -r1.4 -v1,00f -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960613, 161624, put -r1.4 -v1,00f -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960613, 161624, put -r1.4 -v1,00f -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960613, 161624, put -r1.4 -v1,00f -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960613, 161624, put -r1.4 -v1,00f -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960613, 161624, put -r1.4 -v1,00f -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960613, 161624, put -r1.4 -v1,00f -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960613, 161624, put -r1.4 -v1,00f -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960613, 161626, put -r1.4 -v1,00f -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960613, 161626, put -r1.4 -v1,00f -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960613, 161626, put -r1.4 -v1,00f -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960613, 161626, put -r1.4 -v1,00f -l
+C:\COMPASS\VCS\KEYMAINT\Filetest.c_v, MJD, 960616, 044034, vcs -i
+C:\COMPASS\VCS\KEYMAINT\Filetest.c_v, MJD, 960616, 044034, put -r1.0 -v1.00f -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960616, 205944, put -r1.5 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960616, 205946, put -r1.5 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960616, 205946, put -r1.5 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960616, 205946, put -r1.5 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960616, 205946, put -r1.5 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960616, 205946, put -r1.5 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960616, 205946, put -r1.5 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\Filetest.c_v, MJD, 960616, 205946, put -r1.1 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960616, 205946, put -r1.5 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960616, 205946, put -r1.5 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960616, 205946, put -r1.5 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960616, 205948, put -r1.5 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960616, 205948, put -r1.5 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960616, 205948, put -r1.5 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960616, 205948, put -r1.5 -v1.00g -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960613, 034614, put -r1.6 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960613, 034614, put -r1.6 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960613, 034614, put -r1.6 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960613, 034616, put -r1.6 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960613, 034616, put -r1.6 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960613, 034616, put -r1.6 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960613, 034616, put -r1.6 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\Filetest.c_v, MJD, 960613, 034616, put -r1.2 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960613, 034616, put -r1.6 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960613, 034616, put -r1.6 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960613, 034616, put -r1.6 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960613, 034616, put -r1.6 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960613, 034618, put -r1.6 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960613, 034618, put -r1.6 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960613, 034618, put -r1.6 -v1.00h -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960613, 035628, put -r1.7 -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960613, 035628, put -r1.7 -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960613, 035628, put -r1.7 -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960613, 035628, put -r1.7 -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960613, 035628, put -r1.7 -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960613, 035628, put -r1.7 -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960613, 035628, put -r1.7 -l
+C:\COMPASS\VCS\KEYMAINT\Filetest.c_v, MJD, 960613, 035628, put -r1.3 -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960613, 035630, put -r1.7 -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960613, 035630, put -r1.7 -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960613, 035630, put -r1.7 -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960613, 035630, put -r1.7 -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960613, 035630, put -r1.7 -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960613, 035630, put -r1.7 -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960613, 035630, put -r1.7 -l
+C:\COMPASS\VCS\KEYMAINT\compkeyx.bav, MJD, 960613, 194722, vcs -i
+C:\COMPASS\VCS\KEYMAINT\compkeyx.bav, MJD, 960613, 194722, put -r1.0 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960618, 195202, put -r1.8 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960618, 195202, put -r1.8 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\compkeyx.bav, MJD, 960618, 195202, put -r1.1 -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960618, 195204, put -r1.8 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960618, 195204, put -r1.8 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960618, 195204, put -r1.8 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960618, 195204, put -r1.8 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960618, 195204, put -r1.8 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\Filetest.c_v, MJD, 960618, 195204, put -r1.4 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960618, 195204, put -r1.8 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960618, 195206, put -r1.8 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960618, 195206, put -r1.8 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960618, 195206, put -r1.8 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960618, 195206, put -r1.8 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960618, 195206, put -r1.8 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960618, 195206, put -r1.8 -v1.00i -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960618, 223848, put -r1.9 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960618, 223848, put -r1.9
+C:\COMPASS\VCS\KEYMAINT\compkeyx.bav, MJD, 960618, 223916, put -r1.2 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960618, 223916, put -r1.9 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960618, 223916, put -r1.9 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960618, 223916, put -r1.9 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960618, 223916, put -r1.9 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960618, 223916, put -r1.9 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\Filetest.c_v, MJD, 960618, 223916, put -r1.5 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960618, 223918, put -r1.9 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960618, 223918, put -r1.9 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960618, 223918, put -r1.9 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960618, 223918, put -r1.9 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960618, 223918, put -r1.9 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960618, 223918, put -r1.9 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960618, 223918, put -r1.9 -v1.00j -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960618, 223942, vcs -v\1.00j:1.9
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960618, 223954, vcs -l1.9
+C:\COMPASS\VCS\KEYMAINT\Cleanlog.c_v, MJD, 960620, 152444, vcs -i
+C:\COMPASS\VCS\KEYMAINT\Cleanlog.c_v, MJD, 960620, 152444, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\Cleandir.c_v, MJD, 960620, 171424, vcs -i
+C:\COMPASS\VCS\KEYMAINT\Cleandir.c_v, MJD, 960620, 171424, put -r1.0 -l
+C:\COMPASS\VCS\KEYMAINT\Cleandir.c_v, MJD, 960621, 020048, put -r1.1 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\Cleanlog.c_v, MJD, 960621, 020048, put -r1.1 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960621, 020048, put -r1.10 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960621, 020048, put -r1.10 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\compkeyx.bav, MJD, 960621, 020048, put -r1.3 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960621, 020048, put -r1.10 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960621, 020048, put -r1.10 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960621, 020048, put -r1.10 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960621, 020050, put -r1.10 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960621, 020050, put -r1.10 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\Filetest.c_v, MJD, 960621, 020050, put -r1.6 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960621, 020050, put -r1.10 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960621, 020050, put -r1.10 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960621, 020050, put -r1.10 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960621, 020050, put -r1.10 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960621, 020050, put -r1.10 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960621, 020050, put -r1.10 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960621, 020050, put -r1.10 -v1.01 -l
+C:\COMPASS\VCS\KEYMAINT\Cleandir.c_v, MJD, 960625, 230238, put -r1.2 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\Cleanlog.c_v, MJD, 960625, 230238, put -r1.2 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960625, 230240, put -r1.11 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960625, 230240, put -r1.11 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\compkeyx.bav, MJD, 960625, 230240, put -r1.4 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960625, 230240, put -r1.11 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960625, 230240, put -r1.11 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960625, 230240, put -r1.11 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960625, 230240, put -r1.11 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960625, 230240, put -r1.11 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\Filetest.c_v, MJD, 960625, 230242, put -r1.7 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960625, 230242, put -r1.11 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960625, 230242, put -r1.11 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960625, 230242, put -r1.11 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960625, 230242, put -r1.11 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960625, 230242, put -r1.11 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960625, 230242, put -r1.11 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960625, 230242, put -r1.11 -v1.01a -l
+C:\COMPASS\VCS\KEYMAINT\Cleandir.c_v, MJD, 960717, 124006, put -r1.3 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\Cleanlog.c_v, MJD, 960717, 124008, put -r1.3 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960717, 124008, put -r1.12 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960717, 124008, put -r1.12 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\compkeyx.bav, MJD, 960717, 124008, put -r1.5 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960717, 124008, put -r1.12 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960717, 124008, put -r1.12 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960717, 124008, put -r1.12 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960717, 124008, put -r1.12 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960717, 124010, put -r1.12 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\Filetest.c_v, MJD, 960717, 124010, put -r1.8 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960717, 124010, put -r1.12 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960717, 124010, put -r1.12 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960717, 124010, put -r1.12 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960717, 124010, put -r1.12 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960717, 124010, put -r1.12 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960717, 124010, put -r1.12 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960717, 124010, put -r1.12 -v1.10b -l
+C:\COMPASS\VCS\KEYMAINT\Cleandir.c_v, MJD, 960717, 124140, put -r1.4 -v1.00c -l
+C:\COMPASS\VCS\KEYMAINT\Cleanlog.c_v, MJD, 960717, 124142, put -r1.4 -v1.00c -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960717, 124142, put -r1.13 -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960717, 124142, put -r1.13 -l
+C:\COMPASS\VCS\KEYMAINT\compkeyx.bav, MJD, 960717, 124142, put -r1.6 -v1.00c -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960717, 124142, put -r1.13 -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960717, 124142, put -r1.13 -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960717, 124142, put -r1.13 -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960717, 124142, put -r1.13 -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960717, 124142, put -r1.13 -l
+C:\COMPASS\VCS\KEYMAINT\Filetest.c_v, MJD, 960717, 124144, put -r1.9 -v1.00c -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960717, 124144, put -r1.13 -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960717, 124144, put -r1.13 -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960717, 124144, put -r1.13 -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960717, 124144, put -r1.13 -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960717, 124144, put -r1.13 -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960717, 124144, put -r1.13 -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960717, 124144, put -r1.13 -l
+C:\COMPASS\VCS\KEYMAINT\Omrplued.c_v, MJD, 960717, 124226, vcs -i
+C:\COMPASS\VCS\KEYMAINT\Omrplued.c_v, MJD, 960717, 124226, put -r1.0 -v1.10c -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960717, 124244, vcs -v\1.10c::1.00c
+C:\COMPASS\VCS\KEYMAINT\Cleandir.c_v, MJD, 960717, 124434, put -r1.5 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\Cleanlog.c_v, MJD, 960717, 124434, put -r1.5 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960717, 124434, put -r1.14 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960717, 124434, put -r1.14 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\compkeyx.bav, MJD, 960717, 124434, put -r1.7 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960717, 124434, put -r1.14 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960717, 124434, put -r1.14 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960717, 124434, put -r1.14 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960717, 124436, put -r1.14 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960717, 124436, put -r1.14 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\Filetest.c_v, MJD, 960717, 124436, put -r1.10 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960717, 124436, put -r1.14 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960717, 124436, put -r1.14 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960717, 124436, put -r1.14 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960717, 124436, put -r1.14 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\Omrplued.c_v, MJD, 960717, 124436, put -r1.1 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960717, 124436, put -r1.14 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960717, 124438, put -r1.14 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960717, 124438, put -r1.14 -v1.10d -l
+C:\COMPASS\VCS\KEYMAINT\Cleandir.c_v, MJD, 960717, 131108, put -r1.6 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\Cleanlog.c_v, MJD, 960717, 131108, put -r1.6 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960717, 131110, put -r1.15 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960717, 131110, put -r1.15 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\compkeyx.bav, MJD, 960717, 131110, put -r1.8 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960717, 131110, put -r1.15 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960717, 131110, put -r1.15 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960717, 131110, put -r1.15 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960717, 131110, put -r1.15 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960717, 131110, put -r1.15 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\Filetest.c_v, MJD, 960717, 131110, put -r1.11 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960717, 131112, put -r1.15 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960717, 131112, put -r1.15 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960717, 131112, put -r1.15 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960717, 131112, put -r1.15 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\Omrplued.c_v, MJD, 960717, 131112, put -r1.2 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960717, 131112, put -r1.15 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960717, 131112, put -r1.15 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960717, 131112, put -r1.15 -v1.10e -l
+C:\COMPASS\VCS\KEYMAINT\Cleandir.c_v, MJD, 960718, 022832, put -r1.7 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\Cleanlog.c_v, MJD, 960718, 022832, put -r1.7 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\compkey.c_v, MJD, 960718, 022832, put -r1.16 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\compkey.h_v, MJD, 960718, 022832, put -r1.16 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\compkeyx.bav, MJD, 960718, 022832, put -r1.9 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\config.c_v, MJD, 960718, 022832, put -r1.16 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\config.h_v, MJD, 960718, 022832, put -r1.16 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\defines.h_v, MJD, 960718, 022832, put -r1.16 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\fileio.c_v, MJD, 960718, 022834, put -r1.16 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\fileio.h_v, MJD, 960718, 022834, put -r1.16 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\Filetest.c_v, MJD, 960718, 022834, put -r1.12 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\genrplu.c_v, MJD, 960718, 022834, put -r1.16 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\keydef.h_v, MJD, 960718, 022834, put -r1.16 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\omrplucn.c_v, MJD, 960718, 022834, put -r1.16 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\omrplucp.c_v, MJD, 960718, 022834, put -r1.16 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\Omrplued.c_v, MJD, 960718, 022834, put -r1.3 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\types.h_v, MJD, 960718, 022836, put -r1.16 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.c_v, MJD, 960718, 022836, put -r1.16 -v1.10f -l
+C:\COMPASS\VCS\KEYMAINT\videokbd.h_v, MJD, 960718, 022836, put -r1.16 -v1.10f -l

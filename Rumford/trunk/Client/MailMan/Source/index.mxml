@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
+	backgroundGradientColors="[#ECF5E7, #ECF5E7]" verticalGap="0"
+	pageTitle="Proiam - Service Designer"	
+	resize="onResize()"  
+	creationComplete="onCreationComplete()"
+	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off" 	
+	xmlns:local="*" xmlns:proiam="com.proiam.*">
+	<mx:Script>
+		<![CDATA[
+			import mx.managers.CursorManager;
+			import com.proiam.PostXMLToFile;
+			[Bindable]
+			public var versionNumber:String="0.0.21.1.9.5";
+
+			private var fixedScale:Boolean=false;
+			
+/*			
+			import mx.core.UIComponent;
+			import mx.controls.Button;
+			import mx.collections.HierarchicalCollectionView;
+			import com.proiam.mails.MailServiceGroup;
+			import com.proiam.mails.SecondaryMailService;
+			import com.proiam.mails.MailService;
+
+	        
+	        [Bindable]
+			public var groupList:XML=null;
+				        
+			private function LoadMailsData():void {
+				mailServices=new MailServices("data/mailservices.xml",onMailsLoadComplete,"data/intzones.xml","data/mails_icons/",false);
+			}
+			private function onMailsLoadComplete(event:Event):void {
+				var idx:int=0;
+				mailServices.addEventListener("mailServiceClicked",serviceClicked);
+				for (var i:int=0;i<mailServices.serviceGroups.length;i++) {
+					var mailService:MailService=mailServices.serviceGroups[i];
+					sgList.addChild(mailService);
+					mailService.addEventListener("mailServiceClicked",serviceGroupClicked);
+				}
+				for (i=0;i<mailServices.services.length;i++) {
+					mailService=mailServices.services[i];
+					if (mailService is SecondaryMailService) {
+						ssList.addChild(mailService);
+						mailService.addEventListener("mailServiceClicked",secondaryServiceClicked);
+					} else {
+						psList.addChild(mailService);
+						mailService.addEventListener("mailServiceClicked",serviceClicked);
+					}
+				}
+				sdWork.dataProvider=mailServices.mailServiceData;
+			}
+			
+			private function serviceGroupClicked(event:MouseEvent):void {
+				for (var i:int=0;i<mailServices.serviceGroups.length;i++) {
+					mailServices.serviceGroups[i].setStyle("backgroundAlpha","0.25");
+				}
+				var ms:MailServiceGroup=MailServiceGroup(event.currentTarget);
+				ms.setStyle("backgroundAlpha","0.75");
+				sgDetails.ms=ms;
+				
+				groupList=new XML(<GroupList/>);
+				for (i=0;i<ms.services.length;i++) {
+					var itemNode:XML=new XML(<item/>);
+					itemNode.@label=ms.services[i]; 					
+					itemNode.@value=ms.services[i]; 					
+					groupList.appendChild(itemNode);
+				}
+				GroupItemList.dataProvider=groupList.item;
+			}
+			private function secondaryServiceClicked(event:MouseEvent):void {
+				for (var i:int=0;i<mailServices.services.length;i++) {
+					if (mailServices.services[i] is SecondaryMailService) {
+						mailServices.services[i].setStyle("backgroundAlpha","0.25");
+					}
+				}
+				var ms:MailService=MailService(event.currentTarget);
+				ms.setStyle("backgroundAlpha","0.75");
+				ssDetails.ms=ms;
+			}
+			private function serviceClicked(event:MouseEvent):void {
+				for (var i:int=0;i<mailServices.services.length;i++) {
+					if (!(mailServices.services[i] is SecondaryMailService)) {
+						mailServices.services[i].setStyle("backgroundAlpha","0.25");
+					}
+				}
+				var ms:MailService=MailService(event.currentTarget);
+				ms.setStyle("backgroundAlpha","0.75");
+				psDetails.ms=ms;
+			}*/
+			private function onCreationComplete():void {
+				//LoadMailsData();
+			}
+			private function onResize():void 	{
+				/*if (fixedScale) {
+					verticalScrollPolicy="auto";
+					horizontalScrollPolicy="auto";
+					scaleRegion.scaleX=1;
+					scaleRegion.scaleY=1;
+				} else {
+					verticalScrollPolicy="off";
+					horizontalScrollPolicy="off";
+					scaleRegion.scaleX=width/1024;
+					scaleRegion.scaleY=height/768;
+				}*/
+			}
+			private function fileclick(event:MouseEvent):void {
+				var postFile:PostXMLToFile=new PostXMLToFile(mailFileName.text,circuitDesigner.dataProvider);
+				circuitDesigner.modified=false;
+			}
+			private function onNewDiagram(event:MouseEvent):void {
+				circuitDesigner.filePath="data/";
+				circuitDesigner.newDiagram("");
+			}
+			
+			private function onFileLoad(event:MouseEvent):void {
+				circuitDesigner.filePath="data/";
+				circuitDesigner.fileName="";
+				if (mailFileName.text=="") {
+					circuitDesigner.fileName="IntLetter.xml";
+				} else {
+					circuitDesigner.fileName="diagram.xml";
+				}
+			}
+			private var selectedControl:Button=null;
+			private function changeCursor(overCanvas:Boolean):void {
+				if (CursorManager.currentCursorID > 0) CursorManager.removeCursor(CursorManager.currentCursorID);
+				if ((overCanvas)&&(selectedControl!=null)&&(selectedControl.id!="Arrow")) {
+					switch (selectedControl) {
+						case Magnify,
+								UnMagnify,
+								Line,
+								Text 						: 	CursorManager.setCursor(Class(selectedControl.getStyle("icon")),2,	-10,	-10	); break;
+						case PrimaryService		: 	CursorManager.setCursor(Class(selectedControl.getStyle("icon")),2,	-1,	-11	); break;
+						case SecondaryService	: 	CursorManager.setCursor(Class(selectedControl.getStyle("icon")),2,	-1,	-11	); break;
+						case LookUp					: 	CursorManager.setCursor(Class(selectedControl.getStyle("icon")),2,	-10,	-10	); break;
+						case Input						: 	CursorManager.setCursor(Class(selectedControl.getStyle("icon")),2,	-2,	-16	); break;
+						case Fee							: 	CursorManager.setCursor(Class(selectedControl.getStyle("icon")),2,	-2,	-14	); break;
+						case ORGate					: 	CursorManager.setCursor(Class(selectedControl.getStyle("icon")),2,	-7,	-7		); break;
+						case ANDGate					: 	CursorManager.setCursor(Class(selectedControl.getStyle("icon")),2,	-7,	-7		); break;
+						case NORGate					: 	CursorManager.setCursor(Class(selectedControl.getStyle("icon")),2,	-5,	-7		); break;
+						case NANDGate				: 	CursorManager.setCursor(Class(selectedControl.getStyle("icon")),2,	-5,	-7		); break;
+						case XORGate					: 	CursorManager.setCursor(Class(selectedControl.getStyle("icon")),2,	-4,	-7		); break;
+						case XNORGate				: 	CursorManager.setCursor(Class(selectedControl.getStyle("icon")),2,	-2,	-7		); break;
+						case NOTGate					: 	CursorManager.setCursor(Class(selectedControl.getStyle("icon")),2,	-10,	-12	); break;
+						default 							:	CursorManager.setCursor(Class(selectedControl.getStyle("icon")));
+					}
+				}
+			}
+			private function controlClick(event:MouseEvent):void {
+				var control:Button = Button(event.currentTarget);
+				for (var i:int=0;i<control.parent.numChildren;i++) {
+					var child:DisplayObject=control.parent.getChildAt(i);
+					if ((child is Button)&&(child!=control)) {
+						Button(child).selected=false;
+					} 
+				}	
+				control.selected=true;
+				selectedControl=control;
+				circuitDesigner.cursorType=control.id;
+				circuitDesigner.selecting=control==Arrow;
+				circuitDesigner.stickyCursor=event.ctrlKey;
+			}
+			private function cursorOff(event:MouseEvent):void {
+				if (CursorManager.currentCursorID != 0) {
+					changeCursor(false);
+					circuitDesigner.cursorType=Arrow.id;
+				} 
+			}
+			private function cursorOn(event:MouseEvent):void {
+				if (CursorManager.currentCursorID == 0) {
+					changeCursor(true);
+					if (selectedControl!=null)
+					circuitDesigner.cursorType=selectedControl.id;
+				} 
+			}
+			private function onDesignerClicked(event:MouseEvent):void {
+				if (CursorManager.currentCursorID != 0) {
+					if ((!circuitDesigner.stickyCursor)&&(selectedControl!=Magnify)&&(selectedControl!=UnMagnify)&&(selectedControl!=Line)&&(selectedControl!=Text)) { 
+						changeCursor(false);
+						for (var i:int=0;i<Arrow.parent.numChildren;i++) {
+							var child:DisplayObject=Arrow.parent.getChildAt(i);
+							if ((child is Button)&&(child!=Arrow)) {
+								Button(child).selected=false;
+							} 
+						}	
+						Arrow.selected=true;
+						selectedControl=Arrow;
+						circuitDesigner.selecting=true;
+						circuitDesigner.cursorType=Arrow.id;
+					}
+				}
+			}
+		]]>
+	</mx:Script>
+	<!--mx:Canvas id="scaleRegion" width="1024" height="768" verticalScrollPolicy="off" horizontalScrollPolicy="off"-->
+		<mx:Image left="10" top="10" source="@Embed('resources/graphics/RumfordLogo.png')" click="fixedScale=!fixedScale; onResize();"/>
+		<mx:Image top="25" source="@Embed('resources/graphics/CopyrightLogo.png')" right="15"/>
+		<!--mx:TabNavigator tabWidth="{((width-20)/8)}" tabHeight="30" creationPolicy="all" left="6" top="80" bottom="6" id="navigator" right="6"-->
+			<mx:Canvas label="Designer" x="0" y="60" width="100%" height="100%" >
+				<mx:Canvas id="desContainer" width="100%" height="100%" x="0" y="{buttonBar.height}" backgroundColor="#FFFFFF" >
+					<proiam:CircuitDesigner id="circuitDesigner" x="0" y="0" mouseOut="cursorOff(event)" mouseOver="cursorOn(event)" horizontalScrollPolicy="off" verticalScrollPolicy="off" designerClicked="onDesignerClicked(event)"/>
+				</mx:Canvas>
+				<mx:ApplicationControlBar id="buttonBar" dock="true" width="100%" x="0" y="0" >
+					<mx:Button id="Arrow" icon="@Embed(source='resources/Arrow.png')" labelPlacement="bottom" paddingBottom="13" paddingLeft="13" paddingRight="13" paddingTop="13" selected="true" click="controlClick(event)"  enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="Magnify" icon="@Embed(source='resources/Magnify.png')" labelPlacement="bottom" paddingBottom="13" paddingLeft="13" paddingRight="13" paddingTop="13" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="UnMagnify" icon="@Embed(source='resources/UnMagnify.png')" labelPlacement="bottom" paddingBottom="13" paddingLeft="13" paddingRight="13" paddingTop="13" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="Line" icon="@Embed(source='resources/Line.png')" labelPlacement="bottom" paddingBottom="13" paddingLeft="13" paddingRight="13" paddingTop="13" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="Text" icon="@Embed(source='resources/Text.png')" labelPlacement="bottom" paddingBottom="13" paddingLeft="13" paddingRight="13" paddingTop="13" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Spacer width="5" height="100%" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="PrimaryService" icon="@Embed(source='resources/Primary.png')" labelPlacement="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="SecondaryService" icon="@Embed(source='resources/Secondary.png')" labelPlacement="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="LookUp" icon="@Embed(source='resources/Lookup.png')" labelPlacement="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="Input" icon="@Embed(source='resources/Input.png')" labelPlacement="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="Fee" icon="@Embed(source='resources/Fee.png')" labelPlacement="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Spacer width="5" height="100%" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="ANDGate" icon="@Embed(source='resources/AND.png')" labelPlacement="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="NANDGate" icon="@Embed(source='resources/NAND.png')" labelPlacement="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="ORGate" icon="@Embed(source='resources/OR.png')" labelPlacement="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="NORGate" icon="@Embed(source='resources/NOR.png')" labelPlacement="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="XORGate" icon="@Embed(source='resources/XOR.png')" labelPlacement="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="XNORGate" icon="@Embed(source='resources/XNOR.png')" labelPlacement="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+					<mx:Button id="NOTGate" icon="@Embed(source='resources/NOT.png')" labelPlacement="bottom" paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" click="controlClick(event)" enabled="{circuitDesigner.ready}"/>
+				</mx:ApplicationControlBar>
+			</mx:Canvas>
+			<!--mx:Canvas label="Service Groups" width="100%" height="100%">
+				<mx:VBox width="280" top="0" left="10" id="sgList" paddingLeft="2" paddingTop="2" paddingBottom="2" paddingRight="2" borderStyle="inset" height="{navigator.height-50}"/>
+				<local:ServiceDetails left="305" id="sgDetails" currentState="ServiceGroup"/>
+				<mx:Canvas x="295" y="178" width="779" height="443">
+					<mx:List x="10" y="10" width="256" height="423" id="GroupItemList" dataProvider="{groupList.item}"></mx:List>
+					<mx:List x="287" y="10" width="256" height="423" id="ItemList"></mx:List>
+				</mx:Canvas>
+			</mx:Canvas>
+			<mx:Canvas label="Primary Services" width="100%" height="100%">
+				<mx:VBox width="280" top="0" left="10" id="psList" paddingLeft="2" paddingTop="2" paddingBottom="2" paddingRight="2" borderStyle="inset" height="{navigator.height-50}"/>
+				<local:ServiceDetails left="305" id="psDetails"/>
+			</mx:Canvas>
+			<mx:Canvas label="Secondary Services" width="100%" height="100%">
+				<mx:VBox width="280" top="0" left="10" id="ssList" paddingLeft="2" paddingTop="2" paddingBottom="2" paddingRight="2" borderStyle="inset" height="{navigator.height-50}"/>
+				<local:ServiceDetails left="305" id="ssDetails" currentState="Secondary"/>
+			</mx:Canvas>
+			<mx:Canvas label="Item Types" width="100%" height="100%">
+				<mx:VBox width="190" top="0" left="10" id="itList" paddingLeft="2" paddingTop="2" paddingBottom="2" paddingRight="2" borderStyle="inset" height="{navigator.height-50}"/>
+				<mx:Canvas left="210" top="0" id="itWork" right="10" height="{navigator.height-50}"/>
+				<mx:TextArea x="837" text="sdfdasf&#xd;asfsdaf" wordWrap="true" editable="false" textAlign="center" width="100" selectable="false" borderColor="#FFFFFF" borderStyle="none" backgroundAlpha="0.0" alpha="0.5" verticalCenter="0" disabledColor="0"/>
+			</mx:Canvas>
+			<mx:Canvas label="Service Tariffs" width="100%" height="100%">
+				<mx:VBox width="190" top="0" left="10" id="stList" paddingLeft="2" paddingTop="2" paddingBottom="2" paddingRight="2" borderStyle="inset" height="{navigator.height-50}"/>
+				<mx:Canvas left="210" top="0" id="stWork" right="10" height="{navigator.height-50}"/>
+			</mx:Canvas>
+			<mx:Canvas label="Service Zones" width="100%" height="100%">
+				<mx:VBox width="190" top="0" left="10" id="szList" paddingLeft="2" paddingTop="2" paddingBottom="2" paddingRight="2" borderStyle="inset" height="{navigator.height-50}"/>
+				<mx:Canvas left="210" top="0" id="szWork" right="10" height="{navigator.height-50}"/>
+			</mx:Canvas>
+			<mx:Canvas label="Service Design" width="100%" height="100%" id="serviceDesigner">
+				<proiam:XMLView x="0" y="0" id="sdWork" width="100%" height="100%">
+				</proiam:XMLView>
+			</mx:Canvas>
+		</mx:TabNavigator-->
+		<mx:Label x="127" y="21" text="Current File"/>
+		<mx:TextInput id="mailFileName" x="204" y="19" width="255" text="mailservices.xml"/>
+		<mx:Button x="454" y="19" label="..."/>
+		<mx:Button x="504" y="19" label="Save Changes" enabled="{circuitDesigner.modified}" click="fileclick(event)"/>
+		<mx:Button x="617" y="19" label="Load File" click="onFileLoad(event)" width="82"/>
+		<mx:Label y="39" text="{versionNumber}" width="124" textAlign="left" left="10"/>
+		<mx:Button x="707" y="19" label="New Diagram" click="onNewDiagram(event)" width="110"/>
+	<!--/mx:Canvas-->
+</mx:Application>

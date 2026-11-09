@@ -1,0 +1,280 @@
+/****************************************************************************
+* Project     : GPA
+* File        : dst.c
+* Description : data store routines
+* 
+* $Revision:   1.1  $  $Date:   Nov 01 1995 15:15:02  $  $Author:   JGRAY  $
+*
+* $Log:   I:/pvcs/gpa/c/dst.c_v  $
+* 
+*    Rev 1.1   Nov 01 1995 15:15:02   JGRAY
+*  
+* 
+****************************************************************************/
+#define DST_C
+
+#include <stdio.h>
+#include <string.h>
+#include <search.h>
+#include <fcntl.h>
+#include <io.h>
+#include <malloc.h>
+#include <sys\types.h>
+#include <sys\stat.h>
+
+#include "gpasizes.h"
+#include "types.h"
+#include "dst.h"
+#include "control.h"
+#include "config.h"
+
+//*****************************************************************
+//S RETURN the store number for 'name'
+//P char string name of store
+//R integer store number or -1 if not found
+
+INT snum(CHAR *name)
+{
+    INT i;
+    ENTRY(1470);
+
+    for (i=0;i<G_nums;i++) {
+        if (!strcmp(name,G_store[i].name)) {
+            RETURNV(i);
+        }
+    }
+    RETURNV(-1);
+}
+
+//*****************************************************************
+//S RETURN the field number for field 'fname' in table 'name'
+//P char string name of table
+//P char string name of field
+//R integer fieldnumber or -1 if not found
+
+INT fnum(CHAR *name,CHAR *fname)
+{
+    INT i,s;
+    ENTRY(1480);
+
+    if ((s=snum(name))<0) RETURNV(-1);
+
+    for (i=0;i<G_store[s].numitem;i++) {
+        if (!strcmp(G_lib[G_store[s].li[i]].name,fname)) RETURNV(i);
+    }
+    RETURNV(-1);
+}
+
+//*****************************************************************
+//S RETURN the key number for field 'fname' in table 'name'
+//P char string table name
+//P char string field name
+//R integer 0 if failed, key number otherwise
+
+INT knum(CHAR *name,CHAR *fname)
+{
+    INT f,s;
+    ENTRY(1490);
+
+    if ((s=snum(name))<0) RETURNV(0);
+    if ((f=fnum(name,fname))<0) RETURNV(0);
+
+                        // find secondary key number
+    if ((G_store[s].skey&(0x80000000L>>f))!=0)
+        RETURNV(f+1);
+
+    RETURNV(0);
+}
+
+//*****************************************************************
+//S read the datastore information from fd into s and set scnt to number of stores
+//P integer file handle
+//P pointer to store to read into
+//P pointer to integer to set to no. of stores
+//R FALSE if failed, TRUE if succeeded
+
+INT readstores(INT fd,PSTORE s,INT *scnt)
+{
+    INT16 t;
+    ENTRY(1500);
+    if (read(fd,&t,sizeof(INT16))!=sizeof(INT16)) RETURNV(0);
+    *scnt=(INT)t;
+    if (read(fd,s,*scnt*sizeof(STORE))!=(*scnt*sizeof(STORE))) RETURNV(0);
+    RETURNV(1);
+}
+
+//*****************************************************************
+//S write the datastore information to fd from s where scnt is the number of stores
+//P integer file handle
+//P pointer to store to write from
+//P integer number of stores
+//R FALSE if failed, TRUE if succeeded
+
+INT writestores(INT fd,PSTORE s,INT scnt)
+{
+    ENTRY(1510);
+    if (write(fd,&scnt,sizeof(INT))!=sizeof(INT)) RETURNV(0);
+    if (write(fd,s,scnt*sizeof(STORE))!=(scnt*sizeof(STORE))) RETURNV(0);
+    RETURNV(1);
+}
+
+//*****************************************************************
+//S read the library infomation (DATA DICTIONARY)
+//P integer file handle
+//P pointer to store to read into
+//P pointer to integer to set to no. of items
+//R FALSE if failed, TRUE if succeeded
+
+INT readlib(INT fd,PLSTOREF l,INT *icnt)
+{
+    INT16 t;
+    ENTRY(1520);
+    if (read(fd,&t,sizeof(INT16))!=sizeof(INT16)) RETURNV(0);
+    *icnt=(INT)t;
+    if (read(fd,l,*icnt*sizeof(LSTOREF))!=(*icnt*sizeof(LSTOREF))) RETURNV(0);
+    RETURNV(1);
+}
+
+//*****************************************************************
+//S write the library infomation (DATA DICTIONARY)
+//P integer file handle
+//P pointer to store to write from
+//P integer no. of items
+//R FALSE if failed, TRUE if succeeded
+
+INT writelib(INT fd,PLSTOREF l,INT icnt)
+{
+    ENTRY(1530);
+    if (write(fd,&icnt,sizeof(INT))!=sizeof(INT)) RETURNV(0);
+    if (write(fd,l,icnt*sizeof(LSTOREF))!=(icnt*sizeof(LSTOREF))) RETURNV(0);
+    RETURNV(1);
+}
+
+//*****************************************************************
+//S load the specified datastore data into memory
+//P char string system name n.b. max 7 (+1 delim)
+//R FALSE if failed, TRUE if succeeded
+
+INT loadsdata(CHAR *sys)
+{
+    INT fd;
+    INT16 i,j,len;
+    CHAR tmp[LENOFDSTFNAME];
+    ENTRY(1540);
+
+    sprintf(tmp,"%s%sD.DAT",G_config,sys);
+    fd=open(tmp,O_RDONLY|O_BINARY);
+    if (fd==(-1))
+        RETURNV(0);
+    if (read(fd,&i,sizeof(INT16))!=sizeof(INT16))
+        RETURNV(0);
+    lseek(fd,0L-sizeof(INT16),SEEK_CUR);
+    if (G_store!=NULL) FREE(G_store);
+    G_store=MALLOC((i+5)*sizeof(STORE));
+    if (G_store==NULL) RETURNV(0);
+    if (!readstores(fd,G_store,&G_nums))
+        {
+        close(fd);
+        RETURNV(0);
+        }
+    if (read(fd,&i,sizeof(INT16))!=sizeof(INT16))
+        RETURNV(0);
+    lseek(fd,0L-sizeof(INT16),SEEK_CUR);
+    if (G_lib!=NULL)
+        FREE(G_lib);
+    G_lib=MALLOC(i*sizeof(LSTOREF));
+    if (G_lib==NULL)
+        RETURNV(0);
+    if (!readlib(fd,G_lib,&G_numl))
+        {
+        close(fd);
+        RETURNV(0);
+    }
+    close(fd);
+    for (i=0;i<G_nums;i++)
+        {
+        for (j=0;j<G_store[i].numitem;j++)
+            {
+            len=G_lib[G_store[i].li[j]].len;
+            switch (G_lib[G_store[i].li[j]].type) {
+                case 'K' :        // short integer
+                    G_lib[G_store[i].li[j]].type=(CHAR)1;
+                    break;
+                case 'M' : case '9' : case 'W' :
+                    if (len<5) {    // short integer
+                        G_lib[G_store[i].li[j]].type=(CHAR)1;
+                    } else {
+                        if (len<16)            // double
+                            G_lib[G_store[i].li[j]].type=(CHAR)2;
+                        else                // string
+                            G_lib[G_store[i].li[j]].type=(CHAR)3;
+                    }
+                    break;                    // string
+                case 'A' : case 'U' : case 'L' : case 'X' :
+                case 'T' : case 'D' : case 'P' : case 'Z' :
+                    G_lib[G_store[i].li[j]].type=(CHAR)3;
+                    break;
+            }
+        }
+    }
+
+//    doupdates();
+    RETURNV(1);
+}
+
+//*****************************************************************
+//S save the datastore data from memory
+//P char string system name n.b. max 7 (+1 delim)
+//R FALSE if failed, TRUE if succeeded
+
+INT savesdata(CHAR *sys)
+{
+    INT fd;
+    CHAR tmp[LENOFDSTFNAME];
+    ENTRY(1550);
+    sprintf(tmp,"%s%sD.DAT",G_config,sys);
+    fd=open(tmp,O_RDWR|O_BINARY|O_CREAT|O_TRUNC,S_IREAD|S_IWRITE);
+    if (fd==(-1)) RETURNV(0);
+    if (!writestores(fd,G_store,G_nums)) {
+        close(fd);
+        RETURNV(0);
+    }
+    if (!writelib(fd,G_lib,G_numl)) {
+        close(fd);
+        RETURNV(0);
+    }
+    close(fd);
+    RETURNV(1);
+}
+//*****************************************************************
+//F doupdates
+//S load the configuration information on FILE and RECORD updates into an array
+//D not currently used - networking code needs work.
+void doupdates(void)
+{
+    CHAR tmp[LENOFDSTUBUF],*t;
+    INT i;
+    ENTRY(1560);
+
+    memset(G_frupd,0,sizeof(G_frupd));
+    strcpy(tmp,G_rupdate);
+    t=strtok(tmp,", \t;");
+    while (t!=NULL) {
+        i=snum(t);
+        if (i!=(-1)) G_frupd[i]=RECUPDATE;
+        t=strtok(NULL,", \t;");
+    }
+    strcpy(tmp,G_fupdate);
+    t=strtok(tmp,", \t;");
+    while (t!=NULL) {
+        i=snum(t);
+        if (i!=(-1)) G_frupd[i]|=FILEUPDATE;
+        t=strtok(NULL,", \t;");
+    }
+    RETURN;
+}
+
+// **************************************************************************
+// dst.c <end-of-file>
+
+

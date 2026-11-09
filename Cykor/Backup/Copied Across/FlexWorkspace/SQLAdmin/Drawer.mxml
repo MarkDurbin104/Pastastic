@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:HBox xmlns:mx="http://www.adobe.com/2006/mxml"  xmlns="*" 
+	height="100%" paddingTop="0" paddingLeft="0" paddingRight="0" paddingBottom="0" horizontalGap="0">
+	
+	<mx:Script>
+		<![CDATA[
+			import mx.core.Application;
+
+			import mx.controls.Alert;
+
+			[Embed("assets/drawer_close.gif")]
+			[Bindable] public var iconClose:Class;
+
+			[Embed("assets/drawer_open.gif")]
+			[Bindable] public var iconOpen:Class;
+
+			public function getTables():void
+			{
+				var result:Object = db.getTables();
+				if (result.success)
+				{
+					tableList.dataProvider = result.data;
+				}
+				else
+				{
+					Alert.show(result.message, "Error");
+				}
+			}
+			
+		]]>
+	</mx:Script>
+	
+	<mx:states>
+		<mx:State name="hidden">
+			<mx:RemoveChild target="{vbox}"/>
+			<mx:SetProperty target="{drawerIcon}" name="source" value="{iconOpen}"/>
+		</mx:State>
+	</mx:states>
+	
+	<Database id="db"/>
+	
+	<mx:VDividedBox width="220" height="100%" backgroundColor="#FFFFFF" backgroundAlpha=".6"
+		paddingTop="10" paddingLeft="4" paddingRight="4" paddingBottom="30" id="vbox">
+
+		<mx:VBox width="100%" height="60%">
+			<mx:Text text="Double-click a table to open details." width="100%"/>
+			<mx:DataGrid id="tableList" width="100%" height="100%"
+				doubleClickEnabled="true" doubleClick="Application.application.openTableView(tableList.selectedItem)">
+				<mx:columns>
+					<mx:DataGridColumn dataField="name" headerText="Tables"/>
+				</mx:columns>
+			</mx:DataGrid>
+			<mx:Button label="Refresh" click="getTables()"/>
+		</mx:VBox>
+
+		<mx:VBox width="100%" height="40%">
+			<mx:Text text="You can drag-and-drop these syntax hints in a Query window." width="100%"/>
+			<Syntax/>
+		</mx:VBox>
+		
+	</mx:VDividedBox>
+	
+	<mx:Canvas width="12" height="100%" backgroundColor="#FFFFFF" backgroundAlpha=".4" mouseDown="currentState=currentState=='hidden'?'':'hidden'">
+		<mx:Image id="drawerIcon" source="{iconClose}" verticalCenter="0" horizontalCenter="0"/>
+	</mx:Canvas>
+	
+</mx:HBox>

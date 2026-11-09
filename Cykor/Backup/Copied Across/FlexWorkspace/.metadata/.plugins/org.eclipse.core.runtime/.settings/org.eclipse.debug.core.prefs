@@ -1,0 +1,3 @@
+#Mon Mar 10 12:35:11 GMT 2008
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<watchExpressions>\r\n<expression text\="data.destination" enabled\="true"/>\r\n<expression text\="data.origin" enabled\="true"/>\r\n</watchExpressions>\r\n
+eclipse.preferences.version=1

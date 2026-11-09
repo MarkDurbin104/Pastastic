@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vuitResult>
+	<status>OK</status>
+	<itemType>Invoice</itemType>
+	<payee>Orange Telecommunications</payee>
+	<image>Orange Rubbit.jpg</image>
+	<postage/>
+	<services/>
+	<addressee>
+		<country>UNITED KINGDOM</country>
+		<rawString>Mr H Rubbit Bash House Upper Hadtapton ANBURBAN OX55 0GG</rawString>
+		<imageLocation>62, 82, 156, 132</imageLocation>
+		<address>
+			<name>Mr H Rubbit</name>
+			<line1>Bash House</line1>
+			<line2>Upper Hadtapton</line2>
+			<line3></line3>
+			<city></city>
+			<state>ANBURBAN</state>
+			<zip>OX55 0GG</zip>
+			<telephone></telephone>
+			<email></email>
+		</address>
+	</addressee>
+	<account>
+		<imageLocation>204, 28, 245, 38</imageLocation>
+		<number>16191939</number>
+	</account>
+	<invoice>
+		<imageLocation>204, 44, 256, 54</imageLocation>
+		<number>06376844896</number>
+	</invoice>
+	<amount>
+		<imageLocation>380, 260, 420, 272</imageLocation>
+		<value>140.30</value>
+		<currency>GBP</currency>
+	</amount>
+</vuitResult>

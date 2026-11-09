@@ -1,0 +1,7 @@
+-+..\lib\dpmihost &
+-+..\lib\segment  &
+-+..\lib\exceptio &
+-+..\lib\realproc &
+-+..\lib\dpmiint  &
+-+..\lib\callback &
+-+..\lib\intrrupt

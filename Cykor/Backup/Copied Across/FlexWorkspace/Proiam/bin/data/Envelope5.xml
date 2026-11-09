@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vuitResult>
+	<status>OK</status>
+	<image>EnvelopeScan5.jpg</image>
+	<physicalAttributes>
+		<weight>200.0</weight>
+		<length>15.0</length>
+		<width>12.0</width>
+		<height>10</height>
+		<units>metric</units>
+	</physicalAttributes>
+	<destination>
+		<zipCode>17516-9998</zipCode>
+		<country>USA</country>
+		<rawString>POSTAGE DUE UNIT US POSTAL SERVICE PO BOX 9998 CONESTOGA PA 17516-9998</rawString>
+		<imageLocation>250, 320, 440, 390</imageLocation>
+		<address>
+			<name>POSTAGE DUE UNIT</name>
+			<line1>US POSTAL SERVICE</line1>
+			<line2>PO BOX 9998</line2>
+			<line3></line3>
+			<city>CONESTOGA</city>
+			<state>PA</state>
+			<zip>17516-9998</zip>
+			<telephone></telephone>
+			<email></email>
+		</address>
+	</destination>
+
+</vuitResult>

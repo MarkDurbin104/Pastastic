@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OneDayItem xmlns="SVGUI.*" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="264" height="103"
+	backgroundImage="@Embed(source='svg_graphics/Item2Button.svg')" 
+	backgroundSize="100%"
+	styleName="normalItem">
+</OneDayItem>

@@ -1,0 +1,49 @@
+#
+# (c) Copyright 1992, Qualitas, Inc. All Rights Reserved
+#
+# Make file for building DPMI libraries with Borland C++ 3.0
+#
+# The following tools are required and must be on your path
+#
+#	bcc	3.0
+#	tlib	3.0
+#	tasm	3.0
+
+C	= bcc -I..\include -2 -c -ms -h -n..\lib
+Cb	= $(C) -B
+asm	= tasm /mx /jlocals /I..\include $&.asm, $*.obj
+lib	= tlib $< /C 
+
+dpmilibs:	..\lib\dpmi.lib ..\lib\dpmiclas.lib ..\lib\c0s.obj
+
+..\lib\dpmi.lib:	..\lib\dpmi.obj ..\lib\dpmimall.obj
+	$(lib) -+..\lib\dpmi -+..\lib\dpmimall 
+
+..\lib\dpmiclas.lib:	..\lib\dpmihost.obj ..\lib\segment.obj  \
+			..\lib\exceptio.obj ..\lib\callback.obj \
+			..\lib\realproc.obj ..\lib\dpmiint.obj  \
+			..\lib\intrrupt.obj 
+	$(lib) @bc3.rsp
+
+..\lib\c0s.obj: bc3c0.asm
+	tasm /mx /D__s__ bc3c0,..\lib\c0s.obj;
+
+..\lib\dpmihost.obj:	dpmihost.cpp ..\include\dpmihost.h ..\include\dpmi.h
+	$(C) dpmihost.cpp
+..\lib\dpmi.obj: dpmi.asm
+	$(asm) 
+..\lib\intrrupt.obj: intrrupt.asm
+	$(asm)
+..\lib\segment.obj: segment.cpp ..\include\segment.h
+	$(C)  segment.cpp
+..\lib\exceptio.obj: exceptio.cpp ..\include\exceptio.h
+	$(C) exceptio.cpp
+..\lib\dpmimall.obj: dpmimall.c
+	$(C) dpmimall.c
+..\lib\realproc.obj: realproc.cpp ..\include\realproc.h
+	$(Cb) realproc.cpp
+..\lib\dpmiint.obj: dpmiint.cpp ..\include\dpmiint.h
+	$(C) dpmiint.cpp
+..\lib\callback.obj: callback.cpp ..\include\callback.h
+	$(C) callback.cpp
+

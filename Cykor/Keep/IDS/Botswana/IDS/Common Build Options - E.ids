@@ -1,0 +1,73 @@
+//***********************************************************************************************************//
+//**                                                                                                       **//
+//**                                   Common Build Options - Standalone                                   **//
+//**                                                                                                       **//
+//***********************************************************************************************************//
+
+BuildOptions
+{
+
+  BuildAllUnits    { 'Y' }
+
+  CommandLine      { 'C:\PSL\MinDelphi\DCC32.EXE'  }
+
+  Aliases          { WinTypes { 'Windows' }
+                     WinProcs { 'Windows' }
+                     DbiProcs { 'BDE'     }
+                     DbiTypes { 'BDE'     }
+                     DbiErrs  { 'BDE'     }    }
+
+  LibraryPath      { 'C:\PSL\MinDelphi'
+                     'C:\PSL\Packages'
+                   }
+
+  SearchPath       { 'C:\PSL\MinDelphi'
+                     'C:\PSL\Packages'
+   	    	         'C:\PSL\botswana\IDS'
+                    }
+
+  Packages         { 'VCL30'
+                     'VCLX30'
+                     'vcldb30'
+                     'vcldbx30'
+                     'dbx30' 
+                   }
+
+  ConstantOutputFile  { 'IDSConstants'  }
+
+  ProductInput     { Directory    { 'C:\PSL\Generate From\Product\EmptyForm'       }
+                     Files        { Project    { 'GenFromProduct.dpr' }
+                                    Constants  { 'GenFromConstantCU.pas' }
+                                    Automation { 'GenFromProductAU.pas' }
+                                    Form       { 'GenFromProductFU.pas'
+                                                 'GenFromProductFU.dfm' }                                  }
+                     }
+
+ GroupInput      { Directory    { 'C:\PSL\Generate From\Group\MultiGroup' }
+                    Files        { Project    { 'GenFromGroup.dpr'   }
+                                   Automation { 'GenFromGroupAU.pas' }                                     }
+                    }
+
+  UserInput       { Directory    { 'C:\PSL\Generate From\UGroup'                   }
+                    Files        { Project    { 'GenFromUGroup.dpr'   }
+                                   Automation { 'GenFromUGroupAU.pas' }                                    }
+                        
+                    }
+
+  WorkStationInput { Directory    { 'C:\PSL\Generate From\WGroup'                  }
+                     Files        {  Project    { 'GenFromWGroup.dpr'   }
+                                     Automation { 'GenFromWGroupAU.pas' }                                  }
+                     }
+
+  LookUpInput      { Directory    { 'C:\PSL\Generate From\LookUp'                  }
+                     Files        { Project    { 'GenFromLookUp.dpr'   }
+                                    Automation { 'GenFromLookUpAU.pas' }                                   }
+
+                     }
+
+  PickListInput    { Directory    { 'C:\PSL\Generate From\PickList'                }
+                     Files        { Project    { 'GenFromPickList.dpr'   }
+                                    Automation { 'GenFromPickListAU.pas' }                                 }
+                     }
+
+}

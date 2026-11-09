@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
+	width="100%" height="100%"
+	backgroundColor="#ECF5E7">
+	<mx:Script>
+		<![CDATA[
+			import com.cykorsystems.CoverFlow.*;
+	        private var menus:Menus;
+			private function onLoadClick(event:Event):void {
+				loadButton.visible=false;
+ 				var menusLoader:URLLoader = new URLLoader(); 
+				menusLoader.addEventListener(Event.COMPLETE,onMenusLoaded);
+				menusLoader.load(new URLRequest("resources/menus.xml"));
+			}
+			private function onMenusLoaded(event:Event):void 	{
+		        menus=new Menus(new XML(event.target.data));
+		        addChild(menus.mainMenu);
+		        label="Menu "+menus.mainMenu.title;
+			}
+		]]>
+	</mx:Script>
+	<mx:Button x="38" y="28" label="Load Menu Data" click="onLoadClick(event);" id="loadButton"/>
+</mx:Canvas>

@@ -1,0 +1,63 @@
+G                      Scale Application Time EstimateH 
+    ษออออออออออออออออออออออออออออออออออออออออออออออออออออัอออออออออออป
+    บ  Item                                              ณ   Hours   บ
+    วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤลฤฤฤฤฤฤฤฤฤฤฤถ
+    บ  SCALE.COM                                         ณ           บ
+    บ     Context level Data Flow Diagram                ณ    2      บ
+    บ     Program Structure Diagram                      ณ    6      บ
+    บ     Typical Invocation Dialogue Structure          ณ    2      บ
+    บ     Entity Relationship Diagram (as MAILCLAS.DAT)  ณ    2      บ
+    บ     Scale interface/protocol specification         ณ    16     บ
+    บ     Suggested ECCO+ interface specification        ณ    4      บ
+    บ     Meetings                                       ณ    32     บ
+    บ     Modify Design                                  ณ    8      บ
+    บ     Meetings                                       ณ    16     บ
+    บ     Code                                           ณ    24     บ
+    บ     Test Scripts                                   ณ    8      บ
+    บ     Module Test                                    ณ    8      บ
+    บ     Integration Test                               ณ    8      บ
+    บ     Document Code                                  ณ    8      บ
+    บ     Meetings                                       ณ    16     บ
+    บ     Modify                                         ณ    8      บ
+    บ     Re-Test                                        ณ    4      บ
+    บ     Re-Document Code                               ณ    2      บ
+    บ     Instalation guide and System overview.         ณ    4      บ
+    บ     User Operations manual.                        ณ    16     บ
+    บ     Configuration Management                       ณ    16     บ
+    บ     Creating Disks                                 ณ    2      บ
+    วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤลฤฤฤฤฤฤฤฤฤฤฤถ
+    บ     Total Hours                                    ณ    212    บ
+    วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤษอออออออออออน
+    บ     Total Man Days                                 บ    28     บ
+    วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤศอออออออออออน
+    บ  CONFSCAL.EXE                                      ณ           บ
+    บ     Entity Relationship Diagram (input data file)  ณ    2      บ
+    บ     Context level Data Flow Diagram                ณ    2      บ
+    บ     Program Structure Diagram                      ณ    6      บ
+    บ     Meetings                                       ณ    32     บ
+    บ     Modify Design                                  ณ    8      บ
+    บ     Meetings                                       ณ    16     บ
+    บ     Code                                           ณ    48     บ
+    บ     Test Scripts                                   ณ    8      บ
+    บ     Module Test                                    ณ    8      บ
+    บ     Integration Test                               ณ    8      บ
+    บ     Document Code                                  ณ    8      บ
+    บ     Meetings                                       ณ    16     บ
+    บ     Modify                                         ณ    8      บ
+    บ     Re-Test                                        ณ    4      บ
+    บ     Re-Document Code                               ณ    2      บ
+    บ     Instalation guide and System overview.         ณ    4      บ
+    บ     User Operations manual.                        ณ    24     บ
+    บ     Configuration Management                       ณ    16     บ
+    บ     Creating Disks                                 ณ    2      บ
+    วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤลฤฤฤฤฤฤฤฤฤฤฤถ
+    บ     Total Hours                                    ณ    222    บ
+    วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤษอออออออออออน
+    บ     Total Man Days                                 บ    30     บ
+    ศออออออออออออออออออออออออออออออออออออออออออออออออออออสอออออออออออผ
+    ษออออออออออออออออออออออออออออออออออออออออออออออออออออัอออออออออออป
+    บ     Overall Total Hours                            ณ    436    บ
+    วฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤษอออออออออออน
+    บ     Overall Total Man Days                         บ    58     บ
+    ศออออออออออออออออออออออออออออออออออออออออออออออออออออสอออออออออออผ
+

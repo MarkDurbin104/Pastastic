@@ -1,0 +1,21 @@
+; This file is maintained by HCW. Do not modify this file directly.
+
+[OPTIONS]
+HCW=0
+COMPRESS=8 Zeck
+ERRORLOG=OMRPLUCN.ERR
+LCID=0x809 0x0 0x0 ;English (British)
+REPORT=Yes
+TITLE=OMRPLUCN.EXE 'C' Programmers Reference
+BMROOT=.
+ROOT=.
+HLP=.\omrplucn.hlp
+
+[FILES]
+.\omrplucn.RTF
+
+[WINDOWS]
+main="OMRPLUCN.EXE 'C' Programmers Reference",,0,(r16318463),(r12632256)
+
+[CONFIG]
+BrowseButtons()

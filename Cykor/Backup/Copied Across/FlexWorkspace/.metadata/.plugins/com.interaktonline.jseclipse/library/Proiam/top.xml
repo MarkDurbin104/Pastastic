@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="1.5.0" prefix="top" extends="" parent="" >
+	<file path="C:/FlexWorkspace/Proiam/bin-release/history.js" creation="1201965367390">
+		<item repl="lc_id" display="lc_id = lc_id" chrno="46" />
+		<item repl="Vars()" display="Vars(qStr)" chrno="2" />
+		<item repl="getSearch()" display="getSearch(wRef)" chrno="33" />
+		<item repl="numVars" display="numVars = 0.0" chrno="3" />
+	</file>
+</completion>

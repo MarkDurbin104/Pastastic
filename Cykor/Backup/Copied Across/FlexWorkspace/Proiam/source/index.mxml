@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:base="com.proiam.base.*"
+	xmlns:cs="com.cykorsystems.utils.*"
+	layout="absolute" backgroundGradientColors="[#ECF5E7, #ECF5E7]" verticalGap="0"
+	pageTitle="Proiam - VU.iT Demonsration"	
+	creationComplete="onCreationComplete(event)"  
+	initialize="onInitialize(event)"
+	resize="onResize(event)"  
+	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off" xmlns:text="flash.text.*" xmlns:slides="com.proiam.slides.*">
+	<mx:Style source="resources/fontstyles.css"/>
+ 	<mx:Script>
+		<![CDATA[
+			import com.proiam.comms.ServiceInterface;
+			import mx.utils.StringUtil;
+			import com.proiam.mails.ItemData;
+			import com.cykorsystems.utils.*;
+		    import flash.events.TimerEvent;
+		    import flash.events.MouseEvent;
+    		import flash.utils.Timer;
+			import com.proiam.slides.MailScreen;
+			
+			[Embed(systemFont='Verdana', 
+				fontWeight='bold', 
+				fontName='embVerdana', 
+				mimeType='application/x-font'
+			)] 
+			private var embFont:Class;
+			[Embed(systemFont='Verdana', 
+				fontWeight='normal', 
+				fontName='embVerdanaNormal', 
+				mimeType='application/x-font'
+			)] 
+			private var embFontNormal:Class;
+			[Bindable]
+			public var barPath:String=CachedURLLoader.LocalPath+'resources/graphics/backbar.png';
+			[Bindable]
+			public var logoPath:String=CachedURLLoader.LocalPath+'resources/graphics/VU.iTLogo.png';
+			public var itemData:ItemData= null;
+			public var itemList:Array=new Array;
+			public var currentItem:int=3;
+			public var service:String="*****";
+			public var editingObject:Object;
+			private var serviceInterface:ServiceInterface;
+
+			private function startServiceInterface(event:Event):void {
+				serviceInterface=new ServiceInterface;
+				serviceInterface.addEventListener("dataAvailable",VUiTDataArrived);
+			}
+			private function VUiTDataArrived(event:Event):void {
+				itemData = new ItemData(new XML(serviceInterface.itemXML.Machine.vuitResult),serviceInterface.imageSource);
+				populateConfirmationScreen();
+				pageStack.reset();
+				pageStack.selectedIndex=1;
+				backbar.visible=true;
+				logo.visible=true;
+	        	pageStack.zoomSpeed=10;
+				setupTimer();
+			}
+			private function stopServiceInterface(event:Event):void {
+				serviceInterface.close();
+			}
+			private function sendReadyForData(event:Event):void {
+				serviceInterface.ReadyForData();
+			}
+
+			private function addressDataEvent(event:Event):void {
+				if (itemData != null) itemData=null;
+				itemData = new ItemData(new XML(event.target.data));
+				populateConfirmationScreen();
+			}
+			public function populateConfirmationScreen():void {
+				var localAddress:String=Configuration.localAddress;
+				var remoteAddress:String=StringUtil.trim(itemData.destination.zip);
+				if ((mailsAdmin.mailServices != null) && (mailsAdmin.mailServices.loaded)) {
+					service=mailsAdmin.mailServices.lookupServiceLevels(int(localAddress.slice(0,5)),int(remoteAddress.slice(0,5)));
+					localAddress=mailsAdmin.mailServices.lookUpCity(localAddress.slice(0,5));
+					remoteAddress=mailsAdmin.mailServices.lookUpCity(remoteAddress.slice(0,5));
+					var zone:String=service.substr(3,1);
+					var BMC:String=(service.substr(4,1) == "1")?"Yes":"No";
+					var destCS:String=itemData.destination.city+','+itemData.destination.state;
+					if (itemData.origin.city !="") {
+						var sourceCS:String=itemData.origin.city+itemData.origin.state;
+						var sourceAddress:String=mailsAdmin.mailServices.lookUpCity(itemData.origin.zip.slice(0,5));
+						confScreen.SetItemData(itemData,localAddress+"\n"+remoteAddress+"\n"+zone+"\n"+BMC+"\n"+sourceAddress,
+							Utils.alphaCompare(destCS,remoteAddress),
+							Utils.alphaCompare(sourceCS,sourceAddress));
+					} else {
+						confScreen.SetItemData(itemData,localAddress+"\n"+remoteAddress+"\n"+zone+"\n"+BMC,
+							Utils.alphaCompare(destCS,remoteAddress));
+					}
+				} else {
+					confScreen.SetItemData(itemData,localAddress+"\n"+remoteAddress);
+				}
+			}
+			private function itemListLoaded(event:Event):void {
+				var fileContent:String=event.target.data;
+				itemList= StringUtil.trim(fileContent).split("\r\n");				
+				if (itemList.length>0) {
+					var itemLoader:CachedURLLoader = new CachedURLLoader(); 
+					itemLoader.addEventListener(Event.COMPLETE,addressDataEvent);
+					itemLoader.load(new URLRequest("data/"+itemList[currentItem]));				
+				}
+			}
+			private function nextItem(eventevent:Event):void {
+				if (itemList.length>0) { 
+					currentItem=(currentItem+1)%itemList.length;
+					var itemLoader:CachedURLLoader = new CachedURLLoader(); 
+					itemLoader.addEventListener(Event.COMPLETE,addressDataEvent);
+					itemLoader.load(new URLRequest("data/"+itemList[currentItem]));				
+				}
+			}
+			private function onInitialize(event:Event):void {
+			}
+			private function onCreationComplete(event:Event):void {
+				backbar.visible=false;
+				logo.visible=false;
+				pageStack.shrinkBar=shrunkenHeads;
+				var itemLoader:CachedURLLoader= new CachedURLLoader(); 
+				itemLoader.addEventListener(Event.COMPLETE,itemListLoaded);
+				itemLoader.load(new URLRequest("data/Scan.lst"));				
+//				itemLoader.load(new URLRequest("data/Scan.lst"));				
+				mailScreen.addEventListener("ShrinkMe",shrinkMailScreen);
+				pageStack.addEventListener("PoppedItem",popMailScreen);
+				onResize(event);
+				callLater(checkProgress);
+			}
+			private function shrinkMailScreen(event:Event):void {
+				pageStack.selectPage(pageStack.selectedIndex,true);
+			}
+			private function popMailScreen(event:Event):void {
+				mailScreen.popScreenFromStack();
+			}
+			private function checkProgress():void {
+				if (mailsAdmin.mailServices.loaded) {
+					progress.imagePB.indeterminate=false;
+					progress.imagePB.label="IMAGES COMPLETE";
+					progress.imagePB.setStyle("color","#1C4C88");
+				}
+				if (tariffAdmin.loaded) {
+					progress.tariffPB.indeterminate=false;
+					progress.tariffPB.label="TARIFFS COMPLETE";
+					progress.tariffPB.setStyle("color","#1C4C88");
+				}
+				if ((!mailsAdmin.mailServices.loaded) || (!tariffAdmin.loaded)) {
+					callLater(checkProgress);					
+				} else {
+					progress.visible=false;
+					startServiceInterface(null);
+				}
+			}
+			private function logonClicked(event:MouseEvent):void {
+				if (event.ctrlKey) 
+					pageStack.selectedIndex=4;
+				else if (event.shiftKey) 
+					pageStack.selectedIndex=5;
+				else
+					pageStack.selectedIndex=1;
+				backbar.visible=true;
+				logo.visible=true;
+			}
+			private function reset():void {
+				serviceInterface.ReadyForData();
+				pageStack.reset();
+				backbar.visible=false;
+				logo.visible=false;
+			}
+			private function engClicked(event:Event):void {
+				pageStack.nextScreen();
+			}
+			
+            private var quickTimer:Timer;
+	        public function setupTimer():void {
+	        	quickTimer= new Timer(50, 1);
+	            quickTimer.addEventListener(TimerEvent.TIMER, onTick);
+	            quickTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onTimerComplete);
+	            quickTimer.start();
+	        }
+			public function gotoCalendar():void {
+				if ((mailsAdmin.mailServices.loaded) && (tariffAdmin.loaded)) {
+					mailScreen.SetupCalendar(itemData,service,mailsAdmin.mailServices,tariffAdmin.Lookups);
+				} else {
+					callLater(gotoCalendar);					
+				}
+			}
+	        public function onTick(evt:TimerEvent):void 
+	        {
+				pageStack.nextScreen();
+				if (pageStack.selectedIndex==2) {
+					gotoCalendar();
+				}
+	        }
+	
+	        public function onTimerComplete(evt:TimerEvent):void
+	        {
+	        	pageStack.zoomSpeed=750;
+				quickTimer=null;
+	        }
+			
+			private function zoomToMails(event:MouseEvent):void {
+				logonClicked(event);
+	        	pageStack.zoomSpeed=10;
+				setupTimer();
+			}
+			private var fixedScale:Boolean=false;
+			private function toggleFixedScale():void {
+				fixedScale=!fixedScale;
+				onResize(null)				
+			}
+ 			private function onIndexChange(event:Event):void {
+			}
+ 			private function originClicked(event:Event):void {
+				if (itemData != null) {
+					editingObject=itemData.origin;
+	 				changeForm.setUpAccordion(itemData.origin.addressXML("Origin"));
+	 				changeForm.itemImage.source=confScreen.itemImage.source;
+				}
+				pageStack.selectPage(3);
+			}
+ 			private function destinationClicked(event:Event):void {
+				if (itemData != null) {
+					editingObject=itemData.destination;
+	 				changeForm.setUpAccordion(itemData.destination.addressXML("Destination"));
+	 				changeForm.itemImage.source=confScreen.itemImage.source;
+				}
+				pageStack.selectPage(3);
+			}
+ 			private function contactClicked(event:Event):void {
+				if (itemData != null) {
+					editingObject=itemData;
+	 				changeForm.setUpAccordion(itemData.contactXML());
+	 				changeForm.itemImage.source=confScreen.itemImage.source;
+				}
+				pageStack.selectPage(3);
+			}
+ 			private function onEditComplete(event:Event):void {
+ 				if (editingObject !=null) {
+ 					editingObject.postBackData(changeForm.formData());
+ 					populateConfirmationScreen();
+ 					editingObject=null;
+ 				}
+				pageStack.prevScreen();
+			}
+			private function onResize(event:Event):void 	{
+				if (mailScreen !=null) {
+					if (fixedScale) {
+						verticalScrollPolicy="auto";
+						horizontalScrollPolicy="auto";
+						scaleRegion.scaleX=1024/mailScreen.mailScreenWidth;
+						scaleRegion.scaleY=768/mailScreen.mailScreenHeight;
+					} else {
+						verticalScrollPolicy="off";
+						horizontalScrollPolicy="off";
+						scaleRegion.scaleX=width/mailScreen.mailScreenWidth;
+						scaleRegion.scaleY=height/mailScreen.mailScreenHeight;
+					}
+				}
+			}
+		]]>
+	</mx:Script>
+	<slides:AppBG id="scaleRegion" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+		<mx:Canvas verticalScrollPolicy="off" horizontalScrollPolicy="off" width="100%" height="100%">
+			<base:ShrinkStack id="pageStack" selectedIndex="0" width="100%" height="100%" verticalScrollPolicy="off" horizontalScrollPolicy="off" creationPolicy="all"  change="onIndexChange(event);"> 
+				<slides:Login id="loginScreen" loginClicked="logonClicked(event);" logoClicked="zoomToMails(event);" />
+				<slides:ConfirmationScreen id="confScreen" nextClicked="pageStack.selectPage(2); gotoCalendar();" orignChange="originClicked(event);" destinationChange="destinationClicked(event);" contactChange="contactClicked(event);" infoClicked="nextItem(event);" />
+			 	<slides:MailScreen label="Item Assesment" id="mailScreen" creationPolicy="all" topGap="80"	backgroundImage="@Embed(source='com/proiam/slides/embedded/MailScreenBG.svg',mimeType='image/svg')" />
+				<slides:ChangeForm id="changeForm" label="Change Origin Address Information" nextClicked="onEditComplete(event);"/>
+				<slides:MailsDisplay id="mailsAdmin" label="Available Mails Services" />
+				<slides:TariffScreen id="tariffAdmin" label="Available Tariffs" />
+			</base:ShrinkStack> 
+	 	 	<mx:Image x="0" y="0" source="{barPath}" scaleContent="true" autoLoad="true" id="backbar"  />
+	 	 	<mx:Image id="logo" x="7" y="7" source="{logoPath}" scaleContent="true" width="65" height="65" click="reset();"  />
+		 	<mx:HBox id="shrunkenHeads" x="66" y="8" width="941" horizontalAlign="left" verticalAlign="top" horizontalGap="10"  verticalScrollPolicy="off">
+		 	 	<mx:Spacer width="10" height="85"/>
+		 	</mx:HBox>
+		 	<slides:CopyrightLogo id="copyrightLogo" click="toggleFixedScale();"/>
+		 	<slides:ProgressBars id="progress"/>
+		</mx:Canvas>
+	</slides:AppBG>
+</mx:Application>

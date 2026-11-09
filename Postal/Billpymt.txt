@@ -1,0 +1,1005 @@
+
+Private Sub TextElectrictyNo_LostFocus()
+On Error GoTo ErrHandler
+    Dim cn As New rdoConnection
+    Dim qd As New rdoQuery
+    Dim rs As rdoResultset
+    
+    If TextElectrictyNo = vbNullString Or Val(TextElectrictyNo) = 0 Then
+        TextElectrictyNo = vbNullString
+        TextElectrictyNo.SetFocus
+        Exit Sub
+    End If
+    
+    Screen.MousePointer = vbHourglass
+    
+    If Len(TextElectrictyNo) = 1 Then
+        TextElectrictyNo = "0000000000" & TextElectrictyNo
+    ElseIf Len(TextElectrictyNo) = 2 Then
+        TextElectrictyNo = "000000000" & TextElectrictyNo
+    ElseIf Len(TextElectrictyNo) = 3 Then
+        TextElectrictyNo = "00000000" & TextElectrictyNo
+    ElseIf Len(TextElectrictyNo) = 4 Then
+        TextElectrictyNo = "0000000" & TextElectrictyNo
+    ElseIf Len(TextElectrictyNo) = 5 Then
+        TextElectrictyNo = "000000" & TextElectrictyNo
+    ElseIf Len(TextElectrictyNo) = 6 Then
+        TextElectrictyNo = "00000" & TextElectrictyNo
+    ElseIf Len(TextElectrictyNo) = 7 Then
+        TextElectrictyNo = "0000" & TextElectrictyNo
+    ElseIf Len(TextElectrictyNo) = 8 Then
+        TextElectrictyNo = "000" & TextElectrictyNo
+    ElseIf Len(TextElectrictyNo) = 9 Then
+        TextElectrictyNo = "00" & TextElectrictyNo
+    ElseIf Len(TextElectrictyNo) = 10 Then
+        TextElectrictyNo = "0" & TextElectrictyNo
+    ElseIf Len(TextElectrictyNo) = 11 Then
+    End If
+    TextElectrictyNo.Refresh
+    GotOne = False
+    
+    If CanPing(s_serverIP) = True Then
+        Screen.MousePointer = vbHourglass
+        cn.CursorDriver = rdUseOdbc
+        cn.Connect = "Driver={" & s_driver & "};Server=" & s_serverName & ";UID=" & s_userID & ";PWD=" & s_password & ";Database=" & s_databaseName & ";"
+        cn.EstablishConnection
+        With qd
+            Set .ActiveConnection = cn
+            .SQL = "Select * From bill_data where electricity_no ='" & TextElectrictyNo & "'"
+            .RowsetSize = 1
+            Set rs = .OpenResultset(rdOpenKeyset)
+        End With
+        If rs.RowCount = 0 Then
+            cn.Close
+            Screen.MousePointer = vbDefault
+        Else
+            With rs
+                AppStr = !bill_row
+                RCount = !record_number
+                GotOne = True
+            End With
+            cn.Close
+            Screen.MousePointer = vbDefault
+        End If
+    Else
+        MsgBox "Network problem or the server is unavailable, please call IT Support   ", vbCritical
+    End If
+    
+    If GotOne = False Then
+        MsgBox "Not Found  €Ì— „ÊÃÊœ", vbCritical
+        TextElectrictyNo = vbNullString
+        TextElectrictyNo.SetFocus
+        Exit Sub
+    End If
+    If RCount = 1 Then
+    Else
+        RCount = RCount - 1
+    End If
+    TextElectrictyNo.Enabled = False
+    LabelAreaNo = Mid$(AppStr, 15, 3)
+    LabelBillDate = Format$(Date, "dd, mmmm yyyy")
+'    LabelBillDate = Format$(DateValue(Mid$(AppStr, 55, 2) & "/" & Mid$(AppStr, 57, 2) & "/" & Mid$(AppStr, 59, 4)), "dd, mmmm yyyy")
+    LabelBillPeriod = Mid$(AppStr, 64, 20)
+    LabelEWRef = Mid$(AppStr, 85, 13)
+    LabelElectricityAmount = Format$(Val(Mid$(AppStr, 19, 11)), "#########.00")
+    LabelWaterAmount = Format$(Val(Mid$(AppStr, 31, 11)), "#########.00")
+    LabelCustomerName = Trim(Mid$(AppStr, 99, 80))
+    StringLang = Mid$(LabelCustomerName, 1, 1) Like "[A-Z]"
+    LabelCustomerName = Trim(Mid$(AppStr, 99, 80))
+    LabelTotalAmount = Format$(Val(Mid$(AppStr, 43, 11)), "#########.00")
+    TextTotal.Enabled = True
+    TextTotal.SetFocus
+    Screen.MousePointer = vbDefault
+    
+    Exit Sub
+ErrHandler:
+    MsgBox "Error " & Err & ": " & Error$, vbMsgBoxRtlReading, "Bills - ErrHandlerTemplate"
+    VError = "Error " & Err & ": " & Error$ & " in FormKPay, TextElectrictyNo_LostFocus"
+    Call Err_email
+    Unload Me
+
+End Sub
+
+
+Option Explicit
+Private Const IP_SUCCESS As Long = 0
+Private Const IP_STATUS_BASE As Long = 11000
+Private Const IP_BUF_TOO_SMALL As Long = (11000 + 1)
+Private Const IP_DEST_NET_UNREACHABLE As Long = (11000 + 2)
+Private Const IP_DEST_HOST_UNREACHABLE As Long = (11000 + 3)
+Private Const IP_DEST_PROT_UNREACHABLE As Long = (11000 + 4)
+Private Const IP_DEST_PORT_UNREACHABLE As Long = (11000 + 5)
+Private Const IP_NO_RESOURCES As Long = (11000 + 6)
+Private Const IP_BAD_OPTION As Long = (11000 + 7)
+Private Const IP_HW_ERROR As Long = (11000 + 8)
+Private Const IP_PACKET_TOO_BIG As Long = (11000 + 9)
+Private Const IP_REQ_TIMED_OUT As Long = (11000 + 10)
+Private Const IP_BAD_REQ As Long = (11000 + 11)
+Private Const IP_BAD_ROUTE As Long = (11000 + 12)
+Private Const IP_TTL_EXPIRED_TRANSIT As Long = (11000 + 13)
+Private Const IP_TTL_EXPIRED_REASSEM As Long = (11000 + 14)
+Private Const IP_PARAM_PROBLEM As Long = (11000 + 15)
+Private Const IP_SOURCE_QUENCH As Long = (11000 + 16)
+Private Const IP_OPTION_TOO_BIG As Long = (11000 + 17)
+Private Const IP_BAD_DESTINATION As Long = (11000 + 18)
+Private Const IP_ADDR_DELETED As Long = (11000 + 19)
+Private Const IP_SPEC_MTU_CHANGE As Long = (11000 + 20)
+Private Const IP_MTU_CHANGE As Long = (11000 + 21)
+Private Const IP_UNLOAD As Long = (11000 + 22)
+Private Const IP_ADDR_ADDED As Long = (11000 + 23)
+Private Const IP_GENERAL_FAILURE As Long = (11000 + 50)
+Private Const MAX_IP_STATUS As Long = (11000 + 50)
+Private Const IP_PENDING As Long = (11000 + 255)
+Private Const PING_TIMEOUT As Long = 500
+Private Const WS_VERSION_REQD As Long = &H101
+Private Const MIN_SOCKETS_REQD As Long = 1
+Private Const SOCKET_ERROR As Long = -1
+Private Const INADDR_NONE As Long = &HFFFFFFFF
+Private Const MAX_WSADescription As Long = 256
+Private Const MAX_WSASYSStatus As Long = 128
+
+Private Type ICMP_OPTIONS
+    Ttl             As Byte
+    Tos             As Byte
+    Flags           As Byte
+    OptionsSize     As Byte
+    OptionsData     As Long
+End Type
+
+Public Type ICMP_ECHO_REPLY
+    Address         As Long
+    status          As Long
+    RoundTripTime   As Long
+    DataSize        As Long
+    DataPointer     As Long
+    Options         As ICMP_OPTIONS
+    Data            As String * 250
+End Type
+
+Private Type WSADATA
+    wVersion As Integer
+    wHighVersion As Integer
+    szDescription(0 To MAX_WSADescription) As Byte
+    szSystemStatus(0 To MAX_WSASYSStatus) As Byte
+    wMaxSockets As Long
+    wMaxUDPDG As Long
+    dwVendorInfo As Long
+End Type
+'the following two declarations are used with public sub's setkbArabic(), setkbEnglish()
+Public Declare Function LoadKeyboardLayout Lib "user32" Alias "LoadKeyboardLayoutA" (ByVal pwszKLID As String, ByVal Flags As Long) As Long
+Public Const KLF_ACTIVATE = &H1
+
+Private Declare Function IcmpCreateFile Lib "icmp.dll" () As Long
+Private Declare Function IcmpCloseHandle Lib "icmp.dll" (ByVal IcmpHandle As Long) As Long
+Private Declare Function IcmpSendEcho Lib "icmp.dll" (ByVal IcmpHandle As Long, ByVal DestinationAddress As Long, ByVal RequestData As String, ByVal RequestSize As Long, ByVal RequestOptions As Long, ReplyBuffer As ICMP_ECHO_REPLY, ByVal ReplySize As Long, ByVal Timeout As Long) As Long
+Private Declare Function WSAGetLastError Lib "WSOCK32.DLL" () As Long
+Private Declare Function WSAStartup Lib "WSOCK32.DLL" (ByVal wVersionRequired As Long, lpWSADATA As WSADATA) As Long
+Private Declare Function WSACleanup Lib "WSOCK32.DLL" () As Long
+Private Declare Function gethostname Lib "WSOCK32.DLL" (ByVal szHost As String, ByVal dwHostLen As Long) As Long
+Private Declare Function gethostbyname Lib "WSOCK32.DLL" (ByVal szHost As String) As Long
+Private Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" (xDest As Any, xSource As Any, ByVal nbytes As Long)
+Private Declare Function inet_addr Lib "WSOCK32.DLL" (ByVal s As String) As Long
+
+Public Declare Function SetSysColors Lib "user32" (ByVal nChanges As Long, lpSysColor As Long, lpColorValues As Long) As Long
+Public Declare Function FlashWindow Lib "user32" (ByVal hwnd As Long, ByVal bInvert As Long) As Long
+Public Declare Function SetCursorPos Lib "user32" (ByVal X As Long, ByVal Y As Long) As Long
+Public Const COLOR_ACTIVECAPTION = 2 'Caption of Active Window
+Public Declare Function CreateEllipticRgn Lib "gdi32" (ByVal X1 As Long, ByVal Y1 As Long, ByVal X2 As Long, ByVal Y2 As Long) As Long
+Public Declare Function SetWindowRgn Lib "user32" (ByVal hwnd As Long, ByVal hRgn As Long, ByVal bRedraw As Long) As Long
+   
+Public s_home_dir As String
+Public VEmailAddress As String
+Public VErrorEmailAddress As String
+Public VError As String
+Public VOffice As String
+Public VMenu As String
+Public VOp_ID As String
+Public VMsg As String
+Public GotOne As Boolean
+Public GotCancelled As Boolean
+Public AppStr As String
+Public PaidStr As String
+Public VSerial As Double
+Public FNumber As String
+Public VPassword As String
+Public GotFile As String
+Public OutPutFile As String
+Public ReceiptNumber As Double
+Public RCount As Long
+Public VOfficeCode As String
+Public BillPayDate As String
+Public StringLang
+Public loginaction As Boolean
+Public txtuser As String
+Public LoginSucceeded As Boolean
+Public s_serverName, s_databaseName, s_userID, s_driver, s_password, s_serverIP As String
+Public VErrorStr, VErrorSub, VerrorLocation As String
+
+
+Public Function GetStatusCode(status As Long) As String
+On Error GoTo ErrHandler
+   
+   Dim msg As String
+   Select Case status
+      Case IP_SUCCESS:               msg = "success"
+      Case INADDR_NONE:              msg = "inet_addr: bad IP format"
+      Case IP_BUF_TOO_SMALL:         msg = "buf too_small"
+      Case IP_DEST_NET_UNREACHABLE:  msg = "dest net unreachable"
+      Case IP_DEST_HOST_UNREACHABLE: msg = "dest host unreachable"
+      Case IP_DEST_PROT_UNREACHABLE: msg = "dest prot unreachable"
+      Case IP_DEST_PORT_UNREACHABLE: msg = "dest port unreachable"
+      Case IP_NO_RESOURCES:          msg = "no resources"
+      Case IP_BAD_OPTION:            msg = "bad option"
+      Case IP_HW_ERROR:              msg = "hw_error"
+      Case IP_PACKET_TOO_BIG:        msg = "packet too_big"
+      Case IP_REQ_TIMED_OUT:         msg = "req timed out"
+      Case IP_BAD_REQ:               msg = "bad req"
+      Case IP_BAD_ROUTE:             msg = "bad route"
+      Case IP_TTL_EXPIRED_TRANSIT:   msg = "ttl expired transit"
+      Case IP_TTL_EXPIRED_REASSEM:   msg = "ttl expired reassem"
+      Case IP_PARAM_PROBLEM:         msg = "param_problem"
+      Case IP_SOURCE_QUENCH:         msg = "source quench"
+      Case IP_OPTION_TOO_BIG:        msg = "option too_big"
+      Case IP_BAD_DESTINATION:       msg = "bad destination"
+      Case IP_ADDR_DELETED:          msg = "addr deleted"
+      Case IP_SPEC_MTU_CHANGE:       msg = "spec mtu change"
+      Case IP_MTU_CHANGE:            msg = "mtu_change"
+      Case IP_UNLOAD:                msg = "unload"
+      Case IP_ADDR_ADDED:            msg = "addr added"
+      Case IP_GENERAL_FAILURE:       msg = "general failure"
+      Case IP_PENDING:               msg = "pending"
+      Case PING_TIMEOUT:             msg = "ping timeout"
+      Case Else:                     msg = "unknown  msg returned"
+   End Select
+   GetStatusCode = msg
+    
+    Exit Function
+ErrHandler:
+    VError = "Error " & Err
+    VErrorStr = Error$
+    VErrorSub = "GetStatusCode"
+    VerrorLocation = "ModuleBillServer"
+    ErrorLog
+    Resume Next
+   
+End Function
+
+Public Function CanPing(ByVal s_serverIP As String) As Boolean
+On Error GoTo ErrHandler
+    
+    Dim ECHO As ICMP_ECHO_REPLY
+    Dim pos As Long
+    Dim success As Long
+    If SocketsInitialize() Then
+        success = Ping((s_serverIP), ("PAPing"), ECHO)
+        If GetStatusCode(success) = "success" Then
+            CanPing = True
+        Else
+            CanPing = False
+        End If
+        SocketsCleanup
+    Else
+        CanPing = False
+    End If
+    
+    Exit Function
+ErrHandler:
+    VError = "Error " & Err
+    VErrorStr = Error$
+    VErrorSub = "CanPing"
+    VerrorLocation = "ModuleBillServer"
+    ErrorLog
+    Resume Next
+    
+End Function
+Public Function Ping(sAddress As String, sDataToSend As String, ECHO As ICMP_ECHO_REPLY) As Long
+On Error GoTo ErrHandler
+  
+  'If Ping succeeds :
+  '.RoundTripTime = time in ms for the ping to complete,
+  '.Data is the data returned (NULL terminated)
+  '.Address is the Ip address that actually replied
+  '.DataSize is the size of the string in .Data
+  '.Status will be 0
+  '
+  'If Ping fails .Status will be the error code
+   Dim hPort As Long
+   Dim dwAddress As Long
+  'convert the address into a long representation
+   dwAddress = inet_addr(sAddress)
+  'if a valid address..
+   If dwAddress <> INADDR_NONE Then
+     'open a port
+      hPort = IcmpCreateFile()
+     'and if successful,
+      If hPort Then
+        'ping it.
+         Call IcmpSendEcho(hPort, dwAddress, sDataToSend, Len(sDataToSend), 0, ECHO, Len(ECHO), PING_TIMEOUT)
+        'return the status as ping succes and close
+         Ping = ECHO.status
+         Call IcmpCloseHandle(hPort)
+      End If
+   Else:
+        'the address format was probably invalid
+         Ping = INADDR_NONE
+   End If
+    
+    Exit Function
+ErrHandler:
+    VError = "Error " & Err
+    VErrorStr = Error$
+    VErrorSub = "Ping"
+    VerrorLocation = "ModuleBillServer"
+    ErrorLog
+    Resume Next
+   
+End Function
+Public Sub SocketsCleanup()
+On Error GoTo ErrHandler
+
+   If WSACleanup() <> 0 Then
+   End If
+    
+    Exit Sub
+ErrHandler:
+    VError = "Error " & Err
+    VErrorStr = Error$
+    VErrorSub = "SocketsCleanup"
+    VerrorLocation = "ModuleBillServer"
+    ErrorLog
+    Resume Next
+   
+End Sub
+Public Function SocketsInitialize() As Boolean
+On Error GoTo ErrHandler
+   
+   Dim WSAD As WSADATA
+   SocketsInitialize = WSAStartup(WS_VERSION_REQD, WSAD) = IP_SUCCESS
+    
+    Exit Function
+ErrHandler:
+    VError = "Error " & Err
+    VErrorStr = Error$
+    VErrorSub = "SocketsInitialize"
+    VerrorLocation = "ModuleBillServer"
+    ErrorLog
+    Resume Next
+   
+End Function
+
+Public Sub AppStart()
+On Error GoTo ErrHandler
+    Dim FileNum1 As Integer
+    
+    's_home_dir = App.Path
+    s_home_dir = "C:\Program Files\Bills"
+    
+    FileNum1 = FreeFile
+    Open s_home_dir & "\System\Bills.ini" For Input As #FileNum1
+    Input #1, VOffice, VOfficeCode, VEmailAddress, VPassword, s_serverName, s_databaseName, s_userID, s_password, s_driver, s_serverIP
+    Close #FileNum1
+    NewDay
+    Screen.MousePointer = vbDefault
+    SendKeys "%{F}"
+    
+    Exit Sub
+ErrHandler:
+    MsgBox "Error " & Err & ": " & Error$, vbMsgBoxRtlReading, "Bills - ErrHandlerTemplate"
+    VError = "Error " & Err & ": " & Error$ & " in ModuleBills, AppStart"
+    Call Err_email
+    Resume Next
+    
+End Sub
+Public Sub OpenMenu()
+    SendKeys "%{F}"
+End Sub
+
+Public Sub DoPayment()
+On Error GoTo ErrHandler
+    Dim FileNum1 As Integer
+    Dim FileNum2 As Integer
+    Dim RCountStr As String
+    Dim HowLong As Integer
+    Dim Odbc_CN1 As New rdoConnection
+    Dim Odbc_QY1 As New rdoQuery
+    Dim PayMethod As String
+    Dim StrRec As String
+    Dim TrailInd As String
+    Dim FalseDigit As String
+    Dim PayDate As String
+    
+    'ReceptNumber
+    FileNum2 = FreeFile
+    Open s_home_dir & "\System\ReceptNumber.ini" For Input As #FileNum2
+    Input #FileNum2, ReceiptNumber
+    Close #FileNum2
+    If ReceiptNumber = 9999 Then
+        ReceiptNumber = 999
+    End If
+    If ReceiptNumber > 999 Then
+        HowLong = 19
+    Else
+        HowLong = 20
+    End If
+    FileNum1 = FreeFile
+    Open s_home_dir & "\System\ReceptNumber.ini" For Output As #FileNum1
+    Print #FileNum1, ReceiptNumber + 1
+    Close #FileNum1
+    RCountStr = RCount
+    PayMethod = "1"
+    TrailInd = "T"
+    FalseDigit = "0"
+    If Len(RCountStr) = 1 Then
+        RCountStr = "00000000" & RCountStr
+    ElseIf Len(RCountStr) = 2 Then
+        RCountStr = "0000000" & RCountStr
+    ElseIf Len(RCountStr) = 3 Then
+        RCountStr = "000000" & RCountStr
+    ElseIf Len(RCountStr) = 4 Then
+        RCountStr = "00000" & RCountStr
+    ElseIf Len(RCountStr) = 5 Then
+        RCountStr = "0000" & RCountStr
+    ElseIf Len(RCountStr) = 6 Then
+        RCountStr = "000" & RCountStr
+    ElseIf Len(RCountStr) = 7 Then
+        RCountStr = "00" & RCountStr
+    ElseIf Len(RCountStr) = 8 Then
+        RCountStr = "0" & RCountStr
+    ElseIf Len(RCountStr) = 9 Then
+        RCountStr = RCountStr
+    End If
+     
+    If CanPing(s_serverIP) = True Then
+        StrRec = "QPost" & VOfficeCode & ReceiptNumber
+        PayDate = Format$(Date, "ddmmyyyy")
+        Odbc_CN1.Connect = "Driver={" & s_driver & "};Server=" & s_serverName & ";UID=" & s_userID & ";PWD=" & s_password & ";Database=" & s_databaseName & ";"
+        Odbc_CN1.EstablishConnection
+        Odbc_QY1.SQL = "INSERT bill_data_invoice (customer_number, check_digit, area_number, electricity_amount, water_amount, total_amount, payment_date, bill_period, payment_method, ew_reference, qpost_reference, trailer_indicator, record_count, summary_e_amount, summary_w_amount, summary_t_amount, update_sent, invoice_sent, cancelled, op_id) Values('" & Mid(AppStr, 1, 11) & "','" & Mid(AppStr, 13, 1) & "','" & Mid(AppStr, 15, 3) & "','" & Mid(AppStr, 19, 11) & "','" & Mid(AppStr, 31, 11) & "','" & Mid(AppStr, 43, 11) & "','" & PayDate & "','" & Mid(AppStr, 64, 20) & "','" & PayMethod & "','" & Mid(AppStr, 85, 13) & "','" & StrRec & "','" & TrailInd & "','" & RCountStr & "','" & Mid(AppStr, 19, 11) & "','" & Mid(AppStr, 31, 11) & "','" & Mid(AppStr, 43, 11) _
+        & "','" & FalseDigit & "','" & FalseDigit & "','" & FalseDigit & "','" & UCase(VOp_ID) & "')"
+        Set Odbc_QY1.ActiveConnection = Odbc_CN1
+        Odbc_QY1.Execute
+        Odbc_CN1.Close
+        Set Odbc_CN1 = Nothing
+    Else
+        MsgBox "Network problem or the server is unavailable, please call IT Support   ", vbCritical
+    End If
+    If FormMainMenu.LabelBillingPeriod.Visible = False Then
+        FormMainMenu.LabelBillingPeriod = FormMainMenu.LabelBillingPeriod & Trim(Mid$(AppStr, 64, 20)) & "      : «·› —… «·„” Õﬁ… ··›« Ê—… "
+        FormMainMenu.LabelBillingPeriod.Visible = True
+    End If
+    
+    Exit Sub
+ErrHandler:
+    MsgBox "Error " & Err & ": " & Error$, vbMsgBoxRtlReading, "Bills - ErrHandlerTemplate"
+    VError = "Error " & Err & ": " & Error$ & " in ModuleBills, DoPayment"
+    Call Err_email
+    Resume Next
+End Sub
+Public Sub CheckIfPaid()
+On Error GoTo ErrHandler
+    Dim FileNum1 As Integer
+    Dim GotMaster As String
+    Dim cn As New rdoConnection
+    Dim qd As New rdoQuery
+    Dim rs As rdoResultset
+    If CanPing(s_serverIP) = True Then
+        Screen.MousePointer = vbHourglass
+        cn.CursorDriver = rdUseOdbc
+        cn.Connect = "Driver={" & s_driver & "};Server=" & s_serverName & ";UID=" & s_userID & ";PWD=" & s_password & ";Database=" & s_databaseName & ";"
+        cn.EstablishConnection
+        With qd
+            Set .ActiveConnection = cn
+            .SQL = "Select * From bill_data_invoice where customer_number='" & FormKPay.TextElectrictyNo & "'"
+            .RowsetSize = 1
+            Set rs = .OpenResultset(rdOpenKeyset, rdConcurRowVer)
+        End With
+        GotOne = False
+        If rs.RowCount = 0 Then
+        Else
+            With rs
+                If !cancelled = True And VMenu = "MenuKahramaa" Then
+                    .Delete
+                ElseIf !cancelled = False And VMenu = "MenuCopyReceipt" Then
+                    GotCancelled = False
+                Else
+                    If VMenu = "MenuCopyReceipt" And !cancelled = True Then
+                        GotCancelled = True
+                    Else
+                        GotOne = True
+                    End If
+                End If
+            End With
+        End If
+        cn.Close
+        Screen.MousePointer = vbDefault
+        If GotOne = True Then
+            MsgBox "Already Paid   „  ⁄„·Ì… «·œ›⁄    ", vbInformation
+        End If
+    Else
+        MsgBox "Network problem or the server is unavailable, please call IT Support   ", vbCritical
+    End If
+    
+    Exit Sub
+ErrHandler:
+    MsgBox "Error " & Err & ": " & Error$, vbMsgBoxRtlReading, "Bills - ErrHandlerTemplate"
+    VError = "Error " & Err & ": " & Error$ & " in ModuleBills, CheckIfPaid"
+    Call Err_email
+    Resume Next
+    
+End Sub
+Public Sub CheckReceiptNo()
+On Error GoTo ErrHandler
+    Dim cn As New rdoConnection
+    Dim qd As New rdoQuery
+    Dim rs As rdoResultset
+    
+    If CanPing(s_serverIP) = True Then
+        GotOne = False
+        Screen.MousePointer = vbHourglass
+        cn.CursorDriver = rdUseOdbc
+        cn.Connect = "Driver={" & s_driver & "};Server=" & s_serverName & ";UID=" & s_userID & ";PWD=" & s_password & ";Database=" & s_databaseName & ";"
+        cn.EstablishConnection
+        With qd
+            Set .ActiveConnection = cn
+            .SQL = "Select * From bill_data_invoice where customer_number='" & FormKPay.TextElectrictyNo & "'"
+            .RowsetSize = 1
+            Set rs = .OpenResultset(rdOpenKeyset)
+        End With
+        If rs.RowCount = 0 Then
+            cn.Close
+            Screen.MousePointer = vbDefault
+            Exit Sub
+        End If
+        With rs
+            ReceiptNumber = Val(Right(!qpost_reference, 4))
+            BillPayDate = !payment_date
+            BillPayDate = Mid$(BillPayDate, 3, 2) & "/" & Mid$(BillPayDate, 1, 2) & "/" & Mid$(BillPayDate, 5, 4)
+            GotOne = True
+        End With
+        cn.Close
+        Screen.MousePointer = vbDefault
+    Else
+        MsgBox "Network problem or the server is unavailable, please call IT Support   ", vbCritical
+    End If
+    
+    Exit Sub
+ErrHandler:
+    MsgBox "Error " & Err & ": " & Error$, vbMsgBoxRtlReading, "Bills - ErrHandlerTemplate"
+    VError = "Error " & Err & ": " & Error$ & " in ModuleBills, CheckReceiptNo"
+    Call Err_email
+    Resume Next
+
+End Sub
+
+Public Sub NewDay()
+On Error GoTo ErrHandler
+    Dim FileNum1 As Integer
+    Dim FileNum2 As Integer
+    Dim FileNum3 As Integer
+    Dim FileNum4 As Integer
+    Dim ADate As String
+    
+    FileNum1 = FreeFile
+    Open s_home_dir & "\System\Date.ini" For Input As #FileNum1
+    Input #FileNum1, ADate
+    Close #FileNum1
+    If ADate = Format$(Date, "dd/mm/yyyy") Then
+        FileNum3 = FreeFile
+        Open s_home_dir & "\System\SerialNumber.ini" For Input As #FileNum3
+        Input #FileNum3, VSerial
+        Close #FileNum3
+        If VSerial < 10 Then
+            FNumber = "00" & VSerial
+        ElseIf VSerial < 100 Then
+            FNumber = "0" & VSerial
+        ElseIf VSerial > 99 Then
+            FNumber = VSerial
+        End If
+    Else
+        FileNum2 = FreeFile
+        Open s_home_dir & "\System\Date.ini" For Output As #FileNum2
+        Print #FileNum2, Format$(Date, "dd/mm/yyyy")
+        Close #FileNum2
+        FileNum3 = FreeFile
+        Open s_home_dir & "\System\SerialNumber.ini" For Input As #FileNum3
+        Input #FileNum3, VSerial
+        Close #FileNum3
+        If VSerial = 999 Then
+            VSerial = 0
+        End If
+        FileNum4 = FreeFile
+        Open s_home_dir & "\System\SerialNumber.ini" For Output As #FileNum4
+        Print #FileNum4, VSerial + 1
+        Close #FileNum4
+        If VSerial < 10 Then
+            FNumber = "00" & VSerial
+        ElseIf VSerial < 100 Then
+            FNumber = "0" & VSerial
+        ElseIf VSerial > 99 Then
+            FNumber = VSerial
+        End If
+    End If
+    
+    Exit Sub
+ErrHandler:
+    MsgBox "Error " & Err & ": " & Error$, vbMsgBoxRtlReading, "Bills - ErrHandlerTemplate"
+    VError = "Error " & Err & ": " & Error$ & " in ModuleBills, NewDay"
+    Call Err_email
+    Resume Next
+    
+End Sub
+Public Sub SendUpdate()
+On Error GoTo ErrHandler
+    
+    VError = vbNullString
+    GotFile = vbNullString
+    GotFile = Dir(s_home_dir & "\work\QPost" & VOfficeCode & ".txt")
+    If s_home_dir & "\work\" & GotFile = s_home_dir & "\work\QPost" & VOfficeCode & ".txt" Then
+        If FormMainMenu.MAPIMessages1.SessionID <> 0 Then
+            FormMainMenu.MAPISession1.SignOn
+            FormMainMenu.MAPIMessages1.SessionID = FormMainMenu.MAPISession1.SessionID
+        Else
+            FormMainMenu.MAPISession1.SignOn
+            FormMainMenu.MAPIMessages1.SessionID = FormMainMenu.MAPISession1.SessionID
+        End If
+        FormMainMenu.MAPIMessages1.Compose
+          
+        FormMainMenu.MAPIMessages1.RecipDisplayName = VEmailAddress
+        FormMainMenu.MAPIMessages1.RecipAddress = VEmailAddress
+        FormMainMenu.MAPIMessages1.RecipType = mapToList
+    
+        FormMainMenu.MAPIMessages1.MsgSubject = "EW Receipts - " & VOffice
+        FormMainMenu.MAPIMessages1.MsgNoteText = "EW Receipts - " & VOffice & " Data attached"
+       
+        FormMainMenu.MAPIMessages1.AttachmentPosition = Len(FormMainMenu.MAPIMessages1.MsgNoteText) - 1
+        FormMainMenu.MAPIMessages1.AttachmentType = mapData
+       
+        FormMainMenu.MAPIMessages1.AttachmentName = GotFile
+        FormMainMenu.MAPIMessages1.AttachmentPathName = s_home_dir & "\work\" & GotFile
+         
+        FormMainMenu.MAPIMessages1.Send False
+           
+        FormMainMenu.MAPISession1.SignOff
+        
+        If VError = vbNullString Then
+            Kill s_home_dir & "\work\QPost" & VOfficeCode & ".txt"
+        End If
+    Else
+        MsgBox "Update not available, no transactions have taken place  «· ÕœÌÀ €Ì— „ Ê›—, ·⁄œ„ ÊÃÊœ «·„⁄«„·…", vbInformation
+    End If
+    
+    Exit Sub
+ErrHandler:
+    MsgBox "Error " & Err & ": " & Error$, vbMsgBoxRtlReading, "ModuleBills - ProcessEmailAttachment"
+    VError = "Error " & Err & ": " & Error$ & " in ModuleBills, SendUpdate"
+    Call Err_email
+    Resume Next
+
+End Sub
+Public Sub OperatorBalance()
+On Error GoTo ErrHandler
+    Dim FileNum1 As Single
+    Dim TotalCash As Double
+    Dim ErrAmount As Double
+    Dim AppCash As String
+    Dim cn As New rdoConnection
+    Dim qd As New rdoQuery
+    Dim rs As rdoResultset
+    Dim PayDate As String
+    Dim HowLong As Integer
+    Dim CashAmount As String
+    
+    If CanPing(s_serverIP) = True Then
+        Screen.MousePointer = vbHourglass
+        cn.CursorDriver = rdUseOdbc
+        cn.Connect = "Driver={" & s_driver & "};Server=" & s_serverName & ";UID=" & s_userID & ";PWD=" & s_password & ";Database=" & s_databaseName & ";"
+        cn.EstablishConnection
+        With qd
+            Set .ActiveConnection = cn
+            .SQL = "Select * From bill_data_invoice where op_id='" & UCase(VOp_ID) & "'"
+            .RowsetSize = 1
+            Set rs = .OpenResultset(rdOpenKeyset, rdConcurRowVer)
+        End With
+        If rs.RowCount = 0 Then
+            cn.Close
+            MsgBox "No Transaction Data Found    ", vbCritical
+            Exit Sub
+        End If
+        GotOne = False
+        FileNum1 = FreeFile
+        Open s_home_dir & "\work\" & VOp_ID & "Balance" & Format$(Date, "ddmmmyyyy") & ".txt" For Append As #FileNum1
+        Print #FileNum1, "Q-Post Operator Balance " & VOffice & Space(1) & Format$(Date, "dd mmmm yyyy") & Space(1) & Format$(Time, "hh:mm:ss")
+        Print #FileNum1, Space(1)
+        Print #FileNum1, " Operator: " & UCase(VOp_ID)
+        Print #FileNum1, Space(1)
+        Do While Not rs.EOF
+            With rs
+                PayDate = Mid$(!payment_date, 1, 2) & "/" & Mid$(!payment_date, 3, 2) & "/" & Mid$(!payment_date, 5, 4)
+                If !update_sent = False And !cancelled = False And PayDate = Format(Date, "dd/mm/yyyy") Then
+                    CashAmount = Format$(!total_amount, "#########.00")
+                    PayDate = Mid$(!payment_date, 1, 2) & "/" & Mid$(!payment_date, 3, 2) & "/" & Mid$(!payment_date, 5, 4)
+                    HowLong = 10 - Len(CashAmount)
+                    Print #FileNum1, CashAmount & Space(HowLong + 1) & "Bill Ref: " & !customer_number & Space(1) & "Receipt No: " & !qpost_reference & Space(2) & PayDate & Space(2) & !op_id
+                    TotalCash = TotalCash + Val(CashAmount)
+                    GotOne = True
+                    .Edit
+                        !op_balance = True
+                    .Update
+                End If
+                .MoveNext
+            End With
+        Loop
+        If GotOne = False Then
+            cn.Close
+            Close #FileNum1
+            MsgBox "No Transaction Data Available    ", vbCritical
+            Screen.MousePointer = vbDefault
+            Exit Sub
+        End If
+        rs.MoveFirst
+        Print #FileNum1, Space(1)
+        Print #FileNum1, "Cancelled Receipts " & VOffice
+        Print #FileNum1, Space(1)
+        Do While Not rs.EOF
+                With rs
+                PayDate = Mid$(!payment_date, 1, 2) & "/" & Mid$(!payment_date, 3, 2) & "/" & Mid$(!payment_date, 5, 4)
+                If !update_sent = False And !cancelled = True And GotOne = True And PayDate = Format(Date, "dd/mm/yyyy") Then
+                    CashAmount = Format$(!total_amount, "#########.00")
+                    'PayDate = Mid$(!payment_date, 1, 2) & "/" & Mid$(!payment_date, 3, 2) & "/" & Mid$(!payment_date, 5, 4)
+                    HowLong = 10 - Len(CashAmount)
+                    Print #FileNum1, "Bill Ref: " & !customer_number & Space(1) & "Receipt No: " & !qpost_reference & Space(2) & PayDate & Space(2) & !op_id
+                    ErrAmount = ErrAmount + Val(!total_amount)
+                End If
+                'CashAmount & Space(HowLong + 1) &
+                .MoveNext
+            End With
+        Loop
+        TotalCash = TotalCash ' - ErrAmount
+        Print #FileNum1, Space(1)
+        Print #FileNum1, "Grand Total: QR "; Format$(TotalCash, "#########.00")
+        Close #FileNum1
+        cn.Close
+        FileNum1 = FreeFile
+        Open s_home_dir & "\work\" & VOp_ID & "Balance" & Format$(Date, "ddmmmyyyy") & ".txt" For Input As #FileNum1
+        Printer.Font.Name = "Arial"
+        Printer.Font.Size = 10
+        Do While Not EOF(FileNum1)
+            Input #FileNum1, AppCash
+            Printer.Print Space(8) & AppCash
+        Loop
+        Printer.Print Space(1)
+        Printer.EndDoc
+        Close #FileNum1
+        Kill s_home_dir & "\work\" & VOp_ID & "Balance" & Format$(Date, "ddmmmyyyy") & ".txt"
+        Screen.MousePointer = vbDefault
+    Else
+        MsgBox "Network problem or the server is unavailable, please call IT Support   ", vbCritical
+    End If
+        
+    Exit Sub
+    
+ErrHandler:
+    MsgBox "Error " & Err & ": " & Error$, vbMsgBoxRtlReading, "ModuleBills - ProcessEmailAttachment"
+    VError = "Error " & Err & ": " & Error$ & " in ModuleBills, OperatorBalance"
+    Call Err_email
+    Resume Next
+
+End Sub
+Public Sub SendDailyBalance()
+On Error GoTo ErrHandler
+    Dim FileNum1 As Single
+    Dim TotalCash As Double
+    Dim ErrAmount As Double
+    Dim AppCash As String
+    Dim cn As New rdoConnection
+    Dim qd As New rdoQuery
+    Dim rs As rdoResultset
+    Dim PayDate As String
+    Dim HowLong As Integer
+    Dim CashAmount As String
+    
+    If CanPing(s_serverIP) = True Then
+        Screen.MousePointer = vbHourglass
+        cn.CursorDriver = rdUseOdbc
+        cn.Connect = "Driver={" & s_driver & "};Server=" & s_serverName & ";UID=" & s_userID & ";PWD=" & s_password & ";Database=" & s_databaseName & ";"
+        cn.EstablishConnection
+        With qd
+            Set .ActiveConnection = cn
+            .SQL = "Select * From bill_data_invoice order by op_id"
+            .RowsetSize = 1
+            Set rs = .OpenResultset(rdOpenKeyset, rdConcurRowVer)
+        End With
+        If rs.RowCount = 0 Then
+            cn.Close
+            MsgBox "No Transaction Data Found    ", vbCritical
+            Exit Sub
+        End If
+        GotOne = False
+        FileNum1 = FreeFile
+        Open s_home_dir & "\work\" & VOfficeCode & "DailyReport.txt" For Append As #FileNum1
+        Print #FileNum1, "Q-Post Daily Balance " & VOffice & Space(1) & Format$(Date, "dd, mmmm yyyy") & Space(1) & Format$(Time, "hh:mm:ss")
+        Print #FileNum1, Space(1)
+        Do While Not rs.EOF
+            With rs
+                PayDate = Mid$(!payment_date, 1, 2) & "/" & Mid$(!payment_date, 3, 2) & "/" & Mid$(!payment_date, 5, 4)
+                If !update_sent = False And !cancelled = False And PayDate = Format(Date, "dd/mm/yyyy") Then
+                    CashAmount = Format$(!total_amount, "#########.00")
+                    PayDate = Mid$(!payment_date, 1, 2) & "/" & Mid$(!payment_date, 3, 2) & "/" & Mid$(!payment_date, 5, 4)
+                    HowLong = 10 - Len(CashAmount)
+                    Print #FileNum1, CashAmount & Space(HowLong + 1) & "Bill Ref: " & !customer_number & Space(2) & "Receipt No: " & !qpost_reference & Space(2) & PayDate & Space(2) & !op_id
+                    TotalCash = TotalCash + Val(CashAmount)
+                    GotOne = True
+                    .Edit
+                        !daily_balance = True
+                    .Update
+                End If
+                .MoveNext
+            End With
+        Loop
+        If GotOne = False Then
+            cn.Close
+            Close #FileNum1
+            MsgBox "No Transaction Data Available    ", vbCritical
+            Screen.MousePointer = vbDefault
+            Exit Sub
+        End If
+        rs.MoveFirst
+        Print #FileNum1, Space(1)
+        Print #FileNum1, "Cancelled Receipts " & VOffice
+        Print #FileNum1, Space(1)
+        Do While Not rs.EOF
+            With rs
+                PayDate = Mid$(!payment_date, 1, 2) & "/" & Mid$(!payment_date, 3, 2) & "/" & Mid$(!payment_date, 5, 4)
+'                If !update_sent = False And !invoice_sent = True And !cancelled = True And GotOne = True Then
+                If !update_sent = False And !cancelled = True And GotOne = True And PayDate = Format(Date, "dd/mm/yyyy") Then
+                    CashAmount = Format$(!total_amount, "#########.00")
+'                    PayDate = Mid$(!payment_date, 1, 2) & "/" & Mid$(!payment_date, 3, 2) & "/" & Mid$(!payment_date, 5, 4)
+                    HowLong = 10 - Len(CashAmount)
+                    Print #FileNum1, "Bill Ref: " & !customer_number & Space(2) & "Receipt No: " & !qpost_reference & Space(2) & PayDate & Space(2) & !op_id
+                    ErrAmount = ErrAmount + Val(!total_amount)
+                End If
+                'CashAmount & Space(HowLong + 1) &
+                .MoveNext
+            End With
+        Loop
+        TotalCash = TotalCash ' - ErrAmount
+        Print #FileNum1, Space(1)
+        Print #FileNum1, "Grand Total: QR "; Format$(TotalCash, "#########.00")
+        Close #FileNum1
+        cn.Close
+        FileNum1 = FreeFile
+        Open s_home_dir & "\work\" & VOfficeCode & "DailyReport.txt" For Input As #FileNum1
+        Printer.Font.Name = "Arial"
+        Printer.Font.Size = 10
+        Do While Not EOF(FileNum1)
+            Input #FileNum1, AppCash
+            Printer.Print Space(8) & AppCash
+        Loop
+        Printer.Print Space(1)
+        Printer.EndDoc
+        Close #FileNum1
+        If FormMainMenu.MAPIMessages1.SessionID <> 0 Then
+            FormMainMenu.MAPISession1.SignOn
+            FormMainMenu.MAPIMessages1.SessionID = FormMainMenu.MAPISession1.SessionID
+        Else
+            FormMainMenu.MAPISession1.SignOn
+            FormMainMenu.MAPIMessages1.SessionID = FormMainMenu.MAPISession1.SessionID
+        End If
+        FormMainMenu.MAPIMessages1.Compose
+          
+        FormMainMenu.MAPIMessages1.RecipDisplayName = VEmailAddress
+        FormMainMenu.MAPIMessages1.RecipAddress = VEmailAddress
+        FormMainMenu.MAPIMessages1.RecipType = mapToList
+    
+        FormMainMenu.MAPIMessages1.MsgSubject = "Daily Report - " & VOffice & Format$(Date, "ddmmmyyyy")
+        FormMainMenu.MAPIMessages1.MsgNoteText = "Daily Report - " & VOffice & " Data attached"
+       
+        FormMainMenu.MAPIMessages1.AttachmentPosition = Len(FormMainMenu.MAPIMessages1.MsgNoteText) - 1
+        FormMainMenu.MAPIMessages1.AttachmentType = mapData
+       
+        FormMainMenu.MAPIMessages1.AttachmentName = VOfficeCode & "DailyReport" & Format$(Date, "ddmmmyyyy") & ".txt"
+        FormMainMenu.MAPIMessages1.AttachmentPathName = s_home_dir & "\work\" & VOfficeCode & "DailyReport.txt"
+         
+        FormMainMenu.MAPIMessages1.Send False
+           
+        FormMainMenu.MAPISession1.SignOff
+        
+        Screen.MousePointer = vbDefault
+        
+        Kill s_home_dir & "\work\" & VOfficeCode & "DailyReport.txt"
+    Else
+        MsgBox "Network problem or the server is unavailable, please call IT Support   ", vbCritical
+    End If
+    
+    Exit Sub
+ErrHandler:
+    MsgBox "Error " & Err & ": " & Error$, vbMsgBoxRtlReading, "ModuleBills - ProcessEmailAttachment"
+    VError = "Error " & Err & ": " & Error$ & " in ModuleBills, SendDailyBalance"
+    Call Err_email
+    Resume Next
+
+End Sub
+
+Public Sub Err_email()
+On Error GoTo ErrHandler
+
+    
+    If FormMainMenu.MAPIMessages1.SessionID <> 0 Then
+        FormMainMenu.MAPISession1.SignOn
+        FormMainMenu.MAPIMessages1.SessionID = FormMainMenu.MAPISession1.SessionID
+    Else
+        FormMainMenu.MAPISession1.SignOn
+        FormMainMenu.MAPIMessages1.SessionID = FormMainMenu.MAPISession1.SessionID
+    End If
+    FormMainMenu.MAPIMessages1.Compose
+    FormMainMenu.MAPIMessages1.RecipDisplayName = VEmailAddress
+    FormMainMenu.MAPIMessages1.RecipAddress = VEmailAddress
+    FormMainMenu.MAPIMessages1.RecipType = mapToList
+    FormMainMenu.MAPIMessages1.MsgSubject = "Billing Error at " & VOffice
+    FormMainMenu.MAPIMessages1.MsgNoteText = "Billing Error Report " & Date & " " & Time & vbCrLf & vbCrLf & VError & " " & vbCrLf & vbCrLf & VOffice
+    FormMainMenu.MAPIMessages1.Send False
+    FormMainMenu.MAPISession1.SignOff
+    
+    Exit Sub
+ErrHandler:
+    MsgBox "Error " & Err & ": " & Error$, vbMsgBoxRtlReading, "Bills - ErrHandlerTemplate"
+    VError = "Error " & Err & ": " & Error$ & " in ModuleBills, Err_email"
+    Resume Next
+    
+End Sub
+
+
+Public Sub SetkbArabic()
+
+    LoadKeyboardLayout "00000401", KLF_ACTIVATE
+    
+End Sub
+Public Sub SetkbEnglish()
+
+    LoadKeyboardLayout "00000409", KLF_ACTIVATE
+    
+End Sub
+
+Public Sub ErrorLog()
+On Error GoTo ErrHandler
+    Dim cn As New rdoConnection
+    Dim qd As New rdoQuery
+    Dim rs As rdoResultset
+    
+    If CanPing(s_serverIP) = True Then
+        Screen.MousePointer = vbHourglass
+        cn.CursorDriver = rdUseOdbc
+        cn.Connect = "Driver={" & s_driver & "};Server=" & s_serverName & ";UID=" & s_userID & ";PWD=" & s_password & ";Database=" & s_databaseName & ";"
+        cn.EstablishConnection
+        With qd
+            Set .ActiveConnection = cn
+            .SQL = "Select * From errorlog"
+            .RowsetSize = 1
+            Set rs = .OpenResultset(rdOpenKeyset, rdConcurRowVer)
+        End With
+        With rs
+            .AddNew
+            !terminalID = s_serverIP
+            !errorDate = Date
+            !errorTime = Time
+            !errornumber = VError
+            !errordescription = VErrorStr
+            !errorlocation = VerrorLocation
+            !errorprocedure = VErrorSub
+            .Update
+        End With
+        cn.Close
+    End If
+    Screen.MousePointer = vbDefault
+
+    Exit Sub
+ErrHandler:
+    VError = "Error " & Err
+    VErrorStr = Error$
+    VErrorSub = "ErrorLog"
+    VerrorLocation = "ModuleBillServer"
+    ErrorLog
+    Resume Next
+
+End Sub
+

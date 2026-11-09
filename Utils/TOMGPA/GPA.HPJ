@@ -1,0 +1,19 @@
+; Help project file created by Helping Hand (c) 1995
+[Options]
+root=.
+BMROOT=.
+errorlog=gpa.err
+warning=3
+compress=MEDIUM
+report=1
+title=Generic Postal Architecture
+
+[FILES]
+gpa.rtf
+
+[WINDOWS]
+main = "Generic Postal Architecture", ( 5, 5, 635, 475),,,(192,192,192)
+
+[CONFIG]
+BrowseButtons()
+

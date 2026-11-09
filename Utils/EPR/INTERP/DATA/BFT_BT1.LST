@@ -1,0 +1,5 @@
+SQL> select * from bft_blocked_tubes;
+
+         0  100036048          3 EX                                             
+
+SQL> spool off

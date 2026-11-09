@@ -1,0 +1,58 @@
+Domains {
+   EndDomainEdit {
+      DefaultValue  { Now }
+      Error  { 'Enter required end date' }
+      Format {
+         Date
+      }
+      Hint  { 'Enter required end date' }
+      InputFrom  { Keyboard }
+      Prompt  { 'End Date' }
+      Title  { 'End Date' }
+   }
+   PostOffice {
+      Error  { 'Invalid Location' }
+      Format {
+      PickList {
+         'PickList.BWPostOffices'
+      }
+      }
+      Hint  { 'Enter the Location Name' }
+      Prompt  { Location }
+      Title  { Location }
+   }
+   ReportList {
+      Error  { 'Invalid Report' }
+      Format {
+      PickList {
+         ''
+      }
+      }
+      Hint  { 'Pick the report you wish to print' }
+      Prompt  { 'Pick A Report' }
+      Title  { 'Required Report' }
+   }
+   StartDomainEdit {
+      DefaultValue  { Now }
+      Error  { 'Enter required start date' }
+      Format {
+         Date
+      }
+      Hint  { 'Enter required start date' }
+      InputFrom  { Keyboard }
+      Prompt  { 'Start Date' }
+      Title  { 'Start Date' }
+   }
+   UserName {
+      Error  { 'This user has no stock requests outstanding' }
+      Format {
+      PickList {
+         ''
+      }
+      }
+      Hint  { 'Select a User from the list' }
+      InputFrom  { Keyboard }
+      Prompt  { 'User Name' }
+      Title  { 'User Name' }
+   }
+}

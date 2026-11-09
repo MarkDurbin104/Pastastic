@@ -1,0 +1,25 @@
+UPU EMS Barcode Label Printing
+Service Indicator
+Country
+Number of labels required
+Printing will start at Label
+Printing will end at Label
+Start Printing    
+Communications Error
+Another program is using the communications port
+The printer is switched off or disconnected
+The printer has run out of labels
+The printer needs a new ribbon
+The print head has been left open
+The printer is too hot
+The printer is too cold
+The printer is reporting a hardware error
+The printer is 'Paused'
+Cancel Printing
+Country
+Label Count
+Date
+Bad Labels
+Start
+End
+

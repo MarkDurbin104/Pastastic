@@ -1,0 +1,69 @@
+
+#else
+    INT i,j;
+    COORD pnts[5];
+    G_numbfeature=90;
+    G_features=malloc((G_numbfeature+10)*sizeof(FEATURE));
+    for (j=0;j<G_numbfeature/9;j++) {
+        for (i=0;i<9;i++) {
+            G_features[i+j*9].fnum=i+j*9;
+            G_features[i+j*9].coord.x=200+((j%5)*40)+(i%3)*6;
+            G_features[i+j*9].coord.y=200+((j/5)*40)+(i/3)*6;
+            G_features[i+j*9].type=NAP_FEATURE;
+            G_features[i+j*9].bound=5;
+            G_features[i+j*9].angle=0;
+        }
+    }
+#endif
+//**********************************************************************
+#ifdef EASYTEST
+    G_numbducts=8;
+    G_ducts=malloc(G_numbducts*sizeof(DUCT));
+    G_ducts[0].from=1;
+    G_ducts[0].to=2;
+    G_ducts[0].bound=1;
+    G_ducts[0].visib=TRUE; 
+    G_ducts[1].from=3;
+    G_ducts[1].to=4;
+    G_ducts[1].bound=1;
+    G_ducts[1].visib=TRUE; 
+    G_ducts[2].from=4;
+    G_ducts[2].to=5;
+    G_ducts[2].bound=1;
+    G_ducts[2].visib=TRUE; 
+    G_ducts[3].from=2;
+    G_ducts[3].to=3;
+    G_ducts[3].bound=1; 
+    G_ducts[3].visib=TRUE;
+    G_ducts[4].from=1;
+    G_ducts[4].to=6;
+    G_ducts[4].bound=1; 
+    G_ducts[4].visib=TRUE;
+    G_ducts[5].from=5;
+    G_ducts[5].to=7;
+    G_ducts[5].bound=1; 
+    G_ducts[5].visib=TRUE;
+    G_ducts[6].from=6;
+    G_ducts[6].to=8;
+    G_ducts[6].bound=1; 
+    G_ducts[6].visib=TRUE;
+    G_ducts[7].from=7;
+    G_ducts[7].to=9;
+    G_ducts[7].bound=1; 
+    G_ducts[7].visib=TRUE;
+#else
+    INT i;
+    G_numbducts=G_numbfeature;
+    G_ducts=malloc(G_numbducts*sizeof(DUCT));
+    for (i=0;i<G_numbducts;i++) {
+        G_ducts[i].from=i;
+        G_ducts[i].to=i+1;
+        G_ducts[i].bound=1;
+        G_ducts[i].visib=TRUE; 
+    }
+    G_ducts[i-1].from=0;
+    G_ducts[i-1].to  =1; 
+    G_ducts[44].to   =89;
+#endif
+//**********************************************************************
+

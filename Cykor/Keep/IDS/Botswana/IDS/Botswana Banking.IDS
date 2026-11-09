@@ -1,0 +1,1167 @@
+Constants {
+   MinimumAccountBalance { 50 }
+   MinimumSpcAccountBalance { 200 }
+}
+Snippets
+{
+
+//
+//------------------------------------------------------------------------------
+//
+
+   CalcBankOpen {
+      InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+      CodeBlock {
+      [*
+         Result := TRUE;
+
+         if Length( Amount.Text ) < 1 then
+         begin
+            ClearFocus(Self);
+            MoveFocusTo( Amount );
+            Result := FALSE;
+         end;
+
+        if Length( AccountNumber.Text ) < 1 then
+	begin
+           ClearFocus(Self);
+	   MoveFocusTo( AccountNumber );
+	   Result := FALSE ;
+	end;
+
+        if Length( AccountName.Text ) < 1 then
+        begin
+           ClearFocus(Self);
+           MoveFocusTo( AccountName );
+           Result := FALSE ;
+        end;
+
+      *]
+      }
+   }
+
+   CalcBankClose {
+      InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+      CodeBlock {
+      [*
+         Result := TRUE;
+
+         if Length( FinalInputBalance.Text ) < 1 then
+         begin
+            ClearFocus(Self);
+            MoveFocusTo( FinalInputBalance );
+            Result := FALSE;
+         end;
+
+        if Length( Warrant.Text ) < 1 then
+	begin
+           ClearFocus(Self);
+	   MoveFocusTo( Warrant );
+	   Result := FALSE ;
+	end;
+
+        if Length( CustomerIdentification.Text ) < 1 then
+	begin
+           ClearFocus(Self);
+	   MoveFocusTo( CustomerIdentification );
+	   Result := FALSE ;
+	end;
+
+        if Length( AccountNumber.Text ) < 1 then
+	begin
+           ClearFocus(Self);
+	   MoveFocusTo( AccountNumber );
+	   Result := FALSE ;
+	end;
+
+        if Length( AccountName.Text ) < 1 then
+        begin
+           ClearFocus(Self);
+           MoveFocusTo( AccountName );
+           Result := FALSE ;
+        end;
+
+      *]
+            }
+   }
+
+   CalcBankBookAccept {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         Result := TRUE;
+
+        if Length( CustomerIdentification.Text ) < 1 then
+	begin
+           ClearFocus(Self);
+	   MoveFocusTo( CustomerIdentification );
+	   Result := FALSE ;
+	end;
+
+        if Length( AccountNumber.Text ) < 1 then
+	begin
+           ClearFocus(Self);
+	   MoveFocusTo( AccountNumber );
+	   Result := FALSE ;
+	end;
+
+        if Length( AccountName.Text ) < 1 then
+        begin
+           ClearFocus(Self);
+           MoveFocusTo( AccountName );
+           Result := FALSE ;
+        end;
+
+      *]
+            }
+   }
+
+   CalcLostBankBook {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         Result := TRUE;
+
+        if Length( BankAccType.Text ) < 1 then
+        begin
+           ClearFocus(Self);
+	        MoveFocusTo( BankAccType );
+	        Result := FALSE ;
+        end;
+
+        if Length( CustomerIdentification.Text ) < 1 then
+	begin
+           ClearFocus(Self);
+	   MoveFocusTo( CustomerIdentification );
+	   Result := FALSE ;
+	end;
+
+        if Length( AccountNumber.Text ) < 1 then
+	begin
+           ClearFocus(Self);
+	   MoveFocusTo( AccountNumber );
+	   Result := FALSE ;
+	end;
+
+        if Length( AccountName.Text ) < 1 then
+        begin
+           ClearFocus(Self);
+           MoveFocusTo( AccountName );
+           Result := FALSE ;
+        end;
+
+      *]
+            }
+   }
+
+   BankClose {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         if Result then
+         begin
+            if StrToCurrDef( FinalInputBalance.Text, 0 ) <= 0 then
+            begin
+               result := False ;
+               MoveFocusTo( FinalInputBalance );
+            end
+            else
+               Result := CheckMaskEdits( Self ) ;
+
+         end ;
+      *]
+      }
+   }
+
+
+   BankOrdOpen  {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         if Result then
+         begin
+            if StrToCurrDef(Amount.Text,0) < StrToCurr(MinimumAccountBalance) then
+            begin
+               MoveFocusTo( Amount );
+               Result := False ;
+            end
+            else
+               Result := CheckMaskEdits( Self ) ;
+
+         end ;
+
+      *]
+      }
+   }
+
+
+   BankSpcOpen  {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         if Result then
+         begin
+            if StrToCurrDef( Amount.Text, 0 ) < StrToCurr(MinimumSpcAccountBalance) then
+            begin
+               MoveFocusTo( Amount );
+               Result := False ;
+            end
+            else
+               Result := CheckMaskEdits( Self ) ;
+
+         end ;
+
+      *]
+      }
+   }
+
+//
+//------------------------------------------------------------------------------
+//
+
+   CalcBankDep {
+      InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+      CodeBlock {
+      [*
+         ClearFocus(Self);
+         FinalBalance.Text := CurrToStrF( StrToCurrDef( Amount.Text, 0 )+
+                                          StrToCurrDef( OpeningBalance.Text, 0 ),
+                                          ffNumber, 2 ) ;
+
+         Result := True;
+
+         if (Length(Amount.Text ) < 1) then
+                    begin
+                      MoveFocusTo( Amount );
+                      Result := FALSE;
+                    end;
+
+         if Pos('.',Amount.Text) <> 0 then
+         begin
+            if (Length(Copy(Amount.Text,Pos('.',Amount.Text) + 1,999)) > 2) then
+            begin
+               MoveFocusTo( Amount );
+               Result := FALSE;
+            end;
+         end;
+
+         if (Length( OpeningBalance.Text ) < 1) then
+         begin
+            MoveFocusTo( OpeningBalance );
+            Result := FALSE;
+         end;
+
+         if Pos('.',OpeningBalance.Text) <> 0 then
+         begin
+            if (Length(Copy(OpeningBalance.Text,Pos('.',OpeningBalance.Text) + 1,999)) > 2) then
+            begin
+               MoveFocusTo( OpeningBalance );
+               Result := FALSE;
+            end;
+         end;
+
+          if Length( AccountNumber.Text ) < 1 then
+	  begin
+	     ClearFocus(Self);
+	     MoveFocusTo( AccountNumber );
+	     Result := FALSE ;
+	  end;
+
+          if Length( AccountName.Text ) < 1 then
+	  begin
+	     ClearFocus(Self);
+	     MoveFocusTo( AccountName );
+	     Result := FALSE ;
+	  end;
+
+      *]
+      }
+   }
+
+   CalcBankDepSAYE {
+      InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+      CodeBlock {
+      [*
+         ClearFocus(Self);
+         Result := True;
+
+         if (Length(Amount.Text ) < 1) then
+                    begin
+                      MoveFocusTo( Amount );
+                      Result := FALSE;
+                    end;
+
+         if Pos('.',Amount.Text) <> 0 then
+         begin
+            if (Length(Copy(Amount.Text,Pos('.',Amount.Text) + 1,999)) > 2) then
+            begin
+               MoveFocusTo( Amount );
+               Result := FALSE;
+            end;
+         end;
+
+          if Length( AccountNumber.Text ) < 1 then
+	  begin
+	     ClearFocus(Self);
+	     MoveFocusTo( AccountNumber );
+	     Result := FALSE ;
+	  end;
+
+          if Length( AccountName.Text ) < 1 then
+	  begin
+	     ClearFocus(Self);
+	     MoveFocusTo( AccountName );
+	     Result := FALSE ;
+	  end;
+
+      *]
+      }
+   }
+
+//--------------
+
+   BankOrdDep {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         if Result then
+         begin
+            if StrToCurrDef( Amount.Text, 0 ) < 5 then
+            begin
+               result := False ;
+               MoveFocusTo( Amount );
+            end
+            else
+               Result := CheckMaskEdits( Self ) ;
+
+         end ;
+      *]
+      }
+   }
+
+
+   BankSAYEDDep {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         if Result then
+         begin
+            if StrToCurrDef( Amount.Text, 0 ) <= 0 then
+            begin
+               result := False ;
+               MoveFocusTo( Amount );
+            end
+            else
+               Result := CheckMaskEdits( Self ) ;
+
+         end ;
+      *]
+      }
+   }
+
+
+//
+//------------------------------------------------------------------------------
+//
+
+   CalcBankWith {
+      InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+      CodeBlock {
+      [*
+         ClearFocus(Self);
+         FinalBalance.Text := CurrToStrF( StrToCurrDef( OpeningBalance.Text, 0 ) -
+                                          StrToCurrDef( Amount.Text, 0 ),
+                                          ffNumber, 2 ) ;
+         Result := True;
+
+         if  (StrToCurrDef(Amount.Text,0 ) < 5) then
+         begin
+           MoveFocusTo( Amount );
+           Result := FALSE;
+         end;
+
+         if Pos('.',Amount.Text) <> 0 then
+         begin
+            if (Length(Copy(Amount.Text,Pos('.',Amount.Text) + 1,999)) > 2) then
+            begin
+               MoveFocusTo( Amount );
+               Result := FALSE;
+            end;
+         end;
+
+         if (Length( OpeningBalance.Text ) < 1) then
+         begin
+            MoveFocusTo( OpeningBalance );
+            Result := FALSE;
+         end;
+
+         if Pos('.',OpeningBalance.Text) <> 0 then
+         begin
+            if (Length(Copy(OpeningBalance.Text,Pos('.',OpeningBalance.Text) + 1,999)) > 2) then
+            begin
+               MoveFocusTo( OpeningBalance );
+               Result := FALSE;
+            end;
+         end;
+
+         if Length( CustomerIdentification.Text ) < 1 then
+         begin
+            ClearFocus(Self);
+            MoveFocusTo( CustomerIdentification );
+            Result := FALSE ;
+         end;
+
+         if Length( AccountNumber.Text ) < 1 then
+         begin
+            ClearFocus(Self);
+            MoveFocusTo( AccountNumber );
+            Result := FALSE ;
+         end;
+
+         if Result then
+            if( StrToCurrDef( FinalBalance.Text, 0 ) < StrToCurr(MinimumAccountBalance) )then
+            begin
+               result := false ;
+               MoveFocusTo( FinalBalance );
+            end ;
+
+          if Length( AccountName.Text ) < 1 then
+	  begin
+	     ClearFocus(Self);
+	     MoveFocusTo( AccountName );
+	     Result := FALSE ;
+	  end;
+
+
+
+
+     *]
+      }
+   }
+
+
+  BaseOrdWith {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         Warrant.Ignore :=( StrToCurrDef( Amount.Text, 0 ) <= 500 );
+         if Result then
+         begin
+            Result := CheckMaskEdits( Self ) ;
+         end ;
+      *]
+      }
+   }
+
+  BaseSpcWith {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         Warrant.Ignore :=( StrToCurrDef( Amount.Text, 0 ) <= 500 );
+         if Result then
+         begin
+            Result := CheckMaskEdits( Self ) ;
+         end ;
+         if Result then
+           if( StrToCurrDef( FinalBalance.Text, 0 ) < StrToCurr(MinimumSpcAccountBalance) )then
+           begin
+              result := false ;
+              MoveFocusTo( FinalBalance );
+           end ;
+
+*]
+      }
+   }
+
+  BaseTrstWith {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         if Result then
+         begin
+            Result := CheckMaskEdits( Self ) ;
+         end ;
+      *]
+      }
+   }
+ AccountNumberVars {
+   InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+   CodeBlock {
+   [*
+
+   var Index : Integer;
+   *]
+   }
+ }
+
+ AccountNumberPostVal {
+ InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+ CodeBlock {
+ [*
+   if result then
+      begin
+        for Index := 1 to Length(AccountNumber.Text)  do
+         begin
+         Try
+          Case StrToInt(AccountNumber.Text[Index]) of
+          0..9 : begin
+            		if Length(AccountNumber.Text) <= 11 then
+            		begin
+            		  Result := True;
+            		end
+            		else
+            		begin
+            		MoveFocusTo(AccountNumber);
+            		Result := False ;
+            		end;
+                 end;
+          else
+           MoveFocusTo(AccountNumber);
+           Result := False ;
+          end;
+         Except on Exception do begin MoveFocusTo(AccountNumber);Result := False ;Break;end;
+         end;
+        end;
+   end;
+ *]
+ }
+ }
+
+//
+//------------------------------------------------------------------------------
+//
+
+LogBankOpen {
+InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+CodeBlock {
+ [*
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          Get_PLU, // PLU
+          FQuantity*StrToCurrDef(ProdForm.Amount.Text,0), // Value
+          StrToCurrDef(ProdForm.Amount.Text,0), // Price
+          Get_Description, // Description
+          '', // Additional Info
+          Get_ProgramID, // ProgID
+          Enumerate(ProdForm)); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          Get_PLU, // PLU
+          0, // Value
+          0, // Price
+          'Account Holder -', // Description
+          ProdForm.AccountName.Text, // Additional Info
+          Get_ProgramID, // ProgID
+          ''); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          Get_PLU, // PLU
+          0, // Value
+          0, // Price
+          'Account Number -', // Description
+          ProdForm.AccountNumber.Text, // Additional Info
+          Get_ProgramID, // ProgID
+          ''); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          Get_PLU, // PLU
+          0, // Value
+          0, // Price
+          'Customer Identification -', // Description
+          ProdForm.CustomerIdentification.Text, // Additional Info
+          Get_ProgramID, // ProgID
+          ''); // Domain Info
+    Inc(Index);
+
+    if CombineList <> nil then
+       CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+
+   LogBankWith {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                               0-StrToCurrDef(ProdForm.Amount.Text,0),
+                               0-StrToCurrDef(ProdForm.Amount.Text,0),
+                               Get_Description+' ','',Get_ProgramID,
+                               Enumerate(ProdForm));
+         Inc(Index);
+         if not ProdForm.Warrant.Ignore then
+            TxnLog.LogTransaction(Index,1,Get_PLU,
+                                  0,
+                                  0,
+                                  'Warrant Reference',ProdForm.Warrant.Text,
+                                  Get_ProgramID,
+                                  '');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+	                                   0,
+	                                   0,
+	                                   'Account Holder',ProdForm.AccountName.Text,
+	                                   '',
+                                  '');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+	                                   0,
+	                                   0,
+	                                   'Account Number',ProdForm.AccountNumber.Text,
+	                                   '',
+                                  '');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+	                                   0,
+	                                   0,
+	                                   'Identification',ProdForm.CustomerIdentification.Text,
+	                                   '',
+                                  '');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+                                  0,
+                                  0,
+                                  'Opening Balance ',ProdForm.OpeningBalance.Text,
+                                  Get_ProgramID,
+                                  '');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+                                  0,
+                                  0,
+                                  'Final Balance ',ProdForm.FinalBalance.Text,
+                                  Get_ProgramID,
+                                  '');
+         Inc(Index);
+
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+   LogBankClose {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(Index,
+                               FQuantity,
+                               Get_PLU,
+                               0-StrToCurrDef(ProdForm.FinalInputBalance.Text,0),
+                               0-StrToCurrDef(ProdForm.FinalInputBalance.Text,0),
+                               Get_Description,
+                               '',
+                               Get_ProgramID,
+                               Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+	                                   0,
+	                                   0,
+	                                   'Account Holder',ProdForm.AccountName.Text,
+	                                   '',
+                                  '');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+	                                   0,
+	                                   0,
+	                                   'Account Number',ProdForm.AccountNumber.Text,
+	                                   '',
+                                  '');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+	                                   0,
+	                                   0,
+	                                   'Identification',ProdForm.CustomerIdentification.Text,
+	                                   '',
+                                  '');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+                               0,
+                               0,
+                               'Warrant Reference',ProdForm.Warrant.Text,
+                               Get_ProgramID,
+                               '');
+         Inc(Index);
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+   LogBankBookAccept {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+           TxnLog.LogTransaction ( Index,
+                                   0, // Quantity
+                                   Get_PLU, // PLU
+                                   0, // Value
+                                   0, // Price
+                                   Get_Description, // Description
+                                   '', // Additional Info
+                                   Get_ProgramID, // ProgID
+                                   Enumerate(ProdForm)); // Domain Info
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+	                                   0,
+	                                   0,
+	                                   'Account Holder',ProdForm.AccountName.Text,
+	                                   '',
+                                  '');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+	                                   0,
+	                                   0,
+	                                   'Account Number',ProdForm.AccountNumber.Text,
+	                                   '',
+                                  '');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+	                                   0,
+	                                   0,
+	                                   'Identification',ProdForm.CustomerIdentification.Text,
+	                                   '',
+                                  '');
+         Inc(Index);
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+
+   LogLostBankBook {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+           TxnLog.LogTransaction ( Index,
+                                   0, // Quantity
+                                   Get_PLU, // PLU
+                                   StrToCurrDef(ProdForm.BSBLostBookFee.Text,0), // Value
+                                   StrToCurrDef(ProdForm.BSBLostBookFee.Text,0), // Price
+                                   Get_Description, // Description
+                                   '', // Additional Info
+                                   Get_ProgramID, // ProgID
+                                   Enumerate(ProdForm)); // Domain Info
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+	                                   0,
+	                                   0,
+	                                   'Account Holder -',ProdForm.AccountName.Text,
+	                                   '',
+                                  '');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+	                                   0,
+	                                   0,
+	                                   'Account Number -',ProdForm.AccountNumber.Text,
+	                                   '',
+                                  '');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+	                                   0,
+	                                   0,
+	                                   'Account Type -',ProdForm.BankAccType.Text,
+	                                   '',
+                                  '');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,1,Get_PLU,
+	                                   0,
+	                                   0,
+	                                   'Identification -',ProdForm.CustomerIdentification.Text,
+	                                   '',
+                                  '');
+         Inc(Index);
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+
+   ExecuteBankWith {
+     InsertBetween { '{PostExecuteStart}','{PostExecuteEnd}' }
+     CodeBlock {
+       [*
+         ProdForm.Warrant.Ignore := True ;
+       *]
+     }
+   }
+BankDepositLog {
+InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+CodeBlock {
+ [*
+
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          Get_PLU, // PLU
+          FQuantity*StrToCurrDef(ProdForm.Amount.Text,0), // Value
+          StrToCurrDef(ProdForm.Amount.Text,0), // Price
+          Get_Description, // Description
+          '', // Additional Info
+          Get_ProgramID, // ProgID
+          Enumerate(ProdForm)); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          Get_PLU, // PLU
+          0, // Value
+          0, // Price
+          'Account Holder -', // Description
+          ProdForm.AccountName.Text, // Additional Info
+          Get_ProgramID, // ProgID
+          ''); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          Get_PLU, // PLU
+          0, // Value
+          0, // Price
+          'Account Number -', // Description
+          ProdForm.AccountNumber.Text, // Additional Info
+          Get_ProgramID, // ProgID
+          ''); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          Get_PLU, // PLU
+          0, // Value
+          0, // Price
+          'Opening Balance ', // Description
+          ProdForm.OpeningBalance.Text, // Additional Info
+          Get_ProgramID, // ProgID
+          ''); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          Get_PLU, // PLU
+          0, // Value
+          0, // Price
+          'Final Balance ', // Description
+          ProdForm.FinalBalance.Text, // Additional Info
+          Get_ProgramID, // ProgID
+          ''); // Domain Info
+    Inc(Index);
+    if CombineList <> nil then
+       CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+BankDepositLogSAYE {
+InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+CodeBlock {
+ [*
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          Get_PLU, // PLU
+          FQuantity*StrToCurrDef(ProdForm.Amount.Text,0), // Value
+          StrToCurrDef(ProdForm.Amount.Text,0), // Price
+          Get_Description, // Description
+          '', // Additional Info
+          Get_ProgramID, // ProgID
+          Enumerate(ProdForm)); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          Get_PLU, // PLU
+          0, // Value
+          0, // Price
+          'Account Holder -', // Description
+          ProdForm.AccountName.Text, // Additional Info
+          Get_ProgramID, // ProgID
+          ''); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          Get_PLU, // PLU
+          0, // Value
+          0, // Price
+          'Account Number -', // Description
+          ProdForm.AccountNumber.Text, // Additional Info
+          Get_ProgramID, // ProgID
+          ''); // Domain Info
+    Inc(Index);
+    if CombineList <> nil then
+       CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+}
+
+Products {
+   BaseBanking {
+      DontBuild
+      SubGroup { 'Banking' }
+   }
+
+   BaseBankDep {
+      DontBuild
+      BasedOn { BaseBanking }
+      BitMap {  '..\IMAGES\P_Deposit.bmp' }
+      Domains {
+         AccountName
+         AccountNumber
+         OpeningBalance
+         Amount
+         FinalBalance
+      }
+      Items {
+         'Complete'
+      }
+      //Customer { 'Amount','P',Amount }
+      Snippets { CalcBankDep,BankDepositLog,AccountNumberVars,AccountNumberPostVal }
+   //   LogAs { BankDeposit }
+
+   }
+
+
+   BaseBankWith {
+      DontBuild
+      BasedOn { BaseBanking }
+      BitMap {  '..\IMAGES\P_Withdraw.bmp' }
+      Domains {
+         AccountName
+         AccountNumber
+         CustomerIdentification
+         OpeningBalance
+         Amount
+         Warrant
+         FinalBalance
+      }
+      Items {
+         'Complete'
+      }
+     Snippets { CalcBankWith, LogBankWith,AccountNumberVars,AccountNumberPostVal  }
+   }
+
+   BaseBankOpen {
+      DontBuild
+      BasedOn { BaseBanking }
+      BitMap { '..\images\P_OpenAccount.bmp' }
+ 		Domains {
+         AccountName
+         AccountNumber
+         CustomerIdentification
+         Amount
+		}
+      Snippets{ CalcBankOpen,AccountNumberVars,AccountNumberPostVal,LogBankOpen }
+      //LogAs { BankOpen }
+      //PLU { PLU_SavingsAccountOpen }
+	}
+
+
+	BaseBankClose {
+      DontBuild
+      BasedOn { BaseBanking }
+      BitMap { '..\images\P_CloseAccount.bmp' }
+ 		Domains {
+	      AccountName
+         AccountNumber
+         CustomerIdentification
+         Warrant
+         FinalInputBalance
+      }
+      Snippets { CalcBankClose,AccountNumberVars,AccountNumberPostVal,LogBankClose }
+      //PLU { PLU_SavingsAccountClose }
+   }
+
+
+//
+// -----------------------------------------------------------------------------
+//             ORDINARY
+// -----------------------------------------------------------------------------
+//
+
+   BankOrdDep {
+      Caption      { 'BSB - Ordinary A/C Deposit' }
+      Description  { 'BSB - Ordinary A/C Deposit' }
+      Title        { 'BSB - Ordinary A/C Deposit' }
+      BasedOn{ BaseBankDep }
+      Snippets { BankOrdDep }
+      PLU      { PLU_BankOrdDep }
+
+   }
+   BankOrdWith {
+      Caption      { 'BSB - Ordinary A/C Withdraw' }
+      Description  { 'BSB - Ordinary A/C Withdraw' }
+      Title        { 'BSB - Ordinary A/C Withdraw' }
+      BasedOn{ BaseBankWith }
+      Snippets{ BaseOrdWith, ExecuteBankWith }
+      PLU     { PLU_BankOrdWith }
+   }
+   BankOrdOpen {
+      Caption      { 'Open New Ordinary Account' }
+      Description  { 'Open New Ordinary Account' }
+      Title        { 'Open New Ordinary Account' }
+      BasedOn{ BaseBankOpen }
+      Snippets { BankOrdOpen }
+      PLU  { PLU_BankOrdOpen }
+   }
+   BankOrdClose {
+      Caption      { 'Close Ordinary Account' }
+      Description  { 'Close Ordinary Account' }
+      Title        { 'Close Ordinary Account' }
+      BasedOn{ BaseBankClose }
+      Snippets     { BankClose }
+      PLU  { PLU_BankOrdClose }
+   }
+
+//
+// -----------------------------------------------------------------------------
+//            TRUST
+// -----------------------------------------------------------------------------
+//
+
+   BankTrsDep {
+      Caption      { 'BSB - Trust A/C Deposit' }
+      Description  { 'BSB - Trust A/C Deposit' }
+      Title        { 'BSB - Trust A/C Deposit' }
+      BasedOn{ BaseBankDep }
+      Snippets { BankOrdDep }
+      PLU      { PLU_BankTrsDep }
+   }
+   BankTrsWith {
+      Caption      { 'BSB - Trust A/C Withdraw' }
+      Description  { 'BSB - Trust A/C Withdraw' }
+      Title        { 'BSB - Trust A/C Withdraw' }
+      BasedOn{ BaseBankWith }
+      Snippets { BaseTrstWith }
+      PLU      { PLU_BankTrsWith }
+   }
+   BankTrsOpen {
+      Caption      { 'Open New Trust Account' }
+      Description  { 'Open New Trust Account' }
+      Title        { 'Open New Trust Account' }
+      BasedOn{ BaseBankOpen }
+      Snippets { BankOrdOpen }
+      PLU  { PLU_BankTrsOpen }
+   }
+   BankTrsClose {
+      Caption      { 'Close Trust Account' }
+      Description  { 'Close Trust Account' }
+      Title        { 'Close Trust Account' }
+      BasedOn{ BaseBankClose }
+      Snippets     { BankClose }
+      PLU  { PLU_BankTrsClose }
+   }
+
+//
+// -----------------------------------------------------------------------------
+//            SPECIAL
+// -----------------------------------------------------------------------------
+//
+
+   BankSpcDep {
+      Caption      { 'BSB - Special A/C Deposit' }
+      Description  { 'BSB - Special A/C Deposit' }
+      Title        { 'BSB - Special A/C Deposit' }
+      BasedOn{ BaseBankDep }
+      Snippets { BankOrdDep }
+      PLU      { PLU_BankSpcDep }
+   }
+   BankSpcWith {
+      Caption      { 'BSB - Special A/C Withdraw' }
+      Description  { 'BSB - Special A/C Withdraw' }
+      Title        { 'BSB - Special A/C Withdraw' }
+      BasedOn{ BaseBankWith }
+      Snippets{ BaseSpcWith, ExecuteBankWith }
+      PLU     { PLU_BankSpcWith }
+   }
+   BankSpcOpen {
+      Caption      { 'Open New Special Account' }
+      Description  { 'Open New Special Account' }
+      Title        { 'Open New Special Account' }
+      BasedOn{ BaseBankOpen }
+      Snippets { BankSpcOpen }
+      PLU  { PLU_BankSpcOpen }
+   }
+   BankSpcClose {
+      Caption      { 'Close Special Account' }
+      Description  { 'Close Special Account' }
+      Title        { 'Close Special Account' }
+      BasedOn{ BaseBankClose }
+      Snippets     { BankClose }
+      PLU  { PLU_BankSpcClose }
+   }
+
+
+//
+// -----------------------------------------------------------------------------
+//            SAVE AS YOU EARN
+// -----------------------------------------------------------------------------
+//
+
+   BankSAYEDep {
+      BasedOn      { BaseBanking }
+      Caption      { 'BSB - SAYE Deposit' }
+      Description  { 'BSB - SAYE Deposit' }
+      Title        { 'BSB - SAYE Deposit' }
+      BitMap       {  '..\IMAGES\P_Deposit.bmp' }
+      Domains      {  AccountName
+                      AccountNumber
+                      Amount
+                     }
+      Items        { 'Complete'      }
+      //Customer     { 'Amount P',Amount}
+      Snippets     { CalcBankDepSAYE,BankDepositLogSAYE,AccountNumberVars,AccountNumberPostVal }
+      Snippets     { BankSAYEDDep }
+      PLU          { PLU_BankSAYEDep }
+   }
+
+
+AcceptBankBook {
+      BasedOn { BaseBanking }
+      Caption      { 'BSB - Accept Bank Book' }
+      Description  { 'BSB - Accept Bank Book' }
+      Title        { 'BSB - Accept Bank Book' }
+      BitMap       {  '..\IMAGES\P_Withdraw.bmp' }
+      Domains      { AccountName
+                     AccountNumber
+                     CustomerIdentification
+                    }
+      Snippets     { CalcBankBookAccept
+                     AccountNumberVars
+                     AccountNumberPostVal
+                     LogBankBookAccept
+                    }
+      //PLU { PLU_SavingsAccountClose }
+   }
+
+LostBankBook {
+      BasedOn { BaseBanking }
+      Caption      { 'BSB - Lost Bank Book' }
+      Description  { 'BSB - Lost Bank Book' }
+      Title        { 'BSB - Lost Bank Book' }
+      BitMap       {  '..\IMAGES\P_Withdraw.bmp' }
+      Domains      { AccountName
+                     AccountNumber
+                     CustomerIdentification
+                     BankAccType
+                     BSBLostBookFee
+                    }
+      Snippets     { CalcLostBankBook
+                     AccountNumberVars
+                     AccountNumberPostVal
+                     LogLostBankBook
+                    }
+      PLU          { PLU_BSBLostBook }
+   }
+
+}
+

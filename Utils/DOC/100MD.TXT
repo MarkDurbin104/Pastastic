@@ -1,0 +1,258 @@
+
+
+
+                        Functional Specification
+                      Serial Printer Device Driver
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Author: Mark Durbin
+    Issue:  1.2
+    Date:   28th May 1991
+
+
+        Contents.
+
+    1.0  Introduction
+    1.1  General Description
+    1.2  Status Requests
+    1.3  Applicable Documents
+    2.0  Escape Sequences
+    2.1  Escape Sequence Handling
+    3.0  Slip/Roll Printing
+    4.0  Flow Control
+    4.1  Overview
+    4.2  Mode Selection
+    4.3  Default Conditions
+    4.4  Handshake Flow/Procedure
+    5.0  Error Reporting
+    5.1  Status Check
+    5.2  Timeout
+    5.3  Error Responses
+    6.0  Status Information
+    7.0  Spooling
+    8.0  Passed/Returned Byte Layouts
+    9.0  Application Interface/Access
+    9.1  Overview
+    9.2  Open, print a string and close
+
+1.0  Introduction
+
+ 1.1  General Description
+
+    The S2000 Counter Terminal used for the ECCO+ project of the Post Office, 
+    unlike the USPS system, will use a serial printer.  Access to this 
+    printer cannot be via the normal (ie. COM1) serial device drivers due to 
+    the fact that the serial printer may work in both software and
+    hardware handshake modes.
+
+ 1.2  Status Requests
+
+    The printer device driver will also make use of the printer status 
+    request facility in order to check for papaer out error conditions.
+
+ 1.3  Applicable Documents
+
+    The printer specified for this driver is an EPSON 270 serial printer 
+    with roll and slip printing facilities Ref. A-3709 7847.
+
+2.0 Escape Sequences
+
+ 2.1  Escape Sequence Handling
+
+    All escape sequences will be taken care of by the application.  The 
+    escape sequences would be more easily maintained in a "look up" table 
+    within the application.
+
+3.0 Slip/Roll Printing
+
+    Printing on either the slip or roll printer will be achieved through 
+    the one driver, using different escape sequences within the application 
+    to switch from one method to the other.
+
+4.0 Flow Control
+
+ 4.1  Overview
+
+    The flow control will be either XON/XOFF or CTS/RTS.  This will be 
+    selectable via the IOCTRL call with the first byte containing the 
+    handshake mode in bit 0.
+
+ 4.2  Mode Selection
+
+     Handshake Mode
+
+     0 XON/XOFF
+     1 CTS/RTS
+
+ 4.3  Default Conditions
+
+ The startup default for handshake will be XON/XOFF.
+
+ 4.4  Handshake Flow/Procedure
+
+    If an XOFF character is received output will be held and a timer 
+    initialised.  If the timer times out prior to receiving an XON then 
+    generate Generate Failure Error.
+
+    If an XON character is received output will be released and the timer 
+    ignored.
+
+5.0 Error Reporting
+
+ 5.1  Status Check
+
+    Under CTS/RTS and XON/XOFF flow control if the printer has an error 
+    condition while the flow control is in blocking state there will be 
+    no means of distinguishing the error condition that has occurred.
+
+ 5.2 Timeout
+
+    If the printer flow control is in this "blocked" state for more than a 
+    parameterised amount of time (set within the driver) than the driver 
+    will report a General Failure Error.
+
+ 5.3  Error Responses
+
+    Each error will be accompanied with a "Abort, Retry, Ignore" question 
+    where Abort quits the current print, Retry continues from the current 
+    character and Ignore drops the current character and then retry's with 
+    the next.
+
+    The wording of each error message and it's possible responses will need 
+    to be adjusted via the critical error handler to suit the counter 
+    terminal.
+
+6.0 Status Information
+
+    The status information will be available via the output status call
+    i.e. interrupt 44h function 2 with the following information
+    in the registers.
+
+    
+        BX    - the file descriptor of the open printer
+        CX    - the length of the string containing the escape sequence
+        DS:DX - a pointer to the escape sequence.
+
+        The carry flag is set on error and the condition will be held in AX.
+        See DOS documentation for the possible error conditions.
+
+
+    The status information returned via the output status call 
+    and will contain:
+
+        Bit 0 Validation Paper Stat         0 = in, 1 = out
+        Bit 1 Slip Paper Status             0 = in, 1 = out
+        Bit 2 Roll Papaer Status            0 = in, 1 = out
+
+7.0 Spooling
+
+    Any spolling will be handled via the application layer.
+
+8.0 Passed/Returned Byte Layouts
+
+    8.1  Input/Output Control
+
+             I/O Control
+     7   6   5  4   3   2  1   0
+     X   X   X  X   X   X  X  FLOW
+
+    8.2  Status Information
+
+                  Status
+       7  6  5   4  3   2   1   0
+       X  X  X   X  X   TP  SP  RP
+
+9.0 Application Interface/Access
+
+    9.1  Overview
+
+    The following line show examples of how to access the printer.  The 
+    device name used for these examples is "CTPRN".
+
+    9.2  Open, print a string and close
+    
+    int prline(char *str)
+    {
+       int fd;                             /* file descriptor for printer */
+       int len;                            /* number of bytes transfered  */
+       int slen;                           /* number of bytes to transfer */
+    
+       fd=open(CTPRN,O_WRONLY);            /* Open printer       */
+    
+       if (fd==(-1))                       /* Open Failed        */
+          return(FALSE);                   /* FAIL               */
+    
+       slen=strlen(str);                   /* Num chars to print */
+    
+       len=write(fd,str,slen);             /* Write to printer   */
+    
+       close(fd);                          /* Close printer      */
+    
+       if (len<slen)                       /* Write Failed       */
+          return(FALSE);                   /* FAIL               */
+    
+       return(TRUE);                       /* OK                 */
+    }
+
+    9.3  Return printer status.
+    
+    int prstat(unsigned char *escseq)
+    {
+       union REGS regs;
+       struct SREGS sregs;
+       int fd;                             /* file descriptor for printer */
+       int i;
+    
+       fd=open(CTPRN,O_WRONLY);            /* Open printer       */
+    
+       if (fd==(-1))                       /* Open Failed        */
+          return(FALSE);                   /* FAIL               */
+    
+       regs.x.ax=0x4402;
+       regs.x.bx=fd;
+       regs.x.cx=strlen(escseq);
+       regs.x.dx=FP_OFF(escseq);
+       sregs.ds =FP_SEG(escseq);
+       int86x(0x21,&regs,&regs,&sregs);
+       if (regs.x.cflag) return(regs.x.ax);
+       return(OK);
+    }
+
+        
+

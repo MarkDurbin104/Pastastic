@@ -1,0 +1,32 @@
+object BGForm: TBGForm
+  Left = 0
+  Top = 0
+  AlphaBlend = True
+  AlphaBlendValue = 120
+  BorderIcons = []
+  BorderStyle = bsNone
+  Caption = 'BGForm'
+  ClientHeight = 1083
+  ClientWidth = 868
+  Color = clBackground
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Tahoma'
+  Font.Style = []
+  FormStyle = fsStayOnTop
+  OldCreateOrder = False
+  WindowState = wsMaximized
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = Timer1Timer
+    Left = 65464
+    Top = 64920
+  end
+end

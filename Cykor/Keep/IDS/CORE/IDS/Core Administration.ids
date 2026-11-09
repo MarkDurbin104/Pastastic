@@ -1,0 +1,342 @@
+Products {
+   BaseCoreAdmin {
+      DontBuild
+      SubGroup { 'CORE Admin' }
+   }
+
+   Cash {
+      BasedOn { BaseCoreAdmin }
+      Caption { 'Cash' }
+      BitMap {  '..\..\core\IMAGES\P_Cash.bmp' }
+      Description  { 'Cash' }
+      Title        { 'Cash' }
+      PLU          { PLU_Cash }
+      Domains {
+         AmountTendered
+         Change
+      }
+      Items {
+         'Complete'
+      }
+      Customer { 'Cash ',AmountTendered,'/-','^','Change ',Change,'/-' }
+      Snippets {
+        CalcChangeVars
+        CalcChange
+        LogCash
+        LogNegativeCash
+      }
+   }
+   StartOfDay {
+      BasedOn { BaseCoreAdmin }
+      Caption { 'Start Of Day' }
+      BitMap {  '..\..\core\IMAGES\P_StartOfDay.bmp' }
+      Description  { 'Start Of Day' }
+      Title        { 'Start Of Day' }
+      PLU          { PLU_StartOfDay }
+      Domains {
+         StartCash
+         StartStock
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         StartOfDayPVar
+         StartOfDayEVar
+         StartOfDayCVar
+         StartOfDayComp
+         StartOfDayExec
+      }
+   }
+   SupEndOfDay {
+      BasedOn { BaseCoreAdmin }
+      Caption { 'End of day' }
+      BitMap {  '..\..\core\IMAGES\P_Balance.bmp' }
+      Description  { 'End of day' }
+      Title        { 'End of day' }
+      Prompt       { 'End of day' }
+      Hint         { 'End of day' }
+      PLU          { PLU_Balance }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         EndOfDayVar
+         EndOfDayExec
+      }
+   }
+   ChangePassword {
+      BasedOn { BaseCoreAdmin }
+      Title { 'Change Password' }
+      BitMap {  '..\..\core\IMAGES\P_ChangePassword.bmp' }
+      Domains {
+         UserName
+         NewPass
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+        SetPasswordComplete
+        UserListFill
+      }
+   }
+}
+
+Domains {
+   AmountTendered{
+      Title  { 'Amount Tendered' }
+      Prompt { 'Amount Tendered' }
+      Hint   { 'Enter the Amount Tendered' }
+      Error  { 'Enter a Valid Amount Tendered' }
+      Format {
+         Range { '0,999999999' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   Change{
+      Title  { 'Change' }
+      Prompt { 'Change' }
+      InputFrom {
+         'Params'
+      }
+   }
+   StartCash{
+      Title  { 'Start Cash (0)' }
+      Prompt { 'Start Cash (0)' }
+      Hint   { 'Enter your Start of day Cash' }
+      Error  { 'Enter your Start of day Cash' }
+      Format {
+         Currency { 0,9999999999 }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   StartStock{
+      Title  { 'Start Stock (0)' }
+      Prompt { 'Start Stock (0)' }
+      Hint   { 'Enter your Start of day Stock' }
+      Error  { 'Enter your Start of day Stock' }
+      Format {
+         Currency { 0,9999999999 }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   UserName{
+      Title  { 'User Name' }
+      Prompt { 'User Name' }
+      Hint   { 'Select a User from the list' }
+      Error  { 'This user has no stock requests outstanding' }
+      Format {
+         PickList  { '' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   NewPass {
+      Title { 'New Password' }
+      Prompt { 'New Password' }
+      Hint { 'Enter your New Password' }
+      Error { 'Invalid New Password' }
+      Format {
+         None
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+}
+
+Snippets {
+   CalcChangeVars {
+      InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+      CodeBlock {
+      [*
+          var
+             Amount:Currency;
+             Cng   :Currency;
+             Total :Currency;
+      *]
+      }
+   }
+   CalcChange {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+          if AmountTendered.Text = '' then
+             AmountTendered.Text:=CurrToStrF(BaseProduct.CurrentTxnTotal,ffNumber,2);
+          Result:=True;
+            Total :=BaseProduct.CurrentTxnTotal;
+          Amount:=StrToCurrDef(AmountTendered.Text,0);
+          Cng   :=Amount-Total;
+          if Cng > 0 then
+              Change.Text:=CurrToStrF(Cng,ffNumber,2)
+           else
+              Change.Text:='0.00';
+      *]
+      }
+   }
+   LogCash {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         FUIEventSink.OpenCashDrawer;
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                               0-StrToCurrDef(ProdForm.AmountTendered.Text,0),
+                               0-StrToCurrDef(ProdForm.AmountTendered.Text,0),
+                               Get_Description,'',{PProgID}'Product.Cash',
+                               Enumerate(ProdForm));
+         Inc(Index);
+         if StrToCurrDef(ProdForm.Change.Text,0) > 0 then
+         begin
+            TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                                  StrToCurrDef(ProdForm.Change.Text,0),
+                                  StrToCurrDef(ProdForm.Change.Text,0),
+                                  ProdForm.Change.PromptLabel.Caption,
+                                  '',{PProgID}'Product.Cash','Change');
+            Inc(Index);
+         end;
+      *]
+      }
+   }
+   LogNegativeCash {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         if TxnLog.Total < 0 then
+         begin
+            ProdForm.AmountTendered.Text := CurrToStrF( TxnLog.Total, ffNumber, 2 ) ;
+            UIEventSink.Restore ;
+         end ;
+      *]
+      }
+   }
+   StartOfDayPVar {
+      InsertBetween { '{PrivVarDecStart}','{PrivVarDecEnd}' }
+      CodeBlock {
+      [*
+         JustExit:Boolean;
+      *]
+      }
+   }
+   StartOfDayEVar {
+      InsertBetween { '{ExecuteVarStart}','{ExecuteVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            SL:TPackStringList;
+            Period:IPeriod;
+      *]
+      }
+   }
+   StartOfDayCVar {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            Period:IPeriod;
+      *]
+      }
+   }
+   StartOfDayComp {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         if not JustExit then
+         begin
+            Period:=CreatePeriod;
+            if Period <> nil then
+            begin
+               Period.StartOfDay(UIEventSink.User);
+               Period:=nil;
+            end;
+         end;
+      *]
+      }
+   }
+   StartOfDayExec {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         JustExit:=False;
+         Period:=CreatePeriod;
+         if Period <> nil then
+         begin
+            if Period.GetCurrentPeriod(UIEventSink.User) = GetTodayasPeriod then
+            begin
+               JustExit:=True;
+               Period:=nil;
+               UIEventSink.Restore;
+               Exit;
+            end  
+            else
+            begin
+               SL:=TPackStringList.Create;
+               SL.PackText:=Period.GetStartOfDayValues(UIEventSink.User);
+               if SL.Count > 1 then
+               begin
+                  ProdForm.StartCashLabel.Caption :='Start Cash ('+SL[0]+')';
+                  ProdForm.StartStockLabel.Caption:='Start Stock ('+SL[1]+')';
+               end;
+               SL.Free;
+               Period:=nil;
+            end
+         end;
+      *]
+      }
+   }
+   EndOfDayVar {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            Period:IPeriod;
+      *]
+      }
+   }
+   EndOfDayExec {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         //FUIEventSink := UIEventSink;
+         if FUIEventSink.User <> 'Supervisor' then
+            TxnReport('EODBalance','','',stSummary,'');
+
+         //FUIEventSink := nil ;
+         Period:=CreatePeriod;
+         if Period <> nil then
+         begin
+            Period.EndOfDay(UIEventSink.User);
+            Period:=nil;
+         end;
+         //UIEventSink.Restore;
+      *]
+      }
+   }
+   SetPasswordComplete {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock { 
+      [*
+         FUIEventSink.ReferenceData('PASSWORD,'+ProdForm.UserName.Text+','+ProdForm.NewPass.Text);
+      *]
+      }
+   }
+   UserListFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         FUIEventSink := UIEventSink ;
+         ProdForm.UserName.Items.CommaText := ListUsers;
+         ProdForm.UserName.Items.Insert(0,'Supervisor');
+         FUIEventSink := nil ;
+      *]
+      }
+   }
+}

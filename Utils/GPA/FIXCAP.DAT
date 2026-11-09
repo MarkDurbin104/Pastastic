@@ -1,0 +1,22 @@
+CAPTURER.DAT:name Cainit {
+
+
+    stdelete("catxn")
+    stdelete("catotal")
+    stdelete("castock")
+    where(caweek.status S!= "OPEN") {
+       	caweek.status = "OPEN"	:set to WORKING
+        stwrite(caweek)
+    }
+   	caweek.number = 1			:reset week counter
+    if (stsrchp(caweek,1,FREC)) { :find working week record
+       	caweek.status = "WORK"	:set to WORKING
+        stwrite(caweek)
+    }
+    caparam.type    = "OD"
+    caparam.keyword = "OFFCODE"
+    if (stsrchp(caparam,2,FREC)) {	caparam.param=0 }
+    caparam.type    = "OD"
+    caparam.keyword = "OFFDET"
+    if (stsrchp(caparam,2,FREC)) {	caparam.param=0 }
+

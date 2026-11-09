@@ -1,0 +1,76 @@
+BACKGROUND
+		(1, 0, 1)
+AMB
+		(0, .4, .4)
+
+DIFF 
+		(0, .8, .8)
+
+SREFLECT
+		4
+
+REFLECT (0, .8, .8)
+
+FILE_NAME 
+		julia
+FLIP 
+		0
+
+LIGHT_PHI:
+
+	-20
+
+LIGHT_THETA:
+
+	50
+
+VIEW_PHI:
+
+	45
+
+XRES
+
+	319
+
+YRES
+
+	199
+
+XMAX
+
+	1.8
+
+XMIN
+
+	-1.8
+
+YMAX
+
+	1.0
+    
+YMIN
+
+	-1.0
+
+ZMAX
+
+	1.0
+
+ZMIN
+
+	0.0
+
+MAX_SIZE
+
+	256 
+
+MAX_ITERATIONS
+
+	100
+
+QUATERNION
+
+	(-1, 0, 0, 0)
+
+JULIA
+

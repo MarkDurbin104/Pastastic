@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical">
+	<mx:Script>
+		<![CDATA[
+			import com.proiam.comms.ServiceInterface;
+			import mx.rpc.remoting.RemoteObject;
+			import mx.rpc.events.InvokeEvent;
+			import mx.rpc.events.FaultEvent;
+			import mx.rpc.events.ResultEvent;
+			import mx.rpc.http.HTTPService;
+		    import flash.system.Security;
+		    import flash.net.Socket;
+		    
+			[Bindable]
+			private var si:ServiceInterface;
+			private function onButtonClick(event:Event):void {
+				si=new ServiceInterface;
+				si.addEventListener("dataAvailable",VUiTDataAvailable);
+			}
+			private function VUiTDataAvailable(event:Event):void {
+				itemData.text=si.itemXML.toXMLString();
+				itemImage.source=si.imageSource;
+			}
+			private function onDisconnect(event:Event):void {
+				si.close();
+			}
+			private function sendReady(event:Event):void {
+				si.ReadyForData();
+			}
+		]]>
+	</mx:Script>
+	<mx:Button label="Connect" click="onButtonClick(event);"/>
+	<mx:Button label="Disconnect" click="onDisconnect(event);"/>
+	<mx:Button label="Ready for Next Image" click="sendReady(event);"/>
+	<mx:TextArea id="output"  text="{si.rxRawXML.toString()}" width="834" height="169"/>
+	<mx:TextArea id="itemData" width="832" height="203"/>
+	<mx:Image id="itemImage" scaleContent="true" autoLoad="true" width="400" height="200"/>
+</mx:Application>

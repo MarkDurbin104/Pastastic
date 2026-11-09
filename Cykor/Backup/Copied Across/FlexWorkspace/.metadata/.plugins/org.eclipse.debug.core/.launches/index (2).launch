@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launchConfiguration type="com.adobe.flexbuilder.debug.launchConfigurationType.flash">
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_APPLICATION" value="source/index.mxml"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_DEBUG_URL" value="file:/C:/FlexWorkspace/Proiam/bin/index-debug.html"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_PROJECT" value="Proiam"/>
+<stringAttribute key="com.adobe.flexbuilder.debug.ATTR_RUN_URL" value="file:/C:/FlexWorkspace/Proiam/bin/index.html"/>
+<booleanAttribute key="com.adobe.flexbuilder.debug.ATTR_USE_DEFAULT_URLS" value="true"/>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
+<listEntry value="/Proiam"/>
+<listEntry value="/Proiam/source/index.mxml"/>
+</listAttribute>
+<listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
+<listEntry value="4"/>
+<listEntry value="1"/>
+</listAttribute>
+</launchConfiguration>

@@ -1,0 +1,2083 @@
+//******************************************************************************************//
+//*                                                                                        *//
+//*                           Botswana Postal Service                                      *//
+//*                                                                                        *//
+//*                                 Base Domains                                           *//
+//*                                                                                        *//
+//******************************************************************************************//
+
+Domains
+{
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+  IntExpressDestination {
+               Title  { 'Express Destination' }
+               Prompt { 'Express Destination' }
+               Hint   { 'Select the entry required'                }
+               Error  { 'The entry you have Selected is invalid' }
+               Format {  PickList { 'PickList.IntExpress' }         }
+               InputFrom { 'Keyboard' }
+  }
+
+  IntGovExpressDestination {
+               Title  { 'Express Destination' }
+               Prompt { 'Express Destination' }
+               Hint   { 'Select the entry required'                }
+               Error  { 'The entry you have Selected is invalid' }
+               Format {  PickList { 'PickList.IntGovExpress' }         }
+               InputFrom { 'Keyboard' }
+  }
+
+  IntGovSurRegDestination {
+               Title  { 'Destination Country' }
+               Prompt { 'Destination Country' }
+               Hint   { 'Select the entry required'                }
+               Error  { 'The entry you have Selected is invalid' }
+               Format {  PickList { 'PickList.SurGovReg' }        }
+               InputFrom { 'Keyboard' }
+  }
+
+  IntGovAirRegDestination {
+               Title  { 'Destination Country' }
+               Prompt { 'Destination Country' }
+               Hint   { 'Select the entry required'                }
+               Error  { 'The entry you have Selected is invalid' }
+               Format {  PickList { 'PickList.AirGovReg' }        }
+               InputFrom { 'Keyboard' }
+  }
+
+
+  ParcelInsurance {
+               Title  { 'Parcel Insurance' }
+               Prompt { 'Parcel Insurance' }
+               Hint   { 'Select the entry required'                }
+               Error  { 'The entry you have Selected is invalid' }
+               Format {  PickList { 'PickList.ParcelInsurance' }  }
+               InputFrom { 'Keyboard' }
+  }
+
+  ParcelExpress {
+               Title  { 'Parcel Express' }
+               Prompt { 'Parcel Express' }
+               Hint   { 'Select the entry required'                }
+               Error  { 'The entry you have Selected is invalid' }
+               Format {  PickList { 'PickList.ParcelExpress' }  }
+               InputFrom { 'Keyboard' }
+  }
+  ParcelNumber {
+        Title  { 'Parcel Number' }
+        Prompt { 'Parcel Number' }
+        Hint   { 'Enter the Parcel Number' }
+        Error  { 'Enter a Valid Parcel Number' }
+        Format { Mask { 'xxxxxxxxxxxxx'} }
+        InputFrom { 'Keyboard'}
+
+  }
+  FuneralCompanies {
+              Title  { 'Scheme Name'                                     }
+              Prompt { 'Scheme Name'                                     }
+              Hint   { 'Select a Funeral Scheme'                         }
+              Error  { 'The Funeral Scheme you have Selected is invalid' }
+              Format {  PickList { 'PickList.FuneralCompanies' }         }
+              InputFrom { 'Keyboard' }
+  }
+
+ BulkMOCompany { Title     { 'Bulk Money Order Companies'                                  }
+                 Prompt    { 'Bulk Money Order Company'                                    }
+                 Hint      { 'Select a Bulk Money Order Company'                           }
+                 Error     { 'The Bulk Money Order Company you have Selected is invalid'   }
+                 //Format    {  PickList { 'PickList.BulkMoneyOrderCompanies' }              }
+                 Format    {  PickList { '' }              }
+                 InputFrom { 'Keyboard'                                                    }
+                }
+
+ BulkMORepName { Title     { 'Representative Name'                    }
+                 Prompt    { 'Representative Name'                    }
+                 Hint      { 'Enter the Representative''s Name'       }
+                 Error     { 'Enter a Valid Representative Name'      }
+                 Format    { Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'} }
+                 InputFrom { 'Keyboard'                               }
+                }
+
+ BulkMORepID { Title     { 'Representative Identification'               }
+               Prompt    { 'Representative Identification'               }
+               Hint      { 'Enter the Representative''s Identification'  }
+               Error     { 'Enter a Valid Representative Identification' }
+               Format    { Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'}      }
+               InputFrom { 'Keyboard'                                    }
+              }
+
+ Comment { Title     { 'Comment'               }
+           Prompt    { 'Comment'               }
+           Hint      { 'Enter a Comment'       }
+           Error     { 'Enter a Valid Comment' }
+           Format    {  None                   }
+           InputFrom { 'Keyboard'              }
+          }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+
+DiscountValue { Title  { 'Discount Fee' }
+                Prompt { 'Discount Fee' }
+                InputFrom { Params      }
+                TotalIn   { TotalFee    }
+           }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+DiscountBulk { Title  { 'Discount' }
+               Prompt { 'Discount' }
+               TotalIn   { TotalFee    }
+            }
+
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+
+GrossBulk { Title    { 'Gross Fee' }
+            Prompt   { 'Gross Fee' }
+            TotalIn  { TotalFee }
+           }
+
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+GrossPay  { Title    { 'Gross Fee' }
+            Prompt   { 'Gross Fee' }
+            TotalIn  { TotalFee }
+           }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+  StartCash { Title     { 'Start Cash (0)'               }
+              Prompt    { 'Start Cash (0)'               }
+              Hint      { 'Enter your Start of day Cash' }
+              Error     { 'Enter your Start of day Cash' }
+              Format    { Currency { 0,9999999999 }      }
+              InputFrom { 'Keyboard'                     }
+             }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+  StartStock { Title     { 'Start Stock (0)'               }
+               Prompt    { 'Start Stock (0)'               }
+               Hint      { 'Enter your Start of day Stock' }
+               Error     { 'Enter your Start of day Stock' }
+               Format    { Currency { 0,9999999999 }       }
+               InputFrom { 'Keyboard'                      }
+              }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+  Weight      {  Title     { 'Weight'              }
+                 Prompt    { 'Weight'              }
+                 Hint      { 'The scale is either not attached or^is out of order, please type the Weight in grams' }
+                 Error     { 'The Weight you have entered is invalid' }
+                 Format    {  Range { '0,32000' }  }
+                 InputFrom { 'Scale'  'Keyboard'   }
+              }
+//
+//--------------------------------------------------------------------------------------------
+//
+
+  StandardFee      {  Title     { 'Standard Fee' }
+                      Prompt    { 'Standard Fee' }
+                      InputFrom { Params         }
+                      TotalIn   { TotalFee       }
+                   }
+
+//
+//--------------------------------------------------------------------------------------------
+//
+
+  StampFee      {  Title     { 'Stamp Fee' }
+                   Prompt    { 'Stamp Fee' }
+                   Hint      { 'Stamp Fee' }
+                   Error     { 'Error Stamp Fee' }
+                   InputFrom { None }
+                   TotalIn   { TotalFee  }
+                }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+  CashFee      {  Title     { 'Cash Fee' }
+                  Prompt    { 'Cash Fee' }
+                  Prompt    { 'Cash Fee' }
+                  Hint      { 'Cash Fee' }
+                  Error     { 'Error Cash Fee' }
+                  InputFrom { None }
+                  TotalIn   { TotalFee   }
+                }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  IndividualFee      {  Title     { 'Standard Fee' }
+                        Prompt    { 'Standard Fee' }
+                        InputFrom { Params         }
+                     }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  RegFee           {  Title     { 'Registration Fee'    }
+                      Prompt    { 'Registration Fee'    }
+                      TotalIn   { TotalFee              }
+                      DefaultValue { '2.80' }
+//                      InputFrom { Attrib { UnitPrice }  }
+                   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  ComFee           {  Title     { 'Compulsory Registration Fee' }
+//                      Prompt    { 'Compulsory Registration Fee' }
+//                      TotalIn   { TotalFee                      }
+//                      InputFrom { Attrib { UnitPrice }          }
+//                   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  AdvOfDelFee      {  Title     { 'Advice of Delivery Fee' }
+                      Prompt    { 'Advice of Delivery Fee' }
+                      TotalIn   { TotalFee                 }
+                      InputFrom { Attrib { UnitPrice }     }
+                   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  ExpressDelFee      {  Title     { 'Express Delivery Fee' }
+                        Prompt    { 'Express Delivery Fee' }
+                        TotalIn   { TotalFee                 }
+                        InputFrom { Attrib { UnitPrice }     }
+                      //  DefaultValue { '6.65' }
+                       }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  CODFee      {  Title     { 'COD Fee' }
+                 Prompt    { 'COD Fee' }
+                 TotalIn   { TotalFee                 }
+                 //DefaultValue { '2.20' }
+                 InputFrom { Attrib { UnitPrice }     }
+              }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  AcceptFee        { Title     { 'Acceptance Fee'      }
+//                     Prompt    { 'Acceptance Fee'      }
+//                     TotalIn   { TotalFee              }
+//                     InputFrom { Attrib { UnitPrice }  }
+//                   }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+ IpolokengContractNumber { Title     { 'Contract Number'               }
+                           Prompt    { 'Contract Number'               }
+                           Hint      { 'Enter the Contract Number'     }
+                           Error     { 'Enter a Valid Contract Number' }
+                           Format    {  Mask { 'BX999999' }            }
+                           InputFrom { 'Keyboard'                      }
+                          }
+
+ NumberOfMonths { Title        { 'Number Of Months to pay'               }
+                  Prompt       { 'Number Of Months to pay'               }
+                  Hint         { 'Enter Number Of Months to pay'         }
+                  Error        { 'Enter a Valid Number Of Months to pay' }
+                  DefaultValue { '1'                                     }
+                  Format       { Range { '0,99999' }                     }
+                 }
+
+ MonthlyCost { Title        { 'Monthly Cost'         }
+               Prompt       { 'Monthly Cost'         }
+               Hint         { 'Enter Monthly Cost'   }
+               Error        { 'Enter a Monthly Cost' }
+               InputFrom    { Attrib { UnitPrice  }  }
+               DefaultValue { '25.00'                }
+              }
+
+ IpolokengJoiningFee { Title        { 'Ipolokeng Joining Fee'         }
+                       Prompt       { 'Ipolokeng Joining Fee'         }
+                       Hint         { 'Enter Ipolokeng Joining Fee'   }
+                       Error        { 'Enter a Ipolokeng Joining Fee' }
+                       InputFrom    { Attrib { UnitPrice  }           }
+                       DefaultValue { '25.00'                         }
+                       TotalIn      { TotalFee                        }
+                      }
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   AccountNumber{
+      Title  { 'Account Number' }
+      Prompt { 'Account Number' }
+      Hint   { 'Enter the Account Number' }
+      Error  { 'Enter a Valid Account Number' }
+      Format { Currency { 0,99999999999 }     }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   AccountName {
+      Title  { 'Account Holder' }
+      Prompt { 'Account Holder' }
+      Hint   { 'Enter the Account Holder' }
+      Error  { 'Enter a Valid Account Holder' }
+      Format { None }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+  BulkQuantity {
+    Title  { 'Quantity' }
+    Prompt { 'Quantity' }
+    Hint   { 'Enter the Quantity' }
+    Error  { 'Enter a Valid Quantity' }
+    Format    { Range { '1,9999' } }
+    DefaultValue { '1' }
+    InputFrom { 'Keyboard' }
+   }
+
+  BulkTotal {
+    Title  { 'Bulk Total' }
+    Prompt { 'Bulk Total' }
+    Hint   { 'Enter the Bulk Total' }
+    Error  { 'Enter a Valid Bulk Total' }
+    DefaultValue { '0.00' }
+  }
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   FirstRegBulkNumber {
+      Title  { 'First Register Number' }
+      Prompt { 'First Register Number' }
+      Hint   { 'Enter First Registration Number' }
+      Error  { 'Enter a Valid Registration Number' }
+      Format    { Mask { 'RXXXXXXXXXXX' }                             }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   LastRegBulkNumber {
+      Title  { 'Last Register Number' }
+      Prompt { 'Last Register Number' }
+      Hint   { 'Enter Last Registration Number' }
+      Error  { 'Enter a Valid Registration Number' }
+      Format    { Mask { 'RXXXXXXXXXXX' }                             }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   ServiceCharge  {
+      Title { 'Service Charge' }
+      Prompt { 'Service Charge' }
+      InputFrom { Params      }
+      TotalIn   { TotalFee    }
+   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  IntEMSID { Title     { 'International EMS Identifier'                          }
+             Prompt    { 'Please enter the Identifier'                                         }
+             Hint      { 'Please type in format EE999999999BW or scan the Barcode Label'              }
+             Error     { 'The Identifier you have entered is invalid' }
+             Format    { Mask { 'EE99999999XUU' }                             }
+             InputFrom { 'Barcode' 'Keyboard'                                 }
+           }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  DomEMSID { Title     { 'Domestic EMS Identifier'                              }
+             Prompt    { 'Please enter the Identifier'                                         }
+             Hint      { 'Please type in format EE999999999BW ^ or scan the Barcode Label'              }
+             Error     { 'The Identifier you have entered is invalid' }
+             Format    { Mask { 'EE99999999XUU' }                             }
+             InputFrom { 'Barcode' 'Keyboard'                                 }
+           }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  IntLetterRegFirstID {
+             BasedOn { IntEMSID                           }
+             Title   { 'Registered Number' }
+             Hint    { 'Please type in the number in the format RXXXXXXXXXXX ^ or scan the Barcode Label'              }
+             Format  { Mask { 'RXXXXXXXXXXX' }                             }
+           }
+
+  IntLetterRegLastID {
+             BasedOn { IntEMSID                           }
+             Title   { 'Registered Number Up To' }
+             Hint    { 'Please type in the number in the format RXXXXXXXXXXX ^ or scan the Barcode Label'              }
+             Format    { Mask { 'RXXXXXXXXXXX' }                             }
+           }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  IntAerogrammeRegFirstID {
+             BasedOn { IntEMSID                           }
+             Title   { 'Registered Number' }
+             Hint    { 'Please type in the number in the format RXXXXXXXXXXX ^ or scan the Barcode Label'              }
+             Format    { Mask { 'RXXXXXXXXXXX' }                             }
+           }
+
+  IntAerogrammeRegLastID {
+             BasedOn { IntEMSID                           }
+             Title   { 'Registered Number Up To' }
+             Hint    { 'Please type in the number in the format RXXXXXXXXXXX ^ or scan the Barcode Label'              }
+             Format    { Mask { 'RXXXXXXXXXXX' }                             }
+           }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  IntPostCardRegFirstID {
+             BasedOn { IntEMSID }
+             Title   { 'Registered Number' }
+             Hint    { 'Please type in the number in the format RXXXXXXXXXXX ^ or scan the Barcode Label'              }
+             Format    { Mask { 'RXXXXXXXXXXX' }                             }
+           }
+
+  IntPostCardRegLastID {
+             BasedOn { IntEMSID }
+             Title   { 'Registered Number Up To' }
+             Hint    { 'Please type in the number in the format RXXXXXXXXXXX ^ or scan the Barcode Label'              }
+             Format    { Mask { 'RXXXXXXXXXXX' }                             }
+           }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  IntPrintedPaperRegFirstID {
+             BasedOn { IntEMSID }
+             Title   { 'Registered Number' }
+             Hint    { 'Please type in the number in the format RXXXXXXXXXXX ^ or scan the Barcode Label'              }
+             Format    { Mask { 'RXXXXXXXXXXX' }                             }
+           }
+
+  IntPrintedPaperRegLastID {
+             BasedOn { IntEMSID }
+             Title   { 'Registered Number Up To' }
+             Hint    { 'Please type in the number in the format RXXXXXXXXXXX ^ or scan the Barcode Label'              }
+             Format    { Mask { 'RXXXXXXXXXXX' }                             }
+           }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  IntSmallPacketRegFirstID {
+             BasedOn { IntEMSID }
+             Title   { 'Registered Number' }
+             Hint    { 'Please type in the number in the format RXXXXXXXXXXX ^ or scan the Barcode Label'              }
+             Format    { Mask { 'RXXXXXXXXXXX' }                             }
+           }
+
+  IntSmallPacketRegLastID {
+             BasedOn { IntEMSID }
+             Title   { 'Registered Number Up To' }
+             Hint    { 'Please type in the number in the format RXXXXXXXXXXX ^ or scan the Barcode Label'              }
+             Format    { Mask { 'RXXXXXXXXXXX' }                             }
+           }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+
+  DomRegFirstID { BasedOn { IntEMSID }
+             Title   { 'Domestic Registered Number' }
+             Hint    { 'Please type in the number in the format RXXXXXXXXXXX ^ or scan the Barcode Label'              }
+             Format    { Mask { 'RXXXXXXXXXXX' }                             }
+           }
+
+  DomRegLastID { BasedOn { IntEMSID }
+             Title   { 'Domestic Registered Number' }
+             Hint    { 'Please type in the number in the format RXXXXXXXXXXX ^ or scan the Barcode Label'              }
+             Format    { Mask { 'RXXXXXXXXXXX' }                             }
+           }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  IntParcelID { BasedOn { IntEMSID                       }
+                Title   { 'Type the International Parcel Identifier or scan the barcode' }
+                Hint    { 'Type in format CP99999999XUU' }   
+                Format  { Mask { 'CP99999999XUU' }       }
+              }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  DomParcelID { BasedOn { IntEMSID                  }
+                Title   { 'Type in the Domestic Parcel Identifier or scan the barcode' }
+                Hint    { 'Type in format CA99999999XBW or scan the barcode' }
+                Format  { Mask { 'CA99999999XBW' }  }
+               }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+ InsValue { Title     { 'Insurance Value' }
+            Format    { Range { '0,9999' } }
+            InputFrom { 'Keyboard' }
+           }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+ InsFee { Title     { 'Insurance Fee' }
+          Prompt    { 'Insurance Fee' }
+          InputFrom { Params          }
+          TotalIn   { TotalFee        }
+         }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  TotalFee         { Title  { 'Total Fee' }
+                     Prompt { 'Total Fee' }
+                   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  TotalToPay { Title  { 'Total to Pay'           }
+//               Prompt { 'Total to Pay'           }
+//               Hint   { 'Enter the Total to Pay' }
+//               Error  { 'Invalid Total to Pay'   }
+//              }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  AmountPaid { Title     { 'Amount Paid'           }
+               Prompt    { 'Amount Paid'           }
+               Hint      { 'Enter the Amount Paid' }
+               Error     { 'Invalid Amount Paid'   }
+               Format    { Currency { '0,999999' } }
+               InputFrom { 'Keyboard'              }
+              }
+  VoucherReference
+  {
+      Title  { 'Voucher Number'}
+      Prompt { 'Voucher Number' }
+      Hint   { 'Enter Voucher Number' }
+      Error  { 'Enter a Valid Voucher Number' }
+      Format {
+         Mask { 'xxxxxxxxxxxxxxxxxxxx' }
+      }
+  }
+
+  ReasonforRefund
+  {
+      Title  { 'Reason For Refund' }
+      Prompt { 'Reason For Refund' }
+      Hint   { 'Enter Reason For Refund' }
+      Error  { 'Enter a Valid Reason For Refund' }
+      Format {
+         Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }
+      }
+
+  }
+
+ ReasonForReceipt { Title  { 'Reason For Receipt' }
+                    Prompt { 'Reason For Receipt' }
+                    Hint   { 'Enter Reason For Receipt' }
+                    Error  { 'Enter a Valid Reason For Receipt' }
+                    Format {  Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }   }
+                   }
+
+ ReasonForPayment { Title  { 'Reason For Payment' }
+                    Prompt { 'Reason For Payment' }
+                    Hint   { 'Enter Reason For Payment' }
+                    Error  { 'Enter a Valid Reason For Payment' }
+                    Format {  Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }  }
+                   }
+
+ PaymentDescription { Title  { 'Description of payment'                             }
+                      Prompt { 'Description of payment'                             }
+                      Hint   { 'Enter Description of payment'                       }
+                      Error  { 'Enter a Valid Description of payment'               }
+                      Format {  Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' } }
+                     }
+
+  NewspaperName {
+      Title  { 'Newspaper Name' }
+      Prompt { 'Newspaper Name' }
+      Hint   { 'Enter Newspaper Name' }
+      Error  { 'Enter a Valid Newspaper Name' }
+      Format {
+         Mask { 'xxxxxxxxxxxxxxxxxxxx' }
+      }
+ }
+
+ RegNumber { Title  { 'Registration Number'                           }
+             Prompt { 'Registration Number'                           }
+             Hint   { 'Enter a Registration Number for the newspaper' }
+             Error  { 'Enter a Valid Registration Number'             }
+             Format { Mask { 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' }       }
+            }
+
+ RegAmount {
+
+       Title        { 'Registration Amount'               }
+       Prompt       { 'Registration Amount'               }
+       Hint         { 'Enter Registration Amount'         }
+       Error        { 'Enter a Valid Registration Amount' }
+       DefaultValue { '539.00'                            }
+       InputFrom    { None                                }
+ }
+
+  CompanyName {
+      Title  { 'Company Name' }
+      Prompt { 'Company Name' }
+      Hint   { 'Enter Company Name' }
+      Error  { 'Enter a Valid Company Name' }
+      Format {
+         Mask { 'xxxxxxxxxxxxxxxxxxxx' }
+      }
+
+  }
+  NumberOfLeaflets {
+       Title  { 'Number Of Leaflets' }
+       Prompt { 'Number Of Leaflets' }
+       Hint   { 'Enter Number Of Leaflets' }
+       Error  { 'Enter a Valid Number Of Leaflets' }
+       DefaultValue { '1' }
+       Format { Range { '0,99999' }
+       }
+  }
+  LeafletCost {
+       Title  { 'Leaflet Cost' }
+       Prompt { 'Leaflet Cost' }
+       Hint   { 'Enter Leaflet Cost' }
+       Error  { 'Enter a Leaflet Cost' }
+       InputFrom { Attrib { UnitPrice  } }
+       DefaultValue { '0.70' }
+ }
+
+ NumberOfReplies { Title        { 'Number Of Replies'               }
+                   Prompt       { 'Number Of Replies'               }
+                   Hint         { 'Enter Number Of Replies'         }
+                   Error        { 'Enter a Valid Number Of Replies' }
+                   DefaultValue { '1'                               }
+                   Format       { Range { '0,99999' }               }
+                  }
+
+  LetterSize { Title     { 'Letter Size'                          }
+               Prompt    { 'Letter Size'                          }
+               Hint      { 'Enter Letter Size'                    }
+               Error     { 'Enter a Letter Size'                  }
+               Format    {  PickList { 'PickList.DomLetterSize' } }
+               InputFrom {  Keyboard                              }
+              }
+
+  LetterCost      {  Title     { 'Letter Cost' }
+                      Prompt    { 'Letter Cost' }
+                      InputFrom { Params         }
+                   }
+
+ FaxDestination { Title  { 'Fax Destination'                          }
+                  Prompt { 'Fax Destination'                          }
+                  Hint   { 'Enter the Destination for the Fax'        }
+                  Error  { 'Enter a Valid Destination'                }
+                  Format {  Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' } }
+                 }
+
+ NumberOfPages { Title        { 'Number Of Pages'               }
+                 Prompt       { 'Number Of Pages'               }
+                 Hint         { 'Enter Number Of Pages'         }
+                 Error        { 'Enter a Valid Number Of Pages' }
+                 DefaultValue { '1'                             }
+                 Format       { Range { '0,99999' }             }
+                }
+
+ FaxPageCost { Title        { 'Page Cost'           }
+               Prompt       { 'Page Cost'           }
+               Hint         { 'Enter Page Cost'     }
+               Error        { 'Enter the Page Cost' }
+               InputFrom    { Attrib { UnitPrice  } }
+               DefaultValue { '7.70'                }
+              }
+
+ FaxPageCostInt { Title        { 'Page Cost'           }
+                  Prompt       { 'Page Cost'           }
+                  Hint         { 'Enter Page Cost'     }
+                  Error        { 'Enter the Page Cost' }
+                  InputFrom    { Attrib { UnitPrice  } }
+                  DefaultValue { '23.10'               }
+                 }
+
+  TotalAmountToPay {
+       Title  { 'Total Amount To Pay' }
+       Prompt { 'Total Amount To Pay' }
+       TotalIn { TotalFee }
+  }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+
+   Amount {
+      Title  { 'Amount' }
+      Prompt { 'Amount' }
+      Hint   { 'Enter the Amount' }
+      Error  { 'Enter a Valid Amount' }
+      Format {
+         //Mask { 'xxxxxxxxxxxxx' }
+         Currency { '0,999999999' } 
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+
+   IntPosOrdSerialNumber {
+      Title  { 'Serial Number' }
+      Prompt { 'Serial Number' }
+      Hint   { 'Enter Serial Number' }
+      Error  { 'Enter a Valid Serial Number' }
+      Format {
+         Mask { 'xxxxxxxxxxxxxxxxxxxx' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  OpeningBalance { Title     { 'Opening Balance'           }
+//                   Prompt    { 'Opening Balance'           }
+//                   Hint      { 'Enter the Opening Balance' }
+//                   Error     { 'Invalid Opening Balance'   }
+//                   Format    { Currency { '0,99999999' }  }
+//                   InputFrom { 'Keyboard'                  }
+//                  }
+   OpeningBalance {
+      Title  { 'Opening Balance' }
+      Prompt { 'Opening Balance' }
+      Hint   { 'Enter the Amount' }
+      Error  { 'Enter a Valid Amount' }
+      Format {  Currency { '0,99999999' }  }
+
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+
+   Warrant  {
+      Title  { 'Warrant Reference' }
+      Prompt { 'Warrant Reference' }
+      Hint   { 'Enter the Warrant Reference' }
+      Error  { 'Enter a Warrant Reference' }
+      Format {
+         Mask { 'xxxxxxxxxxxxx' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+ SAAuthorityNumber { Title     { 'Authority Number'           }
+                     Prompt    { 'Authority Number'           }
+                     Hint      { 'Enter the Authority Number' }
+                     Error     { 'Enter a Authority Number'   }
+                     Format    {  Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' } }
+                     InputFrom { 'Keyboard'                   }
+                    }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  ClosingBalance { Title     { 'Closing Balance'           }
+//                   Prompt    { 'Closing Balance'           }
+//                   Hint      { 'Enter the Closing Balance' }
+//                   Error     { 'Invalid Closing Balance'   }
+//                   Format    { Currency { '0,999999.99' }  }
+//                   InputFrom { 'Keyboard'                  }
+//                  }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  DepositAmount { Title     { 'Deposit Amount'           }
+//                  Prompt    { 'Deposit Amount'           }
+//                  Hint      { 'Enter the Deposit Amount' }
+//                  Error     { 'Invalid Deposit Amount'   }
+//                  Format    { Currency { '0,999999.99' } }
+//                  InputFrom { 'Keyboard'                 }
+//                  TotalIn   { TotalFee                   }
+//                 }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  BillAmount { Title     { 'Amount Paid'           }
+               Prompt    { 'Amount Paid'           }
+               Hint      { 'Enter the amount paid' }
+               Error     { 'Invalid amount paid'   }
+               Format    { Currency { '0,999999' } }
+               InputFrom { 'Keyboard'              }
+              }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  Change { Title     { 'Change' }
+           Prompt    { 'Change' }
+           InputFrom { Params   }
+          }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+
+  Thebe5Adjustment { Title     { '5 Thebe Adjustment' }
+           Prompt    { '5 Thebe Adjustment' }
+           InputFrom { Params   }
+          }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  IntMoneyOrderDestination { Title  { 'Destination Country'                                  }
+                             Prompt { 'Destination'                                          }
+                             Hint   { 'Select the Destination Country'                       }
+                             Error  { 'The Destination Country you have Selected is invalid' }
+                             Format {  PickList { 'PickList.IntMoneyOrderCountries' }        }
+                            }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   ExchangeRate {
+      Title  { 'Current Exchange Rate' }
+      Prompt { 'Current Exchange Rate' }
+      //Hint   { 'Enter the Exchange Rate' }
+      //Error  { 'Enter a Valid Exchange Rate' }
+      //Format    {  Currency { 0,999 }  }
+      //InputFrom { 'Keyboard'   }
+   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+
+  RatesPosOrdCountry { Title  { 'Country of Origin' }
+                      Prompt { 'Country of Origin' }
+                      Hint   { 'Select the Country of Origin' }
+                      Error  { 'The Country of Origin you have Selected is invalid' }
+                      Format {  PickList { 'PickList.RatesPosOrdCountry' }  }
+                    }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  IntMoneyOrderOrigin { Title  { 'Country of Origin'                                  }
+                             Prompt { 'Origin'                                          }
+                             Hint   { 'Select the Country of Origin'                    }
+                             Error  { 'The Country of Origin you have Selected is invalid' }
+                             Format {  PickList { 'PickList.IntMoneyOrderCountries' }        }
+                            }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  MoneyOrderNumber { Title     { 'Money Order Number'         }
+                     Prompt    { 'Money Order Number'         }
+                     Hint      { 'Money Order Number in format 999999X999'         }
+                     Error     { 'Invalid Money Order Number' }
+                     Format    {  Mask { '999999X999' }       }
+                     InputFrom { 'Keyboard'                   }
+                   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  MoneyOrderValue        { Title     { 'Money Order Value'      }
+                           Prompt    { 'Value of Money Order'   }
+                           TotalIn   { TotalFee                 }
+//                         //InputFrom { Attrib { UnitPrice }  }
+                           Format    { Currency { 0,9999999999 } }
+                           InputFrom { 'Keyboard'               }
+                         }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  UrgentMoneyOrderFee    { Title     { 'Urgent Money Order Fee'      }
+                           Prompt    { 'Urgent Money Order Fee'      }
+                           TotalIn   { TotalFee                      }
+                           InputFrom { Attrib { UnitPrice }          }
+                         }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  MoneyOrderAoPStandardFeeDom  { Title     { 'Advice of Payment Fee'  }
+                                 Prompt    { 'Advice of Payment Fee'  }
+                                 TotalIn   { TotalFee                 }
+                                 InputFrom { Attrib { UnitPrice }     }
+                                }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  MoneyOrderAoPStandardFeeInt  { Title     { 'Advice of Payment Fee'  }
+                                 Prompt    { 'Advice of Payment Fee'  }
+                                 TotalIn   { TotalFee                 }
+                                 InputFrom { Attrib { UnitPrice }     }
+                                }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  MoneyOrderAoPTgramFee  { Title     { 'Advice of Payment Telegram Fee'  }
+                           Prompt    { 'Advice of Payment Telegram Fee'  }
+                           TotalIn   { TotalFee                          }
+                           InputFrom { Attrib { UnitPrice }     }
+                          }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  PostalOrderNumber { Title     { 'Postal Order Number'         }
+//                      Prompt    { 'Postal Order Number'         }
+//                      Hint      { 'Postal Order Numberin format 999999X999'         }
+//                      Error     { 'Invalid Postal Order Number' }
+//                      Format    {  Mask { '999999X999' }        }
+//                      InputFrom { 'Keyboard'                    }
+//                    }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  PostalOrderValue       { Title     { 'Postal Order Value'    }
+//                           Prompt    { 'Value of Postal Order' }
+//                           TotalIn   { TotalFee                }
+//                           Format    { Range { '0,500' }       }
+//                           InputFrom { 'Keyboard'              }
+//                         }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  MailAirDestination {
+                     Title  { 'Destination Country'                                  }
+                     Prompt { 'Destination'                                          }
+                     Hint   { 'Select the Destination Country'                       }
+                     Error  { 'The Destination Country you have Selected is invalid' }
+//                     Format {  PickList { 'PickList.AirMail' }                       }
+                     Format {  PickList { 'PickList.AirParcel' }                    }
+                   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+
+  MailAirOrigin {
+                     Title  { 'Country of Origin' }
+                     Prompt { 'Country of Origin' }
+                     Hint   { 'Select the Country of Origin' }
+                     Error  { 'The Country of Origin you have Selected is invalid' }
+//                     Format {  PickList { 'PickList.AirMail' }                       }
+                     Format {  PickList { 'PickList.AirParcel' }                    }
+                   }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  MailSurDestination {
+                     Title  { 'Destination Country'                                  }
+                     Prompt { 'Destination'                                          }
+                     Hint   { 'Select the Destination Country'                       }
+                     Error  { 'The Destination Country you have Selected is invalid' }
+//                     Format {  PickList { 'PickList.SurMail' }                    }
+                     Format {  PickList { 'PickList.SurParcel' }                    }
+                     DefaultValue { 'Botswana' }
+                   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  MailSurOrigin {
+                     Title  { 'Country of Origin' }
+                     Prompt { 'Country of Origin' }
+                     Hint   { 'Select the Country of Origin' }
+                     Error  { 'The Country of Origin you have Selected is invalid' }
+//                     Format {  PickList { 'PickList.SurMail' }                    }
+                     Format {  PickList { 'PickList.SurParcel' }                    }
+                     DefaultValue { 'Botswana' }
+                   }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  MailCODOrigin {
+                     Title  { 'Country of Origin' }
+                     Prompt { 'Country of Origin' }
+                     Hint   { 'Select the Country of Origin' }
+                     Error  { 'The Country of Origin you have Selected is invalid' }
+                     Format {  PickList { 'PickList.CODMail' }                    }
+                     DefaultValue { 'Botswana' }
+                   }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  IntEMSDestination  { Title  { 'Destination Country'                                  }
+                       Prompt { 'Destination'                                          }
+                       Hint   { 'Select the Destination Country'                       }
+                       Error  { 'The Destination Country you have Selected is invalid' }
+                       Format {  PickList { 'PickList.IntEMS' }                        }
+                     }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  ParAirDestination  { Title  { 'Destination Country'                                  }
+                       Prompt { 'Destination'                                          }
+                       Hint   { 'Select the Destination Country'                       }
+                       Error  { 'The Destination Country you have Selected is invalid' }
+                       Format {  PickList { 'PickList.AirParcel' }                        }
+                     }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  ParSurDestination  { Title  { 'Destination Country'                                  }
+                       DefaultValue { 'Botswana' }
+                       Prompt { 'Destination'                                          }
+                       Hint   { 'Select the Destination Country'                       }
+                       Error  { 'The Destination Country you have Selected is invalid' }
+                       Format {  PickList { 'PickList.SurParcel' }                        }
+                     }
+
+	PrePaidStampValue {
+      Title { 'Pre-Paid Stamps Value' }
+      Prompt { 'Enter Value of Pre-Paid Stamps' }
+      Format {
+        Currency { -999999,999999 }
+      }
+      InputFrom {
+        'Keyboard'
+      }
+      TotalIn { TotalFee }
+	}
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   NewLockKey {
+            Title     { 'Lock Fee' }
+            Prompt    { 'Lock Fee' }
+            TotalIn   { TotalFee }
+            InputFrom { Attrib { UnitPrice } }
+   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  PrivBoxNumber { Title     { 'Private Box Number'  }
+                  Prompt    { 'Private Box Number'  }
+                  Hint      { 'Private Box Number'  }
+                  Format    {  Mask { 'XXXXXXX' }   }
+                  InputFrom { 'Keyboard'            }
+                 }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  POBoxNumber { Title     { 'PO Box Number'  }
+                Prompt    { 'PO Box Number'  }
+                Hint      { 'PO Box Number'  }
+                Format    {  Mask { 'XXXXXXX' }   }
+                InputFrom { 'Keyboard'            }
+               }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  Quarter { Title  { 'Quarter' }
+            Prompt { 'Quarter' }
+            Hint   { 'Quarter' }
+            Error  { 'Invalid Quarter' }
+            Format {  PickList { 'PickList.Quarter' } }
+          }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+   NumberYears {
+      Title  { 'Years' }
+      Prompt { 'Years' }
+      Hint   { 'Enter Number of Years' }
+      Error  { 'Enter a Valid Number of Years' }
+      Format    { Range { '1,9999' } }
+      DefaultValue { '1' }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+
+  PrivBoxAnnualRentFee  { Title     { 'Annual Rental Fee'      }
+                          Prompt    { 'Annual Rental Fee'      }
+                          DefaultValue { 110.00 }
+                         }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  BGBoxAnnualRentFee    { Title     { 'Annual Rental Fee'      }
+                          Prompt    { 'Annual Rental Fee'      }
+                          DefaultValue { 150.00 }
+                         }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  PBLatePaymentFee  { Title     { 'Fee for late payment of rental' }
+                      Prompt    { 'Fee for late payment of rental' }
+                      TotalIn   { TotalFee                         }
+                      InputFrom { Attrib { UnitPrice }             }
+                     }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   BagPenaltyFee  { Title     { 'Bag Penalty' }
+                    Prompt    { 'Bag Penalty' }
+                    TotalIn   { TotalFee }
+                    InputFrom { Attrib { UnitPrice } }
+                  }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  PrivBoxQuarterRentFee  { Title     { 'Quarterly Rental Fee'      }
+                           Prompt    { 'Quarterly Rental Fee'      }
+                           TotalIn   { TotalFee                    }
+                           DefaultValue { '27.50' }
+                          }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  BagQuarterRent  { Title     { 'Quarterly Rental Fee'      }
+                    Prompt    { 'Quarterly Rental Fee'      }
+                    TotalIn   { TotalFee                    }
+                    DefaultValue { '24.20' }
+                  }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  PrivBagNumber { Title     { 'Private Bag Number'         }
+                  Prompt    { 'Private Bag Number'         }
+                  Hint      { 'Private Bag Number'         }
+                  Format    {  Mask { 'XXXXXXX' }          }
+                  InputFrom { 'Keyboard'                   }
+                 }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  ExtraLine { Title     { 'Extra Line'         }
+//              Prompt    { 'Extra Line' }
+//              Hint      { 'Extra Line' }
+//              Format    {  Mask { 'XXXXXXXXXXX' }  }
+//              InputFrom { 'Keyboard' }
+//            }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+  PrivBagAnnualRentFee  { Title     { 'Annual Rental Fee'      }
+                          Prompt    { 'Annual Rental Fee'      }
+                          DefaultValue { 200.00 }
+                         }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+  PrivBagAnnualRentTotalFee  {
+                          Title     { 'Annual Rental Fee' }
+                          Prompt    { 'Annual Rental Fee' }
+                          TotalIn   { TotalFee }
+                          DefaultValue { 200.00 }
+                         }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  PrivBagPurchase  { Title     { 'Private Bag Purchase Fee'   }
+                     Prompt    { 'Private Bag Purchase Fee'   }
+                     TotalIn   { TotalFee                     }
+                     DefaultValue { 250.00 }
+                    }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  ElecBillAccountNo { Title     { 'Electricity Bill Account Number' }
+                      Prompt    { 'Electricity Bill Account Number' }
+                      Hint      { 'Electricity Bill Account Number' }
+                      Format    {  Mask { 'XXXXXXXXXXX' }           }
+                      InputFrom { 'Keyboard'                        }
+                     }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  ElecBillDate { Title     { 'Bill Date'                              }
+                 Prompt    { 'Bill Date'                              }
+                 Hint      { 'Enter the date of the electricity bill' }
+                 Error     { 'Invalid Date'                           }
+                 Format    { None                                     }
+                 InputFrom { 'Keyboard'                               }
+                }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  TelecomBillID { Title     { 'Telecom Account Number' }
+                  Prompt    { 'Telecom Account Number' }
+                  Hint      { 'Telecom Account Number' }
+                  Format    {  Mask { 'xxxxxxxxxxxxxxxxxxxx' }  }
+                  InputFrom { 'Keyboard'                        }
+                 }
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  TelecomBillPeriod { Title  { 'Telecom Billing Period'                        }
+                      Prompt { 'Telecom Billing Period'                        }
+                      Hint   { 'Enter the billing period for the telecom bill' }
+                      Error  { 'Invalid Period'                                }
+                      Format {  None                                           }
+                     }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  PostOffice { Title     { 'Location'       }
+               Prompt    { 'Location'       }
+               Hint      { 'Enter the Location Name' }
+               Error     { 'Invalid Location'        }
+               Format    {  PickList { 'PickList.BWPostOffices' } }
+              }
+
+  BankList  {
+    Title         { 'Bank'       }
+    Prompt        { 'Bank'       }
+    Hint          { 'Select the Bank' }
+    Error         { 'Invalid Bank'        }
+    Format        {  PickList { 'PickList.BWBanks' } }
+    DefaultValue  { 'Barclay''s Bank' }
+  }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  FrankMachineLicenceNo { Title     { 'Franking Machine Licence No'      }
+                          Prompt    { 'Licence No'                       }
+                          Hint      { 'Enter the customer''s Licence No' }
+                          Error     { 'Invalid Licence No'               }
+                          Format    {  Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' } }
+                          InputFrom { 'Keyboard'                         }
+                         }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  CustomerName { Title     { 'Customer Name'             }
+                 Prompt    { 'Customer Name'             }
+                 Hint      { 'Enter the customers name'  }
+                 Error     { 'Invalid Name'              }
+                 Format    {  Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' } }
+                 InputFrom { 'Keyboard'                  }
+                }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  PayeeName { Title     { 'Payee Name'             }
+              Prompt    { 'Payee Name'             }
+              Hint      { 'Enter the Payee name'  }
+              Error     { 'Invalid Name'              }
+              Format    {  Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' } }
+              InputFrom { 'Keyboard'                  }
+            }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  EmployeeName { Title     { 'Employee Name'             }
+                 Prompt    { 'Employee Name'             }
+                 Hint      { 'Enter the Employee name'  }
+                 Error     { 'Invalid Name'              }
+                 Format    {  Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' } }
+                 InputFrom { 'Keyboard'                  }
+               }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  AddresseeName { Title     { 'Recipient Name' }
+                  Prompt    { 'Recipient Name' }
+                  Hint      { 'Enter the customers name'  }
+                  Error     { 'Invalid Name'              }
+                  Format    {  Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' } }
+                  InputFrom { 'Keyboard'                  }
+                }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  CustomerAddress { Title     { 'Customer Address'                                             }
+                    Prompt    { 'Customer Address'                                             }
+                    Hint      { 'Enter the customers Address'                                  }
+                    Error     { 'Invalid Address'                                              }
+                    Format    {  None }
+                    InputFrom { 'Keyboard'                                                     }
+                   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  CustomerTelNo { Title     { 'Customer Telephone Number'            }
+                  Prompt    { 'Customer Telephone Number'            }
+                  Hint      { 'Enter the customers telephone number' }
+                  Error     { 'Invalid Telephone Number'             }
+                  Format    {
+                    //None
+                    Mask { 'xxxxxxxxxxxxxxxxxxxxx' }
+                  }
+                  InputFrom { 'Keyboard'                             }
+                 }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  CustomerPostOffice { Title     { 'Customer Post Office'                 }
+//                       Prompt    { 'Customer Post Office'                 }
+//                       Hint      { 'Enter the customers Post Office'      }
+//                       Error     { 'Invalid Post Office'                  }
+//                       Format    {  PickList { 'PickList.BWPostOffices' } }
+//                      }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  DomRecipientName { Title     { 'Recipient Name'              }
+                     Prompt    { 'Recipient Name'              }
+                     Hint      { 'Enter the Recipients name'   }
+                     Error     { 'Invalid Name'                }
+                     Format    {  None                         }
+                     InputFrom { 'Keyboard'                    }
+                    }
+//
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  DomRecipientAddress { Title     { 'Recipient Address'            }
+                        Prompt    { 'Recipient Address'            }
+                        Hint      { 'Enter the Recipients Address' }
+                        Error     { 'Invalid Address'              }
+                        Format    {  None                          }
+                        InputFrom { 'Keyboard'                     }
+                       }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  DomRecipientTelNo { Title     { 'Recipient Telephone Number'            }
+//                      Prompt    { 'Recipient Telephone Number'            }
+//                      Hint      { 'Enter the Recipients telephone number' }
+//                      Error     { 'Invalid Telephone Number'              }
+//                      Format    {  None }
+//                      InputFrom { 'Keyboard'                              }
+//                     }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  DomRecipientPostOffice { Title     { 'Recipient Post Office'            }
+//                           Prompt    { 'Recipient Post Office'            }
+//                           Hint      { 'Enter the Recipients Post Office' }
+//                           Error     { 'Invalid Post Office'              }
+//                           Format    {  PickList { 'PickList.BWPostOffices' } }
+//                          }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  IntRecipientName { Title     { 'Recipient Name'                                               }
+                     Prompt    { 'Recipient Name'                                               }
+                     Hint      { 'Enter the Recipients name'                                    }
+                     Error     { 'Invalid Name'                                                 }
+                     Format    {  None }
+                     InputFrom { 'Keyboard'                                                     }
+                    }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  IntRecipientAddress { Title     { 'Recipient Address'                                            }
+                        Prompt    { 'Recipient Address'                                            }
+                        Hint      { 'Enter the Recipients Address'                                 }
+                        Error     { 'Invalid Address'                                              }
+                        Format    {  None }
+                        InputFrom { 'Keyboard'                                                     }
+                       }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  IntRecipientAddress2 { Title     { 'Recipient Address'                                            }
+//                         Prompt    { 'Recipient Address'                                            }
+//                         Hint      { 'Enter the Recipients Address'                                 }
+//                         Error     { 'Invalid Address'                                              }
+//                         Format    {  None }
+//                         InputFrom { 'Keyboard'                                                     }
+//                        }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  IntRecipientTelNo { Title     { 'Recipient Telephone Number'            }
+//                      Prompt    { 'Recipient Telephone Number'            }
+//                      Hint      { 'Enter the Recipients telephone number' }
+//                      Error     { 'Invalid Telephone Number'              }
+//                      Format    {  None }
+//                      InputFrom { 'Keyboard'                              }
+//                     }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+//  PaymentDueDate { Title     { 'Date Payment Due'                  }
+//                   Prompt    { 'Payment Due Date'                  }
+//                   Hint      { 'Enter the date the payment is due' }
+//                   Error     { 'Invalid Date'                      }
+//                   Format    { Date                                }
+//                   InputFrom { 'Keyboard'                          }
+//                  }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  StampsList { Prompt { 'Enter Desired Quantity'                }
+               Error  { 'Invalid Quantity - Insufficient Stock' }
+               Title  { 'Stamps Available From Stock'           }
+               Format {  List { 'Stamps' }                      }
+              }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  BWCourierList {
+     Prompt { 'Enter Desired Quantity'                }
+     Error  { 'Invalid Quantity - Insufficient Stock' }
+     Title  { 'Retail Items Available From Stock'     }
+     Format {
+        List { '*BWCourier' }
+     }
+  }
+  MerchandiseList {
+     Prompt { 'Enter Desired Quantity'                }
+     Error  { 'Invalid Quantity - Insufficient Stock' }
+     Title  { 'Retail Items Available From Stock'     }
+     Format {
+        List { '*Merchandise' }
+     }
+  }
+  RetailOtherList {
+     Prompt { 'Enter Desired Quantity'                }
+     Error  { 'Invalid Quantity - Insufficient Stock' }
+     Title  { 'Retail Items Available From Stock'     }
+     Format {
+        List { '*Retail' }
+     }
+  }
+
+  VendorRetailList {
+     Prompt { 'Enter Desired Quantity'                }
+     Error  { 'Invalid Quantity - Insufficient Stock' }
+     Title  { 'Retail Items Available From Stock'     }
+     Format {
+        List { 'Stamps,*CStamp' }
+     }
+  }
+
+  DStampsList { Prompt { 'Enter Desired Quantity'                }
+               Error  { 'Invalid Quantity - Insufficient Stock' }
+               Title  { 'Definitive Stamps Available From Stock'     }
+               Format {  List { '*DStamp' }                      }
+              }
+  CStampsList { Prompt { 'Enter Desired Quantity'                }
+               Error  { 'Invalid Quantity - Insufficient Stock' }
+               Title  { 'Commemorative Stamps Available From Stock'     }
+               Format {  List { '*CStamp' }                      }
+              }
+  FDList       { Prompt { 'Enter Desired Quantity'                }
+               Error  { 'Invalid Quantity - Insufficient Stock' }
+               Title  { 'First Day Covers Available From Stock'     }
+               Format {  List { '*FDCover' }                      }
+              }
+  SSList       { Prompt { 'Enter Desired Quantity'                }
+               Error  { 'Invalid Quantity - Insufficient Stock' }
+               Title  { 'Souvenir Sheets Available From Stock'     }
+               Format {  List { '*SouvSheet' }                      }
+              }
+  YPList       { Prompt { 'Enter Desired Quantity'                }
+               Error  { 'Invalid Quantity - Insufficient Stock' }
+               Title  { 'Philatelic Year Packs Available From Stock'     }
+               Format {  List { '*YearPack' }                      }
+              }
+  AlbumList    { Prompt { 'Enter Desired Quantity'                }
+               Error  { 'Invalid Quantity - Insufficient Stock' }
+               Title  { 'Philatelic Albums Available From Stock'     }
+               Format {  List { '*Album' }                      }
+              }
+  PhilOther    { Prompt { 'Enter Desired Quantity'                }
+               Error  { 'Invalid Quantity - Insufficient Stock' }
+               Title  { 'Other Philatelic Items Available From Stock'     }
+               Format {  List { '*PhilOther' }                      }
+              }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   PostalOrderValue{
+      Title  { 'Postal Order' }
+      Prompt { 'Postal Order' }
+      Hint   { 'Select a Postal Order for the list' }
+      //Error  { 'Enter a Valid Value' }
+      Format {
+         PickList  { 'PickList.PostalOrderValues' }
+      }
+      //InputFrom {
+      //   'Keyboard'
+      //}
+   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   POValue {
+      Title  { 'Postal Order Value' }
+      Prompt { ' Postal Order Value' }
+      TotalIn { TotalFee }
+   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   POValueInput {
+      Title  { 'Postal Order Value' }
+      Prompt { ' Postal Order Value' }
+//      Format    { Range { 0,9999999 } }
+        Format    { Currency { 0,9999999999 }      }
+       InputFrom { 'Keyboard' }
+   }
+
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   ReceiptNumber{
+      Title  { 'Receipt Number' }
+      Prompt { 'Receipt Number' }
+      Hint   { 'Enter the Receipt Number' }
+      Error  { 'Enter a Valid Receipt Number' }
+      Format {
+         Range { '0, 9999999' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   FinalBalance{
+      Title  { 'Final Balance' }
+      Prompt { 'Final Balance' }
+   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  FullParticulars {
+    Title     { 'Full Particulars and Address' }
+    Prompt    { 'Full Particulars' }
+    Hint      { 'Enter the Full Particulars and Address' }
+    Error     { 'Invalid Full Particulars' }
+    Format    { None }
+    InputFrom { 'Keyboard' }
+  }
+
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+  FinalInputBalance {
+    Title     { 'Final Balance' }
+    Prompt    { 'Final Balance' }
+    Hint      { 'Final Balance' }
+    Error     { 'Invalid Final Balance' }
+    Format    { Currency { 0,999999999 } }
+  }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+DescriptionOfPayment
+  {
+      Title  { 'Description Of Payment' }
+      Prompt { 'Description Of Payment' }
+      Hint   { 'Enter Description Of Payment' }
+      Error  { 'Enter a Valid Description Of Payment' }
+      Format {
+         Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }
+      }
+
+  }
+
+AmountPaidTotal { Title     { 'Amount Paid'           }
+               Prompt    { 'Amount Paid'           }
+               Hint      { 'Enter the Amount Paid' }
+               Error     { 'Invalid Amount Paid'   }
+               Format    { Currency { '0,999999' } }
+               InputFrom { 'Keyboard'              }
+               TotalIn   { TotalFee                }
+              }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   TotalToPay {
+      Title { 'Total to Pay' }
+      Prompt { 'Total to Pay' }
+      Hint { 'Enter the Total to Pay' }
+      Error { 'Invalid Total to Pay' }
+   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+ ChequeNumber { Title    { 'Cheque Number'           }
+               Prompt    { 'Cheque Number'           }
+               Hint      { 'Enter the Cheque Number' }
+               Error     { 'Invalid Cheque Number'   }
+               Format    {  Mask { '9999999999' }    }
+               InputFrom { 'Keyboard'                }
+              }
+//
+//-------------------------------------------------------------------------------------------
+//
+
+ StaffChequeNumber { Title     { 'Cheque Number'                                      }
+                     Prompt    { 'Cheque Number'                                      }
+                     Hint      { 'Enter the Cheque Number'                            }
+                     Error     { 'Invalid Cheque Number'                              }
+                     Format    {  Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' } }
+                     InputFrom { 'Keyboard'                                           }
+                    }
+//
+//-------------------------------------------------------------------------------------------
+//
+
+ CouponValue { Title     { 'Reply Coupon Value'           }
+               Prompt    { 'Reply Coupon Value'           }
+               Hint      { 'Enter the Reply Coupon Value' }
+               Error     { 'Invalid Reply Coupon Value'   }
+               Format    {  Currency { '0,999999' }       }
+               InputFrom { 'Keyboard'                     }
+              }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   MOOptionalServiceFee {
+      Title     { 'Optional Service Fee' }
+      Prompt    { 'Optional Service Fee' }
+      InputFrom { Params }
+      TotalIn   { TotalFee }
+   }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+   StartDomainEdit{
+      Title  { 'Start Date' }
+      Prompt { 'Start Date' }
+      Hint   { 'Enter required start date' }
+      Error  { 'Enter required start date' }
+      DefaultValue {'Now' }
+
+      Format {
+         Date
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   EndDomainEdit{
+      Title  { 'End Date' }
+      Prompt { 'End Date' }
+      Hint   { 'Enter required end date' }
+      Error  { 'Enter required end date' }
+      DefaultValue {'Now' }
+      Format {
+         Date
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+ CustomerIdentification { Title     { 'Customer Identification'                         }
+                          Prompt    { 'Enter Details of Identification Used'            }
+                          Hint      { 'Enter Details of Identification Used^e.g PASSPORT No. or ID CARD details' }
+                          Error     { 'Invalid Identification '                         }
+                          Format    { Mask {'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'} }
+                          InputFrom { 'Keyboard'                                        }
+                        }
+
+ PayeeIdentification { Title     { 'Payee Identification'                         }
+                       Prompt    { 'Enter Details of Identification Used'            }
+                       Hint      { 'Enter Details of Identification Used^e.g PASSPORT No. or ID CARD details' }
+                       Error     { 'Invalid Identification '                         }
+                       Format    { Mask {'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'} }
+                       InputFrom { 'Keyboard'                                        }
+                     }
+
+   CustID_Number    {
+            Title  { 'Omang Number' }
+            Prompt { 'Omang Number' }
+            Hint   { 'Enter Omang' }
+            Error  { 'Enter a Valid Omang Number' }
+            Format {
+              Mask { '999999999' }
+            }
+            InputFrom {
+                'Keyboard'
+            }
+    }
+
+////------
+//
+ RegisterPOOCFee {
+      Title  { 'Register Fee' }
+      Prompt { 'Register Fee' }
+      Hint   { 'Register Fee' }
+      Error  { 'Enter Register Fee' }
+      InputFrom { none } // Params }
+      DefaultValue { '2.55' }
+      //TotalIn   { TotalFee }
+      //TotalIn   { StampFee }
+   }
+
+ //ExpressPOOCFee {
+ //     Title  { 'Express Number' }
+ //     Prompt { 'Express Number' }
+ //     InputFrom { Params }
+
+ //     TotalIn   { TotalFee }
+ //   }
+
+ InsufficentPstFee {
+      Title  { 'Insufficient Postage Fee' }
+      Prompt { 'Insufficient Postage Fee' }
+      Hint   { 'Insufficient Postage Fee' }
+      Error  { 'Error Insufficient Postage Fee' }
+      Format  { Currency { '0,9999999' } }
+      InputFrom { 'Keyboard' }
+      //TotalIn   { TotalFee }
+      //TotalIn   { StampFee }
+
+    }
+
+  CustomsHandChargeFee
+  {
+      Title  { 'Customs Handling Charge' }
+      Prompt { 'Customs Handling Charge' }
+      Hint   { 'Customs Handling Charge' }
+      Error  { 'Error - Customs Handling Charge' }
+      InputFrom { None } // Params }
+      DefaultValue { '1.95' }
+   }
+
+  CustomsDutyFee
+  {
+      Title  { 'Customs Duty Fee' }
+      Prompt { 'Customs Duty Fee' }
+      Hint   { 'Customs Duty Fee' }
+      Error  { 'Error Customs Duty Fee' }
+      Format  { Currency { '0,9999999' } }
+      InputFrom { 'Keyboard' }
+   }
+
+  DemurrageOnParcelFee
+  {
+      Title  { 'Demurrage Fee' }
+      Prompt { 'Demurrage Fee' }
+   }
+
+   CODHandChargeFee
+   {
+      Title  { 'COD Handling Fee' }
+      Prompt { 'COD Handling Fee' }
+      Hint   { 'COD Handling Fee' }
+      Error  { 'Error COD Handling Fee' }
+      InputFrom { None } //Params }
+      DefaultValue { '5.50' }
+      //TotalIn   { TotalFee }
+      //TotalIn   { CashFee }
+   }
+
+   CODTradeChargeFee
+   {
+      Title  { 'COD Trade Charge' }
+      Prompt { 'COD Trade Charge' }
+      Hint   { 'COD Trade Charge' }
+      Error  { 'Error COD Trade Charge' }
+      Format  { Currency { '0,9999999' } }
+      InputFrom { 'Keyboard' }
+      //TotalIn   { TotalFee }
+      //TotalIn   { CashFee }
+   }
+
+  PaymentPeriod {
+        Title  { 'Payment Period' }
+        Prompt { 'Payment Period' }
+        Hint   { 'Enter Payment Period' }
+        Error  { 'Enter a Valid Payment Period' }
+        Format {
+           Mask {'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'}
+        }
+      InputFrom { 'Keyboard' }
+  }
+
+  PayrollNumber {
+       Title  { 'Payroll Number' }
+       Prompt { 'Payroll Number' }
+       Hint   { 'Enter Payroll Number' }
+       Error  { 'Enter a Valid Payroll Number' }
+       Format { Range { '0,999999999' }
+       }
+  }
+
+ EmployeeNumber { Title     { 'Employee Number'                        }
+                  Prompt    { 'Employee Number'                        }
+                  Hint      { 'Enter Employee Number'                  }
+                  Error     { 'Enter a Valid Employee Number'          }
+                  Format    {  Mask {'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'} }
+                  InputFrom { 'Keyboard'                               }
+                 }
+
+//
+//-------------------------------------------------------------------------------------------
+//
+
+ BSBLostBookFee { Title        { 'BSB Lost Book Fee' }
+                  Prompt       { 'BSB Lost Book Fee' }
+                  TotalIn      { TotalFee            }
+                  DefaultValue { '5.00'              }
+//                      InputFrom { Attrib { UnitPrice }  }
+                   }
+
+
+}

@@ -1,0 +1,14 @@
+package base
+{
+	import mx.preloaders.DownloadProgressBar;
+
+	public class PreLoadBar extends DownloadProgressBar
+	{
+		public function PreLoadBar()
+		{
+			//TODO: implement function
+			super();
+		}
+		
+	}
+}

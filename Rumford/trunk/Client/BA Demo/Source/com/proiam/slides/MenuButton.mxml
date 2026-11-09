@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="156" height="103" xmlns:filters="flash.filters.*"
+    borderColor="{foretone}"
+    borderThickness="5" cornerRadius="10"
+    backgroundColor="{backtone}"
+	horizontalScrollPolicy="off" verticalScrollPolicy="off"  borderStyle="solid"> 
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public var iconSource:Object=null;
+			[Bindable]
+			public var title:String="";
+			[Bindable]
+			public var caption:String="";
+			[Bindable]
+			public var backtone:uint=0xDDBAAE;
+			[Bindable]
+			public var foretone:uint=0x8DBAAE;
+			private function calcMidtone():uint {
+				return backtone-0x080808;
+				var r1:uint=((backtone && 0x00FF0000) >> 16);
+				var g1:uint=((backtone && 0x0000FF00) >> 8);
+				var b1:uint=((backtone && 0x000000FF) );
+				var r2:uint=((foretone && 0x00FF0000) >> 16);
+				var g2:uint=((foretone && 0x0000FF00) >> 8);
+				var b2:uint=((foretone && 0x000000FF) );
+				var red:int=(r1-r2)>>1;
+				var grn:int=(g1-g2)>>1;
+				var blu:int=(b1-b2)>>1;
+				return (foretone+((red<<16)||(grn<<8)||blu));
+			}
+		]]>
+	</mx:Script>
+	<mx:Canvas x="0" y="36" width="145" height="56" backgroundColor="{calcMidtone()}">
+	</mx:Canvas>
+	<mx:Image source="{iconSource}" left="6" top="1" width="41" height="35" scaleContent="true" alpha="0.75"/>
+	<mx:Text text="{title}" left="46" top="-2" fontSize="13" width="94" fontFamily="Tahoma" textAlign="center" color="#000000" height="38" fontWeight="bold" fontSharpness="0" fontThickness="0"/>
+	<mx:Text text="{caption}" top="36" textAlign="left" width="137" left="5" fontFamily="Tahoma" fontWeight="bold" height="57" fontSize="11" color="{foretone-0x202020}"/>	
+	<mx:filters>
+		<filters:DropShadowFilter angle="45" alpha=".1" distance="4" blurX="0" blurY="0"/>
+	</mx:filters>
+</mx:Canvas>

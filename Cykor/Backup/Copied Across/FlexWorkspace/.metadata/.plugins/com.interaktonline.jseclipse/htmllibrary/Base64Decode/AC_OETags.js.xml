@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="1.5.0" prefix="AC_OETags.js" extends="" parent="" >
+	<file path="C:/FlexWorkspace/Base64Decode/bin-debug/Base64Decode.html" creation="2">
+		<item repl="Base64Decode" display="Base64Decode [object]" chrno="3581" />
+	</file>
+	<file path="C:/FlexWorkspace/Base64Decode/html-template/index.template.html" creation="2">
+		<item repl="${application}" display="${application} [object]" chrno="3662" />
+	</file>
+</completion>

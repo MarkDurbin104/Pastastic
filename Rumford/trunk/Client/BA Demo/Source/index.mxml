@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:base="com.proiam.base.*"
+	xmlns:cs="com.cykorsystems.utils.*"
+	layout="absolute" backgroundGradientColors="[#ECF5E7, #ECF5E7]"
+	backgroundColor="#ECF5E7"
+	pageTitle="Proiam - VU.iT Demonstration"	
+	initialize="onInitialize(event)" 
+	creationComplete="onCreationComplete(event)"  
+	resize="onResize(event)"  
+	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off" xmlns:text="flash.text.*" xmlns:slides="com.proiam.slides.*" fontFamily="embTahoma">
+	<mx:Style source="resources/fontstyles.css"/>
+	
+ 	<mx:Script>
+		<![CDATA[
+	        public const mailsResources:String="resources/USPS";
+		
+			import com.proiam.comms.PhoneHome;
+			import com.proiam.mails.ItemData;
+			import com.proiam.comms.ServiceInterface;
+			import mx.utils.StringUtil;
+			import com.cykorsystems.utils.*;
+		    import flash.events.TimerEvent;
+		    import flash.events.MouseEvent;
+    		import flash.utils.Timer;
+			import com.proiam.slides.MailScreen;
+			 
+			[Bindable]
+			public var versionNumber:String="0.0.19.11.8.1";
+
+	    	[Embed(source='C:/WINDOWS/Fonts/tahoma.ttf'		,fontName='embTahoma'			,fontWeight='normal'	,mimeType='application/x-font')]
+			private var embTahomaFont:Class;
+// 		WHEN BUILT ON VISTA USE THIS LINE
+	    	[Embed(source='C:/WINDOWS/Fonts/tahomabd.ttf'	,fontName='embTahomaBold'	,fontWeight='normal'		,mimeType='application/x-font')]
+// 		WHEN BUILT ON XP USE THIS LINE
+//	    	[Embed(source='../../../WINDOWS/Fonts/tahomabd.ttf'	,fontName='embTahomaBold'	,fontWeight='bold'		,mimeType='application/x-font')]
+			private var embTahomaBoldFont:Class;
+			
+			
+			public var itemData:ItemData= null;
+			public var itemList:Array=new Array;  // list of dummy items in "scan.lst"
+			public var currentItem:int=1;
+			public var service:String="*****";   // TODO
+			public var editingObject:Object;     // points at the current object being edited
+			private var serviceInterface:ServiceInterface;
+			private var invalidAddressData:Boolean=false;
+			private var selectedServices:Array=null;  // secondary services selctions (Insurance, etc)
+			private var confTimer:Timer; // timeout for data collection animation
+			private var waitingForData:Boolean=false;
+			private var phoneHome:PhoneHome;  // sends a ready command to the service on port 8000
+				
+			
+			private function startServiceInterface(event:Event):void {
+				serviceInterface=new ServiceInterface;
+				serviceInterface.addEventListener("dataAvailable",VUiTDataArrived);
+				currentItem--;
+				nextItem(event);
+				phoneHome=new PhoneHome();
+			}
+			private var VUiTData:Array=new Array();    // data from the device
+			private var processingData:Boolean=false;  // currently processing some device data
+			private function nowProcess():void {
+				if (!processingData) 
+					processVUitData();
+				else
+					callLater(nowProcess);  // wait for one frame
+			}
+			private function VUiTDataArrived(event:Event):void {
+				VUiTData.push(serviceInterface.itemXML);
+				nowProcess();
+			}
+			private function hideStatus(event:TimerEvent):void {
+				waitingForData=false;
+				confScreen.itemDataView.currentState=null; 
+				confTimer=null;
+				status.visible=false;
+				populateConfirmationScreen();
+			}
+			
+			// called if not currently processing data from "nowProcess"
+			public function processVUitData():void {  
+				processingData=true;
+				var localVUiTData:Array= new Array();
+				try {
+					var itemCount:int=VUiTData.length;
+					for (var i:int=0;i<itemCount;i++) 
+						localVUiTData.push(VUiTData.shift());
+
+					for each (var itemXML:XML in localVUiTData) {
+
+						for each(var vuitStatus:XML in itemXML.Machine.vuitStatus) {
+							if (waitingForData) {
+		 						status.text=vuitStatus.toString();
+		 						status.visible=true;
+		 					}
+	 					}
+ 					
+ 						if (itemXML.Machine.hasOwnProperty("vuitResult")) {
+							for each(var vuitResult:XML in itemXML.Machine.vuitResult) {
+								var state:int=0;
+								var receivedData:ItemData;
+								try { 
+								    // merge the XML with what has been recieved so far
+									receivedData= new ItemData(new XML(vuitResult),false,serviceInterface.machineIP);
+									if (receivedData.status == 'OK 1/3') {
+										confScreen.itemDataView.lastImageFile="";
+										itemData = receivedData;
+										if (confTimer != null) confTimer.stop();
+										confTimer=new Timer(25000,1);
+										confTimer.addEventListener(TimerEvent.TIMER_COMPLETE,hideStatus);
+										confTimer.start(); 
+										state=1; 
+									} else if (receivedData.status == 'OK 2/3') {
+										itemData.mergeIn(receivedData,true);
+										state=2; 
+									} else if (receivedData.status == 'OK 3/3') {
+										itemData.mergeIn(receivedData,false);
+										waitingForData=false;
+										state=0; 
+										status.visible=false; 
+										if (confTimer != null) confTimer.stop();
+										confTimer=null;
+									} else {
+										waitingForData=false;
+										state=0; 
+										status.visible=false; 
+										if (confTimer != null) confTimer.stop();
+										confTimer=null;
+										itemData = receivedData;
+									}
+								} catch (error:Error) {
+									itemData = new ItemData();
+									itemData.status=error.message;
+								}
+								receivedData=null;
+							} 
+							if ((receivedData!=null)&&(receivedData.itemType=="Invoice")) {  // itemType is not defined for a mail item
+								//populateConfirmationScreen();
+								pageStack.reset();
+				 				logo.width=148+(shrunkenHeads.numChildren-1)*90;
+								pageStack.selectedIndex=4;
+							} else {
+								populateConfirmationScreen();
+								switch (state) {   // change visual states within ItemDataView.mxml
+									case 1 : confScreen.itemDataView.currentState="Wait State 2"; break;
+									case 2 : confScreen.itemDataView.currentState="Wait State 3"; break; 
+									default : confScreen.itemDataView.currentState=null; 
+								}
+								pageStack.reset();  // setup screen for mail item
+				 				logo.width=148+(shrunkenHeads.numChildren-1)*90;
+								pageStack.selectedIndex=1;
+							}
+							// turn off main screen elements
+							backbar.visible=true;
+							logo.visible=true;
+							copyrightLogo.visible=true;
+							version.visible=false;
+							scaleToggle.visible=false;
+				        	pageStack.zoomSpeed=10;
+							setupTimer();
+ 						}
+					}
+				} catch (error:Error) {
+					trace("Error processing data:"+error.message);	
+				}
+				processingData=false;
+				localVUiTData=null;
+			}
+			private function stopServiceInterface(event:Event):void {
+				serviceInterface.close();
+			}
+			private function sendReadyForData(event:Event):void {
+				serviceInterface.ReadyForData();
+			}
+			
+            // populates an ItemData object with the details held in the XML from event.target.data string
+			private function addressDataEvent(event:Event):void {
+				if (itemData != null) itemData=null;
+				try {
+					itemData = new ItemData(new XML(event.target.data));
+				} catch (error:Error) {
+					itemData = new ItemData();
+					itemData.status=error.message;
+				}
+				if (itemData.itemType=="Invoice") {
+					if (pageStack.selectedIndex == 1) {
+						pageStack.selectedIndex=4;
+					}
+					populateInvoiceScreen();
+				} else {  // it is a mail item
+					if (pageStack.selectedIndex == 4) {
+						pageStack.selectedIndex=1;
+					}
+					populateConfirmationScreen();
+				}
+			}
+			
+			// fill data for invoice item
+			public function populateInvoiceScreen():void {
+				billPayment.SetItemData(itemData);			
+			}
+			
+			// fill data for a mail item
+			public function populateConfirmationScreen():void {
+				invalidAddressData=false;
+				var localAddress:String=Configuration.localAddress.slice(0,5);
+				confScreen.itemDataView.validDestAddress=true;
+				confScreen.itemDataView.validOriginAddress=true;
+				if (itemData.destination.country == "USA") { //Domestic
+					var remoteAddress:String=StringUtil.trim(itemData.destination.zip).slice(0,5);
+					if ((mailsAdmin.mailServices != null) && (mailsAdmin.mailServices.loaded)) {
+						service=mailsAdmin.mailServices.lookupServiceLevels(int(localAddress),int(remoteAddress));
+						localAddress=mailsAdmin.mailServices.lookUpCity(localAddress);
+						remoteAddress=mailsAdmin.mailServices.lookUpCity(remoteAddress);
+						confScreen.itemDataView.destination=remoteAddress;
+						var zone:String=service.substr(3,1);
+						var BMC:String=(service.substr(4,1) == "1")?"Yes":"No"; // bulk mailing centre
+						var destCS:String=itemData.destination.city+','+itemData.destination.state;
+						selectedServices=itemData.addedServices;
+						if (itemData.origin.city !="") {
+							// if return address exists
+							var sourceCS:String=itemData.origin.city+itemData.origin.state;
+							var sourceAddress:String=mailsAdmin.mailServices.lookUpCity(itemData.origin.zip.slice(0,5));
+							confScreen.itemDataView.tariffData=localAddress+"\n"+remoteAddress+"\n"+zone+"\n"+BMC+"\n"+sourceAddress;
+							confScreen.itemDataView.validDestAddress=Utils.alphaCompare(destCS,remoteAddress);
+							invalidAddressData=confScreen.itemDataView.SetItemData(itemData);
+						} else {
+							// populate tarrif data
+							confScreen.itemDataView.tariffData=localAddress+"\n"+remoteAddress+"\n"+zone+"\n"+BMC+"\n";
+							confScreen.itemDataView.validDestAddress=Utils.alphaCompare(destCS,remoteAddress);
+							invalidAddressData=confScreen.itemDataView.SetItemData(itemData);
+						}
+					} else {						    
+							confScreen.itemDataView.tariffData=localAddress+"\n"+remoteAddress+"\n\n\n";
+							invalidAddressData=confScreen.itemDataView.SetItemData(itemData);
+					}
+				} else { // International
+					remoteAddress=itemData.destination.country;
+					confScreen.itemDataView.destination=remoteAddress;
+					if ((mailsAdmin.mailServices != null) && (mailsAdmin.mailServices.loaded)) {
+						localAddress=mailsAdmin.mailServices.lookUpCity(localAddress);
+						zone=mailsAdmin.mailServices.lookupCountry(remoteAddress);
+						service=zone+zone+zone+zone+zone;//mailsAdmin.mailServices.lookupServiceLevels(int(localAddress),int(remoteAddress));
+						BMC="N/A - International";
+						destCS=itemData.destination.city+','+itemData.destination.state;
+						selectedServices=itemData.addedServices;
+						if (itemData.origin.city !="") {
+							sourceCS=itemData.origin.city+itemData.origin.state;
+							sourceAddress=mailsAdmin.mailServices.lookUpCity(itemData.origin.zip.slice(0,5));
+							confScreen.itemDataView.tariffData=localAddress+"\n"+remoteAddress+"\n"+zone+"\n"+BMC+"\n"+sourceAddress;
+							confScreen.itemDataView.validOriginAddress=Utils.alphaCompare(sourceCS,sourceAddress);
+							invalidAddressData=confScreen.itemDataView.SetItemData(itemData);
+						} else {
+							confScreen.itemDataView.tariffData=localAddress+"\n"+remoteAddress+"\n"+zone+"\n"+BMC+"\n";
+							invalidAddressData=confScreen.itemDataView.SetItemData(itemData);
+						}
+					} else {
+							confScreen.itemDataView.tariffData=localAddress+"\n"+remoteAddress+"\n\n\n";
+							invalidAddressData=confScreen.itemDataView.SetItemData(itemData);
+					}
+					
+				}
+				mailScreen.secServiceCanvas.itemInfo.text=	itemData.dimensions.itemType(itemData.weight.weightInOunces)+
+																" - Weight: "+itemData.weight.lbOzString+
+																"   Size: "+itemData.dimensions.inchesString()+
+																"   To: "+remoteAddress;
+				invalidAddressData=true; // force stop on confirmation screen
+			}
+			// fill array from file 1 element per line
+			private function itemListLoaded(event:Event):void {
+				var fileContent:String=event.target.data;
+				itemList= StringUtil.trim(fileContent).split("\r\n");				
+				if (itemList.length>0) {
+					var itemLoader:CachedURLLoader = new CachedURLLoader(); 
+					itemLoader.addEventListener(Event.COMPLETE,addressDataEvent);
+					itemLoader.load(new URLRequest("data/"+itemList[currentItem]));				
+				}
+			}
+			private function nextItem(eventevent:Event):void {
+				if (itemList.length>0) { 
+					currentItem=(currentItem+1)%itemList.length;
+					var itemLoader:CachedURLLoader = new CachedURLLoader(); 
+					itemLoader.addEventListener(Event.COMPLETE,addressDataEvent);
+					itemLoader.load(new URLRequest("data/"+itemList[currentItem]));				
+				}
+			}
+			private function onInitialize(event:Event):void {
+				scaleRegion.scaleX=width/1024;
+				scaleRegion.scaleY=height/768;
+				pageStack.scaleX=1;
+			}
+			private function onCreationComplete(event:Event):void {
+				backbar.visible=false;
+				logo.visible=false;
+				copyrightLogo.visible=false;
+				version.visible=true;
+				scaleToggle.visible=true;
+				pageStack.shrinkBar=shrunkenHeads;
+				var itemLoader:CachedURLLoader= new CachedURLLoader(); 
+				itemLoader.addEventListener(Event.COMPLETE,itemListLoaded);
+				itemLoader.load(new URLRequest("data/Scan.lst"));				
+				mailScreen.addEventListener("ShrinkMe",shrinkMailScreen);
+				mailScreen.addEventListener("showShoppingBasket",addItemAndShowShoppingBasket);
+				billPayment.addEventListener("showShoppingBasket",addBillAndShowShoppingBasket);
+				mailScreen.addEventListener("PopItem",prevScreen);
+				pageStack.addEventListener("PoppedItem",popMailScreen);
+				onResize(event);
+				callLater(checkProgress);
+			}
+			private function addItemAndShowShoppingBasket(event:Event):void {
+				mailScreen.receiptItem.itemData=itemData;
+				mailScreen.receiptItem.tariffData=confScreen.itemDataView.tariffData;
+				mailScreen.receiptItem.validDestAddress=confScreen.itemDataView.validDestAddress;
+				mailScreen.receiptItem.validOriginAddress=confScreen.itemDataView.validOriginAddress;
+				mailScreen.receiptItem.itemImageSource=confScreen.itemDataView.itemImage.source;
+				mailScreen.receiptItem.destination="To: "+confScreen.itemDataView.destination
+				shoppingBasket.addReceiptItem(mailScreen.receiptItem);
+				pageStack.reset();
+ 				logo.width=148+(shrunkenHeads.numChildren-1)*90;
+				pageStack.selectedIndex=5;
+			}
+			private function addBillAndShowShoppingBasket(event:Event):void {
+				billPayment.receiptItem.itemData=itemData;
+				billPayment.receiptItem.itemImageSource=billPayment.itemImage.source;
+				billPayment.receiptItem.destination=billPayment.invoiceData.payee;
+				shoppingBasket.addReceiptItem(billPayment.receiptItem);
+				pageStack.reset();
+ 				logo.width=148+(shrunkenHeads.numChildren-1)*90;
+				pageStack.selectedIndex=5;
+			}
+			private function shrinkMailScreen(event:Event):void {
+				pageStack.selectPage(pageStack.selectedIndex,true);
+ 				logo.width=148+(shrunkenHeads.numChildren-1)*90;
+			}
+			// removes one shrunken head and displays the last screen
+			private function prevScreen(event:Event):void {
+				pageStack.prevScreen();
+ 				logo.width=148+(shrunkenHeads.numChildren-1)*90;
+			}
+			// acts as prevscreen except if only 1 shrunken head then remove and take back to front screen.  
+			// called when arrow clicked
+			private function prevScreenForce(event:Event):void {
+				if (shrunkenHeads.numChildren == 1) {
+					reset(null);
+					return;
+				}
+				pageStack.prevScreen();
+ 				logo.width=148+(shrunkenHeads.numChildren-1)*90;
+			}
+			// pops a shrunken head and pops the appropriate selected sec services data to re-enable services 
+			private function popMailScreen(event:Event):void {
+				mailScreen.popScreenFromStack();
+ 				logo.width=148+(shrunkenHeads.numChildren-1)*90;
+			}
+			// hides progress bars for images and tariffs when complete and starts service the interface
+			private function checkProgress():void {
+				if (mailsAdmin.mailServices.loaded) {
+					progress.imagePB.indeterminate=false;
+					progress.imagePB.label="IMAGES COMPLETE";
+					progress.imagePB.setStyle("color","#1C4C88");
+				}
+				if (tariffAdmin.loaded) {
+					progress.tariffPB.indeterminate=false;
+					progress.tariffPB.label="TARIFFS COMPLETE";
+					progress.tariffPB.setStyle("color","#1C4C88");
+				}
+				if ((!mailsAdmin.mailServices.loaded) || (!tariffAdmin.loaded)) {  
+					callLater(checkProgress);					
+				} else {
+					progress.visible=false;
+					startServiceInterface(null);
+				}
+			}
+			// called after a sucessful login or from front screen
+			private function logonClicked(event:MouseEvent):void {
+				if (Configuration.showMenu) {
+					currentState="OffSplash";
+				}
+				
+				if (event.ctrlKey) 
+					pageStack.selectedIndex=6;  // mails screen
+				else if (event.shiftKey) 
+					pageStack.selectedIndex=7;  // tariff
+				else if ((itemData!=null) && (itemData.itemType=="Invoice")) {
+					pageStack.selectedIndex=4; // bill
+				} else {
+					pageStack.selectedIndex=1; // mail item
+				}
+				backbar.visible=true; 
+				logo.visible=true;
+				copyrightLogo.visible=true;
+				version.visible=false;
+				scaleToggle.visible=false;
+			}
+			// reset screen back to front screen.  if service interface exists then set ReadyForData
+			private function reset(event:MouseEvent=null):void {
+				if (serviceInterface != null)  {
+					waitingForData=true;
+					serviceInterface.ReadyForData();
+ 					status.text="";
+ 					status.visible=true;
+				}
+				currentState=null;
+				pageStack.reset();
+				backbar.visible=false;
+				logo.visible=false;
+				copyrightLogo.visible=false;
+				version.visible=true;
+				scaleToggle.visible=true;
+				logo.width=148+(shrunkenHeads.numChildren-1)*90;
+			}
+
+            private var quickTimer:Timer;
+            // animates screen into corner
+	        public function setupTimer():void {  
+	        	quickTimer= new Timer(500, 1);
+	            quickTimer.addEventListener(TimerEvent.TIMER, onTick);
+	            //quickTimer.addEventListener(TimerEvent.TIMER_COMPLETE, onTimerComplete);
+	            quickTimer.start();
+	        }
+			public function gotoCalendar():void {
+				if ((mailsAdmin.mailServices.loaded) && (tariffAdmin.loaded)) {
+					mailScreen.SetupCalendar(itemData,service,mailsAdmin.mailServices,tariffAdmin.Lookups,true,itemData.addedServiceList);
+				} else {
+					callLater(gotoCalendar);					
+				}
+			}
+	        public function onTick(evt:TimerEvent):void 
+	        {
+	        	pageStack.zoomSpeed=750;
+	        	if (!invalidAddressData) {
+					pageStack.nextScreen();
+					if (pageStack.selectedIndex==2) {
+						gotoCalendar();
+					}
+	        	}
+				quickTimer=null;
+	        }
+	
+//	        public function onTimerComplete(evt:TimerEvent):void
+//	        {
+//	        }
+			
+			private function zoomToMails(event:MouseEvent):void {
+				logonClicked(event);
+	        	pageStack.zoomSpeed=750;
+				setupTimer();
+			}
+			private var fixedScale:Boolean=false;  // tie to 1024x768  or variable with resize
+			private function toggleFixedScale():void {
+				fixedScale=!fixedScale;
+				onResize(null)				
+			}
+			// move logo bar when page stack changes
+			private function onPageStackChange(event:Event):void {
+ 				logo.width=148+(shrunkenHeads.numChildren-1)*90;
+			}
+ 			private function onIndexChange(event:Event):void {
+			}
+ 			private function originClicked(event:Event):void {
+				if (itemData != null) {
+					editingObject=itemData.origin;
+	 				changeForm.setUpAccordion(itemData.origin.addressXML("Origin"));
+	 				changeForm.itemImage.source=confScreen.itemDataView.itemImage.source;
+	 				changeForm.itemImage.centerOnPoint(itemData.origin.inRect.left+itemData.origin.inRect.width/2,itemData.origin.inRect.top+itemData.origin.inRect.height/2);
+				}
+				pageStack.selectPage(3);
+			}
+ 			private function destinationClicked(event:Event):void {
+				if (itemData != null) {
+					editingObject=itemData.destination;
+	 				changeForm.setUpAccordion(itemData.destination.addressXML("Destination"));
+	 				changeForm.itemImage.source=confScreen.itemDataView.itemImage.source;
+	 				changeForm.itemImage.centerOnPoint(itemData.destination.inRect.left+itemData.destination.inRect.width/2,itemData.destination.inRect.top+itemData.destination.inRect.height/2);
+				}
+				pageStack.selectPage(3);
+			}
+ 			private function contactClicked(event:Event):void {
+				if (itemData != null) {
+					editingObject=itemData;
+	 				changeForm.setUpAccordion(itemData.contactXML());
+	 				changeForm.itemImage.source=confScreen.itemDataView.itemImage.source;
+				}
+				pageStack.selectPage(3);
+			}
+			// returns to prev screen and calls postbackdata to save the new XML for the item
+ 			private function onEditComplete(event:Event):void {
+ 				if (editingObject !=null) {
+ 					editingObject.postBackData(changeForm.formData());
+ 					populateConfirmationScreen();
+ 					editingObject=null;
+ 				}
+				pageStack.prevScreen();
+			}
+ 			private function onEditCancel(event:Event):void {
+				pageStack.prevScreen();
+			}
+			private function onResize(event:Event):void 	{
+				if (mailScreen !=null) {
+					if (phoneHome != null) phoneHome.sendMessage(<Ready/>);
+					if (fixedScale) {
+						verticalScrollPolicy="auto";
+						horizontalScrollPolicy="auto";
+						scaleRegion.scaleX=1024/mailScreen.mailScreenWidth;
+						scaleRegion.scaleY=768/mailScreen.mailScreenHeight;
+					} else {
+						verticalScrollPolicy="off";
+						horizontalScrollPolicy="off";
+						scaleRegion.scaleX=width/mailScreen.mailScreenWidth;
+						scaleRegion.scaleY=height/mailScreen.mailScreenHeight;
+					}
+				}
+			}
+		]]> 
+	</mx:Script>
+	
+	<mx:states>
+		<mx:State name="OffSplash">
+			<mx:AddChild relativeTo="{scaleRegion}" position="lastChild">
+				<slides:SlideMenu right="0" bottom="0" id="MenuCorner" 
+					MenuVisible="currentState='MenuVisible'" 
+					MenuExpanded="currentState='MenuExpanded'"  
+					MenuIn="currentState='OffSplash'"/>
+			</mx:AddChild>
+		</mx:State>
+		<mx:State name="MenuVisible" basedOn="OffSplash">
+			<mx:SetProperty target="{canvas1}" name="scaleX" value=".9"/>
+		</mx:State>
+		<mx:State name="MenuExpanded" basedOn="OffSplash">
+			<mx:SetProperty target="{canvas1}" name="scaleX" value=".72"/>
+		</mx:State>
+	</mx:states>
+
+	<mx:transitions>
+		<mx:Transition fromState="OffSplash" toState="MenuVisible"  >
+			<mx:Parallel >
+				<mx:Zoom target="{canvas1}" originX="0" zoomWidthFrom="1" zoomWidthTo="0.9" duration="200"  />
+			</mx:Parallel>
+		</mx:Transition>
+		<mx:Transition fromState="MenuVisible" toState="MenuExpanded"  >
+				<mx:Zoom target="{canvas1}" originX="0" zoomWidthFrom="0.9" zoomWidthTo="0.72" duration="200"  />
+		</mx:Transition>
+	</mx:transitions>
+
+	<slides:AppBG id="scaleRegion" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+		<mx:Canvas verticalScrollPolicy="off" horizontalScrollPolicy="off" width="100%" height="100%"  id="canvas1">
+	 	 	<mx:Image x="0" y="0" source="@Embed('resources/graphics/backbar.png')" scaleContent="true" autoLoad="true" id="backbar"  />
+			<base:ShrinkStack id="pageStack" selectedIndex="0" width="1024" height="768" verticalScrollPolicy="off" horizontalScrollPolicy="off" creationPolicy="all"  change="onIndexChange(event);"  x="0" y="0"> 
+				<slides:Login id="loginScreen" loginClicked="logonClicked(event);" logoClicked="zoomToMails(event);" />
+				<slides:ConfirmationScreen id="confScreen" nextClicked="pageStack.selectPage(2); gotoCalendar();" originChange="originClicked(event);" destinationChange="destinationClicked(event);" contactChange="contactClicked(event);" infoClicked="nextItem(event);" />
+			 	<slides:MailScreen label="Item Assesment" id="mailScreen" creationPolicy="all" topGap="80" resourceURL="{mailsResources}"/>
+				<slides:ChangeForm id="changeForm" label="Change Origin Address Information" nextClicked="onEditComplete(event);" cancelClicked="onEditCancel(event);"/>
+				<slides:BillPayScreen id="billPayment" label="Bill Payments" infoClicked="nextItem(event);" />
+				<slides:ShoppingBasket id="shoppingBasket" />
+				<slides:MailsDisplay id="mailsAdmin" label="Available Mails Services"  resourceURL="{mailsResources}"/>
+				<slides:TariffScreen id="tariffAdmin" label="Available Tariffs" />
+			</base:ShrinkStack> 
+			<mx:Label id="status" text=""  textAlign="center" width="700" fontSize="25" top="22" color="#FFFFFF" fontWeight="bold" fontFamily="Tahoma"  horizontalCenter="0" visible="false"/>
+	 	 	<mx:Canvas id="logo" x="4" y="4" backgroundImage="@Embed(source='com/proiam/slides/embedded/BackRibbon.png',scaleGridLeft='72',scaleGridTop='34',scaleGridRight='73',scaleGridBottom='35')" backgroundSize="100%"  width="148" height="70" >
+	 	 		<mx:Canvas id="overLogo" y="2" width="70" height="66" left="0" click="reset(event);"/>
+	 	 		<mx:Canvas id="overBack" y="2" width="78" height="66" right="0" click="prevScreenForce(event);" />
+	 	 	</mx:Canvas>
+		 	<mx:HBox id="shrunkenHeads" x="66" y="8" horizontalAlign="left" verticalAlign="top" horizontalGap="10"  verticalScrollPolicy="off" childAdd="onPageStackChange(event);" childRemove="onPageStackChange(event);" >
+		 	 	<mx:Spacer width="10" height="85"/>
+		 	</mx:HBox>
+		 	<slides:CopyrightLogo id="copyrightLogo" click="toggleFixedScale();" top="23" x="816"/>
+		 	<mx:Label id="version" text="{versionNumber}" right="0" bottom="0" textAlign="right" width="200"/>
+		 	<slides:ProgressBars id="progress" x="820" y="50"/>
+			<mx:Canvas id="scaleToggle" width="260" height="68" x="691" y="645" click="toggleFixedScale();"/>
+		</mx:Canvas>
+	</slides:AppBG>
+</mx:Application>

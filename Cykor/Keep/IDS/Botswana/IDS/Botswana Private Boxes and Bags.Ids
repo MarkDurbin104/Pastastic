@@ -1,0 +1,665 @@
+//****************************************************************************************//
+//**                                                                                    **//
+//**                              Private Boxes and Bags                                **//
+//**                                      and                                           **//
+//**                              Business/Gov PO Boxes                                 **//
+//**                                                                                    **//
+//****************************************************************************************//
+
+
+Products
+{
+
+//**                                                                                    **//
+//**                              Private Boxes Rental                                  **//
+//**                                                                                    **//
+//
+//------------------------------------------------------------------------------------------
+//
+
+  PrivBoxAnnualRent { BasedOn     { BaseRentComplete                                  }
+                      RegDesc     { 'Corvus Private Box Annual Rent Product'           }
+                      Caption     { 'Private Box Annual Rent'                         }
+                      BitMap      { '..\images\P_BoxAnnualRent.bmp' }
+                      Description { 'Priv. PO Box Annual Rent' }
+                      Title       { 'Private Box Annual Rent' }
+                      Domains     { PostOffice
+                                    PrivBoxNumber
+                                    CustomerName
+                                    CustomerTelNo
+                                    PaymentPeriod
+                                    NumberYears
+                                    PrivBoxAnnualRentFee
+                                    GrossBulk                                         }
+                      Items       { 'Product.PBLatePayment'                           }
+                      PLU         { PLU_PrivBoxAnnualRent }
+                      Customer    { 'Prv. Box Annual Rent','^','Total ','P',TotalFee }
+                      Snippets    { PrivBoxAnnualRentVal, PrivBoxAnnualRentLog }
+                     }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  PBQuarterRent { BasedOn     { BaseRentComplete }
+                  Caption     { 'Private Box - Quarterly Rent' }
+                  BitMap      { '..\images\P_BoxQuartRent.bmp' }
+                  Description { 'Private Box - Quarterly Rent' }
+                  Title       { 'Private Box - Quarterly Rent' }
+                  Domains     { PostOffice
+                                PrivBoxNumber
+                                CustomerName
+                                CustomerTelNo
+                                Quarter
+                                StandardFee
+                               }
+                  Items       { 'Product.PBQuarterLatePayment'  }
+                  LogAs       { PBQuarterRent }
+                  Customer    { 'Prv. Box Quart. Rent','^','Total ','P',TotalFee }
+                  PLU         { PLU_PBQuarterRent }
+                  Snippets    { PBQuarterRentFeeCalc }
+                 }
+
+//
+//------------------------------------------------------------------------------------------
+
+
+
+    PBSurcharge {
+	   BasedOn { BaseRent }
+     	Caption { 'Box Surcharge' }
+     	BitMap { '..\images\P_BoxSurcharge.bmp' }
+     	Description  { 'Box Surcharge' }
+     	Title        { 'Box Surcharge' }
+      UnitPrice    { 55.00 }
+      PLU          { PLU_PBSurcharge }
+	}
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   PBNewLockKey {
+	   BasedOn { BaseRentComplete }
+      Caption { 'Private Box - New Lock and Key' }
+      BitMap { '..\images\P_NewLockandKey.bmp' }
+      Description  { 'Private Box - New Lock and Key' }
+      Title        { 'Private Box - New Lock and Key' }
+      UnitPrice    { '100.00' }
+      Domains      {
+                     PostOffice
+                     PrivBoxNumber
+                     CustomerName
+                     CustomerTelNo
+                     NewLockKey { UnitPrice }
+                   }
+      PLU         { PLU_PBNewLockKey }
+      Customer    { 'P.Box New Lock Key','^','Total ','P',TotalFee }
+      LogAs       { PBNewLockKey }
+	}
+
+//**                                                                                    **//
+//**                              Business/Gov PO Boxes                                 **//
+//**                                                                                    **//
+//
+//------------------------------------------------------------------------------------------
+//
+
+   BusBoxAnnualRent { BasedOn     { BaseRentComplete                                 }
+                      RegDesc     { 'Business PO Box Annual Rent Product'             }
+                      Caption     { 'Business PO Box Annual Rent'                    }
+                      BitMap      { '..\images\P_BoxAnnualRent.bmp' }
+                      Description { 'Business Box Annual Rent' }
+                      Title       { 'Business PO Box Annual Rent' }
+                      Domains     { PostOffice
+                                    POBoxNumber
+                                    CustomerName
+                                    CustomerTelNo
+                                    PaymentPeriod
+                                    NumberYears
+                                    BGBoxAnnualRentFee
+                                    GrossBulk                                        }
+                      Items       { 'Product.BusBoxLatePayment'                      }
+                      PLU         { PLU_BusBoxAnnualRent }
+                      Customer    { 'Bus. PO Box Annual Rent','^','Total ','P',TotalFee }
+                      Snippets    { BGBoxAnnualRentVal, BusGovBoxAnnualRentLog }
+   }
+
+   BusQuarterRent { BasedOn     { BaseRentComplete }
+                  Caption     { 'Business PO Box - Quarterly Rent' }
+                  BitMap      { '..\images\P_BoxQuartRent.bmp' }
+                  Description { 'Business Box - Quarterly Rent' }
+                  Title       { 'Business PO Box - Quarterly Rent' }
+                  Domains     { PostOffice
+                                POBoxNumber
+                                CustomerName
+                                CustomerTelNo
+                                Quarter
+                                StandardFee
+                               }
+                  Items       { 'Product.BusBoxQuarterLatePayment'  }
+                  LogAs       { BGQuarterRent }
+                  Customer    { 'Bus. PO Box Quart. Rent','^','Total ','P',TotalFee }
+                  PLU         { PLU_PBQuarterRent }
+                  Snippets    { BGQuarterRentFeeCalc }
+   }
+
+   BusNewLockKey {
+	   BasedOn { BaseRentComplete }
+      Caption { 'Bus. PO Box - New Lock and Key' }
+      BitMap { '..\images\P_NewLockandKey.bmp' }
+      Description  { 'Bus. PO Box - New Lock and Key' }
+      Title        { 'Bus. PO Box - New Lock and Key' }
+      UnitPrice    { '100.00' }
+      Domains      {
+                     PostOffice
+                     POBoxNumber
+                     CustomerName
+                     CustomerTelNo
+                     NewLockKey { UnitPrice }
+                   }
+      PLU         { PLU_BusBoxNewLockKey }
+      Customer    { 'Bus. Box New Lock Key','^','Total ','P',TotalFee }
+      LogAs       { BGNewLockKey }
+   }
+
+   GovBoxAnnualRent {  BasedOn     { BaseRentComplete                                 }
+                      RegDesc     { 'Government PO Box Annual Rent Product'             }
+                      Caption     { 'Government PO Box Annual Rent'                    }
+                      BitMap      { '..\images\P_BoxAnnualRent.bmp' }
+                      Description { 'Government Box Annual Rent' }
+                      Title       { 'Government PO Box Annual Rent' }
+                      Domains     { PostOffice
+                                    POBoxNumber
+                                    CustomerName
+                                    CustomerTelNo
+                                    PaymentPeriod
+                                    NumberYears
+                                    BGBoxAnnualRentFee
+                                    GrossBulk                                        }
+                      Items       { 'Product.GovBoxLatePayment'                      }
+                      PLU         { PLU_GovBoxAnnualRent }
+                      Customer    { 'Gov. PO Box Annual Rent','^','Total ','P',TotalFee }
+                      Snippets    { BGBoxAnnualRentVal, BusGovBoxAnnualRentLog }
+   }
+
+   GovQuarterRent { BasedOn     { BaseRentComplete }
+                  Caption     { 'Government PO Box - Quarterly Rent' }
+                  BitMap      { '..\images\P_BoxQuartRent.bmp' }
+                  Description { 'Government Box - Quarterly Rent' }
+                  Title       { 'Government PO Box - Quarterly Rent' }
+                  Domains     { PostOffice
+                                POBoxNumber
+                                CustomerName
+                                CustomerTelNo
+                                Quarter
+                                StandardFee
+                               }
+                  Items       { 'Product.GovBoxQuarterLatePayment'  }
+                  LogAs       { BGQuarterRent }
+                  Customer    { 'Gov. PO Box Quart. Rent','^','Total ','P',TotalFee }
+                  PLU         { PLU_GovBoxQuarterRent }
+                  Snippets    { BGQuarterRentFeeCalc }
+   }
+
+   GovNewLockKey {
+	   BasedOn { BaseRentComplete }
+      Caption { 'Gov. PO Box - New Lock and Key' }
+      BitMap { '..\images\P_NewLockandKey.bmp' }
+      Description  { 'Gov. PO Box - New Lock and Key' }
+      Title        { 'Gov. PO Box - New Lock and Key' }
+      UnitPrice    { '100.00' }
+      Domains      {
+                     PostOffice
+                     POBoxNumber
+                     CustomerName
+                     CustomerTelNo
+                     NewLockKey { UnitPrice }
+                   }
+      PLU         { PLU_GovBoxNewLockKey }
+      Customer    { 'Gov. Box New Lock Key','^','Total ','P',TotalFee }
+      LogAs       { BGNewLockKey }
+	}
+
+//**                                                                                    **//
+//**                              Private Bags Rental                                   **//
+//**                                                                                    **//
+//
+//------------------------------------------------------------------------------------------
+//
+
+
+  BagNewRental { BasedOn     { BaseRentComplete                              }
+                 BitMap      { '..\images\P_CostOfBag.bmp' }
+                 Caption     { 'Private Bag - Purchase' }
+                 Description { 'Private Bag - Purchase' }
+                 Title       { 'Private Bag - Purchase' }
+                 Domains     { PostOffice
+                               PrivBagNumber
+                               CustomerName
+                               CustomerTelNo
+                              // NumberYears
+                              // PrivBagAnnualRentFee
+                              // GrossBulk
+                               PrivBagPurchase
+                             }
+                 Items       {
+                                 'Product.BagOnlyAnnualRentTotal'
+                                 'Product.BagOnlyQuarterRent'
+                             }
+                 Snippets    { BagNewRentalSwap,
+                               BagNewRentalLog }
+                 Customer    { 'Prv. Bag Purchase','^','Total ','P',TotalFee }
+                 PLU         { PLU_BagNewRental }
+           }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  BaseBagOnlyAnnualRent {
+                  DontBuild
+                  BasedOn      { BaseRentComplete }
+                  Caption      { 'Private Bag - Annual Rent' }
+                  Description  { 'Private Bag - Annual Rent' }
+                  Title        { 'Private Bag - Annual Rent' }
+                  BitMap       { '..\images\P_BagAnnualRent.bmp' }
+                  Customer    { 'Prv. Bag Annual Rent','^','Total ','P',TotalFee }
+                  PLU          { PLU_BagAnnualRent }
+                }
+
+  BagOnlyAnnualRentTotal {
+                  BasedOn      { BaseBagOnlyAnnualRent }
+                  Domains      {
+                                 PrivBagAnnualRentTotalFee
+                               }
+                  LogAs        { BagOnlyAnnualRentTotal }
+                  Snippets     { BagOnlyAnnualRentalTotalVal }
+                }
+
+  BagOnlyAnnualRent {
+                  BasedOn      { BaseBagOnlyAnnualRent }
+                  Domains      {
+                                 PrivBagAnnualRentFee
+                               }
+                  LogAs        { BagOnlyAnnualRent }
+                  Snippets     { BagOnlyAnnualRentalVal }
+                }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  BagAnnualRent { BasedOn      { BagOnlyAnnualRent }
+                  Domains      {
+                                 PostOffice
+                                 PrivBagNumber
+                                 CustomerName
+                                 CustomerTelNo
+                                 NumberYears
+                                 PrivBagAnnualRentFee
+                                 GrossBulk
+                               }
+                  Items       { 'Product.BagPenalty' }
+                  LogAs        { PrivBag }
+                  Customer    { 'Prv. Bag Annual Rent','^','Total ','P',TotalFee }
+                  Snippets     { BagAnnualRentVal, BagNewRentalLog }
+                }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+ BaseBagOnlyQuarterRent {
+                  BasedOn     {  BaseRentComplete              }
+                  Caption     { 'Private Bag - Quarterly Rent' }
+                  BitMap      { '..\images\P_BagQuartRent.bmp' }
+                  Description { 'Private Bag - Quarterly Rent' }
+                  Title       { 'Private Bag - Quarterly Rent' }
+                  PLU         {  PLU_BagQuarterRent            }
+                  Domains     {  PostOffice
+                                 PrivBagNumber
+                                 CustomerName
+                                 CustomerTelNo
+                                 Quarter
+                                 StandardFee                   }
+                  PLU         {  PLU_BagQuarterRent            }
+                  Snippets    {  BagQuarterRentFeeCalc         }
+                 }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+
+ BagOnlyQuarterRent {
+                  BasedOn     { BaseBagOnlyQuarterRent }
+                  LogAs       { BagOnlyQuarterRent }
+                 }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+ BagQuarterRent {
+                  BasedOn     { BaseBagOnlyQuarterRent }
+                  Items       { 'Product.BagQuarterPenalty'    }
+                  Customer    { 'Prv. Bag Quart. Rent','^','Total ','P',TotalFee }
+                  LogAs       {  BagQuarterRent                }
+                 }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   BagConveyanceFee {
+        BasedOn { BaseRent }
+        RegDesc { 'CORVUS BagConveyanceFee Product' }
+        Caption { 'Conveyance fee on bags' }
+        BitMap { '..\images\P_BagConveyanceFee.bmp' }
+        Description  { 'Bags Conveyance fee' }
+        Title        { 'Bags Conveyance fee' }
+        UnitPrice    { '200.00' }
+        PLU          { PLU_BagConveyanceFee }
+	}
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+
+   BagNewLockKey {
+	   BasedOn { BaseRent }
+     	Caption { 'New Bag Lock and Keys' }
+     	BitMap { '..\images\P_NewLockandKey.bmp' }
+     	Description  { 'New Bag Lock and Keys' }
+     	Title        { 'New Bag Lock and Keys' }
+      UnitPrice    { '30.00' }
+      PLU          { PLU_BagNewLockKey }
+      Domains      {
+                     PostOffice
+                     PrivBagNumber
+                     CustomerName
+                     CustomerTelNo
+                     NewLockKey { UnitPrice }
+                   }
+      Customer    { 'P.Bag New Lock Key','^','Total ','P',TotalFee }
+      LogAs { BagNewLockKey }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+}
+
+Snippets {
+
+   PrivBoxAnnualRentVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+         if ( NumberYears.Text = '' ) then
+            GrossBulk.Text := '0.00'
+         else
+            GrossBulk.Text := CurrToStrF( StrToCurrDef( PrivBoxAnnualRentFee.Text, 0 ) * StrToIntDef( NumberYears.Text, 0 ), ffNumber, 2 );
+      *]
+      }
+   }
+
+   BGBoxAnnualRentVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+         if ( NumberYears.Text = '' ) then
+            GrossBulk.Text := '0.00'
+         else
+            GrossBulk.Text := CurrToStrF( StrToCurrDef( BGBoxAnnualRentFee.Text, 0 ) * StrToIntDef( NumberYears.Text, 0 ), ffNumber, 2 );
+      *]
+      }
+   }
+
+   PBQuarterRentFeeCalc {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+          Result:=CheckMaskEdits(Self);
+          Quarter.ItemIndex:=Quarter.Items.IndexOf(Quarter.Text);
+          if Quarter.ItemIndex >= 0 then
+             StandardFee.Text:=LookUp(TStringObject(Quarter.Items.Objects[Quarter.ItemIndex]).Value,'0','BoxQuarterlyRents',CustomerName,Result);
+
+      *]
+      }
+   }
+
+   BGQuarterRentFeeCalc {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+          Result:=CheckMaskEdits(Self);
+          Quarter.ItemIndex:=Quarter.Items.IndexOf(Quarter.Text);
+          if Quarter.ItemIndex >= 0 then
+             StandardFee.Text:=LookUp(TStringObject(Quarter.Items.Objects[Quarter.ItemIndex]).Value,'0','BusBoxQuarterlyRents',CustomerName,Result);
+
+      *]
+      }
+   }
+
+   BagOnlyAnnualRentalVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+            PrivBagAnnualRentFee.Text := '95.70' ;
+      *]
+      }
+   }
+
+   BagOnlyAnnualRentalTotalVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+            PrivBagAnnualRentTotalFee.Text := '95.70' ;
+      *]
+      }
+   }
+
+   BagNewRentalSwap {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+
+      if Name = 'Product.BagOnlyAnnualRentTotal' then
+         if CombineList.IsSelected('Product.BagOnlyQuarterRent') then
+            CombineList.ForceDeSelect('Product.BagOnlyQuarterRent');
+
+      if Name = 'Product.BagOnlyQuarterRent' then
+         if CombineList.IsSelected('Product.BagOnlyAnnualRentTotal') then
+            CombineList.ForceDeSelect('Product.BagOnlyAnnualRentTotal');
+
+      *]
+      }
+   }
+
+   BagAnnualRentVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+         if ( NumberYears.Text = '' ) then
+            GrossBulk.Text := '0.00'
+         else
+            GrossBulk.Text := CurrToStrF( StrToCurrDef( PrivBagAnnualRentFee.Text, 0 ) * StrToIntDef( NumberYears.Text, 0 ), ffNumber, 2 );
+      *]
+      }
+   }
+
+   BagQuarterRentFeeCalc {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+          Result:=CheckMaskEdits(Self);
+          Quarter.ItemIndex:=Quarter.Items.IndexOf(Quarter.Text);
+          if Quarter.ItemIndex >= 0 then
+             StandardFee.Text:=LookUp(TStringObject(Quarter.Items.Objects[Quarter.ItemIndex]).Value,'0','BagQuarterlyRents',CustomerName,Result);
+
+      *]
+      }
+   }
+
+
+
+   PrivBoxAnnualRentLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+         FQuantity:=StrToIntDef(ProdForm.NumberYears.Text,1);
+         TxnLog.LogTransaction(
+                  Index,
+                  FQuantity, // Quantity
+                  Get_PLU, // PLU
+                  FQuantity*StrToCurrDef(TDomainEdit(ProdForm.FindComponent('PrivBoxAnnualRentFee')).Text,0), // Value
+                  StrToCurrDef(TDomainEdit(ProdForm.FindComponent('PrivBoxAnnualRentFee')).Text,0), // Price
+                  Get_Description, // Description
+                  ProdForm.PrivBoxNumber.Text, // Additional Info
+                  Get_ProgramID, // ProgID
+                  Enumerate(ProdForm));  // Domain Info
+         Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Payment Period', // Description
+                ProdForm.PaymentPeriod.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Location', // Description
+                ProdForm.PostOffice.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Customer Name', // Description
+                ProdForm.CustomerName.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Customer Telephone Number', // Description
+                ProdForm.CustomerTelNo.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+
+
+      *]
+      }
+   }
+
+   BusGovBoxAnnualRentLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+         FQuantity:=StrToIntDef(ProdForm.NumberYears.Text,1);
+         TxnLog.LogTransaction(
+                  Index,
+                  FQuantity, // Quantity
+                  Get_PLU, // PLU
+                  FQuantity*StrToCurrDef(TDomainEdit(ProdForm.FindComponent('BGBoxAnnualRentFee')).Text,0), // Value
+                  StrToCurrDef(TDomainEdit(ProdForm.FindComponent('BGBoxAnnualRentFee')).Text,0), // Price
+                  Get_Description, // Description
+                  ProdForm.POBoxNumber.Text, // Additional Info
+                  Get_ProgramID, // ProgID
+                  Enumerate(ProdForm));  // Domain Info
+         Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Payment Period', // Description
+                ProdForm.PaymentPeriod.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Location', // Description
+                ProdForm.PostOffice.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Customer Name', // Description
+                ProdForm.CustomerName.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Customer Telephone Number', // Description
+                ProdForm.CustomerTelNo.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+
+
+      *]
+      }
+   }
+
+  }
+
+
+
+
+
+

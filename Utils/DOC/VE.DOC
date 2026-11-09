@@ -1,0 +1,68 @@
+/***********************************************************************
+*
+*   ECCO+
+*
+*   File Name:          $Workfile:   VE.VH  $
+*
+*   Descriptive Name:   VE private global variables
+*
+*   Author:             Mark Durbin (Unisys)
+*
+*   Date of Origin:     4-12-1990
+*
+*   Copyright:          Copyright THE POST OFFICE 1990
+*
+*   Contents List:      
+*
+*   Notes:              
+*
+*
+*   $Log:   Z:\cm\g\eccorel\inc\vcs\ve.vhv  $
+*   
+***********************************************************************/
+#ifndef PVE_VH
+#define PVE_VH
+#include <vepublic.dh>
+#undef  GLOBAL
+#undef  INIT
+
+#ifdef  PVEDATA_C
+#define GLOBAL
+#define INIT    1
+#else
+#define GLOBAL  extern
+#define INIT    0
+#endif /* PVEDATA_C */
+
+GLOBAL CHAR *ve_error_str[]
+#if INIT
+=
+{
+    "TRIED TO WRITE ON A WRITE PROTECTED DISK",
+    "UNKNOWN UNIT SPECIFIED",
+    "DRIVE NOT READY",
+    "UNKNOWN COMMAND",
+    "CYCLIC-REDUNDANCY-CHECK (CRC) DATA ERROR",
+    "BAD DRIVE REQUEST LENGTH",
+    "SEEK ERROR",
+    "UNKNOWN MEDIA TYPE",
+    "SECTOR NOT FOUND",
+    "PRINTER OUT OF PAPER",
+    "WRITE ERROR",
+    "READ ERROR",
+    "GENERAL FAILURE"
+};
+#else
+;
+#endif /* INIT */
+
+GLOBAL FPTR ve_old_vect
+#if INIT
+=NULL;
+#else
+;
+#endif /* INIT */
+
+#endif  /* PVE_VH */
+
+

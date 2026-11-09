@@ -1,0 +1,13 @@
+Field name       Bounds          Current Field width     New field width
+Customer id      XXNNNNNNNX      9 bytes                 40 bits
+Addit Book Ind   ' ' or 'A'      1 byte                  1 bit
+IOP Serial No.   01-99           2 bytes                 7 bits
+System Indicator 000-999         3 bytes                 10 bits
+IOP Type         01              2 bytes                 1 bit
+Action Type      1-3             1 byte                  2 bits
+Date of Recall   1-31            2 bytes                 5 bits
+
+Total                           20 bytes                 8.25 bytes i.e. 9
+
+                 X= ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 or SPACE
+                 N= 0123456789

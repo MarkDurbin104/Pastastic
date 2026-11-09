@@ -1,0 +1,54 @@
+.AUTODEPEND
+
+#		*Translator Definitions*
+CC = bcc +TV.CFG
+TASM = tasm
+TLIB = tlib
+TLINK = tlink -L\bc45\lib 
+
+
+#		*Implicit Rules*
+.c.obj:
+  $(CC) -c {$< }
+
+.cpp.obj:
+  $(CC) -c {$< }
+
+#		*List Macros*
+
+
+EXE_dependencies =  \
+ tv.obj \
+ taskfile.obj \
+ taskgraf.obj \
+ taskdiag.obj \
+ taskterm.obj \
+ comms.obj
+
+#		*Explicit Rules*
+tv.exe: tv.cfg $(EXE_dependencies)
+  bcc +tv.cfg tv.obj taskfile.obj taskgraf.obj taskdiag.obj taskterm.obj comms.obj graphics.lib
+
+
+#		*Individual File Dependencies*
+tv.obj: tv.cfg tv.c 
+
+taskfile.obj: tv.cfg taskfile.c 
+
+taskgraf.obj: tv.cfg taskgraf.c 
+
+taskdiag.obj: tv.cfg taskdiag.c 
+
+taskterm.obj: tv.cfg taskterm.c 
+
+comms.obj: tv.cfg comms.c 
+
+#		*Compiler Configuration File*
+tv.cfg: makefile
+  copy &&|
+-ml -v
+-Id:\BC45\INCLUDE
+-Ld:\BC45\LIB
+| tv.cfg
+
+

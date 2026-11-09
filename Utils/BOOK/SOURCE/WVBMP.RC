@@ -1,0 +1,76 @@
+/*--------------------------------------------------------*/
+/*                                                        */
+/*   File:   WVBMP.RC                                     */
+/*                                                        */
+/*   Desc:   Resource script for WVBmp.Exe                */
+/*                                                        */
+/*--------------------------------------------------------*/
+
+#include "windows.h"
+
+#include "wvbmp.h"
+
+/*
+ *..................WVBmp Main Menu
+ */
+
+WVBmp MENU
+{
+   MENUITEM "&File",    1
+   MENUITEM "&Options", 2
+   MENUITEM "&Quit",    3
+}
+
+/*
+ *..................WVBmp Load File Dialog
+ */
+
+LoadFile  DIALOG  10 10 150 100
+          STYLE   WS_POPUP | WS_DLGFRAME
+{
+   CTEXT  "-- Load BMP File --"
+          -1,         0,  10,   150,   8
+
+   LTEXT  "Path to file..."
+          -1,        15,  30,    60,   8
+   EDITTEXT
+          idFNAME,   15,  40,   120,  12
+
+   DEFPUSHBUTTON  "Okay"
+          IDOK,      30,  70,    40,  14
+
+   PUSHBUTTON  "Cancel"
+          IDCANCEL,  80,  70,    40,  14
+}
+
+/*
+ *..................WVBmp Get Options Dialog
+ */
+
+GetOptions  DIALOG  10 10 150 100
+            STYLE   WS_POPUP | WS_DLGFRAME
+{
+   CTEXT  "-- Load Options --"
+          -1,         0,  10,   150,    8
+
+   GROUPBOX  "Contrast"
+          -1,         10, 20,    60,   50, WS_GROUP
+   RADIOBUTTON  "None"
+          idCNONE,    20, 35,    40,    8, WS_GROUP|WS_TABSTOP
+   RADIOBUTTON  "More"
+          idCMORE,    20, 45,    40,    8
+   RADIOBUTTON  "Less"
+          idCLESS,    20, 55,    40,    8
+
+   GROUPBOX  "Brightness"
+          -1,         80, 20,    60,   50, WS_GROUP
+   RADIOBUTTON  "None"
+          idBNONE,    90, 35,    40,    8, WS_GROUP|WS_TABSTOP
+   RADIOBUTTON  "More"
+          idBMORE,    90, 45,    40,    8
+   RADIOBUTTON  "Less"
+          idBLESS,    90, 55,    40,    8
+
+   DEFPUSHBUTTON  "Okay"
+          IDOK,      55,  80,    40,  14, WS_GROUP
+}

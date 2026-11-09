@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" backgroundGradientColors="[#ECF5E7, #ECF5E7]" verticalGap="0"
+	pageTitle="State Chart Test"	
+	creationComplete="onCreationComplete(event)"  
+	resize="onResize(event)"  
+	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
+	>
+ 	<mx:Script>
+		<![CDATA[
+			import cykor.mail.LookUp;
+			import cykor.statemachine.StateMachine;
+			private function onCreationComplete(event:Event):void {
+				var lookup:LookUp=new LookUp("configuration/lookup.csv");
+				addChild(lookup);
+				var sm:StateMachine=new StateMachine("configuration/UIState.xml",this);
+				sm=new StateMachine("configuration/ComplexUIState.xml",this);
+			}
+			private function onResize(event:Event):void 	{
+//				if (mailScreen !=null) {
+//					scaleRegion.scaleX=width/mailScreen.mailScreenWidth;
+//					scaleRegion.scaleY=height/mailScreen.mailScreenHeight;
+//				}
+			}
+		]]>
+	</mx:Script>
+ 	<mx:DataGrid x="120" y="136" borderStyle="none">
+ 	 	<mx:columns>
+ 	 	 	<mx:DataGridColumn headerText="Column 1" dataField="col1"/>
+ 	 	 	<mx:DataGridColumn headerText="Column 2" dataField="col2"/>
+ 	 	 	<mx:DataGridColumn headerText="Column 3" dataField="col3"/>
+ 	 	</mx:columns>
+ 	</mx:DataGrid>
+</mx:Application>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:cf="com.cykorsystems.CoverFlow.*"
+	xmlns:slides="com.proiam.slides.*"
+	layout="absolute" backgroundGradientColors="[#ECF5E7, #ECF5E7]" verticalGap="0"
+	pageTitle="Proiam - VU.iT Demonsration"	
+	creationComplete="onCreationComplete(event)"  
+	resize="onResize(event)"  
+	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off" 
+	>
+	<mx:Style source="resources/fontstyles.css"/>
+	<mx:Script>
+		<![CDATA[
+			import com.cykorsystems.CoverFlow.Menus;
+			import com.cykorsystems.utils.*;
+
+			[Embed(systemFont='Verdana', 
+				fontWeight='bold', 
+				fontName='embVerdana', 
+				mimeType='application/x-font'
+			)] 
+			private var embFont:Class;
+
+			private var testingScreen:int=3;
+			private var fixedScale:Boolean=false;
+
+			private function toggleFixedScale():void {
+				fixedScale=!fixedScale;
+				onResize(null)				
+			}
+			private function onCreationComplete(event:Event):void {
+				onResize(event);
+				if (testingScreen != -1) CFCanv.position=testingScreen;
+				fingerButton.visible=(CFCanv.position != 0) ;
+			}			
+			private function onResize(event:Event):void 	{
+				if (mailScreen !=null) {
+					if (fixedScale) {
+						verticalScrollPolicy="auto";
+						horizontalScrollPolicy="auto";
+						scaleRegion.scaleX=1024/mailScreen.mailScreenWidth;
+						scaleRegion.scaleY=768/mailScreen.mailScreenHeight;
+					} else {
+						verticalScrollPolicy="off";
+						horizontalScrollPolicy="off";
+						scaleRegion.scaleX=width/mailScreen.mailScreenWidth;
+						scaleRegion.scaleY=height/mailScreen.mailScreenHeight;
+					}
+				}
+			}
+			private function onSlideChanged(event:Event):void {
+				if (CFCanv.position==0) {
+					fingerButton.visible=false;
+				}
+			}
+
+	]]>
+	</mx:Script>
+	<mx:Canvas id="scaleRegion" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+		<mx:Canvas id="displayOn" height="100%" width="100%"/>
+		<cf:CoverFlowCanvas change="onSlideChanged(event);" id="CFCanv" displayOn="{displayOn}" fingerButton="{fingerButton}" >
+			<slides:Login id="loginScreen" loginClicked="fingerButton.visible=true; CFCanv.position=1;" logoClicked="fingerButton.visible=true; CFCanv.position=4;" />
+			<slides:EngineeringScreen id="engScreen" nextClicked="CFCanv.position=2;" />
+			<slides:ConfirmationScreen id="confScreen" nextClicked="CFCanv.position=4;" orignChange="CFCanv.position=3;"/>
+			<slides:ChangeForm id="changeOAddr" label="Change Origin Address Information" nextClicked="CFCanv.position=2;"/>
+		 	<slides:MailScreen label="Item Assesment" id="mailScreen" creationPolicy="all" backgroundImage="@Embed(source='com/proiam/slides/embedded/MailScreenBG2.svg',mimeType='image/svg')"/>
+<!--		 	<slides:MenuScreen id="menuScreen" label="Available Menus" /> -->
+		 	<slides:MailsDisplay id="mailsDisplay" label="Available Mails Services"/> 
+		 	<slides:TariffScreen id="tariffScreen" label="Tariff Screen" />  
+		</cf:CoverFlowCanvas>
+		<slides:CopyrightLogo click="toggleFixedScale();" />
+		<mx:Image id="fingerButton" source="@Embed(source='resources/graphics/fingerbutton.png')" bottom="0" visible="false"/>
+	</mx:Canvas>
+</mx:Application>

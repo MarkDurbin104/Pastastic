@@ -1,0 +1,7 @@
+Groups {
+   Central__A {
+      BitMap  { '..\images\G_Altkey.bmp' }
+      Items  { Exit }
+      Title  { 'ALT-HOTKEYS' }
+   }
+}

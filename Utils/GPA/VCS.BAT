@@ -1,0 +1,3 @@
+set VCSUSR=MJD
+set VCSDIR=\VCS
+set VCSSYS=%1

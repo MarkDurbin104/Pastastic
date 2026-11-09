@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="ImportResourcesAction">
+	</section>
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item key="DIALOG_X_ORIGIN" value="237"/>
+		<item key="DIALOG_Y_ORIGIN" value="187"/>
+	</section>
+	<section name="ShowViewDialog">
+		<item key="ShowViewDialog.STORE_SELECTED_VIEW_ID" value="org.eclipse.debug.ui.MemoryView"/>
+		<list key="ShowViewDialog.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.ui"/>
+			<item value="org.eclipse.debug.ui"/>
+		</list>
+	</section>
+	<section name="NewWizardAction">
+	</section>
+	<section name="EditorSelectionDialog">
+		<item key="EditorSelectionDialog.STORE_ID_INTERNAL_EXTERNAL" value="false"/>
+	</section>
+	<section name="org.eclipse.ui.internal.dialogs.FilteredComboTree">
+		<list key="search">
+			<item value="plugin"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.preferences.keysPreferencePage">
+		<item key="internalFilter" value="true"/>
+		<item key="actionSetFilter" value="true"/>
+		<item key="showAllConvert" value="true"/>
+		<item key="uncategorizedFilter" value="true"/>
+		<item key="showAllField" value="true"/>
+	</section>
+	<section name="ExportResourcesAction">
+	</section>
+</section>

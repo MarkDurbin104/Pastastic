@@ -1,0 +1,7 @@
+Borland C++ 5.0 Copyright (c) 1987, 1996 Borland International
+genkeys.c:
+Warning genkeys.c 87: Constant is long in function buffer
+Warning genkeys.c 87: Constant out of range in comparison in function buffer
+Warning genkeys.c 88: Constant is long in function buffer
+Warning genkeys.c 248: Constant is long in function interp
+Warning genkeys.c 248: Conversion may lose significant digits in function interp

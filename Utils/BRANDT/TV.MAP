@@ -1,0 +1,61 @@
+
+ Start  Stop   Length Name               Class
+
+ 00000H 096F1H 096F2H _TEXT              CODE
+ 096F2H 0C019H 02928H TV_TEXT            CODE
+ 0C01AH 0D863H 0184AH TASKFILE_TEXT      CODE
+ 0D864H 0E1B7H 00954H TASKGRAF_TEXT      CODE
+ 0E1B8H 0F679H 014C2H TASKDIAG_TEXT      CODE
+ 0F67AH 10775H 010FCH TASKTERM_TEXT      CODE
+ 10776H 10A8DH 00318H COMMS_TEXT         CODE
+ 10A90H 1104FH 005C0H E87_PROG           CODE
+ 11050H 137BFH 02770H EMU_PROG           CODE
+ 137C0H 137C0H 00000H _FARDATA           FAR_DATA
+ 137C0H 137C0H 00000H _FARBSS            FAR_BSS
+ 137C0H 137C0H 00000H _OVERLAY_          OVRINFO
+ 137C0H 137C0H 00000H _1STUB_            STUBSEG
+ 137C0H 14DBBH 015FCH _DATA              DATA
+ 14DBCH 14DBFH 00004H _CVTSEG            DATA
+ 14DC0H 14DCBH 0000CH _SCNSEG            DATA
+ 14DCCH 14DCCH 00000H _CONST             CONST
+ 14DCCH 14DF5H 0002AH _INIT_             INITDATA
+ 14DF6H 14DF6H 00000H _INITEND_          INITDATA
+ 14DF6H 14E01H 0000CH _EXIT_             EXITDATA
+ 14E02H 14E02H 00000H _EXITEND_          EXITDATA
+ 14E02H 1EE51H 0A050H _BSS               BSS
+ 1EE52H 1EE52H 00000H _BSSEND            BSSEND
+ 1EE60H 1EEDFH 00080H _STACK             STACK
+
+Error: Undefined symbol CLOSEGRAPH in module TV.C
+Error: Undefined symbol OUTTEXTXY in module TV.C
+Error: Undefined symbol SETFILLSTYLE in module TV.C
+Error: Undefined symbol RECTANGLE in module TV.C
+Error: Undefined symbol BAR in module TV.C
+Error: Undefined symbol SETCOLOR in module TV.C
+Error: Undefined symbol CLEARDEVICE in module TV.C
+Error: Undefined symbol SETTEXTJUSTIFY in module TV.C
+Error: Undefined symbol LINE in module TV.C
+Error: Undefined symbol GETIMAGE in module TV.C
+Error: Undefined symbol LINETO in module TV.C
+Error: Undefined symbol MOVETO in module TV.C
+Error: Undefined symbol SETTEXTSTYLE in module TV.C
+Error: Undefined symbol PUTIMAGE in module TV.C
+Error: Undefined symbol GETPIXEL in module TV.C
+Error: Undefined symbol SETVIEWPORT in module TASKGRAF.C
+Error: Undefined symbol GETMAXY in module TASKGRAF.C
+Error: Undefined symbol GETMAXX in module TASKGRAF.C
+Error: Undefined symbol GRAPHERRORMSG in module TASKGRAF.C
+Error: Undefined symbol GRAPHRESULT in module TASKGRAF.C
+Error: Undefined symbol INITGRAPH in module TASKGRAF.C
+Error: Undefined symbol FLOODFILL in module TASKGRAF.C
+Error: Undefined symbol SETLINESTYLE in module TASKDIAG.C
+Error: Undefined symbol DRAWPOLY in module TASKDIAG.C
+Error: Undefined symbol GLOBALFREE in library file \bc45\lib\bgi16.lib in module BGIMEM
+Error: Undefined symbol GLOBALHANDLE in library file \bc45\lib\bgi16.lib in module BGIMEM
+Error: Undefined symbol GLOBALUNLOCK in library file \bc45\lib\bgi16.lib in module BGIMEM
+Error: Undefined symbol GLOBALLOCK in library file \bc45\lib\bgi16.lib in module BGIMEM
+Error: Undefined symbol GLOBALALLOC in library file \bc45\lib\bgi16.lib in module BGIMEM
+Error: Undefined symbol BGIFREEMEMORYHOOK in library file \bc45\lib\bgi16.lib in module BGISTART
+Error: Undefined symbol BGIGETMEMORYHOOK in library file \bc45\lib\bgi16.lib in module BGISTART
+Program entry point at 0000:0000
+

@@ -1,0 +1,2063 @@
+//****************************************************************************************//
+//**                                                                                    **//
+//**                                   Picklists                                        **//
+//**                                                                                    **//
+//****************************************************************************************//
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+PickLists
+{
+
+//
+//------------------------Report PickLists--------------------------------------
+//
+ ReportType {
+    Items {
+       'Summary'
+       'Journal'
+    }
+ }
+
+ MonthsOfTheYear {
+    M01 { 'January'   }
+    M02 { 'February'  }
+    M03 { 'March'     }
+    M04 { 'April'     }
+    M05 { 'May'       }
+    M06 { 'June'      }
+    M07 { 'July'      }
+    M08 { 'August'    }
+    M09 { 'September' }
+    M10 { 'October'   }
+    M11 { 'November'  }
+    M12 { 'December'  }
+ }
+
+ BankAcc {
+    Ordinary  { 'Ordinary Savings Bank' }
+    Trust     { 'Trust Savings Bank'    }
+    Special   { 'Special Savings Bank'  }
+    SAYE      { 'SAYE' }
+ }
+
+ Pensions {
+    Normal  { 'Normal Pension Payments' }
+    Arrears { 'Pension Payment Arrears' }
+ }
+
+ IssuePaid {
+    Issued  { 'Issued' }
+    Paid    { 'Paid'   }
+ }
+
+ DomInt {
+    Domestic      { 'Domestic'      }
+    International { 'International' }
+ }
+
+//
+//--------------------------------------------------------------------------------------------------------
+//
+
+ DomLetterSize { Std   { 'Standard' }
+                 Lrg   { 'Large'    }
+                 Osize { 'Oversize' }
+                }
+
+BWBanks {
+    Sorted
+    Items { 'Barclay''s Bank' }
+}
+
+BWPostOffices {
+    Sorted
+    o1000 { 'Head Quarters'    } o2000 { 'Gaborone Central' }
+    o2001 { 'River Walk'       } o2020 { 'Bontleng'         }
+    o2021 { 'Gaborone Village' } o2022 { 'Ramotswa Village' }
+    o2023 { 'Ramotswa Station' } o2024 { 'Gaborone UB'      }
+    o2040 { 'Broadhurst'       } o2041 { 'Kopong'           }
+    o2042 { 'SSK Airport'      } o2043 { 'Tlokweng'         }
+    o2060 { 'Gaborone Station' } o2061 { 'Gabane'           }
+    o2062 { 'Mogoditshane'     } o2063 { 'Mmankgodi'        }
+    o2064 { 'Thamaga'          } o2080 { 'Ghanzi'           }
+    o2081 { 'Charles hill'     } o2082 { 'Kalfontein'       }
+    o2083 { 'Nojane'           } o2100 { 'Jwaneng'          }
+    o2101 { 'Hukuntsi'         } o2102 { 'Kang'             }
+    o2103 { 'Khakhea'          } o2104 { 'Lehututu'         }
+    o2105 { 'Mabutsane'        } o2106 { 'Middlepits'       }
+    o2107 { 'Tsabong'          } o2108 { 'Werda'            }
+    o2120 { 'Lobatse'          } o2121 { 'Digawana'         }
+    o2122 { 'Good Hope'        } o2123 { 'Mabule'           }
+    o2124 { 'Otse'             } o2125 { 'Pitsane'          }
+    o2126 { 'Sedibeng'         } o2127 { 'Woodhall'         }
+    o2140 { 'Mochudi'          } o2141 { 'Bokaa'            }
+    o2142 { 'Ntshinoge'        } o2143 { 'Oodi'             }
+    o2144 { 'Sikwane'          } o2160 { 'Molepolole'       }
+    o2161 { 'Letlhakeng'       } o2162 { 'Lentsweletau'     }
+    o2163 { 'Mathubantwa'      } o2164 { 'Motokwe'          }
+    o2165 { 'Sojwe'            } o2166 { 'Thebephatswa'     }
+    o2180 { 'Mmasekou'         } o2181 { 'Kanye'            }
+    o2182 { 'Mafhikana'        } o2183 { 'Moshupa'          }
+    o2184 { 'Mmathethe'        } o2200 { 'Serowe'           }
+    o2201 { 'Moiyabana'        } o2202 { 'Rasebolai'        }
+    o3000 { 'Palapye'          } o3001 { 'Tumasera'         }
+    o3002 { 'Lecheng'          } o3003 { 'Pota'             }
+    o3004 { 'Maokatumo'        } o3005 { 'Sherwood Ranch'   }
+    o3006 { 'Lerala'           } o3007 { 'Moeng'            }
+    o3008 { 'Maunatlala'       } o3009 { 'Ramokgonami'      }
+    o3020 { 'Selebi Phikwe'    } o3021 { 'Sefhophe'         }
+    o3022 { 'Mmadinare'        } o3023 { 'Serule'           }
+    o3024 { 'Tsetsebye'        } o3025 { 'Bobonong'         }
+    o3026 { 'Botshabelo'       } o3027 { 'Semolale'         }
+    o3040 { 'Mahalapye'        } o3041 { 'Mookane'          }
+    o3042 { 'Sefhare'          } o3043 { 'Madiba'           }
+    o3044 { 'Pilikwe'          } o3045 { 'Shoshong'         }
+    o3046 { 'Kalamare'         } o3047 { 'Machaneng'        }
+    o4000 { 'Francistown'      } o4100 { 'Tatitown'         }
+    o4101 { 'Matsiloje'        } o4102 { 'Mathangwane'      }
+    o4103 { 'Nata'             } o4104 { 'Gweta'            }
+    o4105 { 'Sowa'             } o4200 { 'Tutume'           }
+    o4201 { 'Sebina'           } o4202 { 'Nkange'           }
+    o4203 { 'Maitengwe'        } o4300 { 'Masunga'          }
+    o4301 { 'Makaleng'         } o4302 { 'Ramokwebana'      }
+    o4303 { 'Tsesebe'          } o4400 { 'Tonota'           }
+    o4401 { 'Shashe'           } o4500 { 'Monarch'          }
+    o4600 { 'Orapa'            } o4601 { 'Letlhakane'       }
+    o4601 { 'Mopipi'           } o4602 { 'Rakops'           }
+    o4700 { 'Kasane'           } o4701 { 'Kavimba'          }
+    o4800 { 'Maun'             } o4801 { 'Boseja'           }
+    o4802 { 'Sehitwa'          } o4803 { 'Gumare'           }
+    o4804 { 'Etsha'            } o4805 { 'Shakawe'          }
+    o5000 { 'Botswana Couriers'} o5001 { 'Old Naledi Kiosk' }
+    o5002 { 'Engen Kiosk'      } o5003 { 'G/West Kiosk'     }
+    o5003 { 'Game Kiosk'       } o5005 { 'Metsef Kiosk'     }
+
+/*    Items {
+       'Bobonong'        ,'Kobojango'          ,'Lentswelemoriti' ,'Mathathane'      ,
+       'Molalatau'       ,'Sefhophe'           ,'Semolale'        ,'Tsetsebye'       ,
+       'Borolong'        ,'Francistown'        ,'Gweta'           ,'Kalakamati'      ,
+       'Maitengwe'       ,'Makaleng'           ,'Mapoka'          ,'Marapong'        ,
+       'Masunga'         ,'Mathangwane'        ,'Matsiloje'       ,'Metzef'          ,
+       'Monarch'         ,'Moroka'             ,'Nata'            ,'Nkange'          ,
+       'Nlaphwane'       ,'Nswazi'             ,'Ramokgwebana'    ,'Sebina'          ,
+       'Sechele'         ,'Shashe'             ,'Sowa'            ,'Tatisiding'      ,
+       'Tatitown'        ,'Tonota'             ,'Tshesebe'        ,'Tutume'          ,
+       'Zwenshambe'      ,'Bokaa'              ,'Bontleng'        ,'Broadhurst'      ,
+       'Engen Kiosk'     ,'G/West Kiosk'       ,'Gabane'          ,'Gaborone Central',
+       'Gaborone Station','Gaborone University','Gaborone Village','Game Kiosk',
+       'Kumakwane'       ,'Magopane'           ,'Manyana'         ,'Mosomane'        ,
+       'Metsef Kiosk'    ,'Mmankgodi'          ,'Mogobane'        ,'Mogoditshane'    ,
+       'Moshupa'         ,'Ntlhantlhe'         ,'Old Naledi Kiosk','Oodi'            ,
+       'Otse'            ,'Phakalane'          ,'Ramotswa Station','Ramotswa Village',
+       'SSK Airport'     ,'Thamaga'            ,'Tlokweng'        ,'Charleshill'     ,
+       'Ghanzi'          ,'Kalkfontein'        ,'Karakubis'       ,'Kole'            ,
+       'Nojane'          ,'Bokspits'           ,'Hereford'        ,'Hukuntsi'        ,
+       'Jwaneng'         ,'Kang'               ,'Khakhea'         ,'Lehututu'        ,
+       'Lekgwabe'        ,'Mabutsane'          ,'Makopong'        ,'Mookane'         ,
+       'Middlepits'      ,'Tsabong'            ,'Tshane'          ,'Werda'           ,
+       'Kanye'           ,'Kasane'             ,'Kavimba'         ,'Parakarungu'     ,
+       'Satau'           ,'Khudumelapye'       ,'Letlhakeng'      ,'Motokwe'         ,
+       'Digawana'        ,'Goodhope'           ,'Hebron'          ,'Lobatse'         ,
+       'Mabule'          ,'Metlojane'          ,'Mmathethe'       ,'Papatlo'         ,
+       'Peleng'          ,'Pitsane'            ,'Sedibeng'        ,'Woodhall'        ,
+       'Dibete'          ,'kalamare'           ,'Machaneng'       ,'Madiba'          ,
+       'Mahalapye'       ,'Makwate'            ,'Mmaphashalala'   ,'Mmutlane'        ,
+       'Mookane'         ,'Pilikwe'            ,'Radisele'        ,'Sefhare'         ,
+       'Shoshong'        ,'Boseja'             ,'Etsha'           ,'Gumare'          ,
+       'Gunotsoga'       ,'Makalamabedi'       ,'Maun'            ,'Maun Airport'    ,
+       'Nokaneng'        ,'Sehitwa'            ,'Sepopa'          ,'Seronga'         ,
+       'Shakawe'         ,'Lotlhakane'         ,'Mafhikana'       ,'Mmasekou'        ,
+       'Molapowabojang'  ,'Ranaka'             ,'Malolwane'       ,'Mmathubudukwane' ,
+       'Mochudi'         ,'Modipane'           ,'Morwa'           ,'Ntshinoge'       ,
+       'Rasesa'          ,'Sikwane'            ,'Boribamo'        ,'Dutlwe'          ,
+       'Lentsweletau'    ,'Lephephe'           ,'Mathubantwa'     ,'Molepolole'      ,
+       'Sojwe'           ,'Takatokwane'        ,'Thebephatswa'    ,'Khumaga'         ,
+       'Letlhakane'      ,'Mmatshumo'          ,'Mopipi'          ,'Mosu'            ,
+       'Orapa'           ,'Rakops'             ,'Toromoja'        ,'Xhumo'           ,
+       'Lecheng'         ,'Lerala'             ,'Majwaneng'       ,'Maokatuma'       ,
+       'Maunatlala'      ,'Moeng'              ,'Palapye'         ,'Pota'            ,
+       'Ramokgonami'     ,'Sherwood Ranch'     ,'Tamasane'        ,'Tumasera'        ,
+       'Botshabelo'      ,'Mmadinare'          ,'Mogapi'          ,'Serule'          ,
+       'Selebi-Phikwe'   ,'Mabeleapudi'        ,'Mmashoro'        ,'Mogorosi'        ,
+       'Moiyabana'       ,'Paje'               ,'Rasebolai'       ,'Serowe'          ,
+       'Thabala'         ,'Tshimoyapula'       ,'River Walk'      ,'Headquarters'   ,
+       'Botswana Couriers','Kopong',
+    } */
+ }
+//
+//--------------------------------------------------------------------------------------------------------
+//
+
+ CODMail
+ {
+    Sorted
+    Botswana       { 'Botswana' }
+    South_Africa   { 'South Africa' }
+ }
+
+ SurMail
+ {
+    Sorted
+    Botswana       { 'Botswana'}
+    SADC           { 'Angola',        'Congo (Kinshasa)',
+		     'Lesotho',       'Malawi',
+		     'Mauritius',     'Mozambique',
+		     'Namibia',       'Seychelles',
+		     'South Africa',  'Swaziland',
+		     'Tanzania',      'Zambia',
+		     'Zimbabwe'
+                    }
+    RestOfAfrica   { 'Algeria',                   'Benin',
+                     'Burkina Faso',              'Burundi',
+                     'Cameroon',                  'Cape Verde',
+    	             'Central African Republic',  'Chad',
+    	             'Congo (Brazzaville)',       'Côte d''Ivoire',
+                     'Djibouti',                  'Egypt',
+                     'Equatorial Guinea',
+    	             'Eritrea',                   'Ethiopia',
+    	             'Gabon',                     'Gambia, The',
+    	             'Ghana',                     'Guinea',
+    	             'Guinea-Bissau',             'Ivory Coast',
+    	             'Kenya',                     'Liberia',
+    	             'Libya',                     'Madagascar',
+    	             'Mali',                      'Mauritania',
+    	             'Morocco',                   'Niger',
+    	             'Nigeria',                   'Reunion',
+                     'Rwanda',                    'Sao Tome and Principe',
+    	             'Senegal',                   'Sierra Leone',
+    	             'Somalia',                   'Sudan',
+    	             'Togo',                      'Tunisia',
+                     'Uganda',                    'Western Sahara'
+                   }
+    Europe         { 'Albania',             'Andorra',
+                     'Armenia',             'Austria',
+                     'Azerbaijan',          'Belarus',
+        	     'Belgium',             'Bosnia and Herzegovina',
+        	     'Bulgaria',            'Canary Islands'
+                     'Croatia',             'Cyprus',
+                     'Czech Republic',
+        	     'Denmark',             'England',
+                     'Estonia',             'Faroe Islands',
+        	     'Finland',             'France',
+                     'Georgia',             'Germany',
+                     'Gibraltar',           'Great Britain'
+                     'Greece',              'Greenland'
+                     'Guernsey',            'Holland'
+        	     'Hungary',             'Iceland',
+                     'Ireland (Northern)',  'Ireland (Republic)',
+                     'Isle of Man',         'Italy',
+                     'Jersey',              'Kazakhstan',
+                     'Kyrgyzstan',          'Latvia',
+        	     'Liechtenstein',       'Lithuania',
+                     'Luxembourg',          'Macedonia',
+        	     'Malta',               'Man, Isle of',
+                     'Moldova',             'Monaco',
+                     'Netherlands',         'Norway',
+                     'Poland',              'Portugal',
+                     'Romania',             'Russia',
+                     'San Marino',          'Scotland',
+                     'Slovakia',            'Slovenia',
+                     'Spain',               'Sweden',
+                     'Switzerland',         'Tajikistan',
+                     'Turkey',              'Turkmenistan',
+                     'Ukraine',             'United Kingdom',
+        	     'Uzbekistan',          'Vatican City',
+                     'Wales',               'Yugoslavia'
+                    }
+    RestOfWorld     { 'Afghanistan',               'American Samoa',
+                      'Anguilla',                  'Antigua and Barbuda',
+        	      'Argentina',                 'Aruba',
+                      'Ascencion',                 'Australia',
+                      'Bahamas The',               'Bahrain',
+        	      'Bangladesh',                'Barbados',
+        	      'Belize',                    'Bermuda',
+                      'Bhutan',                    'Bolivia',
+                      'Brazil',                    'British Virgin Islands',
+                      'Brunei',                    'Cambodia',
+                      'Canada',                    'Cayman Islands',
+                      'Chile',                     'China',
+                      'Chinese Taipei',            'Christmas Island',
+                      'Cocos Islands',             'Colombia',
+                      'Comoros and Mayotte',       'Cook Islands'
+                      'Costa Rica',                'Cuba',
+                      'Curacao'                    'Dominica',
+                      'Dominican Republic',        'Ecuador',
+                      'El Salvador',
+                      'Falkland Islands',          'Fiji',
+                      'French Guyana',             'French Polynesia',
+                      'Grenada',                   'Guadeloupe',
+                      'Guam',                      'Guatemala',
+                      'Guyana',                    'Haiti',
+                      'Honduras'                   'Hong Kong',
+                      'India',                     'Indonesia',
+                      'Iran',                      'Iraq',
+                      'Israel',                    'Jamaica',
+                      'Japan',                     'Jordan',
+                      'Kiribati',                  'Korea, North',
+                      'Korea, South',              'Kuwait',
+                      'Laos',                      'Lebanon',
+                      'Macau'                      'Malaysia',
+                      'Maldives',                  'Malvinas'
+                      'Marshall Islands',          'Martinique'
+                      'Mayotte and Comoros',       'Mexico',
+                      'Micronesia',                'Mongolia',
+                      'Montserrat',                'Myanmar',
+                      'Nauru',                     'Nepal',
+                      'Netherlands Antilles',      'New Caledonia',
+                      'New Zealand',               'Nicaragua',
+                      'Niue',                      'Norfolk Island',
+                      'North Korea',               'Northern Mariana Islands',
+                      'Oman',                      'Pakistan',
+                      'Palau',                     'Panama',
+                      'Papua New Guinea',          'Paraguay',
+                      'Peru',                      'Philippines',
+                      'Pitcairn Island',           'Puerto Rico'
+                      'Qatar',                     'Saint Barthelemy',
+                      'Saint Croix Island',        'Saint Eustatius',
+                      'Saint Helena',              'Saint John',
+        	      'Saint Kitts and Nevis',     'Saint Lucia',
+                      'Saint Martin/Maarten',      'Saint Pierre and Miquelon',
+                      'Saint Thomas Island',       'Saint Vincent and the Grenadines',
+        	      'Samoa (American)',          'Samoa (Western)',
+        	      'Saudi Arabia',              'Singapore',
+        	      'Solomon Islands',           'South Korea',
+                      'Sri Lanka',                 'St Barthelemy',
+                      'St Croix Island',           'St Eustatius',
+                      'St Helena',                 'St John',
+                      'St Lucia',                  'St Martin/Maarten',
+                      'St Nevis',                  'St Pierre and Miquelon',
+                      'St Thomas Island',          'St Vincent and Grenadines',
+                      'Surinam',                   'Syria',
+                      'Tahiti',                    'Taiwan',
+                      'Thailand',                  'Tokelau'
+                      'Tonga',                     'Trinidad and Tobago',
+                      'Tristan da Cunha',          'Turks and Caicos Islands',
+                      'Tuvalu',                    'United Arab Emirates',
+                      'United States of America',  'Uruguay',
+                      'US Virgin Islands'          'USA',
+                      'Vanuatu',                   'Venezuela',
+                      'Vietnam',                   'Virgin Islands (UK)',
+                      'Virgin Islands (US)',       'Wallis and Futuna',
+                      'Yemen'
+                   }
+
+ }
+
+
+
+ //
+ //--------------------------------------------------------------------------------------------------------
+ //
+
+
+ //
+ //--------------------------------------------------------------------------------------------------------
+ //
+  AirMail
+   {
+      Sorted
+    SADC           { 'Angola',        'Congo (Kinshasa)',
+		     'Lesotho',       'Malawi',
+		     'Mauritius',     'Mozambique',
+		     'Namibia',       'Seychelles',
+		     'South Africa',  'Swaziland',
+		     'Tanzania',      'Zambia',
+		     'Zimbabwe'
+                    }
+    RestOfAfrica   { 'Algeria',                   'Benin',
+                     'Burkina Faso',              'Burundi',
+                     'Cameroon',                  'Cape Verde',
+    	             'Central African Republic',  'Chad',
+    	             'Congo (Brazzaville)',       'Côte d''Ivoire',
+                     'Djibouti',                  'Egypt',
+                     'Equatorial Guinea',
+    	             'Eritrea',                   'Ethiopia',
+    	             'Gabon',                     'Gambia, The',
+    	             'Ghana',                     'Guinea',
+    	             'Guinea-Bissau',             'Ivory Coast',
+    	             'Kenya',                     'Liberia',
+    	             'Libya',                     'Madagascar',
+    	             'Mali',                      'Mauritania',
+    	             'Morocco',                   'Niger',
+    	             'Nigeria',                   'Reunion',
+                     'Rwanda',                    'Sao Tome and Principe',
+    	             'Senegal',                   'Sierra Leone',
+    	             'Somalia',                   'Sudan',
+    	             'Togo',                      'Tunisia',
+                     'Uganda',                    'Western Sahara'
+                   }
+    Europe         { 'Albania',             'Andorra',
+                     'Armenia',             'Austria',
+                     'Azerbaijan',          'Belarus',
+        	     'Belgium',             'Bosnia and Herzegovina',
+        	     'Bulgaria',            'Canary Islands'
+                     'Croatia',             'Cyprus',
+                     'Czech Republic',
+        	     'Denmark',             'England',
+                     'Estonia',             'Faroe Islands',
+        	     'Finland',             'France',
+                     'Georgia',             'Germany',
+                     'Gibraltar',           'Great Britain'
+                     'Greece',              'Greenland'
+                     'Guernsey',            'Holland'
+        	     'Hungary',             'Iceland',
+                     'Ireland (Northern)',  'Ireland (Republic)',
+                     'Isle of Man',         'Italy',
+                     'Jersey',              'Kazakhstan',
+                     'Kyrgyzstan',          'Latvia',
+        	     'Liechtenstein',       'Lithuania',
+                     'Luxembourg',          'Macedonia',
+        	     'Malta',               'Man, Isle of',
+                     'Moldova',             'Monaco',
+                     'Netherlands',         'Norway',
+                     'Poland',              'Portugal',
+                     'Romania',             'Russia',
+                     'San Marino',          'Scotland',
+                     'Slovakia',            'Slovenia',
+                     'Spain',               'Sweden',
+                     'Switzerland',         'Tajikistan',
+                     'Turkey',              'Turkmenistan',
+                     'Ukraine',             'United Kingdom',
+        	     'Uzbekistan',          'Vatican City',
+                     'Wales',               'Yugoslavia'
+                    }
+    RestOfWorld     { 'Afghanistan',               'American Samoa',
+                      'Anguilla',                  'Antigua and Barbuda',
+        	      'Argentina',                 'Aruba',
+                      'Ascencion',                 'Australia',
+                      'Bahamas The',               'Bahrain',
+        	      'Bangladesh',                'Barbados',
+        	      'Belize',                    'Bermuda',
+                      'Bhutan',                    'Bolivia',
+                      'Brazil',                    'British Virgin Islands',
+                      'Brunei',                    'Cambodia',
+                      'Canada',                    'Cayman Islands',
+                      'Chile',                     'China',
+                      'Chinese Taipei',            'Christmas Island',
+                      'Cocos Islands',             'Colombia',
+                      'Comoros and Mayotte',       'Cook Islands'
+                      'Costa Rica',                'Cuba',
+                      'Curacao'                    'Dominica',
+                      'Dominican Republic',        'Ecuador',
+                      'El Salvador',
+                      'Falkland Islands',          'Fiji',
+                      'French Guyana',             'French Polynesia',
+                      'Grenada',                   'Guadeloupe',
+                      'Guam',                      'Guatemala',
+                      'Guyana',                    'Haiti',
+                      'Honduras'                   'Hong Kong',
+                      'India',                     'Indonesia',
+                      'Iran',                      'Iraq',
+                      'Israel',                    'Jamaica',
+                      'Japan',                     'Jordan',
+                      'Kiribati',                  'Korea, North',
+                      'Korea, South',              'Kuwait',
+                      'Laos',                      'Lebanon',
+                      'Macau'                      'Malaysia',
+                      'Maldives',                  'Malvinas'
+                      'Marshall Islands',          'Martinique'
+                      'Mayotte and Comoros',       'Mexico',
+                      'Micronesia',                'Mongolia',
+                      'Montserrat',                'Myanmar',
+                      'Nauru',                     'Nepal',
+                      'Netherlands Antilles',      'New Caledonia',
+                      'New Zealand',               'Nicaragua',
+                      'Niue',                      'Norfolk Island',
+                      'North Korea',               'Northern Mariana Islands',
+                      'Oman',                      'Pakistan',
+                      'Palau',                     'Panama',
+                      'Papua New Guinea',          'Paraguay',
+                      'Peru',                      'Philippines',
+                      'Pitcairn Island',           'Puerto Rico'
+                      'Qatar',                     'Saint Barthelemy',
+                      'Saint Croix Island',        'Saint Eustatius',
+                      'Saint Helena',              'Saint John',
+        	      'Saint Kitts and Nevis',     'Saint Lucia',
+                      'Saint Martin/Maarten',      'Saint Pierre and Miquelon',
+                      'Saint Thomas Island',       'Saint Vincent and the Grenadines',
+        	      'Samoa (American)',          'Samoa (Western)',
+        	      'Saudi Arabia',              'Singapore',
+        	      'Solomon Islands',           'South Korea',
+                      'Sri Lanka',                 'St Barthelemy',
+                      'St Croix Island',           'St Eustatius',
+                      'St Helena',                 'St John',
+                      'St Lucia',                  'St Martin/Maarten',
+                      'St Nevis',                  'St Pierre and Miquelon',
+                      'St Thomas Island',          'St Vincent and Grenadines',
+                      'Surinam',                   'Syria',
+                      'Tahiti',                    'Taiwan',
+                      'Thailand',                  'Tokelau',
+                      'Tonga',                     'Trinidad and Tobago',
+                      'Tristan da Cunha',          'Turks and Caicos Islands',
+                      'Tuvalu',                    'United Arab Emirates',
+                      'United States of America',  'Uruguay',
+                      'US Virgin Islands'          'USA',
+                      'Vanuatu',                   'Venezuela',
+                      'Vietnam',                   'Virgin Islands (UK)',
+                      'Virgin Islands (US)',       'Wallis and Futuna',
+                      'Yemen'
+                   }
+  }
+
+//
+//--------------------------------------------------------------------------------------------------------
+//
+
+// parcels now zoned so using IntEMS list
+   OldSurParcel { Sorted
+               Algeria       { 'Algeria'          }
+               Argentina     { 'Argentina'        }
+               Australia     { 'Australia'        }
+               Austria       { 'Austria'          }
+               Belgium       { 'Belgium'          }
+               Botswana      { 'Botswana'         }
+               Brazil        { 'Brazil'           }
+               Cameroon      { 'Cameroon'         }
+               Canada        { 'Canada'           }
+               China         { 'China'            }
+               Zaire         { 'Congo (Kinshasa)' }
+               Cyprus        { 'Cyprus'           }
+               Denmark       { 'Denmark'          }
+               Egypt         { 'Egypt'            }
+               Ethiopia      { 'Ethiopia'         }
+               Finland       { 'Finland'          }
+               France        { 'France'           }
+               Gambia        { 'Gambia, The'      }
+               Germany       { 'Germany'          }
+               Ghana         { 'Ghana'            }
+               UnitedKingdom { 'United Kingdom'   }
+               Greece        { 'Greece'           }
+               Hongkong      { 'Hong Kong'        }
+               India         { 'India'            }
+               Iran          { 'Iran'             }
+               Iraq          { 'Iraq'             }
+               Ireland       { 'Ireland'          }
+               Israel        { 'Israel'           }
+               Italy         { 'Italy'            }
+               Jamaica       { 'Jamaica'          }
+               Japan         { 'Japan'            }
+               Kenya         { 'Kenya'            }
+               Lesotho       { 'Lesotho'          }
+               Liberia       { 'Liberia'          }
+               Madagascar    { 'Madagascar'       }
+               Malawi        { 'Malawi'           }
+               Malta         { 'Malta'            }
+               Mauritius     { 'Mauritius'        }
+               Morocco       { 'Morocco'          }
+               Mozambique    { 'Mozambique'       }
+               Namibia       { 'Namibia'          }
+               Netherlands   { 'Netherlands'      }
+               New_Zealand   { 'New Zealand'      }
+               Nigeria       { 'Nigeria'          }
+               Norway        { 'Norway'           }
+               Pakistan      { 'Pakistan'         }
+               Phillipines   { 'Philippines'      }
+               Poland        { 'Poland'           }
+               Portugal      { 'Portugal'         }
+               Russia        { 'Russia'           }
+               Saudi_Arabia  { 'Saudi Arabia'     }
+               Senegal       { 'Senegal'          }
+               Sierra_Leone  { 'Sierra Leone'     }
+               Singapore     { 'Singapore'        }
+               Somalia       { 'Somalia'          }
+               South_Africa  { 'South Africa'     }
+               Spain         { 'Spain'            }
+               Sri_Lanka     { 'Sri Lanka'        }
+               Sudan         { 'Sudan'            }
+               Swaziland     { 'Swaziland'        }
+               Sweden        { 'Sweden'           }
+               Switzerland   { 'Switzerland'      }
+               Tanzania      { 'Tanzania'         }
+               Turkey        { 'Turkey'           }
+               Uganda        { 'Uganda'           }
+               UnitedStates  {'United States of America' }
+               Yugoslavia    { 'Yugoslavia'       }
+               Zambia        { 'Zambia'           }
+               Zimbabwe      { 'Zimbabwe'         }
+              }
+
+              //*  SADC has been split into three areas to calculate insurance rates
+              //*  on parcels.  The rates changes on 1 May 2004 consolidated the
+              //*  individual countries for parcels into zones and so the insurance
+              //*  lookup had to change. SADC, SADC1 and SADC2 all have the same lookup
+              //*  for postage tariff, but SADC1 and SADC2 are used in separate lookups
+              //*  to calculate the insurance tariff for each country.
+   SurParcel {
+       Sorted
+       Botswana { 'Botswana' }
+       SADC   { 'Angola'
+                'Congo, Dem. Rep.'
+                'Malawi'
+                'Mauritius'
+                'Mozambique'
+                'Namibia'
+                'Seychelles'
+                'Tanzania'
+                'Zaire'
+               }
+       SADC1  { 'South Africa'
+                'Lesotho'
+                'Swaziland'
+               }
+       SADC2  { 'Zambia'
+                'Zimbabwe'
+               }
+  RestOfAfrica { 'Algeria'
+                'Benin (Dahomey)'
+                'British Indian Ocean Territory'
+                'Burkina Faso'
+                'Burundi'
+                'Cameroon'
+//                'Canary Islands'
+                'Cape Verde'
+                'Central African Republic'
+                'Chad'
+                'Comoros & Mayotte'
+                'Congo (Brazzaville)'
+                'Cote d Ivoire'
+                'Djibouti'
+                'Equatorial Guinea'
+                'Eqypt'
+                'Eritrea'
+                'Ethiopia'
+                'French Southern Territories'
+                'Gabon'
+                'Gambia, The'
+                'Ghana'
+                'Guinea'
+                'Guinea-Bissau'
+                'Heard and McDonald Islands'
+                'Ivory Coast'
+                'Kenya'
+                'Liberia'
+                'Madagascar'
+                'Mali'
+                'Mauritania'
+                'Mayotte'
+                'Morocco'
+                'Niger'
+                'Nigeria'
+                'Reunion'
+                'Rwanda'
+                'Sao Tome & Principe'
+                'Senegal'
+                'Sierra Leone'
+                'Somalia'
+                'St Helena'
+                'Sudan'
+                'Togo'
+                'Uganda'
+                'Western Sahara'
+               }
+       Europe { 'England'
+                'Great Britain'
+                'Guernsey'
+                'Jersey'
+                'Scotland'
+                'United Kingdom'
+                'Wales'
+                'Albania'
+                'Andorra'
+                'Armenia'
+                'Austria'
+                'Azerbaijan'
+                'Belarus'
+                'Belgium'
+                'Bosnia & Herzegovina'
+                'Bulgaria'
+                'Croatia (Hrvatska)'
+                'Czech Republic'
+                'Denmark'
+                'Estonia'
+                'Faroe Islands'
+                'Finland'
+                'France'
+                'France, Metropolitan'
+                'Georgia'
+                'Germany'
+                'Gibraltar'
+                'Greece'
+                'Holland'
+                'Hungary'
+                'Iceland'
+                'Ireland, Northern'
+                'Ireland, Republic'
+                'Italy'
+                'Kazakhstan'
+                'Kyrghyzstan'
+                'Latvia'
+                'Liechtenstein'
+                'Lithuania'
+                'Luxembourg'
+                'Macedonia'
+                'Malta'
+                'Moldova, Republic of'
+                'Monaco'
+                'Netherlands'
+                'Poland'
+                'Portugal'
+                'Romania'
+                'Russia'
+                'Russian Federation'
+                'San Marino'
+                'Slovakia'
+                'Slovenia'
+                'Spain'
+                'Svalbard and Jan Mayen Islands'
+                'Switzerland'
+                'Tajikistan'
+                'Turkmenistan'
+                'Ukraine'
+                'Uzbekistan'
+                'Vatican, City State'
+                'Yugoslavia'
+//                'Norway'
+//                'Sweden'
+               }
+  RestOfWorld { 'Afghanistan'
+                'American Samoa'
+                'Anguilla'
+                'Antartica'
+                'Antigua & Barbuda'
+                'Argentina'
+                'Aruba'
+                'Australia'
+                'Bahamas'
+                'Bahrain'
+                'Bangladesh'
+                'Barbados'
+                'Belize'
+                'Bermuda'
+                'Bhutan'
+                'Bolivia'
+                'Bouvet Island'
+//                'Bonaire'
+                'Brazil'
+                'Brunei Darussalam'
+                'Cambodia'
+                'Canada'
+                'Cayman Islands'
+                'Chile'
+                'China'
+                'Christmas Island'
+                'Cocos (Keeling) Islands'
+                'Colombia'
+                'Cook Islands'
+                'Costa Rica'
+                'Cuba'
+//                'Curacao'
+                'Cyprus'
+                'Dominica'
+                'Dominican Rep.'
+                'East Timor'
+                'Ecuador'
+                'El Salvador'
+                'Falkland Islands'
+                'Fiji'
+                'French Guyana'
+                'French Polynesia'
+//                'Greenland'
+                'Grenada'
+                'Guadeloupe'
+                'Guam'
+                'Guatemala'
+                'Guyana'
+                'Haiti'
+                'Honduras'
+                'Hong Kong'
+                'India'
+                'Indonesia'
+                'Iran'
+                'Iraq'
+                'Israel'
+                'Jamaica'
+                'Japan'
+                'Jordan'
+                'Kiribati'
+                'Korea, Democratic Peoples Republic of (North)'
+                'Korea, Republic of (South)'
+                'Kuwait'
+                'Laos'
+                'Lebanon'
+                'Libya'
+                'Macau'
+                'Malaysia'
+                'Maldives'
+                'Marshall Islands'
+                'Martinique'
+                'Mexico'
+                'Micronesia, Federated States of'
+                'Mongolia'
+                'Montserrat'
+                'Myanmar'
+                'Nauru'
+                'Nepal'
+                'Netherlands Antilles'
+                'New Caledonia'
+                'New Zealand'
+                'Nicaragua'
+                'Niue'
+                'Norfolk Island'
+                'Northern Mariana Islands'
+                'Oman'
+                'Pakistan'
+                'Palau'
+                'Panama'
+                'Papua New Guinea'
+                'Paraguay'
+                'Peru'
+                'Philippines'
+                'Pitcairn Island'
+                'Puerto Rico'
+                'Qatar'
+                'St Kitts and Nevis'
+                'St Lucia'
+                'St Vincent and Grenadines'
+//                'Saipan'
+                'Samoa'
+                'Saudi Arabia'
+                'Singapore'
+                'Solomon Islands'
+                'South Georgia and South Sandwich Is.'
+                'Sri Lanka'
+                'St Pierre and Miquelon'
+                'Surinam'
+                'Syria'
+//                'Tahiti'
+                'Taiwan'
+                'Thailand'
+                'Tokelau'
+                'Tonga'
+                'Trinidad & Tobago'
+                'Turkey'
+                'Turks and Caicos Islands'
+                'Tuvalu'
+                'United Arab Emirates'
+                'United States minor outlying islands'
+                'United States of America'
+                'Uruguay'
+                'USA'
+                'Vanuatu'
+                'Venezuela'
+                'Vietnam'
+                'Virgin Islands (UK)'
+                'Virgin Islands (US)'
+                'Wallis and Futuna Islands'
+                'Western Samoa'
+                'Yemen'
+               }
+  }
+
+//
+//--------------------------------------------------------------------------------------------------------
+//
+
+// parcels now zoned so using IntEMS list
+   OldAirParcel { Sorted
+    Algeria       { 'Algeria' }
+    Argentina     { 'Argentina' }
+    Australia     { 'Australia' }
+    Austria       { 'Austria' }
+    Bahrain       { 'Bahrain' }
+    Belgium       { 'Belgium' }
+    Brazil        { 'Brazil' }
+    Cameroon      { 'Cameroon' }
+    Canada        { 'Canada' }
+    China         { 'China' }
+    Zaire         { 'Congo (Kinshasa)' }
+    Cyprus        { 'Cyprus' }
+    Denmark       { 'Denmark' }
+    Egypt         { 'Egypt' }
+    Ethiopia      { 'Ethiopia' }
+    Finland       { 'Finland' }
+    France        { 'France' }
+    Gambia        { 'Gambia, The' }
+    Germany       { 'Germany' }
+    Ghana         { 'Ghana' }
+    UnitedKingdom { 'United Kingdom' }
+    Greece        { 'Greece' }
+    Hongkong      { 'Hong Kong' }
+    India         { 'India' }
+    Iran          { 'Iran' }
+    Iraq          { 'Iraq' }
+    Ireland       { 'Ireland' }
+    Israel        { 'Israel' }
+    Italy         { 'Italy' }
+    Ivory_Coast   { 'Ivory Coast' }
+    Jamaica       { 'Jamaica' }
+    Japan         { 'Japan' }
+    Kenya         { 'Kenya' }
+    Korea         { 'Korea' }
+    Kuwait        { 'Kuwait' }
+    Lesotho       { 'Lesotho' }
+    Liberia       { 'Liberia' }
+    Madagascar    { 'Madagascar' }
+    Malawi        { 'Malawi' }
+    Malaysia      { 'Malaysia' }
+    Malta         { 'Malta' }
+    Mauritius     { 'Mauritius' }
+    Mexico        { 'Mexico' }
+    Morocco       { 'Morocco' }
+    Mozambique    { 'Mozambique' }
+    Namibia       { 'Namibia' }
+    Netherlands   { 'Netherlands' }
+    New_Zealand   { 'New Zealand' }
+    Nigeria       { 'Nigeria' }
+    Norway        { 'Norway' }
+    Oman          { 'Oman' }
+    Pakistan      { 'Pakistan' }
+    Phillipines   { 'Philippines' }
+    Poland        { 'Poland' }
+    Portugal      { 'Portugal' }
+    Russia        { 'Russia' }
+    Saudi_Arabia  { 'Saudi Arabia' }
+    Senegal       { 'Senegal' }
+    Sierra_Leone  { 'Sierra Leone' }
+    Singapore     { 'Singapore' }
+    Somalia       { 'Somalia' }
+    South_Africa  { 'South Africa' }
+    Spain         { 'Spain' }
+    Sri_Lanka     { 'Sri Lanka' }
+    Sudan         { 'Sudan' }
+    Swaziland     { 'Swaziland' }
+    Sweden        { 'Sweden' }
+    Switzerland   { 'Switzerland' }
+    Taiwan        { 'Taiwan' }
+    Tanzania      { 'Tanzania' }
+    Turkey        { 'Turkey' }
+    Uganda        { 'Uganda' }
+    UnitedStates  { 'United States of America' }
+    Yugoslavia    { 'Yugoslavia' }
+    Zambia        { 'Zambia' }
+    Zimbabwe      { 'Zimbabwe' }
+   }
+
+              //*  SADC has been split into three areas to calculate insurance rates
+              //*  on parcels.  The rates changes on 1 May 2004 consolidated the
+              //*  individual countries for parcels into zones and so the insurance
+              //*  lookup had to change. SADC, SADC1 and SADC2 all have the same lookup
+              //*  for postage tariff, but SADC1 and SADC2 are used in separate lookups
+              //*  to calculate the insurance tariff for each country.
+   AirParcel {
+       Sorted
+       SADC   { 'Angola'
+                'Congo, Dem. Rep.'
+                'Malawi'
+                'Mauritius'
+                'Mozambique'
+                'Namibia'
+                'Seychelles'
+                'Tanzania'
+                'Zaire'
+               }
+       SADC1  { 'South Africa'
+                'Lesotho'
+                'Swaziland'
+               }
+       SADC2  { 'Zambia'
+                'Zimbabwe'
+               }
+ RestOfAfrica  { 'Algeria'
+                'Benin (Dahomey)'
+                'British Indian Ocean Territory'
+                'Burkina Faso'
+                'Burundi'
+                'Cameroon'
+//                'Canary Islands'
+                'Cape Verde'
+                'Central African Republic'
+                'Chad'
+                'Comoros & Mayotte'
+                'Congo (Brazzaville)'
+                'Cote d Ivoire'
+                'Djibouti'
+                'Equatorial Guinea'
+                'Eqypt'
+                'Eritrea'
+                'Ethiopia'
+                'French Southern Territories'
+                'Gabon'
+                'Gambia, The'
+                'Ghana'
+                'Guinea'
+                'Guinea-Bissau'
+                'Heard and McDonald Islands'
+                'Ivory Coast'
+                'Kenya'
+                'Liberia'
+                'Madagascar'
+                'Mali'
+                'Mauritania'
+                'Mayotte'
+                'Morocco'
+                'Niger'
+                'Nigeria'
+                'Reunion'
+                'Rwanda'
+                'Sao Tome & Principe'
+                'Senegal'
+                'Sierra Leone'
+                'Somalia'
+                'St Helena'
+                'Sudan'
+                'Togo'
+                'Uganda'
+                'Western Sahara'
+               }
+       Europe  { 'England'
+                'Great Britain'
+                'Guernsey'
+                'Jersey'
+                'Scotland'
+                'United Kingdom'
+                'Wales'
+                'Albania'
+                'Andorra'
+                'Armenia'
+                'Austria'
+                'Azerbaijan'
+                'Belarus'
+                'Belgium'
+                'Bosnia & Herzegovina'
+                'Bulgaria'
+                'Croatia (Hrvatska)'
+                'Czech Republic'
+                'Denmark'
+                'Estonia'
+                'Faroe Islands'
+                'Finland'
+                'France'
+                'France, Metropolitan'
+                'Georgia'
+                'Germany'
+                'Gibraltar'
+                'Greece'
+                'Holland'
+                'Hungary'
+                'Iceland'
+                'Ireland, Northern'
+                'Ireland, Republic'
+                'Italy'
+                'Kazakhstan'
+                'Kyrghyzstan'
+                'Latvia'
+                'Liechtenstein'
+                'Lithuania'
+                'Luxembourg'
+                'Macedonia'
+                'Malta'
+                'Moldova, Republic of'
+                'Monaco'
+                'Netherlands'
+                'Poland'
+                'Portugal'
+                'Romania'
+                'Russia'
+                'Russian Federation'
+                'San Marino'
+                'Slovakia'
+                'Slovenia'
+                'Spain'
+                'Svalbard and Jan Mayen Islands'
+                'Switzerland'
+                'Tajikistan'
+                'Turkmenistan'
+                'Ukraine'
+                'Uzbekistan'
+                'Vatican, City State'
+                'Yugoslavia'
+//                'Norway'
+//                'Sweden'
+               }
+  RestOfWorld { 'Afghanistan'
+                'American Samoa'
+                'Anguilla'
+                'Antartica'
+                'Antigua & Barbuda'
+                'Argentina'
+                'Aruba'
+                'Australia'
+                'Bahamas'
+                'Bahrain'
+                'Bangladesh'
+                'Barbados'
+                'Belize'
+                'Bermuda'
+                'Bhutan'
+                'Bolivia'
+                'Bouvet Island'
+//                'Bonaire'
+                'Brazil'
+                'Brunei Darussalam'
+                'Cambodia'
+                'Canada'
+                'Cayman Islands'
+                'Chile'
+                'China'
+                'Christmas Island'
+                'Cocos (Keeling) Islands'
+                'Colombia'
+                'Cook Islands'
+                'Costa Rica'
+                'Cuba'
+//                'Curacao'
+                'Cyprus'
+                'Dominica'
+                'Dominican Rep.'
+                'East Timor'
+                'Ecuador'
+                'El Salvador'
+                'Falkland Islands'
+                'Fiji'
+                'French Guyana'
+                'French Polynesia'
+//                'Greenland'
+                'Grenada'
+                'Guadeloupe'
+                'Guam'
+                'Guatemala'
+                'Guyana'
+                'Haiti'
+                'Honduras'
+                'Hong Kong'
+                'India'
+                'Indonesia'
+                'Iran'
+                'Iraq'
+                'Israel'
+                'Jamaica'
+                'Japan'
+                'Jordan'
+                'Kiribati'
+                'Korea, Democratic Peoples Republic of (North)'
+                'Korea, Republic of (South)'
+                'Kuwait'
+                'Laos'
+                'Lebanon'
+                'Libya'
+                'Macau'
+                'Malaysia'
+                'Maldives'
+                'Marshall Islands'
+                'Martinique'
+                'Mexico'
+                'Micronesia, Federated States of'
+                'Mongolia'
+                'Montserrat'
+                'Myanmar'
+                'Nauru'
+                'Nepal'
+                'Netherlands Antilles'
+                'New Caledonia'
+                'New Zealand'
+                'Nicaragua'
+                'Niue'
+                'Norfolk Island'
+                'Northern Mariana Islands'
+                'Oman'
+                'Pakistan'
+                'Palau'
+                'Panama'
+                'Papua New Guinea'
+                'Paraguay'
+                'Peru'
+                'Philippines'
+                'Pitcairn Island'
+                'Puerto Rico'
+                'Qatar'
+                'St Kitts and Nevis'
+                'St Lucia'
+                'St Vincent and Grenadines'
+//                'Saipan'
+                'Samoa'
+                'Saudi Arabia'
+                'Singapore'
+                'Solomon Islands'
+                'South Georgia and South Sandwich Is.'
+                'Sri Lanka'
+                'St Pierre and Miquelon'
+                'Surinam'
+                'Syria'
+//                'Tahiti'
+                'Taiwan'
+                'Thailand'
+                'Tokelau'
+                'Tonga'
+                'Trinidad & Tobago'
+                'Turkey'
+                'Turks and Caicos Islands'
+                'Tuvalu'
+                'United Arab Emirates'
+                'United States minor outlying islands'
+                'United States of America'
+                'Uruguay'
+                'USA'
+                'Vanuatu'
+                'Venezuela'
+                'Vietnam'
+                'Virgin Islands (UK)'
+                'Virgin Islands (US)'
+                'Wallis and Futuna Islands'
+                'Western Samoa'
+                'Yemen'
+               }
+  }
+
+//
+//-----------------------  Government Surface Parcel Destinations ----------------------
+//
+
+   GovSurParcel { Sorted
+    Botswana      { 'Botswana' }
+    Lesotho       { 'Lesotho' }
+    Malawi        { 'Malawi' }
+    Namibia       { 'Namibia' }
+    South_Africa  { 'South Africa' }
+    Swaziland     { 'Swaziland' }
+    Zimbabwe      { 'Zimbabwe' }
+   }
+
+//
+//-----------------------  Government Air Parcel Destinations ----------------------
+//
+
+   GovAirParcel { Sorted
+    Lesotho       { 'Lesotho' }
+    Malawi        { 'Malawi' }
+    Namibia       { 'Namibia' }
+    South_Africa  { 'South Africa' }
+    Swaziland     { 'Swaziland' }
+    Zimbabwe      { 'Zimbabwe' }
+   }
+
+  IntExpress {
+    Sorted
+   // Botswana       { 'Botswana'}
+    SADC           { 'Lesotho','Mozambique', 'South Africa', 'Swaziland', 'Congo (Kinshasa)' }
+    RestOfAfrica   { 'Egypt','Ghana','Kenya','Congo (Brazzaville)' }
+    Europe         {   'Belgium', 'Denmark', 'France', 'Germany', 'Greece', 'Netherlands',
+                       'Italy', 'Norway', 'Portugal', 'Spain', 'Sweden', 'Switzerland' 'United Kingdom'
+                   }
+    RestOfWorld   { 'Australia','Israel','United States of America', 'USA'}
+    }
+
+
+  SurGovReg {
+    Sorted
+    SADC 	{ 'Lesotho','Malawi',
+                'Namibia','South Africa',
+                'Swaziland','Zimbabwe'
+              }
+    Botswana  { 'Botswana' }
+    }
+
+  AirGovReg {
+      Sorted
+      SADC 	{ 'Lesotho','Malawi',
+                'Namibia','South Africa',
+                'Swaziland','Zimbabwe'
+              }
+     }
+
+  IntGovExpress  {
+     Sorted
+     SADC2          { 'Lesotho','South Africa','Swaziland'}
+     }
+
+
+ //
+ //--------------------------------------------------------------------------------------------------------
+ //
+
+   ParcelInsurance {
+      Sorted
+      Insurance   {   'Botswana' 'South Africa' 'Lesotho'  'Swaziland' 'Zambia' 'Zimbabwe' }
+     }
+
+ //
+ //--------------------------------------------------------------------------------------------------------
+ //
+
+   ParcelExpress {
+     Sorted
+     Express {
+                 'Denmark','France','Holland','Kenya','Lesotho','Netherlands','Norway',
+                 'Portugal','South Africa','Swaziland','Switzerland','United Kingdom',
+                }
+   }
+
+ //
+ //--------------------------------------------------------------------------------------------------------
+ //
+
+
+   IntEMS {
+       Sorted
+       Zone01 { 'South Africa'
+               }
+       Zone02 { 'Angola'
+                'Congo, Dem. Rep.'
+                'Lesotho'
+                'Malawi'
+                'Mauritius'
+                'Mozambique'
+                'Namibia'
+                'Seychelles'
+                'Swaziland'
+                'Tanzania'
+                'Zambia'
+                'Zimbabwe'
+                'Zaire'
+               }
+       Zone03 { 'Algeria'
+                'Benin (Dahomey)'
+                'British Indian Ocean Territory'
+                'Burkina Faso'
+                'Burundi'
+                'Cameroon'
+//                'Canary Islands'
+                'Cape Verde'
+                'Central African Republic'
+                'Chad'
+                'Comoros & Mayotte'
+                'Congo (Brazzaville)'
+                'Cote d Ivoire'
+                'Djibouti'
+                'Equatorial Guinea'
+                'Eqypt'
+                'Eritrea'
+                'Ethiopia'
+                'French Southern Territories'
+                'Gabon'
+                'Gambia, The'
+                'Ghana'
+                'Guinea'
+                'Guinea-Bissau'
+                'Heard and McDonald Islands'
+                'Ivory Coast'
+                'Kenya'
+                'Liberia'
+                'Madagascar'
+                'Mali'
+                'Mauritania'
+                'Mayotte'
+                'Morocco'
+                'Niger'
+                'Nigeria'
+                'Reunion'
+                'Rwanda'
+                'Sao Tome & Principe'
+                'Senegal'
+                'Sierra Leone'
+                'Somalia'
+                'St Helena'
+                'Sudan'
+                'Togo'
+                'Uganda'
+                'Western Sahara'
+               }
+       Zone04 { 'England'
+                'Great Britain'
+                'Guernsey'
+                'Jersey'
+                'Scotland'
+                'United Kingdom'
+                'Wales'
+                'Albania'
+                'Andorra'
+                'Armenia'
+                'Austria'
+                'Azerbaijan'
+                'Belarus'
+                'Belgium'
+                'Bosnia & Herzegovina'
+                'Bulgaria'
+                'Croatia (Hrvatska)'
+                'Czech Republic'
+                'Denmark'
+                'Estonia'
+                'Faroe Islands'
+                'Finland'
+                'France'
+                'France, Metropolitan'
+                'Georgia'
+                'Germany'
+                'Gibraltar'
+                'Greece'
+                'Holland'
+                'Hungary'
+                'Iceland'
+                'Ireland, Northern'
+                'Ireland, Republic'
+                'Italy'
+                'Kazakhstan'
+                'Kyrghyzstan'
+                'Latvia'
+                'Liechtenstein'
+                'Lithuania'
+                'Luxembourg'
+                'Macedonia'
+                'Malta'
+                'Moldova, Republic of'
+                'Monaco'
+                'Netherlands'
+                'Poland'
+                'Portugal'
+                'Romania'
+                'Russia'
+                'Russian Federation'
+                'San Marino'
+                'Slovakia'
+                'Slovenia'
+                'Spain'
+                'Svalbard and Jan Mayen Islands'
+                'Switzerland'
+                'Tajikistan'
+                'Turkmenistan'
+                'Ukraine'
+                'Uzbekistan'
+                'Vatican, City State'
+                'Yugoslavia'
+//                'Norway'
+//                'Sweden'
+               }
+       Zone05 { 'Afghanistan'
+                'American Samoa'
+                'Anguilla'
+                'Antartica'
+                'Antigua & Barbuda'
+                'Argentina'
+                'Aruba'
+                'Australia'
+                'Bahamas'
+                'Bahrain'
+                'Bangladesh'
+                'Barbados'
+                'Belize'
+                'Bermuda'
+                'Bhutan'
+                'Bolivia'
+                'Bouvet Island'
+//                'Bonaire'
+                'Brazil'
+                'Brunei Darussalam'
+                'Cambodia'
+                'Canada'
+                'Cayman Islands'
+                'Chile'
+                'China'
+                'Christmas Island'
+                'Cocos (Keeling) Islands'
+                'Colombia'
+                'Cook Islands'
+                'Costa Rica'
+                'Cuba'
+//                'Curacao'
+                'Cyprus'
+                'Dominica'
+                'Dominican Rep.'
+                'East Timor'
+                'Ecuador'
+                'El Salvador'
+                'Falkland Islands'
+                'Fiji'
+                'French Guyana'
+                'French Polynesia'
+//                'Greenland'
+                'Grenada'
+                'Guadeloupe'
+                'Guam'
+                'Guatemala'
+                'Guyana'
+                'Haiti'
+                'Honduras'
+                'Hong Kong'
+                'India'
+                'Indonesia'
+                'Iran'
+                'Iraq'
+                'Israel'
+                'Jamaica'
+                'Japan'
+                'Jordan'
+                'Kiribati'
+                'Korea, Democratic Peoples Republic of (North)'
+                'Korea, Republic of (South)'
+                'Kuwait'
+                'Laos'
+                'Lebanon'
+                'Libya'
+                'Macau'
+                'Malaysia'
+                'Maldives'
+                'Marshall Islands'
+                'Martinique'
+                'Mexico'
+                'Micronesia, Federated States of'
+                'Mongolia'
+                'Montserrat'
+                'Myanmar'
+                'Nauru'
+                'Nepal'
+                'Netherlands Antilles'
+                'New Caledonia'
+                'New Zealand'
+                'Nicaragua'
+                'Niue'
+                'Norfolk Island'
+                'Northern Mariana Islands'
+                'Oman'
+                'Pakistan'
+                'Palau'
+                'Panama'
+                'Papua New Guinea'
+                'Paraguay'
+                'Peru'
+                'Philippines'
+                'Pitcairn Island'
+                'Puerto Rico'
+                'Qatar'
+                'St Kitts and Nevis'
+                'St Lucia'
+                'St Vincent and Grenadines'
+//                'Saipan'
+                'Samoa'
+                'Saudi Arabia'
+                'Singapore'
+                'Solomon Islands'
+                'South Georgia and South Sandwich Is.'
+                'Sri Lanka'
+                'St Pierre and Miquelon'
+                'Surinam'
+                'Syria'
+//                'Tahiti'
+                'Taiwan'
+                'Thailand'
+                'Tokelau'
+                'Tonga'
+                'Trinidad & Tobago'
+                'Turkey'
+                'Turks and Caicos Islands'
+                'Tuvalu'
+                'United Arab Emirates'
+                'United States minor outlying islands'
+                'United States of America'
+                'Uruguay'
+                'USA'
+                'Vanuatu'
+                'Venezuela'
+                'Vietnam'
+                'Virgin Islands (UK)'
+                'Virgin Islands (US)'
+                'Wallis and Futuna Islands'
+                'Western Samoa'
+                'Yemen'
+               }
+  }
+
+ //
+ //--------------------------------------------------------------------------------------------------------
+ //
+   MoneyOrderOffices {
+      Sorted
+    O1000 { 'Head Quarters'    } O2000 { 'Gaborone Central' }
+    O2001 { 'River Walk'       } O2020 { 'Bontleng'         }
+    O2021 { 'Gaborone Village' } O2022 { 'Ramotswa Village' }
+    O2023 { 'Ramotswa Station' } O2024 { 'Gaborone UB'      }
+    O2040 { 'Broadhurst'       } O2041 { 'Kopong'           }
+    O2042 { 'SSK Airport'      } O2043 { 'Tlokweng'         }
+    O2060 { 'Gaborone Station' } O2061 { 'Gabane'           }
+    O2062 { 'Mogoditshane'     } O2063 { 'Mmankgodi'        }
+    O2064 { 'Thamaga'          } O2080 { 'Ghanzi'           }
+    O2081 { 'Charles hill'     } O2082 { 'Kalfontein'       }
+    O2083 { 'Nojane'           } O2100 { 'Jwaneng'          }
+    O2101 { 'Hukuntsi'         } O2102 { 'Kang'             }
+    O2103 { 'Khakhea'          } O2104 { 'Lehututu'         }
+    O2105 { 'Mabutsane'        } O2106 { 'Middlepits'       }
+    O2107 { 'Tsabong'          } O2108 { 'Werda'            }
+    O2120 { 'Lobatse'          } O2121 { 'Digawana'         }
+    O2122 { 'Good Hope'        } O2123 { 'Mabule'           }
+    O2124 { 'Otse'             } O2125 { 'Pitsane'          }
+    O2126 { 'Sedibeng'         } O2127 { 'Woodhall'         }
+    O2140 { 'Mochudi'          } O2141 { 'Bokaa'            }
+    O2142 { 'Ntshinoge'        } O2143 { 'Oodi'             }
+    O2144 { 'Sikwane'          } O2160 { 'Molepolole'       }
+    O2161 { 'Letlhakeng'       } O2162 { 'Lentsweletau'     }
+    O2163 { 'Mathubantwa'      } O2164 { 'Motokwe'          }
+    O2165 { 'Sojwe'            } O2166 { 'Thebephatswa'     }
+    O2180 { 'Mmasekou'         } O2181 { 'Kanye'            }
+    O2182 { 'Mafhikana'        } O2183 { 'Moshupa'          }
+    O2184 { 'Mmathethe'        } O2200 { 'Serowe'           }
+    O2201 { 'Moiyabana'        } O2202 { 'Rasebolai'        }
+    O3000 { 'Palapye'          } O3001 { 'Tumasera'         }
+    O3002 { 'Lecheng'          } O3003 { 'Pota'             }
+    O3004 { 'Maokatumo'        } O3005 { 'Sherwood Ranch'   }
+    O3006 { 'Lerala'           } O3007 { 'Moeng'            }
+    O3008 { 'Maunatlala'       } O3009 { 'Ramokgonami'      }
+    O3020 { 'Selebi Phikwe'    } O3021 { 'Sefhophe'         }
+    O3022 { 'Mmadinare'        } O3023 { 'Serule'           }
+    O3024 { 'Tsetsebye'        } O3025 { 'Bobonong'         }
+    O3026 { 'Botshabelo'       } O3027 { 'Semolale'         }
+    O3040 { 'Mahalapye'        } O3041 { 'Mookane'          }
+    O3042 { 'Sefhare'          } O3043 { 'Madiba'           }
+    O3044 { 'Pilikwe'          } O3045 { 'Shoshong'         }
+    O3046 { 'Kalamare'         } O3047 { 'Machaneng'        }
+    O4000 { 'Francistown'      } O4100 { 'Tatitown'         }
+    O4101 { 'Matsiloje'        } O4102 { 'Mathangwane'      }
+    O4103 { 'Nata'             } O4104 { 'Gweta'            }
+    O4105 { 'Sowa'             } O4200 { 'Tutume'           }
+    O4201 { 'Sebina'           } O4202 { 'Nkange'           }
+    O4203 { 'Maitengwe'        } O4300 { 'Masunga'          }
+    O4301 { 'Makaleng'         } O4302 { 'Ramokwebana'      }
+    O4303 { 'Tsesebe'          } O4400 { 'Tonota'           }
+    O4401 { 'Shashe'           } O4500 { 'Monarch'          }
+    O4600 { 'Orapa'            } O4601 { 'Letlhakane'       }
+    O4601 { 'Mopipi'           } O4602 { 'Rakops'           }
+    O4700 { 'Kasane'           } O4701 { 'Kavimba'          }
+    O4800 { 'Maun'             } O4801 { 'Boseja'           }
+    O4802 { 'Sehitwa'          } O4803 { 'Gumare'           }
+    O4804 { 'Etsha'            } O4805 { 'Shakawe'          }
+/*      O1010	{'Bobonong'}
+      O1020	{'Sefhophe'}
+      O1030	{'Semolale'}
+      O1040	{'Tsetsebye'}
+      O1050	{'Francistown'}
+      O1060	{'Gweta'}
+      O1070	{'Maitengwe'}
+      O1080	{'Makaleng'}
+      O1090	{'Masunga'}
+      O1100	{'Mathangwane'}
+      O1120	{'Matsiloje'}
+      O1130	{'Monarch'}
+      O1140	{'Nata'}
+      O1150	{'Nkange'}
+      O1160	{'Ramokgwebana'}
+      O1170	{'Sebina'}
+      O1180	{'Shashe'}
+      O1190	{'Sowa'}
+      O1210	{'Tatitown'}
+      O1220	{'Tonota'}
+      O1230	{'Tshesebe'}
+      O1240	{'Tutume'}
+      O1250	{'Bokaa'}
+      O1260	{'Bontleng'}
+      O1270	{'Broadhurst'}
+      O1280	{'Gabane'}
+      O1290	{'Gaborone Central'}
+      O1300	{'Gaborone Station'}
+      O1310	{'Gaborone University'}
+      O1320	{'Gaborone Village'}
+      O1330	{'Kopong'}
+      O1340	{'Mmankgodi'}
+      O1350	{'Mogoditshane'}
+      O1360	{'Moshupa'}
+      O1370	{'Oodi'}
+      O1380	{'Otse'}
+      O1390	{'Ramotswa Station'}
+      O1400	{'Ramotswa Village'}
+      O1410	{'SSK Airport'}
+      O1420	{'Thamaga'}
+      O1430	{'Tlokweng'}
+      O1440	{'Charleshill'}
+      O1450	{'Ghanzi'}
+      O1460	{'Kalkfontein'}
+      O1470	{'Nojane'}
+      O1480	{'Hukuntsi'}
+      O1490	{'Jwaneng'}
+      O1500	{'Kang'}
+      O1510	{'Khakhea'}
+      O1520	{'Lehututu'}
+      O1530	{'Mabutsane'}
+      O1540	{'Mookane'}
+      O1550	{'Middlepits'}
+      O1560	{'Tsabong'}
+      O1580	{'Werda'}
+      O1590	{'Kanye'}
+      O1610	{'Kasane'}
+      O1620	{'Kavimba'}
+      O1630   {'Letlhakeng'}
+      O1640	{'Motokwe'}
+      O1650	{'Digawana'}
+      O1660	{'Goodhope'}
+      O1670	{'Lobatse'}
+      O1680	{'Mabule'}
+      O1690	{'Mmathethe'}
+      O1700	{'Pitsane'}
+      O1710	{'Sedibeng'}
+      O1720	{'Woodhall'}
+      O1730	{'Kalamare'}
+      O1740	{'Machaneng'}
+      O1750	{'Madiba'}
+      O1760	{'Mahalapye'}
+      O1770	{'Pilikwe'}
+      O1780	{'Sefhare'}
+      O1790	{'Shoshong'}
+      O1800	{'Boseja'}
+      O1810	{'Etsha'}
+      O1820	{'Gumare'}
+      O1830	{'Maun'}
+      O1840	{'Sehitwa'}
+      O1850	{'Shakawe'}
+      O1860	{'Mafhikana'}
+      O1870	{'Mmasekou'}
+      O1890	{'Mochudi'}
+      O1900	{'Ntshinoge'}
+      O1910  {'Sikwane'}
+      O1920	{'Lentsweletau'}
+      O1930	{'Mathubantwa'}
+      O1940	{'Molepolole'}
+      O1950	{'Sojwe'}
+      O1960	{'Thebephatswa'}
+      O1970	{'Letlhakane'}
+      O1980	{'Mopipi'}
+      O1990	{'Orapa'}
+      O2000	{'Rakops'}
+      O2010	{'Lecheng'}
+      O2020	{'Lerala'}
+      O2030	{'Maokatuma'}
+      O2040	{'Maunatlala'}
+      O2050	{'Moeng'}
+      O2060	{'Palapye'}
+      O2070	{'Pota'}
+      O2080	{'Ramokgonami'}
+      O2090	{'Sherwood Ranch'}
+      O2100	{'Tumasera'}
+      O2110	{'Botshabelo'}
+      O2120	{'Mmadinare'}
+      O2130	{'Serule'}
+      O2140	{'Selebi-Phikwe'}
+      O2150	{'Moiyabana'}
+      O2160	{'Rasebolai'}
+      O2170	{'Serowe'}
+      O2180 {'River Walk'} */
+   }
+
+
+   IntMoneyOrderCountries {
+      Sorted
+      Items   {
+                'Brazil' 'Canada' 'United Kingdom' 'Germany' 'India' 'Ireland' 'Israel'
+                'Italy' 'Kenya' 'Lesotho' 'Malawi' 'Malaysia' 'Mauritius' 'Mozambique'
+                'Namibia' 'Netherlands' 'Phillippines' 'Singapore' 'South Africa' 'Sri Lanka'
+                'Swaziland' 'United States of America' 'Zambia' 'Zimbabwe'
+              }
+    }
+ 
+   RatesPosOrdCountry {
+      Sorted
+      Items   {
+                'United Kingdom' 'South Africa' 'Lesotho' 'Swaziland' 'Namibia'
+              }
+    }
+ 
+ 
+   IntTelMoneyOrderCountries {
+      Sorted
+      Items   { 'St. Helena'  'Canada' 'Kenya' 'Zambia' 'South Africa' 'Swaziland' 'Lesotho'   }
+   }
+
+
+
+ //
+ //--------------------------------------------------------------------------------------------------------
+ //
+
+    PostalOrderValues {
+       Value {
+          'P0.5 Postal Order'
+          'P1   Postal Order'
+          'P2   Postal Order'
+          'P4   Postal Order'
+          'P5   Postal Order'
+          'P10  Postal Order'
+          'P20  Postal Order'
+          'P50  Postal Order'
+          'P100 Postal Order'
+       }
+    }
+
+
+ //
+ //--------------------------------------------------------------------------------------------------------
+ //
+
+   Quarter {
+      Qtr01to03 { '1Qtr  : January - March'     }
+      Qtr04to06 { '1Qtr  : April - June'        }
+      Qtr07to09 { '1Qtr  : July - September'    }
+      Qtr10to12 { '1Qtr  : October - December'  }
+      Qtr01to06 { '2Qtrs : January - June'      }
+      Qtr04to09 { '2Qtrs : April - September'   }
+      Qtr07to12 { '2Qtrs : July - December'     }
+      Qtr01to09 { '3Qtrs : January - September' }
+      Qtr04to12 { '3Qtrs : April - December'    }
+   }
+
+ //
+ //--------------------------------------------------------------------------------------------------------
+ //
+
+   FuneralCompanies {
+     Sorted
+     Values {
+       'BADIRIAMMOGO GROUP FUNERAL SCHEME GABORONE'
+       'GUIDE IN LIFE BURIAL SOCIETY GABORONE'
+       'BIBIRI BURIAL SOCIETY GABORONE'
+       'BOIPELEGO GROUP FUNERAL THAMAGA'
+       'BOTSHELO GROUP FUNERAL LOBATSE / GABORONE'
+       'BOTSWANA NATIONAL FRONT GABORONE'
+       'GALEITSIWE GROUP FUNERAL SCHEME GABORONE / TLOKWENG'
+       'GUIDE IN LIFE BURIAL SOCIETY GABORONE'
+       'HERMON APOSTOLIC CHURCH IN ZION THAMAGA / GABORONE'
+       'IKAGENG BANANA GROUP FUNERAL SCHEME GABORONE'
+       'IPABALELENG GROUP FUNERAL SCHEME GABORONE / PALAPYE'
+       'KOLONE BURIAL SOCIETY KOPONG / GABORONE / PALAPYE / JWANENG'
+       'KGORO / GOODHOPE GROUP FUNERAL SCHEME GOODHOPE / GABORONE / PITSANE'
+       'KOPANO GROUP FUNERAL SCHEME GABORONE'
+       'KUDZANANI FUNERAL SCHEME GABORONE'
+       'KUTLWANO GROUP FUNERAL GABORONE'
+       'KHUTSAFALO GROUP FUNERAL SCHEME GABORONE / MASUNGA'
+       'LETLHABILE GROUP FUNERAL GABORONE'
+       'MAITEKO GROUP FUNERAL GABORONE'
+       'MARU GROUP FUNERAL SCHEME GABORONE / SHAKAWE'
+       'MOLETAGWEDI BURIAL SOCIETY GABORONE'
+       'MORENENG BURIAL SOCIETY GABORONE'
+       'NURSES GROUP FUNERAL SCHEME GABORONE'
+       'ORATILE GROUP FUNERAL SCHEME GABORONE'
+       'PELEGANO GROUP FUNERAL GABORONE'
+       'POPAGANO GROUP FUNERAL SCHEME GABORONE / SELIBE PHIKWE'
+       'PRINCESS MARINA THEATRE GABORONE'
+       'RAMAPHATLE FUNERAL GROUP SCHEME THAMAGA'
+       'SEDIKWA GROUP FUNERAL GABORONE'
+       'TEBELOPELE GROUP FUNERAL SCHEME GABORONE'
+       'BMC'
+       'GABARONE CITY COUNCIL'
+       'HEBRON'
+       'HOME CHOICE' 
+       'IKETLEETSO'
+       'IPELEGENG'
+       'KANYE SEVENTHDAY ADVENTIST HOSPITAL'
+       'LEENS'
+       'MENTAL'
+       'MODERN'
+       'POLOKANO'
+       'RATANANG'
+       'TOWER'
+       'TSHEGOFATSONG'
+       'VISCOSE'
+     }
+   }
+
+// MFIssueOffices{
+//       Sorted
+//       O1000	{'Gaborone Central'}
+//       O1002	{'Kobojango'}
+//       O1004	{'Lentswelemoriti'}
+//       O1006	{'Mathathane'}
+//       O1008	{'Molalatau'}
+//       O1010	{'Sefhophe'}
+//       O1012	{'Semolale'}
+//       O1014	{'Tsetsebye'}
+//       O1016	{'Borolong'}
+//       O1018	{'Francistown'}
+//       O1020	{'Gweta'}
+//       O1022	{'Kalakamati'}
+//       O1024	{'Maitengwe'}
+//       O1026	{'Makaleng'}
+//       O1028	{'Mapoka'}
+//       O1030	{'Marapong'}
+//       O1032	{'Masunga'}
+//       O1034	{'Mathangwane'}
+//       O1036	{'Matsiloje'}
+//       O1038	{'Metzef'}
+//       O1040	{'Monarch'}
+//       O1042	{'Moroka'}
+//       O1044	{'Nata'}
+//       O1046	{'Nkange'}
+//       O1048	{'Nlaphwane'}
+//       O1050	{'Nswazi'}
+//       O1052	{'Ramokgwebana'}
+//       O1054	{'Sebina'}
+//       O1056	{'Sechele'}
+//       O1058	{'Shashe'}
+//       O1060	{'Sowa'}
+//       O1062	{'Tatisiding'}
+//       O1064	{'Tatitown'}
+//       O1066	{'Tonota'}
+//       O1068	{'Tshesebe'}
+//       O1070	{'Tutume'}
+//       O1072	{'Zwenshambe'}
+//       O1074	{'Bokaa'}
+//       O1076	{'Bontleng'}
+//       O1078	{'Broadhurst'}
+//       O1080	{'Engen Kiosk'}
+//       O1082	{'G/West Kiosk'}
+//       O1084	{'Gabane'}
+//       O1088	{'Gaborone Station'}
+//       O1090	{'Gaborone University'}
+//       O1092	{'Gaborone Village'}
+//       O1094	{'Game Kiosk'}
+//       O1096	{'Kopong'}
+//       O1098	{'Kumakwane'}
+//       O1100	{'Magopane'}
+//       O1102	{'Manyana'}
+//       O1104	{'Mosomane'}
+//       O1106	{'Metsef Kiosk'}
+//       O1108	{'Mmankgodi'}
+//       O1110	{'Mogobane'}
+//       O1112	{'Mogoditshane'}
+//       O1114	{'Moshupa'}
+//       O1116	{'Ntlhantlhe'}
+//       O1118	{'Old Naledi Kiosk'}
+//       O1120	{'Oodi'}
+//       O1122	{'Otse'}
+//       O1124	{'Phakalane'}
+//       O1126	{'Ramotswa Station'}
+//       O1128	{'Ramotswa Village'}
+//       O1130	{'SSK Airport'}
+//       O1132	{'Thamaga'}
+//       O1134	{'Tlokweng'}
+//       O1136	{'Charleshill'}
+//       O1138	{'Ghanzi'}
+//       O1140	{'Kalkfontein'}
+//       O1142	{'Karakubis'}
+//       O1144	{'Kole'}
+//       O1146	{'Nojane'}
+//       O1148	{'Bokspits'}
+//       O1150	{'Hereford'}
+//       O1152	{'Hukuntsi'}
+//       O1154	{'Jwaneng'}
+//       O1156	{'Kang'}
+//       O1158	{'Khakhea'}
+//       O1160	{'Lehututu'}
+//       O1162	{'Lekgwabe'}
+//       O1164	{'Mabutsane'}
+//       O1166	{'Makopong'}
+//       O1168	{'Mookane'}
+//       O1170	{'Middlepits'}
+//       O1172	{'Tsabong'}
+//       O1176	{'Werda'}
+//       O1178	{'Kanye'}
+//       O1180	{'Kasane'}
+//       O1182	{'Kavimba'}
+//       O1184	{'Parakarungu'}
+//       O1186	{'Satau'}
+//       O1188	{'Khudumelapye'}
+//       O1190	{'Letlhakeng'}
+//       O1192	{'Motokwe'}
+//       O1194	{'Digawana'}
+//       O1196	{'Goodhope'}
+//       O1198	{'Hebron'}
+//       O1200	{'Lobatse'}
+//       O1202	{'Mabule'}
+//       O1204	{'Metlojane'}
+//       O1206	{'Mmathethe'}
+//       O1208	{'Papatlo'}
+//       O1210	{'Peleng'}
+//       O1212	{'Pitsane'}
+//       O1214	{'Sedibeng'}
+//       O1216	{'Woodhall'}
+//       O1218	{'Dibete'}
+//       O1220	{'Kalamare'}
+//       O1222	{'Machaneng'}
+//       O1224	{'Madiba'}
+//       O1226	{'Mahalapye'}
+//       O1228	{'Makwate'}
+//       O1230	{'Mmaphashalala'}
+//       O1232	{'Mmutlane'}
+//       O1234	{'Mookane'}
+//       O1236	{'Pilikwe'}
+//       O1238	{'Radisele'}
+//       O1240	{'Sefhare'}
+//       O1242	{'Shoshong'}
+//       O1244	{'Boseja'}
+//       O1246	{'Etsha'}
+//       O1248	{'Gumare'}
+//       O1250	{'Gunotsoga'}
+//       O1252	{'Makalamabedi'}
+//       O1254	{'Maun'}
+//       O1256	{'Maun Airport'}
+//       O1258	{'Nokaneng'}
+//       O1260	{'Sehitwa'}
+//       O1262	{'Sepopa'}
+//       O1264	{'Seronga'}
+//       O1266	{'Shakawe'}
+//       O1268	{'Lotlhakane'}
+//       O1270	{'Mafhikana'}
+//       O1272	{'Mmasekou'}
+//       O1274	{'Molapowabojang'}
+//       O1276	{'Ranaka'}
+//       O1278	{'Malolwane'}
+//       O1282	{'Mochudi'}
+//       O1284	{'Modipane'}
+//       O1286	{'Morwa'}
+//       O1288	{'Ntshinoge'}
+//       O1290	{'Rasesa'}
+//       O1292	{'Sikwane'}
+//       O1294	{'Boribamo'}
+//       O1296	{'Dutlwe'}
+//       O1298	{'Lentsweletau'}
+//       O1300	{'Lephephe'}
+//       O1302	{'Mathubantwa'}
+//       O1304	{'Molepolole'}
+//       O1306	{'Sojwe'}
+//       O1308	{'Takatokwane'}
+//       O1310	{'Thebephatswa'}
+//       O1312	{'Khumaga'}
+//       O1314	{'Letlhakane'}
+//       O1316	{'Mmatshumo'}
+//       O1318	{'Mopipi'}
+//       O1320	{'Mosu'}
+//       O1322	{'Orapa'}
+//       O1324	{'Rakops'}
+//       O1326	{'Toromoja'}
+//       O1328	{'Xhumo'}
+//       O1330	{'Lecheng'}
+//       O1332	{'Lerala'}
+//       O1334	{'Majwaneng'}
+//       O1336	{'Maokatuma'}
+//       O1338	{'Maunatlala'}
+//       O1340	{'Moeng'}
+//       O1342	{'Palapye'}
+//       O1344	{'Pota'}
+//       O1346	{'Ramokgonami'}
+//       O1348	{'Sherwood Ranch'}
+//       O1350	{'Tamasane'}
+//       O1352	{'Tumasera'}
+//       O1354	{'Botshabelo'}
+//       O1356	{'Mmadinare'}
+//       O1358	{'Mogapi'}
+//       O1360	{'Serule'}
+//       O1362	{'Selebi-Phikwe'}
+//       O1364	{'Mabeleapudi'}
+//       O1366	{'Mmashoro'}
+//       O1368	{'Mogorosi'}
+//       O1370	{'Moiyabana'}
+//       O1372	{'Paje'}
+//       O1374	{'Rasebolai'}
+//       O1376	{'Serowe'}
+//       O1378	{'Thabala'}
+//       O1380	{'Tshimoyapula'}
+//       O1382	{'Bobonong'}
+//       O1384	{'River Walk'}
+//   }
+
+//
+//--------------------------------------------------------------------------------------------------------
+//
+
+ BulkMoneyOrderCompanies { Sorted
+                           Values { 'Multi Choice'
+                                    'Bee Gee'
+                                    'Hollywood Household'
+                                    'Exclusive Linen'
+                                    'Norman Bisset'
+                                   }
+                          }
+
+
+   }

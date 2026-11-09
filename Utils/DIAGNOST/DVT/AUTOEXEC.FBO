@@ -1,0 +1,24 @@
+.batecho off
+m80
+if not exist hdformat.sem goto next
+        del  hdformat.sem > NUL
+        echo *** Formatting Drive C: ***
+        format c: < response.yes
+        echo *
+        echo *** Formatting Drive D: ***
+        format d: < response.yes
+        echo *
+        echo *** Transferring System to C: ***
+        msys C:
+        echo Command Processor Stub
+        copy command.com C: > NUL
+        echo Command Processor Shell
+        copy $$shell.sys C: > NUL
+        echo Operating System Kernel
+        copy $$mos.sys C: > NUL
+        echo *
+        echo *** System Transferred ***
+:next
+        DVT BOP
+
+

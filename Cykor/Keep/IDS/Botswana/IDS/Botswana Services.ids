@@ -1,0 +1,2497 @@
+//******************************************************************************************//
+//*                                                                                        *//
+//*                           Botswana Postal Service                                      *//
+//*                                                                                        *//
+//*                              Additional Services                                       *//
+//*                                                                                        *//
+//******************************************************************************************//
+LogFormats {
+// ItemDelivery { 'Name,^,"*Country of Origin ",MailSurOrigin
+//                  ,^,"*Customer Name ",CustomerName
+//                  ,^,"*Omang Number ",CustID_Delivery',DummyDomain}
+//
+// ItemIntDelivery { 'Name,^,"*Country of Origin ",MailAirOrigin
+//                  ,^,"*Customer Name ",CustomerName
+//                  ,^,"*Omang Number ",CustID_Delivery',DummyDomain}
+//
+
+  // InsufficentPst {'Name',InsufficentPstFee}
+ CODTradeCharge {'Name',CODTradeChargeFee}
+// CODHandCharge {'Name' ,CODTradeCharge}
+  // DemurrageOnParcel {'Name',DemurrageOnParcelFee}
+ CustomerVoucher {'Name,^,"*Voucher Reference - ",VoucherReference,^,"*Reason for Refund - ",ReasonforRefund',AmountPaid }
+ RegOfNewsPapers { 'Name,^,"*Newspaper Name - ",NewspaperName',RegAmount}
+ AccUnaddrAdvtLeaflets {'Name,^,"*Company Name",CompanyName',TotalFee}
+}
+Domains {
+
+   CODNumber {
+      Title  { 'COD Number' }
+      Prompt { 'COD Number' }
+      Hint   { 'Enter COD Number' }
+      Error  { 'Enter a Valid COD Number' }
+      Format {
+        Mask { 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' }
+      }
+      InputFrom {
+          'Keyboard'
+      }
+ }
+
+   CODTradeCharge {
+      Title  { 'COD Trade Charge' }
+      Prompt { 'COD Trade Charge' }
+      Hint   { 'Enter COD Trade Charge' }
+      Error  { 'Error Insufficient COD Trade Charge' }
+      Format  { Currency { '0,9999999' } }
+      InputFrom { 'Keyboard' }
+   }
+
+   CustID_Delivery    {
+            Title  { 'Identity Number' }
+            Prompt { 'Identity Number' }
+            Hint   { 'Enter Identity' }
+            Error  { 'Enter a Valid Identity Number' }
+            Format {
+              Mask { 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' }
+            }
+            InputFrom {
+                'Keyboard'
+            }
+    }
+
+   CMisc42Number    {
+            Title  { 'C Misc 42 Number' }
+            Prompt { 'C Misc 42 Number' }
+            Hint   { 'Enter Number' }
+            Error  { 'Enter a Valid C Misc 42 Number' }
+            Format {
+              Mask { 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' }
+            }
+            InputFrom {
+                'Keyboard'
+            }
+    }
+
+   ManifestNumber    {
+            Title  { 'Manifest Number' }
+            Prompt { 'Manifest Number' }
+            Hint   { 'Enter Number' }
+            Error  { 'Enter a Valid Manifest' }
+            Format {
+              Mask { 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX' }
+            }
+            InputFrom {
+                'Keyboard'
+            }
+    }
+
+ DateArrival {
+      Title  { 'Arrival Date' }
+      Prompt { 'Arrival Date' }
+      Hint   { 'Enter arrival date' }
+      Error  { 'Enter arrival date' }
+      Format {
+         Date
+      }
+      InputFrom {
+         'Keyboard'
+      }
+ }
+
+ NumberDays {
+      Title  { 'Number of Days' }
+      Prompt { 'Number of Days' }
+ }
+
+ IntFrankRegFirstID { BasedOn { IntEMSID                }
+                      Title   { 'Registered Barcode'    }
+                      Hint    { 'Please type in the number in the format R99999999999 ^ or scan the Barcode Label'              }
+                      Format  { Mask { 'R99999999999' } }
+                     }
+
+ IntFrankRegLastID { BasedOn { IntEMSID                   }
+                     Title   { 'Registered Barcode Up To' }
+                     Hint    { 'Please type in the number in the format R99999999999 ^ or scan the Barcode Label'              }
+                     Format  { Mask { 'R99999999999' }    }
+                    }
+}
+
+Products
+{
+
+//
+//---------------------------------------------------------------------------------
+//
+
+//  DomRegArticle { SubGroup    { Services                              }
+//                  RegDesc     { 'Corvus RegArticle Product'           }
+//                  Caption     { 'Registration per article'            }
+//                  BitMap      { '..\images\P_RegArticle.bmp' }
+//                  Description { 'Registration'                        }
+//                  Title       { 'Registration'                        }
+//                  UnitPrice   { 1.75                                  }
+//                  Domains     { DomRegID
+//                                CustomerName
+//                                CustomerAddress
+//                                CustomerPostOffice
+//                                DomRecipientName
+//                                DomRecipientAddress
+//                                DomRecipientPostOffice
+//                                RegFee { UnitPrice }                  }
+//                  LogAs       { DomReg                                }
+//             }
+//
+//
+//---------------------------------------------------------------------------------
+//
+
+//  IntRegArticle { SubGroup    { Services                              }
+//                  RegDesc     { 'Corvus RegArticle Product'           }
+//                  Caption     { 'Registration per article'            }
+//                  BitMap      { '..\images\P_RegArticle.bmp' }
+//                  Description { 'Registration'                        }
+//                  Title       { 'Registration'                        }
+//                  UnitPrice   { 1.75                                  }
+//                  Domains     { IntRegID
+//                                CustomerName
+//                                CustomerAddress
+//                                CustomerPostOffice
+//                                IntRecipientName
+//                                IntRecipientAddress1
+//                                IntRecipientAddress2
+//                                RegFee { UnitPrice }                  }
+//                  LogAs       { IntReg                                }
+//                }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+//  ComArticle {  SubGroup    { Services                              }
+//                RegDesc     { 'Corvus ComArticle Product'           }
+//                Caption     { 'Compulsory registration per article' }
+//                BitMap      { '..\images\P_ComArticle.bmp' }
+//                Description { 'Compulsory registration'             }
+//                Title       { 'Compulsory registration'             }
+//                UnitPrice   { 2.30                                  }
+//                Domains     { ComFee { UnitPrice }                  }
+//              LogAs       { IntReg                                }
+//             }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+  AdviceDelivery {
+                   BasedOn     { BaseOptionalServices }
+                   Caption     { 'Advice of Delivery'                               }
+                   Description { 'Advice of delivery'                               }
+                   Title       { 'Advice of delivery'                               }
+                   BitMap      { '..\images\P_AdviceDelivery.bmp' }
+                   UnitPrice   { 2.60                                               }
+                   Domains     { AdvOfDelFee { UnitPrice }
+//                                 CustomerName
+//                                 CustomerAddress
+//                                 CustomerPostOffice
+                               }
+                   LogAs       { AdvOfDel                                           }
+                   PLU         { PLU_AdviceDelivery }
+                 }
+
+  AdviceDeliveryFree {
+                   BasedOn     { BaseOptionalServices }
+                   Caption     { 'Advice of Delivery' }
+                   Description { 'Advice of delivery' }
+                   Title       { 'Advice of delivery' }
+                   BitMap      { '..\images\P_AdviceDelivery.bmp' }
+                   UnitPrice   { 0.00 }
+                   Domains     {
+                                 AdvOfDelFee { UnitPrice }
+                               }
+                   LogAs       { AdvOfDel }
+                   PLU         { PLU_AdviceDelivery }
+                   Snippets    { AdviceDeliveryFreeExec }
+                 }
+
+
+//
+//---------------------------------------------------------------------------------
+//
+
+  ExpressDelivery { SubGroup    { Services                                           }
+                    RegDesc     { 'Corvus ExpressDelivery Product'                   }
+                    Caption     { 'Express Delivery'                                 }
+                    Description { 'Express delivery'                                 }
+                    Title       { 'Express delivery'                                 }
+                    BitMap      { '..\images\P_ExpressDelivery.bmp' }
+                    UnitPrice   { 10.30                                              }
+                    Domains     {
+                                   ExpressDelFee { UnitPrice }
+                                  }
+                    LogAs       { ExpressDel                                         }
+                    PLU         { PLU_ExpressDelivery }
+                   }
+
+
+  ExpressDeliveryFree  {
+                    SubGroup    { Services                                           }
+                    Caption     { 'Express Delivery'                                 }
+                    Description { 'Express delivery'                                 }
+                    Title       { 'Express delivery'                                 }
+                    BitMap      { '..\images\P_ExpressDelivery.bmp' }
+                    UnitPrice   { 0.00 }
+                    Domains     {
+                                   ExpressDelFee { UnitPrice }
+                                 }
+                    LogAs       { ExpressDel                                         }
+                    PLU         { PLU_ExpressDelivery }
+                    Snippets    { ExpressDeliveryFreeExec }
+                   }
+
+//
+//---------------------------------------------------------------------------------
+//
+//
+//  FinUrgentMoneyOrder { SubGroup    { Services                                  }
+//                        RegDesc     { 'Corvus Urgent Money Order Service'       }
+//                        Caption     { 'Urgent Money Order'                      }
+//                        BitMap      { '..\images\P_PostalOrder.bmp'    }
+//                        Description { 'Urgent Money Order'                      }
+//                        Title       { 'Urgent Money Order'                      }
+//                        UnitPrice   { 9.99                                      }
+//                        Domains     { UrgentMoneyOrderFee { UnitPrice }         }
+//                      LogAs       { FinMonOrd                                 }
+//                 }
+//
+////
+//---------------------------------------------------------------------------------
+//
+//
+//  MoneyOrderAoPByPostDom { SubGroup    { Services                                            }
+//                           RegDesc     { 'Corvus - Money Order Advice of Payment by Post'    }
+//                           Caption     { 'Advice of Payment by Post'                         }
+//                           BitMap      { '..\images\P_AdviceDelivery.bmp'  }
+//                           Description { 'Advice of Payment by Post'                         }
+//                           Title       { 'Advice of Payment by Post'                         }
+//                           UnitPrice   { 2.50                                                }
+//                           Domains     { MoneyOrderAoPStandardFeeDom { UnitPrice }           }
+//                         LogAs       { FinMonOrd                                           }
+//                          }
+//
+////
+//---------------------------------------------------------------------------------
+//
+//
+//  MoneyOrderAoPByTgramDom { SubGroup    { Services                                              }
+//                            RegDesc     { 'Corvus - Money Order Advice of Payment by Telegram'  }
+//                            Caption     { 'Advice of Payment by Telegram'                       }
+//                            BitMap      { '..\images\P_AdviceDelivery.bmp'    }
+//                            Description { 'Advice of Payment by Telegram'                       }
+//                            Title       { 'Advice of Payment by Telegram'                       }
+//                            UnitPrice   { 5.00                                                  }
+//                            Domains     { MoneyOrderAoPTgramFee { UnitPrice }                   }
+//                          LogAs       { FinMonOrd                                             }
+//                           }
+//
+//
+//---------------------------------------------------------------------------------
+//
+//
+//  MoneyOrderAoPByPostint { SubGroup    { Services                                            }
+//                           RegDesc     { 'Corvus - Money Order Advice of Payment by Post'    }
+//                           Caption     { 'Advice of Payment by Post'                         }
+//                           BitMap      { '..\images\P_AdviceDelivery.bmp'  }
+//                           Description { 'Advice of Payment by Post'                         }
+//                           Title       { 'Advice of Payment by Post'                         }
+//                           UnitPrice   { 2.50                                                }
+//                           Domains     { MoneyOrderAoPStandardFeeInt { UnitPrice }           }
+//                         LogAs       { FinMonOrd                                           }
+//                          }
+//
+////
+//---------------------------------------------------------------------------------
+//
+//
+//  MoneyOrderAoPByTgramInt { SubGroup    { Services                                              }
+//                            RegDesc     { 'Corvus - Money Order Advice of Payment by Telegram'  }
+//                            Caption     { 'Advice of Payment by Telegram'                       }
+//                            BitMap      { '..\images\P_BoxMenu.bmp'           }
+//                            Description { 'Advice of Payment by Telegram'                       }
+//                            Title       { 'Advice of Payment by Telegram'                       }
+//                            UnitPrice   { 2.50                                                  }
+//                            Domains     { MoneyOrderAoPStandardFeeInt { UnitPrice }
+//                                          MoneyOrderAoPTgramFee                                 }
+////                          LogAs       { FinMonOrd                                             }
+//                           }
+//
+////
+////---------------------------------------------------------------------------------
+//
+
+//  Acceptance     { SubGroup    { Services                              }
+//                   RegDesc     { 'Corvus Acceptance Product'           }
+//                   Caption     { 'Acceptance'                          }
+//                   BitMap      { '..\images\P_Acceptance.bmp' }
+//                   Description { 'Acceptance'                          }
+//                   Title       { 'Acceptance'                          }
+//                   UnitPrice   { 2.60                                  }
+//                   Domains     { AcceptFee { UnitPrice }               }
+////                 LogAs       { IntReg                                }
+//                 }
+
+//
+//                            Late payment for a private PO Box
+//------------------------------------------------------------------------------------------
+//
+
+  PBLatePayment { SubGroup    { Services                                         }
+                  Caption     { 'PO Box Late Payment'                            }
+                  BitMap      { '..\images\P_BoxSurcharge.bmp' }
+                  Description { 'Fee for late payment of PO Box rent'            }
+                  Title       { 'Fee for late payment of PO Box rent'            }
+                  UnitPrice   { 55.00                                            }
+                  Domains     { PBLatePaymentFee { UnitPrice }                   }
+                  LogAs       { POBoxLatePayment                                 }
+                 PLU          { PLU_PBLatePayment }
+                 }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  PBQuarterLatePayment { SubGroup    { Services                                  }
+                  Caption     { 'PO Box Late Payment'                            }
+                  BitMap      { '..\images\P_BoxSurcharge.bmp' }
+                  Description { 'Fee for late payment of PO Box rent'            }
+                  Title       { 'Fee for late payment of PO Box rent'            }
+                  UnitPrice   { 55.00                                            }
+                  Domains     { PBLatePaymentFee { UnitPrice }                   }
+                  LogAs       { POBoxLatePayment                                 }
+                 PLU          { PLU_PBLatePayment }
+                 }
+
+//
+//                            Late payment for Bus PO Box
+//------------------------------------------------------------------------------------------
+//
+
+  BusBoxLatePayment { SubGroup    { Services                                         }
+                  Caption     { 'PO Box Late Payment'                            }
+                  BitMap      { '..\images\P_BoxSurcharge.bmp' }
+                  Description { 'Fee for late payment of PO Box rent'            }
+                  Title       { 'Fee for late payment of PO Box rent'            }
+                  UnitPrice   { 75.00                                            }
+                  Domains     { PBLatePaymentFee { UnitPrice }                   }
+                  LogAs       { POBoxLatePayment                                 }
+                 PLU          { PLU_BusBoxLatePayment }
+                 }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  BusBoxQuarterLatePayment { SubGroup    { Services                                  }
+                  Caption     { 'PO Box Late Payment'                            }
+                  BitMap      { '..\images\P_BoxSurcharge.bmp' }
+                  Description { 'Fee for late payment of PO Box rent'            }
+                  Title       { 'Fee for late payment of PO Box rent'            }
+                  UnitPrice   { 75.00                                            }
+                  Domains     { PBLatePaymentFee { UnitPrice }                   }
+                  LogAs       { POBoxLatePayment                                 }
+                 PLU          { PLU_BusBoxLatePayment }
+                 }
+
+//
+//                            Late payment for Gov PO Box
+//------------------------------------------------------------------------------------------
+//
+
+  GovBoxLatePayment { SubGroup    { Services                                         }
+                  Caption     { 'PO Box Late Payment'                            }
+                  BitMap      { '..\images\P_BoxSurcharge.bmp' }
+                  Description { 'Fee for late payment of PO Box rent'            }
+                  Title       { 'Fee for late payment of PO Box rent'            }
+                  UnitPrice   { 75.00                                            }
+                  Domains     { PBLatePaymentFee { UnitPrice }                   }
+                  LogAs       { POBoxLatePayment                                 }
+                 PLU          { PLU_GovBoxLatePayment }
+                 }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  GovBoxQuarterLatePayment { SubGroup    { Services                                  }
+                  Caption     { 'PO Box Late Payment'                            }
+                  BitMap      { '..\images\P_BoxSurcharge.bmp' }
+                  Description { 'Fee for late payment of PO Box rent'            }
+                  Title       { 'Fee for late payment of PO Box rent'            }
+                  UnitPrice   { 75.00                                            }
+                  Domains     { PBLatePaymentFee { UnitPrice }                   }
+                  LogAs       { POBoxLatePayment                                 }
+                 PLU          { PLU_GovBoxLatePayment }
+                 }
+
+//
+//                            Domestic Insurance Service
+//------------------------------------------------------------------------------------------
+//
+
+   SurParInsurance {
+      SubGroup { Services }
+      BitMap   { '..\images\P_Insurance.bmp' }
+      Title    { 'Insurance'                                   }
+      TotalIn  { TotalFee                                      }
+      Domains  {
+                 ParSurDestination
+//                 IntRecipientName
+//                 IntRecipientAddress
+                 InsValue
+                 InsFee { InsValue,ParSurDestination,'LookUp.SurParcelIns' }
+               }
+      LogAs    { SurParInsurance }
+      PLU      { PLU_SurParInsurance }
+   }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+   AirParInsurance {
+      SubGroup { Services }
+      BitMap   { '..\images\P_Insurance.bmp' }
+      Title    { 'Insurance' }
+      TotalIn  { TotalFee }
+      Domains  {
+                 ParAirDestination
+//                 IntRecipientName
+//                 IntRecipientAddress
+                 InsValue
+                 InsFee { InsValue,ParAirDestination,'LookUp.AirParcelIns' }
+               }
+      LogAs    { AirParInsurance }
+      PLU      { PLU_AirParInsurance }
+   }
+
+
+//
+//---------------------------------------------------------------------------------
+//
+
+   CODFee {
+      BasedOn     { BaseOptionalServices }
+      BitMap    { '..\images\P_CODFee.bmp' }
+      Title     { 'COD Fee' }
+      UnitPrice { 7.70 }
+      TotalIn   { TotalFee }
+      Domains   { CODTradeChargeFee
+                  CODFee
+                 }
+      LogAs     { CODFee }
+      PLU       { PLU_CODFee }
+   }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+
+  PrePaidStamps {
+      BasedOn { BaseOptionalServices }
+      BitMap { '..\images\P_PrePaidStamps.bmp' }
+      Title   { 'Pre-Paid Stamps' }
+      Domains {
+         PrePaidStampValue
+      }
+      Snippets {
+         //PrePayStampsVALVar
+         PrePayStampsVAL
+         PrePayStampsLOG
+      }
+      PLU { PLU_PrePaidStamps }
+  }
+
+  FrankingMachine {
+      SubGroup { 'Agency' }
+      BitMap  { '..\images\Frank.bmp'   }
+      Title   { 'Franking Machine Refill' }
+      Domains {
+         AmountPaid
+         CustomerName
+         FrankMachineLicenceNo
+      }
+      LogAs { FrankMachine }
+      Customer    { 'Fq. Machine Refill','^','Total ','P',AmountPaid }
+      PLU   { PLU_FrankingMachine }
+  }
+
+   AccUnaddrAdvtLeaflets {
+      SubGroup { 'Services' }
+         BitMap  { '..\images\P_UnAddLeaflets.bmp' }
+         Caption     { 'Unaddressed Leaflets' }
+         Title       { 'Unaddressed Leaflets' }
+         Domains {
+          CompanyName
+          NumberOfLeaflets
+          LeafletCost
+          TotalAmountToPay
+         }
+        PLU { PLU_AccUnaddrAdvtLeaflets }
+        Customer { 'Unaddressed Leaflets','^','Total ','P',TotalFee }
+        Snippets {AccUnaddrAdvtLeafletsVal,AccUnaddrAdvtLeafletsLog}
+      }
+
+   CustomerFax {
+      SubGroup { 'Services' }
+         BitMap  { '..\images\P_Fax.bmp' }
+         Caption { 'Customer Fax' }
+         Description { 'Customer Fax' }
+         Title       { 'Customer Fax' }
+         Domains {
+          FaxDestination
+          NumberOfPages
+          FaxPageCost
+          TotalAmountToPay
+         }
+        PLU { PLU_CustomerFax }
+        Customer    { 'Fax','Pg. ',NumberOfPages,'^','Total ','P',TotalFee }
+        Snippets {CustomerFaxVal,CustomerFaxLog}
+      }
+
+ CustomerFaxInt { SubGroup    { 'Services'                     }
+                  BitMap      { '..\images\P_Fax.bmp'          }
+                  Caption     { 'Customer Fax (International)' }
+                  Description { 'Customer Fax (International)' }
+                  Title       { 'Customer Fax (International)' }
+                  Domains     {  FaxDestination
+                                 NumberOfPages
+                                 FaxPageCostInt
+                                 TotalAmountToPay              }
+                  Snippets    {  CustomerFaxIntVal
+                                 CustomerFaxIntLog             }
+                  Customer    { 'Fax(Int) Pg. ',NumberOfPages,'^','Total ','P',TotalFee }
+                  PLU         {  PLU_CustomerFax               }
+                 }
+
+ BusinessReply { SubGroup { 'Services' }
+                 BitMap   { '..\images\P_UnAddLeaflets.bmp' }
+                 Caption  { 'Business Reply' }
+                 Domains  {  CompanyName
+                             //Weight
+                             LetterSize
+                             NumberOfReplies
+                             LetterCost { LetterSize,'LookUp.BusReply' }
+                             TotalAmountToPay         }
+                 PLU      {  PLU_BusReply }
+                 Customer    { 'Business Reply','^','Total ','P',TotalFee }
+                 Snippets {  BusReplyVal,BusReplyLog}
+                }
+
+ RegOfNewsPapers { SubGroup  { 'Services'                     }
+                   BitMap    { '..\images\P_RegNewsPaper.bmp' }
+                   Caption   { 'Registration Of NewsPapers'   }
+                   TotalIn   {  TotalFee                      }
+                   Domains   {  NewspaperName
+                                RegAmount                     }
+                   LogAs     { RegOfNewsPapers                }
+                   PLU       { PLU_RegOfNewsPapers            }
+                   Customer    { 'Reg. Newspapers','^','Total ','P',RegAmount }
+                  }
+
+   CustomerVoucher {
+      SubGroup { 'Services' }
+      BitMap  { '..\images\P_PensionPayment.bmp' }
+      Caption { 'Customer Voucher' }
+      Domains {
+         AmountPaid
+         CustomerName
+         VoucherReference
+         ReasonforRefund
+      }
+      //LogAs { CustomerVoucher }
+      Snippets {CustomerVoucherLog }
+      Customer    { 'Customer Voucher','^','Total ','P',AmountPaid }
+      PLU { PLU_CustomerVoucher }
+  }
+
+//   CustomerRefund {
+//      SubGroup { 'Services' }
+//      BitMap  { '..\images\P_PensionPayment.bmp' }
+//      Caption { 'Customer Refund' }
+//      Domains {
+//         AmountPaid
+//         CustomerName
+//      }
+//      LogAs { FrankMachine }
+//      PLU { PLU_CustomerRefund }
+//  }
+
+   AirLetterRegID {
+      BasedOn  { BaseOptionalServices }
+      BitMap   { '..\images\P_Registered.bmp' }
+      Title    { 'Registered' }
+      TotalIn  { TotalFee                                      }
+      Domains  {
+                 MailAirDestination
+                 PostOffice     
+                 IntRecipientName
+                 //IntRecipientAddress
+                 IntLetterRegFirstID
+                 BulkQuantity
+                 IntLetterRegLastID
+                 RegFee
+               }
+      Snippets {
+                  ValidVarChangeMaskReg
+                  ValidChangeMaskLetterReg
+                  ValidMaskReg
+                  RegLogStart
+               }
+      PLU { PLU_AirLetterRegID }
+   }
+
+   SurLetterRegID {
+      BasedOn  { BaseOptionalServices }
+      BitMap   { '..\images\P_Registered.bmp' }
+      Title    { 'Registered' }
+      TotalIn  { TotalFee                                      }
+      Domains  {
+                 MailSurDestination
+                 PostOffice
+                 IntRecipientName
+                 //IntRecipientAddress
+                 IntLetterRegFirstID
+                 BulkQuantity
+                 IntLetterRegLastID
+                 RegFee
+               }
+      Snippets {
+                  ValidVarChangeMaskReg
+                  ValidChangeMaskLetterReg
+                  ValidMaskReg
+                  RegLogStart
+               }
+      //LogAs    { LetterRegID }
+      PLU      { PLU_SurLetterRegID }
+   }
+
+   AerogrammeRegID {
+      BasedOn  { BaseOptionalServices }
+      BitMap   { '..\images\P_Registered.bmp' }
+      Title    { 'Registered' }
+      TotalIn  { TotalFee }
+      Domains  {
+                  MailAirDestination
+                 IntRecipientName
+                 //IntRecipientAddress
+                  IntAerogrammeRegFirstID
+                  BulkQuantity
+                  IntAerogrammeRegLastID
+                  RegFee
+               }
+      Snippets {
+                  ValidVarChangeMaskReg
+                  ValidChangeMaskAerogrammeReg
+                  ValidMaskReg
+                  RegLogStart
+               }
+      //LogAs    {  AerogrammeRegID }
+      PLU      { PLU_AerogrammeRegID }
+   }
+
+//   AirPostCardRegID {
+//      BasedOn  { BaseOptionalServices }
+//      BitMap   { '..\images\P_Registered.bmp' }
+//      Title    { 'Registered' }
+//      TotalIn  { TotalFee }
+//      Domains  {
+//                  MailAirDestination
+//                  IntPostCardRegFirstID
+//                  BulkQuantity
+//                  IntPostCardRegLastID
+//                  RegFee
+//               }
+//      Snippets {
+//                  ValidVarChangeMaskReg
+//                  ValidChangeMaskPostCardReg
+//                  ValidMaskReg
+//                  RegLogStart
+//               }
+//      //LogAs    { PostCardRegID }
+//      PLU      { PLU_AirPostCardRegID }
+//   }
+
+//   SurPostCardRegID {
+//      BasedOn  { BaseOptionalServices }
+//      BitMap   { '..\images\P_Registered.bmp' }
+//      Title    { 'Registered' }
+//      TotalIn  { TotalFee }
+//      Domains  {
+//                  MailSurDestination
+//                  IntPostCardRegFirstID
+//                  BulkQuantity
+//                  IntPostCardRegLastID
+//                  RegFee
+//               }
+//      Snippets {
+//                  ValidVarChangeMaskReg
+//                  ValidChangeMaskPostCardReg
+//                  ValidMaskReg
+//                  RegLogStart
+//               }
+//      //LogAs    { PostCardRegID }
+//      PLU      { PLU_SurPostCardRegID }
+//   }
+
+   AirPrintedPaperRegID {
+      BasedOn  { BaseOptionalServices }
+      BitMap   { '..\images\P_Registered.bmp' }
+      Title    { 'Registered' }
+      TotalIn  { TotalFee }
+      Domains  {
+                  MailAirDestination
+                 IntRecipientName
+                 //IntRecipientAddress
+                  IntPrintedPaperRegFirstID
+                  BulkQuantity
+                  IntPrintedPaperRegLastID
+                  RegFee
+               }
+      Snippets {
+                  ValidVarChangeMaskReg
+                  ValidChangeMaskPrintedPaperReg
+                  ValidMaskReg
+                  RegLogStart
+               }
+      //LogAs    { PrintedPaperRegID }
+      PLU      { PLU_AirPrintedPaperRegID }
+   }
+
+//   SurPrintedPaperRegID {
+//      BasedOn  { BaseOptionalServices }
+//      BitMap   { '..\images\P_Registered.bmp' }
+//      Title    { 'Registered' }
+//      TotalIn  { TotalFee }
+//      Domains  {
+//                  MailSurDestination
+//                  PostOffice
+//                 IntRecipientName
+//                 //IntRecipientAddress
+//                  IntPrintedPaperRegFirstID
+//                  BulkQuantity
+//                  IntPrintedPaperRegLastID
+//                  RegFee
+//               }
+//      Snippets {
+//                  ValidVarChangeMaskReg
+//                  ValidChangeMaskPrintedPaperReg
+//                  ValidMaskReg
+//                  RegLogStart
+//               }
+      //LogAs    { PrintedPaperRegID }
+//      PLU      { PLU_SurPrintedPaperRegID }
+//   }
+
+
+   AirSmallPacketRegID {
+      BasedOn  { BaseOptionalServices }
+      BitMap   { '..\images\P_Registered.bmp' }
+      Title    { 'Registered' }
+      TotalIn  { TotalFee }
+      Domains  {
+                  MailAirDestination
+                  PostOffice
+                  IntRecipientName
+                 //IntRecipientAddress
+                  IntSmallPacketRegFirstID
+                  BulkQuantity
+                  IntSmallPacketRegLastID
+                  ValidMaskReg
+                  RegFee
+               }
+      Snippets {
+                  ValidVarChangeMaskReg
+                  ValidChangeMaskSmallPacketReg
+                  ValidMaskReg
+                  RegLogStart
+               }
+      PLU      { PLU_AirSmallPacketRegID }
+   }
+
+
+//-----
+
+   AirFrankRegID {
+      BasedOn  { BaseOptionalServices }
+      BitMap   { '..\images\P_Registered.bmp' }
+      Title    { 'Registered' }
+      TotalIn  { TotalFee                                      }
+      Domains  {
+                 MailAirDestination
+                 PostOffice
+                 IntRecipientName
+                 //IntRecipientAddress
+                 IntFrankRegFirstID
+                 BulkQuantity
+                 IntFrankRegLastID
+               }
+      Snippets {
+                  ValidVarChangeMaskReg
+                  ValidChangeMaskFrankReg
+                  ValidMaskReg
+                  RegLogStart
+               }
+      PLU { PLU_AirFrankRegID }
+   }
+
+   SurFrankRegID {
+      BasedOn  { BaseOptionalServices }
+      BitMap   { '..\images\P_Registered.bmp' }
+      Title    { 'Registered' }
+      TotalIn  { TotalFee                                      }
+      Domains  {
+                 MailSurDestination
+                 PostOffice
+                 IntRecipientName
+                 //IntRecipientAddress
+                 IntFrankRegFirstID
+                 BulkQuantity
+                 IntFrankRegLastID
+               }
+      Snippets {
+                  ValidVarChangeMaskReg
+                  ValidChangeMaskFrankReg
+                  ValidMaskReg
+                  RegLogStart
+               }
+      PLU      { PLU_SurFrankRegID }
+   }
+
+
+
+//-----
+
+   SurSmallPacketRegID {
+      BasedOn  { BaseOptionalServices }
+      BitMap   { '..\images\P_Registered.bmp' }
+      Title    { 'Registered' }
+      TotalIn  { TotalFee }
+      Domains  {
+                  MailSurDestination
+                  PostOffice
+                 IntRecipientName
+                 //IntRecipientAddress
+                  IntSmallPacketRegFirstID
+                  BulkQuantity
+                  IntSmallPacketRegLastID
+                  ValidMaskReg
+                  RegFee
+               }
+      Snippets {
+                  ValidVarChangeMaskReg
+                  ValidChangeMaskSmallPacketReg
+                  ValidMaskReg
+                  RegLogStart
+               }
+      PLU      { PLU_SurSmallPacketRegID }
+   }
+
+
+   SurBlindRegID {
+      BasedOn  { BaseOptionalServices }
+      BitMap   { '..\images\P_Registered.bmp' }
+      Title    { 'Registered' }
+      TotalIn  { TotalFee                                      }
+      Domains  {
+                 MailSurDestination
+                 PostOffice
+                 IntRecipientName
+                 //IntRecipientAddress
+                 IntLetterRegFirstID
+                 BulkQuantity
+                 IntLetterRegLastID
+                 RegFee
+               }
+      Snippets {
+                  ValidVarChangeMaskReg
+                  ValidChangeMaskLetterReg
+                  ValidMaskReg
+                  RegLogStart
+               }
+      PLU      { PLU_SurBlindRegID }
+   }
+
+// ------
+
+   AirGovRegID {
+      BasedOn  { BaseOptionalServices }
+      BitMap   { '..\images\P_Registered.bmp' }
+      Title    { 'Registered' }
+      TotalIn  { TotalFee }
+      Domains  {
+                 IntGovAirRegDestination
+                 PostOffice
+                 IntRecipientName
+                 //IntRecipientAddress
+                 IntLetterRegFirstID
+                 BulkQuantity
+                 IntLetterRegLastID
+                 RegFee
+               }
+      Snippets {
+                  ValidVarChangeMaskReg
+                  ValidChangeMaskLetterReg
+                  ValidMaskReg
+                  RegLogStart
+               }
+//      PLU { PLU_AirGovRegID }
+   }
+
+
+   SurGovRegID {
+      BasedOn  { BaseOptionalServices }
+      BitMap   { '..\images\P_Registered.bmp' }
+      Title    { 'Registered' }
+      TotalIn  { TotalFee }
+      Domains  {
+                 IntGovSurRegDestination
+                 PostOffice
+                 IntRecipientName
+                 //IntRecipientAddress
+                 IntLetterRegFirstID
+                 BulkQuantity
+                 IntLetterRegLastID
+                 RegFee
+               }
+      Snippets {
+                  ValidVarChangeMaskReg
+                  ValidChangeMaskLetterReg
+                  ValidMaskReg
+                  RegLogStart
+               }
+//      PLU { PLU_AirGovRegID }
+   }
+
+
+// -----
+
+  Sorted {
+            BasedOn     { BaseOptionalServices }
+            Caption     { 'Sorted' }
+            Description { 'Sorted' }
+            Title       { 'Sorted' }
+            BitMap      { '..\images\P_Sorted.bmp' }
+            PLU         { PLU_UnSorted }
+         }
+
+  UnSorted {
+            BasedOn     { BaseOptionalServices }
+            Caption     { 'Unsorted' }
+            Description { 'Unsorted' }
+            Title       { 'unsorted' }
+            BitMap      { '..\images\P_UnSorted.bmp' }
+            PLU         { PLU_UnSorted }
+         }
+
+  BagPenalty {
+              BasedOn    { BaseRent                                       }
+              Caption     { 'Penalty for late payment'                     }
+              BitMap      { '..\images\P_BagPenalty.bmp' }
+              Description { 'Late payment fee'                             }
+              Title       { 'Late payment fee'                             }
+              UnitPrice   { '80.00' }
+              Domains     { BagPenaltyFee { UnitPrice }                   }
+              PLU         { PLU_BagPenalty }
+              LogAs       { BagPenalty }
+             }
+
+
+  BagQuarterPenalty {
+              BasedOn    { BaseRent                                       }
+              Caption     { 'Penalty for late payment'                     }
+              BitMap      { '..\images\P_BagPenalty.bmp' }
+              Description { 'Late payment fee'                             }
+              Title       { 'Late payment fee'                             }
+              UnitPrice   { '80.00' }
+              Domains     { BagPenaltyFee { UnitPrice }                   }
+              PLU         { PLU_BagPenalty }
+              LogAs       { BagPenalty }
+             }
+
+//             Delivery
+//-----------------------------------------------------------------------
+
+   BaseDeliveryStamp {
+         DontBuild
+         BasedOn         { BaseDelivery }
+         Items           {
+                           'Complete'
+                           'SwapTo.Stamps'
+                         }
+         Snippets        {
+                          MailItemSwapVar
+                          DeliveryItemLogVars
+                          MailItemPreLog
+                          MailItemLogStamps
+                          DeliverySWAPTO
+                          DeliveryDisableComple
+                          DeliveryItemPreLog
+                         }
+   }
+
+  StandardLetterDel {
+     BasedOn      { BaseDeliveryStamp }
+     Caption      { 'Letter Delivery'                        }
+     BitMap       { '..\images\P_MailDel.bmp'  }
+     Title        { 'Letter Delivery'                        }
+     Description  { 'Letter Delivery'                        }
+     Items {
+        'Product.RegisterPOOC'
+        'Product.InsufficentPst'
+        'Product.CustomsDutyBotswana'
+        'Product.CustomsDutySA'
+     }
+     Domains {
+        CustomerName
+        CustID_Delivery
+        MailSurOrigin
+        StampFee
+        CashFee
+     }
+     PLU         { PLU_StandardLetterDel }
+     Customer    { 'Letter Std. Dlv. ','^','Total ','P',TotalFee }
+     Snippets    { DeliveryFeesVal, DeliveryFeesVarVal, LetterPreVal}
+  }
+
+   LargeLetterDel {
+  	         BasedOn      { BaseDeliveryStamp }
+            Caption     { 'Large Letter Delivery'                        }
+            BitMap       { '..\images\P_MailDel.bmp' }
+            Title        { 'Large Letter Delivery'                        }
+            Description  { 'Large Letter Delivery'                        }
+            Items        {
+                         'Product.RegisterPOOC'
+                         'Product.InsufficentPst'
+            //             'Product.CustomsHandCharge'
+                         'Product.CustomsDutyBotswana'
+                         'Product.CustomsDutySA'
+                         }
+            Domains      {
+                           CustomerName
+                           CustID_Delivery
+                           MailSurOrigin
+                           //DummyDomain
+                           StampFee
+                           CashFee
+
+                         }
+             PLU         { PLU_LargeLetterDel }
+             Customer    { 'Letter Lrg. Dlv. ','^','Total ','P',TotalFee }
+             Snippets    { DeliveryFeesVal, DeliveryFeesVarVal, LetterPreVal }
+   }
+
+   OversizedLetterDel {
+  	         BasedOn      { BaseDeliveryStamp }
+            BitMap       { '..\images\P_MailDel.bmp' }
+            Title        { 'Oversized Letter Delivery' }
+            Description  { 'Oversized Letter Delivery' }
+            Items        {
+                           'Product.RegisterPOOC'
+                           'Product.InsufficentPst'
+                           'Product.CustomsDutyBotswana'
+                           'Product.CustomsDutySA'
+                         }
+            Domains      {
+                           CustomerName
+                           CustID_Delivery
+                           MailSurOrigin
+                           StampFee
+                           CashFee
+                         }
+            PLU          { PLU_OversizedLetterDel }
+            Customer    { 'Letter Over. Dlv. ','^','Total ','P',TotalFee }
+            Snippets     { DeliveryFeesVal, DeliveryFeesVarVal, LetterPreVal }
+   }
+
+   PostcardDel {
+  	         BasedOn      { BaseDeliveryStamp }
+            Caption      { 'Postcard Delivery'                        }
+            BitMap       { '..\images\P_DelPostCard.bmp' }
+            Title        { 'Postcard Delivery'                        }
+            Description  { 'Postcard Delivery'                        }
+            Items        {
+
+                           'Product.InsufficentPst'
+                         }
+            Domains      {
+                           MailSurOrigin
+                           StampFee
+                           CashFee
+                         }
+
+            PLU          { PLU_PostcardDel }
+            Customer    { 'Letter Over. Dlv. ','^','Total ','P',TotalFee }
+            Snippets    { DeliveryFeesVal, PoscardFeesVarVal, PostCardPreVal }
+
+  }
+
+  AerogrammeDel {
+  	         BasedOn      { BaseDeliveryStamp }
+            Caption      { 'Aerogramme Delivery'                        }
+            BitMap       { '..\images\P_DelAerogramme.bmp' }
+	         Title        { 'Aerogramme Delivery'                        }
+	         Description  { 'Aerogramme Delivery'                        }
+	         Items        {
+	                        'Product.RegisterPOOC'
+	                        'Product.InsufficentPst'
+                           'Product.CustomsDutyBotswana'
+                           'Product.CustomsDutySA'
+	                      }
+            Domains     {
+                           CustomerName
+                           CustID_Delivery
+                           MailSurOrigin
+                           StampFee
+                           CashFee
+               		   }
+            PLU         { PLU_AerogrammeDel }
+            Customer    { 'Aerogramme Dlv. ','^','Total ','P',TotalFee }
+            Snippets    { DeliveryFeesVal, DeliveryFeesVarVal, LetterPreVal }
+   }
+
+   ParcelsDel {
+  	         BasedOn      { BaseDeliveryStamp }
+            Caption      { 'Parcel Delivery'                        }
+            BitMap       { '..\images\P_DelParcel.bmp' }
+            Title        { 'Parcel Delivery'                        }
+            Description  { 'Parcel Delivery'                        }
+            Items        {
+
+                           'Product.DemurrageOnParcel'
+                           'Product.CustomsDutyBotswana'
+                           'Product.CustomsDutySA'
+                         }
+             Domains     {
+                           CustomerName
+                           CustID_Delivery
+                           MailSurOrigin
+                           StampFee
+                           CashFee
+                         }
+          PLU          { PLU_ParcelsDel }
+          Customer    { 'Parcel Dlv. ','^','Total ','P',TotalFee }
+          Snippets    { DeliveryFeesVal, DeliveryFeesVarVal, ParcelsPreVal }
+  }
+
+ CODParcelDel {
+  	         BasedOn      { BaseDeliveryStamp }
+            Caption      { 'COD Parcel Delivery' }
+            BitMap       { '..\images\P_DelCODParcel.bmp' }
+            Title        { 'COD Parcel Delivery' }
+	         Description  { 'COD Parcel Delivery' }
+	         Items        {
+
+	    	                  'Product.DemurrageOnParcel'
+	    	    	            'Product.CustomsDutyBotswanaNoHandling'
+	    	    	            'Product.CustomsDutySANoHandling'
+	    	    	            //'Product.CODHandCharge'
+  	    	    	            'Product.CODTradeCharge'
+                        }
+            Domains     {
+       	  	               CustomerName
+		                     CustID_Delivery
+       	  	               MailCODOrigin
+                           StampFee
+                           CashFee
+                        }
+
+            PLU         { PLU_CODParcelDel }
+            Customer    { 'COD Parcel Dlv. ','^','Total ','P',TotalFee }
+            Snippets    { DeliveryFeesVal, DeliveryFeesVarVal, CODParcelPreVal }
+  }
+
+ EMSDel {
+  	         BasedOn      { BaseDeliveryStamp }
+            Caption      { 'EMS Delivery' }
+            BitMap       { '..\images\G_EMS.bmp' }
+            Title        { 'EMS Delivery' }
+            Description  { 'EMS Delivery' }
+            Items        {
+                         //'Product.InsufficentPst'
+                         'Product.CustomsDutyBotswana'
+                         'Product.CustomsDutySA'
+                }
+            Domains      {
+                           CustomerName
+                           CustID_Delivery
+                           MailAirOrigin
+                           StampFee
+                           CashFee
+                         }
+            PLU          { PLU_EMSDel }
+            Customer    { 'EMS Dlv. ','^','Total ','P',CashFee }
+            Snippets     { DeliveryFeesVal, DeliveryFeesVarVal, LetterPreVal }
+  }
+
+   PacketDel {
+  	         BasedOn      { BaseDeliveryStamp }
+            Caption      { 'Packet Delivery' }
+            BitMap       { '..\images\P_PacketDel.bmp' }
+            Title        { 'Packet Delivery' }
+            Description  { 'Packet Delivery' }
+            Items        {
+                         'Product.RegisterPOOC'
+                         'Product.InsufficentPst'
+                         'Product.CustomsDutyBotswana'
+                         'Product.CustomsDutySA'
+                         }
+            Domains      {
+                           CustomerName
+                           CustID_Delivery
+                           MailSurOrigin
+                           StampFee
+                           CashFee
+                         }
+             PLU         { PLU_PacketDel }
+             Customer    { 'Packet Dlv. ','^','Total ','P',TotalFee }
+             Snippets    { DeliveryFeesVal, DeliveryFeesVarVal, LetterPreVal }
+   }
+
+
+// ---- Service for Delivery ----------------------------
+
+  RegisterPOOC {
+          BasedOn     { BaseOptionalServices }
+          Title       { 'Registered Post Out Of Course(POOC)' }
+          Caption     { 'Register POOC' }
+          BitMap      { '..\images\P_Registered.bmp' }
+          Description { 'Register POOC' }
+          UnitPrice { 2.55 }
+          Domains {
+                    RegisterPOOCFee { UnitPrice }
+                  }
+          //Snippets { ValidateSetRegisterPOOC, EmptyItemPreLog }
+          Snippets { ValidateSetRegisterPOOC }
+
+     }
+
+  //ExpressPOOC {
+  //        BasedOn     { BaseOptionalServices }
+  //        Title       { 'Express POOC' }
+  //        Caption     { 'Express POOC' }
+  //        BitMap      { '..\images\p_ExpressDelivery.bmp' }
+  //        Description { 'Enter Express POOC' }
+  //        UnitPrice { 1.75 }
+  //        Domain {
+  //                ExpressPOOCFee { UnitPrice }
+  //                }
+  //   }
+
+  InsufficentPst {
+          BasedOn     { BaseOptionalServices }
+          Title       { 'Insufficient postage' }
+          Caption     { 'Insufficient postage' }
+          BitMap      { '..\images\P_Stamp3.bmp' }
+          Description { 'Insufficient postage' }
+          Domains {
+                  InsufficentPstFee
+          	}
+          // LogAs { InsufficentPst }
+          //Snippets { ValidateSetInsufficentPst, EmptyItemPreLog }
+          Snippets { ValidateSetInsufficentPst }
+     }
+
+//  CustomsHandCharge {
+//          BasedOn     { BaseOptionalServices }
+//          Title       { 'Customs Handling Charge' }
+//          Caption     { 'Customs Handling Charge' }
+//          BitMap      { '..\images\P_Payment.bmp' }
+//          Description { 'Customs Handling Charge' }
+//          UnitPrice { 1.75 }
+//          Domains {
+//                  CustomsHandChargeFee { UnitPrice }
+//                  }
+//          PLU      { PLU_CustomsHandCharge }
+//          Snippets { ValidateSetCustomsHandCharge }
+//     }
+
+  CustomsDutyBotswana {
+         BasedOn     { BaseOptionalServices }
+         Title       { 'Botswana Customs Duty Fee' }
+         Caption     { 'Botswana Customs Duty Fee' }
+         BitMap      { '..\images\P_Payment.bmp' }
+         Description { 'Customs Duty Fee' }
+         UnitPrice   { 2.80 }
+         Domains {
+                  CustomsDutyFee
+                  CMisc42Number
+                  CustomsHandChargeFee { UnitPrice }
+	               }
+         //LogAs { CustomsDutyBotswana }
+         PLU      { PLU_CustomsDutyBotswanaFee }
+         Snippets { ValidateSetCustomsDutyBotswana, CustomsDutyBotswanaLog }
+     }
+
+  CustomsDutySA {
+         BasedOn     { BaseOptionalServices }
+         Title       { 'S.A. Customs Duty Fee' }
+         Caption     { 'S.A. Customs Duty Fee' }
+         BitMap      { '..\images\P_Payment.bmp' }
+         Description { 'Customs Duty Fee' }
+         UnitPrice   { 2.80 }
+         Domains {
+                  CustomsDutyFee
+                  ManifestNumber
+                  CustomsHandChargeFee { UnitPrice }
+	               }
+         //LogAs    { CustomsDutySA }
+         PLU      { PLU_CustomsDutySAFee }
+         Snippets {
+                     //ExecuteDuty,
+                   ValidateSetCustomsDutySA
+                   CustomsDutySALog
+                   }
+     }
+
+  CustomsDutyBotswanaNoHandling {
+         BasedOn     { BaseOptionalServices }
+         Title       { 'Botswana Customs Duty Fee' }
+         Caption     { 'Botswana Customs Duty Fee' }
+         BitMap      { '..\images\P_Payment.bmp' }
+         Description { 'Customs Duty Fee' }
+         Domains {
+                  CustomsDutyFee
+                  CMisc42Number
+	               }
+         //LogAs { CustomsDutyBotswana }
+         PLU      { PLU_CustomsDutyBotswanaFee }
+         Snippets { ValidateSetCustomsDutyBotswanaNoHandling, CustomsDutyBotswanaLogNoHandling }
+     }
+
+  CustomsDutySANoHandling {
+         BasedOn     { BaseOptionalServices }
+         Title       { 'S.A. Customs Duty Fee' }
+         Caption     { 'S.A. Customs Duty Fee' }
+         BitMap      { '..\images\P_Payment.bmp' }
+         Description { 'Customs Duty Fee' }
+         Domains {
+                  CustomsDutyFee
+                  ManifestNumber
+	               }
+         //LogAs    { CustomsDutySA }
+         PLU      { PLU_CustomsDutySAFee }
+         Snippets {
+                     //ExecuteDuty,
+                   ValidateSetCustomsDutySANoHandling
+                   CustomsDutySALogNoHandling
+                   }
+     }
+
+  DemurrageOnParcel {
+          BasedOn     { BaseOptionalServices }
+          Title       { 'Demurrage on a Parcel' }
+          Caption     { 'Demurrage on a Parcel' }
+          BitMap      { '..\images\P_Payment.bmp' }
+          Description { 'Demurrage on a Parcel' }
+          Domains {
+                  DateArrival
+                  NumberDays
+                  DemurrageOnParcelFee
+                 }
+         // LogAs { DemurrageOnParcel }
+         Snippets { ValidateSetDemurrageOnParcel, ValidateVarSetDemurrageOnParcel }
+         //Snippets { ValidateSetDemurrageOnParcel, EmptyItemPreLog }
+     }
+//  CODHandCharge {
+//          BasedOn     { BaseOptionalServices }
+//          Title       { 'COD Handling Charge' }
+//          Caption     { 'COD Handling Charge' }
+//          BitMap      { '..\images\P_CODFee.bmp' }
+//          Description { 'COD Handling Charge' }
+//          UnitPrice { 5.00 }
+//          Domains {
+//                  CODTradeCharge
+//                 }
+//          LogAs { CODHandCharge }
+//          PLU   { PLU_CODHandCharge }
+//         Snippets { ValidateSetCODHandCharge }
+//     }
+  CODTradeCharge {
+          BasedOn     { BaseOptionalServices }
+          Title       { 'COD Trade Charge' }
+          Caption     { 'COD Trade Charge' }
+          BitMap      { '..\images\P_CODFee.bmp' }
+          Description { 'COD Trade Charge' }
+          UnitPrice { 7.70 }
+          Domains	 {
+                  CODNumber
+                  CODTradeChargeFee
+                  CODHandChargeFee { UnitPrice }
+                  MailCODOrigin
+                 }
+//          LogAs { CODTradeCharge }
+          PLU   { PLU_CODTradeCharge }
+         Snippets { ValidateSetCODTradeCharge
+                    CODTradeChargeLOG
+         }
+     }
+
+
+//
+//=================  Misc Reciepts and payments
+//
+
+   MiscReceipt { SubGroup     { 'Services' }
+                 Caption      { 'Miscellaneous Receipt' }
+                 BitMap       { '..\IMAGES\Misc.bmp' }
+                 Description  { 'Miscellaneous Receipt' }
+                 Title        { 'Miscellaneous Receipt' }
+                 PLU          {  PLU_MiscReceipt }
+                 Domains      {  ReasonForReceipt
+                                 Amount
+                                }
+                 Items        { 'Complete'      }
+                 Snippets     { LogMiscReceipt }
+                 Customer    { 'Misc. Receipt','^','Total ','P',Amount }
+                }
+
+
+   MiscPayment { SubGroup     { 'Services' }
+                 Caption      { 'Miscellaneous Payment' }
+                 BitMap       { '..\IMAGES\P_Payment.bmp' }
+                 Description  { 'Miscellaneous Payment' }
+                 Title        { 'Miscellaneous Payment' }
+                 PLU          {  PLU_MiscPayment }
+                 Domains      {  ReasonForPayment
+                                 Amount
+                                }
+                 Items        { 'Complete'      }
+                 Snippets     { LogMiscPayment }
+                 Customer    { 'Misc. Payment','^','Total ','P',Amount }
+   }
+
+  Claims {
+    SubGroup    { 'Services' }
+    Title       { 'Imprest and Travel Claims' }
+    Caption     { 'Imprest and Travel Claims' }
+    Description { 'Imprest and Travel Claims' }
+    Bitmap      { '..\images\P_Claims.bmp' }
+    PLU         { PLU_Claims }
+    Domains {
+      PayeeName
+      PayeeIdentification
+      Comment
+      AmountPaid
+    }
+    Items       { 'Complete' }
+    Snippets {
+      PaySalaryVal
+      ClaimsLog
+    }
+  }
+
+  ImprestTravelReceipt {
+    SubGroup    { 'Services' }
+    Title       { 'Imprest and Travel Receipt' }
+    Caption     { 'Imprest and Travel Receipt' }
+    Description { 'Imprest and Travel Receipt' }
+    Bitmap      { '..\images\P_Claims.bmp' }
+    PLU         { PLU_ImprestTravelReceipt }
+    Domains {
+      PayeeName
+      PayeeIdentification
+      Comment
+      AmountPaid
+    }
+    Items { 'Complete' }
+    Snippets {
+      PaySalaryVal
+      ClaimsLog
+    }
+  }
+
+  PayStaffCheque {
+      SubGroup { 'Services' }
+      Title       { 'Pay Staff Cheque' }
+      Caption     { 'Pay Staff Cheque' }
+      Description { 'Pay Staff Cheque' }
+      Bitmap { '..\images\P_Cheque.bmp' }
+      PLU   { PLU_PayStaffCheque }
+      Domains {
+         PayeeName
+         PayeeIdentification
+         StaffChequeNumber
+         AmountPaid
+      }
+      Items { 'Complete' }
+      Snippets {
+         PayStaffChequeVars
+         PayStaffChequeVal
+         PayStaffChequeLog
+      }
+   }
+
+
+}
+
+//
+//=================  Snippets  =======================
+//
+
+Snippets {
+//   DummyDomainHide {
+//    InsertBetween { '{SetProgStart}','{SetProgEnd}'  }
+//          CodeBlock {
+//      [*
+//       ProdForm.DummyDomain.Ignore := TRUE ;
+//    //   Result := False ;
+//      *]
+//    }
+//   }
+
+//   ExecuteDuty {
+//      InsertBetween { '{SetProgStart}','{SetProgEnd}' }
+//      CodeBlock {
+//      [*
+//         ProdForm.CustomsHandChargeFee.Text := '1.75';
+//      *]
+//      }
+//   }
+
+
+   PayStaffChequeVars {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+//            Value:Currency;
+//            SL:TStringList;
+            Stock:IStock;
+      *]
+      }
+   }
+
+   PayStaffChequeVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+        If Result then
+        begin
+            result := ( StrToCurrDef( AmountPaid.Text, 0 ) > 0 );
+        end;
+       *]
+
+      }
+   }
+
+   PayStaffChequeLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               -(FQuantity*StrToCurrDef(ProdForm.AmountPaid.Text,0)), // Value
+               -(StrToCurrDef(ProdForm.AmountPaid.Text,0)), // Price
+               Get_Description, // Description
+               '', // Additional Info
+               Get_ProgramID, // ProgID
+               Enumerate(ProdForm)); // Domain Info
+         Inc(Index);
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               0, // PLU
+               0, // Value
+               0, // Price
+               'Payee Name -', // Description
+               ProdForm.PayeeName.Text, // Additional Info
+               '', // ProgID
+               ''); // Domain Info
+         Inc(Index);
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               0, // PLU
+               0, // Value
+               0, // Price
+               'Payee Identification -', // Description
+               ProdForm.PayeeIdentification.Text, // Additional Info
+               '', // ProgID
+               ''); // Domain Info
+         Inc(Index);
+        if ProdForm.StaffChequeNumber.Text <> '' then
+        begin
+           TxnLog.LogTransaction(
+                  Index,
+                  FQuantity, // Quantity
+                  0, // PLU
+                  0, // Value
+                  0, // Price
+                  'Cheque Number -', // Description
+                  ProdForm.StaffChequeNumber.Text, // Additional Info
+                  '', // ProgID
+                  ''); // Domain Info
+            Inc(Index);
+         end ;
+
+         Stock:=CreateStock;
+
+         TxnLog.WriteTransaction('StockUsed'
+                                ,0
+                                ,-Trunc((StrToCurrDef(ProdForm.AmountPaid.Text,0))*100)
+                                ,6100000
+                                ,0.01
+                                ,0.01
+                                ,'Cheques'
+                                ,''
+                                ,'Product.Cheque'
+                                ,'');
+
+         try
+            Stock.AdjustStockLevel(TxnLog.User
+                                  ,'*Cheques'
+                                  ,-Trunc((StrToCurrDef(ProdForm.AmountPaid.Text,0))*100));
+         except
+            // Error in Stock
+         end;
+         Stock := nil ;
+
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+
+      *]
+      }
+   }
+
+   DeliveryFeesVarVal {
+     InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+     CodeBlock {
+       [*
+         var
+              CHandChargeFee : Currency ;
+              CDutyBotsFee,CDutySAFee : Currency ;
+              CODHChargeFee     : Currency ;
+              CODTChargeFee    : Currency ;
+              RPOOCFee      : Currency ;
+              IPstFee    : Currency ;
+              DOnParcelFee : Currency ;
+              SFee, CFee    : Currency ;
+              //CODHandling : Currency ;
+              CountryOrg: String ;
+      *]
+     }
+   }
+
+   PoscardFeesVarVal {
+     InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+     CodeBlock {
+       [*
+         var
+              CHandChargeFee : Currency ;
+              CDutyBotsFee,CDutySAFee : Currency ;
+              CODHChargeFee     : Currency ;
+              CODTChargeFee    : Currency ;
+              RPOOCFee      : Currency ;
+              IPstFee    : Currency ;
+              DOnParcelFee : Currency ;
+              SFee, CFee    : Currency ;
+              //CODHandling : Currency ;
+      *]
+     }
+   }
+
+
+   DeliveryFeesVal {
+     InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+     CodeBlock {
+       [*
+            Result := False ;
+            try
+
+              MoveFocusTo(Self);
+
+
+              // Cash
+
+              CHandChargeFee  := 0 ;
+              CDutyBotsFee    := 0 ;
+              CDutySAFee      := 0 ;
+              CODHChargeFee   := 0 ;
+              CODTChargeFee   := 0 ;
+              //CODHandling     := 0 ;
+
+               if BaseProduct.CombineList.IsSelected('Product.CustomsDutyBotswana') and
+                  BaseProduct.CombineList.IsEnabled('Product.CustomsDutyBotswana') then
+               begin
+                  CHandChargeFee := StrToCurrDef( BaseProduct.UIEventSink.ReferenceData('GET(CustomsHandChargeFee)'), 0 );
+                  CDutyBotsFee := StrToCurrDef( BaseProduct.UIEventSink.ReferenceData('GET(CustomsDutyBotswanaFee)'), 0);
+               end ;
+
+               if BaseProduct.CombineList.IsSelected('Product.CustomsDutySA') and
+                  BaseProduct.CombineList.IsEnabled('Product.CustomsDutySA') then
+               begin
+                  CHandChargeFee := StrToCurrDef( BaseProduct.UIEventSink.ReferenceData('GET(CustomsHandChargeFee)'), 0 );
+                  CDutySAFee := StrToCurrDef( BaseProduct.UIEventSink.ReferenceData('GET(CustomsDutySAFee)'), 0);
+               end ;
+
+               if BaseProduct.CombineList.IsSelected('Product.CustomsDutyBotswanaNoHandling') and
+                  BaseProduct.CombineList.IsEnabled('Product.CustomsDutyBotswanaNoHandling') then
+               begin
+                  CDutyBotsFee := StrToCurrDef( BaseProduct.UIEventSink.ReferenceData('GET(CustomsDutyBotswanaFee)'), 0);
+               end ;
+
+               if BaseProduct.CombineList.IsSelected('Product.CustomsDutySANoHandling') and
+                  BaseProduct.CombineList.IsEnabled('Product.CustomsDutySANoHandling') then
+               begin
+                  CDutySAFee := StrToCurrDef( BaseProduct.UIEventSink.ReferenceData('GET(CustomsDutySAFee)'), 0);
+               end ;
+
+               if BaseProduct.CombineList.IsSelected('Product.CODTradeCharge') and
+                  BaseProduct.CombineList.IsEnabled('Product.CODTradeCharge') then
+               begin
+                  CODHChargeFee := StrToCurrDef( BaseProduct.UIEventSink.ReferenceData('GET(CODHandChargeFee)'), 0);
+                  CODTChargeFee := StrToCurrDef( BaseProduct.UIEventSink.ReferenceData('GET(CODTradeChargeFee)'), 0);
+               end ;
+
+              // if BaseProduct.CombineList.IsSelected('Product.CODHandCharge') and
+              //    BaseProduct.CombineList.IsEnabled('Product.CODHandCharge') then
+              //    CODHandling  := StrToCurrDef( BaseProduct.UIEventSink.ReferenceData('GET(CODHandling)'), 0);
+
+
+               CFee := CHandChargeFee + CDutyBotsFee + CDutySAFee + CODHChargeFee + CODTChargeFee ;
+
+               if FindComponent('CashFee') <> nil then
+                  TDomainEdit( FindComponent('CashFee')).Text := CurrToStrF( CFee ,ffNumber, 2 ) ;
+
+
+               // Stamp
+
+               RPOOCFee     := 0 ;
+               IPstFee      := 0 ;
+               DOnParcelFee := 0 ;
+
+               if BaseProduct.CombineList.IsSelected('Product.RegisterPOOC') and
+                  BaseProduct.CombineList.IsEnabled('Product.RegisterPOOC')then
+                  RPOOCFee := StrToCurrDef( BaseProduct.UIEventSink.ReferenceData('GET(RegisterPOOCFee)'), 0);
+
+               if BaseProduct.CombineList.IsSelected('Product.InsufficentPst') and
+                  BaseProduct.CombineList.IsEnabled('Product.InsufficentPst') then
+                  IPstFee := StrToCurrDef( BaseProduct.UIEventSink.ReferenceData('GET(InsufficentPstFee)'), 0);
+
+               if BaseProduct.CombineList.IsSelected('Product.DemurrageOnParcel') and
+                  BaseProduct.CombineList.IsEnabled('Product.DemurrageOnParcel') then
+                  DOnParcelFee := StrToCurrDef( BaseProduct.UIEventSink.ReferenceData('GET(DemurrageOnParcelFee)'), 0);
+
+               SFee := RPOOCFee + IPstFee + DOnParcelFee ;
+
+               if FindComponent('StampFee') <> nil then
+                  TDomainEdit( FindComponent('StampFee')).Text := CurrToStrF( SFee ,ffNumber, 2 ) ;
+
+              //If (CustomerName.Text <> '') and (CustID_Delivery.Text <> '') and
+               if  ( SFee + CFee > 0 ) then
+                 Result := True ;
+
+
+               if result and  ( SFee > 0 ) then
+                  ProdForm.BaseProduct.CombineList.Enable('Product.Stamps')
+               else
+                  ProdForm.BaseProduct.CombineList.Disable('Product.Stamps');
+
+            except
+            end ;
+
+            if Result then
+               Result := CheckMaskEdits( Self ) ;
+
+
+       *]
+     }
+  }
+
+   LetterPreVal {
+     InsertBetween { '{PreValidateStart}','{PreValidateEnd}'  }
+     CodeBlock {
+       [*
+
+         if ProdForm.FindComponent('MailSurOrigin') <> nil then
+            CountryOrg := TDomainCombo( ProdForm.FindComponent('MailSurOrigin')).Text ;
+
+         if ProdForm.FindComponent('MailAirOrigin') <> nil then
+            CountryOrg := TDomainCombo( ProdForm.FindComponent('MailAirOrigin')).Text ;
+
+
+         if UpperCase( CountryOrg  ) = 'BOTSWANA' then
+         begin
+            BaseProduct.CombineList.Enable('Product.RegisterPOOC');
+            BaseProduct.CombineList.Disable('Product.CustomsDutyBotswana');
+            BaseProduct.CombineList.Disable('Product.CustomsDutySA');
+         end
+         else
+         begin
+            BaseProduct.CombineList.Disable('Product.RegisterPOOC');
+            BaseProduct.CombineList.Enable('Product.CustomsDutyBotswana');
+            BaseProduct.CombineList.Enable('Product.CustomsDutySA');
+         end ;
+
+
+         if ( BaseProduct.CombineList.IsSelected('Product.RegisterPOOC') and
+              BaseProduct.CombineList.IsEnabled('Product.RegisterPOOC') ) or
+            ( BaseProduct.CombineList.IsSelected('Product.CustomsDutyBotswana') and
+              BaseProduct.CombineList.IsEnabled('Product.CustomsDutyBotswana') ) or
+            ( BaseProduct.CombineList.IsSelected('Product.CustomsDutySA') and
+              BaseProduct.CombineList.IsEnabled('Product.CustomsDutySA') ) then
+         begin
+            CustomerName.Ignore    := False ;
+            CustID_Delivery.Ignore := False ;
+         end
+         else
+         begin
+            CustomerName.Ignore    := True ;
+            CustID_Delivery.Ignore := True ;
+         end ;
+
+       *]
+     }
+  }
+
+  PostcardPreVal {
+     InsertBetween { '{PreValidateStart}','{PreValidateEnd}'  }
+     CodeBlock {
+       [*
+         if not BaseProduct.CombineList.IsSelected( 'Product.InsufficentPst' ) then
+            BaseProduct.CombineList.Select(  'Product.InsufficentPst' );
+       *]
+     }
+  }
+
+
+   AerogrammePreVal {
+     InsertBetween { '{PreValidateStart}','{PreValidateEnd}'  }
+     CodeBlock {
+       [*
+
+         if UpperCase( MailSurOrigin.Text  ) = 'BOTSWANA' then
+         begin
+            BaseProduct.CombineList.Enable('Product.RegisterPOOC');
+            BaseProduct.CombineList.Disable('Product.CustomsDutyBotswana');
+            BaseProduct.CombineList.Disable('Product.CustomsDutySA');
+         end
+         else
+         begin
+            BaseProduct.CombineList.Disable('Product.RegisterPOOC');
+            BaseProduct.CombineList.Enable('Product.CustomsDutyBotswana');
+            BaseProduct.CombineList.Enable('Product.CustomsDutySA');
+         end ;
+
+       *]
+     }
+  }
+
+  ParcelsPreVal {
+     InsertBetween { '{PreValidateStart}','{PreValidateEnd}'  }
+     CodeBlock {
+       [*
+         CountryOrg := MailSurOrigin.Text ;
+         if UpperCase( CountryOrg  ) = 'BOTSWANA' then
+         begin
+            BaseProduct.CombineList.Disable('Product.CustomsDutyBotswana');
+            BaseProduct.CombineList.Disable('Product.CustomsDutySA');
+         end
+         else
+         begin
+            BaseProduct.CombineList.Enable('Product.CustomsDutyBotswana');
+            BaseProduct.CombineList.Enable('Product.CustomsDutySA');
+         end ;
+
+
+       *]
+     }
+  }
+
+  CODParcelPreVal {
+     InsertBetween { '{PreValidateStart}','{PreValidateEnd}'  }
+     CodeBlock {
+       [*
+
+         CountryOrg := MailCODOrigin.Text ;
+         if not BaseProduct.CombineList.IsEnabled('Product.CODTradeCharge') then
+            BaseProduct.CombineList.Enable('Product.CODTradeCharge');
+
+	      if not BaseProduct.CombineList.IsSelected('Product.CODTradeCharge') then
+            BaseProduct.CombineList.ForceSelect('Product.CODTradeCharge');
+
+
+         //if UpperCase( CountryOrg  ) = 'BOTSWANA' then
+         //begin
+	      //   BaseProduct.CombineList.Disable('Product.CODTradeCharge');
+         //end
+         //else if UpperCase( CountryOrg  ) = 'SOUTH AFRICA' then
+         //begin
+	      //   BaseProduct.CombineList.Enable('Product.CODTradeCharge');
+         //end
+         //else
+         //begin
+	      //   BaseProduct.CombineList.Disable('Product.CODTradeCharge');
+         //end ;
+
+         if BaseProduct.CombineList.IsSelected('Product.CODTradeCharge') and
+            BaseProduct.CombineList.IsEnabled('Product.CODTradeCharge') then
+         begin
+            BaseProduct.CombineList.Enable('Product.CustomsDutyBotswana');
+            BaseProduct.CombineList.Enable('Product.CustomsDutySA');
+	         BaseProduct.CombineList.Enable('Product.CODHandCharge');
+            //BaseProduct.CombineList.Select('Product.CODHandCharge');
+         end
+         else
+         begin
+            BaseProduct.CombineList.Disable('Product.CustomsDutyBotswana');
+            BaseProduct.CombineList.Disable('Product.CustomsDutySA');
+	         BaseProduct.CombineList.Disable('Product.CODHandCharge');
+         end ;
+
+       *]
+     }
+  }
+
+  EMSPreVal {
+     InsertBetween { '{PreValidateStart}','{PreValidateEnd}'  }
+     CodeBlock {
+       [*
+         if not BaseProduct.CombineList.IsSelected( 'Product.CustomsDutyBotswana' ) then
+            BaseProduct.CombineList.Select( 'Product.CustomsDutyBotswana' );
+       *]
+     }
+  }
+
+ AccUnaddrAdvtLeafletsVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+        If Result then
+        begin
+            if ( NumberOfLeaflets.Text = '' ) then
+	         TotalAmountToPay.Text := '0.00'
+	     else
+            TotalAmountToPay.Text := CurrToStrF(StrToIntDef(NumberOfLeaflets.Text,0) * StrToCurrDef(LeafletCost.Text,0), ffNumber, 2);
+        end;
+       *]
+
+      }
+   }
+
+  AccUnaddrAdvtLeafletsLog {
+         InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+         CodeBlock {
+         [*
+            FQuantity := StrToIntDef(ProdForm.NumberOfLeaflets.Text,1);
+
+            TxnLog.LogTransaction(
+                            Index,
+                            FQuantity, // Quantity
+                            Get_PLU, // PLU
+                            FQuantity*StrToCurrDef(ProdForm.LeafletCost.Text,0), // Value
+                            StrToCurrDef(ProdForm.LeafletCost.Text,0), // Price
+                            'Unaddressed Leaflets @ 70t', // Description
+                            '', // Additional Info
+                            Get_ProgramID, // ProgID
+                            Enumerate(ProdForm)); // Domain Info
+                            Inc(Index);
+            TxnLog.LogTransaction(
+                      Index,
+                      1, // Quantity
+                      0, // PLU
+                      0, // Value
+                      0, // Price
+                      'Company Name - ', // Description
+                      ProdForm.CompanyName.Text, // Additional Info
+                      '', // ProgID
+                      ''); // Domain Info
+                Inc(Index);
+            if CombineList <> nil then
+                   CombineList.LogTransactions(Index,TxnLog);
+         *]
+
+      }
+   }
+
+ CustomerFaxVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+        If Result then
+        begin
+            if ( NumberOfPages.Text = '' ) then
+	         TotalAmountToPay.Text := '0.00'
+	     else
+            TotalAmountToPay.Text := CurrToStrF(StrToIntDef(NumberOfPages.Text,0) * StrToCurrDef(FaxPageCost.Text,0), ffNumber, 2);
+        end;
+       *]
+
+      }
+   }
+
+  CustomerFaxLog {
+         InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+         CodeBlock {
+         [*
+            FQuantity := StrToIntDef(ProdForm.NumberOfPages.Text,1);
+
+            TxnLog.LogTransaction(
+                            Index,
+                            FQuantity, // Quantity
+                            Get_PLU, // PLU
+                            FQuantity*StrToCurrDef(ProdForm.FaxPageCost.Text,0), // Value
+                            StrToCurrDef(ProdForm.FaxPageCost.Text,0), // Price
+                            'Customer Fax @ P7.70/page', // Description
+                            '', // Additional Info
+                            Get_ProgramID, // ProgID
+                            Enumerate(ProdForm)); // Domain Info
+                            Inc(Index);
+            //TxnLog.LogTransaction(
+            //          Index,
+            //          1, // Quantity
+            //          0, // PLU
+            //          0, // Value
+            //          0, // Price
+            //          ProdForm.NumberOfPages.Text,
+            //          'pages @ P5.00 each', // Description
+            //          '', // ProgID
+            //          ''); // Domain Info
+            //    Inc(Index);
+            TxnLog.LogTransaction(
+                      Index,
+                      1, // Quantity
+                      0, // PLU
+                      0, // Value
+                      0, // Price
+                      'Fax Destination - ', // Description
+                      ProdForm.FaxDestination.Text, // Additional Info
+                      '', // ProgID
+                      ''); // Domain Info
+                Inc(Index);
+            if CombineList <> nil then
+                   CombineList.LogTransactions(Index,TxnLog);
+         *]
+
+      }
+   }
+
+ CustomerFaxIntVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+        If Result then
+        begin
+            if ( NumberOfPages.Text = '' ) then
+	         TotalAmountToPay.Text := '0.00'
+	     else
+            TotalAmountToPay.Text := CurrToStrF(StrToIntDef(NumberOfPages.Text,0) * StrToCurrDef(FaxPageCostInt.Text,0), ffNumber, 2);
+        end;
+       *]
+
+      }
+   }
+
+  CustomerFaxIntLog {
+         InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+         CodeBlock {
+         [*
+            FQuantity := StrToIntDef(ProdForm.NumberOfPages.Text,1);
+
+            TxnLog.LogTransaction(
+                            Index,
+                            FQuantity, // Quantity
+                            Get_PLU, // PLU
+                            FQuantity*StrToCurrDef(ProdForm.FaxPageCostInt.Text,0), // Value
+                            StrToCurrDef(ProdForm.FaxPageCostInt.Text,0), // Price
+                            'Customer Fax @ P23.10/page', // Description
+                            '', // Additional Info
+                            Get_ProgramID, // ProgID
+                            Enumerate(ProdForm)); // Domain Info
+                            Inc(Index);
+            TxnLog.LogTransaction(
+                      Index,
+                      1, // Quantity
+                      0, // PLU
+                      0, // Value
+                      0, // Price
+                      'Fax Destination - ', // Description
+                      ProdForm.FaxDestination.Text, // Additional Info
+                      '', // ProgID
+                      ''); // Domain Info
+                Inc(Index);
+            if CombineList <> nil then
+                   CombineList.LogTransactions(Index,TxnLog);
+         *]
+
+      }
+   }
+
+ BusReplyVal {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+
+       Result:=CheckMaskEdits(Self);
+       LetterSize.ItemIndex:=LetterSize.Items.IndexOf(LetterSize.Text);
+       if LetterSize.ItemIndex >= 0 then
+          LetterCost.Text:=LookUp(TStringObject(LetterSize.Items.Objects[LetterSize.ItemIndex]).Value,'0','BusReply',CompanyName,Result);
+
+        If Result then
+        begin
+            if ( NumberOfReplies.Text = '' ) then
+	         TotalAmountToPay.Text := '0.00'
+	     else
+            TotalAmountToPay.Text := CurrToStrF(StrToIntDef(NumberOfReplies.Text,0) * StrToCurrDef(LetterCost.Text,0), ffNumber, 2);
+        end;
+       *]
+
+      }
+   }
+
+  BusReplyLog {
+         InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+         CodeBlock {
+         [*
+            FQuantity := StrToIntDef(ProdForm.NumberOfReplies.Text,1);
+
+            TxnLog.LogTransaction(
+                            Index,
+                            FQuantity, // Quantity
+                            Get_PLU, // PLU
+                            FQuantity*StrToCurrDef(ProdForm.LetterCost.Text,0), // Value
+                            StrToCurrDef(ProdForm.LetterCost.Text,0), // Price
+                            'Business Reply', // Description
+                            '', // Additional Info
+                            Get_ProgramID, // ProgID
+                            Enumerate(ProdForm)); // Domain Info
+                            Inc(Index);
+            //TxnLog.LogTransaction(
+            //          Index,
+            //          1, // Quantity
+            //          0, // PLU
+            //          0, // Value
+            //          0, // Price
+            //          'Number of replies -',
+            //          ProdForm.NumberOfReplies.Text,
+            //          '', // ProgID
+            //          ''); // Domain Info
+            //    Inc(Index);
+            //TxnLog.LogTransaction(
+            //          Index,
+            //          1, // Quantity
+            //          0, // PLU
+            //          0, // Value
+            //          0, // Price
+            //          'Cost of each reply - P',
+            //          ProdForm.LetterCost.Text,
+            //          '', // ProgID
+            //          ''); // Domain Info
+            //    Inc(Index);
+            TxnLog.LogTransaction(
+                      Index,
+                      1, // Quantity
+                      0, // PLU
+                      0, // Value
+                      0, // Price
+                      'Letter Size - ', // Description
+                      ProdForm.LetterSize.Text + ' (P'+ProdForm.LetterCost.Text+')', // Additional Info
+                      '', // ProgID
+                      ''); // Domain Info
+                Inc(Index);
+            TxnLog.LogTransaction(
+                      Index,
+                      1, // Quantity
+                      0, // PLU
+                      0, // Value
+                      0, // Price
+                      'Company - ', // Description
+                      ProdForm.CompanyName.Text, // Additional Info
+                      '', // ProgID
+                      ''); // Domain Info
+                Inc(Index);
+            if CombineList <> nil then
+                   CombineList.LogTransactions(Index,TxnLog);
+         *]
+
+      }
+   }
+
+   ExpressDeliveryFreeExec {
+      InsertBetween { '{SetProgStart}','{SetProgEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.ExpressDelFee.Text := '0.00';
+
+      *]
+      }
+   }
+
+   AdviceDeliveryFreeExec {
+      InsertBetween { '{SetProgStart}','{SetProgEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.AdvOfDelFee.Text := '0.00';
+
+      *]
+      }
+   }
+
+   LogMiscReceipt {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                Get_PLU, // PLU
+                StrToCurrDef(ProdForm.Amount.Text,0), // Value
+                StrToCurrDef(ProdForm.Amount.Text,0), // Price
+                Get_Description, // Description
+                '', // Additional Info
+                Get_ProgramID, // ProgID
+                Enumerate(ProdForm)); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Reason '+ProdForm.ReasonForReceipt.Text, // Description
+                '', // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+   LogMiscPayment {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                Get_PLU, // PLU
+                0-StrToCurrDef(ProdForm.Amount.Text,0), // Value
+                0-StrToCurrDef(ProdForm.Amount.Text,0), // Price
+                Get_Description, // Description
+                '', // Additional Info
+                Get_ProgramID, // ProgID
+                Enumerate(ProdForm)); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Reason '+ProdForm.ReasonForPayment.Text, // Description
+                '', // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+
+   CustomsDutySALog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                StrToInt(PLU_CustomsDutySAFee), // PLU
+                StrToCurrDef(ProdForm.CustomsDutyFee.Text,0), // Value
+                StrToCurrDef(ProdForm.CustomsDutyFee.Text,0), // Price
+                Get_Description, // Description
+                '', // Additional Info
+                Get_ProgramID, // ProgID
+                Enumerate(ProdForm)); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                StrToInt(PLU_CustomsHandCharge), // PLU
+                StrToCurrDef(ProdForm.CustomsHandChargeFee.Text,0), // Value
+                StrToCurrDef(ProdForm.CustomsHandChargeFee.Text,0), // Price
+                'Customs Handling Charge', // Description
+                '', // Additional Info
+                Get_ProgramID, // ProgID
+                Enumerate(ProdForm)); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Manifest Number', // Description
+                ProdForm.ManifestNumber.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+   CustomsDutyBotswanaLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                StrToInt(PLU_CustomsDutyBotswanaFee), // PLU
+                StrToCurrDef(ProdForm.CustomsDutyFee.Text,0), // Value
+                StrToCurrDef(ProdForm.CustomsDutyFee.Text,0), // Price
+                Get_Description, // Description
+                '', // Additional Info
+                Get_ProgramID, // ProgID
+                Enumerate(ProdForm)); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                StrToInt(PLU_CustomsHandCharge), // PLU
+                StrToCurrDef(ProdForm.CustomsHandChargeFee.Text,0), // Value
+                StrToCurrDef(ProdForm.CustomsHandChargeFee.Text,0), // Price
+                'Customs Handling Charge', // Description
+                '', // Additional Info
+                Get_ProgramID, // ProgID
+                Enumerate(ProdForm)); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'C Misc 42 Number', // Description
+                ProdForm.CMisc42Number.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+   CustomsDutySALogNoHandling {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                StrToInt(PLU_CustomsDutySAFee), // PLU
+                StrToCurrDef(ProdForm.CustomsDutyFee.Text,0), // Value
+                StrToCurrDef(ProdForm.CustomsDutyFee.Text,0), // Price
+                Get_Description, // Description
+                '', // Additional Info
+                Get_ProgramID, // ProgID
+                Enumerate(ProdForm)); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'Manifest Number', // Description
+                ProdForm.ManifestNumber.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+   CustomsDutyBotswanaLogNoHandling {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                StrToInt(PLU_CustomsDutyBotswanaFee), // PLU
+                StrToCurrDef(ProdForm.CustomsDutyFee.Text,0), // Value
+                StrToCurrDef(ProdForm.CustomsDutyFee.Text,0), // Price
+                Get_Description, // Description
+                '', // Additional Info
+                Get_ProgramID, // ProgID
+                Enumerate(ProdForm)); // Domain Info
+          Inc(Index);
+         TxnLog.LogTransaction(
+                Index,
+                1, // Quantity
+                0, // PLU
+                0, // Value
+                0, // Price
+                'C Misc 42 Number', // Description
+                ProdForm.CMisc42Number.Text, // Additional Info
+                '', // ProgID
+                ''); // Domain Info
+          Inc(Index);
+
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+  CODTradeChargeLOG {
+    InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+    CodeBlock {
+    [*
+      TxnLog.LogTransaction(
+            Index,
+            FQuantity, // Quantity
+            Get_PLU, // PLU
+            FQuantity*StrToCurrDef(ProdForm.CODTradeChargeFee.Text,0), // Value
+            StrToCurrDef(ProdForm.CODTradeChargeFee.Text,0), // Price
+            Get_Description, // Description
+            '', // Additional Info
+            Get_ProgramID, // ProgID
+            Enumerate(ProdForm)); // Domain Info
+      Inc(Index);
+      TxnLog.LogTransaction(
+            Index,
+            FQuantity, // Quantity
+            StrToInt(PLU_CODHandCharge), // PLU
+            FQuantity*StrToCurrDef(ProdForm.CODHandChargeFee.Text,0), // Value
+            StrToCurrDef(ProdForm.CODHandChargeFee.Text,0), // Price
+            'COD Handling Fee', // Description
+            '', // Additional Info
+            Get_ProgramID, // ProgID
+            ''); // Domain Info
+       Inc(Index);
+       if CombineList <> nil then
+         CombineList.LogTransactions(Index,TxnLog);
+    *]
+    }
+  }
+}

@@ -1,0 +1,29 @@
+Borland C++ 5.0 Copyright (c) 1987, 1996 Borland International
+rawprn.c:
+Error f:\BC5\INCLUDE\win32\winspool.h 37: Declaration missing ;
+Error f:\BC5\INCLUDE\win32\winspool.h 38: Multiple declaration for 'LPWSTR'
+Error f:\BC5\INCLUDE\win32\winspool.h 37: Earlier declaration of 'LPWSTR'
+Error f:\BC5\INCLUDE\win32\winspool.h 38: Declaration missing ;
+Error f:\BC5\INCLUDE\win32\winspool.h 39: Multiple declaration for 'LPWSTR'
+Error f:\BC5\INCLUDE\win32\winspool.h 37: Earlier declaration of 'LPWSTR'
+Error f:\BC5\INCLUDE\win32\winspool.h 39: Declaration missing ;
+Error f:\BC5\INCLUDE\win32\winspool.h 59: Declaration missing ;
+Error f:\BC5\INCLUDE\win32\winspool.h 64: Declaration missing ;
+Error f:\BC5\INCLUDE\win32\winspool.h 75: Declaration missing ;
+Error f:\BC5\INCLUDE\win32\winspool.h 76: Multiple declaration for 'LPWSTR'
+Error f:\BC5\INCLUDE\win32\winspool.h 75: Earlier declaration of 'LPWSTR'
+Error f:\BC5\INCLUDE\win32\winspool.h 76: Declaration missing ;
+Error f:\BC5\INCLUDE\win32\winspool.h 77: Multiple declaration for 'LPWSTR'
+Error f:\BC5\INCLUDE\win32\winspool.h 75: Earlier declaration of 'LPWSTR'
+Error f:\BC5\INCLUDE\win32\winspool.h 77: Declaration missing ;
+Error f:\BC5\INCLUDE\win32\winspool.h 78: Multiple declaration for 'LPWSTR'
+Error f:\BC5\INCLUDE\win32\winspool.h 75: Earlier declaration of 'LPWSTR'
+Error f:\BC5\INCLUDE\win32\winspool.h 78: Declaration missing ;
+Error f:\BC5\INCLUDE\win32\winspool.h 79: Multiple declaration for 'LPWSTR'
+Error f:\BC5\INCLUDE\win32\winspool.h 75: Earlier declaration of 'LPWSTR'
+Error f:\BC5\INCLUDE\win32\winspool.h 79: Declaration missing ;
+Error f:\BC5\INCLUDE\win32\winspool.h 80: Multiple declaration for 'LPWSTR'
+Error f:\BC5\INCLUDE\win32\winspool.h 75: Earlier declaration of 'LPWSTR'
+Error f:\BC5\INCLUDE\win32\winspool.h 80: Declaration missing ;
+Error f:\BC5\INCLUDE\win32\winspool.h 80: Too many error or warning messages
+*** 26 errors in Compile ***

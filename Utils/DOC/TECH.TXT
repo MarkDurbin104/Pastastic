@@ -1,0 +1,17 @@
+The Multiport comms card has 7 serial ports at addresses.
+
+    3F8     Serial Port 1                  
+    2F8     Serial Port 2
+    2E8     Serial Port 3
+    310     Serial Printer Port (4)
+    3E0     Serial Scale Port
+    300     Lan in
+    260     Lan out
+
+The first two map directly onto the standard AT COM1/COM2 addresses.
+
+The board has a facility for HP Barcode circuitry but this section of
+the board is not currently populated.
+
+
+

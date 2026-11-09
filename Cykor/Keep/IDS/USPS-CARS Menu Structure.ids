@@ -1,0 +1,77 @@
+Users {
+   Clerk {
+	Items {
+		'Group.Main'
+		'Group.Mail'
+	}
+   }
+}
+Groups {
+	Main {
+		Title { 'Main Menu' }
+		BitMap { 'Images\Main.bmp' }
+		Items {
+			'Product.StampSheets'
+			'Product.StampBooks'
+			'Product.Stamps'
+			'Group.Mail'
+			'Group.Mail1'
+		}
+	}
+	Mail {
+		Title { 'Mail Menu' }
+		BitMap { 'Images\Mail.bmp' }
+		Items {
+			'Product.ExpressMail'
+			'Product.DomesticMail'
+			'Product.InternationalMail'
+		}
+	}
+	Mail1 {
+		Title { 'Mail Menu' }
+		BitMap { 'Images\Mail.bmp' }
+		Items {
+			'Product.ExpressMail'
+			'Product.DomesticMail'
+			'Product.InternationalMail'
+		}
+	}
+}
+Products {
+	StampSheets {
+		Title { 'Stamp Sheets' }
+		BitMap { 'Images\StampSheets.bmp' }
+	}
+	StampBooks {
+		Title { 'Stamp Books' }
+		BitMap { 'Images\StampBooks.bmp' }
+	}
+	Stamps {
+		Title { 'Stamps' }
+		BitMap { 'Images\Stamps.bmp' }
+	}
+	ExpressMail {
+		Title { 'Express Mail' }
+		BitMap { 'Images\ExpressMail.bmp' }
+		Domains { Weight }
+	}
+	DomesticMail {
+		Title { 'Domestic Mail' }
+		BitMap { 'Images\DomesticMail.bmp' }
+	}
+	InternationalMail {
+		Title { 'International Mail' }
+		BitMap { 'Images\InternationalMail.bmp' }
+	}
+	
+}
+Domains {
+	Weight {  
+		Title     { 'Weight'              }
+            Prompt    { 'Weight'              }
+            Hint      { 'The scale is either not attached or^is out of order, please type the Weight in grams' }
+            Error     { 'The Weight you have entered is invalid' }
+            Format    {  Range { '0,32000' }  }
+            InputFrom { 'Scale'  'Keyboard'   }
+	}
+}

@@ -1,0 +1,61 @@
+;****************************************************************
+;  Program PrinBios ( Chapter 10 )
+;
+;  The program for outputting text string onto the printer
+;
+;  Author: A.I.Sopin, Voronezh, Russia,  1991
+;
+;  The BIOS service (INT 17h, function 00h) is used
+;
+;****************************************************************
+.MODEL  SMALL
+.STACK
+.DATA
+;----------------------------------------------------------
+CR       EQU    13    ;  Carriage Return
+LF       EQU    10    ;  Line Feed
+MSG1     DB     ' Output a string onto the printer (BIOS, INT 17h) '
+	 DB     CR, LF
+LMSG1    EQU    $-MSG1
+MSG2     DB     13,10, 'Error while outputting the string !!!',13,10,'$'
+MSG3     DB     13,10, 'Printer not ready !!!',13,10,'$'
+MSG4     DB     13,10, 'Error during printer initialisation !!!',13,10,'$'
+;----------------------------------------------------------
+.CODE
+.startup
+	 mov    ah,2            ;  function 03h - get printer status byte
+	 xor    dx,dx           ;  DX=0 corresponds to LPT1
+	 int    17h             ;  BIOS printer service 
+	 cmp    ah,90h          ;  check bits 7 and 4 of status byte
+	 jz     Init            ;  if printer is OK - initialize it
+	 lea    dx,MSG3         ;  address of message "not ready"
+	 jmp    Text            ;  output message and exit
+;--- Initialize the printer
+Init:    mov    ah,1            ;  Function 01h - initialize printer
+	 xor    dx,dx           ;  DX=0 denotes LPT1
+	 int    17h             ;  BIOS printer service
+	 cmp    ah,00h          ;  check printer status
+	 jz     Print           ;
+	 lea    dx,MSG4         ;  address of message "Printer is not ready"
+	 jmp    Text            ;  output message and exit
+;----------------------------------------------------------
+;--- Send ASCII-string onto the printer
+Print:   mov    cx,LMSG1        ;  length of string into CX
+	 lea    si,MSG1         ;  DS:SI - address of string
+	 cld                    ;  direction - forward!
+	 xor    dx,dx           ;  DX=0 stands for LPT1
+Next:    xor    ah,ah           ;  clear AH (function 0 - print character)
+	 lodsb                  ;  send current character into AL
+	 int    17h             ;  BIOS printer service
+	 test   ah,08h          ;  was there an error?
+	 jnz    Error           ;  if so - put message and exit
+	 loop   Next            ;  print next character
+	 jmp    Exit            ;  exit program (normal exit)
+Error:   lea    dx,MSG2         ;  DS:DX - addres of error message
+;----------------------------------------------------------
+;--- Exit the program (normal or error)
+Text:    mov    ah,9            ;  function 09h - output text string
+	 int    21h             ;  DOS service call
+Exit:    mov    ax,4C00h        ;  Return Code =0
+	 int    21h             ;  Return to  MS-DOS
+	 END

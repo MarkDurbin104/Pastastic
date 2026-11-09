@@ -1,0 +1,18 @@
+tdef.c (tdef.h,tdmouse.h,tdicon.h,tdvars.h)
+tdfile.c (tdef.h)
+tdgraf.c (tdef.h)
+tdmove.c (tdef.h)
+tdelem.c (tdef.h)
+tdstore.c (tdef.h)
+tdmenu.c (tdef.h)
+tdedit.c (tdef.h)
+tdict.c (tdef.h)
+tdmsg.c (tdef.h)
+tdpsddef.c (tdef.h)
+tdrepdef.c (tdef.h)
+tdfont.c (tdef.h,tdchars.h)
+lib/graphics.lib
+lib/cl.lib
+lib/c0l.obj
+lib/mathl.lib
+lib/emu.lib

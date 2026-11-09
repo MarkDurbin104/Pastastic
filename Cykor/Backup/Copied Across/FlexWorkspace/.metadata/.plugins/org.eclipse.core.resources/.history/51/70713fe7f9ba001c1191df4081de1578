@@ -1,0 +1,14 @@
+package base
+{
+	import mx.core.UIComponent;
+
+	public class AnalogueClock extends UIComponent
+	{
+		public function AnalogueClock()
+		{
+			//TODO: implement function
+			super();
+		}
+		
+	}
+}

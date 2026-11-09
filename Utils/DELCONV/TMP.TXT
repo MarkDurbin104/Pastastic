@@ -1,0 +1,109 @@
+object Form2: TForm2
+  Left = 15
+  Top = 97
+  Width = 488
+  Height = 48
+  Caption = 'Keyboard'
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'System'
+  Font.Style = []
+  PixelsPerInch = 96
+  TextHeight = 16
+  object BitBtn1: TBitBtn
+    Left = 4
+    Top = 4
+    Width = 40
+    Height = 40
+    Caption = 'F1'
+    TabOrder = 0
+  end
+  object BitBtn1: TBitBtn
+    Left = 44
+    Top = 4
+    Width = 40
+    Height = 40
+    Caption = 'F2'
+    TabOrder = 1
+  end
+  object BitBtn1: TBitBtn
+    Left = 84
+    Top = 4
+    Width = 40
+    Height = 40
+    Caption = 'F3'
+    TabOrder = 2
+  end
+  object BitBtn1: TBitBtn
+    Left = 124
+    Top = 4
+    Width = 40
+    Height = 40
+    Caption = 'F4'
+    TabOrder = 3
+  end
+  object BitBtn1: TBitBtn
+    Left = 164
+    Top = 4
+    Width = 40
+    Height = 40
+    Caption = 'F5'
+    TabOrder = 4
+  end
+  object BitBtn1: TBitBtn
+    Left = 204
+    Top = 4
+    Width = 40
+    Height = 40
+    Caption = 'F6'
+    TabOrder = 5
+  end
+  object BitBtn1: TBitBtn
+    Left = 244
+    Top = 4
+    Width = 40
+    Height = 40
+    Caption = 'F7'
+    TabOrder = 6
+  end
+  object BitBtn1: TBitBtn
+    Left = 284
+    Top = 4
+    Width = 40
+    Height = 40
+    Caption = 'F8'
+    TabOrder = 7
+  end
+  object BitBtn1: TBitBtn
+    Left = 324
+    Top = 4
+    Width = 40
+    Height = 40
+    Caption = 'F9'
+    TabOrder = 8
+  end
+  object BitBtn1: TBitBtn
+    Left = 364
+    Top = 4
+    Width = 40
+    Height = 40
+    Caption = 'F10'
+    TabOrder = 9
+  end
+  object BitBtn1: TBitBtn
+    Left = 404
+    Top = 4
+    Width = 40
+    Height = 40
+    Caption = 'F11'
+    TabOrder = 10
+  end
+  object BitBtn1: TBitBtn
+    Left = 444
+    Top = 4
+    Width = 40
+    Height = 40
+    Caption = 'F12'
+    TabOrder = 11
+  end
+end

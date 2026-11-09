@@ -1,0 +1,117 @@
+//***********************************************************************************************************//
+//**                                                                                                       **//
+//**                                   Common Build Options - Network                                      **//
+//**                                                                                                       **//
+//***********************************************************************************************************//
+
+BuildOptions
+{
+
+  BuildAllUnits    { 'Y' }
+
+  CommandLine      { 'D:\MinDelphi\DCC32.EXE'  }
+
+  Aliases          { WinTypes { 'Windows' }
+                     WinProcs { 'Windows' }
+                     DbiProcs { 'BDE'     }
+                     DbiTypes { 'BDE'     }
+                     DbiErrs  { 'BDE'     }    }
+
+  LibraryPath      { 'D:\MinDelphi'      
+                     's:\corvus\Source\Base Type Library'
+                     's:\corvus\Source\Support Components\Error Handler'
+                     's:\corvus\Source\Support Components\DatabaseServer'
+                     's:\corvus\Source\Packages'
+                     's:\corvus\Source\Base Components'                     }
+
+  SearchPath       { 'D:\MinDelphi'
+                     's:\corvus\Source\Packages'
+                     's:\corvus\Source\Base Type Library'
+                     's:\corvus\Source\Support Components\Error Handler'
+                     's:\corvus\Source\Component Designer\Product Designer'
+                     's:\corvus\Source\Utility Components\UserManager'
+                     's:\corvus\Source\Base Components'
+                     's:\corvus\Source\Support Components\DatabaseServer'   }
+
+  Packages         { 'VCL30'
+                     'VCLX30'  }
+
+  ProductInput     { Directory    { 's:\corvus\Generated Components\Generate From\Product\EmptyForm'       }
+                     Files        { Project    { 'GenFromProduct.dpr'   }
+                                    Automation { 'GenFromProductAU.pas' }
+                                    Form       { 'GenFromProductFU.pas' 
+                                                 'GenFromProductFU.dfm' }                                  }
+                     Dependencies { 's:\corvus\Source\Base Type Library\GPCSBase_TLB.pas'
+                                    's:\corvus\Source\Base Type Library\GPCSBaseAU.pas'
+                                    's:\corvus\Source\Base Type Library\GPCSGUID.pas'
+                                    's:\corvus\Source\Support Components\Error Handler\GPCSErrorCode.pas'
+                                    's:\corvus\Source\Support Components\Error Handler\GPCSErrorLine.pas'
+                                    's:\corvus\Source\Packages\Domain.pas'
+                                    's:\corvus\Source\Packages\CombineU.pas'
+                                    's:\corvus\Source\Packages\CompInspector.pas'
+                                    's:\corvus\Source\Packages\CompressU.pas'
+                                    's:\corvus\Source\Packages\Bin2String.pas'
+                                    's:\corvus\Source\Base Components\BaseProduct.pas'
+                                    's:\corvus\Source\Base Components\ProdDesign.pas'
+                                    's:\corvus\Source\Component Designer\Product Designer\ProdGenU.pas'
+                                    's:\corvus\Source\Component Designer\Product Designer\TokenParser.pas' }
+                    }
+
+  GroupInput      { Directory    { 's:\corvus\Generated Components\Generate From\Group'                    }
+                    Files        { Project    { 'GenFromGroup.dpr'   }
+                                   Automation { 'GenFromGroupAU.pas' }                                     }      
+                    Dependencies { 's:\corvus\Source\Base Type Library\GPCSBase_TLB.pas'
+                                   's:\corvus\Source\Base Type Library\GPCSBaseAU.pas'
+                                   's:\corvus\Source\Base Type Library\GPCSGUID.pas'
+                                   's:\corvus\Source\Support Components\Error Handler\GPCSErrorCode.pas'
+                                   's:\corvus\Source\Support Components\Error Handler\GPCSErrorLine.pas'
+                                   's:\corvus\Source\Base Components\BaseGroup.pas'                        }
+                    }
+
+  UserInput       { Directory    { 's:\corvus\Generated Components\Generate From\UGroup'                   }
+                    Files        { Project    { 'GenFromUGroup.dpr'   }
+                                   Automation { 'GenFromUGroupAU.pas' }                                    }
+                    Dependencies { 's:\corvus\Source\Base Type Library\GPCSBase.dpr'
+                                   's:\corvus\Source\Base Type Library\GPCSBase_TLB.pas'
+                                   's:\corvus\Source\Base Type Library\GPCSBaseAU.pas'
+                                   's:\corvus\Source\Base Type Library\GPCSGUID.pas'
+                                   's:\corvus\Source\Support Components\Error Handler\GPCSErrorCode.pas'
+                                   's:\corvus\Source\Support Components\Error Handler\GPCSErrorLine.pas'
+                                   's:\corvus\Source\Base Components\BaseWUGroup.pas'                      }     
+                    }
+
+  WorkStationInput { Directory    { 's:\corvus\Generated Components\Generate From\WGroup'                  }
+                     Files        {  Project    { 'GenFromWGroup.dpr'   }
+                                     Automation { 'GenFromWGroupAU.pas' }                                  }
+                     Dependencies { 's:\corvus\Source\Base Type Library\GPCSBase_TLB.pas'
+                                    's:\corvus\Source\Base Type Library\GPCSBaseAU.pas'
+                                    's:\corvus\Source\Base Type Library\GPCSGUID.pas'
+                                    's:\corvus\Source\Support Components\Error Handler\GPCSErrorCode.pas'
+                                    's:\corvus\Source\Support Components\Error Handler\GPCSErrorLine.pas'
+                                    's:\corvus\Source\Base Components\BaseWUGroup.pas'                     }
+                     }
+
+  LookUpInput      { Directory    { 's:\corvus\Generated Components\Generate From\LookUp'                  }
+                     Files        { Project    { 'GenFromLookUp.dpr'   }
+                                    Automation { 'GenFromLookUpAU.pas' }                                   }
+                     Dependencies { 's:\corvus\Source\Base Type Library\GPCSBase_TLB.pas'
+                                    's:\corvus\Source\Base Type Library\GPCSBaseAU.pas'
+                                    's:\corvus\Source\Base Type Library\GPCSGUID.pas'
+                                    's:\corvus\Source\Support Components\Error Handler\GPCSErrorCode.pas'
+                                    's:\corvus\Source\Support Components\Error Handler\GPCSErrorLine.pas'
+                                    's:\corvus\Source\Base Components\BaseLookUp.pas'                      }
+
+                     }
+
+  PickListInput    { Directory    { 's:\corvus\Generated Components\Generate From\PickList'                }
+                     Files        { Project    { 'GenFromPickList.dpr'   }
+                                    Automation { 'GenFromPickListAU.pas' }                                 }
+                     Dependencies { 's:\corvus\Source\Base Type Library\GPCSBase_TLB.pas'
+                                    's:\corvus\Source\Base Type Library\GPCSBaseAU.pas'
+                                    's:\corvus\Source\Base Type Library\GPCSGUID.pas'
+                                    's:\corvus\Source\Support Components\Error Handler\GPCSErrorCode.pas'
+                                    's:\corvus\Source\Support Components\Error Handler\GPCSErrorLine.pas'
+                                    's:\corvus\Source\Base Components\BasePickList.pas'                    }
+                     }
+
+}

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100%" height="100%"
+	label="Engineering Screen" 
+	backgroundImage="@Embed(source='embedded/EngineeringScreen.jpg')" backgroundSize="100%"
+	creationComplete="onCreationComplete(event);"
+	>
+	<mx:Metadata>
+        [Event(name="nextClicked", type="flash.events.Event")]
+    </mx:Metadata>
+		
+	<mx:Script>
+		<![CDATA[
+			import com.cykorsystems.utils.*;
+			import flash.events.Event;
+			private function onCreationComplete(event:Event):void {
+				UIUtils.addExpand(previewImage,1.1,30);
+				UIUtils.addExpand(featuresImage,1.1,30);
+				UIUtils.addExpand(foregroundImage,1.1,30);
+				UIUtils.addExpand(houghImage,1.1,30);
+			}			
+			public function fireNextClicked(event:Event):void {
+                dispatchEvent(new Event("nextClicked"));
+            }
+		]]>
+	</mx:Script>
+  	<mx:Spacer width="100%" height="123"/>
+  	<mx:HBox width="100%">
+  	 	<mx:Spacer width="133" height="100%"/>
+  	 	<mx:VBox height="100%" verticalGap="0">
+  	 	 	<mx:Label text="PREVIEW" fontFamily="Verdana" fontSize="12" fontWeight="bold" height="23" width="100%" color="#496384"/>
+  	 	 	<mx:Image width="239" height="161" id="previewImage" source="@Embed(source='embedded/preview.png')"/>
+  	 	</mx:VBox>
+  	 	<mx:VBox height="100%" verticalGap="0">
+  	 	 	<mx:Label text="FOREGROUND" fontFamily="Verdana" fontSize="12" fontWeight="bold" height="23" width="100%" color="#496384"/>
+  	 	 	<mx:Image width="239" height="161" id="foregroundImage" source="@Embed(source='embedded/foreground.png')"/>
+  	 	</mx:VBox>
+  	 	<mx:VBox height="100%" verticalGap="0">
+  	 	 	<mx:Label text="FEATURES" fontFamily="Verdana" fontSize="12" fontWeight="bold" height="23" width="100%" color="#496384"/>
+  	 	 	<mx:Image width="239" height="161" id="featuresImage" source="@Embed(source='embedded/features.png')"/>
+  	 	</mx:VBox>
+  	</mx:HBox>
+  	<mx:Spacer width="100%" height="100%"/>
+  	<mx:HBox width="100%">
+  	 	<mx:Spacer width="133" height="100%"/>
+  	 	<mx:VBox height="240" verticalGap="0">
+  	 	 	<mx:Label text="HOUGH" fontFamily="Verdana" fontSize="12" fontWeight="bold" height="23" width="100%" color="#496384"/>
+  	 	 	<mx:Image width="201" height="185" id="houghImage" source="@Embed(source='embedded/hough.png')"/>
+  	 	 	<mx:Spacer width="200" height="100%"/>
+  	 	</mx:VBox>
+  	 	<mx:Spacer width="100%" height="100%"/>
+  	 	<mx:VBox height="100%" verticalGap="0">
+  	 	 	<mx:Label text="PARCEL DATA" fontFamily="Verdana" fontSize="12" fontWeight="bold" height="23" width="100%" color="#496384"/>
+  	 	 	<mx:Canvas width="186" height="185" backgroundColor="#E5F0DF">
+  	 	 	 	<mx:Label text="Weight:" fontFamily="Verdana" fontSize="12" fontWeight="bold" height="23" width="80" color="#496384" y="36" textAlign="right"/>
+  	 	 	 	<mx:Label text="30g" fontFamily="Verdana" fontSize="12" fontWeight="bold" height="23" width="80" color="#000000" y="36" textAlign="left" x="88"/>
+  	 	 	 	<mx:Label text="Height:" fontFamily="Verdana" fontSize="12" fontWeight="bold" height="23" width="80" color="#496384" y="67" textAlign="right"/>
+  	 	 	 	<mx:Label text="Length:" fontFamily="Verdana" fontSize="12" fontWeight="bold" height="23" width="80" color="#496384" y="97" textAlign="right"/>
+  	 	 	 	<mx:Label text="Width:" fontFamily="Verdana" fontSize="12" fontWeight="bold" height="23" width="80" color="#496384" y="127" textAlign="right"/>
+  	 	 	 	<mx:Label text="1cm" fontFamily="Verdana" fontSize="12" fontWeight="bold" height="23" width="80" color="#000000" y="67" textAlign="left" x="88"/>
+  	 	 	 	<mx:Label text="24cm" fontFamily="Verdana" fontSize="12" fontWeight="bold" height="23" width="80" color="#000000" y="97" textAlign="left" x="88"/>
+  	 	 	 	<mx:Label text="10cm" fontFamily="Verdana" fontSize="12" fontWeight="bold" height="23" width="80" color="#000000" y="127" textAlign="left" x="88"/>
+  	 	 	</mx:Canvas>
+  	 	</mx:VBox>
+  	 	<mx:Spacer width="400" height="100%"/>
+  	</mx:HBox>
+  	<mx:Canvas width="1007" height="90">
+  	 	<mx:Canvas width="134" height="90" click="fireNextClicked(event);" x="760" y="0" backgroundSize="100%" backgroundImage="@Embed(source='embedded/NextButton.png')" buttonMode="true"/>
+  	</mx:Canvas>
+  	<mx:Spacer width="100%" height="41"/>
+</mx:VBox>

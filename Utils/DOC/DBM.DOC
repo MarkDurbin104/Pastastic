@@ -1,0 +1,663 @@
+
+Function	dottrunc
+
+Synopsys	Truncate a numeric string at the decimal point
+
+Prototype	void dottrunc(char *s);
+
+Module	DBM.C
+
+Description	dottrunc
+
+Passed	char *s
+
+Return Value	None.
+
+Modifies	s 
+
+Called By	stget.
+
+See Also	receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	receiverec
+
+Synopsys	receive a record and update local database
+
+Prototype	int receiverec(void);
+
+Module	DBM.C
+
+Description	receiverec
+
+Return Value	int
+
+Modifies	G_finredraw 
+
+Calls	stput, stsrch, stread, stwrite, stputrec, stwritelocal, stsrchp, streinit.
+
+See Also	dottrunc, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	sendrec
+
+Synopsys	send a record to BOS if in the RUPDATE list from config
+
+Prototype	int sendrec(char *name,int type);
+
+Module	DBM.C
+
+Description	sendrec
+
+Passed	char *name
+	int type
+
+Return Value	int
+
+Called By	stdelrec, stwrite.
+
+Calls	stgetrec.
+
+See Also	dottrunc, receiverec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stblank
+
+Synopsys	blank the record buffer in table 'name'
+
+Prototype	int stblank(char *name);
+
+Module	DBM.C
+
+Description	stblank
+
+Passed	char *name
+
+Return Value	int
+
+Calls	stopen.
+
+See Also	dottrunc, receiverec, sendrec, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stclose
+
+Synopsys	close table 'name'
+
+Prototype	int stclose(char *name);
+
+Module	DBM.C
+
+Description	stclose
+
+Passed	char *name
+
+Return Value	int
+
+Modifies	G_sstat 
+
+Called By	stdelete, stdelgrp, stdup, stempty, stremdup.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stcloseall
+
+Synopsys	close all open tables
+
+Prototype	int stcloseall(void);
+
+Module	DBM.C
+
+Description	stcloseall
+
+Return Value	int
+
+Modifies	G_sstat 
+
+Called By	stexit, streinit.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stcopyrec
+
+Synopsys
+
+Prototype	int stcopyrec(char *s,char *d);
+
+Module	DBM.C
+
+Description	stcopyrec
+
+Passed	char *s
+	char *d
+
+Return Value	int
+
+Modifies	G_sstat 
+
+Calls	stopen, stwrite.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stcreate
+
+Synopsys	create table 'name'
+
+Prototype	int stcreate(char *name);
+
+Module	DBM.C
+
+Description	stcreate
+
+Passed	char *name
+
+Return Value	int
+
+Modifies	G_sstat 
+
+Called By	stopen.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stdelete
+
+Synopsys	delete table 'name'
+
+Prototype	int stdelete(char *name);
+
+Module	DBM.C
+
+Description	stdelete
+
+Passed	char *name
+
+Return Value	int
+
+Modifies	G_sstat 
+
+Calls	stclose.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stdelgrp
+
+Synopsys	delete all records matched by search parameters
+
+Prototype	int stdelgrp(char *name,char *fname,int mode);
+
+Module	DBM.C
+
+Description	stdelgrp
+
+Passed	char *name
+	char *fname
+	int mode
+
+Return Value	int
+
+Calls	stopen, stsrch, stread, stsrchp, stclose.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stdelrec
+
+Synopsys	delete record in table 'name'
+
+Prototype	int stdelrec(char *name,int recnum);
+
+Module	DBM.C
+
+Description	stdelrec
+
+Passed	char *name
+	int recnum
+
+Return Value	int
+
+Modifies	G_sstat 
+
+Calls	stread, sendrec.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stdup
+
+Synopsys	duplicate a table to a temp table using ~ame for name and sec search parameters
+
+Prototype	int stdup(char *name,char *fname,int mode);
+
+Module	DBM.C
+
+Description	stdup
+
+Passed	char *name
+	char *fname
+	int mode
+
+Return Value	int
+
+Modifies	G_store G_nums 
+
+Calls	stempty, stopen, stsrch, stread, stwrite, stsrchp, stclose.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stempty
+
+Synopsys	empty the table 'name'
+
+Prototype	int stempty(char *name);
+
+Module	DBM.C
+
+Description	stempty
+
+Passed	char *name
+
+Return Value	int
+
+Called By	stdup.
+
+Calls	stclose.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stexist
+
+Synopsys	check if table exists
+
+Prototype	int stexist(char *name);
+
+Module	DBM.C
+
+Description	stexist
+
+Passed	char *name
+
+Return Value	int
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stexit
+
+Synopsys	shutdown the database system
+
+Prototype	int stexit(void);
+
+Module	DBM.C
+
+Description	stexit
+
+Return Value	int
+
+Calls	stcloseall.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stflush
+
+Synopsys	flush all modified buffers
+
+Prototype	int stflush(void);
+
+Module	DBM.C
+
+Description	stflush
+
+Return Value	int
+
+Called By	stwrite.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stget
+
+Synopsys	get field 'fname' from table 'name' and place it in variable 'var'
+
+Prototype	int stget(char *name,char *fname,char *var);
+
+Module	DBM.C
+
+Description	stget
+
+Passed	char *name
+	char *fname
+	char *var
+
+Return Value	int
+
+Modifies	G_sstat 
+
+Calls	stopen, dottrunc.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stgetrec
+
+Synopsys	get a record into r and set 'flen' to the length of the buffer
+
+Prototype	int stgetrec(char *name,char *r,int *flen);
+
+Module	DBM.C
+
+Description	stgetrec
+
+Passed	char *name
+	char *r
+	int *flen
+
+Return Value	int
+
+Modifies	G_sstat flen 
+
+Called By	sendrec.
+
+Calls	stopen.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stinit
+
+Synopsys	initialise the database system
+
+Prototype	int stinit(char *sys);
+
+Module	DBM.C
+
+Description	stinit
+
+Passed	char *sys
+
+Return Value	int
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stnumrec
+
+Synopsys	return the number of records in table 'name'
+
+Prototype	long stnumrec(char *name);
+
+Module	DBM.C
+
+Description	stnumrec
+
+Passed	char *name
+
+Return Value	long
+
+Modifies	G_sstat 
+
+Calls	stopen.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stopen
+
+Synopsys	open table 'name'
+
+Prototype	int stopen(char *name);
+
+Module	DBM.C
+
+Description	stopen
+
+Passed	char *name
+
+Return Value	int
+
+Modifies	G_sstat 
+
+Called By	stblank, stcopyrec, stdelgrp, stdup, stget, stgetrec, stnumrec, stput, stputrec, stread, strecnum, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+Calls	stcreate.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stput
+
+Synopsys	put variable 'var' it in field 'fname' from table 'name' 
+
+Prototype	int stput(char *name,char *fname,char *var);
+
+Module	DBM.C
+
+Description	stput
+
+Passed	char *name
+	char *fname
+	char *var
+
+Return Value	int
+
+Modifies	G_sstat d 
+
+Called By	receiverec.
+
+Calls	stopen.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stputrec
+
+Synopsys	put a record from r
+
+Prototype	int stputrec(char *r);
+
+Module	DBM.C
+
+Description	stputrec
+
+Passed	char *r
+
+Return Value	int
+
+Modifies	G_sstat 
+
+Called By	receiverec.
+
+Calls	stopen.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stread
+
+Synopsys	read record from table 'name' where rtype is FRST,LAST,CURR,NEXT,PREV.
+
+Prototype	int stread(char *name,int rtype);
+
+Module	DBM.C
+
+Description	stread
+
+Passed	char *name
+	int rtype
+
+Return Value	int
+
+Modifies	G_sstat 
+
+Called By	receiverec, stdelgrp, stdelrec, stdup, stremdup.
+
+Calls	stopen.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	strecnum
+
+Synopsys	return the current record number in table 'name'
+
+Prototype	long strecnum(char *name);
+
+Module	DBM.C
+
+Description	strecnum
+
+Passed	char *name
+
+Return Value	long
+
+Modifies	G_sstat 
+
+Calls	stopen.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, streinit, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	streinit
+
+Synopsys	reinitialise the database system
+
+Prototype	int streinit(void);
+
+Module	DBM.C
+
+Description	streinit
+
+Return Value	int
+
+Called By	receiverec.
+
+Calls	stcloseall.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, stremdup, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stremdup
+
+Synopsys	remove a duplicated table and copy contents back to original if 'copyback'
+
+Prototype	int stremdup(char *name,int copyback);
+
+Module	DBM.C
+
+Description	stremdup
+
+Passed	char *name
+	int copyback
+
+Return Value	int
+
+Modifies	G_nums 
+
+Calls	stopen, stread, stwrite, stclose.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stsrch, stsrchp, stwrite, stwritelocal.
+
+
+Function	stsrch
+
+Synopsys	search table (secondary) 'name'  using field 'fname' where 'mode' is FRST,NEXT,CLOSEST
+
+Prototype	int stsrch(char *name,char *fname,int mode);
+
+Module	DBM.C
+
+Description	stsrch
+
+Passed	char *name
+	char *fname
+	int mode
+
+Return Value	int
+
+Modifies	G_sstat 
+
+Called By	receiverec, stdelgrp, stdup.
+
+Calls	stopen.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrchp, stwrite, stwritelocal.
+
+
+Function	stsrchp
+
+Synopsys	search table (primarary) 'name'  using field 'fname' where 'mode' is FRST,NEXT,CLOSEST
+
+Prototype	int stsrchp(char *name,int nflds,int mode);
+
+Module	DBM.C
+
+Description	stsrchp
+
+Passed	char *name
+	int nflds
+	int mode
+
+Return Value	int
+
+Modifies	G_sstat 
+
+Called By	receiverec, stdelgrp, stdup.
+
+Calls	stopen.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stwrite, stwritelocal.
+
+
+Function	stwrite
+
+Synopsys	write/update record in table 'name'
+
+Prototype	int stwrite(char *name);
+
+Module	DBM.C
+
+Description	stwrite
+
+Passed	char *name
+
+Return Value	int
+
+Modifies	G_sstat 
+
+Called By	receiverec, stcopyrec, stdup, stremdup.
+
+Calls	stopen, sendrec, stflush.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwritelocal.
+
+
+Function	stwritelocal
+
+Synopsys	write/update record in table 'name' but don't transmit to other systems
+
+Prototype	int stwritelocal(char *name);
+
+Module	DBM.C
+
+Description	stwritelocal
+
+Passed	char *name
+
+Return Value	int
+
+Modifies	G_sstat 
+
+Called By	receiverec.
+
+Calls	stopen.
+
+See Also	dottrunc, receiverec, sendrec, stblank, stclose, stcloseall, stcopyrec, stcreate, stdelete, stdelgrp, stdelrec, stdup, stempty, stexist, stexit, stflush, stget, stgetrec, stinit, stnumrec, stopen, stput, stputrec, stread, strecnum, streinit, stremdup, stsrch, stsrchp, stwrite.
+
+

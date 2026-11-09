@@ -1,0 +1,414 @@
+
+Groups {
+   POSuperMain {
+      Title { 'Postal Order Customers' }
+      Prompt { 'Select a Service or Menu' }
+      Hint { 'Select a service by pressing a Function Key^or by using the arrow keys and pressing [ENTER]' }
+      Bitmap { '..\images\G_POSuperMain.bmp' }
+      Items {
+         'Product.AddModPOCust'
+         'Product.DelPOCust'
+         //'Product.CustPOStatement'
+         //'Product.CustPOTransact'
+      }
+   }
+}
+
+
+Products {
+
+   BasePOSuper {
+                 DontBuild
+                 SubGroup { 'PO Super' }
+                }
+
+   //AccountGOVPay {
+   //   BasedOn { BaseServices }
+   //   BitMap {  '..\IMAGES\P_Refunds.bmp' }
+   //   Caption      { 'Charge To Account - Government' }
+   //   Description  { 'Charge To Account - Government' }
+   //   Title        { 'Charge To Account - Government' }
+   //   Domains {
+   //      ShowAmount
+   //      PaymentDescription
+   //      CustomerList
+   //   }
+   //   Items {
+   //      'Complete'
+   //   }
+   //   Snippets {
+   //      UtilsUses
+   //      CustomerGOVPayFill
+   //      CustomerPayLog
+   //      CustomerPayExecVars
+   //   }
+   //   PLU { PLU_GovAccountPay }
+   //}
+
+   AddModPOCust {
+      BasedOn{ BasePOSuper }
+      Caption { 'Add/Modify Postal Order Customer' }
+      Bitmap { '..\images\P_AddModStockItem.bmp' }
+      Description  { 'Add/Modify Postal Order Customer' }
+      Title        { 'Add/Modify Postal Order Customer' }
+      Domains {
+         CustomerList
+         CustomerName
+         CustomerPOType
+         CustomerNumber
+         CustomerAdd1
+         CustomerAdd2
+         CustomerPOBox
+         CustomerTelNo
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         CustomerPOListFill
+         CustomerListDec
+         CustomerPOListDef
+         CustomerListUses
+         CustomerListVars
+         CustomerPOListLog
+      }
+      PLU { PLU_POAddModCust }
+   }
+
+   DelPOCust {
+      BasedOn{ BasePOSuper }
+      Caption { 'Delete Postal Order Customer' }
+      Bitmap { '..\images\P_DelStockItem.bmp' }
+      Description  { 'Permanently Delete Postal Order Customer' }
+      Title        { 'Permanently Delete Potal Order Customer' }
+      Domains {
+               CustomerPOType
+               CustomerList
+               }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         DelCustomerPOFill
+         CustomerListUses
+         CustomerListVars
+         CustomerPODelLog
+         CustomerDelDec
+         CustomerPODelDef
+      }
+      PLU { PLU_PODelCust }
+   }
+
+   //CustGOVStatement {
+   //   BasedOn{ BaseGOVSuper }
+   //   Caption { 'Government Customer Statement' }
+   //   BitMap {  '..\IMAGES\P_MOReport.bmp' }
+   //   Description  { 'Government Customer Statement' }
+   //   Title        { 'Government Customer Statement' }
+   //   Domains {
+   //      CustomerGOVType
+   //      CustomerList
+   //      StartDomainEdit
+   //      EndDomainEdit
+   //   }
+   //   Items {
+   //      'Complete'
+   //   }
+   //   Snippets {
+   //      CustomerGOVTxnFill
+   //      CustomerListUses
+   //      CustomerStmtLogVars
+   //      CustomerGOVStmtLog
+   //   }
+   //   PLU { PLU_GovCustStatement }
+   //}
+
+   //CustGOVTransact {
+   //   BasedOn{ BaseGOVSuper }
+   //   Caption { 'Government Customer Transaction' }
+   //   BitMap {  '..\IMAGES\P_MOReport.bmp' }
+   //   Description  { 'Government Customer Transaction' }
+   //   Title        { 'Government Customer Transaction' }
+   //   Domains {
+   //      CustomerGOVType
+   //      CustomerList
+   //      TransactionType
+   //      Amount
+   //   }
+   //   Items {
+   //      'Complete'
+   //   }
+   //   Snippets {
+   //      CustomerGOVTxnFill
+   //      CustomerListUses
+   //      CustomerGOVTxnLog
+   //   }
+   //   PLU { PLU_GovCustTransact }
+   //}
+
+}
+Snippets {
+
+   DelCustomerPOFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.CustomerPOType.Ignore:=True;
+         ProdForm.CustomerList.Ignore:=False;
+         FUIEventSink := UIEventSink ;
+         Prodform.CustomerList.Items.CommaText:=TCustomers.ListNamesInGroups( ProdForm.CustomerPOType.items.CommaText );
+         FUIEventSink := nil ;
+      *]
+      }
+   }
+   CustomerPOListFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         //ProdForm.CustomerPOType.Text := 'Bulk Postal Order';
+         ProdForm.CustomerList   .Ignore:=False;
+         ProdForm.CustomerName   .Ignore:=True;
+         ProdForm.CustomerPOType   .Ignore:=True;
+         ProdForm.CustomerNumber .Ignore:=True;
+         ProdForm.CustomerAdd1   .Ignore:=True;
+         ProdForm.CustomerAdd2   .Ignore:=True;
+         ProdForm.CustomerPOBox  .Ignore:=True;
+         ProdForm.CustomerTelNo  .Ignore:=True;
+         FUIEventSink := UIEventSink ;
+         ProdForm.CustomerList.Items.CommaText:=TCustomers.ListNamesInGroups( '' );
+         ProdForm.CustomerList.Items.Insert(0,'New Customer');
+         FUIEventSink := nil ;
+      *]
+      }
+   }
+   CustomerPOTxnFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.CustomerPOType.Ignore:=True;
+         FUIEventSink := UIEventSink ;
+         Prodform.CustomerList.Items.CommaText:=TCustomers.ListNamesInGroups( ProdForm.CustomerPOType.items.CommaText );
+         FUIEventSink := nil ;
+      *]
+      }
+   }
+   CustomerPODelLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+         DelCustDetails;
+         CustList:=TPackStringList.Create;
+         CustList.CommaText:=TCustomers.ListNamesInGroups( ProdForm.CustomerPOType.items.CommaText );
+         TxnLog.WriteTransaction('*ListUpdt',0,0,0,0,0,'Customer',CustList.PackText,'POD','');
+         CustList.Free;
+      *]
+      }
+   }
+   CustomerPOStmtLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         SL:=TPackStringList.Create;
+         SL.PackText:=
+            TCustomers.CustomerTypeStatement('Customer Transaction Statement',
+                                         ProdForm.CustomerList   .Text,
+                                         ProdForm.CustomerPOType.Items.CommaText,
+                                         ProdForm.StartDomainEdit.Text,
+                                         ProdForm.EndDomainEdit  .Text);
+         PrintReport(SL);
+         SL.Free;
+      *]
+      }
+   }
+   CustomerPOTxnLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+      if ProdForm.TransactionType.Text = 'Credit' then
+      begin
+         TCustomers.CustomerTypeTransaction(
+                       ProdForm.CustomerList.Text,
+                       ProdForm.CustomerPOType.Items.CommaText,
+                       ProdForm.TransactionType.Text,StrToCurrDef(ProdForm.Amount.Text,0));
+      end
+      else
+      begin
+         TCustomers.CustomerTypeTransaction(
+                       ProdForm.CustomerList.Text,
+                       ProdForm.CustomerPOType.Items.CommaText,
+                       ProdForm.TransactionType.Text,0-StrToCurrDef(ProdForm.Amount.Text,0));
+      end;
+      *]
+      }
+   }
+
+   CustomerPOListLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         if ProdForm.CustomerName.Text <> '' then
+         begin
+            SaveCustDetails;
+            CustList:=TPackStringList.Create;
+
+            CustList.CommaText:=TCustomers.ListNamesInGroups(ProdForm.CustomerPOType.items.CommaText);
+            TxnLog.WriteTransaction('*ListUpdt',0,0,0,0,0,'Customer',CustList.PackText,'POD','');
+            CustList.Free;
+         end;
+      *]
+      }
+   }
+   CustomerPOListDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+          procedure {PClass}TAddModCustProduct.SaveCustDetails;
+          begin
+             if NewCustomer then
+             begin
+                TCustomers.CreateTables(False);
+                CustDet:=TCustomerDetails.Create;
+                CustDet.Identifier:=-1;
+             end;
+             CustDet.CustName    :=ProdForm.CustomerName   .Text;
+             CustDet.CustType    :=ProdForm.CustomerPOType.Text;
+             CustDet.CustNumber  :=ProdForm.CustomerNumber .Text;
+             CustDet.CustAddress1:=ProdForm.CustomerAdd1   .Text;
+             CustDet.CustAddress2:=ProdForm.CustomerAdd2   .Text;
+             CustDet.CustPOBox   :=ProdForm.CustomerPOBox  .Text;
+             CustDet.CustTelNo   :=ProdForm.CustomerTelNo  .Text;
+             TCustomers.SetCustomerDetailsInGroups(CustDet,ProdForm.CustomerPOType.Items.commatext);
+             CustDet.Free;
+          end;
+          procedure {PClass}TAddModCustProduct.TriggerBarCode(Value:String);
+          var
+            P :integer;
+            CustName,CustType:String ;
+          begin
+             ProdForm.CustomerList   .Ignore:=True;
+             ProdForm.CustomerName   .Ignore:=False;
+             //ProdForm.CustomerPOType.Ignore:=False;
+             ProdForm.CustomerNumber .Ignore:=False;
+             ProdForm.CustomerAdd1   .Ignore:=False;
+             ProdForm.CustomerAdd2   .Ignore:=False;
+             ProdForm.CustomerPOBox  .Ignore:=False;
+             ProdForm.CustomerTelNo  .Ignore:=False;
+             ProdForm.CustomerList.ItemIndex:=ProdForm.CustomerList.Items.IndexOf(Value);
+             if Value = 'New Customer' then
+             begin
+                NewCustomer:=True;
+                ProdForm.CustomerName   .Text:='';
+                //ProdForm.CustomerPOType.Text:='';
+                ProdForm.CustomerNumber .Text:='';
+                ProdForm.CustomerAdd1   .Text:='';
+                ProdForm.CustomerAdd2   .Text:='';
+                ProdForm.CustomerPOBox  .Text:='';
+                ProdForm.CustomerTelNo  .Text:='';
+             end
+             else
+             begin
+                NewCustomer:=False;
+                P:=Pos('  -  ',Value);
+                CustType:=Copy( Value, 0, p-1);
+                CustName:=Copy( Value, p+5, 999);
+
+                CustDet:=TCustomers.GetCustomerTypeDetails(CustName,'"'+CustType+'"',False);
+                ProdForm.CustomerName   .Text:=CustDet.CustName    ;
+                //ProdForm.CustomerPOType.Text:=CustDet.CustType    ;
+                ProdForm.CustomerNumber .Text:=CustDet.CustNumber  ;
+                ProdForm.CustomerAdd1   .Text:=CustDet.CustAddress1;
+                ProdForm.CustomerAdd2   .Text:=CustDet.CustAddress2;
+                ProdForm.CustomerPOBox  .Text:=CustDet.CustPOBox   ;
+                ProdForm.CustomerTelNo  .Text:=CustDet.CustTelNo   ;
+             end;
+             MoveFocusTo(ProdForm.CustomerName);
+             FlagComplete(ProdForm.Validate);
+             FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+          end;
+
+       *]
+     }
+   }
+   CustomerPOPayFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         SL:=TPackStringList.Create;
+         SL.PackText:=GetLocalList('Customer','POD');
+         ProdForm.CustomerList.Items.Text:=SL.Text;
+         ProdForm.ShowAmount.Text:=CurrToStrF(CurrentTxnTotal,ffNumber,2);
+         GetRecentValues(ProdForm.CustomerList, 'Text');
+         SL.Free;
+      *]
+      }
+   }
+
+   CustomerPODelDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+          procedure {PClass}TDelCustProduct.DelCustDetails;
+          var
+            I:Integer;
+          begin
+             for I:=0 to ProdForm.CustomerList.Items.Count-1 do
+             begin
+                if Copy(ProdForm.CustomerList.Items[I],Length(ProdForm.CustomerList.Items[I])-9,10) =' <- DELETE' then
+                   TCustomers.DelCustomerTypeDetails(
+                        Copy(ProdForm.CustomerList.Items[I],1,Length(ProdForm.CustomerList.Items[I])-10),
+                        ProdForm.CustomerPOType.items.CommaText
+                        );
+             end;
+          end;
+          procedure {PClass}TDelCustProduct.TriggerBarCode(Value:String);
+          begin
+             if Copy(Value,Length(Value)-9,10) =' <- DELETE' then
+             begin
+                ProdForm.CustomerList.Items[ProdForm.CustomerList.Items.IndexOf(Value)]:=Copy(Value,1,Length(Value)-10);
+             end
+             else
+             begin
+                ProdForm.CustomerList.Items[ProdForm.CustomerList.Items.IndexOf(Value)]:=Value+' <- DELETE';
+             end;
+             FlagComplete(True);
+             FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+          end;
+       *]
+     }
+   }
+
+
+}
+
+// -----------------------------------------------------------------------------
+
+Domains
+{
+
+   CustomerPOType {
+      Title  { 'Customer Type' }
+      Prompt { 'Customer Type' }
+      Hint   { 'Select the Customer Type' }
+      Error  { 'Select the Customer Type' }
+      Format {
+         PickList  { 'PickList.CustomerPOType' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+      DefaultValue { 'Bulk Postal Order' }
+   }
+}
+
+
+PickLists {
+
+   CustomerPOType {
+     //CREDIT { 'Postal Order Credit/Billing' }
+     //PREPAY { 'Postal Order Pre-Pay'        }
+     CUSTOMER { 'Bulk Postal Order' }
+   }
+
+}
+

@@ -1,0 +1,27 @@
+Borland C++ 4.5 Copyright (c) 1987, 1994 Borland International
+btree.cpp:
+Turbo Link  Version 7.00 Copyright (c) 1987, 1994 Borland International
+Error: Undefined symbol _main in module c0.asm
+Error: Undefined symbol ErrReporter::~ErrReporter() in module btree.cpp
+Error: Undefined symbol String::~String() in module btree.cpp
+Error: Undefined symbol String::String(const char near*) in module btree.cpp
+Error: Undefined symbol _DFP_MARKER in module btree.cpp
+Error: Undefined symbol DataFileBase::ReportError(const String near&) in module btree.cpp
+Error: Undefined symbol DataFileBase::DataFileBase(const char near*,FileMode,unsigned int) in module btree.cpp
+Error: Undefined symbol String::String(const String near&) in module btree.cpp
+Error: Undefined symbol DataFileBase::~DataFileBase() in module btree.cpp
+Error: Undefined symbol DataFile::DataFile(const char near*,FileMode,unsigned int) in module btree.cpp
+Error: Undefined symbol DataFile::Delete() in module btree.cpp
+Error: Undefined symbol DataFile::Seek(long) const in module btree.cpp
+Error: Undefined symbol DataBlock::DataBlock(const DataBlock near&) in module btree.cpp
+Error: Undefined symbol _NULL_BLOCK in module btree.cpp
+Error: Undefined symbol DataFile::Read() const in module btree.cpp
+Error: Undefined symbol DataFile::Write(const DataBlock near&) in module btree.cpp
+Error: Undefined symbol DataBlock::operator =(const DataBlock near&) in module btree.cpp
+Error: Undefined symbol String::operator =(const String near&) in module btree.cpp
+Error: Undefined symbol operator +(const String near&,const String near&) in module btree.cpp
+Error: Undefined symbol String::CutHead(unsigned int) const in module btree.cpp
+Error: Undefined symbol String::String() in module btree.cpp
+Error: Undefined symbol ErrReporter::MsgOut(const String near&) in module btree.cpp
+Error: Undefined symbol ErrReporter::Fatal(const String near&) in module btree.cpp
+Error: Undefined symbol ErrReporter::Warning(const String near&) in module btree.cpp

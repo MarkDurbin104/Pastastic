@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Panel 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="494"
+	title="Local Configuration" 
+	color="#1A4B86" 
+    paddingTop="10" paddingLeft="10" paddingRight="10" paddingBottom="10"
+	fontSize="12" fontFamily="Verdana" fontWeight="bold" 
+	click="event.stopPropagation()"
+	>
+	<mx:Metadata>
+        [Event(name="dialogClose", type="flash.events.Event")]
+	</mx:Metadata>
+	<mx:Script>
+		<![CDATA[
+			import com.cykorsystems.utils.Configuration;
+            public function commit(event:MouseEvent):void {
+				Configuration.localAddress=zipCode.text;
+				Configuration.fadeProductsOnDeselect=fadeProductsOnDeselect.selected;
+				Configuration.useAlternateInputDialog=useAlternateInputDialog.selected;
+				Configuration.useAlternateHelpDialog=useAlternateHelpDialog.selected;
+				Configuration.showMenu=showMenu.selected;
+                event.stopPropagation();
+                dispatchEvent(new Event("dialogClose"));
+            }
+            public function cancel(event:MouseEvent):void {
+                event.stopPropagation();
+                dispatchEvent(new Event("dialogClose"));
+            }
+			public function show():void {
+				zipCode.text=Configuration.localAddress;
+				fadeProductsOnDeselect.selected=Configuration.fadeProductsOnDeselect;
+				useAlternateInputDialog.selected=Configuration.useAlternateInputDialog;
+				useAlternateHelpDialog.selected=Configuration.useAlternateHelpDialog;
+				showMenu.selected=Configuration.showMenu;
+			}
+		]]>
+	</mx:Script>
+
+    <mx:Form width="100%">
+<!--        <mx:FormHeading label="Enter values into the form."/> -->
+ 
+        <mx:FormItem label="This machine's ZIP Code" fontWeight="bold" width="386">
+            <mx:TextInput id="zipCode" width="200"/>
+        </mx:FormItem>
+        
+        <mx:FormItem label="Fade Products On De-select" fontWeight="bold">
+            <mx:CheckBox id="fadeProductsOnDeselect"/>
+        </mx:FormItem>
+        <mx:FormItem label="Use Alternate Input Dialog" fontWeight="bold">
+            <mx:CheckBox id="useAlternateInputDialog"/>
+        </mx:FormItem>
+        <mx:FormItem label="Use Alternate Help Dialog" fontWeight="bold">
+            <mx:CheckBox id="useAlternateHelpDialog"/>
+        </mx:FormItem>
+        <mx:FormItem label="Show Menu" fontWeight="bold">
+            <mx:CheckBox id="showMenu"/>
+        </mx:FormItem>
+
+    </mx:Form>
+	<mx:HBox horizontalAlign="center" width="100%" horizontalGap="20">
+	  	<mx:Button label="Save Changes" click="commit(event);" width="140"/>
+	  	<mx:Button label="Cancel" click="cancel(event);" width="140"/>
+	</mx:HBox>
+
+	<mx:ZipCodeValidator source="{zipCode}" property="text"  domain="US Only"/>
+    
+</mx:Panel>

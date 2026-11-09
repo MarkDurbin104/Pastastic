@@ -1,0 +1,98 @@
+// Cash Account User Interface Design Definition
+
+Menus {
+   CashAccount {
+      Form { CashAccount }
+      Title  { 'Cash Account' }
+      Prompt { 'Select the function required' }
+      Hint   { 'Select the function required by clicking on the button or pressing the associated Function Key.' }
+      Items {
+         'Function.CashAccComplete'
+         'Report.CashAccount'
+      }
+   }
+}
+Forms {
+   CashAccount {
+      OnCreate { SetupCashAcc }
+      Domains {
+         CADate
+//         CAUser
+         CAOfficeCode
+         CAOffice
+         CashAcc
+      }
+   }
+}   
+Domains {
+   CashAcc {
+      Title { 'Cash Account' }
+      Type { Grid20 }
+      Prompt  { 'Enter sub office data' }
+      Hint    { 'Type the data from each line of the cash account and press [Enter]' }
+      Default { '"""AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"",""0"""' }
+      OnChange { CashAccountChange }
+      CheckWith { ValidateCashAcc }
+   }                
+   CAOffice {
+      Title   { 'Office' }
+      Prompt  { 'Select office' }
+      Hint    { 'Select the office and then press [ENTER] or [TAB] to move to the next field' }
+      Type { PickList { Offices } }
+      CheckWith { CAOffice }
+      OnChange { CAOffice }
+   }
+   CAOfficeCode {
+      Title   { 'Payment office code' }
+      Prompt  { 'Enter payment office code' }
+      Hint    { 'Enter payment office code required and then press [ENTER] or [TAB] to move to the next field' }
+      Type { Text }
+      CheckWith { CAOfficeCode }
+      OnChange { CAOfficeCode }
+   }
+   CADate {
+      Title   { 'Cash Account Date' }
+      Prompt  { 'Enter the Cash Account day' }
+      Hint    { 'Enter the Cash Account day required and then press [ENTER] or [TAB] to move to the next field' }
+      Type { DateTime }
+      Default { Now }
+   }
+   CAUser {
+      Title   { 'Cash Account User' }
+      Prompt  { 'Enter the Cash Account User' }
+      Hint    { 'Enter the Cash Account User required and then press [ENTER] or [TAB] to move to the next field' }
+      Type { Text }
+   }
+}
+Functions {
+   SetupCashAcc {
+      ExecuteType { OnCreate }
+      DLL   { 'I3CashAcc' }
+      Func  { 'SetupCashAcc' }
+   }
+   CashAccountChange {
+      ExecuteType { OnChange }
+      DLL   { 'I3CashAcc' }
+      Func  { 'CashAccountChange' }
+   }
+   ValidateCashAcc {
+      ExecuteType { Validate }
+      DLL   { 'I3CashAcc' }
+      Func  { 'ValidateCashAcc' }
+   }
+   CashAccComplete { 
+      Title { 'Complete' }
+      DLL   { 'I3CashAcc' }
+      Func  { 'CashAccComplete' }
+   }
+   CAOffice {
+      ExecuteType { Validate }
+      DLL   { 'I3CashAcc' }
+      Func  { 'CAOffice' }
+   }
+   CAOfficeCode {
+      ExecuteType { Validate }
+      DLL   { 'I3CashAcc' }
+      Func  { 'CAOfficeCode' }
+   }
+}

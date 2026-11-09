@@ -1,0 +1,441 @@
+P0.50 Postal Order,0.5,PostalOrd,5100005,PostalOrd,PostalOrd,PostalOrd,Product.PostOrd00005,Clerk,Supervisor,Declare
+P1.00 Postal Order,1,PostalOrd,5100010,PostalOrd,PostalOrd,PostalOrd,Product.PostOrd00010,Clerk,Supervisor,Declare
+P2.00 Postal Order,2,PostalOrd,5100020,PostalOrd,PostalOrd,PostalOrd,Product.PostOrd00020,Clerk,Supervisor,Declare
+P4.00 Postal Order,4,PostalOrd,5100040,PostalOrd,PostalOrd,PostalOrd,Product.PostOrd00040,Clerk,Supervisor,Declare
+P5.00 Postal Order,5,PostalOrd,5100050,PostalOrd,PostalOrd,PostalOrd,Product.PostOrd00050,Clerk,Supervisor,Declare
+P10.00 Postal Order,10,PostalOrd,5100100,PostalOrd,PostalOrd,PostalOrd,Product.PostOrd00100,Clerk,Supervisor,Declare
+P20.00 Postal Order,20,PostalOrd,5100200,PostalOrd,PostalOrd,PostalOrd,Product.PostOrd00200,Clerk,Supervisor,Declare
+P50.00 Postal Order,50,PostalOrd,5100500,PostalOrd,PostalOrd,PostalOrd,Product.PostOrd00500,Clerk,Supervisor,Declare
+P100.00 Postal Order,100,PostalOrd,5101000,PostalOrd,PostalOrd,PostalOrd,Product.PostOrd01000,Clerk,Supervisor,Declare
+5T Coin,0.05,Cash,6000005,Cash,Cash,Cash,Product.Cash00005,Clerk,Supervisor,Declare
+10T Coin,0.1,Cash,6000010,Cash,Cash,Cash,Product.Cash00010,Clerk,Supervisor,Declare
+25T Coin,0.25,Cash,6000025,Cash,Cash,Cash,Product.Cash00025,Clerk,Supervisor,Declare
+50T Coin,0.5,Cash,6000050,Cash,Cash,Cash,Product.Cash00050,Clerk,Supervisor,Declare
+P1 Coin,1,Cash,6000100,Cash,Cash,Cash,Product.Cash00100,Clerk,Supervisor,Declare
+P2 Coin,2,Cash,6000200,Cash,Cash,Cash,Product.Cash00200,Clerk,Supervisor,Declare
+P5 Coin,5,Cash,6000500,Cash,Cash,Cash,Product.Cash00500,Clerk,Supervisor,Declare
+P10 Note,10,Cash,6001000,Cash,Cash,Cash,Product.Cash01000,Clerk,Supervisor,Declare
+P20 Note,20,Cash,6002000,Cash,Cash,Cash,Product.Cash02000,Clerk,Supervisor,Declare
+P50 Note,50,Cash,6005000,Cash,Cash,Cash,Product.Cash05000,Clerk,Supervisor,Declare
+P100 Note,100,Cash,6010000,Cash,Cash,Cash,Product.Cash10000,Clerk,Supervisor,Declare
+Cheques,0.01,Cash,6100000,Cash,Cash,Cheques,Product.Cheque,Clerk,Supervisor,Declare
+Coloring in stamp book (P4.15),4.15,Philatelic,7000010,PhilOther,PhilOther,PHILATELIC,Product.ClringBook,Clerk,Supervisor,Declare
+Crayon (85t),0.85,Philatelic,7000020,PhilOther,PhilOther,PHILATELIC,Product.Crayon,Clerk,Supervisor,Declare
+Cufflink (P3.85),3.85,Philatelic,7000030,PhilOther,PhilOther,PHILATELIC,Product.CuffLink,Clerk,Supervisor,Declare
+Firstday Day Cover Album (P41.80),41.8,Philatelic,7000040,PhilOther,PhilOther,PHILATELIC,Product.FDCAlbum,Clerk,Supervisor,Declare
+Magnifying glass - large (P14.30),14.3,Philatelic,7000050,PhilOther,PhilOther,PHILATELIC,Product.MagGlsLrg,Clerk,Supervisor,Declare
+Magnifying glass - small (P4.75),4.75,Philatelic,7000060,PhilOther,PhilOther,PHILATELIC,Product.MagGlsSml,Clerk,Supervisor,Declare
+P1.10 - Stamp card,1.1,Philatelic,7000070,PhilOther,PhilOther,PHILATELIC,Product.StampCd1.0,Clerk,Supervisor,Declare
+P1.65 - Stamp card,1.65,Philatelic,7000080,PhilOther,PhilOther,PHILATELIC,Product.StampCd1.5,Clerk,Supervisor,Declare
+P2.20 - Stamp card,2.2,Philatelic,7000090,PhilOther,PhilOther,PHILATELIC,Product.StampCrd2.0,Clerk,Supervisor,Declare
+Pen Tub (P82.50),82.5,Philatelic,7000100,PhilOther,PhilOther,PHILATELIC,Product.PenTub,Clerk,Supervisor,Declare
+Poly cube (P20.65),20.65,Philatelic,7000110,PhilOther,PhilOther,PHILATELIC,Product.PolyCube,Clerk,Supervisor,Declare
+Poly Tube (P24.75),24.75,Philatelic,7000120,PhilOther,PhilOther,PHILATELIC,Product.PolyTube,Clerk,Supervisor,Declare
+Sheetlets - Diana (P11.00),11,Philatelic,7000130,PhilOther,PhilOther,PHILATELIC,Product.ShtltsDIana,Clerk,Supervisor,Declare
+Sheetlets - Golden Wedding (P11.00),11,Philatelic,7000140,PhilOther,PhilOther,PHILATELIC,Product.ShtlsGoldWd,Clerk,Supervisor,Declare
+Sheetlets - W.W.F (P11.00),11,Philatelic,7000150,PhilOther,PhilOther,PHILATELIC,Product.ShtltsWWF,Clerk,Supervisor,Declare
+Souvenir on cover (P8.25),8.25,Philatelic,7000160,PhilOther,PhilOther,PHILATELIC,Product.Souvenir,Clerk,Supervisor,Declare
+Stamp Album (P8.80),8.8,Philatelic,7000170,PhilOther,PhilOther,PHILATELIC,Product.StampAlbum,Clerk,Supervisor,Declare
+Stamp Block (P16.50),16.5,Philatelic,7000180,PhilOther,PhilOther,PHILATELIC,Product.StampBlk,Clerk,Supervisor,Declare
+Stamp Blocks - Worthy Causes (P20.65),20.65,Philatelic,7000190,PhilOther,PhilOther,PHILATELIC,Product.StampBkCss,Clerk,Supervisor,Declare
+Stamp Booklet-Definitive 1997 (P36.30),36.3,Philatelic,7000200,PhilOther,PhilOther,PHILATELIC,Product.BookletDef,Clerk,Supervisor,Declare
+Stamp Booklet-Stamped (P33.35),33.35,Philatelic,7000210,PhilOther,PhilOther,PHILATELIC,Product.BookletStpd,Clerk,Supervisor,Declare
+Stamp hinges (P6.60),6.6,Philatelic,7000220,PhilOther,PhilOther,PHILATELIC,Product.StampHngs,Clerk,Supervisor,Declare
+T-shirt Adult - Medium (P11.00),11,Philatelic,7000230,PhilOther,PhilOther,PHILATELIC,Product.TShtAdtMm,Clerk,Supervisor,Declare
+T-shirt Adult - Small (P11.00),11,Philatelic,7000240,PhilOther,PhilOther,PHILATELIC,Product.TShtAdtSml,Clerk,Supervisor,Declare
+T-shirt Kids - Extra Large (P10.45),10.45,Philatelic,7000250,PhilOther,PhilOther,PHILATELIC,Product.TShtKsXLg,Clerk,Supervisor,Declare
+Tweezer - Large (P19.40),19.4,Philatelic,7000260,PhilOther,PhilOther,PHILATELIC,Product.TwzrLarge,Clerk,Supervisor,Declare
+Tweezer - Medium (P10.45),10.45,Philatelic,7000270,PhilOther,PhilOther,PHILATELIC,Product.TwzrMedium,Clerk,Supervisor,Declare
+Tweezer - Small (P6.30),6.3,Philatelic,7000280,PhilOther,PhilOther,PHILATELIC,Product.TwzrSmall,Clerk,Supervisor,Declare
+Wedges (P41.25),41.25,Philatelic,7000290,PhilOther,PhilOther,PHILATELIC,Product.Wedges,Clerk,Supervisor,Declare
+Stamp Booklet-(50tx10),5,Philatelic,7000295,PhilOther,PhilOther,PHILATELIC,Product.StampBook500,Clerk,Supervisor,Declare
+Set Contemporary art (P8.05),8.05,Philatelic,7000296,PhilOther,PhilOther,PHILATELIC,Product.ContempArt,Clerk,Supervisor,Declare
+Year Pack 1995 (P13.20),13.2,Philatelic,7000300,YearPack,YearPack,PHILATELIC,Product.YearPack95,Clerk,Supervisor,Declare
+Year Pack 1996 (P17.60),17.6,Philatelic,7000310,YearPack,YearPack,PHILATELIC,Product.YearPack96,Clerk,Supervisor,Declare
+Year Pack 1997 (P60.50),60.5,Philatelic,7000320,YearPack,YearPack,PHILATELIC,Product.YearPack97,Clerk,Supervisor,Declare
+Year Pack 1998 (P25.30),25.3,Philatelic,7000330,YearPack,YearPack,PHILATELIC,Product.YearPack98,Clerk,Supervisor,Declare
+Year Pack 1999 (P41.80),41.8,Philatelic,7000340,YearPack,YearPack,PHILATELIC,Product.YearPack99,Clerk,Supervisor,Declare
+Year Pack 2000 (P66.00),66,Philatelic,7000350,YearPack,YearPack,PHILATELIC,Product.YearPack00,Clerk,Supervisor,Declare
+Year Pack 2002 (P100.00),100,Philatelic,7000352,YearPack,YearPack,PHILATELIC,Product.YearPack02,Clerk,Supervisor,Declare
+SS - Botswana Baskets (P6.45),6.45,Philatelic,7000360,SouvSheet,SouvSheet,PHILATELIC,Product.SSBaskets,Clerk,Supervisor,Declare
+SS - Kgalagadi Transfrontier (P3.85),3.85,Philatelic,7000370,SouvSheet,SouvSheet,PHILATELIC,Product.SSKgalagadi,Clerk,Supervisor,Declare
+SS - Moths (P21.00),21,Philatelic,7000380,SouvSheet,SouvSheet,PHILATELIC,Product.SSMoths,Clerk,Supervisor,Declare
+SS - Okavango Delta (P8.40),8.4,Philatelic,7000390,SouvSheet,SouvSheet,PHILATELIC,Product.SSOkavango,Clerk,Supervisor,Declare
+SS - Chobe River (P16.50),16.5,Philatelic,7000391,SouvSheet,SouvSheet,PHILATELIC,Product.SSChobeR165,Clerk,Supervisor,Declare
+SS - Snakes (P11.00),11,Philatelic,7000392,SouvSheet,SouvSheet,PHILATELIC,Product.SSSnakes,Clerk,Supervisor,Declare
+SS - Pottery (P11.00),11,Philatelic,7000393,SouvSheet,SouvSheet,PHILATELIC,Product.SSPottery,Clerk,Supervisor,Declare
+SS - Chobe River (P10.75),10.75,Philatelic,7000394,SouvSheet,SouvSheet,PHILATELIC,Product.SSChobeR1075,Clerk,Supervisor,Declare
+SS - Wetland Part 3 (P10.20),10.2,Philatelic,7000395,SouvSheet,SouvSheet,PHILATELIC,Product.SSWetlandPt3,Clerk,Supervisor,Declare
+SS - Beetles (5.50),5.5,Philatelic,7000396,SouvSheet,SouvSheet,PHILATELIC,Product.SSBeetles,Clerk,Supervisor,Declare
+SS - Wetland Part4 (P10.55),10.55,Philatelic,7000397,SouvSheet,SouvSheet,PHILATELIC,Product.SSWetlandPt4,Clerk,Supervisor,Declare
+SS - On Cover (P13.70),13.7,Philatelic,7000398,SouvSheet,SouvSheet,PHILATELIC,Product.SSonCover,Clerk,Supervisor,Declare
+FD - Botswana Baskets (P11.00),11,Philatelic,7000400,FDCover,FDCover,PHILATELIC,Product.FDCoverBskts,Clerk,Supervisor,Declare
+FD - Chiefs and Presidents (P11.00),11,Philatelic,7000410,FDCover,FDCover,PHILATELIC,Product.FDCoverCdP,Clerk,Supervisor,Declare
+FD - Diamonds (P11.00),11,Philatelic,7000420,FDCover,FDCover,PHILATELIC,Product.FDCoverDImns,Clerk,Supervisor,Declare
+FD - Flying Mission (P11.00),11,Philatelic,7000430,FDCover,FDCover,PHILATELIC,Product.FDCoverFlyg,Clerk,Supervisor,Declare
+FD - Okavango Delta (P11.00),11,Philatelic,7000440,FDCover,FDCover,PHILATELIC,Product.FDCoverOkDlt,Clerk,Supervisor,Declare
+FD - Scenic skies (P19.25),19.25,Philatelic,7000450,FDCover,FDCover,PHILATELIC,Product.FDCoverScSki,Clerk,Supervisor,Declare
+FD - Transfrontier (P11.00),11,Philatelic,7000460,FDCover,FDCover,PHILATELIC,Product.FDCoverTrf,Clerk,Supervisor,Declare
+FD - Contemporary Art (P15.00),15,Philatelic,7000470,FDCover,FDCover,PHILATELIC,Product.FDCoverCA,Clerk,Supervisor,Declare
+FD - Beetles (17.00),17,Philatelic,7000480,FDCover,FDCover,PHILATELIC,Product.FDCoverBeetles,Clerk,Supervisor,Declare
+FD - Limpopo (17.00),17,Philatelic,7000490,FDCover,FDCover,PHILATELIC,Product.FDCoverLimpopo,Clerk,Supervisor,Declare
+5t Stamp,0.05,Stamps,9010005,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0005,Clerk,Supervisor,Declare
+10t Stamp,0.1,Stamps,9010010,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0010,Clerk,Supervisor,Declare
+15t Stamp,0.15,Stamps,9010015,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0015,Clerk,Supervisor,Declare
+20t Stamp,0.2,Stamps,9010020,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0020,Clerk,Supervisor,Declare
+25t Stamp,0.25,Stamps,9010025,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0025,Clerk,Supervisor,Declare
+30t Stamp,0.3,Stamps,9010030,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0030,Clerk,Supervisor,Declare
+35t Stamp,0.35,Stamps,9010035,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0035,Clerk,Supervisor,Declare
+40t Stamp,0.4,Stamps,9010040,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0040,Clerk,Supervisor,Declare
+50t Stamp,0.5,Stamps,9010050,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0050,Clerk,Supervisor,Declare
+55t Stamp,0.55,Stamps,9010055,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0055,Clerk,Supervisor,Declare
+60t Stamp,0.6,Stamps,9010060,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0060,Clerk,Supervisor,Declare
+70t Stamp,0.7,Stamps,9010070,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0070,Clerk,Supervisor,Declare
+80t Stamp,0.8,Stamps,9010080,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0080,Clerk,Supervisor,Declare
+90t Stamp,0.9,Stamps,9010090,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0090,Clerk,Supervisor,Declare
+P1 Stamp,1,Stamps,9010100,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0100,Clerk,Supervisor,Declare
+P1.10 Stamp,1.1,Stamps,9010110,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0110,Clerk,Supervisor,Declare
+P1.25 Stamp,1.25,Stamps,9010125,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0125,Clerk,Supervisor,Declare
+P1.45 Stamp,1.45,Stamps,9010145,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0145,Clerk,Supervisor,Declare
+P1.50 Stamp,1.5,Stamps,9010150,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0150,Clerk,Supervisor,Declare
+P1.75 Stamp,1.75,Stamps,9010175,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0175,Clerk,Supervisor,Declare
+P1.95 Stamp,1.95,Stamps,9010195,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0195,Clerk,Supervisor,Declare
+P2 Stamp,2,Stamps,9010200,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0200,Clerk,Supervisor,Declare
+P2.20 Stamp,2.2,Stamps,9010220,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0220,Clerk,Supervisor,Declare
+P2.50 Stamp,2.5,Stamps,9010250,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0250,Clerk,Supervisor,Declare
+P2.75 Stamp,2.75,Stamps,9010275,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0275,Clerk,Supervisor,Declare
+P3.00 Stamp,3,Stamps,9010300,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0300,Clerk,Supervisor,Declare
+P3.30 Stamp,3.3,Stamps,9010330,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0330,Clerk,Supervisor,Declare
+P4 Stamp,4,Stamps,9010400,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0400,Clerk,Supervisor,Declare
+P5 Stamp,5,Stamps,9010500,Stamps,Stock,POSTAGESTAMPS,Product.Stamp0500,Clerk,Supervisor,Declare
+P10 Stamp,10,Stamps,9011000,Stamps,Stock,POSTAGESTAMPS,Product.Stamp1000,Clerk,Supervisor,Declare
+P15 Stamp,15,Stamps,9011500,Stamps,Stock,POSTAGESTAMPS,Product.Stamp1500,Clerk,Supervisor,Declare
+Aerogramme - 30t,0.3,Retail,9118010,Retail,Retail,RETAIL,Product.Aerog030,Clerk,Supervisor,Declare
+Aerogramme - 40t,0.4,Retail,9118020,Retail,Retail,RETAIL,Product.Aerog040,Clerk,Supervisor,Declare
+Aerogramme - 70t,0.7,Retail,9118030,Retail,Retail,RETAIL,Product.Aerog070,Clerk,Supervisor,Declare
+Aerogramme - 80t,0.8,Retail,9118040,Retail,Retail,RETAIL,Product.Aerog080,Clerk,Supervisor,Declare
+Aerogramme - 90t,0.9,Retail,9118050,Retail,Retail,RETAIL,Product.Aerog090,Clerk,Supervisor,Declare
+Aerogramme - P1.40,1.4,Retail,9118060,Retail,Retail,RETAIL,Product.Aerog140,Clerk,Supervisor,Declare
+Aerogramme - P2.25,2.25,Retail,9118070,Retail,Retail,RETAIL,Product.Aerog225,Clerk,Supervisor,Declare
+Registered Envelope - P1.00,1,Retail,9118080,Retail,Retail,RETAIL,Product.RegEnv,Clerk,Supervisor,Declare
+Registered Envelope - P1.40,1.4,Retail,9118081,Retail,Retail,RETAIL,Product.RegEnv,Clerk,Supervisor,Declare
+Padded envelope - Small - 80t,0.8,Retail,9118090,Retail,Retail,RETAIL,Product.PadEnvSml,Clerk,Supervisor,Declare
+Padded envelope - Medium - P1.10,1.1,Retail,9118100,Retail,Retail,RETAIL,Product.PadEnvMdm,Clerk,Supervisor,Declare
+Padded envelope - Large - P2.20,2.2,Retail,9118110,Retail,Retail,RETAIL,Product.PadEnvLrg,Clerk,Supervisor,Declare
+Padded envelope - Extra Large - P2.75,2.75,Retail,9118120,Retail,Retail,RETAIL,Product.PadEnvXLrg,Clerk,Supervisor,Declare
+Picture Postcard - P1.00,1,Retail,9118130,Retail,Retail,RETAIL,Product.PostCard,Clerk,Supervisor,Declare
+Int. Reply Coupon - P10.65,10.65,Retail,9118140,Retail,Retail,RETAIL,Product.IRC965,Clerk,Supervisor,Declare
+Int. Reply Coupon - P11.00,11,Retail,9118140,Retail,Retail,RETAIL,Product.IRC965,Clerk,Supervisor,Declare
+Revenue Stamp - P10.00,10,Retail,9118150,Retail,Retail,RETAIL,Product.RevStpP10,Clerk,Supervisor,Declare
+Telephone Card - P20.00,20,Retail,9118160,Retail,Retail,RETAIL,Product.TelCardP10,Clerk,Supervisor,Declare
+Telephone Card - P25.00,25,Retail,9118170,Retail,Retail,RETAIL,Product.TelCardP25,Clerk,Supervisor,Declare
+Telephone Card - P50.00,50,Retail,9118180,Retail,Retail,RETAIL,Product.TelCardP25,Clerk,Supervisor,Declare
+TrackPak Env A5 - P25.50,25.5,Retail,9118190,BWCourier,BWCourier,RETAIL,Product.TrackPakA5,Clerk,Supervisor,Declare
+TrackPak Env A5 (25) - P482.63,482.63,Retail,9118200,BWCourier,BWCourier,RETAIL,Product.TrackPak-25,Clerk,Supervisor,Declare
+TrackPak Env Foolscap - P30,30,Retail,9118210,BWCourier,BWCourier,RETAIL,Product.TkFlscap,Clerk,Supervisor,Declare
+TrackPak Env Foolscap (25) - P594,594,Retail,9118220,BWCourier,BWCourier,RETAIL,Product.TkFls25,Clerk,Supervisor,Declare
+TrackPak Env Lineflow - P40,40,Retail,9118230,BWCourier,BWCourier,RETAIL,Product.TkLnflow,Clerk,Supervisor,Declare
+TrackPak Env Lineflow (25) - P907.50,907.5,Retail,9118240,BWCourier,BWCourier,RETAIL,Product.TkLnflow25,Clerk,Supervisor,Declare
+TrackPak Env Mixed - P612.10,612.1,Retail,9118250,BWCourier,BWCourier,RETAIL,Product.TkMixed,Clerk,Supervisor,Declare
+Local Env Ticket - P13.2,13.2,Retail,9118260,BWCourier,BWCourier,RETAIL,Product.LlEnvTkt,Clerk,Supervisor,Declare
+Local Env Ticket (20) - P198,198,Retail,9118270,BWCourier,BWCourier,RETAIL,Product.LlEnvTkt20,Clerk,Supervisor,Declare
+Parcel Tickets Local - P19.50,19.5,Retail,9118280,BWCourier,BWCourier,RETAIL,Product.LlPclTkt,Clerk,Supervisor,Declare
+Parcel Tickets Local (20) - P297,297,Retail,9118290,BWCourier,BWCourier,RETAIL,Product.LlPclTkt20,Clerk,Supervisor,Declare
+Parcel Tickets National - P67,67,Retail,9118300,BWCourier,BWCourier,RETAIL,Product.NatPclTkt,Clerk,Supervisor,Declare
+Parcel Tickets National (20) - P1069.20,1069.2,Retail,9118310,BWCourier,BWCourier,RETAIL,Product.NatPclTkt20,Clerk,Supervisor,Declare
+Excess Tickets - P18,18,Retail,9118320,BWCourier,BWCourier,RETAIL,Product.ExcsTkt,Clerk,Supervisor,Declare
+Excess Tickets (20) - P267.3,267.3,Retail,9118330,BWCourier,BWCourier,RETAIL,Product.ExcsTkt20,Clerk,Supervisor,Declare
+Sprint Ticket - P12,12,Retail,9118340,BWCourier,BWCourier,RETAIL,Product.SprtTkt,Clerk,Supervisor,Declare
+Sprint Ticket (20) - P148.50,148.5,Retail,9118350,BWCourier,BWCourier,RETAIL,Product.SprtTkt20,Clerk,Supervisor,Declare
+
+Boxes size 1 - P3.30,3.3,Retail,9118360,Merchandise,Merchandise,RETAIL,Product.LlEnvTkt20,Clerk,Supervisor,Declare
+Boxes size 2 - P4.40,4.4,Retail,9118370,Merchandise,Merchandise,RETAIL,Product.Bxsize1,Clerk,Supervisor,Declare
+Boxes size 3 - P7.15,7.15,Retail,9118380,Merchandise,Merchandise,RETAIL,Product.Bxsize2,Clerk,Supervisor,Declare
+Plastic Envelopes size 1 - 55t,0.55,Retail,9118390,Merchandise,Merchandise,RETAIL,Product.PctEnvS1,Clerk,Supervisor,Declare
+Plastic Envelopes size 2 - 80t,0.8,Retail,9118400,Merchandise,Merchandise,RETAIL,Product.PctEnvS2,Clerk,Supervisor,Declare
+Plastic Envelopes size 3 - P1.40,1.4,Retail,9118410,Merchandise,Merchandise,RETAIL,Product.PctEnvS3,Clerk,Supervisor,Declare
+Padded envelopes small - P1.10,1.1,Retail,9118420,Merchandise,Merchandise,RETAIL,Product.PadEnvSml,Clerk,Supervisor,Declare
+Padded envelopes A5 - P1.30,1.3,Retail,9118425,Merchandise,Merchandise,RETAIL,Product.PadEnvSmlA5,Clerk,Supervisor,Declare
+Padded envelopes A4 - P1.65,1.65,Retail,9118430,Merchandise,Merchandise,RETAIL,Product.PadEnvSmlA4,Clerk,Supervisor,Declare
+Padded envelopes A3 - P2.50,2.5,Retail,9118435,Merchandise,Merchandise,RETAIL,Product.PadEnvSmlA3,Clerk,Supervisor,Declare
+Unbranded envelopes DL - 25t,0.25,Retail,9118440,Merchandise,Merchandise,RETAIL,Product.UnbEnvDL,Clerk,Supervisor,Declare
+Unbranded envelopes A5 - 40t,0.4,Retail,9118445,Merchandise,Merchandise,RETAIL,Product.UnbEnvA5,Clerk,Supervisor,Declare
+Unbranded envelopes A4 - P1.10,1.1,Retail,9118450,Merchandise,Merchandise,RETAIL,Product.UnbEnvA4,Clerk,Supervisor,Declare
+Unbranded envelopes LE - P1.65,1.65,Retail,9118455,Merchandise,Merchandise,RETAIL,Product.UnbEnvLE,Clerk,Supervisor,Declare
+Tubes - P2.75,2.75,Retail,9118460,Merchandise,Merchandise,RETAIL,Product.Tubes,Clerk,Supervisor,Declare
+Writing Pads A4 - P4.95,4.95,Retail,9118470,Merchandise,Merchandise,RETAIL,Product.WrtPadA4,Clerk,Supervisor,Declare
+Writing Pads small - P2.20,2.2,Retail,9118480,Merchandise,Merchandise,RETAIL,Product.WrtPadSml,Clerk,Supervisor,Declare
+Clear tape - P1.45,1.45,Retail,9118490,Merchandise,Merchandise,RETAIL,Product.ClrTape,Clerk,Supervisor,Declare
+Packaging tape - P3.30,3.3,Retail,9118500,Merchandise,Merchandise,RETAIL,Product.PkgTape,Clerk,Supervisor,Declare
+Masking tape - P3.85,3.85,Retail,9118510,Merchandise,Merchandise,RETAIL,Product.MskTape,Clerk,Supervisor,Declare
+Twine - P2.75,2.75,Retail,9118520,Merchandise,Merchandise,RETAIL,Product.Twine,Clerk,Supervisor,Declare
+Bostik - P5.50,5.5,Retail,9118530,Merchandise,Merchandise,RETAIL,Product.Bostik,Clerk,Supervisor,Declare
+Eversharp tungsten - 80t,0.8,Retail,9118540,Merchandise,Merchandise,RETAIL,Product.EverTng,Clerk,Supervisor,Declare
+Click Med - P1.40,1.4,Retail,9118550,Merchandise,Merchandise,RETAIL,Product.ClickMed,Clerk,Supervisor,Declare
+Crystal med - P1.10,1.1,Retail,9118560,Merchandise,Merchandise,RETAIL,Product.CryMed,Clerk,Supervisor,Declare
+Orange fine - P1.25,1.25,Retail,9118570,Merchandise,Merchandise,RETAIL,Product.OrgFine,Clerk,Supervisor,Declare
+Click Med 2 up - P3.30,3.3,Retail,9118580,Merchandise,Merchandise,RETAIL,Product.ClickMed2,Clerk,Supervisor,Declare
+Crystal med 2 up - P2.75,2.75,Retail,9118590,Merchandise,Merchandise,RETAIL,Product.CryMed2,Clerk,Supervisor,Declare
+Orange fine 2 up - P2.75,2.75,Retail,9118600,Merchandise,Merchandise,RETAIL,Product.OrgFine2,Clerk,Supervisor,Declare
+Pencils Sharpened - 50t,0.5,Retail,9118601,Merchandise,Merchandise,RETAIL,Product.PencilsSh,Clerk,Supervisor,Declare
+Pencils Unsharpened - 40t,0.4,Retail,9118602,Merchandise,Merchandise,RETAIL,Product.PencilsUnSh,Clerk,Supervisor,Declare
+Erasers - 40t,0.4,Retail,9118603,Merchandise,Merchandise,RETAIL,Product.Erasers,Clerk,Supervisor,Declare
+Rulers (Assorted) - 50t,0.5,Retail,9118604,Merchandise,Merchandise,RETAIL,Product.RulersAssorted,Clerk,Supervisor,Declare
+Greetings Cards (BPC) - P4.50,4.5,Retail,9118605,Merchandise,Merchandise,RETAIL,Product.GrCardsBPC,Clerk,Supervisor,Declare
+Wrapping Paper (BPC) - P5.50,5.5,Retail,9118606,Merchandise,Merchandise,RETAIL,Product.WrapPaperBPC,Clerk,Supervisor,Declare
+Post cards(BPC) - P2.20,2.2,Retail,9118607,Merchandise,Merchandise,RETAIL,Product.PtCdBPC,Clerk,Supervisor,Declare
+Post cards(Mis) - P2.20,2.2,Retail,9118610,Merchandise,Merchandise,RETAIL,Product.PtCdMis,Clerk,Supervisor,Declare
+Post cards(JMB) - P3,3,Retail,9118620,Merchandise,Merchandise,RETAIL,Product.PtCdVBM,Clerk,Supervisor,Declare
+
+Boxes size 1 - P4.00,4,Retail,9118360,Merchandise,Merchandise,RETAIL,Product.LlEnvTkt20,Clerk,Supervisor,Declare
+Boxes size 2 - P5.30,5.3,Retail,9118370,Merchandise,Merchandise,RETAIL,Product.Bxsize1,Clerk,Supervisor,Declare
+Boxes size 3 - P8.60,8.6,Retail,9118380,Merchandise,Merchandise,RETAIL,Product.Bxsize2,Clerk,Supervisor,Declare
+Plastic Envelopes size 1 - 65t,0.65,Retail,9118390,Merchandise,Merchandise,RETAIL,Product.PctEnvS1,Clerk,Supervisor,Declare
+Plastic Envelopes size 2 - P1.00,1,Retail,9118400,Merchandise,Merchandise,RETAIL,Product.PctEnvS2,Clerk,Supervisor,Declare
+Plastic Envelopes size 3 - P1.70,1.7,Retail,9118410,Merchandise,Merchandise,RETAIL,Product.PctEnvS3,Clerk,Supervisor,Declare
+Padded envelopes small - P1.35,1.35,Retail,9118420,Merchandise,Merchandise,RETAIL,Product.PadEnvSml,Clerk,Supervisor,Declare
+Padded envelopes A5 - P1.60,1.6,Retail,9118425,Merchandise,Merchandise,RETAIL,Product.PadEnvSmlA5,Clerk,Supervisor,Declare
+Padded envelopes A4 - P2.00,2,Retail,9118430,Merchandise,Merchandise,RETAIL,Product.PadEnvSmlA4,Clerk,Supervisor,Declare
+Padded envelopes A3 - P3.00,3,Retail,9118435,Merchandise,Merchandise,RETAIL,Product.PadEnvSmlA3,Clerk,Supervisor,Declare
+Unbranded envelopes DL - 35t,0.35,Retail,9118440,Merchandise,Merchandise,RETAIL,Product.UnbEnvDL,Clerk,Supervisor,Declare
+Unbranded envelopes A5 - 50t,0.5,Retail,9118445,Merchandise,Merchandise,RETAIL,Product.UnbEnvA5,Clerk,Supervisor,Declare
+Unbranded envelopes A4 - P1.35,1.35,Retail,9118450,Merchandise,Merchandise,RETAIL,Product.UnbEnvA4,Clerk,Supervisor,Declare
+Unbranded envelopes LE - P2.00,2,Retail,9118455,Merchandise,Merchandise,RETAIL,Product.UnbEnvLE,Clerk,Supervisor,Declare
+Tubes - P3.30,3.3,Retail,9118460,Merchandise,Merchandise,RETAIL,Product.Tubes,Clerk,Supervisor,Declare
+Writing Pads A4 - P5.95,5.95,Retail,9118470,Merchandise,Merchandise,RETAIL,Product.WrtPadA4,Clerk,Supervisor,Declare
+Writing Pads small - P2.65,2.65,Retail,9118480,Merchandise,Merchandise,RETAIL,Product.WrtPadSml,Clerk,Supervisor,Declare
+Clear tape - P1.85,1.85,Retail,9118490,Merchandise,Merchandise,RETAIL,Product.ClrTape,Clerk,Supervisor,Declare
+Packaging tape - P4.00,4,Retail,9118500,Merchandise,Merchandise,RETAIL,Product.PkgTape,Clerk,Supervisor,Declare
+Masking tape - P4.65,4.65,Retail,9118510,Merchandise,Merchandise,RETAIL,Product.MskTape,Clerk,Supervisor,Declare
+Twine - P3.30,3.3,Retail,9118520,Merchandise,Merchandise,RETAIL,Product.Twine,Clerk,Supervisor,Declare
+Bostik - P6.60,6.6,Retail,9118530,Merchandise,Merchandise,RETAIL,Product.Bostik,Clerk,Supervisor,Declare
+Eversharp tungsten - P1.00,1,Retail,9118540,Merchandise,Merchandise,RETAIL,Product.EverTng,Clerk,Supervisor,Declare
+Click Med - P1.70,1.7,Retail,9118550,Merchandise,Merchandise,RETAIL,Product.ClickMed,Clerk,Supervisor,Declare
+Crystal med - P1.35,1.35,Retail,9118560,Merchandise,Merchandise,RETAIL,Product.CryMed,Clerk,Supervisor,Declare
+Orange fine - P1.55,1.55,Retail,9118570,Merchandise,Merchandise,RETAIL,Product.OrgFine,Clerk,Supervisor,Declare
+Click Med 2 up - P4.00,4,Retail,9118580,Merchandise,Merchandise,RETAIL,Product.ClickMed2,Clerk,Supervisor,Declare
+Crystal med 2 up - P3.30,3.3,Retail,9118590,Merchandise,Merchandise,RETAIL,Product.CryMed2,Clerk,Supervisor,Declare
+Orange fine 2 up - P3.30,3.3,Retail,9118600,Merchandise,Merchandise,RETAIL,Product.OrgFine2,Clerk,Supervisor,Declare
+Pencils Sharpened - 60t,0.6,Retail,9118601,Merchandise,Merchandise,RETAIL,Product.PencilsSh,Clerk,Supervisor,Declare
+Pencils Unsharpened - 50t,0.5,Retail,9118602,Merchandise,Merchandise,RETAIL,Product.PencilsUnSh,Clerk,Supervisor,Declare
+Erasers - 55t,0.55,Retail,9118603,Merchandise,Merchandise,RETAIL,Product.Erasers,Clerk,Supervisor,Declare
+Rulers (Assorted) - 60t,0.6,Retail,9118604,Merchandise,Merchandise,RETAIL,Product.RulersAssorted,Clerk,Supervisor,Declare
+Greetings Cards (BPC) - P5.40,5.4,Retail,9118605,Merchandise,Merchandise,RETAIL,Product.GrCardsBPC,Clerk,Supervisor,Declare
+Wrapping Paper (BPC) - P6.60,6.6,Retail,9118606,Merchandise,Merchandise,RETAIL,Product.WrapPaperBPC,Clerk,Supervisor,Declare
+Post cards(BPC) - P2.70,2.7,Retail,9118607,Merchandise,Merchandise,RETAIL,Product.PtCdBPC,Clerk,Supervisor,Declare
+Post cards(Mis) - P2.70,2.7,Retail,9118610,Merchandise,Merchandise,RETAIL,Product.PtCdMis,Clerk,Supervisor,Declare
+Post cards(JMB) - P3.65,3.65,Retail,9118620,Merchandise,Merchandise,RETAIL,Product.PtCdVBM,Clerk,Supervisor,Declare
+
+TrackPak Env A5 - P17.60,17.6,Delete,9118190,BWCourier,BWCourier,RETAIL,Product.TrackPakA5,Clerk,Supervisor,Declare
+TrackPak Env A5 (25) - P357.5,357.5,Delete,9118200,BWCourier,BWCourier,RETAIL,Product.TrackPak-25,Clerk,Supervisor,Declare
+TrackPak Env Foolscap - P22,22,Delete,9118210,BWCourier,BWCourier,RETAIL,Product.TkFlscap,Clerk,Supervisor,Declare
+TrackPak Env Foolscap (25) - P440,440,Delete,9118220,BWCourier,BWCourier,RETAIL,Product.TkFls25,Clerk,Supervisor,Declare
+TrackPak Env Lineflow - P29.7,29.7,Delete,9118230,BWCourier,BWCourier,RETAIL,Product.TkLnflow,Clerk,Supervisor,Declare
+TrackPak Env Lineflow (25) - P605,605,Delete,9118240,BWCourier,BWCourier,RETAIL,Product.TkLnflow25,Clerk,Supervisor,Declare
+TrackPak Env Mixed - P440,440,Delete,9118250,BWCourier,BWCourier,RETAIL,Product.TkMixed,Clerk,Supervisor,Declare
+Parcel Tickets Local - P14.3,14.3,Delete,9118280,BWCourier,BWCourier,RETAIL,Product.LlPclTkt,Clerk,Supervisor,Declare
+Parcel Tickets Local (20) - P220,220,Delete,9118290,BWCourier,BWCourier,RETAIL,Product.LlPclTkt20,Clerk,Supervisor,Declare
+Parcel Tickets National - P49.5,49.5,Delete,9118300,BWCourier,BWCourier,RETAIL,Product.NatPclTkt,Clerk,Supervisor,Declare
+Parcel Tickets National (20) - P792,792,Delete,9118310,BWCourier,BWCourier,RETAIL,Product.NatPclTkt20,Clerk,Supervisor,Declare
+Excess Tickets - P13.2,13.2,Delete,9118320,BWCourier,BWCourier,RETAIL,Product.ExcsTkt,Clerk,Supervisor,Declare
+Excess Tickets (20) - P198,198,Delete,9118330,BWCourier,BWCourier,RETAIL,Product.ExcsTkt20,Clerk,Supervisor,Declare
+Sprint Ticket - P8.8,8.8,Delete,9118340,BWCourier,BWCourier,RETAIL,Product.SprtTkt,Clerk,Supervisor,Declare
+Sprint Ticket (20) - P110,110,Delete,9118350,BWCourier,BWCourier,RETAIL,Product.SprtTkt20,Clerk,Supervisor,Declare
+Post cards(VBM) - P2.20,2.2,Delete,9118620,Merchandise,Merchandise,RETAIL,Product.PtCdVBM,Clerk,Supervisor,Declare
+
+Souvenir Sheet - Botswana Baskets (P6.45),0,Delete,7000360,SouvSheet,SouvSheet,PHILATELIC,Product.SSBaskets,Clerk,Supervisor,Declare
+Souvenir Sheet - Kgalagadi Transfrontier (P3.85),0,Delete,7000370,SouvSheet,SouvSheet,PHILATELIC,Product.SSKgalagadi,Clerk,Supervisor,Declare
+Souvenir Sheet - Moths (P21.00),0,Delete,7000380,SouvSheet,SouvSheet,PHILATELIC,Product.SSMoths,Clerk,Supervisor,Declare
+Souvenir Sheet - Okavango Delta (P8.40),0,Delete,7000390,SouvSheet,SouvSheet,PHILATELIC,Product.SSOkavango,Clerk,Supervisor,Declare
+Souvenir Sheet - Chobe River (P16.50),0,Delete,7000391,SouvSheet,SouvSheet,PHILATELIC,Product.SSChobeR165,Clerk,Supervisor,Declare
+Souvenir Sheet - Snakes (P11.00),0,Delete,7000392,SouvSheet,SouvSheet,PHILATELIC,Product.SSSnakes,Clerk,Supervisor,Declare
+Souvenir Sheet - Pottery (P11.00),0,Delete,7000394,SouvSheet,SouvSheet,PHILATELIC,Product.SSPottery,Clerk,Supervisor,Declare
+Souvenir Sheet - Chobe River (P10.75),0,Delete,7000396,SouvSheet,SouvSheet,PHILATELIC,Product.SSChobeR1075,Clerk,Supervisor,Declare
+Souvenir Sheet - Wetland Part 3 (P10.20),0,Delete,7000398,SouvSheet,SouvSheet,PHILATELIC,Product.SSWetlandPt3,Clerk,Supervisor,Declare
+First Day - Botswana Baskets (P11.00),0,Delete,7000400,FDCover,FDCover,PHILATELIC,Product.FDCoverBskts,Clerk,Supervisor,Declare
+First Day - Chiefs and Presidents (P11.00),0,Delete,7000410,FDCover,FDCover,PHILATELIC,Product.FDCoverCdP,Clerk,Supervisor,Declare
+First Day - Diamonds (P11.00),0,Delete,7000420,FDCover,FDCover,PHILATELIC,Product.FDCoverDImns,Clerk,Supervisor,Declare
+First Day - Flying Mission (P11.00),0,Delete,7000430,FDCover,FDCover,PHILATELIC,Product.FDCoverFlyg,Clerk,Supervisor,Declare
+First Day - Okavango Delta (P11.00),0,Delete,7000440,FDCover,FDCover,PHILATELIC,Product.FDCoverOkDlt,Clerk,Supervisor,Declare
+First Day - Scenic skies (P19.25),0,Delete,7000450,FDCover,FDCover,PHILATELIC,Product.FDCoverScSki,Clerk,Supervisor,Declare
+First Day - Transfrontier (P11.00),0,Delete,7000460,FDCover,FDCover,PHILATELIC,Product.FDCoverTrf,Clerk,Supervisor,Declare
+ ,,,,,,,,,,
+Balance Brought Forward,0,Delete,61000000,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Saving Bank Deposit,0,Delete,90000201,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+BSB Lost Book Fees,0,Delete,90000240,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Customs Handling Charges,0,Delete,50020101,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Customs Duty Fees Botswana,0,Delete,50020102,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Customs Duty Fees South Africa,0,Delete,50020103,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+COD Trade Charges,0,Delete,50020009,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+COD Handling Charges,0,Delete,50020008,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+EMS Receipts - Individual,0,Delete,50050001,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+EMS Receipts - Contract,0,Delete,50050005,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+PO Bag Receipts,0,Delete,30000030,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+PO Box Receipts,0,Delete,30000010,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Bulk Posting,0,Delete,50000250,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+National Saving Certificates,0,Delete,90000100,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Group Funeral (BLI),0,Delete,60030008,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Ipolokeng (BLI),0,Delete,60030009,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+R.I.P.C.,0,Delete,60030007,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Registration of Newspapers,0,Delete,50031009,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Inland Issued,0,Delete,50021001,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Foreign Issued,0,Delete,50021005,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Commission,0,Delete,100003,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Other charges,0,Delete,50021008,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Transmission Charges,0,Delete,50021013,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Postal Order Commission,0,Delete,100021,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Unaddressed Leaflets,0,Delete,50031010,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Customer Fax,0,Delete,50031011,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Business Reply,0,Delete,50031012,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Franking Machine,0,Delete,50031004,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Water Affairs,0,Delete,60030005,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Water Utilities,0,Delete,60030006,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Housing Corporation,0,Delete,60030004,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Department of Electrical,0,Delete,60030001,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Botswana Telecom,0,Delete,60030002,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Miscellaneous Receipts,0,Delete,50032001,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Western Union,0,Delete,0,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Postage Labels,0,Delete,0,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Cash Received From Bank,0,Delete,0,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+5 thebe adjustment - receipt,0,Delete,1000001,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Cash,0,Delete,6000005,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Cheques,0,Delete,6100000,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Stamp Items,0,Delete,9010005,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Retail Items,0,Delete,9118160,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Postal Orders,0,Delete,5100005,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Philatelic Items,0,Delete,7000010,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Inland Paid,0,Delete,50021002,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Foreign Paid,0,Delete,50021006,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Bulk Paid,0,Delete,50021017,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Inland Refund,0,Delete,50021004,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Post Ord Paid - Inland,0,Delete,50021051,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Post Ord Paid - UK,0,Delete,50021052,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Post Ord Paid - Other Foreign,0,Delete,50021053,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Savings Bank Withdrawals,0,Delete,90000202,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+National Savings Certs Paid,0,Delete,90000101,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Refunds,0,Delete,50031006,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Pensions Paid RSA,0,Delete,50040003,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Old Age Pension Botswana,0,Delete,50040001,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Discount To Vendors,0,Delete,60020011,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Miscellaneous Payments,0,Delete,50032002,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Western Union,0,Delete,0,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Imprest and travel claims,0,Delete,50033002,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Salaries P&P,0,Delete,50033001,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Wages Industrial Class,0,Delete,50033003,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Temporary Staff,0,Delete,50033004,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Death Claim,0,Delete,50033005,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Deposit With Bank,0,Delete,0,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+5 thebe adjustment - payment,0,Delete,1000002,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Cash,0,Delete,6000005,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Cheques,0,Delete,6100000,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Stamp Items,0,Delete,9010005,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Retail Items,0,Delete,9118160,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Postal Orders,0,Delete,5100005,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Philatelic Items,0,Delete,7000010,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Stamp Items,0,Delete,9010005,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Retail Items,0,Delete,9118160,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Postal Orders,0,Delete,5100005,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Philatelic Items,0,Delete,7000010,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Stamps Supplied On Credit,0,Delete,0,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Postal Orders Supplied On Credit,0,Delete,0,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+
+Balance Brought Forward,0,CashAcc,2009010,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Saving Bank Deposit,0,CashAcc,2009020,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+BSB Lost Book Fees,0,CashAcc,2009030,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Customs Handling Charges,0,CashAcc,2009040,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Customs Duty Fees Botswana,0,CashAcc,2009050,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Customs Duty Fees South Africa,0,CashAcc,2009060,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+COD Trade Charges,0,CashAcc,2009070,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+COD Handling Charges,0,CashAcc,2009080,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+EMS Receipts - Individual,0,CashAcc,2009090,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+EMS Receipts - Contract,0,CashAcc,2009100,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+EMS Contract Account Payment,0,CashAcc,2009105,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+PO Bag Receipts,0,CashAcc,2009110,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+PO Box Receipts,0,CashAcc,2009120,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Bulk Posting,0,CashAcc,2009130,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+National Saving Certificates,0,CashAcc,2009140,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Group Funeral (BLI),0,CashAcc,2009150,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Ipolokeng (BLI),0,CashAcc,2009160,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+R.I.P.C.,0,CashAcc,2009170,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Registration of Newspapers,0,CashAcc,2009180,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Inland Issued,0,CashAcc,2009190,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Foreign Issued,0,CashAcc,2009200,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Commission,0,CashAcc,2009210,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Other charges,0,CashAcc,2009220,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Transmission Charges,0,CashAcc,2009230,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Postal Order Commission,0,CashAcc,2009240,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Unaddressed Leaflets,0,CashAcc,2009250,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Customer Fax,0,CashAcc,2009260,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Business Reply,0,CashAcc,2009270,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Franking Machine,0,CashAcc,2009280,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Water Affairs,0,CashAcc,2009290,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Water Utilities,0,CashAcc,2009300,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Housing Corporation,0,CashAcc,2009310,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Electricity - DOE,0,CashAcc,2009320,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Electricity - BPC,0,CashAcc,2009330,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Botswana Telecom,0,CashAcc,2009340,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Miscellaneous Receipts,0,CashAcc,2009350,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Imprest and Travel Receipts,0,CashAcc,2009355,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Western Union,0,CashAcc,2009360,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Postage Labels,0,CashAcc,2009370,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Cash Received From Bank,0,CashAcc,2009380,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+5 thebe adjustment - receipt,0,CashAcc,2009390,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Cash,0,CashAcc,2009400,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Cheques,0,CashAcc,2009410,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Stamp Items,0,CashAcc,2009420,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Retail Items,0,CashAcc,2009430,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - BW Courier,0,CashAcc,2009440,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Merchandise,0,CashAcc,2009450,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Postal Orders,0,CashAcc,2009460,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Phil. First Day Covers,0,CashAcc,2009470,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Phil. Souvenir Sheets,0,CashAcc,2009480,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Phil. Year Packs,0,CashAcc,2009490,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RR - Phil. Other Items,0,CashAcc,2009500,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Inland Paid,0,CashAcc,2009510,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Foreign Paid,0,CashAcc,2009520,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Bulk Paid,0,CashAcc,2009530,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Money Order - Inland Refund,0,CashAcc,2009540,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Post Ord Paid - Inland,0,CashAcc,2009550,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Post Ord Paid - UK,0,CashAcc,2009560,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Post Ord Paid - Other Foreign,0,CashAcc,2009570,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Savings Bank Withdrawals,0,CashAcc,2009580,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+National Savings Certs Paid,0,CashAcc,2009590,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Refunds,0,CashAcc,2009600,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Pensions Paid RSA,0,CashAcc,2009610,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Old Age Pension Botswana,0,CashAcc,2009620,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Discount To Vendors,0,CashAcc,2009630,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Miscellaneous Payments,0,CashAcc,2009640,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Western Union,0,CashAcc,2009650,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Imprest and travel claims,0,CashAcc,2009660,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Salaries P&P,0,CashAcc,2009670,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Wages Industrial Class,0,CashAcc,2009680,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Temporary Staff,0,CashAcc,2009690,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Death Claim,0,CashAcc,2009700,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Humana,0,CashAcc,2009705,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Deposit With Bank,0,CashAcc,2009710,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+5 thebe adjustment - payment,0,CashAcc,2009720,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Cash,0,CashAcc,2009730,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Cheques,0,CashAcc,2009740,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Stamp Items,0,CashAcc,2009750,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Retail Items,0,CashAcc,2009760,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - BW Courier,0,CashAcc,2009770,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Merchandise,0,CashAcc,2009780,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Postal Orders,0,CashAcc,2009790,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Phil. First Day Covers,0,CashAcc,2009800,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Phil. Souvenir Sheets,0,CashAcc,2009810,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Phil. Year Packs,0,CashAcc,2009820,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+RD - Phil. Other Items,0,CashAcc,2009830,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Cash On Hand,0,CashAcc,2009840,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Cheques On Hand,0,CashAcc,2009850,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Stamp Items,0,CashAcc,2009860,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Retail Items,0,CashAcc,2009870,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - BW Courier,0,CashAcc,2009880,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Merchandise,0,CashAcc,2009890,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Postal Orders,0,CashAcc,2009900,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Phil. First Day Cover,0,CashAcc,2009910,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Phil. Souvenir Sheets,0,CashAcc,2009920,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Phil. Year Paks,0,CashAcc,2009930,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Phil. Other Items,0,CashAcc,2009940,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Stamps On Credit,0,CashAcc,2009950,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Postal Orders On Credit,0,CashAcc,2009960,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare
+Stock on Hand - Retail Items On Credit,0,CashAcc,2009970,CashAcc,CashAcc,CashAcc,Product.CashAcc,Clerk,Supervisor,Declare

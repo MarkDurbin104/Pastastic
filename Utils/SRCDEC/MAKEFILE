@@ -1,0 +1,14 @@
+STDLIBS =       EMU+MATHL+CL
+
+.C.OBJ:
+                BCC32 -v -WX -c { $< }
+
+ALL:            SRCDEC.EXE
+
+SRCDEC.OBJ:     SRCDEC.H TYPES.H FILELIST.H LINKLIST.H
+
+SRCDEC.EXE:     SRCDEC.OBJ GENERAL.LIB
+	        BCC32 -v -WX SRCDEC.OBJ GENERAL.LIB
+
+
+

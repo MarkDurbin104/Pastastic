@@ -1,0 +1,16 @@
+C:\Proiam\Source\VU.iT Bridge\VU.iT Bridge VS\BridgeLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Proiam\Source\VU.iT Bridge\VU.iT Bridge VS\BridgeLibrary\bin\Debug\VU.iT.Bridge.dll
+C:\Proiam\Source\VU.iT Bridge\VU.iT Bridge VS\BridgeLibrary\bin\Debug\VU.iT.Bridge.pdb
+C:\Proiam\Source\VU.iT Bridge\VU.iT Bridge VS\BridgeLibrary\obj\Debug\VU.iT.Bridge.dll
+C:\Proiam\Source\VU.iT Bridge\VU.iT Bridge VS\BridgeLibrary\obj\Debug\VU.iT.Bridge.pdb
+C:\Proiam\Source\Version 1\Nick\VU.iT Bridge VS\BridgeLibrary\bin\Debug\VU.iT.Bridge.dll
+C:\Proiam\Source\Version 1\Nick\VU.iT Bridge VS\BridgeLibrary\bin\Debug\VU.iT.Bridge.pdb
+C:\Proiam\Source\Version 1\Nick\VU.iT Bridge VS\BridgeLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Proiam\Source\Version 1\Nick\VU.iT Bridge VS\BridgeLibrary\obj\Debug\VU.iT.Bridge.dll
+C:\Proiam\Source\Version 1\Nick\VU.iT Bridge VS\BridgeLibrary\obj\Debug\VU.iT.Bridge.pdb
+C:\Proiamsource\Rumford\trunk\Bridge\dot-NET\VU.iT Bridge VS\BridgeLibrary\bin\Debug\VU.iT.Bridge.dll
+C:\Proiamsource\Rumford\trunk\Bridge\dot-NET\VU.iT Bridge VS\BridgeLibrary\bin\Debug\VU.iT.Bridge.pdb
+C:\Proiamsource\Rumford\trunk\Bridge\dot-NET\VU.iT Bridge VS\BridgeLibrary\bin\Debug\Mono.Data.Sqlite.dll
+C:\Proiamsource\Rumford\trunk\Bridge\dot-NET\VU.iT Bridge VS\BridgeLibrary\obj\Debug\ResolveAssemblyReference.cache
+C:\Proiamsource\Rumford\trunk\Bridge\dot-NET\VU.iT Bridge VS\BridgeLibrary\obj\Debug\VU.iT.Bridge.dll
+C:\Proiamsource\Rumford\trunk\Bridge\dot-NET\VU.iT Bridge VS\BridgeLibrary\obj\Debug\VU.iT.Bridge.pdb

@@ -1,0 +1,298 @@
+#define OSSDEV_C
+#include <conio.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdarg.h>
+#include <dos.h>
+#include <bios.h>
+#include <malloc.h>
+#include <memory.h>
+#include <alloc.h>
+#include "types.h"
+#include "gprim.h"
+#include "ossdev.h"
+#include "control.h"
+#include "config.h"
+#include "message.h"
+#include "function.h"
+#include "actions.h"
+
+#define CMADR    0x70
+#define CMDAT    0x71
+
+// from GPRIM.H
+#define WRITEPLANE(a) OUTPW(0x3C4,(UINT16)((0x100<<(a))|2));
+#define READPLANE(a)  OUTPW(0x3CE,(UINT16)(((a)<<8)|4));
+
+LONG oss_control(INT type,va_list ap)
+{
+    LONG retval=1L;
+    INT x,rax,rbx,rcx,rdx;
+    CHAR *t,tmp[100],r;
+
+    switch (type) {
+        case MESSAGE_s :                     // sound
+            sound(va_arg(ap,INT));
+			break;
+        case MESSAGE_ns :                    // nosound
+            nosound();
+			break;
+        case MESSAGE_d :                     // delay
+            delay(va_arg(ap,INT));
+			break;
+        case MESSAGE_xy :                    // gotoxy
+            x=va_arg(ap,INT);
+            gotoxy(x,va_arg(ap,INT));
+            break;
+        case MESSAGE_cs :                    // clrscr
+            clrscr();
+            break;
+        case MESSAGE_ta :                    // textattr
+            textattr(va_arg(ap,UCHAR));
+            break;
+        case MESSAGE_p  :                    // print
+            t=va_arg(ap,CHAR *);
+            vsprintf(tmp,t,ap);
+		    cprintf("%s",tmp);
+            break;
+        case MESSAGE_pc  :                    // put cmos
+            outportb(CMADR,va_arg(ap,CHAR));
+            outportb(CMDAT,va_arg(ap,CHAR));
+            break;
+        case MESSAGE_21 :                     // int 21
+            rax=va_arg(ap,INT); rbx=va_arg(ap,INT);
+            rcx=va_arg(ap,INT); rdx=va_arg(ap,INT);
+            _DX=rdx; _CX=rcx; _BX=rbx; _AX=rax;
+            geninterrupt(0x21);
+            r=_AL;
+            retval=(LONG)r;
+            break;
+        case MESSAGE_fm :                     // available memory
+            retval=farcoreleft();
+            break;
+
+    }
+    return(retval);
+}
+
+//************************************************************
+//* CRITICAL ERROR HANDLER CODE
+
+// from #include "kbddev.h"
+extern volatile INT            *G_keybuf;
+extern volatile INT            *G_kpstart;
+extern volatile INT            *G_kpend;
+// form "start.h"
+#define ENDOFBUF        0x100
+
+
+//**************************************************
+//S Save screen area
+void savemsgregion(void)
+{
+    CHAR *s,*b;
+    INT i,j;
+
+    if (G_criterrscrnbuf != NULL) {
+        b=G_criterrscrnbuf;
+        for (i=0;i<4;i++) {
+            s=COLVIDMEM+CE_XBYTEPOS+CE_YPOS*80;
+            READPLANE(i);
+            for (j=0;j<CE_HEIGHT;j++) {
+                memcpy(b,s,CE_BYTEWIDTH);
+                s+=80;
+                b+=CE_BYTEWIDTH;
+            }
+        }
+    }
+}
+
+//**************************************************************
+//S Restore the saved screen area
+void restmsgregion(void)
+{
+    CHAR *s,*b;
+    INT i,j;
+
+    if (G_criterrscrnbuf!=NULL) {
+        b=G_criterrscrnbuf;
+        for (i=0;i<4;i++) {
+            s=COLVIDMEM+CE_XBYTEPOS+CE_YPOS*80;
+            WRITEPLANE(i);
+            for (j=0;j<CE_HEIGHT;j++) {
+                memcpy(s,b,CE_BYTEWIDTH);
+                s+=80;
+                b+=CE_BYTEWIDTH;
+            }
+        }
+    }
+}
+
+//**************************************************
+void protcrit(void)
+{
+    INT x=0;
+}
+
+// buffer
+CHAR protbuff[0x32];
+
+//**************************************************
+// critical error handler   MUST BE IN LOCKED MEMORY!!
+void interrupt (*oldcriticalerror)();
+void interrupt criticalerrorhandler(void)
+{
+    INT AX=_AX;     // Get status values
+    INT DI=_DI;
+    INT err=0;
+
+     // if disk I/O error handle, else pass on.
+    if (!(AX & 0x8000))         //AH bit 7 set 0 indicates an I/O error
+    {
+        if (AX & 0x0380)   // Test if Ignore, Retry Abort allowed
+        {
+                // save screen area
+                // put up message line (change to a box?)
+            beep();
+
+            savemsgregion();
+
+            sendmsg("OUTPUT1",MESSAGE_S,1);
+            sendmsg("OUTPUT1",MESSAGE_A,1);
+//            sendmsg("OUTPUT1",MESSAGE_A,0);
+//            sendmsg("OUTPUT1",MESSAGE_Bl,25,11,3);
+            sendmsg("OUTPUT1",MESSAGE_B,25,11,44,14);
+            sendmsg("OUTPUT1",MESSAGE_o,27,12,"%s",isdefstr("Disk error"));
+            sendmsg("OUTPUT1",MESSAGE_o,26,13,"%s",isdefstr("Retry or Fail R/F"));
+                // wait for key press
+            enable();
+            while (err==0) {
+            	while (*G_kpstart==*G_kpend) {
+                    // wait for keyboard input
+                }
+           		switch (G_keybuf[*G_kpstart]) {
+                    case 'r' : case 'R' : err=1; break;
+                    case 'f' : case 'F' : err=2; break;
+                    default  : beep();
+                }
+                (*G_kpstart)++;
+                if (*G_kpstart==ENDOFBUF) *G_kpstart=0;
+            }
+            disable();
+
+            restmsgregion();
+
+                // set value of AL and continue
+            switch (err) {
+                case 1:
+                    _AL=0x01;
+                    break;
+                case 2:
+                default:
+                    _AL=0x03;
+            }
+            // note we pop value of ax to bx as we do not want to destroy ax
+            asm {
+                leave
+                pop di
+                pop si
+                pop ds
+                pop es
+                pop dx
+                pop cx
+                pop bx
+                pop bx
+                iret
+            }
+        }
+    }
+    else
+    {
+        _chain_intr(oldcriticalerror);
+    }
+}
+
+//************************************************************
+typedef struct {
+    unsigned    carry:1;
+    unsigned    unknown1:1;
+    unsigned    p:1;
+    unsigned    unknown2:1;
+    unsigned    a:1;
+    unsigned    unknown3:1;
+    unsigned    z:1;
+    unsigned    s:1;
+
+    unsigned    unknown4:1;
+    unsigned    i:1;
+    unsigned    unused:6;
+} BITFLAGS;
+
+//************************************************************
+void setprotmodeint(void)
+{
+    INT flags,cx,dx;
+    BITFLAGS *bitflags;
+
+    _AX=0x0204;             //DPMI call - Get protected mode interrupt
+    geninterrupt(0x31);     //Borland DOS Powerpak hooks real mode for this
+    flags = _FLAGS;         // get a copy of the flags register
+    bitflags = (BITFLAGS *) &flags;
+    if (!(bitflags->carry))         // carry clear for success
+    {
+        // save old interrupt
+        oldcriticalerror = MK_FP (_CX, _DX);
+
+        // set up new
+        _AX=0x0205;
+        _BL=0x24;       // Critical error interrupt
+        _CX=FP_SEG(criticalerrorhandler);
+        _DX=FP_OFF(criticalerrorhandler);
+        geninterrupt(0x31);
+        flags = _FLAGS;         // get a copy of the flags register
+        bitflags = (BITFLAGS *) &flags;
+        if (bitflags->carry)
+        {
+            // call failed
+        }
+    }
+
+    // Now set up a callback for the real mode handler
+    // save registers first!!
+    asm {
+        push    ds
+        push    es
+    }
+
+    _DS=FP_SEG(protcrit);   // Protected mode procedure to call
+    _SI=FP_OFF(protcrit);
+
+    _ES=FP_SEG(protbuff);   // Protected mode procedure to call
+    _DI=FP_OFF(protbuff);
+
+    _AX=0x0303;             //DPMI call - Get protected mode interrupt
+    geninterrupt(0x31);     //Borland DOS Powerpak hooks real mode for this
+    flags = _FLAGS;         // get a copy of the flags register
+                        // restore registers
+    asm {
+        pop     es
+        pop     ds
+    }
+
+    cx = _CX;
+    dx = _DX;
+    bitflags = (BITFLAGS *) &flags;
+    if (!(bitflags->carry))         // carry clear for success
+    {
+    }
+    
+//    realcmd (SETCRITCALLBACK, FP_SEG(protcrit), FP_OFF(protcrit) );
+}
+
+//************************************************************
+//void restoreprotmodeint(void)
+//{
+//    INT x=0;
+//}
+//
+

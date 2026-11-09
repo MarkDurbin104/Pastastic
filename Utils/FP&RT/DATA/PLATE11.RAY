@@ -1,0 +1,121 @@
+{   ษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+    บ                                                               บ
+    บ                      The Reflecting Blimp                     บ
+    บ                                                               บ
+    บ                By Roger T. Stevens - 6/17/90                  บ
+    บ                                                               บ
+    ศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+}
+
+FILE_NAME = BLIMP.RAW
+
+BEGIN_INSTANCES
+	name = PYRAMID
+
+BEGIN_BBOX
+		TRIANGLE (loc 0, 0, 0)
+				v1 = (52, 0, 30)
+				v2 = (34.3, 30, 0)
+				diff = (1, 0, 0)
+		)
+		TRIANGLE (loc 0, 0, 0)
+				v1 = (52, 0, -30)
+				v2 = (34.3, 30, 0)
+				diff = (1, 0, 0)
+		)
+		TRIANGLE (loc 52, 0, -30)
+				v1 = (0, 0, 60)
+				v2 = (-17.7, 30, 30)
+				diff = (1, 0, 0)
+		)
+END_BBOX
+END_INSTANCES
+
+{  PATTERNS USED}
+
+PATTERN ( x_size = 80,                 { CHECKERED GROUND }
+          y_size = 80,
+          name   = CHECK,
+          RECTANGLE (
+            start_x = 0,
+            start_y = 0,
+            end_x   = 40,
+            end_y   = 40,
+            diff    = (.25, .85, .25),
+            dither  = 0,
+          )
+          RECTANGLE (
+            start_x = 40,
+            start_y = 40,
+            end_x   = 80,
+            end_y   = 80,
+            diff    = (.25, .85, .25),
+            dither  = 0,
+          )
+        )
+
+{ *********************  OBJECTS  ********************* }
+{ ** ground ** }
+
+PARALLELOGRAM ( loc  = (  -10000, 0,  -10000),
+                v1   = (20000, 0,    0),
+                v2   = (  0, 0, 20000),
+                diff = (  1, 1, .75),
+                dither  = 0,
+                pattern = CHECK
+                xmult = 2
+                ymult = 2
+              )
+
+INSTANCE_OF name = PYRAMID
+		loc = (150, 0, -60)
+		scale = (2, 2, 2)
+	)
+	QUADRATIC 		(loc= (250, 70, 20) {ellipsoid}
+                a       = 12, b  = 4, c  = 1,
+                d       = 4000,
+                xmin    = -100, xmax = 100,
+                ymin    = -80,   ymax = 80,
+                zmin    = -100, zmax = 100,
+                diff    = (.5, .3, .5),
+				mirror  = (.9, .9, .9);
+			)
+
+	TRIANGLE    loc = (250, 70, 80)
+				v1 = (0, 30, 25)
+				v2 = (0, -30, 25)
+				diff = (.5, .3, .5)
+				mirror = (.9, .9, .9)
+			)
+
+{ ** An observer ** }
+OBSERVER ( loc    = (-20 , 70, -80)
+           lookat = (200, 50, -15)
+         )
+{ ** A lamp ** }
+{LAMP ( loc = (120, 400, -50),
+       radius = 5,
+       dist = 250
+     )
+LAMP ( loc = (-200, 450, 140)
+       radius = 5,
+       dist = 220
+     )
+}
+LAMP ( loc = (-200, 200, 140)
+       radius = 5,
+       dist = 220
+     )
+SKY  ( horiz  = (0, .4, .8),
+       zenith = (0, .4, .9),
+       dither = 1
+     )
+XRES = 320
+YRES = 200
+
+FOC_LENGTH = 65
+
+
+
+
+

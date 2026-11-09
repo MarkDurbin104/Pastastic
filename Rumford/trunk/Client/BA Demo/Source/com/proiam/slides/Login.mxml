@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100%" height="100%"
+	initialize="init();"
+	backgroundImage="@Embed(source='embedded/LoginBGNew.jpg')" backgroundSize="100%"
+	label="Login Screen" click="fireLogonClicked(event);" 
+ 	xmlns:slides="com.proiam.slides.*">
+	<mx:states>
+		<mx:State name="LoggedIn">
+			<mx:RemoveChild target="{canvas1}"/>
+			<mx:AddChild position="lastChild">
+				<mx:Canvas x="348" y="138" width="379" height="378" click="fireLogoClicked(event);" id="canvas2"/>
+			</mx:AddChild>
+		</mx:State>
+		<mx:State name="Configuring"  enterState="setConfigData(event)" basedOn="LoggedIn">
+			<mx:AddChild position="lastChild">
+				<slides:ConfigurationPanel id="configurationPanel" x="265" y="208"/>
+			</mx:AddChild>
+			<mx:RemoveChild target="{canvas2}"/>
+		</mx:State>
+	</mx:states>
+	<mx:Metadata>
+        [Event(name="loginClicked", type="flash.events.MouseEvent")]
+        [Event(name="logoClicked", type="flash.events.MouseEvent")]
+    </mx:Metadata>
+		
+	<mx:Script>
+		<![CDATA[
+			import com.proiam.slides.Emailer;
+			import com.cykorsystems.utils.Configuration;
+			import com.cykorsystems.utils.CachedURLLoader;
+			import com.proiam.crypto.Hex;
+			import com.proiam.crypto.MD5;
+
+	        public var passwords:XML=null;
+
+			import flash.events.MouseEvent;
+			private function configurationComplete(event:Event):void {
+				currentState="LoggedIn";
+			}
+			private function setConfigData(event:Event):void {
+				configurationPanel.show();
+				configurationPanel.addEventListener("dialogClose",configurationComplete);
+			}
+			public function fireLogonClicked(event:MouseEvent):void {
+				if (currentState!="LoggedIn") return;
+                dispatchEvent(new MouseEvent("loginClicked",event.bubbles,event.cancelable,
+                															event.localX,event.localY,event.relatedObject,
+                															event.ctrlKey,event.altKey,event.shiftKey,
+                															event.buttonDown,event.delta));
+                event.stopPropagation();
+            }
+			public function fireLogoClicked(event:MouseEvent):void {
+				if (currentState!="LoggedIn") return;
+                if (event.shiftKey) {
+                	currentState="Configuring";
+				} else {
+	                dispatchEvent(new MouseEvent("logoClicked",event.bubbles,event.cancelable,
+	                															event.localX,event.localY,event.relatedObject,
+	                															event.ctrlKey,event.altKey,event.shiftKey,
+	                															event.buttonDown,event.delta));
+				}
+                event.stopPropagation();
+            }
+			private function init():void 
+			{
+				rememberMe.selected=Configuration.rememberMe;
+				var unique:int=new Date().getTime();
+				var passwordsLoader:CachedURLLoader = new CachedURLLoader(); 
+				passwordsLoader.addEventListener(Event.COMPLETE,loadPasswords);
+				passwordsLoader.load(new URLRequest("resources/password.xml?unique="+unique));
+			}
+			private function loadPasswords(e:Event):void
+			{
+				passwords=new XML(e.target.data);						
+				var user:String = Configuration.loggedInUser;
+				if ((Configuration.rememberMe)&&(user != null) && (user!= "")&&userFound(user)) {
+					userName.text=user;
+					password.setFocus();
+				} else {
+					userName.setFocus();
+				}
+		 	}
+			private function toHash(data:String):String
+			{
+				var md5:MD5 = new MD5;
+				var src:ByteArray = new ByteArray;
+				src.writeMultiByte(data,"UTF-8");
+				var digest:ByteArray = md5.hash(src);
+				return Hex.fromArray(digest).toUpperCase();
+			}
+			
+		 	private function userFound(userName:String):Boolean
+		 	{
+		 		if (passwords != null) {
+		 			for each (var passwd:XML in passwords.password) {
+		 				if (passwd.@username.toUpperCase() == userName.toUpperCase()) {
+		 					return true;
+		 				}
+		 			}
+		 			return false;
+		 		} else {
+ 					return false;
+			 	}
+			 }
+		 	private function checkUserPass(event:MouseEvent):void
+		 	{
+		 		if (passwords != null) {
+		 			for each (var passwd:XML in passwords.password) {
+		 				if (passwd.@username.toUpperCase() == userName.text.toUpperCase()) {
+		 					if ((Configuration.rememberMe=rememberMe.selected) && (passwd.@log == "false") && (Configuration.loggedInUser==userName.text.toUpperCase())) {
+		 						currentState="LoggedIn";
+		 					} else if (passwd.@MD5 == toHash(password.text)) {
+		 						Configuration.loggedInUser=userName.text.toUpperCase();
+								var emailer:Emailer= new Emailer("ProiamLogin@i82q.com","ProiamLogin@i82q.com",userName.text+" Login","",true,"Login","Proiam");
+								password.text='';
+					 			Configuration.rememberMe=rememberMe.selected;
+					 			if (!rememberMe.selected) userName.text='';
+		 						currentState="LoggedIn";
+		 					}
+		 					break;
+		 				}
+		 			}
+		 		} 
+		 		if (currentState!="LoggedIn") {
+					emailer= new Emailer("ProiamLogin@i82q.com","ProiamLogin@i82q.com",userName.text+" Login Failure","",true,"Login","Proiam");
+		 		}
+		 	}
+		 	private var emailValid:Boolean=false;
+		 	private function registerUser(event:MouseEvent):void {
+		 		eValid.validate();
+		 		if ((emailValid)&&(company.text!="")&&(fullName.text!="")) {
+					var emailer:Emailer= new Emailer("ProiamRegistration@i82q.com", emailAddress.text,"Registration Request","",true,fullName.text,company.text);
+					registerButton.visible=false;
+		 		}
+		 	}
+		 	private function invalidEmail(event:Event):void {
+				confirm.text="Invalid email address"
+				emailValid=false;
+		 	}
+		 	private function validEmail(event:Event):void {
+				confirm.text="A confirmation email will be sent to the address provided"
+				emailValid=true;
+		 	}
+		]]>
+	</mx:Script>
+		<mx:EmailValidator id="eValid" source="{emailAddress}" property="text" trigger="{registerButton}" triggerEvent="click" invalid="invalidEmail(event)" valid="validEmail(event)" />
+		<mx:StringValidator id="nValid" source="{fullName}" minLength="5" property="text" trigger="{registerButton}" triggerEvent="click" tooShortError="Please enter your full name."/>
+		<mx:StringValidator id="cValid" source="{company}" minLength="2" property="text" trigger="{registerButton}" triggerEvent="click" tooShortError="Please enter your Company name." />
+	
+	<mx:Canvas x="193" y="215" width="638" height="235" borderStyle="solid" cornerRadius="10" backgroundColor="#146D8E" backgroundAlpha="0.8" id="canvas1">
+		<mx:Label x="24" y="20" text="Registered users - please log in here" fontWeight="bold" fontSize="11" fontFamily="Verdana" color="#FFFFFF" width="261"/>
+		<mx:Label x="27" y="61" text="User Name" color="#FFFFFF" width="116"/>
+		<mx:TextInput y="57" fontSize="12" fontFamily="Tahoma" color="#25678C" fontWeight="bold"  id="userName" x="102"/>
+		<mx:Label x="27" y="89" text="Password" color="#FFFFFF" width="107"/>
+		<mx:TextInput y="85" displayAsPassword="true" fontSize="12" fontFamily="Tahoma" color="#25678C" fontWeight="bold" id="password" x="102"/>
+		<mx:CheckBox x="100" y="116" label="Remember me" color="#FFFFFF" id="rememberMe" width="162"/>
+		<mx:Button x="102" y="182" label="Log in" fontWeight="bold" fontFamily="Verdana" fontSize="11" click="checkUserPass(event)" width="140" textAlign="center"/>
+		<mx:VRule x="293" y="11" height="214"/>
+		<mx:Label x="333" y="20" text="New users - please register for access" fontWeight="bold" fontSize="11" fontFamily="Verdana" color="#FFFFFF" width="279"/>
+		<mx:Label x="322" y="59" text="Full Name" color="#FFFFFF" width="122"/>
+		<mx:TextInput y="56" fontSize="12" fontFamily="Tahoma" color="#25678C" fontWeight="bold"  id="fullName" x="452"/>
+		<mx:Label x="322" y="88" text="Company" color="#FFFFFF" width="122"/>
+		<mx:TextInput y="85" fontSize="12" fontFamily="Tahoma" color="#25678C" fontWeight="bold" id="company" x="452"/>
+		<mx:Label x="322" y="117" text="E-Mail address" color="#FFFFFF" width="122"/>
+		<mx:TextInput y="114" fontSize="12" fontFamily="Tahoma" color="#25678C" fontWeight="bold"  id="emailAddress" x="452"/>
+		<mx:Label x="321" y="147" text="A confirmation email will provide your access details" color="#FFFFFF"  id="confirm" width="305"/>
+		<mx:Button x="451" y="182" label="Register" fontWeight="bold" fontFamily="Verdana" fontSize="11" click="registerUser(event)" id="registerButton" width="139" textAlign="center"/>
+ 	</mx:Canvas>
+ </mx:Canvas>

@@ -1,0 +1,101 @@
+Products {
+
+// ------ Boxex Rental-------------------------------------------------------------------------
+
+
+   PBAnnualRent {
+	   BasedOn { BaseRent }
+     	RegDesc { 'GPCS PBAnnualRent Product' }
+     	Caption { 'Box Annual Rent' }
+     	BitMap { '..\images\P_BoxAnnualRent.bmp' }
+     	Description  { 'Box Annual Rent' }
+     	Title        { 'Box Annual Rent' }
+	}
+
+   PBQuarterRent {
+	   BasedOn { BaseRent }
+     	RegDesc { 'GPCS PBQuarterRent Product' }
+     	Caption { 'Box Quarter Rent' }
+     	BitMap { '..\images\P_BoxQuartRent.bmp' }
+     	Description  { 'Box Quarter Rent' }
+     	Title        { 'Box Quarter Rent' }
+	}
+
+   PBSurcharge {
+	   BasedOn { BaseRent }
+     	RegDesc { 'GPCS PBSurcharge Product' }
+     	Caption { 'Box Surcharge' }
+     	BitMap { '..\images\P_BoxSurcharge.bmp' }
+     	Description  { 'Box Surcharge' }
+     	Title        { 'Box Surcharge' }
+	}
+
+   PBSurcharge {
+	   BasedOn { BaseRent }
+     	RegDesc { 'GPCS PBSurcharge Product' }
+     	Caption { 'Box Surcharge' }
+     	BitMap { '..\images\P_BoxSurcharge.bmp' }
+     	Description  { 'Box Surcharge' }
+     	Title        { 'Box Surcharge' }
+	}
+
+   PBNewLockKey {
+	   BasedOn { BaseRent }
+     	RegDesc { 'GPCS PBNewLockKey Product' }
+     	Caption { 'New Lock and Keys' }
+     	BitMap { '..\images\P_NewLockandKey.bmp' }
+     	Description  { 'New Lock and Keys' }
+     	Title        { 'New Lock and Keys' }
+	}
+
+// ------ Bag Rental---------------------------------------------------------------------------
+
+   BagCost {
+	   BasedOn { BaseRent }
+     	RegDesc { 'GPCS BagCost Product' }
+     	Caption { 'Cost of a bag' }
+     	BitMap { '..\images\P_CostOfBag.bmp' }
+     	Description  { 'Cost of a bag' }
+     	Title        { 'Cost of a bag' }
+	}
+
+   BagAnnualRent {
+	   BasedOn { BaseRent }
+     	RegDesc { 'GPCS BagAnnualRent Product' }
+     	Caption { 'Bag Annual Rent' }
+     	BitMap { '..\images\P_BagAnnualRent.bmp' }
+     	Description  { 'Bag Annual Rent' }
+     	Title        { 'Bag Annual Rent' }
+	}
+
+   BagQuarterRent {
+	   BasedOn { BaseRent }
+     	RegDesc { 'GPCS BagQuarterRent Product' }
+     	Caption { 'Rent per quarter (1st April to 31st December )' }
+     	BitMap { '..\images\P_BagQuartRent.bmp' }
+     	Description  { 'Rent per quarter (1st April to 31st December )' }
+     	Title        { 'Rent per quarter (1st April to 31st December )' }
+	}
+
+   BagConveyanceFee {
+	   BasedOn { BaseRent }
+     	RegDesc { 'GPCS BagConveyanceFee Product' }
+     	Caption { 'Conveyance fee on bags' }
+     	BitMap { '..\images\P_BagConveyanceFee.bmp' }
+     	Description  { 'Bags Conveyance fee' }
+     	Title        { 'Bags Conveyance fee' }
+	}
+
+   BagPenalty {
+	   BasedOn { BaseRent }
+     	RegDesc { 'GPCS BagPenalty Product' }
+     	Caption { 'Penalty for late on bags' }
+     	BitMap { '..\images\P_BagPenalty.bmp' }
+     	Description  { 'Bags Penalty' }
+     	Title        { 'Bags Penalty' }
+	}
+
+}
+
+
+

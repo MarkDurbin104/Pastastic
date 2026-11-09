@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+	creationComplete="onCreationComplete(event);"
+	backgroundGradientColors="[#ECF5E7, #ECF5E7]" xmlns:slides="com.proiam.slides.*" xmlns:ns1="*">  
+	<mx:Script>        
+		<![CDATA[
+			import com.adobe.fileformats.vcard.Phone;
+			import com.google.maps.styles.StrokeStyle;
+			import com.google.maps.overlays.MarkerOptions;
+			import com.google.maps.styles.FillStyle;
+			import com.google.maps.overlays.Marker;
+			import com.adobe.webapis.flickr.Photo;
+			import com.adobe.webapis.flickr.PagedPhotoList;
+			import com.adobe.webapis.flickr.events.FlickrResultEvent;
+			import com.adobe.webapis.flickr.FlickrService;
+			import com.proiam.mails.Weight;
+			import com.proiam.mails.ItemData;        
+			import com.google.maps.LatLng;        
+			import com.google.maps.Map;        
+			import com.google.maps.MapEvent;        
+			import com.google.maps.MapType;        
+			import com.google.maps.MapOptions;   
+			     
+	
+			private function onCreationComplete(event:Event):void {
+				//mailScreen.currentState="JustCal";
+				//gotoCalendar();
+			}
+/*			public function gotoCalendar():void {
+				if ((services.mailServices!=null)&&(services.mailServices.loaded) && (tariffs.loaded)) {
+					var itemData:ItemData= new ItemData();
+					var service:String="*****";
+					itemData.dimensions.width=5;
+					itemData.dimensions.height=5;
+					itemData.dimensions.length=5;
+					itemData.weight=new Weight();
+					itemData.weight.weightInGrams=100;
+					mailScreen.SetupCalendar(itemData,service,services.mailServices,tariffs.Lookups,true,null);
+				} else {
+					callLater(gotoCalendar);					
+				}
+			}
+*/
+			private function onMapPreinitialize(event:Event):void {          
+				var myMapOptions:MapOptions = new MapOptions();          
+				myMapOptions.zoom = 5;          
+				myMapOptions.center = new LatLng(53.3,-6.14);          
+				myMapOptions.mapType = MapType.NORMAL_MAP_TYPE;
+				this.map.setInitOptions(myMapOptions);        
+			}                
+
+			private var api_key:String = "97aab8c16eebec05be87ec0502653767";
+			private var maxResult:Number = 50;
+			
+			private var service:FlickrService = new FlickrService( api_key );
+			
+			Security.allowDomain(["api.flickr.com", "flickr.com", "*"]);
+			Security.allowInsecureDomain(["api.flickr.com", "flickr.com", "*"]);
+			
+			import mx.collections.ArrayCollection;
+			[Bindable] public var photos:ArrayCollection;
+			
+			private function getImages():void {
+			  var service:FlickrService = new FlickrService( api_key );
+			   service.addEventListener( FlickrResultEvent.PHOTOS_SEARCH, onPhotosSearch );
+			   service.photos.search("", "","any",txtSearch.text,null,null,null,null,-1,"date-posted-desc",-1,"",-1,-1,-1,"","","","","","","",true);
+			}
+			
+			private function onPhotosSearch( event:FlickrResultEvent ):void {
+				if (event.success) {
+				  var photoList:PagedPhotoList = event.data.photos;
+				  photoList.perPage = maxResult;
+				  photos = new ArrayCollection( photoList.photos );
+			  }
+			}
+			private function onClick(event:MouseEvent):void {
+				var photo:Photo = Photo(TileList(event.currentTarget).selectedItem);
+			   	service.photos.getLocation(photo.id);
+ 			   	service.addEventListener( FlickrResultEvent.PHOTOS_GET_EXIF, onPhotosInfo);
+			}
+			private function onPhotosInfo( event:FlickrResultEvent ):void {
+				if (event.success) {
+					var photo:Photo = Photo(event.data.photo);
+		  			var ll:LatLng=new LatLng(Number(photo.latitude), Number(photo.longitude));
+		  			map.setCenter(ll, 13, MapType.NORMAL_MAP_TYPE);
+		  		}  
+			}
+			private function zoomTracker(event:Event):void {
+				map.setZoom(zoomer.value);
+			}
+		]]>  
+	</mx:Script>
+	<maps:Map xmlns:maps="com.google.maps.*"  
+		mapevent_mappreinitialize="onMapPreinitialize(event)"          
+		id="map" width="49%" left="10" top="10"
+		key="ABQIAAAA0v22PNvpv-96wUvPji2dARS3JBSvP8SGp5TBDlZlkeaTBx5nDRTpFEeL-sMCA98fbysGQIAjh-7OnA" bottom="10"/>  
+	<mx:TextInput id="txtSearch" x="656" y="10" text="West Pier Lighthouse"/>
+	<mx:Button label="SEARCH ON FLICKR" id="btnSearch" click="getImages()" x="519" y="10"/>
+	<mx:TileList width="495" height="718" id="picsList" dataProvider="{photos}" itemRenderer="IconRenderer" click="onClick(event)"  x="519" y="40"/>
+	<mx:VSlider x="20" y="20" allowTrackClick="true" minimum="1" maximum="20" snapInterval=".1" enabled="true" liveDragging="true" change="zoomTracker(event)" id="zoomer"/>
+</mx:Application>

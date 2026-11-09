@@ -1,0 +1,187 @@
+C:\compass\vcs\compkey.c_v, unknown, 960522, 045048, vcs -i
+C:\compass\vcs\compkey.c_v, unknown, 960522, 045050, put -r1.0 -l
+C:\compass\vcs\fileio.c_v, unknown, 960522, 045050, vcs -i
+C:\compass\vcs\fileio.c_v, unknown, 960522, 045050, put -r1.0 -l
+C:\compass\vcs\config.c_v, unknown, 960522, 045050, vcs -i
+C:\compass\vcs\config.c_v, unknown, 960522, 045050, put -r1.0 -l
+C:\compass\vcs\videokbd.c_v, unknown, 960522, 045050, vcs -i
+C:\compass\vcs\videokbd.c_v, unknown, 960522, 045050, put -r1.0 -l
+C:\compass\vcs\fileio.c_v, unknown, 960522, 052520, vcs -vFirst Test:1.0
+C:\compass\vcs\compkey.c_v, unknown, 960522, 052712, vcs -vFirst Test:1.0
+C:\compass\vcs\config.c_v, unknown, 960522, 052712, vcs -vFirst Test:1.0
+C:\compass\vcs\videokbd.c_v, unknown, 960522, 052718, vcs -vFirst Test:1.0
+C:\compass\vcs\compkey.c_v, unknown, 960522, 054000, vcs -u1.0:unknown
+C:\compass\vcs\config.c_v, unknown, 960522, 054000, vcs -u1.0:unknown
+C:\compass\vcs\fileio.c_v, unknown, 960522, 054000, vcs -u1.0:unknown
+C:\compass\vcs\videokbd.c_v, unknown, 960522, 054000, vcs -u1.0:unknown
+C:\compass\vcs\compkey.c_v, MJD, 960522, 054812, get -l1.0
+C:\compass\vcs\config.c_v, MJD, 960522, 054832, get -l1.0
+C:\compass\vcs\fileio.c_v, MJD, 960522, 054832, get -l1.0
+C:\compass\vcs\videokbd.c_v, MJD, 960522, 054834, get -l1.0
+C:\compass\vcs\compkey.c_v, MJD, 960522, 054900, put -r1.1 -vV 1.00c
+C:\compass\vcs\config.c_v, MJD, 960522, 054900, put -r1.1 -vV 1.00c
+C:\compass\vcs\fileio.c_v, MJD, 960522, 054900, put -r1.1 -vV 1.00c
+C:\compass\vcs\videokbd.c_v, MJD, 960522, 054900, put -r1.1 -vV 1.00c
+C:\compass\vcs\compkey.c_v, MJD, 960529, 031640, get -l1.1
+C:\compass\vcs\config.c_v, MJD, 960529, 031640, get -l1.1
+C:\compass\vcs\fileio.c_v, MJD, 960529, 031640, get -l1.1
+C:\compass\vcs\videokbd.c_v, MJD, 960529, 031640, get -l1.1
+C:\compass\vcs\Compkey.h_v, MJD, 960530, 021216, vcs -i
+C:\compass\vcs\Compkey.h_v, MJD, 960530, 021216, put -r1.0 -v1.00c
+C:\compass\vcs\Config.h_v, MJD, 960530, 021324, vcs -i
+C:\compass\vcs\Config.h_v, MJD, 960530, 021324, put -r1.0 -v1.00c
+C:\compass\vcs\Defines.h_v, MJD, 960530, 021354, vcs -i
+C:\compass\vcs\Defines.h_v, MJD, 960530, 021354, put -r1.0 -v1.00c
+C:\compass\vcs\Fileio.h_v, MJD, 960530, 021406, vcs -i
+C:\compass\vcs\Fileio.h_v, MJD, 960530, 021406, put -r1.0 -v1.00c
+C:\compass\vcs\Keydef.h_v, MJD, 960530, 021422, vcs -i
+C:\compass\vcs\Keydef.h_v, MJD, 960530, 021422, put -r1.0 -v1.00c
+C:\compass\vcs\Types.h_v, MJD, 960530, 021442, vcs -i
+C:\compass\vcs\Types.h_v, MJD, 960530, 021442, put -r1.0 -v1.00c
+C:\compass\vcs\videokbd.H_v, MJD, 960530, 021456, vcs -i
+C:\compass\vcs\videokbd.H_v, MJD, 960530, 021456, put -r1.0 -v1.00c
+C:\compass\vcs\Compkey.h_v, MJD, 960530, 021608, get -l1.0
+C:\compass\vcs\Config.h_v, MJD, 960530, 021616, get -l1.0
+C:\compass\vcs\Defines.h_v, MJD, 960530, 021620, get -l1.0
+C:\compass\vcs\Fileio.h_v, MJD, 960530, 021632, get -l1.0
+C:\compass\vcs\Keydef.h_v, MJD, 960530, 021638, get -l1.0
+C:\compass\vcs\Types.h_v, MJD, 960530, 021642, get -l1.0
+C:\compass\vcs\videokbd.H_v, MJD, 960530, 021648, get -l1.0
+C:\compass\vcs\videokbd.c_v, MJD, 960530, 021752, vcs -vFirst Test:delete
+C:\compass\vcs\videokbd.c_v, MJD, 960530, 021758, vdel -r1.0
+C:\compass\vcs\fileio.c_v, MJD, 960530, 021814, vcs -vFirst Test:delete
+C:\compass\vcs\fileio.c_v, MJD, 960530, 021816, vdel -r1.0
+C:\compass\vcs\config.c_v, MJD, 960530, 021828, vcs -vFirst Test:delete
+C:\compass\vcs\config.c_v, MJD, 960530, 021832, vdel -r1.0
+C:\compass\vcs\compkey.c_v, MJD, 960530, 021840, vcs -vFirst Test:delete
+C:\compass\vcs\compkey.c_v, MJD, 960530, 021842, vdel -r1.0
+C:\compass\vcs\Genrplu.c_v, MJD, 960530, 225842, vcs -i
+C:\compass\vcs\Genrplu.c_v, MJD, 960530, 225842, put -r1.0 -v1.00
+C:\compass\vcs\Genrplu.c_v, MJD, 960530, 225936, vcs -v\1.00b::1.00
+C:\compass\vcs\compkey.c_v, MJD, 960603, 102340, put -r1.2 -v1.00d
+C:\compass\vcs\Compkey.h_v, MJD, 960603, 102340, put -r1.1 -v1.00d
+C:\compass\vcs\config.c_v, MJD, 960603, 102340, put -r1.2 -v1.00d
+C:\compass\vcs\Config.h_v, MJD, 960603, 102340, put -r1.1 -v1.00d
+C:\compass\vcs\Defines.h_v, MJD, 960603, 102340, put -r1.1 -v1.00d
+C:\compass\vcs\fileio.c_v, MJD, 960603, 102340, put -r1.2 -v1.00d
+C:\compass\vcs\Fileio.h_v, MJD, 960603, 102342, put -r1.1 -v1.00d
+C:\compass\vcs\Keydef.h_v, MJD, 960603, 102342, put -r1.1 -v1.00d
+C:\compass\vcs\Types.h_v, MJD, 960603, 102342, put -r1.1 -v1.00d
+C:\compass\vcs\videokbd.c_v, MJD, 960603, 102342, put -r1.2 -v1.00d
+C:\compass\vcs\videokbd.H_v, MJD, 960603, 102342, put -r1.1 -v1.00d
+C:\compass\vcs\compkey.c_v, MJD, 960603, 102506, vcs -v\1.00c::V 1.00c
+C:\compass\vcs\config.c_v, MJD, 960603, 102520, vcs -v\1.00c::V 1.00c
+C:\compass\vcs\fileio.c_v, MJD, 960603, 102548, vcs -v\1.00c::V 1.00c
+C:\compass\vcs\videokbd.c_v, MJD, 960603, 102614, vcs -v\1.00c::V 1.00c
+C:\compass\vcs\compkey.c_v, MJD, 960603, 102746, get -l1.2
+C:\compass\vcs\Compkey.h_v, MJD, 960603, 102752, get -l1.1
+C:\compass\vcs\config.c_v, MJD, 960603, 102758, get -l1.2
+C:\compass\vcs\Config.h_v, MJD, 960603, 102812, get -l1.1
+C:\compass\vcs\Defines.h_v, MJD, 960603, 102812, get -l1.1
+C:\compass\vcs\fileio.c_v, MJD, 960603, 102814, get -l1.2
+C:\compass\vcs\Fileio.h_v, MJD, 960603, 102814, get -l1.1
+C:\compass\vcs\Genrplu.c_v, MJD, 960603, 102814, get -l1.0
+C:\compass\vcs\Keydef.h_v, MJD, 960603, 102814, get -l1.1
+C:\compass\vcs\Types.h_v, MJD, 960603, 102814, get -l1.1
+C:\compass\vcs\videokbd.c_v, MJD, 960603, 102814, get -l1.2
+C:\compass\vcs\videokbd.H_v, MJD, 960603, 102814, get -l1.1
+C:\compass\vcs\Omrplucn.c_v, MJD, 960609, 224810, vcs -i
+C:\compass\vcs\Omrplucn.c_v, MJD, 960609, 224810, put -r1.0 -v1.00a
+C:\compass\vcs\Omrplucp.c_v, MJD, 960609, 224828, vcs -i
+C:\compass\vcs\Omrplucp.c_v, MJD, 960609, 224828, put -r1.0 -v1.00a
+C:\compass\vcs\Omrplucn.c_v, MJD, 960609, 224840, get -l1.0
+C:\compass\vcs\Omrplucp.c_v, MJD, 960609, 224840, get -l1.0
+C:\compass\vcs\compkey.c_v, MJD, 960610, 030136, put -r1.3 -v1.00e
+C:\compass\vcs\Compkey.h_v, MJD, 960610, 030156, put -r1.2 -v1.00e
+C:\compass\vcs\config.c_v, MJD, 960610, 030156, put -r1.3 -v1.00e
+C:\compass\vcs\Config.h_v, MJD, 960610, 030156, put -r1.2 -v1.00e
+C:\compass\vcs\Defines.h_v, MJD, 960610, 030156, put -r1.2 -v1.00e
+C:\compass\vcs\fileio.c_v, MJD, 960610, 030156, put -r1.3 -v1.00e
+C:\compass\vcs\Fileio.h_v, MJD, 960610, 030156, put -r1.2 -v1.00e
+C:\compass\vcs\Genrplu.c_v, MJD, 960610, 030156, put -r1.1 -v1.00e
+C:\compass\vcs\Keydef.h_v, MJD, 960610, 030158, put -r1.2 -v1.00e
+C:\compass\vcs\Omrplucn.c_v, MJD, 960610, 030158, put -r1.1 -v1.00e
+C:\compass\vcs\Omrplucp.c_v, MJD, 960610, 030158, put -r1.1 -v1.00e
+C:\compass\vcs\Types.h_v, MJD, 960610, 030158, put -r1.2 -v1.00e
+C:\compass\vcs\videokbd.c_v, MJD, 960610, 030158, put -r1.3 -v1.00e
+C:\compass\vcs\videokbd.H_v, MJD, 960610, 030158, put -r1.2 -v1.00e
+C:\compass\vcs\compkey.c_v, MJD, 960610, 030206, get -l1.3
+C:\compass\vcs\Compkey.h_v, MJD, 960610, 030206, get -l1.2
+C:\compass\vcs\config.c_v, MJD, 960610, 030206, get -l1.3
+C:\compass\vcs\Config.h_v, MJD, 960610, 030206, get -l1.2
+C:\compass\vcs\Defines.h_v, MJD, 960610, 030206, get -l1.2
+C:\compass\vcs\fileio.c_v, MJD, 960610, 030206, get -l1.3
+C:\compass\vcs\Fileio.h_v, MJD, 960610, 030206, get -l1.2
+C:\compass\vcs\Genrplu.c_v, MJD, 960610, 030208, get -l1.1
+C:\compass\vcs\Keydef.h_v, MJD, 960610, 030208, get -l1.2
+C:\compass\vcs\Omrplucn.c_v, MJD, 960610, 030208, get -l1.1
+C:\compass\vcs\Omrplucp.c_v, MJD, 960610, 030208, get -l1.1
+C:\compass\vcs\Types.h_v, MJD, 960610, 030208, get -l1.2
+C:\compass\vcs\videokbd.c_v, MJD, 960610, 030208, get -l1.3
+C:\compass\vcs\videokbd.H_v, MJD, 960610, 030208, get -l1.2
+C:\compass\vcs\compkey.c_v, MJD, 960612, 041926, put -r1.4 -v1.00f
+C:\compass\vcs\compkey.c_v, MJD, 960612, 042016, get -l1.4
+C:\compass\vcs\compkey.c_v, MJD, 960612, 042110, put -r1.5
+C:\compass\vcs\compkey.c_v, MJD, 960612, 042136, vcs -v\1.00f:delete
+C:\compass\vcs\compkey.c_v, MJD, 960612, 042252, vcs -v\1.00f:1.4
+C:\compass\vcs\compkey.c_v, MJD, 960612, 042308, vcs -l1.4
+C:\compass\vcs\compkey.c_v, MJD, 960612, 042320, vcs -u1.4:MJD
+C:\compass\vcs\compkey.c_v, MJD, 960612, 042326, get -l1.4
+C:\compass\vcs\compkey.c_v, MJD, 960612, 042412, put -r1.4.1.0
+C:\compass\vcs\Compkey.h_v, MJD, 960612, 042412, put -r1.3 -v1.00f
+C:\compass\vcs\config.c_v, MJD, 960612, 042412, put -r1.4 -v1.00f
+C:\compass\vcs\Config.h_v, MJD, 960612, 042412, put -r1.3 -v1.00f
+C:\compass\vcs\Defines.h_v, MJD, 960612, 042412, put -r1.3 -v1.00f
+C:\compass\vcs\fileio.c_v, MJD, 960612, 042412, put -r1.4 -v1.00f
+C:\compass\vcs\Fileio.h_v, MJD, 960612, 042412, put -r1.3 -v1.00f
+C:\compass\vcs\Genrplu.c_v, MJD, 960612, 042412, put -r1.2 -v1.00f
+C:\compass\vcs\Keydef.h_v, MJD, 960612, 042412, put -r1.3 -v1.00f
+C:\compass\vcs\Omrplucn.c_v, MJD, 960612, 042414, put -r1.2 -v1.00f
+C:\compass\vcs\Omrplucp.c_v, MJD, 960612, 042414, put -r1.2 -v1.00f
+C:\compass\vcs\Types.h_v, MJD, 960612, 042414, put -r1.3 -v1.00f
+C:\compass\vcs\videokbd.c_v, MJD, 960612, 042414, put -r1.4 -v1.00f
+C:\compass\vcs\videokbd.H_v, MJD, 960612, 042414, put -r1.3 -v1.00f
+C:\compass\vcs\compkey.c_v, MJD, 960612, 042752, vcs -l1.5
+C:\compass\vcs\compkey.c_v, MJD, 960612, 042756, vcs -u1.5:MJD
+C:\compass\vcs\compkey.c_v, MJD, 960612, 042828, get -l1.1
+C:\compass\vcs\Compkey.h_v, MJD, 960612, 042854, get -l1.0
+C:\compass\vcs\config.c_v, MJD, 960612, 042906, get -l1.1
+C:\compass\vcs\Config.h_v, MJD, 960612, 042912, get -l1.0
+C:\compass\vcs\Defines.h_v, MJD, 960612, 042922, get -l1.0
+C:\compass\vcs\fileio.c_v, MJD, 960612, 042932, get -l1.1
+C:\compass\vcs\Fileio.h_v, MJD, 960612, 042938, get -l1.0
+C:\compass\vcs\Keydef.h_v, MJD, 960612, 042950, get -l1.0
+C:\compass\vcs\Types.h_v, MJD, 960612, 043008, get -l1.0
+C:\compass\vcs\videokbd.c_v, MJD, 960612, 043014, get -l1.1
+C:\compass\vcs\videokbd.H_v, MJD, 960612, 043020, get -l1.0
+C:\compass\vcs\Omrplucn.c_v, MJD, 960612, 212752, get -l1.0
+C:\compass\vcs\Genrplu.c_v, MJD, 960612, 212830, get -l1.0
+C:\compass\vcs\Omrplucp.c_v, MJD, 960612, 213130, get -l1.0
+C:\compass\vcs\compkey.c_v, MJD, 960612, 213328, put -r1.1.1.0
+C:\compass\vcs\Compkey.h_v, MJD, 960612, 213328, put -r1.0.1.0
+C:\compass\vcs\config.c_v, MJD, 960612, 213330, put -r1.1.1.0
+C:\compass\vcs\Config.h_v, MJD, 960612, 213330, put -r1.0.1.0
+C:\compass\vcs\Defines.h_v, MJD, 960612, 213330, put -r1.0.1.0
+C:\compass\vcs\fileio.c_v, MJD, 960612, 213330, put -r1.1.1.0
+C:\compass\vcs\Fileio.h_v, MJD, 960612, 213330, put -r1.0.1.0
+C:\compass\vcs\Genrplu.c_v, MJD, 960612, 213330, put -r1.0.1.0
+C:\compass\vcs\Keydef.h_v, MJD, 960612, 213330, put -r1.0.1.0
+C:\compass\vcs\Omrplucn.c_v, MJD, 960612, 213330, put -r1.0.1.0
+C:\compass\vcs\Omrplucp.c_v, MJD, 960612, 213330, put -r1.0.1.0
+C:\compass\vcs\Types.h_v, MJD, 960612, 213330, put -r1.0.1.0
+C:\compass\vcs\videokbd.c_v, MJD, 960612, 213330, put -r1.1.1.0
+C:\compass\vcs\videokbd.H_v, MJD, 960612, 213330, put -r1.0.1.0
+C:\compass\vcs\compkey.c_v, MJD, 960612, 213352, get -l1.5
+C:\compass\vcs\Compkey.h_v, MJD, 960612, 213352, get -l1.3
+C:\compass\vcs\config.c_v, MJD, 960612, 213352, get -l1.4
+C:\compass\vcs\Config.h_v, MJD, 960612, 213352, get -l1.3
+C:\compass\vcs\Defines.h_v, MJD, 960612, 213352, get -l1.3
+C:\compass\vcs\fileio.c_v, MJD, 960612, 213354, get -l1.4
+C:\compass\vcs\Fileio.h_v, MJD, 960612, 213354, get -l1.3
+C:\compass\vcs\Genrplu.c_v, MJD, 960612, 213354, get -l1.2
+C:\compass\vcs\Keydef.h_v, MJD, 960612, 213354, get -l1.3
+C:\compass\vcs\Omrplucn.c_v, MJD, 960612, 213354, get -l1.2
+C:\compass\vcs\Omrplucp.c_v, MJD, 960612, 213354, get -l1.2
+C:\compass\vcs\Types.h_v, MJD, 960612, 213354, get -l1.3
+C:\compass\vcs\videokbd.c_v, MJD, 960612, 213354, get -l1.4
+C:\compass\vcs\videokbd.H_v, MJD, 960612, 213354, get -l1.3

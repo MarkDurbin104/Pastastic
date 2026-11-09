@@ -1,0 +1,18 @@
+; Help project file created by DOCU (c) Cykor Systems 1996
+[Options]
+root=.
+BMROOT=.
+errorlog=DOCUTEMP.ERR
+warning=3
+compress=MEDIUM
+report=1
+title=COMPKEY.EXE
+
+[FILES]
+DOCUTEMP.RTF
+
+[WINDOWS]
+main = "COMPKEY.EXE ",,,(255,255,248),(192,192,192)
+[CONFIG]
+BrowseButtons()
+

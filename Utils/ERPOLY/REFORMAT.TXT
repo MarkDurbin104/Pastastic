@@ -1,0 +1,7339 @@
+Sub MAIN
+FilePageSetup .Tab = "3", .PaperSize = "9", .TopMargin = "1" + Chr$(34), .BottomMargin = "1" + Chr$(34), .LeftMargin = "1.5" + Chr$(34), .RightMargin = "0.5" + Chr$(34), .Gutter = "0" + Chr$(34), .PageWidth = "8.27" + Chr$(34), .PageHeight = "11.69" + Chr$(34), .Orientation = 0, .FirstPage = 0, .OtherPages = 0, .VertAlign = 0, .ApplyPropsTo = 4, .FacingPages = 0, .HeaderDistance = "0.8" + Chr$(34), .FooterDistance = "0.8" + Chr$(34), .SectionStart = 2, .OddAndEvenPages = 0, .DifferentFirstPage = 1, .Endnotes = 0, .LineNum = 0, .StartingNum = "", .FromText = "", .CountBy = "0", .NumMode = -1
+RightPara
+Insert "UNISYS"
+InsertPara
+Insert "22 Southwark Bridge Road"
+InsertPara
+Insert "London  SE1 9HB"
+LineUp 2
+StartOfLine 1
+Font "Times New Roman"
+FormatFont .Points = "36", .Underline = 0, .Color = 6, .Strikethrough = 0, .Superscript = 0, .Subscript = 0, .Hidden = 0, .SmallCaps = 0, .AllCaps = 0, .Spacing = "0 pt", .Position = "0 pt", .Kerning = 0, .KerningMin = "", .Tab = "0", .Font = "Unisys", .Bold = 0, .Italic = 0, .Outline = 0, .Shadow = 0
+LineDown 3
+InsertPara
+LeftPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+CenterPara
+Insert "'C' Programmers Reference"
+InsertPara
+Insert "for"
+InsertPara
+Insert "TITLE"
+CharLeft 5, 1
+LineUp 2, 1
+StartOfLine 1
+FontSize 20
+LineDown 1
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+LeftPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+InsertPara
+FontSize 8
+Insert "Author "
+InsertDateTime .DateTimePic = "d MMMM, yyyy", .InsertAsField = 0
+InsertPara
+FontSize 12
+InsertBreak .Type = 0
+ViewHeader
+ShowPrevHeaderFooter
+ShowNextHeaderFooter
+FontSize 8
+Font "Arial"
+Insert "'C' Programmers Reference" + Chr$(9) + "TITLE" + Chr$(9) + "Page"
+InsertPageField
+CharLeft 1, 1
+FontSize 8
+Font "Arial"
+CharLeft 1
+Insert " "
+GoToHeaderFooter
+Insert "UNISYS" + Chr$(9) + "confidential" + Chr$(9)
+InsertDateField
+StartOfLine 1
+MoveToolbar "Formatting", 1, -2, 28
+Font "Arial"
+FontSize 8
+StartOfLine
+CharRight 6, 1
+FormatFont .Points = "14", .Underline = 0, .Color = 6, .Strikethrough = 0, .Superscript = 0, .Subscript = 0, .Hidden = 0, .SmallCaps = 0, .AllCaps = 0, .Spacing = "0 pt", .Position = "0 pt", .Kerning = 0, .KerningMin = "", .Tab = "0", .Font = "Unisys", .Bold = 0, .Italic = 0, .Outline = 0, .Shadow = 0
+CloseViewHeaderFooter
+
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "addlinetolist"
+NextCell
+MarkIndexEntry .Entry = "addlinetolist"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Add current line to list of last 20 lines"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void addlinetolist(char *s);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert "Add current line to list of last 20 lines for comments above functions "
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *s  - string to add "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_last20lines "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "funcfind."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void addlinetolist(char *s)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    int i;"
+InsertPara
+Insert "    if (G_numinlast20<20) {"
+InsertPara
+Insert "        G_last20lines[G_numinlast20++]=strdup(s);"
+InsertPara
+Insert "    } else {"
+InsertPara
+Insert "        free(G_last20lines[0]);"
+InsertPara
+Insert "        for (i=0;i<19;i++) G_last20lines[i]=G_last20lines[i+1];"
+InsertPara
+Insert "        G_last20lines[19]=strdup(s);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "arecomments"
+NextCell
+MarkIndexEntry .Entry = "arecomments"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Return true if a function has been commented"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "int arecomments(char *file,char *func);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *file "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "char *func "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "int "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "funcfind."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "int arecomments(char *file,char *func)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "	FILE *fp;"
+InsertPara
+Insert "	char tmp[100];"
+InsertPara
+Insert "    if ((file==NULL)||(*file==0)||(func==NULL)||(*func==0)) return(0);"
+InsertPara
+Insert ""
+InsertPara
+Insert "	fp=fopen(file," + Chr$(34) + "r" + Chr$(34) + ");"
+InsertPara
+Insert "	if (fp==NULL) return(0);"
+InsertPara
+Insert ""
+InsertPara
+Insert "	while (fgets(tmp,80,fp)!=NULL) {"
+InsertPara
+Insert "		if (tmp[0]=='F') {"
+InsertPara
+Insert "			if (!strncmp(func,&tmp[2],strlen(func))) {"
+InsertPara
+Insert "				fclose(fp);"
+InsertPara
+Insert "				return(1);"
+InsertPara
+Insert "			}"
+InsertPara
+Insert "		}"
+InsertPara
+Insert "	}"
+InsertPara
+Insert ""
+InsertPara
+Insert "	fclose(fp);"
+InsertPara
+Insert "	return(0);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "cmap"
+NextCell
+MarkIndexEntry .Entry = "cmap"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Get call map for all functions"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void cmap(void);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_fn "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "main."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "findfuncln, contfunc."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void cmap(void)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    FILE *fp;"
+InsertPara
+Insert "    char str[256];"
+InsertPara
+Insert "    int i,j,k;"
+InsertPara
+Insert "    int lc,fnum,numc;"
+InsertPara
+Insert "    int *calls;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    for (i=0;i<NUMFUNC;i++) G_fn[i].nc=0;"
+InsertPara
+Insert "    calls=malloc(1000*sizeof(int));"
+InsertPara
+Insert ""
+InsertPara
+Insert "    for (i=0;i<G_numf;i++) {"
+InsertPara
+Insert "        fp=fopen(G_fname[i]," + Chr$(34) + "r" + Chr$(34) + ");"
+InsertPara
+Insert "        if (fp==NULL) {"
+InsertPara
+Insert "            fprintf(stderr," + Chr$(34) + "Can't open %-15s               \r" + Chr$(34) + ",G_fname[i]);"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        else {"
+InsertPara
+Insert "            fprintf(stderr," + Chr$(34) + "Analysing functions in %-15s :\r" + Chr$(34) + ",G_fname[i]);"
+InsertPara
+Insert "            lc=0;"
+InsertPara
+Insert "            while (fgets(str,255,fp)!=NULL) {"
+InsertPara
+Insert "                if ((str[0]!='#')&&(str[0]!='/')) {"
+InsertPara
+Insert "                    str[strlen(str)-1]=0;"
+InsertPara
+Insert "                    for (j=0;j<G_numn;j++) {"
+InsertPara
+Insert "                        if (findfuncln(j,i,lc)) {"
+InsertPara
+Insert "				            fprintf(stderr," + Chr$(34) + "Analysing functions in %-15s : %s                \r" + Chr$(34) + ",G_fname[i],G_fn[j].n);"
+InsertPara
+Insert "                            numc=0;"
+InsertPara
+Insert "                            while ((lc<G_fn[j].el)&&(fgets(str,255,fp)!=NULL)) {"
+InsertPara
+Insert "                                if ((str[0]!='#')&&(str[0]!='/')) {"
+InsertPara
+Insert "                                    str[strlen(str)-1]=0;"
+InsertPara
+Insert "                                    while ((fnum=contfunc(str))!=(-1)) {"
+InsertPara
+Insert "                                        for (k=0;k<numc;k++) {"
+InsertPara
+Insert "                                            if ((calls[k]&0x3FFF)==fnum) k=2000;"
+InsertPara
+Insert "                                        }"
+InsertPara
+Insert "                                        if (k<2000) {"
+InsertPara
+Insert "											if (G_fn[fnum].fn!=i) "
+InsertPara
+Insert "	                                            calls[numc++]=fnum|0x4000;"
+InsertPara
+Insert "											else"
+InsertPara
+Insert "	                                            calls[numc++]=fnum;"
+InsertPara
+Insert "                                        }"
+InsertPara
+Insert "                                    }"
+InsertPara
+Insert "                                }"
+InsertPara
+Insert "                                lc++;"
+InsertPara
+Insert "                            }"
+InsertPara
+Insert "                            if (numc) {"
+InsertPara
+Insert "                                G_fn[j].c=malloc(numc*sizeof(int));"
+InsertPara
+Insert "                                G_fn[j].nc=numc;"
+InsertPara
+Insert "                                memcpy(G_fn[j].c,calls,(numc*sizeof(int)));"
+InsertPara
+Insert "                                numc=0;"
+InsertPara
+Insert "                            }"
+InsertPara
+Insert "                        }"
+InsertPara
+Insert "                    }"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                lc++;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            fclose(fp);"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    free(calls);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "cntcurly"
+NextCell
+MarkIndexEntry .Entry = "cntcurly"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Counts curly the braces in s = '{' = +1   '}' = -1"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "int cntcurly(char *s);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *s "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "int "
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "s "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "funcfind."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "int cntcurly(char *s)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    int ret=0;"
+InsertPara
+Insert "	int ignore=0;"
+InsertPara
+Insert "    while (*s) {"
+InsertPara
+Insert "		if ((*s=='\" + Chr$(34) + "')&&((*(s-1)!='\\')||((*(s-2)=='\\')&&(*(s-1)=='\\')))) ignore^=1;"
+InsertPara
+Insert "		if ((*s=='\'')&&((*(s-1)!='\\')||((*(s-2)=='\\')&&(*(s-1)=='\\')))) ignore^=2;"
+InsertPara
+Insert "		if (!ignore) {"
+InsertPara
+Insert "        	if (*s=='{') ret++;"
+InsertPara
+Insert "        	if (*s=='}') ret--;"
+InsertPara
+Insert "		}"
+InsertPara
+Insert "        s++;"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    return(ret);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "contfunc"
+NextCell
+MarkIndexEntry .Entry = "contfunc"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Returns +tive value if a line contains a known function"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "int contfunc(char *str);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *str "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "int "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "cmap."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "int contfunc(char *str)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    static int i=0;"
+InsertPara
+Insert "    char *t;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if (!*str) {"
+InsertPara
+Insert "        i=0;"
+InsertPara
+Insert "        return(-1);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert ""
+InsertPara
+Insert "    for (;i<G_numn;i++) {"
+InsertPara
+Insert "        t=strstr(str,G_fn[i].n);"
+InsertPara
+Insert "        if (t!=NULL) {"
+InsertPara
+Insert "            if (((!isalnum(*(t-1)))||(t==str))&&(*(t-1)!='_')&&(*(t-1)!='\" + Chr$(34) + "')) {"
+InsertPara
+Insert "                t+=strlen(G_fn[i].n);"
+InsertPara
+Insert "                while ((*t)&&(isspace(*t))) t++;"
+InsertPara
+Insert "                if (!isalnum(*t)&&(*t!='_')&&(*t!='\" + Chr$(34) + "')) return(i++);"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert ""
+InsertPara
+Insert "    i=0;"
+InsertPara
+Insert "    return(-1);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "disppick"
+NextCell
+MarkIndexEntry .Entry = "disppick"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "display a pick list of functions for selection"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void disppick(int w,int idx);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "int w "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "int idx "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "editcoms."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void disppick(int w,int idx)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "	int i,j;"
+InsertPara
+Insert "	int ni=(80/w)*24;"
+InsertPara
+Insert "	int ofs;"
+InsertPara
+Insert "	int attr;"
+InsertPara
+Insert ""
+InsertPara
+Insert "	if (idx>G_numn) idx=G_numn-1;"
+InsertPara
+Insert "	if (idx>=ni) ofs=idx-(ni-1); else ofs=0;"
+InsertPara
+Insert ""
+InsertPara
+Insert "	for (i=0;i<80;i+=w) {"
+InsertPara
+Insert "		for (j=0;j<24;j++) {"
+InsertPara
+Insert "			if (ofs==idx) attr=0x10; else attr=0;"
+InsertPara
+Insert "			if (G_fn[ofs].ac) textattr(15|attr); else textattr(12|attr);"
+InsertPara
+Insert "			gotoxy(i+1,j+1);"
+InsertPara
+Insert "			cprintf(" + Chr$(34) + "%-*.*s" + Chr$(34) + ",w,w,((ofs<G_numn)?G_fn[ofs].n:" + Chr$(34) + "" + Chr$(34) + "));"
+InsertPara
+Insert "			ofs++;"
+InsertPara
+Insert "		}"
+InsertPara
+Insert "	}"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "editcoms"
+NextCell
+MarkIndexEntry .Entry = "editcoms"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "select a function from a list and edit it"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void editcoms(void);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "main."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "disppick, getkey, editfunc."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void editcoms(void)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    int i,xit=0;"
+InsertPara
+Insert "	clrscr();"
+InsertPara
+Insert "	i=0;"
+InsertPara
+Insert "	while (!xit) {"
+InsertPara
+Insert "		disppick(20,i);"
+InsertPara
+Insert "		switch (getkey()) {"
+InsertPara
+Insert "			case ESC :"
+InsertPara
+Insert "				xit=1;"
+InsertPara
+Insert "				break;"
+InsertPara
+Insert "			case UP :"
+InsertPara
+Insert "				if (i>0) i--;"
+InsertPara
+Insert "				break;"
+InsertPara
+Insert "			case DOWN :"
+InsertPara
+Insert "				if (i<G_numn-1) i++;"
+InsertPara
+Insert "				break;"
+InsertPara
+Insert "			case RGT :"
+InsertPara
+Insert "				i+=24;"
+InsertPara
+Insert "				if (i>G_numn-1) i%=24;"
+InsertPara
+Insert "				break;"
+InsertPara
+Insert "			case LEFT :"
+InsertPara
+Insert "				i-=24;"
+InsertPara
+Insert "				if (i<0) i=G_numn+i;"
+InsertPara
+Insert "				if (i>G_numn-1) i=G_numn-1;"
+InsertPara
+Insert "				break;"
+InsertPara
+Insert "			case CR :"
+InsertPara
+Insert "			case LF :"
+InsertPara
+Insert "				editfunc(i);"
+InsertPara
+Insert "				clrscr();"
+InsertPara
+Insert "				break;"
+InsertPara
+Insert "		}"
+InsertPara
+Insert "	}"
+InsertPara
+Insert "	textattr(0x07);"
+InsertPara
+Insert "	clrscr();"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "editfunc"
+NextCell
+MarkIndexEntry .Entry = "editfunc"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Edit the function comments"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void editfunc(int index);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "int index "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_str "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "editcoms."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "getcomments."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void editfunc(int index)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    char tmp[40],ret[40],name[40],prot[150],dfile[15],*t;"
+InsertPara
+Insert "    int i=0,j=0,k=0,l=0,m;"
+InsertPara
+Insert ""
+InsertPara
+Insert "	if (G_ftname[G_fn[index].fn]!=NULL) {"
+InsertPara
+Insert "		strcpy(dfile,G_ftname[G_fn[index].fn]);"
+InsertPara
+Insert "	} else {"
+InsertPara
+Insert "		strcpy(dfile," + Chr$(34) + "None" + Chr$(34) + ");"
+InsertPara
+Insert "	}"
+InsertPara
+Insert "	l=getcomments(dfile,index);"
+InsertPara
+Insert "    sprintf(prot," + Chr$(34) + "%s;" + Chr$(34) + ",G_fn[index].p);"
+InsertPara
+Insert "    strcpy(name,G_fn[index].n);"
+InsertPara
+Insert "    strcpy(G_lstr,G_fn[index].s);"
+InsertPara
+Insert ""
+InsertPara
+Insert "    t=strstr(prot,name);"
+InsertPara
+Insert "    memcpy(ret,prot,(int)(t-prot));"
+InsertPara
+Insert "    ret[(int)(t-prot)]=0;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if ((ret[0]==' ')||(ret[0]==0)) {"
+InsertPara
+Insert "        sprintf(prot," + Chr$(34) + "int %s;" + Chr$(34) + ",G_fn[index].p);"
+InsertPara
+Insert "        strcpy(ret," + Chr$(34) + "int" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    t=&ret[strlen(ret)-1];"
+InsertPara
+Insert "    while (isspace(*t)) t--;"
+InsertPara
+Insert "    *(t+1)=0;"
+InsertPara
+Insert "	textattr(0x0F);"
+InsertPara
+Insert "	clrscr();"
+InsertPara
+Insert "	gotoxy(1,1);"
+InsertPara
+Insert "    cprintf(" + Chr$(34) + "Function:     %-s" + Chr$(34) + ",name);"
+InsertPara
+Insert "	gotoxy(1,2);"
+InsertPara
+Insert "    cprintf(" + Chr$(34) + "Synopsis:     " + Chr$(34) + ");"
+InsertPara
+Insert "	textattr(0x1E);"
+InsertPara
+Insert "    if ((G_lstr[0]=='/')&&(G_lstr[1]=='/')) {"
+InsertPara
+Insert "        t=&G_lstr[2];"
+InsertPara
+Insert "        while ((*t)&&isspace(*t)) t++;"
+InsertPara
+Insert "	    cprintf(" + Chr$(34) + "%-66.66s" + Chr$(34) + ",t);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    else {"
+InsertPara
+Insert "	    cprintf(" + Chr$(34) + "%-66.66s" + Chr$(34) + "," + Chr$(34) + "" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "	textattr(0x0F);"
+InsertPara
+Insert "	gotoxy(1,3);"
+InsertPara
+Insert "    cprintf(" + Chr$(34) + "Prototype:    %s" + Chr$(34) + ",prot);"
+InsertPara
+Insert "	gotoxy(1,4);"
+InsertPara
+Insert "    cprintf(" + Chr$(34) + "Module:       %s (Comments in - %s %d)" + Chr$(34) + ",G_fname[G_fn[index].fn],dfile,l);"
+InsertPara
+Insert "    G_str=strstr(prot,name);"
+InsertPara
+Insert "    G_str+=strlen(name);"
+InsertPara
+Insert "	i=0;"
+InsertPara
+Insert "	j=strlen(ret);"
+InsertPara
+Insert "    while ((*G_str)&&(*G_str!=')')) {"
+InsertPara
+Insert "        if (isspace(*G_str)||(*G_str=='(')||(*G_str==',')) {"
+InsertPara
+Insert "            G_str++;"
+InsertPara
+Insert "        } else {"
+InsertPara
+Insert "            t=tmp;"
+InsertPara
+Insert "            while ((*G_str)&&(*G_str!=')')&&(*G_str!=',')) *(t++)=*(G_str++);"
+InsertPara
+Insert "            *t=0;"
+InsertPara
+Insert "            t--;"
+InsertPara
+Insert "            while (isspace(*t)) t--;"
+InsertPara
+Insert "            *(t+1)=0;"
+InsertPara
+Insert "            if (strcmp(tmp," + Chr$(34) + "void" + Chr$(34) + ")) {"
+InsertPara
+Insert "				gotoxy(1,i+5);"
+InsertPara
+Insert "				textattr(0x0F);"
+InsertPara
+Insert "                cprintf(" + Chr$(34) + "%s%-s" + Chr$(34) + ",((i==0)?" + Chr$(34) + "Passed:       " + Chr$(34) + ":" + Chr$(34) + "              " + Chr$(34) + "),tmp);"
+InsertPara
+Insert "				j=max(j,strlen(tmp));"
+InsertPara
+Insert "                i++;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "	textattr(0x1E);"
+InsertPara
+Insert "	for (k=0;k<i;k++) {"
+InsertPara
+Insert "		gotoxy(16+j,k+5);"
+InsertPara
+Insert "		cprintf(" + Chr$(34) + "%-*.*s" + Chr$(34) + ",65-j,65-j,G_passln[k]);"
+InsertPara
+Insert "	}"
+InsertPara
+Insert "	gotoxy(1,i+5);"
+InsertPara
+Insert "	textattr(0x0F);"
+InsertPara
+Insert "    if (strcmp(ret," + Chr$(34) + "void" + Chr$(34) + ")) {"
+InsertPara
+Insert "	    cprintf(" + Chr$(34) + "Return Value: %-s " + Chr$(34) + ",ret);"
+InsertPara
+Insert "		textattr(0x1E);"
+InsertPara
+Insert "		gotoxy(16+j,i+5);"
+InsertPara
+Insert "		cprintf(" + Chr$(34) + "%-*.*s" + Chr$(34) + ",65-j,65-j,G_retln);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    else {"
+InsertPara
+Insert "        printf(" + Chr$(34) + "Return Value: None" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "	textattr(0x0F);"
+InsertPara
+Insert "	gotoxy(1,i+7);"
+InsertPara
+Insert "    cprintf(" + Chr$(34) + "Description:  " + Chr$(34) + ");"
+InsertPara
+Insert "	textattr(0x1E);"
+InsertPara
+Insert "	gotoxy(1,i+8);"
+InsertPara
+Insert "	m=24-(i+8);"
+InsertPara
+Insert "	if (m>10) m=10;"
+InsertPara
+Insert "	for (k=0;k<m;k++) cprintf(" + Chr$(34) + "%-80.80s" + Chr$(34) + ",G_descln[k]);"
+InsertPara
+Insert "	getch();"
+InsertPara
+Insert "	textattr(0x0F);"
+InsertPara
+Insert "	clrscr();"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "fcmp"
+NextCell
+MarkIndexEntry .Entry = "fcmp"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Compare two functions for sorting"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "int fcmp(const void *a,const void *b);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "const void *a "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "const void *b "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "int "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "main."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "int fcmp(const void *a,const void *b)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    char tmpa[80];"
+InsertPara
+Insert "    char tmpb[80];"
+InsertPara
+Insert "    strcpy(tmpa,((FUNCDATA *)a)->n);"
+InsertPara
+Insert "    strupr(tmpa);"
+InsertPara
+Insert "    strcpy(tmpb,((FUNCDATA *)b)->n);"
+InsertPara
+Insert "    strupr(tmpb);"
+InsertPara
+Insert "    return(strcmp(tmpa,tmpb));"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "findfuncln"
+NextCell
+MarkIndexEntry .Entry = "findfuncln"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Returns true if on the function start line number in a file"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "int findfuncln(int func,int file,int ln);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "int func "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "int file "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "int ln "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "int "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "cmap."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "int findfuncln(int func,int file,int ln)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    return((G_fn[func].fn==file)&&(G_fn[func].sl==ln));"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "funcfind"
+NextCell
+MarkIndexEntry .Entry = "funcfind"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Find all functions in a file."
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void funcfind(char *name);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *name "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_lstr G_fname G_rstr G_str G_fn G_numn G_numlvars G_nummvars "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "getfiles, main."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "addlinetolist, remcom, cntcurly, iscword, isvalword, getfname, prlast20com, arecomments, savelvars, savegmod."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void funcfind(char *name)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    FILE *fp;"
+InsertPara
+Insert "    char r[256],*t;"
+InsertPara
+Insert "//    char sname[40];"
+InsertPara
+Insert "    int i,lc=0;"
+InsertPara
+Insert "    int v=0;"
+InsertPara
+Insert "    int infunc=0;"
+InsertPara
+Insert "    int curly=0;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    G_lstr[0]=0;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    fp=fopen(name," + Chr$(34) + "r" + Chr$(34) + ");"
+InsertPara
+Insert "    if (fp==NULL) {"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "Can't open %-15s               \r" + Chr$(34) + ",name);"
+InsertPara
+Insert "        return;"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    fprintf(stderr," + Chr$(34) + "Building Function list from %-15s :\r" + Chr$(34) + ",name);"
+InsertPara
+Insert "    if ((name[0]=='.')&&(name[1]=='\\')) "
+InsertPara
+Insert "        G_fname[G_numf++]=strdup(&name[2]);"
+InsertPara
+Insert "    else "
+InsertPara
+Insert "        G_fname[G_numf++]=strdup(name);"
+InsertPara
+Insert ""
+InsertPara
+Insert "    while (fgets(G_rstr,255,fp)!=NULL) {"
+InsertPara
+Insert "        G_rstr[strlen(G_rstr)-1]=0;"
+InsertPara
+Insert "        addlinetolist(G_rstr);"
+InsertPara
+Insert "        if ((G_rstr[0]!='#')&&(G_rstr[0]!='/')) {"
+InsertPara
+Insert "            strcpy(G_rstr,remcom(G_rstr));"
+InsertPara
+Insert "            curly+=cntcurly(G_rstr);"
+InsertPara
+Insert "            i=strlen(G_rstr)-1;"
+InsertPara
+Insert "            while (isspace(G_rstr[i])&&(i>0)) i--;"
+InsertPara
+Insert "            G_rstr[i+1]=0;"
+InsertPara
+Insert "            G_str=G_rstr;"
+InsertPara
+Insert "            if (!iscword()) {"
+InsertPara
+Insert "                while (isvalword());"
+InsertPara
+Insert "                if ((*G_str=='(')&&((G_rstr[i]==')')||(G_rstr[i]=='{')||(G_rstr[i]=='}'))) {"
+InsertPara
+Insert "                    if ((G_rstr[i]=='{')&&(G_rstr[i]!='}')) G_rstr[i]=0;"
+InsertPara
+Insert "                    G_str=G_rstr;"
+InsertPara
+Insert "                    while ((*G_str)&&isspace(*G_str)) G_str++;"
+InsertPara
+Insert "                    G_fn[G_numn].p=strdup(G_str);"
+InsertPara
+Insert "                    G_fn[G_numn].s=strdup(G_lstr);"
+InsertPara
+Insert "                    G_fn[G_numn].n=strdup(getfname(G_str));"
+InsertPara
+Insert "				    fprintf(stderr," + Chr$(34) + "Building Function list from %-15s : %d %s            \r" + Chr$(34) + ",name,G_numn,G_fn[G_numn].n);"
+InsertPara
+Insert "                    G_fn[G_numn].fn=G_numf-1;"
+InsertPara
+Insert "                    prlast20com(G_numn);"
+InsertPara
+Insert "                    G_fn[G_numn].sl=lc;"
+InsertPara
+Insert "                    if (G_fn[G_numn].n!=NULL) {"
+InsertPara
+Insert "						G_fn[G_numn].ac=arecomments(G_ftname[G_numf-1],G_fn[G_numn].n);"
+InsertPara
+Insert "						G_numn++;"
+InsertPara
+Insert "					}"
+InsertPara
+Insert "                    infunc=1;"
+InsertPara
+Insert "                    curly=cntcurly(G_rstr);"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            if ((infunc==1)&&(curly==1)) {"
+InsertPara
+Insert "                infunc=2;"
+InsertPara
+Insert "                G_numlvars=0;"
+InsertPara
+Insert "                G_nummvars=0;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            if ((infunc==2)&&(curly==0)) {"
+InsertPara
+Insert "                infunc=0;"
+InsertPara
+Insert "                if (G_nummvars) {"
+InsertPara
+Insert "                    free(G_fn[G_numn-1].m);"
+InsertPara
+Insert "                    r[0]=0;"
+InsertPara
+Insert "                    for (i=0;i<G_nummvars;i++) {"
+InsertPara
+Insert "                        sprintf(&r[strlen(r)]," + Chr$(34) + "%s " + Chr$(34) + ",G_mvars[i]);"
+InsertPara
+Insert "                    }"
+InsertPara
+Insert "                    G_fn[G_numn-1].m=strdup(r);"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                G_fn[G_numn-1].el=lc;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            if (infunc==2) {"
+InsertPara
+Insert "                G_str=G_rstr;"
+InsertPara
+Insert "                if (!iscword()) {"
+InsertPara
+Insert "                    v=0;"
+InsertPara
+Insert "                    if (isvalword()) if (isspace(*G_str)) if (isvalword()) v=1;"
+InsertPara
+Insert "                    if ((*G_str!='(')&&(G_rstr[i]==';')&&(v)) {"
+InsertPara
+Insert "                        savelvars(G_rstr);"
+InsertPara
+Insert "                    }"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                G_str=G_rstr;"
+InsertPara
+Insert "                if (!iscword()) {"
+InsertPara
+Insert "                    while (isvalword());"
+InsertPara
+Insert "                    if ((*G_str)&&(*G_str!='(')&&(!v)) {"
+InsertPara
+Insert "                        savegmod(G_rstr);"
+InsertPara
+Insert "                    }"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        lc++;"
+InsertPara
+Insert "        if (G_rstr[0]!=0) {"
+InsertPara
+Insert "            strcpy(G_lstr,G_rstr);"
+InsertPara
+Insert "			if (!strncmp(G_rstr," + Chr$(34) + "//SYSDOC" + Chr$(34) + ",8)) {"
+InsertPara
+Insert "				t=strtok(&G_rstr[9]," + Chr$(34) + " \t\r\n" + Chr$(34) + ");"
+InsertPara
+Insert "				if (t!=NULL) G_ftname[G_numf-1]=strdup(t);"
+InsertPara
+Insert "			}"
+InsertPara
+Insert "		} else {"
+InsertPara
+Insert "            strcpy(G_lstr," + Chr$(34) + "--" + Chr$(34) + ");"
+InsertPara
+Insert "		}"
+InsertPara
+Insert "    }"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "getcomments"
+NextCell
+MarkIndexEntry .Entry = "getcomments"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Return true if a function has been commented and collect those comments"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "int getcomments(char *file,int idx);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *file "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "int idx "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "int "
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_retln G_np G_nd G_fn "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "editfunc, prpage, prpagemac, prpagen, prpagewp."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "int getcomments(char *file,int idx)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "	FILE *fp;"
+InsertPara
+Insert "	int f;"
+InsertPara
+Insert "	char *func=G_fn[idx].n;"
+InsertPara
+Insert "	char tmp[100];"
+InsertPara
+Insert "	"
+InsertPara
+Insert "	G_retln[0]=0;"
+InsertPara
+Insert "	for (f=0;f<20;f++) G_passln[f][0]=0;"
+InsertPara
+Insert "	for (f=0;f<30;f++) G_descln[f][0]=0;"
+InsertPara
+Insert "	G_np=0;"
+InsertPara
+Insert "	G_nd=0;"
+InsertPara
+Insert "    "
+InsertPara
+Insert "	if ((strcmp(file,GLOBCOMFILE))&&(!G_fn[idx].ac)) return(0);"
+InsertPara
+Insert "	fp=fopen(file," + Chr$(34) + "r" + Chr$(34) + ");"
+InsertPara
+Insert "	if (fp==NULL) return(0);"
+InsertPara
+Insert ""
+InsertPara
+Insert "	f=0;"
+InsertPara
+Insert "	while (fgets(tmp,80,fp)!=NULL) {"
+InsertPara
+Insert "		if (!f) {"
+InsertPara
+Insert "			if (tmp[0]=='F') {"
+InsertPara
+Insert "				if (!strncmp(func,&tmp[2],strlen(func))) f=1;"
+InsertPara
+Insert "			}"
+InsertPara
+Insert "		} else {"
+InsertPara
+Insert "			switch (tmp[0]) {"
+InsertPara
+Insert "				case 'R' :"
+InsertPara
+Insert "					tmp[strlen(tmp)-1]=0;"
+InsertPara
+Insert "					sprintf(G_retln," + Chr$(34) + " - %s" + Chr$(34) + ",&tmp[2]);"
+InsertPara
+Insert "					break;"
+InsertPara
+Insert "				case 'P' :"
+InsertPara
+Insert "					tmp[strlen(tmp)-1]=0;"
+InsertPara
+Insert "					sprintf(G_passln[G_np++]," + Chr$(34) + " - %s" + Chr$(34) + ",&tmp[2]);"
+InsertPara
+Insert "					break;"
+InsertPara
+Insert "				case 'D' :"
+InsertPara
+Insert "					tmp[strlen(tmp)-1]=0;"
+InsertPara
+Insert "					sprintf(G_descln[G_nd++]," + Chr$(34) + "%s" + Chr$(34) + ",&tmp[2]);"
+InsertPara
+Insert "					break;"
+InsertPara
+Insert "				case 'S' :"
+InsertPara
+Insert "					tmp[strlen(tmp)-1]=0;"
+InsertPara
+Insert "                    tmp[0]='\/';"
+InsertPara
+Insert "                    tmp[1]='\/';"
+InsertPara
+Insert "                    if (G_fn[idx].s!=NULL) free(G_fn[idx].s);"
+InsertPara
+Insert "                    G_fn[idx].s=strdup(tmp);"
+InsertPara
+Insert "					break;"
+InsertPara
+Insert "				default :"
+InsertPara
+Insert "					fclose(fp);"
+InsertPara
+Insert "					return(f);"
+InsertPara
+Insert "			}"
+InsertPara
+Insert "		}"
+InsertPara
+Insert "	}"
+InsertPara
+Insert "	fclose(fp);"
+InsertPara
+Insert "	return(f);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "getfiles"
+NextCell
+MarkIndexEntry .Entry = "getfiles"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Recursivly search [sub-]directorys for files"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void getfiles(char *path,char *search,int depth);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *path "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "char *search "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "int depth "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "path "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "getfiles, main."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "getfiles, funcfind."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void getfiles(char *path,char *search,int depth)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    struct ffblk *fi;                              /* file information     */"
+InsertPara
+Insert "    char *curpath;                                  /* local strings        */"
+InsertPara
+Insert "    char *newpath;"
+InsertPara
+Insert "    char *dirpath;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    curpath=malloc(strlen(path)+strlen(search)+2);  /* get space            */"
+InsertPara
+Insert "    newpath=malloc(strlen(path)+16);"
+InsertPara
+Insert "    dirpath=malloc(strlen(path)+5);"
+InsertPara
+Insert "    fi=malloc(sizeof(struct ffblk));"
+InsertPara
+Insert ""
+InsertPara
+Insert "    sprintf(curpath," + Chr$(34) + "%s%s" + Chr$(34) + ",path,search);            /* set search path      */"
+InsertPara
+Insert "    sprintf(dirpath," + Chr$(34) + "%s%s" + Chr$(34) + ",path," + Chr$(34) + "*.*" + Chr$(34) + ");             /* directory not limited*/"
+InsertPara
+Insert ""
+InsertPara
+Insert "    findfirst(dirpath,fi,DIRATTR);             /* ignore .             */"
+InsertPara
+Insert "    if (strcmp(fi->ff_name," + Chr$(34) + "." + Chr$(34) + ")) {                     /* check for root dir   */"
+InsertPara
+Insert "        sprintf(newpath," + Chr$(34) + "%s%s\\" + Chr$(34) + ",path,fi->ff_name);    /* concat dir name      */"
+InsertPara
+Insert "        if (G_recurse) getfiles(newpath,search,depth+1);           /* recurse              */"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    else {"
+InsertPara
+Insert "        findnext(fi);                          /* ignore ..            */"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    while (findnext(fi)==0) {                  /* do all directorys    */"
+InsertPara
+Insert "        if (fi->ff_attrib&DIRATTR)  {                  /* make sure it's a dir */"
+InsertPara
+Insert "            sprintf(newpath," + Chr$(34) + "%s%s\\" + Chr$(34) + ",path,fi->ff_name);/* concat dir name      */"
+InsertPara
+Insert "            if (G_recurse) getfiles(newpath,search,depth+1);       /* recurse              */"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if (findfirst(curpath,fi,FILEATTR)==0) {   /* get the first file   */"
+InsertPara
+Insert "        do {                                      "
+InsertPara
+Insert "            sprintf(newpath," + Chr$(34) + "%s%s" + Chr$(34) + ",path,fi->ff_name);  /* concat path & file   */"
+InsertPara
+Insert "            funcfind(newpath);"
+InsertPara
+Insert "        } while (findnext(fi)==0);             /* get the next file    */"
+InsertPara
+Insert "    }"
+InsertPara
+Insert ""
+InsertPara
+Insert "    path[strlen(path)-1]=0;                         /* take the '\' off     */"
+InsertPara
+Insert ""
+InsertPara
+Insert "    free(fi);                                       /* clean up             */"
+InsertPara
+Insert "    free(dirpath);"
+InsertPara
+Insert "    free(newpath);"
+InsertPara
+Insert "    free(curpath);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "getfname"
+NextCell
+MarkIndexEntry .Entry = "getfname"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Returns the function name from a prototype"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "char *getfname(char *prot);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *prot "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "char * "
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_str "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "funcfind."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "char *getfname(char *prot)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    char *p;"
+InsertPara
+Insert "    static char tmp[80];"
+InsertPara
+Insert "    int i=0;"
+InsertPara
+Insert "    p=prot;"
+InsertPara
+Insert "    while ((*p)&&(*p!='(')) p++;"
+InsertPara
+Insert "    if ((!*p)||(p==prot)) return(prot);"
+InsertPara
+Insert "    G_str=p;"
+InsertPara
+Insert "    p--;"
+InsertPara
+Insert "    while ((p!=prot)&&isspace(*p)) p--;"
+InsertPara
+Insert "    while ((p!=prot)&&(!isspace(*p))&&(*p!='*')) { i++; p--; }"
+InsertPara
+Insert "    p++;"
+InsertPara
+Insert "    strncpy(tmp,p,i);"
+InsertPara
+Insert "    tmp[i]=0;"
+InsertPara
+Insert "    return(tmp);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "getkey"
+NextCell
+MarkIndexEntry .Entry = "getkey"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Return a key press +tive if normal key -tive if extended key"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "int getkey(void);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "int "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "editcoms."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "int getkey(void)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "	int k;"
+InsertPara
+Insert "	if (!(k=getch())) k=0-getch();"
+InsertPara
+Insert "	return(k);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "isctype"
+NextCell
+MarkIndexEntry .Entry = "isctype"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Returns true if G_str points to a reserved type."
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "int isctype(void);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "int "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "savelvars."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "match."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "int isctype(void)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    int i=0;"
+InsertPara
+Insert "    while (G_ctypes[i][0]!='#') {"
+InsertPara
+Insert "        if (match(G_ctypes[i])) return(i+1);"
+InsertPara
+Insert "        i++;"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    return(0);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "iscword"
+NextCell
+MarkIndexEntry .Entry = "iscword"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Returns true if G_str points to a reserved word."
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "int iscword(void);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "int "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "funcfind."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "match."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "int iscword(void)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    int i=0;"
+InsertPara
+Insert "    while (G_cnames[i][0]!='#') {"
+InsertPara
+Insert "        if (match(G_cnames[i])) return(i+1);"
+InsertPara
+Insert "        i++;"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    return(0);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "isvalword"
+NextCell
+MarkIndexEntry .Entry = "isvalword"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Returns true if G_str points to a valid word."
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "int isvalword(void);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "int "
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_str "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "funcfind, savegmod, savelvars."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "int isvalword(void)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    char *p;"
+InsertPara
+Insert "    while (isspace(*G_str)) G_str++;"
+InsertPara
+Insert "    p=G_str;"
+InsertPara
+Insert "    while ((*p)&&(isalnum(*p)||(*p=='*')||(*p=='_'))) p++;"
+InsertPara
+Insert "    if (p==G_str) return(0);"
+InsertPara
+Insert "    G_str=p;"
+InsertPara
+Insert "    return(1);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "load"
+NextCell
+MarkIndexEntry .Entry = "load"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Load the collected data in binary format"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void load(char *file);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *file "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_fn "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "main."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "readvar."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void load(char *file)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "	int fd;"
+InsertPara
+Insert "	int i;"
+InsertPara
+Insert "	if ((fd=open(file,O_RDONLY|O_BINARY))==(-1)) return;"
+InsertPara
+Insert "	read(fd,&G_numf,sizeof(int));"
+InsertPara
+Insert "	for (i=0;i<G_numf;i++) {"
+InsertPara
+Insert "		readvar(fd,&(G_fname[i] ));"
+InsertPara
+Insert "		readvar(fd,&(G_ftname[i]));"
+InsertPara
+Insert "	}"
+InsertPara
+Insert "	read(fd,&G_numn,sizeof(int));"
+InsertPara
+Insert "	for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "		readvar(fd,&(G_fn[i].n));"
+InsertPara
+Insert "		readvar(fd,&(G_fn[i].p));"
+InsertPara
+Insert "		readvar(fd,&(G_fn[i].s));"
+InsertPara
+Insert "		readvar(fd,&(G_fn[i].m));"
+InsertPara
+Insert "		G_fn[i].nc=readvar(fd,(char **)&(G_fn[i].c))/sizeof(int);"
+InsertPara
+Insert "		read(fd,&(G_fn[i].fn),sizeof(int));"
+InsertPara
+Insert "		read(fd,&(G_fn[i].sl),sizeof(int));"
+InsertPara
+Insert "		read(fd,&(G_fn[i].el),sizeof(int));"
+InsertPara
+Insert "		read(fd,&(G_fn[i].ac),sizeof(char));"
+InsertPara
+Insert "	}"
+InsertPara
+Insert "	close(fd);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "macstr"
+NextCell
+MarkIndexEntry .Entry = "macstr"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "char *macstr(char *sl);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *sl "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "char * "
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "sl "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "prpagemac."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "char *macstr(char *sl)"
+InsertPara
+Insert "{"
+InsertPara
+Insert ""
+InsertPara
+Insert "    static char tmpln[500];"
+InsertPara
+Insert "    int l;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    tmpln[0]='" + Chr$(34) + "';"
+InsertPara
+Insert "    tmpln[1]=0;"
+InsertPara
+Insert "    while (*sl&&(*sl!='\n')&&(*sl!='\r')) {"
+InsertPara
+Insert "        if (*sl=='" + Chr$(34) + "') {"
+InsertPara
+Insert "            strcat(tmpln," + Chr$(34) + "\" + Chr$(34) + " + Chr$(34) + \" + Chr$(34) + "" + Chr$(34) + ");"
+InsertPara
+Insert "        } else {"
+InsertPara
+Insert "            l=strlen(tmpln);"
+InsertPara
+Insert "            tmpln[l++]=*sl;"
+InsertPara
+Insert "            tmpln[l]=0;"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        sl++;"
+InsertPara
+Insert "    }"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "main"
+NextCell
+MarkIndexEntry .Entry = "main"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Document System - " + Chr$(34) + "DOCU file(s)" + Chr$(34) + "  Exmpl. - SYSDOC *.c, SYSDOC @file.lst"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "int main(int argc,char *argv[]);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "int argc "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "char *argv[] "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "int "
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_function G_recurse G_donefn G_numn G_numf "
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "load, funcfind, getfiles, fcmp, cmap, prpage, editcoms, prtree, prpagewp, prpagemac, save, prpagen."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "int main(int argc,char *argv[])"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    int i,j,k,e,nl,rl;"
+InsertPara
+Insert "    int an=1;"
+InsertPara
+Insert "    char otype='n';"
+InsertPara
+Insert "    char sort='s';"
+InsertPara
+Insert "    FILE *fp;"
+InsertPara
+Insert "    char filename[100];"
+InsertPara
+Insert "    char *dir;                                      /* holding string       */"
+InsertPara
+Insert "    char *file;                                     /* holding string       */"
+InsertPara
+Insert "    char ret[40];"
+InsertPara
+Insert "    char *t;"
+InsertPara
+Insert "    G_function[0]=0;"
+InsertPara
+Insert "    if ((G_fn=malloc(NUMFUNC*sizeof(FUNCDATA)))==NULL) {"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "Not Enough Memory\n" + Chr$(34) + ");"
+InsertPara
+Insert "        return(1);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert ""
+InsertPara
+Insert "    for (i=0;i<NUMFUNC;i++) { G_fn[i].fn=0; G_fn[i].m=strdup(" + Chr$(34) + "*" + Chr$(34) + "); }"
+InsertPara
+Insert "    for (i=0;i<100;i++) G_ftname[i]=NULL;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    fprintf(stderr," + Chr$(34) + "'C' System Documentation generator Copyright (c) 1993 Cykor Systems.\n" + Chr$(34) + ");"
+InsertPara
+Insert "    if (argc<2) {"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "docu [-u|w|b|n|N|p|P|e|E|t|x|s,s|u] file [function]\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "options:  -u   Programmers manual Unix style (Text)\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          -w   Programmers manual Unix style (WP)\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          -b   Programmers manual boxed pages\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + " default  -n   list function names\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          -N   list function Names by module\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          -p   list function prototypes\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          -P   list function prototypes spaced\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          -e   list function prototypes spaced with externs\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          -E   Edit comments\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          -x   function x-reference\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          -t   function tree\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          -ssfile save sorted in 'file'\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          -sufile save unsorted in 'file'\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + " default  -*s  sort by function name\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          -*u  don't sort by function name\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "file:     @filename - list file\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          #filename - saved file\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          *.c ???.c - wild card matching\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "          file.c    - single file\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "function: generate documentation for one function\n" + Chr$(34) + ");"
+InsertPara
+Insert "        fprintf(stderr," + Chr$(34) + "Generates documentation on stdout, all other output goes through stderr" + Chr$(34) + ");"
+InsertPara
+Insert "        return(1);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (argv[an][0]=='-') {"
+InsertPara
+Insert "        otype=argv[an][1];"
+InsertPara
+Insert "        if (strlen(argv[an])>2) sort=argv[an][2];"
+InsertPara
+Insert "        an++;"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (argc==(an+2)) strcpy(G_function,argv[an+1]);"
+InsertPara
+Insert "    G_recurse=0;"
+InsertPara
+Insert "    if (argv[an][0]=='#') {"
+InsertPara
+Insert "		load(&argv[an][1]);"
+InsertPara
+Insert "	} else {"
+InsertPara
+Insert "        unlink(GLOBCOMFILE);"
+InsertPara
+Insert "    	if (argv[an][0]=='@') {"
+InsertPara
+Insert "        	fp=fopen(&argv[an][1]," + Chr$(34) + "r" + Chr$(34) + ");"
+InsertPara
+Insert "        	if (fp==NULL) {"
+InsertPara
+Insert "            	fprintf(stderr," + Chr$(34) + "Can't Open %s\n" + Chr$(34) + ",&argv[an][1]);"
+InsertPara
+Insert "            	return(1);"
+InsertPara
+Insert "        	}"
+InsertPara
+Insert "        	while (fgets(filename,99,fp)!=NULL) {"
+InsertPara
+Insert "            	filename[strlen(filename)-1]=0;"
+InsertPara
+Insert "            	if ((filename[0]!=0)&&(filename[0]!=' ')) funcfind(filename);"
+InsertPara
+Insert "        	}"
+InsertPara
+Insert "        	fclose(fp);"
+InsertPara
+Insert "    	}"
+InsertPara
+Insert "    	else {"
+InsertPara
+Insert "        	dir=malloc(strlen(argv[an])+2);                  /* get space for path */"
+InsertPara
+Insert "        	file=malloc(strlen(argv[an])+2);                 /* get space for file */"
+InsertPara
+Insert ""
+InsertPara
+Insert "        	for (i=strlen(argv[an])-1;i>=0;i--) {"
+InsertPara
+Insert "            	if (argv[an][i]=='\\') {"
+InsertPara
+Insert "                	strcpy(dir,argv[an]);"
+InsertPara
+Insert "                	strcpy(file,&argv[an][i+1]);"
+InsertPara
+Insert "                	dir[i+1]=0;"
+InsertPara
+Insert "                	break;"
+InsertPara
+Insert "            	}"
+InsertPara
+Insert "        	}"
+InsertPara
+Insert "        	if (i==(-1)) {"
+InsertPara
+Insert "            	strcpy(file,argv[an]);"
+InsertPara
+Insert "            	strcpy(dir," + Chr$(34) + ".\\" + Chr$(34) + ");"
+InsertPara
+Insert "        	}"
+InsertPara
+Insert "        	strupr(dir);                                    /* change to uppercase  */"
+InsertPara
+Insert "        	strupr(file);                                   /* change to uppercase  */"
+InsertPara
+Insert ""
+InsertPara
+Insert "        	getfiles(dir,file,0);                           /* do the work          */"
+InsertPara
+Insert ""
+InsertPara
+Insert "        	free(dir);"
+InsertPara
+Insert "        	free(file);"
+InsertPara
+Insert "    	}"
+InsertPara
+Insert "        if ((comfile!=NULL)&&(comfile!=stdout)) {"
+InsertPara
+Insert "            fclose(comfile);"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        if (otype=='c') return(0);"
+InsertPara
+Insert "    	if (sort=='s') qsort(G_fn,G_numn,sizeof(FUNCDATA),fcmp);"
+InsertPara
+Insert ""
+InsertPara
+Insert "    	fprintf(stderr," + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "        cmap();"
+InsertPara
+Insert "    	fprintf(stderr," + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "	}"
+InsertPara
+Insert "    fprintf(stderr," + Chr$(34) + "\n%d Function%sfound in %d file%c\n" + Chr$(34) + ",G_numn,(G_numn==1?" + Chr$(34) + " " + Chr$(34) + ":" + Chr$(34) + "s " + Chr$(34) + "),G_numf,(G_numf==1?' ':'s'));"
+InsertPara
+Insert ""
+InsertPara
+Insert "    switch (otype) {"
+InsertPara
+Insert "        case 'b':"
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) prpage(i);"
+InsertPara
+Insert "            break;"
+InsertPara
+Insert "        case 'n':"
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) printf(" + Chr$(34) + "%s\n" + Chr$(34) + ",G_fn[i].n);"
+InsertPara
+Insert "            break;"
+InsertPara
+Insert "        case 'N':"
+InsertPara
+Insert "            nl=0;"
+InsertPara
+Insert "            rl=0;"
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "                nl=max(nl,strlen(G_fn[i].n));"
+InsertPara
+Insert "                t=strstr(G_fn[i].p,G_fn[i].n);"
+InsertPara
+Insert "                rl=max(rl,(int)(t-G_fn[i].p));"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "			for (j=0;j<G_numf;j++) {"
+InsertPara
+Insert "            	printf(" + Chr$(34) + "%s\n" + Chr$(34) + ",G_fname[j]);"
+InsertPara
+Insert "            	for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "					if (G_fn[i].fn==j) {"
+InsertPara
+Insert "                		t=strstr(G_fn[i].p,G_fn[i].n);"
+InsertPara
+Insert "                		memcpy(ret,G_fn[i].p,(int)(t-G_fn[i].p));"
+InsertPara
+Insert "                		ret[(int)(t-G_fn[i].p)]=0;"
+InsertPara
+Insert "                		t=G_fn[i].p;"
+InsertPara
+Insert "                		while ((*t)&&(*t!='(')) t++;"
+InsertPara
+Insert "                		printf(" + Chr$(34) + " %-*.*s %-*.*s %-s;\n" + Chr$(34) + ",rl,rl,ret,nl,nl,G_fn[i].n,t);"
+InsertPara
+Insert "					}"
+InsertPara
+Insert "            	}"
+InsertPara
+Insert "            	printf(" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "			}"
+InsertPara
+Insert "            break;"
+InsertPara
+Insert "        case 'p':"
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) printf(" + Chr$(34) + "%s\n" + Chr$(34) + ",G_fn[i].p);"
+InsertPara
+Insert "            break;"
+InsertPara
+Insert "        case 'P':"
+InsertPara
+Insert "            nl=0;"
+InsertPara
+Insert "            rl=0;"
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "                nl=max(nl,strlen(G_fn[i].n));"
+InsertPara
+Insert "                t=strstr(G_fn[i].p,G_fn[i].n);"
+InsertPara
+Insert "                rl=max(rl,(int)(t-G_fn[i].p));"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "                t=strstr(G_fn[i].p,G_fn[i].n);"
+InsertPara
+Insert "                memcpy(ret,G_fn[i].p,(int)(t-G_fn[i].p));"
+InsertPara
+Insert "                ret[(int)(t-G_fn[i].p)]=0;"
+InsertPara
+Insert "                t=G_fn[i].p;"
+InsertPara
+Insert "                while ((*t)&&(*t!='(')) t++;"
+InsertPara
+Insert "                printf(" + Chr$(34) + "%-*.*s %-*.*s %-s;\n" + Chr$(34) + ",rl,rl,ret,nl,nl,G_fn[i].n,t);"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            break;"
+InsertPara
+Insert "        case 'e':"
+InsertPara
+Insert "            nl=0;"
+InsertPara
+Insert "            rl=0;"
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "                nl=max(nl,strlen(G_fn[i].n));"
+InsertPara
+Insert "                t=strstr(G_fn[i].p,G_fn[i].n);"
+InsertPara
+Insert "                rl=max(rl,(int)(t-G_fn[i].p));"
+InsertPara
+Insert "            }"
+InsertPara
+Insert ""
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "                e=0;"
+InsertPara
+Insert "                for (j=0;j<G_numn;j++) {"
+InsertPara
+Insert "                    for (k=0;k<G_fn[j].nc;k++) {"
+InsertPara
+Insert "                        if ((G_fn[j].c[k]&0x3FFF)==i) {"
+InsertPara
+Insert "                            if (G_fn[j].fn!=G_fn[i].fn) e=1;"
+InsertPara
+Insert "                        }"
+InsertPara
+Insert "                    }"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                t=strstr(G_fn[i].p,G_fn[i].n);"
+InsertPara
+Insert "                memcpy(ret,G_fn[i].p,(int)(t-G_fn[i].p));"
+InsertPara
+Insert "                ret[(int)(t-G_fn[i].p)]=0;"
+InsertPara
+Insert "                t=G_fn[i].p;"
+InsertPara
+Insert "                while ((*t)&&(*t!='(')) t++;"
+InsertPara
+Insert "                printf(" + Chr$(34) + "%s " + Chr$(34) + ",(e?" + Chr$(34) + "extern" + Chr$(34) + ":" + Chr$(34) + "      " + Chr$(34) + "));"
+InsertPara
+Insert "                printf(" + Chr$(34) + "%-*.*s %-*.*s %-s;\n" + Chr$(34) + ",rl,rl,ret,nl,nl,G_fn[i].n,t);"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            break;"
+InsertPara
+Insert "        case 'x':"
+InsertPara
+Insert "            t=malloc(G_numn);"
+InsertPara
+Insert "            nl=0;"
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) nl=max(nl,strlen(G_fn[i].n));"
+InsertPara
+Insert ""
+InsertPara
+Insert "            printf(" + Chr$(34) + "ษ" + Chr$(34) + "); for (i=0;i<nl;i++) printf(" + Chr$(34) + "อ" + Chr$(34) + "); printf(" + Chr$(34) + "ห" + Chr$(34) + "); for (i=0;i<G_numn;i++) printf(" + Chr$(34) + "ออ" + Chr$(34) + "); printf(" + Chr$(34) + "ป\n" + Chr$(34) + ");"
+InsertPara
+Insert "            for (j=0;j<nl;j++) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "บ%*.*sบ" + Chr$(34) + ",nl,nl," + Chr$(34) + "" + Chr$(34) + ");"
+InsertPara
+Insert "                for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "                    if (strlen(G_fn[i].n)>j) {"
+InsertPara
+Insert "                        printf(" + Chr$(34) + "%c " + Chr$(34) + ",G_fn[i].n[j]);"
+InsertPara
+Insert "                    } else {"
+InsertPara
+Insert "                        printf(" + Chr$(34) + "  " + Chr$(34) + ");"
+InsertPara
+Insert "                    }"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                printf(" + Chr$(34) + "บ\n" + Chr$(34) + ");"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            printf(" + Chr$(34) + "ฬ" + Chr$(34) + "); for (i=0;i<nl;i++) printf(" + Chr$(34) + "อ" + Chr$(34) + "); printf(" + Chr$(34) + "ฮ" + Chr$(34) + "); for (i=0;i<G_numn;i++) printf(" + Chr$(34) + "ออ" + Chr$(34) + "); printf(" + Chr$(34) + "น\n" + Chr$(34) + ");"
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "บ%-*.*sบ" + Chr$(34) + ",nl,nl,G_fn[i].n);"
+InsertPara
+Insert "                for (j=0;j<G_numn;j++) {"
+InsertPara
+Insert "                    t[j]='๚';"
+InsertPara
+Insert "                    for (k=0;k<G_fn[j].nc;k++) {"
+InsertPara
+Insert "                        if ((G_fn[j].c[k]&0x3FFF)==i) t[j]='Û';"
+InsertPara
+Insert "                    }"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                for (j=0;j<G_numn;j++) if (t[j]=='Û') break;"
+InsertPara
+Insert "                if (j<G_numn) for (j=0;j<G_numn;j++) printf(" + Chr$(34) + "%c " + Chr$(34) + ",t[j]);"
+InsertPara
+Insert "                printf(" + Chr$(34) + "บ\n" + Chr$(34) + ");"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            printf(" + Chr$(34) + "ศ" + Chr$(34) + "); for (i=0;i<nl;i++) printf(" + Chr$(34) + "อ" + Chr$(34) + "); printf(" + Chr$(34) + "ส" + Chr$(34) + "); for (i=0;i<G_numn;i++) printf(" + Chr$(34) + "ออ" + Chr$(34) + "); printf(" + Chr$(34) + "ผ\n" + Chr$(34) + ");"
+InsertPara
+Insert "            free(t);"
+InsertPara
+Insert "            break;"
+InsertPara
+Insert "        case 'X':"
+InsertPara
+Insert "            nl=0;"
+InsertPara
+Insert "            G_donefn=malloc(G_numf*sizeof(char *));"
+InsertPara
+Insert "            for (i=0;i<G_numf;i++) {"
+InsertPara
+Insert "                G_donefn[i]=malloc(G_numf);"
+InsertPara
+Insert "                memset(G_donefn[i],0,G_numf);"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "                for (j=0;j<G_numn;j++) {"
+InsertPara
+Insert "                    for (k=0;k<G_fn[j].nc;k++) {"
+InsertPara
+Insert "                        if ((G_fn[j].c[k]&0x3FFF)==i) {"
+InsertPara
+Insert "                            G_donefn[G_fn[j].fn][G_fn[i].fn]=1;"
+InsertPara
+Insert "                        }"
+InsertPara
+Insert "                    }"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            for (i=0;i<G_numf;i++) nl=max(nl,strlen(G_fname[i]));"
+InsertPara
+Insert "            printf(" + Chr$(34) + "ษ" + Chr$(34) + "); for (i=0;i<nl;i++) printf(" + Chr$(34) + "อ" + Chr$(34) + "); printf(" + Chr$(34) + "ห" + Chr$(34) + "); for (i=0;i<G_numf;i++) printf(" + Chr$(34) + "ออ" + Chr$(34) + "); printf(" + Chr$(34) + "ป\n" + Chr$(34) + ");"
+InsertPara
+Insert "            for (j=0;j<nl;j++) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "บ%*.*sบ" + Chr$(34) + ",nl,nl," + Chr$(34) + "" + Chr$(34) + ");"
+InsertPara
+Insert "                for (i=0;i<G_numf;i++) {"
+InsertPara
+Insert "                    for (k=0;k<G_numf;k++) if (G_donefn[G_fn[i].fn][k]) break;"
+InsertPara
+Insert "                    if (k<G_numf) {"
+InsertPara
+Insert "                        if (strlen(G_fname[i])>j) {"
+InsertPara
+Insert "                            printf(" + Chr$(34) + "%c " + Chr$(34) + ",G_fname[i][j]);"
+InsertPara
+Insert "                        } else {"
+InsertPara
+Insert "                            printf(" + Chr$(34) + "  " + Chr$(34) + ");"
+InsertPara
+Insert "                        }"
+InsertPara
+Insert "                    }"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                printf(" + Chr$(34) + "บ\n" + Chr$(34) + ");"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            printf(" + Chr$(34) + "ฬ" + Chr$(34) + "); for (i=0;i<nl;i++) printf(" + Chr$(34) + "อ" + Chr$(34) + "); printf(" + Chr$(34) + "ฮ" + Chr$(34) + "); for (i=0;i<G_numf;i++) printf(" + Chr$(34) + "ออ" + Chr$(34) + "); printf(" + Chr$(34) + "น\n" + Chr$(34) + ");"
+InsertPara
+Insert "            for (i=0;i<G_numf;i++) {"
+InsertPara
+Insert "                G_donefn[i][i]=0;"
+InsertPara
+Insert "                for (k=0;k<G_numf;k++) if (G_donefn[k][i]) break;"
+InsertPara
+Insert "                if (k<G_numf) {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + "บ%-*.*sบ" + Chr$(34) + ",nl,nl,G_fname[i]);"
+InsertPara
+Insert "                    for (j=0;j<G_numf;j++) printf(" + Chr$(34) + "%c " + Chr$(34) + ",G_donefn[j][i]?'Û':'๚');"
+InsertPara
+Insert "                    printf(" + Chr$(34) + "บ\n" + Chr$(34) + ");"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            for (i=0;i<G_numf;i++) free(G_donefn[i]);"
+InsertPara
+Insert "            free(G_donefn);"
+InsertPara
+Insert "            printf(" + Chr$(34) + "ศ" + Chr$(34) + "); for (i=0;i<nl;i++) printf(" + Chr$(34) + "อ" + Chr$(34) + "); printf(" + Chr$(34) + "ส" + Chr$(34) + "); for (i=0;i<G_numf;i++) printf(" + Chr$(34) + "ออ" + Chr$(34) + "); printf(" + Chr$(34) + "ผ\n" + Chr$(34) + ");"
+InsertPara
+Insert "            break;"
+InsertPara
+Insert "        case 'E':"
+InsertPara
+Insert "			editcoms();"
+InsertPara
+Insert "            break;"
+InsertPara
+Insert "        case 't':"
+InsertPara
+Insert "            prtree();"
+InsertPara
+Insert "            break;"
+InsertPara
+Insert "        case 'w':"
+InsertPara
+Insert "            printf(" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) prpagewp(i);"
+InsertPara
+Insert "            break;"
+InsertPara
+Insert "        case 'M':"
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) prpagemac(i,1);"
+InsertPara
+Insert "            printf(" + Chr$(34) + "InsertIndex .Type = 0, .HeadingSeparator = 2, .RightAlignPageNumbers = 0, .Columns = 3, .Replace = 0\n" + Chr$(34) + ");"
+InsertPara
+Insert "            printf(" + Chr$(34) + "End Sub\n" + Chr$(34) + ");"
+InsertPara
+Insert "            break;"
+InsertPara
+Insert "        case 'm':"
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) prpagemac(i,0);"
+InsertPara
+Insert "            printf(" + Chr$(34) + "InsertIndex .Type = 0, .HeadingSeparator = 2, .RightAlignPageNumbers = 0, .Columns = 3, .Replace = 0\n" + Chr$(34) + ");"
+InsertPara
+Insert "            printf(" + Chr$(34) + "End Sub\n" + Chr$(34) + ");"
+InsertPara
+Insert "            break;"
+InsertPara
+Insert "        case 's':"
+InsertPara
+Insert "			printf(" + Chr$(34) + "Saving %s\n" + Chr$(34) + ",&argv[1][3]);"
+InsertPara
+Insert "			save(&argv[1][3]);"
+InsertPara
+Insert "            break;"
+InsertPara
+Insert "        default :"
+InsertPara
+Insert "            for (i=0;i<G_numn;i++) prpagen(i);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert ""
+InsertPara
+Insert "    for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "        free(G_fn[i].p);"
+InsertPara
+Insert "        free(G_fn[i].n);"
+InsertPara
+Insert "        free(G_fn[i].s);"
+InsertPara
+Insert "        free(G_fn[i].m);"
+InsertPara
+Insert "        if (G_fn[i].nc) free(G_fn[i].c);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    G_numn=0;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    for (i=0;i<G_numf;i++) free(G_fname[i]);"
+InsertPara
+Insert "    for (i=0;i<G_numf;i++) if (G_ftname[i]!=NULL) free(G_ftname[i]);"
+InsertPara
+Insert "    G_numf=0;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    return(0);                                      /* return OK            */"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "match"
+NextCell
+MarkIndexEntry .Entry = "match"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Returns true if G_str points to t"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "int match(char *t);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *t "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "int "
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_str "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "isctype, iscword."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "int match(char *t)  "
+InsertPara
+Insert "{                   "
+InsertPara
+Insert "    char *p;        "
+InsertPara
+Insert "    int len=strlen(t);"
+InsertPara
+Insert "                    "
+InsertPara
+Insert "    while (isspace(*G_str)) G_str++;"
+InsertPara
+Insert "    p=G_str;"
+InsertPara
+Insert "    while ((*t)&&(*t==*(p++))) t++;"
+InsertPara
+Insert "    if ((*t==0)&&(!isalnum(*p))) {"
+InsertPara
+Insert "        G_str+=len;"
+InsertPara
+Insert "        return(1);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    return(0);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "prlast20com"
+NextCell
+MarkIndexEntry .Entry = "prlast20com"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "print last 20 lines "
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void prlast20com(int idx);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "int idx "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "comfile G_numinlast20 "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "funcfind."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void prlast20com(int idx)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    int i,printit=0;"
+InsertPara
+Insert "    for (i=G_numinlast20-2;i>=0;i--) {"
+InsertPara
+Insert "        if (G_last20lines[i][0]!='\/') break;"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    i++;"
+InsertPara
+Insert "    if (comfile==NULL) {"
+InsertPara
+Insert "        comfile=fopen(GLOBCOMFILE," + Chr$(34) + "a+" + Chr$(34) + ");"
+InsertPara
+Insert "        if (comfile==NULL) {"
+InsertPara
+Insert "            comfile=stdout;"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (i<G_numinlast20-1) {"
+InsertPara
+Insert "        printit=1;"
+InsertPara
+Insert "        fprintf(comfile," + Chr$(34) + "M %s\n" + Chr$(34) + ",G_fname[G_fn[idx].fn]);"
+InsertPara
+Insert "        fprintf(comfile," + Chr$(34) + "F %s\n" + Chr$(34) + ",G_fn[idx].n);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    for (;i<G_numinlast20-1;i++) {"
+InsertPara
+Insert "        if (strlen(G_last20lines[i])>3) {"
+InsertPara
+Insert "            switch (G_last20lines[i][2]) {"
+InsertPara
+Insert "                case 'D' :"
+InsertPara
+Insert "                    fprintf(comfile," + Chr$(34) + "D %s\n" + Chr$(34) + ",&(G_last20lines[i][4]));"
+InsertPara
+Insert "                    break;"
+InsertPara
+Insert "                case 'R' :"
+InsertPara
+Insert "                    fprintf(comfile," + Chr$(34) + "R %s\n" + Chr$(34) + ",&(G_last20lines[i][4]));"
+InsertPara
+Insert "                    break;"
+InsertPara
+Insert "                case 'P' :"
+InsertPara
+Insert "                    fprintf(comfile," + Chr$(34) + "P %s\n" + Chr$(34) + ",&(G_last20lines[i][4]));"
+InsertPara
+Insert "                    break;"
+InsertPara
+Insert "                case 'S' :"
+InsertPara
+Insert "                    fprintf(comfile," + Chr$(34) + "S %s\n" + Chr$(34) + ",&(G_last20lines[i][4]));"
+InsertPara
+Insert "                    break;"
+InsertPara
+Insert "                case 'F' :"
+InsertPara
+Insert "                    break;"
+InsertPara
+Insert "                default :"
+InsertPara
+Insert "                    if ((strncmp(&(G_last20lines[i][4])," + Chr$(34) + "********************" + Chr$(34) + ",20))"
+InsertPara
+Insert "                    &&  (strncmp(&(G_last20lines[i][4])," + Chr$(34) + "--------------------" + Chr$(34) + ",20))"
+InsertPara
+Insert "                    &&  (strncmp(&(G_last20lines[i][4])," + Chr$(34) + "____________________" + Chr$(34) + ",20))"
+InsertPara
+Insert "                    &&  (strlen(G_last20lines[i])>4))"
+InsertPara
+Insert "                        fprintf(comfile," + Chr$(34) + "S %s\n" + Chr$(34) + ",&(G_last20lines[i][3]));"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    for (i=G_numinlast20-2;i>=0;i--) {"
+InsertPara
+Insert "        free(G_last20lines[i]);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (printit) fprintf(comfile," + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "    G_numinlast20=0;"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "prline"
+NextCell
+MarkIndexEntry .Entry = "prline"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Print a line in the box seperating at spaces "
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void prline(char *name,char *data,char *sep,char end);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *name "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "char *data "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "char *sep "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "char end "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "prpage."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void prline(char *name,char *data,char *sep,char end)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    char *t;"
+InsertPara
+Insert "    int sl=strlen(sep);"
+InsertPara
+Insert "    int m=0,j;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    strcpy(G_workspace,data);"
+InsertPara
+Insert "    t=strtok(G_workspace," + Chr$(34) + " " + Chr$(34) + ");"
+InsertPara
+Insert ""
+InsertPara
+Insert "    while (t!=NULL) {"
+InsertPara
+Insert "        if (!m) {"
+InsertPara
+Insert "            m++;"
+InsertPara
+Insert "            printf(" + Chr$(34) + "ฬออออออออออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน\n" + Chr$(34) + ");"
+InsertPara
+Insert "            printf(" + Chr$(34) + "บ %12.12s บ %s" + Chr$(34) + ",name,t);"
+InsertPara
+Insert "            j=strlen(t)+17+sl;"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        else {"
+InsertPara
+Insert "            m++;"
+InsertPara
+Insert "            if ((j+strlen(t)+sl)>78) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "%s%*.*sบ\nบ              บ %s" + Chr$(34) + ",sep,78-j,78-j," + Chr$(34) + "" + Chr$(34) + ",t);"
+InsertPara
+Insert "                j=strlen(t)+17+sl;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            else {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "%s%s" + Chr$(34) + ",sep,t);"
+InsertPara
+Insert "                j+=strlen(t)+sl;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        t=strtok(NULL," + Chr$(34) + " " + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (m) printf(" + Chr$(34) + "%c%*.*sบ\n" + Chr$(34) + ",end,(77+sl)-j,(77+sl)-j," + Chr$(34) + "" + Chr$(34) + ");"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "prlinen"
+NextCell
+MarkIndexEntry .Entry = "prlinen"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Print a line seperating at spaces "
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void prlinen(char *name,char *data,char *sep,char end);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *name "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "char *data "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "char *sep "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "char end "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "prpagen."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void prlinen(char *name,char *data,char *sep,char end)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    char *t;"
+InsertPara
+Insert "    int sl=strlen(sep);"
+InsertPara
+Insert "    int m=0,j;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    strcpy(G_workspace,data);"
+InsertPara
+Insert "    t=strtok(G_workspace," + Chr$(34) + " " + Chr$(34) + ");"
+InsertPara
+Insert ""
+InsertPara
+Insert "    while (t!=NULL) {"
+InsertPara
+Insert "        if (!m) {"
+InsertPara
+Insert "            m++;"
+InsertPara
+Insert "            printf(" + Chr$(34) + "\n %12.12s   %s" + Chr$(34) + ",name,t);"
+InsertPara
+Insert "            j=strlen(t)+17+sl;"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        else {"
+InsertPara
+Insert "            m++;"
+InsertPara
+Insert "            if ((j+strlen(t)+sl)>78) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "%s\n                %s" + Chr$(34) + ",sep,t);"
+InsertPara
+Insert "                j=strlen(t)+17+sl;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            else {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "%s%s" + Chr$(34) + ",sep,t);"
+InsertPara
+Insert "                j+=strlen(t)+sl;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        t=strtok(NULL," + Chr$(34) + " " + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (m) printf(" + Chr$(34) + "%c\n" + Chr$(34) + ",end);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "prpage"
+NextCell
+MarkIndexEntry .Entry = "prpage"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Print one page of output on stdout in boxes."
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void prpage(int index);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "int index "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_workspace G_str G_lcalls "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "main."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "getcomments, prline."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void prpage(int index)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    char tmp[40];"
+InsertPara
+Insert "    char ret[40];"
+InsertPara
+Insert "    char name[40];"
+InsertPara
+Insert "    char prot[150];"
+InsertPara
+Insert "    char tmpln[150];"
+InsertPara
+Insert "    char *t;"
+InsertPara
+Insert "    int i=0;"
+InsertPara
+Insert "    int j=0;"
+InsertPara
+Insert "    int k=0;"
+InsertPara
+Insert "    int l,m;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    sprintf(prot," + Chr$(34) + "%s;" + Chr$(34) + ",G_fn[index].p);"
+InsertPara
+Insert "    strcpy(name,G_fn[index].n);"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if ((G_function[0]!=0)&&(strcmp(G_function,name))) return;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    t=strstr(prot,name);"
+InsertPara
+Insert "    memcpy(ret,prot,(int)(t-prot));"
+InsertPara
+Insert "    ret[(int)(t-prot)]=0;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if (G_fn[index].ac) {"
+InsertPara
+Insert "        getcomments(G_ftname[G_fn[index].fn],index);"
+InsertPara
+Insert "    } else {"
+InsertPara
+Insert "        getcomments(GLOBCOMFILE,index);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    strcpy(G_lstr,G_fn[index].s);"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if ((ret[0]==' ')||(ret[0]==0)) {"
+InsertPara
+Insert "        sprintf(prot," + Chr$(34) + "int %s;" + Chr$(34) + ",G_fn[index].p);"
+InsertPara
+Insert "        strcpy(ret," + Chr$(34) + "int" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    t=&ret[strlen(ret)-1];"
+InsertPara
+Insert "    while (isspace(*t)) t--;"
+InsertPara
+Insert "    *(t+1)=0;"
+InsertPara
+Insert "    printf(" + Chr$(34) + "ษออออออออออออออหออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "บ     Function บ %-60.60s บ\n" + Chr$(34) + ",name);"
+InsertPara
+Insert "    if ((G_lstr[0]=='/')&&(G_lstr[1]=='/')) {"
+InsertPara
+Insert "        t=&G_lstr[2];"
+InsertPara
+Insert "        while ((*t)&&isspace(*t)) t++;"
+InsertPara
+Insert "        prline(" + Chr$(34) + "Synopsis" + Chr$(34) + ",t," + Chr$(34) + " " + Chr$(34) + ",' ');"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    else {"
+InsertPara
+Insert "        printf(" + Chr$(34) + "ฬออออออออออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน\n" + Chr$(34) + ");"
+InsertPara
+Insert "        printf(" + Chr$(34) + "บ     Synopsis บ                                                              บ\n" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    prline(" + Chr$(34) + "Prototype" + Chr$(34) + ",prot," + Chr$(34) + " " + Chr$(34) + ",' ');"
+InsertPara
+Insert "    prline(" + Chr$(34) + "Module" + Chr$(34) + ",G_fname[G_fn[index].fn]," + Chr$(34) + " " + Chr$(34) + ",' ');"
+InsertPara
+Insert "    G_workspace[0]=0;"
+InsertPara
+Insert "    for (i=0;i<G_nd;i++) { strcat(G_workspace,G_descln[i]); strcat(G_workspace," + Chr$(34) + " " + Chr$(34) + "); }"
+InsertPara
+Insert "    prline(" + Chr$(34) + "Description" + Chr$(34) + ",G_workspace," + Chr$(34) + " " + Chr$(34) + ",' ');"
+InsertPara
+Insert "    printf(" + Chr$(34) + "บ              บ                                                              บ\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "ฬออออออออออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน\n" + Chr$(34) + ");"
+InsertPara
+Insert "    G_str=strstr(prot,name);"
+InsertPara
+Insert "    G_str+=strlen(name);"
+InsertPara
+Insert "    i=0;"
+InsertPara
+Insert "    while ((*G_str)&&(*G_str!=')')) {"
+InsertPara
+Insert "        if (isspace(*G_str)||(*G_str=='(')||(*G_str==',')) {"
+InsertPara
+Insert "            G_str++;"
+InsertPara
+Insert "        } else {"
+InsertPara
+Insert "            t=tmp;"
+InsertPara
+Insert "            while ((*G_str)&&(*G_str!=')')&&(*G_str!=',')) *(t++)=*(G_str++);"
+InsertPara
+Insert "            *t=0;"
+InsertPara
+Insert "            t--;"
+InsertPara
+Insert "            while (isspace(*t)) t--;"
+InsertPara
+Insert "            *(t+1)=0;"
+InsertPara
+Insert "            if (strcmp(tmp," + Chr$(34) + "void" + Chr$(34) + ")) {"
+InsertPara
+Insert "                sprintf(tmpln," + Chr$(34) + "%s %s" + Chr$(34) + ",tmp,G_passln[i]);"
+InsertPara
+Insert "                printf(" + Chr$(34) + "บ       %s บ %-60.60s บ\n" + Chr$(34) + ",((i==0)?" + Chr$(34) + "Passed" + Chr$(34) + ":" + Chr$(34) + "      " + Chr$(34) + "),tmpln);"
+InsertPara
+Insert "                i++;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (i) printf(" + Chr$(34) + "ฬออออออออออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน\n" + Chr$(34) + ");"
+InsertPara
+Insert "    if (strcmp(ret," + Chr$(34) + "void" + Chr$(34) + ")) {"
+InsertPara
+Insert "        sprintf(tmpln," + Chr$(34) + "%s %s" + Chr$(34) + ",ret,G_retln);"
+InsertPara
+Insert "        printf(" + Chr$(34) + "บ Return Value บ %-60.60s บ\n" + Chr$(34) + ",tmpln);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    else {"
+InsertPara
+Insert "        sprintf(tmpln," + Chr$(34) + "None" + Chr$(34) + ");"
+InsertPara
+Insert "        printf(" + Chr$(34) + "บ Return Value บ %-60.60s บ\n" + Chr$(34) + ",tmpln);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    m=0;"
+InsertPara
+Insert "    if (G_fn[index].m[0]!='*') prline(" + Chr$(34) + "Modifies" + Chr$(34) + ",G_fn[index].m," + Chr$(34) + ", " + Chr$(34) + ",'.');"
+InsertPara
+Insert "    l=0;"
+InsertPara
+Insert "    for (j=0;j<G_numn;j++) {"
+InsertPara
+Insert "        for (k=0;k<G_fn[j].nc;k++) {"
+InsertPara
+Insert "            if ((G_fn[j].c[k]&0x3FFF)==index) {"
+InsertPara
+Insert "                for (m=0;m<l;m++) if ((G_lcalls[m]&0x3FFF)==j) break;"
+InsertPara
+Insert "                if (m==l) {"
+InsertPara
+Insert "                    G_lcalls[l++]=j;"
+InsertPara
+Insert "                    if ((G_fn[j].c[k]&0x4000)!=0) G_lcalls[l-1]|=0x4000;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (l) {"
+InsertPara
+Insert "        for (m=0;m<l;m++) {"
+InsertPara
+Insert "            t=G_fn[G_lcalls[m]&0x3FFF].n;"
+InsertPara
+Insert "            if ((G_lcalls[m]&0x4000)!=0) {"
+InsertPara
+Insert "                sprintf(tmp," + Chr$(34) + "[%s]" + Chr$(34) + ",t);"
+InsertPara
+Insert "                t=tmp;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            if (m==0) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "ฬออออออออออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน\n" + Chr$(34) + ");"
+InsertPara
+Insert "                printf(" + Chr$(34) + "บ    Called By บ %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                j=strlen(t)+19;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            else {"
+InsertPara
+Insert "                if ((j+strlen(t)+2)>78) {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ",%*.*sบ\nบ              บ %s" + Chr$(34) + ",79-j,79-j," + Chr$(34) + "" + Chr$(34) + ",t);"
+InsertPara
+Insert "                    j=strlen(t)+19;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                else {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ", %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                    j+=strlen(t)+2;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        printf(" + Chr$(34) + ".%*.*sบ\n" + Chr$(34) + ",79-j,79-j," + Chr$(34) + "" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (G_fn[index].nc) {"
+InsertPara
+Insert "        for (m=0;m<G_fn[index].nc;m++) {"
+InsertPara
+Insert "            t=G_fn[G_fn[index].c[m]&0x3FFF].n;"
+InsertPara
+Insert "            if ((G_fn[index].c[m]&0x4000)!=0) {"
+InsertPara
+Insert "                sprintf(tmp," + Chr$(34) + "[%s]" + Chr$(34) + ",t);"
+InsertPara
+Insert "                t=tmp;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            if (m==0) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "ฬออออออออออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน\n" + Chr$(34) + ");"
+InsertPara
+Insert "                printf(" + Chr$(34) + "บ        Calls บ %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                j=strlen(t)+19;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            else {"
+InsertPara
+Insert "                if ((j+strlen(t)+2)>78) {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ",%*.*sบ\nบ              บ %s" + Chr$(34) + ",79-j,79-j," + Chr$(34) + "" + Chr$(34) + ",t);"
+InsertPara
+Insert "                    j=strlen(t)+19;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                else {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ", %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                    j+=strlen(t)+2;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        printf(" + Chr$(34) + ".%*.*sบ\n" + Chr$(34) + ",79-j,79-j," + Chr$(34) + "" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    k=0;"
+InsertPara
+Insert "    for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "        if ((G_fn[i].fn==G_fn[index].fn)&&(i!=index)) {"
+InsertPara
+Insert "            if (!k) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "ฬออออออออออออออฮออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน\n" + Chr$(34) + ");"
+InsertPara
+Insert "                printf(" + Chr$(34) + "บ     See Also บ %s" + Chr$(34) + ",G_fn[i].n);"
+InsertPara
+Insert "                j=strlen(G_fn[i].n)+19;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            else {"
+InsertPara
+Insert "                if ((j+strlen(G_fn[i].n)+2)>78) {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ",%*.*sบ\nบ              บ %s" + Chr$(34) + ",79-j,79-j," + Chr$(34) + "" + Chr$(34) + ",G_fn[i].n);"
+InsertPara
+Insert "                    j=strlen(G_fn[i].n)+19;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                else {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ", %s" + Chr$(34) + ",G_fn[i].n);"
+InsertPara
+Insert "                    j+=strlen(G_fn[i].n)+2;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            k++;"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (k) printf(" + Chr$(34) + ".%*.*sบ\n" + Chr$(34) + ",79-j,79-j," + Chr$(34) + "" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "ศออออออออออออออสออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ\n%c\n" + Chr$(34) + ",12);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "prpagemac"
+NextCell
+MarkIndexEntry .Entry = "prpagemac"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void prpagemac(int index,int withcode);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "int index "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "int withcode "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_workspace G_str G_lcalls "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "main."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "getcomments, macstr."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void prpagemac(int index,int withcode)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    FILE *fp;"
+InsertPara
+Insert "    char tmp[40];"
+InsertPara
+Insert "    char ret[40];"
+InsertPara
+Insert "    char name[40];"
+InsertPara
+Insert "    char prot[150];"
+InsertPara
+Insert "    char tmpln[255];"
+InsertPara
+Insert "    char *t,*sl;"
+InsertPara
+Insert "    int i=0,lc;"
+InsertPara
+Insert "    int j=0;"
+InsertPara
+Insert "    int k=0;"
+InsertPara
+Insert "    int l,m;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if (index==0) {"
+InsertPara
+Insert "        if ((fp=fopen(" + Chr$(34) + "WORDDOCU.MAC" + Chr$(34) + "," + Chr$(34) + "r" + Chr$(34) + "))==NULL) return;"
+InsertPara
+Insert "        while (fgets(tmpln,150,fp)!=NULL) {"
+InsertPara
+Insert "            printf(" + Chr$(34) + "%s" + Chr$(34) + ",tmpln);"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        fclose(fp);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    sprintf(prot," + Chr$(34) + "%s;" + Chr$(34) + ",G_fn[index].p);"
+InsertPara
+Insert "    strcpy(name,G_fn[index].n);"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if ((G_function[0]!=0)&&(strcmp(G_function,name))) return;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    t=strstr(prot,name);"
+InsertPara
+Insert "    memcpy(ret,prot,(int)(t-prot));"
+InsertPara
+Insert "    ret[(int)(t-prot)]=0;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if (G_fn[index].ac) {"
+InsertPara
+Insert "        getcomments(G_ftname[G_fn[index].fn],index);"
+InsertPara
+Insert "    } else {"
+InsertPara
+Insert "        getcomments(GLOBCOMFILE,index);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    strcpy(G_lstr,G_fn[index].s);"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if ((ret[0]==' ')||(ret[0]==0)) {"
+InsertPara
+Insert "        sprintf(prot," + Chr$(34) + "int %s;" + Chr$(34) + ",G_fn[index].p);"
+InsertPara
+Insert "        strcpy(ret," + Chr$(34) + "int" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    t=&ret[strlen(ret)-1];"
+InsertPara
+Insert "    while (isspace(*t)) t--;"
+InsertPara
+Insert "    *(t+1)=0;"
+InsertPara
+Insert "    printf(" + Chr$(34) + "TableInsertTable .ConvertFrom = \" + Chr$(34) + "\" + Chr$(34) + ", .NumColumns = \" + Chr$(34) + "2\" + Chr$(34) + ", .NumRows = \" + Chr$(34) + "1\" + Chr$(34) + ", .InitialColWidth = \" + Chr$(34) + "Auto\" + Chr$(34) + ", .Format = \" + Chr$(34) + "0\" + Chr$(34) + ", .Apply = \" + Chr$(34) + "167\" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "Insert \" + Chr$(34) + "Function\" + Chr$(34) + "\nNextCell\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "Insert %s\nNextCell\n" + Chr$(34) + ",macstr(name));"
+InsertPara
+Insert "    printf(" + Chr$(34) + "MarkIndexEntry .Entry = %s\n" + Chr$(34) + ",macstr(name));"
+InsertPara
+Insert "    printf(" + Chr$(34) + "TableSelectTable\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "TableColumnWidth .PrevColumn\nTableColumnWidth .PrevColumn\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "TableColumnWidth .ColumnWidth = \" + Chr$(34) + "1.2\" + Chr$(34) + " + Chr$(34), .NextColumn\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "TableColumnWidth .ColumnWidth = \" + Chr$(34) + "5\" + Chr$(34) + " + Chr$(34), .PrevColumn\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "TableColumnWidth .ColumnWidth = \" + Chr$(34) + "1.2\" + Chr$(34) + " + Chr$(34)\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "RightPara\nLineDown 1\nLineUp 1\nCharRight 2, 1\nFontSize 10\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "CharLeft 1\nLineUp 1\nEndOfLine\nStartOfLine 1\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "FormatFont .Color = 7\nLineDown 1\nNextCell\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "NextCell\nInsert \" + Chr$(34) + "Synopsis\" + Chr$(34) + "\nNextCell\n" + Chr$(34) + ");"
+InsertPara
+Insert "    if ((G_lstr[0]=='/')&&(G_lstr[1]=='/')) {"
+InsertPara
+Insert "        t=&G_lstr[2];"
+InsertPara
+Insert "        while ((*t)&&isspace(*t)) t++;"
+InsertPara
+Insert "        printf(" + Chr$(34) + "Insert %s\n" + Chr$(34) + ",macstr(t));"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    printf(" + Chr$(34) + "NextCell\nNextCell\nNextCell\nInsert \" + Chr$(34) + "Prototype\" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "NextCell\nInsert %s\n" + Chr$(34) + ",macstr(prot));"
+InsertPara
+Insert "    printf(" + Chr$(34) + "NextCell\nNextCell\nNextCell\nInsert \" + Chr$(34) + "Module\" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "NextCell\nInsert %s\n" + Chr$(34) + ",macstr(G_fname[G_fn[index].fn]));"
+InsertPara
+Insert "    G_workspace[0]=0;"
+InsertPara
+Insert "    for (i=0;i<G_nd;i++) { strcat(G_workspace,G_descln[i]); strcat(G_workspace," + Chr$(34) + " " + Chr$(34) + "); }"
+InsertPara
+Insert "    printf(" + Chr$(34) + "NextCell\nNextCell\nNextCell\nInsert \" + Chr$(34) + "Description\" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "NextCell\nInsert %s\n" + Chr$(34) + ",macstr(G_workspace));"
+InsertPara
+Insert "    G_str=strstr(prot,name);"
+InsertPara
+Insert "    G_str+=strlen(name);"
+InsertPara
+Insert "    i=0;"
+InsertPara
+Insert "    while ((*G_str)&&(*G_str!=')')) {"
+InsertPara
+Insert "        if (isspace(*G_str)||(*G_str=='(')||(*G_str==',')) {"
+InsertPara
+Insert "            G_str++;"
+InsertPara
+Insert "        } else {"
+InsertPara
+Insert "            t=tmp;"
+InsertPara
+Insert "            while ((*G_str)&&(*G_str!=')')&&(*G_str!=',')) *(t++)=*(G_str++);"
+InsertPara
+Insert "            *t=0;"
+InsertPara
+Insert "            t--;"
+InsertPara
+Insert "            while (isspace(*t)) t--;"
+InsertPara
+Insert "            *(t+1)=0;"
+InsertPara
+Insert "            if (strcmp(tmp," + Chr$(34) + "void" + Chr$(34) + ")) {"
+InsertPara
+Insert "                sprintf(tmpln," + Chr$(34) + "%s %s" + Chr$(34) + ",tmp,G_passln[i]);"
+InsertPara
+Insert "                printf(" + Chr$(34) + "NextCell\nNextCell\nNextCell\nInsert \" + Chr$(34) + "%s\" + Chr$(34) + "\n" + Chr$(34) + ",((i==0)?" + Chr$(34) + "Passed" + Chr$(34) + ":" + Chr$(34) + " " + Chr$(34) + "));"
+InsertPara
+Insert "                printf(" + Chr$(34) + "NextCell\nInsert %s\n" + Chr$(34) + ",macstr(tmpln));"
+InsertPara
+Insert "                i++;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (i) printf(" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "    if (strcmp(ret," + Chr$(34) + "void" + Chr$(34) + ")) {"
+InsertPara
+Insert "        sprintf(tmpln," + Chr$(34) + "%s %s" + Chr$(34) + ",ret,G_retln);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    else {"
+InsertPara
+Insert "        sprintf(tmpln," + Chr$(34) + "None" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    printf(" + Chr$(34) + "NextCell\nNextCell\nNextCell\nInsert \" + Chr$(34) + "Return Value\" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "NextCell\nInsert \" + Chr$(34) + "%s\" + Chr$(34) + "\n" + Chr$(34) + ",tmpln);"
+InsertPara
+Insert "    m=0;"
+InsertPara
+Insert "    if (G_fn[index].m[0]!='*') {"
+InsertPara
+Insert "        printf(" + Chr$(34) + "NextCell\nNextCell\nNextCell\nInsert \" + Chr$(34) + "Modifies\" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "        printf(" + Chr$(34) + "NextCell\nInsert \" + Chr$(34) + "%s\" + Chr$(34) + "\n" + Chr$(34) + ",G_fn[index].m);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    l=0;"
+InsertPara
+Insert "    for (j=0;j<G_numn;j++) {"
+InsertPara
+Insert "        for (k=0;k<G_fn[j].nc;k++) {"
+InsertPara
+Insert "            if ((G_fn[j].c[k]&0x3FFF)==index) {"
+InsertPara
+Insert "                for (m=0;m<l;m++) if ((G_lcalls[m]&0x3FFF)==j) break;"
+InsertPara
+Insert "                if (m==l) {"
+InsertPara
+Insert "                    G_lcalls[l++]=j;"
+InsertPara
+Insert "                    if ((G_fn[j].c[k]&0x4000)!=0) G_lcalls[l-1]|=0x4000;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (l) {"
+InsertPara
+Insert "        for (m=0;m<l;m++) {"
+InsertPara
+Insert "            t=G_fn[G_lcalls[m]&0x3FFF].n;"
+InsertPara
+Insert "            if ((G_lcalls[m]&0x4000)!=0) {"
+InsertPara
+Insert "                sprintf(tmp," + Chr$(34) + "[%s]" + Chr$(34) + ",t);"
+InsertPara
+Insert "                t=tmp;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            if (m==0) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "NextCell\nNextCell\nNextCell\nInsert \" + Chr$(34) + "Called By\" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "                printf(" + Chr$(34) + "NextCell\nInsert \" + Chr$(34) + "%s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                j=strlen(t)+19;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            else {"
+InsertPara
+Insert "                printf(" + Chr$(34) + ", %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                if ((j+strlen(t)+2)>78) {"
+InsertPara
+Insert "                    j=strlen(t)+19;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                else {"
+InsertPara
+Insert "                    j+=strlen(t)+2;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "         printf(" + Chr$(34) + ".\" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (G_fn[index].nc) {"
+InsertPara
+Insert "        for (m=0;m<G_fn[index].nc;m++) {"
+InsertPara
+Insert "            t=G_fn[G_fn[index].c[m]&0x3FFF].n;"
+InsertPara
+Insert "            if ((G_fn[index].c[m]&0x4000)!=0) {"
+InsertPara
+Insert "                sprintf(tmp," + Chr$(34) + "[%s]" + Chr$(34) + ",t);"
+InsertPara
+Insert "                t=tmp;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            if (m==0) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "NextCell\nNextCell\nNextCell\nInsert \" + Chr$(34) + "Calls\" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "                printf(" + Chr$(34) + "NextCell\nInsert \" + Chr$(34) + "%s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                j=strlen(t)+19;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            else {"
+InsertPara
+Insert "                printf(" + Chr$(34) + ", %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                if ((j+strlen(t)+2)>78) {"
+InsertPara
+Insert "                    j=strlen(t)+19;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                else {"
+InsertPara
+Insert "                    j+=strlen(t)+2;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        printf(" + Chr$(34) + ".\" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    k=0;"
+InsertPara
+Insert "    for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "        if ((G_fn[i].fn==G_fn[index].fn)&&(i!=index)) {"
+InsertPara
+Insert "            if (!k) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "NextCell\nNextCell\nNextCell\nInsert \" + Chr$(34) + "See Also\" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "                printf(" + Chr$(34) + "NextCell\nInsert \" + Chr$(34) + "%s" + Chr$(34) + ",G_fn[i].n);"
+InsertPara
+Insert "                j=strlen(G_fn[i].n)+19;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            else {"
+InsertPara
+Insert "                printf(" + Chr$(34) + ", %s" + Chr$(34) + ",G_fn[i].n);"
+InsertPara
+Insert "                if ((j+strlen(G_fn[i].n)+2)>78) {"
+InsertPara
+Insert "                    j=strlen(G_fn[i].n)+19;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                else {"
+InsertPara
+Insert "                    j+=strlen(G_fn[i].n)+2;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            k++;"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (k) printf(" + Chr$(34) + ".\" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "LineDown 1\nInsertPara\nFont \" + Chr$(34) + "Courier New\" + Chr$(34) + "\nFontSize 8\nBold\n" + Chr$(34) + ");"
+InsertPara
+Insert "    if (withcode) {"
+InsertPara
+Insert "        if ((fp=fopen(G_fname[G_fn[index].fn]," + Chr$(34) + "r" + Chr$(34) + "))!=NULL) {"
+InsertPara
+Insert "            lc=0;"
+InsertPara
+Insert "            while (fgets(tmpln,255,fp)!=NULL) {"
+InsertPara
+Insert "                lc++;"
+InsertPara
+Insert "                if (lc>G_fn[index].sl) {"
+InsertPara
+Insert "                    if (lc>G_fn[index].el+1) break;"
+InsertPara
+Insert "                    printf(" + Chr$(34) + "InsertPara\nInsert %s\n" + Chr$(34) + ",macstr(tmpln));"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            fclose(fp);"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    printf(" + Chr$(34) + "InsertPara\nFont \" + Chr$(34) + "Times New Roman\" + Chr$(34) + "\nFontSize 12\nBold\nInsertBreak .Type = 0\n" + Chr$(34) + ");"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "prpagen"
+NextCell
+MarkIndexEntry .Entry = "prpagen"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Print one page of output on stdout."
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void prpagen(int index);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "int index "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_workspace G_str G_lcalls "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "main."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "getcomments, prlinen."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void prpagen(int index)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    char tmp[40];"
+InsertPara
+Insert "    char ret[40];"
+InsertPara
+Insert "    char name[40];"
+InsertPara
+Insert "    char prot[150];"
+InsertPara
+Insert "    char tmpln[150];"
+InsertPara
+Insert "    char *t;"
+InsertPara
+Insert "    int i=0;"
+InsertPara
+Insert "    int j=0;"
+InsertPara
+Insert "    int k=0;"
+InsertPara
+Insert "    int l,m;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    sprintf(prot," + Chr$(34) + "%s;" + Chr$(34) + ",G_fn[index].p);"
+InsertPara
+Insert "    strcpy(name,G_fn[index].n);"
+InsertPara
+Insert "    if (G_fn[index].ac) {"
+InsertPara
+Insert "        getcomments(G_ftname[G_fn[index].fn],index);"
+InsertPara
+Insert "    } else {"
+InsertPara
+Insert "        getcomments(GLOBCOMFILE,index);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    strcpy(G_lstr,G_fn[index].s);"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if ((G_function[0]!=0)&&(strcmp(G_function,name))) return;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    t=strstr(prot,name);"
+InsertPara
+Insert "    memcpy(ret,prot,(int)(t-prot));"
+InsertPara
+Insert "    ret[(int)(t-prot)]=0;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if ((ret[0]==' ')||(ret[0]==0)) {"
+InsertPara
+Insert "        sprintf(prot," + Chr$(34) + "int %s;" + Chr$(34) + ",G_fn[index].p);"
+InsertPara
+Insert "        strcpy(ret," + Chr$(34) + "int" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    t=&ret[strlen(ret)-1];"
+InsertPara
+Insert "    while (isspace(*t)) t--;"
+InsertPara
+Insert "    *(t+1)=0;"
+InsertPara
+Insert "    printf(" + Chr$(34) + "\n     Function   %-s\n" + Chr$(34) + ",name);"
+InsertPara
+Insert "    if ((G_lstr[0]=='/')&&(G_lstr[1]=='/')) {"
+InsertPara
+Insert "        t=&G_lstr[2];"
+InsertPara
+Insert "        while ((*t)&&isspace(*t)) t++;"
+InsertPara
+Insert "        prlinen(" + Chr$(34) + "Synopsis" + Chr$(34) + ",t," + Chr$(34) + " " + Chr$(34) + ",' ');"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    else {"
+InsertPara
+Insert "        printf(" + Chr$(34) + "\n     Synopsis\n" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    prlinen(" + Chr$(34) + "Prototype" + Chr$(34) + ",prot," + Chr$(34) + " " + Chr$(34) + ",' ');"
+InsertPara
+Insert "    prlinen(" + Chr$(34) + "Module" + Chr$(34) + ",G_fname[G_fn[index].fn]," + Chr$(34) + " " + Chr$(34) + ",' ');"
+InsertPara
+Insert "    G_workspace[0]=0;"
+InsertPara
+Insert "    for (i=0;i<G_nd;i++) { strcat(G_workspace,G_descln[i]); strcat(G_workspace," + Chr$(34) + " " + Chr$(34) + "); }"
+InsertPara
+Insert "    prlinen(" + Chr$(34) + "Description" + Chr$(34) + ",G_workspace," + Chr$(34) + " " + Chr$(34) + ",' ');"
+InsertPara
+Insert "    printf(" + Chr$(34) + "\n\n" + Chr$(34) + ");"
+InsertPara
+Insert "    G_str=strstr(prot,name);"
+InsertPara
+Insert "    G_str+=strlen(name);"
+InsertPara
+Insert "    i=0;"
+InsertPara
+Insert "    while ((*G_str)&&(*G_str!=')')) {"
+InsertPara
+Insert "        if (isspace(*G_str)||(*G_str=='(')||(*G_str==',')) {"
+InsertPara
+Insert "            G_str++;"
+InsertPara
+Insert "        } else {"
+InsertPara
+Insert "            t=tmp;"
+InsertPara
+Insert "            while ((*G_str)&&(*G_str!=')')&&(*G_str!=',')) *(t++)=*(G_str++);"
+InsertPara
+Insert "            *t=0;"
+InsertPara
+Insert "            t--;"
+InsertPara
+Insert "            while (isspace(*t)) t--;"
+InsertPara
+Insert "            *(t+1)=0;"
+InsertPara
+Insert "            if (strcmp(tmp," + Chr$(34) + "void" + Chr$(34) + ")) {"
+InsertPara
+Insert "                sprintf(tmpln," + Chr$(34) + "%s %s" + Chr$(34) + ",tmp,G_passln[i]);"
+InsertPara
+Insert "                printf(" + Chr$(34) + "       %s   %-s\n" + Chr$(34) + ",((i==0)?" + Chr$(34) + "Passed" + Chr$(34) + ":" + Chr$(34) + "      " + Chr$(34) + "),tmpln);"
+InsertPara
+Insert "                i++;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (i) printf(" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "    if (strcmp(ret," + Chr$(34) + "void" + Chr$(34) + ")) {"
+InsertPara
+Insert "        sprintf(tmpln," + Chr$(34) + "%s %s" + Chr$(34) + ",ret,G_retln);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    else {"
+InsertPara
+Insert "        sprintf(tmpln," + Chr$(34) + "None" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    printf(" + Chr$(34) + " Return Value   %-s\n" + Chr$(34) + ",tmpln);"
+InsertPara
+Insert "    m=0;"
+InsertPara
+Insert "    if (G_fn[index].m[0]!='*') {"
+InsertPara
+Insert "        prlinen(" + Chr$(34) + "Modifies" + Chr$(34) + ",G_fn[index].m," + Chr$(34) + ", " + Chr$(34) + ",'.');"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    l=0;"
+InsertPara
+Insert "    for (j=0;j<G_numn;j++) {"
+InsertPara
+Insert "        for (k=0;k<G_fn[j].nc;k++) {"
+InsertPara
+Insert "            if ((G_fn[j].c[k]&0x3FFF)==index) {"
+InsertPara
+Insert "                for (m=0;m<l;m++) if ((G_lcalls[m]&0x3FFF)==j) break;"
+InsertPara
+Insert "                if (m==l) {"
+InsertPara
+Insert "                    G_lcalls[l++]=j;"
+InsertPara
+Insert "                    if ((G_fn[j].c[k]&0x4000)!=0) G_lcalls[l-1]|=0x4000;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (l) {"
+InsertPara
+Insert "        for (m=0;m<l;m++) {"
+InsertPara
+Insert "            t=G_fn[G_lcalls[m]&0x3FFF].n;"
+InsertPara
+Insert "            if ((G_lcalls[m]&0x4000)!=0) {"
+InsertPara
+Insert "                sprintf(tmp," + Chr$(34) + "[%s]" + Chr$(34) + ",t);"
+InsertPara
+Insert "                t=tmp;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            if (m==0) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "\n    Called By   %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                j=strlen(t)+19;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            else {"
+InsertPara
+Insert "                if ((j+strlen(t)+2)>78) {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + "\n                %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                    j=strlen(t)+19;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                else {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ", %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                    j+=strlen(t)+2;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        printf(" + Chr$(34) + ".\n" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (G_fn[index].nc) {"
+InsertPara
+Insert "        for (m=0;m<G_fn[index].nc;m++) {"
+InsertPara
+Insert "            t=G_fn[G_fn[index].c[m]&0x3FFF].n;"
+InsertPara
+Insert "            if ((G_fn[index].c[m]&0x4000)!=0) {"
+InsertPara
+Insert "                sprintf(tmp," + Chr$(34) + "[%s]" + Chr$(34) + ",t);"
+InsertPara
+Insert "                t=tmp;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            if (m==0) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "\n        Calls   %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                j=strlen(t)+19;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            else {"
+InsertPara
+Insert "                if ((j+strlen(t)+2)>78) {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ", \n                %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                    j=strlen(t)+19;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                else {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ", %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                    j+=strlen(t)+2;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        printf(" + Chr$(34) + ".\n" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    k=0;"
+InsertPara
+Insert "    for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "        if ((G_fn[i].fn==G_fn[index].fn)&&(i!=index)) {"
+InsertPara
+Insert "            if (!k) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "\n     See Also   %s" + Chr$(34) + ",G_fn[i].n);"
+InsertPara
+Insert "                j=strlen(G_fn[i].n)+19;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            else {"
+InsertPara
+Insert "                if ((j+strlen(G_fn[i].n)+2)>78) {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ",\n                %s" + Chr$(34) + ",G_fn[i].n);"
+InsertPara
+Insert "                    j=strlen(G_fn[i].n)+19;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                else {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ", %s" + Chr$(34) + ",G_fn[i].n);"
+InsertPara
+Insert "                    j+=strlen(G_fn[i].n)+2;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            k++;"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (k) printf(" + Chr$(34) + ".\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "\n%c\n" + Chr$(34) + ",12);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "prpagewp"
+NextCell
+MarkIndexEntry .Entry = "prpagewp"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Print one page of output on stdout with no textfile spacing for wp."
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void prpagewp(int index);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "int index "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_workspace G_str G_lcalls "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "main."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "getcomments."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void prpagewp(int index)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    char tmp[40];"
+InsertPara
+Insert "    char ret[40];"
+InsertPara
+Insert "    char name[40];"
+InsertPara
+Insert "    char prot[150];"
+InsertPara
+Insert "    char tmpln[150];"
+InsertPara
+Insert "    char *t;"
+InsertPara
+Insert "    int i=0;"
+InsertPara
+Insert "    int j=0;"
+InsertPara
+Insert "    int k=0;"
+InsertPara
+Insert "    int l,m;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    sprintf(prot," + Chr$(34) + "%s;" + Chr$(34) + ",G_fn[index].p);"
+InsertPara
+Insert "    strcpy(name,G_fn[index].n);"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if ((G_function[0]!=0)&&(strcmp(G_function,name))) return;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    t=strstr(prot,name);"
+InsertPara
+Insert "    memcpy(ret,prot,(int)(t-prot));"
+InsertPara
+Insert "    ret[(int)(t-prot)]=0;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if (G_fn[index].ac) {"
+InsertPara
+Insert "        getcomments(G_ftname[G_fn[index].fn],index);"
+InsertPara
+Insert "    } else {"
+InsertPara
+Insert "        getcomments(GLOBCOMFILE,index);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    strcpy(G_lstr,G_fn[index].s);"
+InsertPara
+Insert ""
+InsertPara
+Insert "    if ((ret[0]==' ')||(ret[0]==0)) {"
+InsertPara
+Insert "        sprintf(prot," + Chr$(34) + "int %s;" + Chr$(34) + ",G_fn[index].p);"
+InsertPara
+Insert "        strcpy(ret," + Chr$(34) + "int" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    t=&ret[strlen(ret)-1];"
+InsertPara
+Insert "    while (isspace(*t)) t--;"
+InsertPara
+Insert "    *(t+1)=0;"
+InsertPara
+Insert "    printf(" + Chr$(34) + "Function\t%-s\n\n" + Chr$(34) + ",name);"
+InsertPara
+Insert "    if ((G_lstr[0]=='/')&&(G_lstr[1]=='/')) {"
+InsertPara
+Insert "        t=&G_lstr[2];"
+InsertPara
+Insert "        while ((*t)&&isspace(*t)) t++;"
+InsertPara
+Insert "        printf(" + Chr$(34) + "Synopsis\t%s" + Chr$(34) + ",t);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    else {"
+InsertPara
+Insert "        printf(" + Chr$(34) + "Synopsis" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    printf(" + Chr$(34) + "\n\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "Prototype\t%s\n\n" + Chr$(34) + ",prot);"
+InsertPara
+Insert "    printf(" + Chr$(34) + "Module\t%s\n\n" + Chr$(34) + ",G_fname[G_fn[index].fn]);"
+InsertPara
+Insert "    G_workspace[0]=0;"
+InsertPara
+Insert "    for (i=0;i<G_nd;i++) { strcat(G_workspace,G_descln[i]); strcat(G_workspace," + Chr$(34) + " " + Chr$(34) + "); }"
+InsertPara
+Insert "    printf(" + Chr$(34) + "Description\t%s\n\n" + Chr$(34) + ",G_workspace);"
+InsertPara
+Insert "    G_str=strstr(prot,name);"
+InsertPara
+Insert "    G_str+=strlen(name);"
+InsertPara
+Insert "    i=0;"
+InsertPara
+Insert "    while ((*G_str)&&(*G_str!=')')) {"
+InsertPara
+Insert "        if (isspace(*G_str)||(*G_str=='(')||(*G_str==',')) {"
+InsertPara
+Insert "            G_str++;"
+InsertPara
+Insert "        } else {"
+InsertPara
+Insert "            t=tmp;"
+InsertPara
+Insert "            while ((*G_str)&&(*G_str!=')')&&(*G_str!=',')) *(t++)=*(G_str++);"
+InsertPara
+Insert "            *t=0;"
+InsertPara
+Insert "            t--;"
+InsertPara
+Insert "            while (isspace(*t)) t--;"
+InsertPara
+Insert "            *(t+1)=0;"
+InsertPara
+Insert "            if (strcmp(tmp," + Chr$(34) + "void" + Chr$(34) + ")) {"
+InsertPara
+Insert "                sprintf(tmpln," + Chr$(34) + "%s %s" + Chr$(34) + ",tmp,G_passln[i]);"
+InsertPara
+Insert "                printf(" + Chr$(34) + "%s\t%-s\n" + Chr$(34) + ",((i==0)?" + Chr$(34) + "Passed" + Chr$(34) + ":" + Chr$(34) + "" + Chr$(34) + "),tmpln);"
+InsertPara
+Insert "                i++;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (i) printf(" + Chr$(34) + "\n" + Chr$(34) + ");"
+InsertPara
+Insert "    if (strcmp(ret," + Chr$(34) + "void" + Chr$(34) + ")) {"
+InsertPara
+Insert "        sprintf(tmpln," + Chr$(34) + "%s %s" + Chr$(34) + ",ret,G_retln);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    else {"
+InsertPara
+Insert "        sprintf(tmpln," + Chr$(34) + "None" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    printf(" + Chr$(34) + "Return Value\t%-s\n\n" + Chr$(34) + ",tmpln);"
+InsertPara
+Insert "    m=0;"
+InsertPara
+Insert "    if (G_fn[index].m[0]!='*') {"
+InsertPara
+Insert "        printf(" + Chr$(34) + "Modifies\t%s\n\n" + Chr$(34) + ",G_fn[index].m);"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    l=0;"
+InsertPara
+Insert "    for (j=0;j<G_numn;j++) {"
+InsertPara
+Insert "        for (k=0;k<G_fn[j].nc;k++) {"
+InsertPara
+Insert "            if ((G_fn[j].c[k]&0x3FFF)==index) {"
+InsertPara
+Insert "                for (m=0;m<l;m++) if ((G_lcalls[m]&0x3FFF)==j) break;"
+InsertPara
+Insert "                if (m==l) {"
+InsertPara
+Insert "                    G_lcalls[l++]=j;"
+InsertPara
+Insert "                    if ((G_fn[j].c[k]&0x4000)!=0) G_lcalls[l-1]|=0x4000;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (l) {"
+InsertPara
+Insert "        for (m=0;m<l;m++) {"
+InsertPara
+Insert "            t=G_fn[G_lcalls[m]&0x3FFF].n;"
+InsertPara
+Insert "            if ((G_lcalls[m]&0x4000)!=0) {"
+InsertPara
+Insert "                sprintf(tmp," + Chr$(34) + "[%s]" + Chr$(34) + ",t);"
+InsertPara
+Insert "                t=tmp;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            if (m==0) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "Called By\t%s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                j=strlen(t)+19;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            else {"
+InsertPara
+Insert "                if ((j+strlen(t)+2)>78) {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ", %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                    j=strlen(t)+19;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                else {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ", %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                    j+=strlen(t)+2;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        printf(" + Chr$(34) + ".\n\n" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (G_fn[index].nc) {"
+InsertPara
+Insert "        for (m=0;m<G_fn[index].nc;m++) {"
+InsertPara
+Insert "            t=G_fn[G_fn[index].c[m]&0x3FFF].n;"
+InsertPara
+Insert "            if ((G_fn[index].c[m]&0x4000)!=0) {"
+InsertPara
+Insert "                sprintf(tmp," + Chr$(34) + "[%s]" + Chr$(34) + ",t);"
+InsertPara
+Insert "                t=tmp;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            if (m==0) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "Calls\t%s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                j=strlen(t)+19;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            else {"
+InsertPara
+Insert "                if ((j+strlen(t)+2)>78) {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ", %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                    j=strlen(t)+19;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                else {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ", %s" + Chr$(34) + ",t);"
+InsertPara
+Insert "                    j+=strlen(t)+2;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        printf(" + Chr$(34) + ".\n\n" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    k=0;"
+InsertPara
+Insert "    for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "        if ((G_fn[i].fn==G_fn[index].fn)&&(i!=index)) {"
+InsertPara
+Insert "            if (!k) {"
+InsertPara
+Insert "                printf(" + Chr$(34) + "See Also\t%s" + Chr$(34) + ",G_fn[i].n);"
+InsertPara
+Insert "                j=strlen(G_fn[i].n)+19;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            else {"
+InsertPara
+Insert "                if ((j+strlen(G_fn[i].n)+2)>78) {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ", %s" + Chr$(34) + ",G_fn[i].n);"
+InsertPara
+Insert "                    j=strlen(G_fn[i].n)+19;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "                else {"
+InsertPara
+Insert "                    printf(" + Chr$(34) + ", %s" + Chr$(34) + ",G_fn[i].n);"
+InsertPara
+Insert "                    j+=strlen(G_fn[i].n)+2;"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "            k++;"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    if (k) printf(" + Chr$(34) + ".\n" + Chr$(34) + ");"
+InsertPara
+Insert "    printf(" + Chr$(34) + "\n%c\n" + Chr$(34) + ",12);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "prtree"
+NextCell
+MarkIndexEntry .Entry = "prtree"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "print a tree structure"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void prtree(void);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "main."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "subtree."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, readvar, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void prtree(void)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    int i,j,k,l;"
+InsertPara
+Insert "    printf(" + Chr$(34) + "%s\n" + Chr$(34) + ",G_fname[0]);"
+InsertPara
+Insert "    if (G_function[0]==0) {"
+InsertPara
+Insert "        for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "            if (!strcmp(G_fn[i].n," + Chr$(34) + "main" + Chr$(34) + ")) {"
+InsertPara
+Insert "                subtree(i,0,1);"
+InsertPara
+Insert "                i=G_numn;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "            if (G_fn[i].sl!=(-1)) {"
+InsertPara
+Insert "//                l=0;"
+InsertPara
+Insert "//                for (j=0;j<G_numn;j++) {"
+InsertPara
+Insert "//                    for (k=0;k<G_fn[j].nc;k++) {"
+InsertPara
+Insert "//                        if ((G_fn[j].c[k]&0x3FFF)==i) {"
+InsertPara
+Insert "//                            l++;"
+InsertPara
+Insert "//                        }"
+InsertPara
+Insert "//                    }"
+InsertPara
+Insert "//                }"
+InsertPara
+Insert "//                if (!l) subtree(i,0,1);"
+InsertPara
+Insert "                subtree(i,0,1);"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    else {"
+InsertPara
+Insert "        for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "            if (!strcmp(G_fn[i].n,G_function)) {"
+InsertPara
+Insert "                subtree(i,0,1);"
+InsertPara
+Insert "                i=G_numn;"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "            if (G_fn[i].sl!=(-1)) {"
+InsertPara
+Insert "                subtree(i,0,1);"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "readvar"
+NextCell
+MarkIndexEntry .Entry = "readvar"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Read variable length block from file"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "int readvar(int fd,char **p);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "int fd "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "char **p "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "int "
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "p "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "load."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, remcom, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "int readvar(int fd,char **p)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "	int size=0;"
+InsertPara
+Insert "	read(fd,&size,sizeof(size));"
+InsertPara
+Insert "	if (size==0) {"
+InsertPara
+Insert "		*p=NULL;"
+InsertPara
+Insert "	} else {"
+InsertPara
+Insert "		*p=malloc(size);"
+InsertPara
+Insert "		if (*p!=NULL)"
+InsertPara
+Insert "			read(fd,*p,size);"
+InsertPara
+Insert "		else"
+InsertPara
+Insert "			size=0;"
+InsertPara
+Insert "	}"
+InsertPara
+Insert "	return(size);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "remcom"
+NextCell
+MarkIndexEntry .Entry = "remcom"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Remove all 'C' comments from a line"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "char *remcom(char *g);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *g "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "char * "
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "g "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "funcfind."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, save, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "char *remcom(char *g)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    int xit=0;"
+InsertPara
+Insert "    static char tmp[256];"
+InsertPara
+Insert "    char *p;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    while ((*g)&&isspace(*g)) g++;"
+InsertPara
+Insert "    p=tmp;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    while ((*g)&&(!xit)) {"
+InsertPara
+Insert "        if (*g=='/') {"
+InsertPara
+Insert "            if (*(g+1)=='/') {"
+InsertPara
+Insert "                xit=1;"
+InsertPara
+Insert "            } else {"
+InsertPara
+Insert "                if (*(g+1)=='*') {"
+InsertPara
+Insert "                    g+=2;"
+InsertPara
+Insert "                    while ((*g)&&((*g)!='*')&&(*(g+1)!='/')) {"
+InsertPara
+Insert "                        g++;"
+InsertPara
+Insert "                    }"
+InsertPara
+Insert "                    if (*g) g+=2;"
+InsertPara
+Insert "                } else {"
+InsertPara
+Insert "                    *(p++)=*(g++);"
+InsertPara
+Insert "                }"
+InsertPara
+Insert "            }"
+InsertPara
+Insert "        } else {"
+InsertPara
+Insert "            *(p++)=*(g++);"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    *p=0;"
+InsertPara
+Insert "    while (isspace(*(p-1))&&(p>tmp)) p--;"
+InsertPara
+Insert "    *p=0;"
+InsertPara
+Insert "    return(tmp);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "save"
+NextCell
+MarkIndexEntry .Entry = "save"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Save the collected data in binary format"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void save(char *file);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *file "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "main."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "writevar."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, savegmod, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void save(char *file)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "	int fd;"
+InsertPara
+Insert "	int i;"
+InsertPara
+Insert "	if ((fd=open(file,O_RDWR|O_BINARY|O_TRUNC|O_CREAT,S_IREAD|S_IWRITE))==(-1)) return;"
+InsertPara
+Insert "	write(fd,&G_numf,sizeof(int));"
+InsertPara
+Insert "	for (i=0;i<G_numf;i++) {"
+InsertPara
+Insert "		writevar(fd,G_fname[i],(-1));"
+InsertPara
+Insert "		writevar(fd,G_ftname[i],(-1));"
+InsertPara
+Insert "	}"
+InsertPara
+Insert "	write(fd,&G_numn,sizeof(int));"
+InsertPara
+Insert "	for (i=0;i<G_numn;i++) {"
+InsertPara
+Insert "		writevar(fd,G_fn[i].n,(-1));"
+InsertPara
+Insert "		writevar(fd,G_fn[i].p,(-1));"
+InsertPara
+Insert "		writevar(fd,G_fn[i].s,(-1));"
+InsertPara
+Insert "		writevar(fd,G_fn[i].m,(-1));"
+InsertPara
+Insert "		writevar(fd,G_fn[i].c,G_fn[i].nc*sizeof(int));"
+InsertPara
+Insert "		write(fd,&(G_fn[i].fn),sizeof(int));"
+InsertPara
+Insert "		write(fd,&(G_fn[i].sl),sizeof(int));"
+InsertPara
+Insert "		write(fd,&(G_fn[i].el),sizeof(int));"
+InsertPara
+Insert "		write(fd,&(G_fn[i].ac),sizeof(char));"
+InsertPara
+Insert "	}"
+InsertPara
+Insert "	close(fd);"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "savegmod"
+NextCell
+MarkIndexEntry .Entry = "savegmod"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Save the Global variable modification information"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void savegmod(char *str);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *str "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_str G_mvars G_nummvars "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "funcfind."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "stripspace, isvalword."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savelvars, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void savegmod(char *str)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    int i;"
+InsertPara
+Insert "    char *s;"
+InsertPara
+Insert "    G_str=str;"
+InsertPara
+Insert "    stripspace();"
+InsertPara
+Insert "    while ((*G_str)&&(*G_str=='*')) G_str++;"
+InsertPara
+Insert "    for (i=0;i<G_numlvars;i++) {"
+InsertPara
+Insert "        if (!strncmp(G_lvars[i],G_str,strlen(G_lvars[i]))) return;"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    s=G_str;"
+InsertPara
+Insert "    isvalword();"
+InsertPara
+Insert "    memcpy(G_mvars[G_nummvars],s,(int)(G_str-s));"
+InsertPara
+Insert "    G_mvars[G_nummvars][(int)(G_str-s)]=0;"
+InsertPara
+Insert "    for (i=0;i<G_nummvars;i++) {"
+InsertPara
+Insert "        if (!strcmp(G_mvars[G_nummvars],G_mvars[i])) return;"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "    G_nummvars++;"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "savelvars"
+NextCell
+MarkIndexEntry .Entry = "savelvars"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Save the local variable information"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void savelvars(char *str);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "char *str "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_str G_lvars "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "funcfind."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "stripspace, isvalword, isctype."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, stripspace, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void savelvars(char *str)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    char tmp[256];"
+InsertPara
+Insert "    char *s,*a;"
+InsertPara
+Insert ""
+InsertPara
+Insert "    G_str=str;"
+InsertPara
+Insert "    stripspace();"
+InsertPara
+Insert "    isvalword();"
+InsertPara
+Insert "    while (isctype());"
+InsertPara
+Insert "    strcpy(tmp,G_str);"
+InsertPara
+Insert "    s=strtok(tmp," + Chr$(34) + ",;*" + Chr$(34) + ");"
+InsertPara
+Insert "    while (s!=NULL) {"
+InsertPara
+Insert "        if (*s&&(*s!='=')&&(*s!='[')) {"
+InsertPara
+Insert "            a=s;"
+InsertPara
+Insert "            while (*s&&(*s!='=')&&(*s!='[')) s++;"
+InsertPara
+Insert "            memcpy(G_lvars[G_numlvars],a,(int)(s-a));"
+InsertPara
+Insert "            G_lvars[G_numlvars++][(int)(s-a)]=0;"
+InsertPara
+Insert "        }"
+InsertPara
+Insert "        s=strtok(NULL," + Chr$(34) + ",;*" + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "stripspace"
+NextCell
+MarkIndexEntry .Entry = "stripspace"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Strip the leading space from G_str"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void stripspace(void);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "savegmod, savelvars."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, subtree, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void stripspace(void)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    while ((*G_str)&&isspace(*G_str)) G_str++;"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "subtree"
+NextCell
+MarkIndexEntry .Entry = "subtree"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "recursively draw sub tree structures"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void subtree(int idx,int d,int l);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "int idx "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "int d "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "int l "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "G_fn "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "prtree, subtree."
+NextCell
+NextCell
+NextCell
+Insert "Calls"
+NextCell
+Insert "subtree."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, writevar."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void subtree(int idx,int d,int l)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "    int i,j;"
+InsertPara
+Insert "	static int ms=0;"
+InsertPara
+Insert "    static char map[80];"
+InsertPara
+Insert "	if (!ms) {"
+InsertPara
+Insert "		memset(map,0,80);"
+InsertPara
+Insert "		ms=1;"
+InsertPara
+Insert "	}"
+InsertPara
+Insert "    if (d>=80) return;"
+InsertPara
+Insert "    if (l) map[d]=0; else map[d]=1;"
+InsertPara
+Insert "    for (j=0;j<d;j++) printf(" + Chr$(34) + "%c  " + Chr$(34) + ",((map[j])?'บ':' '));"
+InsertPara
+Insert "    if (d) {"
+InsertPara
+Insert "        if (l) printf(" + Chr$(34) + "ศออ" + Chr$(34) + "); else printf(" + Chr$(34) + "ฬออ" + Chr$(34) + ");"
+InsertPara
+Insert "    } else {"
+InsertPara
+Insert "        printf(" + Chr$(34) + "   " + Chr$(34) + ");"
+InsertPara
+Insert "    }"
+InsertPara
+Insert "//    printf(" + Chr$(34) + "%s %s\n" + Chr$(34) + ",G_fn[idx&0x3FFF].n,G_fname[G_fn[idx&0x3FFF].fn]);"
+InsertPara
+Insert "    printf(" + Chr$(34) + "%s\n" + Chr$(34) + ",G_fn[idx&0x3FFF].n);"
+InsertPara
+Insert "    if (G_fn[idx&0x3FFF].sl==(-1)) return;"
+InsertPara
+Insert "    G_fn[idx&0x3FFF].sl=(-1);"
+InsertPara
+Insert "    for (i=0;i<G_fn[idx&0x3FFF].nc;i++) "
+InsertPara
+Insert "        subtree(G_fn[idx&0x3FFF].c[i],d+1,i==(G_fn[idx&0x3FFF].nc-1));"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+TableInsertTable .ConvertFrom = "", .NumColumns = "2", .NumRows = "1", .InitialColWidth = "Auto", .Format = "0", .Apply = "167"
+Insert "Function"
+NextCell
+Insert "writevar"
+NextCell
+MarkIndexEntry .Entry = "writevar"
+TableSelectTable
+TableAutoFormat .Format = 6, .Borders = 1, .Shading = 1, .Font = 1, .Color = 1, .AutoFit = 1, .HeadingRows = 1, .FirstColumn = 1, .LastRow = 0, .LastColumn = 0
+TableColumnWidth .PrevColumn
+TableColumnWidth .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34), .NextColumn
+TableColumnWidth .ColumnWidth = "5" + Chr$(34), .PrevColumn
+TableColumnWidth .ColumnWidth = "1.2" + Chr$(34)
+RightPara
+LineDown 1
+LineUp 1
+CharRight 2, 1
+FontSize 10
+CharLeft 1
+LineUp 1
+EndOfLine
+StartOfLine 1
+FormatFont .Color = 7
+LineDown 1
+NextCell
+NextCell
+Insert "Synopsis"
+NextCell
+Insert "Write variable length block to file"
+NextCell
+NextCell
+NextCell
+Insert "Prototype"
+NextCell
+Insert "void writevar(int fd,void *p,int size);"
+NextCell
+NextCell
+NextCell
+Insert "Module"
+NextCell
+Insert "DOCU.C"
+NextCell
+NextCell
+NextCell
+Insert "Description"
+NextCell
+Insert ""
+NextCell
+NextCell
+NextCell
+Insert "Passed"
+NextCell
+Insert "int fd "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "void *p "
+NextCell
+NextCell
+NextCell
+Insert " "
+NextCell
+Insert "int size "
+
+NextCell
+NextCell
+NextCell
+Insert "Return Value"
+NextCell
+Insert "None"
+NextCell
+NextCell
+NextCell
+Insert "Modifies"
+NextCell
+Insert "size "
+NextCell
+NextCell
+NextCell
+Insert "Called By"
+NextCell
+Insert "save."
+NextCell
+NextCell
+NextCell
+Insert "See Also"
+NextCell
+Insert "addlinetolist, arecomments, cmap, cntcurly, contfunc, disppick, editcoms, editfunc, fcmp, findfuncln, funcfind, getcomments, getfiles, getfname, getkey, isctype, iscword, isvalword, load, macstr, main, match, prlast20com, prline, prlinen, prpage, prpagemac, prpagen, prpagewp, prtree, readvar, remcom, save, savegmod, savelvars, stripspace, subtree."
+LineDown 1
+InsertPara
+Font "Courier New"
+FontSize 8
+Bold
+InsertPara
+Insert "void writevar(int fd,void *p,int size)"
+InsertPara
+Insert "{"
+InsertPara
+Insert "	if (p==NULL) {"
+InsertPara
+Insert "		size=0;"
+InsertPara
+Insert "		write(fd,&size,sizeof(size));"
+InsertPara
+Insert "	} else {"
+InsertPara
+Insert "        if (size==(-1)) size=strlen(p)+1;"
+InsertPara
+Insert "		write(fd,&size,sizeof(size));"
+InsertPara
+Insert "		write(fd,p,size);"
+InsertPara
+Insert "	}"
+InsertPara
+Insert "}"
+InsertPara
+Font "Times New Roman"
+FontSize 12
+Bold
+InsertBreak .Type = 0
+InsertIndex .Type = 0, .HeadingSeparator = 2, .RightAlignPageNumbers = 0, .Columns = 3, .Replace = 0
+End Sub

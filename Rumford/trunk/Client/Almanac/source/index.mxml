@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" 
+	layout="absolute" backgroundGradientColors="[#ECF5E7, #ECF5E7]"
+	backgroundColor="#ECF5E7"
+	pageTitle="Proiam - Rumford Almanac"	
+	initialize="onInitialize(event)" 
+	creationComplete="onCreationComplete(event)"  
+	resize="onResize(event)"  
+	paddingBottom="0" paddingLeft="0" paddingRight="0" paddingTop="0" 
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"  xmlns:ns1="*">
+	<mx:Script>
+		<![CDATA[
+			private var fixedScale:Boolean=false;
+			
+			[Bindable]
+			private var commandSocket:CommandSocket=new CommandSocket();
+			
+			public function onInitialize(event:Event):void {
+				
+			}
+			public function onCreationComplete(event:Event):void {
+				onResize(null);
+			}
+			public function onExitClicked(event:Event):void {
+  				commandSocket.SendCommand("<exit/>");
+			}
+			public function onColourChange(event:Event):void {
+  				commandSocket.SendCommand('<color value="'+colourPicker.value+'"/>');
+			}
+			public function onTransparencyChange(event:Event):void {
+				tLabel.text="Transparency = "+tSlider.value+"%";
+	  			commandSocket.SendCommand('<transparency value="'+tSlider.value+'"/>');
+			}
+			public function onIdleTimeChange(event:Event):void {
+				iLabel.text="Idle Time = "+iSlider.value+" Seconds";
+	  			commandSocket.SendCommand('<idletime value="'+iSlider.value+'"/>');
+			}
+			public function onResize(event:Event):void {
+				if ((scaleRegion!=null) && (mainBG!=null)) {
+					if (fixedScale) {
+						verticalScrollPolicy="auto";
+						horizontalScrollPolicy="auto";
+						scaleRegion.scaleX=640/mainBG.width;
+						scaleRegion.scaleY=480/mainBG.height;
+					} else {
+						verticalScrollPolicy="off";
+						horizontalScrollPolicy="off";
+						scaleRegion.scaleX=width/mainBG.width;
+						scaleRegion.scaleY=height/mainBG.height;
+					}
+				}
+			}
+			public function showHideControls(event:Event):void {
+				controls.visible=!controls.visible;
+			}
+		]]>
+	</mx:Script>	
+	<mx:Canvas  id="scaleRegion" verticalScrollPolicy="off" horizontalScrollPolicy="off" color="#08207A">
+		<mx:Canvas width="830" height="654" id="mainBG" borderStyle="none" backgroundColor="#ECF5E7" verticalScrollPolicy="off" horizontalScrollPolicy="off" backgroundSize="100%" backgroundImage="@Embed(source='Almanac_v01.png')">
+			<ns1:FeaturedItem x="27" y="323" iconSource="@Embed('featured/BenAndJerrys.png')" />
+			<ns1:FeaturedItem x="235" y="323" iconSource="@Embed('featured/SinatraStamps.png')" />
+			<ns1:FeaturedItem x="235" y="108" iconSource="@Embed('featured/Priority_Dom.png')" />
+			<ns1:FeaturedItem x="27" y="109" iconSource="@Embed('featured/Express_Dom_FlatRate.png')" />
+			<mx:Canvas x="7" y="574" width="601" height="74" id="controls" visible="false">
+				<mx:Canvas x="13" y="13" width="184" height="50" cornerRadius="10" borderThickness="3" borderColor="#3480B1"  borderStyle="solid" backgroundColor="#E6F2E8" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+					<mx:HSlider y="21" id="tSlider" allowTrackClick="true" minimum="0" maximum="100" snapInterval="5" enabled="true" liveDragging="true" change="onTransparencyChange(event)" tickInterval="10" tickLength="5" tickThickness="2" value="50" horizontalCenter="0"/>
+					<mx:Label y="1" id="tLabel" text="Transparency=50%" horizontalCenter="0" fontWeight="bold" width="158" textAlign="center" color="#547770"/>
+				</mx:Canvas>
+				<mx:Canvas x="408" y="13" width="87" height="50" cornerRadius="10" borderThickness="3" borderColor="#3480B1"  borderStyle="solid" backgroundColor="#E6F2E8" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+					<mx:Label y="1" text="Color" horizontalCenter="0" fontWeight="bold" width="60" color="#547770"/>
+					<mx:ColorPicker y="18" selectedColor="#000000" enabled="true" horizontalCenter="0" width="50" height="20" change="onColourChange(event)" id="colourPicker"/>
+				</mx:Canvas>
+				<mx:Button x="513" y="26" label="Exit" id="exitButton" enabled="true" click="onExitClicked(event)"  fillAlphas="[1.0, 1.0]" fillColors="[#E6F2E8, #E6F2E8]" color="#547770"/>
+				<mx:Canvas x="210" y="13" width="184" height="50" cornerRadius="10" borderThickness="3" borderColor="#3480B1"  borderStyle="solid" backgroundColor="#E6F2E8" verticalScrollPolicy="off" horizontalScrollPolicy="off">
+					<mx:HSlider y="21" id="iSlider" allowTrackClick="true" minimum="1" maximum="60" snapInterval="5" enabled="true" liveDragging="true" change="onIdleTimeChange(event)" tickInterval="5" tickLength="5" tickThickness="2" value="10" horizontalCenter="0"/>
+					<mx:Label y="1" id="iLabel" text="Idle Time = 10 Seconds" horizontalCenter="0" fontWeight="bold" width="157" textAlign="center" color="#547770"/>
+				</mx:Canvas>
+			</mx:Canvas>
+			<mx:TextInput x="511" y="445" width="111" height="20" borderStyle="inset" borderColor="#C5DEDA"/>
+			<mx:Canvas x="689" y="570" width="122" height="74" click="showHideControls(event);">
+			</mx:Canvas>
+		</mx:Canvas>
+	</mx:Canvas>
+</mx:Application>

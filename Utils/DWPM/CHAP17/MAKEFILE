@@ -1,0 +1,94 @@
+# Makefile for TURTLE.EXE and TSAVE.DLL
+# Use Microsoft NMAKE -fMAKEFILE.TUR
+# or Borland MAKE -fMAKEFILE.TUR to compile
+# !!! Be sure to set the right variable below
+# depending on your compiler
+
+# Note: Since 286|DOS Extender 2.5 doesn't fully support
+# DLLs with MSC 7.0, the TSAVE.DLL won't work if you
+# use this combination. Use Borland C or MSC 6.0. Future
+# releases of 286|DOS Extender will probably offer full
+# DLL support, but may require different compiler
+# directives
+
+BORLAND=0
+MICROSOFT=1
+# Set to 1 if using 286|DOS Extender 2.5 or later
+# set to 0 if using eariler versions
+V25=1
+
+#set your PHAPI directory here (e.g., c:\run286\inc)
+PHAPI_DIR=e:\run286n\inc
+#set your PHAPI LIB directory here (e.g., c:\run286\lib6a
+PHAPI_LIB=e:\run286n\lib6a
+
+
+!if $(BORLAND)
+CC=bcc286
+COPT=-c -v -w-rvl -w-par -w-eff -w-pro -I$(PHAPI_DIR)
+DLLOPT=-dll -w-rvl -w-par -w-pro -Dprintf=pl_printf\
+ xcitst.def
+LD=bcc286
+LOPT=-v
+AS=tasm
+AOPT=-ml
+!endif
+
+!if $(MICROSOFT)
+CC=cl
+COPT=-AL -Ox -G2 -c -Lp -Zi -I$(PHAPI_DIR)
+# Use the following line for C6 and eariler
+DLLOPT=-ML -Gs -Lp -Ox -G2
+LD=cl
+!if $(V25)
+LOPT=-AL -Zi -Lp
+!else
+LOPT=-AL -Zi -Lp LLIBPE.LIB
+!endif
+AS=masm
+AOPT=-ml
+!endif
+
+
+all : turtle.exe tsave.dll
+
+!if $(MICROSOFT)
+turtle.exe : turtle.obj tcmds.obj xci.obj texpr.obj\
+ gbuf.obj
+        $(LD) $(LOPT) turtle.obj tcmds.obj xci.obj \
+           texpr.obj gbuf.obj $(PHAPI_LIB)\graphp.obj \
+           GRAPHICS.LIB
+        implib turtle.lib turtle.exe
+!else
+turtle.exe : turtle.obj tcmds.obj xci.obj texpr.obj \
+ bgraph.obj gbuf.obj
+        $(LD) $(LOPT) turtle.obj tcmds.obj xci.obj \
+           texpr.obj gbuf.obj bgraph.obj
+        implib turtle.lib turtle.exe
+!endif
+
+turtle.obj : turtle.c xci.h turtle.h pgraph.h
+        $(CC) $(COPT) turtle.c
+
+gbuf.obj : gbuf.c
+        $(CC) $(COPT) gbuf.c
+
+tcmds.obj : tcmds.c xci.h turtle.h pgraph.h
+        $(CC) $(COPT) tcmds.c
+
+texpr.obj : texpr.c turtle.h
+        $(CC) $(COPT) texpr.c
+
+xci.obj : xci.c xci.h
+        $(CC) $(COPT) xci.c
+
+dllstart.obj : dllstart.asm
+       $(AS) $(AOPT) dllstart.asm;
+
+tsave.dll : tsave.c dllstart.obj turtle.h xci.h turtle.lib
+        $(CC) $(DLLOPT) tsave.c dllstart.obj turtle.lib
+
+!if $(BORLAND)
+bgraph.obj : bgraph.c pgraph.h
+        $(CC) $(COPT) bgraph.c
+!endif

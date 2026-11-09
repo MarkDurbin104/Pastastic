@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:slides="com.proiam.slides.*" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	backgroundImage="@Embed('embedded/HelpCard2.png')" 
+	backgroundSize="100%"
+	width="212" height="464"
+	horizontalScrollPolicy="off" verticalScrollPolicy="off"
+	xmlns:filters="flash.filters.*" fontFamily="Tahoma" fontSize="12" fontWeight="bold"> 
+	<mx:states>
+		<mx:State name="AltHelp">
+			<mx:SetStyle name="backgroundImage" value="@Embed('embedded/HelpCard.png')"/>
+			<mx:SetStyle target="{canvas1}" name="backgroundImage" value="@Embed('embedded/HelpCardButtonCancel.png')"/>
+			<mx:SetStyle target="{text1}" name="color" value="#3B603F"/>
+			<mx:SetStyle target="{text2}" name="color" value="#3B603F"/>
+			<mx:SetStyle target="{textinput1}" name="color" value="#3B603F"/>
+		</mx:State>
+	</mx:states>
+	<mx:Metadata>
+		[Event(name="CancelClicked", type="flash.events.Event")]
+    </mx:Metadata>
+	<mx:Script>
+        <![CDATA[
+        	import flash.events.Event;
+
+            [Bindable] public var caption:String;
+            [Bindable] public var helptext:String;
+            
+            private function CancelClick(event:Event):void {
+            	dispatchEvent(new Event("CancelClicked"));
+            }
+        ]]>
+    </mx:Script>
+	<mx:Text id="helpTitle" text="Help and Instructions" x="12" y="6" textAlign="left" enabled="true" selectable="false" fontWeight="bold" color="#FFFFFF" fontSize="14" width="200" fontFamily="Tahoma"/>
+	<mx:Text text="{helptext}" top="105" fontSize="12" styleName="embVerdanaNormalStyle" width="198" fontFamily="Tahoma" textAlign="left" color="#3C3B60" height="280" x="6" fontWeight="bold" id="text2"/>
+	<mx:filters>
+		<filters:DropShadowFilter angle="45" alpha=".1" distance="4" blurX="0" blurY="0"/>
+	</mx:filters>
+	<mx:Canvas x="113" y="398" width="85" height="58" backgroundImage="@Embed('embedded/HelpCardButtonCancel2.png')" click="CancelClick(event);" id="canvas1">
+	</mx:Canvas>
+	<mx:TextInput x="9" y="56" fontSize="14" color="#3C3B60" width="193" id="textinput1"/>
+	<mx:Text x="10" y="36" text="Ask a question:" color="#3C3B60" id="text1"/>
+</mx:Canvas>

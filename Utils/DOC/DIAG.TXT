@@ -1,0 +1,419 @@
+
+
+
+
+
+
+
+
+
+
+
+            S2000 MODEL 2080 
+          DIAGNOSTICS DISKETTE
+
+         OPERATING INSTRUCTIONS
+
+SCRN0000.PIC
+
+g   S2000 Model 2080 Diagnostics Operating Instructions                                           Page 1P
+
+
+1.0	S2000 Diagnostics
+
+The S2000 Diagnostics provide a comprehensive diagnostic evaluation of the 
+state of the S2000, Model 2080.  The diagnostics are provided on 2 3.5" 
+micro-diskettes.  One is labelled Counter Terminal (CT) and the other is 
+labelled Back Office System (BOS).  The diskettes differ in the configurations
+they support and in the way they start up the diagnostic program.  As a result
+of the command line difference, the diagnostic program behaves differently to 
+support the particular configurations addressed.
+
+1.1	CT Diagnostics
+
+The CT version of the program, performs in addition to the keyboard key test,
+a keyboard buzzer test and a magnetic card reader test.  Also, it tests a
+serial printer rather than a parallel printer.  Furthermore, no tests are done
+on a hard disk. 
+
+1.2	BOS Diagnostics
+
+The BOS version of the program does not test a keyboard buzzer or a magentic
+card reader.  It tests the parallel printer instead of a serial printer.  In
+addition to the floppy disk tests, it also performs tests on the 40 MB hard
+disk.
+
+1.3	Diagnostic Execution Options
+
+After the diskette boots up, the main menu for the diagnostics program will be
+displayed on the screen.  In the upper right hand corner of the screen, the
+version of the program is displayed.
+
+On the left hand of the screen, the list of tests is displayed.  On the right 
+hand side, some execution options are available.  The bottom part of the
+screen is used for specific instructions or prompts to the user.
+
+1.3.1	Running All Tests
+
+Tp run all tests from the main menu, simply press the number "1" on the 
+keyboard, or select that option by pressing the enter key on it after moving 
+the highlight bar there using the UP/DOWN arrow keys. When selecting 
+"Run ALL Tests", only those tests appropriate to the system you are on 
+will actually be executed.  Some tests may be displayed on the screen with 
+a message saying "Not Applicable". After Selecting "Run ALL Tests", the main 
+menu will show all tests as being "selected" as in figure 1.
+SCRN0001.PIC
+                                    fig 1
+g   S2000 Model 2080 Diagnostics Operating Instructions                                           Page 2P
+
+1.3.2	Running Only Selected Tests
+
+If you do not want to run all tests, eg.  you are only interested in testing 
+particular components or peripherals, you can toggle which tests should be 
+run by pressing the letter of their choice, or moving the highlight bar to 
+the appropriate tests and pressing the ENTER key.  A symbol beside the test 
+will indicate whether a test is selected or not for execution.  Figure 2 
+shows a menu with several tests selected.  To execute the selected test, 
+select option "2", "Run Only Selected Tests".
+SCRN0002.PIC
+                                    fig 2
+1.3.3	Clearing All Selections
+
+To clear any and all selections of tests to be run, select option "3", 
+"Clear all Selections".  Take note that this option only clears the tick 
+marks on the left of the screen, ie. test selections, and does not affect 
+the option selections on the right of the screen, eg. Suppress Results Print 
+and Loop on Tests.
+
+1.3.4	Setting All Selections
+
+The option "Set all Selections" is a quick way to select all test and then 
+just start ticking off tests to be excluded, before selecting option "2" to 
+run only the selected tests.  Pressing option "4", "Set all Selections", 
+followed immediately by option "2", "Run Only Selected Tests" identical to 
+selecting option "1", "Run ALL Tests".
+
+1.3.5	Suppressing Test Result Printouts         x0g====================================x1P
+                                                  x0gS2000 Model 2080 Diagnostics        x1P
+After each test cycle is complete, the results    x0gCounter Terminal System             x1P
+are normally printed to the active printer.       x0gDate 01/30/91 Time 17:26:43         x1P
+On the CT, results are printed to the serial      x0g====================================x1P
+printer tally roll.                               x0gROM Checksum Test           PASSED  x1P
+                                                  x0gRAM Test                    PASSED  x1P
+On the BOS, the results are printed on the        x0gCMOS RAM Test               PASSED  x1P
+parallel printer.  At times, it is desirable to   x0gKeyboard Tests              PASSED  x1P
+suppress this print out, particularly when        x0gVideo Tests                 PASSED  x1P
+running several iterations of tests.  This        x0gFloppy Disk Format Test     PASSED  x1P
+suppression is accomplished by selecting option   x0gFloppy Disk Write Test      PASSED  x1P
+"5", "Suppress Results Print".                    x0gFloppy Disk Read Test       PASSED  x1P
+A tick mark beside the option indicates that the  x0gFloppy Write-Protect Test   PASSED  x1P
+option is active.  Selecting it again toggles     x0gFloppy Disk Change Test     PASSED  x1P
+the mark.                                         x0gReal Time Clock test        PASSED  x1P
+                                                  x0gCT Printer test             PASSED  x1P
+A sample of the printout generated from the       x0gInternal Com. Ports Test    PASSED  x1P
+Counter Terminal diagnostics may be seen          
+at the right.                                               Fig.3
+g   S2000 Model 2080 Diagnostics Operating Instructions                                           Page 3P
+
+1.3.6	Looping on Tests
+
+Normally, each test is executed once and after all selected tests have been 
+run, a summary of the results is displayed on the screen and. after pressing 
+a key, the user is returned to the main menu.
+
+However, the user may also choose to run the tests cycle repetitively without 
+any intervention from the user.  This can be accomplished by pressing option 
+"6", "Loop on Tests" from the main menu.
+
+With this option, the tests will run continuously until EXIT (CT) or F10 (BOS)
+key is pressed.  All prompts for keys will timeout after no more than 20 
+seconds to provide for unattended operations.  Some tests like the video and 
+keyboard tests need some user feedback to determine if the test passed or 
+failed.  These tests will indicate that they were SKIPPED if the user does not
+indicate anything and the keyboard input times out.
+
+2.0	Diagnostics Tests
+
+These following tests are performed by the diagnostics program.
+
+2.1	ROM Checksum Test
+
+The ROM CHECKSUM TEST computes the checksum for the 64K bytes of Read-Only 
+Memory.  It takes the byte sum of the 64K memory locations from segment F000h 
+modulo 256 and checks that the sum is 0.  If not, the test is FAILED.
+SCRN0003.PIC
+g   S2000 Model 2080 Diagnostics Operating Instructions                                           Page 4P
+
+2.2	RAM Test
+
+The RAM TEST performs a test of Random Access Memory.  First it determines how 
+much main memory is available by issuing BIOS Interrupt 12h which returns the
+amount of main memory resident.  It goes through all determined memory in 32K 
+byte blocks, saving the current contents, writing a test pattern, and reading 
+back the written area, comparing it with the pattern.  It then does a similar 
+test with extended memory after determining the amount of memory there by 
+issuing BIOS Interrupt 15, function 87h.
+
+If any of the tests indicate that reading memory written with a certain pattern 
+comes back with a different pattern, the test is FAILED.  Otherwise, the test 
+is PASSED.
+SCRN0004.PIC
+2.3	CMOS RAM Test
+
+The CMOS RAM TEST simply adds up the contents of the bytes at CMOS locations 
+10h through 2Dh as an unsigned word.  The sum is compared to the word stored 
+at locations 2Eh and 2Fh of CMOS, which contains the CMOS checksum.  If the 
+vaues differ, the test is FAILED.  Otherwise the test is PASSED.
+SCRN0005.PIC
+g   S2000 Model 2080 Diagnostics Operating Instructions                                           Page 5P
+
+2.4	Keyboard Test
+
+The keyboard test consists of a test for the key values, and additionally for
+the CT, a test for keyboard buzzer and the magnetic card reader (MCR).
+SCRN0006.PIC
+2.4.1	Keys Test
+
+For the keyboard keys test, a blank area of the screen will echo the keys as 
+they are pressed on the keyboard.  Figure 4 shows a sample screen from the 
+CT diagnostics and Figure 5 shows a sample screen from the BOS diagnostics.
+SCRN0007.PIC
+                                    Fig 4
+SCRN0008.PIC
+                                    Fig 5
+g   S2000 Model 2080 Diagnostics Operating Instructions                                           Page 6P
+
+To exit from this test, press a key that generates a "+" symbol (CT: MVL V11/+
+or END CUST/+) followed by ENTER to pass the test, or a key with the "-" 
+symobol (CT: MVL V10/- or SAME CUST/-) to fail the test.
+
+2.4.2	CT Keyboard Buzzer Test
+
+If running the CT diagnostics, the next test will test the keyboard buzzer.  
+Immediately upon entering the test, you should hear a beep emanate from the 
+keyboard units.  If the beep is heard, press ENTER to PASS the test.  
+Otherwise, press VOID.
+
+2.4.3	CT MCR Test
+
+If executing the CT diagnostics, you will then be prompted to run the MCR test 
+to test the magnetic card reader (MCR).  If you want to run this test, press 
+ENTER, otherwise, press VOID.
+
+If you decide to run the test, the first step is to swipe a card through the 
+card swipe slot in the upper left hand side of the CT keyboard.  The card must
+be swiped through with the magnetic strip at the lower edge, facing you, and 
+swiped from right to left with a smooth, even stroke.  The screen should 
+indicate that the card has been swiped, and the track information will then 
+be displayed for the 3 tracks.
+
+If a track has no data on it or the card reader detected some error on the 
+track then the message "NO OR BAD DATA" is displayed for that track.  If 
+there is some valid data detected on the track, then the data is displayed 
+as can be seen in Figure 6, showing the hexadecimal value of each byte read, 
+followed by the same data as decoded using the ANSI encoding standard for 
+those tracks as defined by ANSI x 4.16 - 1983 ISO 7811/2, by the following 
+organisations:
+
+              Track 1 - IATA   (Int'l Air Transport Assoc.)
+              Track 2 - ABA    (American Bankers Assoc.)
+              Track 3 - THRIFT (Thrift Industry)
+
+SCRN0009.PIC
+                                    Fig 6
+g   S2000 Model 2080 Diagnostics Operating Instructions                                           Page 7P
+
+2.5	Video Test
+
+The VIDEO TEST exercises certain capabilities of the 3 in 1 adaptor card in 
+the 2080.  This card supports a Hercules graphics compatible monochrome 
+video adaptor and has the capability to emulate a CGA adaptor with a 
+monochrome display.  The video adaptor also has certain enhanced capabilities 
+which allow double wide characters in monochrome text mode.  Several screens 
+will be displayed for the users's visual inspection during this test.  
+The user can progress between screens by pressing any key (except the SHIFT 
+key).
+
+On the BOS the test exercises the card in monochrome mode, whereby it prints 
+several test lines on the screen using various character attributes as will 
+be displayed on the screen.  Some attributes will cause some of the lines to 
+appear with double-wide characters, and will hence appear a bit garbled, 
+except for a certain message that will say "DOUBLE WIDTH IN MONOCHROME".  
+This message illustrates how a double character can be supported in this 
+video mode.  Next, the same screen will be displayed with the Enhanced mode 
+operation of the adaptor disabled.  This will show how the same screen 
+appears using the standard monochrome attributes.The next screen will show 
+the video character set in monochrome mode.
+SCRN0010.PIC
+On the CT the adaptor is shifted into CGA mode, providing a CGA, 40 column 
+emulation.  Several test lines are displayed and bars are displayed with 
+different colout attributes.  This should appear as various shades of grey.
+Then the character set is displayed, this time in CGA-40 column mode.
+SCRN0011.PIC
+g   S2000 Model 2080 Diagnostics Operating Instructions                                           Page 8P
+
+The screen will then prompt the user to press ENTER to pass the test, or VOID 
+to fail the test.  If no key is pressed after 20 seconds, the test will be 
+SKIPPED.  If the ENTER or VOID/ESC key is entered, the test will be PASSED 
+or FAILED respectively.
+SCRN0012.PIC
+2.6	Floppy Disk Write Test
+
+This test writes data on track 79 of the floppy using BIOS interrupt service 
+13h, function 03h.  The status returned from the BIOS service determines 
+whether the test is PASSED or FAILED.
+SCRN0013.PIC
+g   S2000 Model 2080 Diagnostics Operating Instructions                                           Page 9P
+
+2.8	Floppy Disk Read Test
+
+This test reads the data on track 79 of the floppy using BIOS interrupt service 
+13h, function 02h.  The status returned from the BIOS service determines 
+whether the test is PASSED or FAILED.
+SCRN0014.PIC
+2.6	Floppy Disk Format Test
+
+This test Formats data on track 79 of the floppy using BIOS interrupt service 
+13h.  The status returned from the BIOS service determines whether the test 
+is PASSED or FAILED.
+SCRN0015.PIC
+g   S2000 Model 2080 Diagnostics Operating Instructions                                           Page 10P
+
+2.9	Floppy Write-Protect Test
+
+The test checks whether the write-protect tab on the 3.5" micro-floppy 
+cassette is working properly.  It will attempt to write to the disk with 
+the tab in place.  If the tab does not prevent a proper write from occurring 
+on the disk, then the test is FAILED.
+SCRN0016.PIC
+2.10	Floppy Disk Change Test
+
+This test checks that the "disk-changed" indicator supported by the 
+BIOS/floppy disk adaptor is working properly.  It will prompt the user to 
+remove the diskette from the driver (giving you approximately 20 seconds to 
+do so). If the no disk is detected as having been removed in that time, the 
+test will indicate FAILED.  If the disk is removed, and the program detects 
+it, it will indicate that the test PASSED.
+SCRN0017.PIC
+g   S2000 Model 2080 Diagnostics Operating Instructions                                           Page 11P
+
+2.11	Real-Time Clock Test
+
+The REAL-TIME CLOCK TEST is a simple test which retrieves the current time 
+and date from the CMOS chip, displays it on screen, and waits for the CMOS 
+chip to update the seconds in the time that it keeps.  Once the seconds 
+value changes, which indicates that the chip is active, the test is indicated 
+as PASSED.  If the time does not change after a number of queries to the chip,
+the test is FAILED.
+SCRN0018.PIC
+2.12	Serial Printer Test
+
+This test exercises the various features of the serial printer.  Figure 7 
+shows a sample of the printout,that should be generated by running the test.
+The test is actually run from a script file that is on the diagnostics 
+diskette.  The script file is named PRINTER.TST.  The file must be resident 
+on the diskette in order for this test to work.
+ 
+
+ x0gPrinter Test                           PQRSTUVWXYZ123456789ABCDEFGHIJKLMNOx1P
+ x0gDate:     02-01-91                     QRSTUVWXYZ123456789ABCDEFGHIJKLMNOPx1P
+ x0gTime:     03:02 PM                     RSTUVWXYZ123456789ABCDEFGHIJKLMNOPQx1P
+ x0g                                       STUVWXYZ123456789ABCDEFGHIJKLMNOPQRx1P
+ x0g-----------------------------------    TUVWXYZ123456789ABCDEFGHIJKLMNOPQRSx1P
+ x0g                                       End of Barber-Pole Pattern         x1P
+ x0gBarber-Pole Pattern (20 Lines)                                            x1P
+ x0g                                       -----------------------------------x1P
+ x0gABCDEFGHIJKLMNOPQRSTUVWXYZ123456789                                       x1P
+ x0gBCDEFGHIJKLMNOPQRSTUVWXYZ123456789A    Horizontal TAB Test                x1P
+ x0gCDEFGHIJKLMNOPQRSTUVWXYZ123456789AB             1         2         3     x1P
+ x0gDEFGHIJKLMNOPQRSTUVWXYZ123456789ABC    12345678901234567890123456789012345x1P
+ x0gEFGHIJKLMNOPQRSTUVWXYZ123456789ABCD    One TAB                            x1P
+ x0gFGHIJKLMNOPQRSTUVWXYZ123456789ABCDE            ^                          x1P
+ x0gGHIJKLMNOPQRSTUVWXYZ123456789ABCDEF    Two TABs<CR><LF>"                  x1P
+ x0gHIJKLMNOPQRSTUVWXYZ123456789ABCDEFG                    ^                  x1P
+ x0gIJKLMNOPQRSTUVWXYZ123456789ABCDEFGH    Three TABs<CR><LF>"                x1P
+ x0gJKLMNOPQRSTUVWXYZ123456789ABCDEFGHI                            ^          x1P
+ x0gKLMNOPQRSTUVWXYZ123456789ABCDEFGHIJ    Four TABs<CR><LF>"                 x1P
+ x0gLMNOPQRSTUVWXYZ123456789ABCDEFGHIJK                                    ^  x1P
+ x0gMNOPQRSTUVWXYZ123456789ABCDEFGHIJKL    End of Horizontal TAB Test         x1P
+ x0gNOPQRSTUVWXYZ123456789ABCDEFGHIJKLM                                       x1P
+ x0gOPQRSTUVWXYZ123456789ABCDEFGHIJKLMN                                       x1P
+                                    Etc...
+
+                         Fig 7.
+
+g   S2000 Model 2080 Diagnostics Operating Instructions                                           Page 12P
+
+2.13	Parallel Printer Test
+
+The parallel printer test prints out a test pattern on the parallel printer 
+using the BIOS parallel printer services routine (INT 17h).
+
+2.14	Fixed Disk Read Test
+
+This test reads the data on the last cylinder of the fixed disk using BIOS 
+interrupt service 13h, function 02h.  The status returned from the BIOS 
+service determines whether the test is PASSED or FAILED.
+SCRN0019.PIC
+2.15	Fixed Disk Write Test
+
+This test writes on the last cylinder of the fixed disk using BIOS interrupt 
+service 13h, function 03h.  The status returned from the BIOS service 
+determines whether the test is PASSED or FAILED.
+SCRN0020.PIC
+g   S2000 Model 2080 Diagnostics Operating Instructions                                           Page 13P
+
+2.16	Fixed Disk Format Test
+
+This test formats the last cylinder of the hard disk using BIOS interrupt 
+service 13h, function 5h.  The data on this cylinder is saved before 
+formatting and restored after formatting, so data loss should not occur as a 
+result of this test.  The test is PASSED or FAILED depending on the result 
+returned by the BIOS routine.
+SCRN0021.PIC
+2.17	Internal Comm. Ports Test
+
+This test performs internal loopback testing of the communication ports.  
+There are seven (7) ports active in the 2080.  There are 4 general purpose 
+ports (COM1, COM2, COM3 and COM4) which have 25-pin connectors, an external 
+scale interface port with a 9-pin connector, and two LAN ports which share a 
+single 15-pin connector.
+
+The internal loopback tests write out characters and read them back, comparing
+the transmitted characters with those received.  It also tests for the FIFO 
+capability of the chips.  The LAN ports should indicate "TEST PASSED" on their
+FIFO capability, while the other ports should indicate "NO FIFO CAPABILITY".
+SCRN0022.PIC
+g   S2000 Model 2080 Diagnostics Operating Instructions                                           Page 14P
+
+3.0	Configurations
+
+It is important that the CONFIG.SYS file, which holds the system setup 
+information for the PC-MOS operating system, not be altered from the state it
+in which it is shipped.  In particular, no memory manager driver (MEMDEV) 
+should be specified in order for the extended memory test to operate properly.
+
+The SMPSIZE parameter which specifies the size of the System Memory Pool that 
+PC-MOS should allocate is set to 64K.
+
+A device driver, DDI10.SYS, is loaded in order to trap interrupts to the BIOS 
+Video Interrupt Service routine (INT 10h).  The function of the driver is to 
+detect mode changes in the video mode and restore the correct video table 
+parameters to maintain a 60 hertz refresh rate to the video screen.
+
+3.1	CT Configuration
+
+In addition to the standard configuration described above, the CT diskette is 
+configured to load the device driver CTKB.SYS which provides the keyboard 
+mapping support for the Model 2080 CT keyboard, mapped for the ECCO+ 
+application.  Note that the keyboard test will not properly report the key 
+codes and labels of the keys if this driver is not loaded.
+
+3.2	BOS Configuration
+
+In addition to the standard configuration described above, the BOS diskette 
+is configured to load a keyboard device driver supplied with PC-MOS to support
+the United Kingdom key mapping.  The device driver is named $KBUK.SYS and 
+appears in a DEVICE=$KBUK.SYS line in the CONFIG.SYS file.
+
+

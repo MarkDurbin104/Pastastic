@@ -1,0 +1,299 @@
+//Microsoft App Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "test_api.h"
+
+/////////////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+ID_MENU MENU DISCARDABLE 
+BEGIN
+    POPUP "&Dial"
+    BEGIN
+        MENUITEM "RWNodeDialDir&Connect",       IDM_DIALDIR
+        MENUITEM "RWNodeDialDir&Dialog",        IDM_DIALDIALOG
+    END
+    POPUP "&Objects"
+    BEGIN
+        MENUITEM "RWNodeObjectQuery&Info",      IDM_OBJINFO
+        MENUITEM "RWNodeObjectQuery&Objects",   IDM_OBJOBJS
+    END
+    POPUP "&Worklists"
+    BEGIN
+        MENUITEM "RWNAddWorklist&Record",       IDM_WORKLISTS_ADDWORKLISTRECORD
+
+        MENUITEM SEPARATOR
+        MENUITEM "RWNWorklist&Open",            IDM_WORKLISTS_WORKLISTOPEN
+        POPUP "RWNWorklist&Action"
+        BEGIN
+            MENUITEM "WLA_APPEND",                  IDM_WORKLISTS_APPEND
+            MENUITEM "WLA_READ",                    IDM_WORKLISTS_READ
+            MENUITEM "WLA_WRITE",                   IDM_WORKLISTS_WRITE
+            MENUITEM "WLA_DELETE",                  IDM_WORKLISTS_DELETE
+        END
+        MENUITEM "RWNWorklist&Close",           IDM_WORKLISTS_WORKLISTCLOSE
+    END
+    POPUP "O&ther"
+    BEGIN
+        MENUITEM "RWNodeRe&quest",              IDM_OTHER_NODEREQUEST
+        MENUITEM "RWNode&GetInfo",              IDM_OTHER_GETINFO
+        MENUITEM "RWNode&ReadData/RWNodeWriteData",IDM_OTHER_READDATA
+    END
+END
+
+
+//////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+OBJQUERYOBJECTSDLG DIALOG DISCARDABLE  24, 27, 214, 147
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "RWNObjectQueryObjects"
+FONT 8, "System"
+BEGIN
+    PUSHBUTTON      "Call RWNObjectQueryObjects",IDPB_CALLAPI,20,124,102,14
+    PUSHBUTTON      "Done",IDCANCEL,140,124,58,14
+    CONTROL         "&ALL",IDCB_ALL,"Button",BS_AUTOCHECKBOX | WS_GROUP | 
+                    WS_TABSTOP,64,84,77,11
+    CONTROL         "&Node",IDCB_NODE,"Button",BS_AUTOCHECKBOX | WS_GROUP | 
+                    WS_TABSTOP,64,108,77,11
+    CONTROL         "&Expand App Groups",IDCB_EXPAND,"Button",
+                    BS_AUTOCHECKBOX | WS_GROUP | WS_TABSTOP,64,96,77,11
+    LISTBOX         IDLB_OBJECTS,12,16,192,60,WS_VSCROLL
+END
+
+OBJQUERYINFODLG DIALOG DISCARDABLE  24, 27, 214, 158
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION
+CAPTION "RWNObjectQueryInfo"
+FONT 8, "System"
+BEGIN
+    PUSHBUTTON      "Call RWNObjectQueryInfo",IDPB_CALLAPI,24,136,92,14
+    PUSHBUTTON      "Done",IDCANCEL,136,136,58,14
+    LISTBOX         IDLB_OBJECTS,12,8,192,61,WS_VSCROLL
+    RTEXT           "Name",-1,25,72,37,8
+    RTEXT           "Type",-1,25,84,37,8
+    RTEXT           "Status",-1,25,96,37,8
+    RTEXT           "Execution",-1,25,108,37,8
+    RTEXT           "Priority",-1,25,120,37,8
+    LTEXT           "",IDTXT_NAME,71,72,123,8
+    LTEXT           "",IDTXT_TYPE,71,84,123,8
+    LTEXT           "",IDTXT_STATUS,71,96,123,8
+    LTEXT           "",IDTXT_EXEC,71,108,123,8
+    LTEXT           "",IDTXT_PRIORITY,71,120,123,8
+END
+
+RESULTDLG DIALOG DISCARDABLE  0, 0, 124, 49
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Result"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,36,30,50,14
+    LTEXT           "API Result Code",IDC_STATIC,8,8,54,8
+    EDITTEXT        IDC_RESULTCODE,66,6,48,12,ES_AUTOHSCROLL | ES_READONLY
+END
+
+REQUESTDLG DIALOG DISCARDABLE  0, 0, 185, 92
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "RWNodeRequest"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "Call RWNodeRequest",IDPB_CALLAPI,20,72,84,14
+    PUSHBUTTON      "Done",IDCANCEL,120,72,50,14
+    CONTROL         "Reinitialize",IDCB_REQ_REINIT,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,8,8,54,11
+    CONTROL         "Remove",IDCB_REQ_REMOVE,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,8,20,54,11
+    CONTROL         "Dial Phone #1",IDCB_REQ_CONNECT1,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,8,32,54,11
+    CONTROL         "Dial Phone #2",IDCB_REQ_CONNECT2,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,8,44,54,11
+    CONTROL         "Abort Session",IDCB_REQ_CANCEL,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,8,56,54,11
+    CONTROL         "Enable AutoAnswer",IDCB_REQ_ENABLE_AA,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,80,8,80,11
+    CONTROL         "Disable AutoAnswer",IDCB_REQ_DISABLE_AA,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,80,20,80,11
+    CONTROL         "Release Port",IDCB_REQ_RELEASE_PORT,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,80,32,80,11
+    CONTROL         "Enable ESD",IDCB_REQ_ENABLE_ESD,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,80,44,80,11
+    CONTROL         "Disable ESD",IDCB_REQ_DISABLE_ESD,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,80,56,80,11
+END
+
+READWRITEDLG DIALOG DISCARDABLE  0, 0, 255, 107
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "RWNodeReadData/RWNodeWriteData"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "Done",IDOK,200,92,50,14
+    PUSHBUTTON      "Call RWNodeReadData",IDPB_READINFO,4,92,92,14,NOT 
+                    WS_TABSTOP
+    PUSHBUTTON      "Call RWNodeWriteData",IDPB_WRITEINFO,104,92,90,14
+    EDITTEXT        IDC_NAME,40,8,99,12,ES_AUTOHSCROLL
+    RTEXT           "Name",IDC_STATIC,4,12,32,8
+    RTEXT           "Password",IDC_STATIC,4,28,32,8
+    RTEXT           "Phone 1",IDC_STATIC,4,44,32,8
+    RTEXT           "Phone 2",IDC_STATIC,4,60,32,8
+    EDITTEXT        IDC_PASSWORD,40,24,99,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PHONE1,40,40,99,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PHONE2,40,56,99,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_PORT,196,8,28,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_BAUDRATE,196,24,28,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_SCHEDULETIME,115,72,84,14,ES_AUTOHSCROLL
+    RTEXT           "Port",IDC_STATIC,152,12,40,8
+    RTEXT           "Baud Rate",IDC_STATIC,152,28,40,8
+    RTEXT           "Retries",IDC_STATIC,164,52,28,8
+    EDITTEXT        IDC_RETRIES,196,48,28,12,ES_AUTOHSCROLL
+    CONTROL         "Schedule Time",IDC_SCHEDULED,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,52,76,63,10
+END
+
+GETINFODLG DIALOG DISCARDABLE  0, 0, 272, 159
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "RWNodeGetInfo Results"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,215,5,50,14
+    RTEXT           "last_session",IDC_STATIC,10,23,47,8
+    RTEXT           "status",IDC_STATIC,35,8,22,8
+    RTEXT           "command",IDC_STATIC,24,53,33,8
+    LTEXT           "file_size",IDC_STATIC,28,68,29,8
+    RTEXT           "bytes_transfered",IDC_STATIC,0,83,58,8
+    RTEXT           "filename[]",IDC_STATIC,20,98,37,8
+    RTEXT           "bSessStatus",IDC_STATIC,12,38,45,8
+    EDITTEXT        IDC_GI_STATUS,60,5,28,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GI_LAST_SESSION,60,20,95,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GI_SESSION_STATUS,60,35,40,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GI_COMMAND,60,50,40,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GI_FILE_SIZE,60,65,40,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GI_BYTES_TRANSFERRED,60,80,40,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GI_FILENAME,60,95,96,12,ES_AUTOHSCROLL
+    RTEXT           "node_drive",IDC_STATIC,20,113,37,8
+    RTEXT           "node_major",IDC_STATIC,11,128,46,8
+    RTEXT           "node_minor",IDC_STATIC,11,143,46,8
+    EDITTEXT        IDC_GI_NODE_DRIVE,60,110,12,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GI_NODE_MAJOR,60,125,12,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GI_NODE_MINOR,60,140,12,12,ES_AUTOHSCROLL
+    RTEXT           "bResource",IDC_STATIC,139,42,39,8
+    RTEXT           "bRscStatus",IDC_STATIC,139,57,39,8
+    RTEXT           "nRscError",IDC_STATIC,143,72,35,8
+    RTEXT           "StartTime",IDC_STATIC,138,112,35,8
+    RTEXT           "ConnectedSystem",IDC_STATIC,112,127,61,8
+    EDITTEXT        IDC_GI_RESOURCE,180,40,28,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GI_RSCSTATUS,180,55,28,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GI_RSCERROR,180,70,28,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GI_STARTTIME,175,110,96,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GI_CONNECTEDSYSTEM,175,125,96,13,ES_AUTOHSCROLL
+    EDITTEXT        IDC_GI_SZPHONE,175,140,96,12,ES_AUTOHSCROLL
+    RTEXT           "szPhone",IDC_STATIC,142,142,31,8
+END
+
+WORKLISTACTIONDLG DIALOG DISCARDABLE  0, 0, 268, 158
+STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "RWNWorklistAction"
+FONT 10, "System"
+BEGIN
+    DEFPUSHBUTTON   "Call RWNWorklistAction",IDPB_CALLAPI,45,140,120,14
+    PUSHBUTTON      "Done",IDCANCEL,180,140,35,14
+    EDITTEXT        IDEF_WL_EF,64,10,59,12,ES_AUTOHSCROLL
+    COMBOBOX        IDDD_WL_CMD,64,25,120,64,CBS_DROPDOWNLIST | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        IDEF_WL_PARM1,64,40,120,12,ES_AUTOHSCROLL
+    EDITTEXT        IDEF_WL_PARM2,64,55,120,12,ES_AUTOHSCROLL
+    CONTROL         "At Server",IDRB_WL_AT_SERVER,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,200,10,45,8
+    CONTROL         "At Node",IDRB_WL_AT_NODE,"Button",BS_AUTORADIOBUTTON,
+                    200,20,35,10
+    CONTROL         "Before session",IDRB_WL_BEFORE,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,200,50,60,8
+    CONTROL         "During session",IDRB_WL_DURING,"Button",
+                    BS_AUTORADIOBUTTON,200,60,60,8
+    CONTROL         "After session",IDRB_WL_AFTER,"Button",
+                    BS_AUTORADIOBUTTON,200,70,60,8
+    CONTROL         "Do not overwrite",IDCB_WL_NO_OVERWRITE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,5,85,85,12
+    CONTROL         "Update only if changed",IDCB_WL_IF_CHANGED,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,5,97,85,12
+    CONTROL         "Safe transfer",IDCB_WL_SAFE_XFER,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,5,109,65,12
+    CONTROL         "Critical event",IDCB_WL_CRITICAL,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,5,121,85,12
+    CONTROL         "Delete if successful",IDCB_WL_DEL_IF_SUCCESS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,93,85,85,12
+    CONTROL         "Critical with retries",IDCB_WL_CRIT_RETRIES,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,93,97,85,12
+    CONTROL         "No compression",IDCB_WL_NO_COMPRESS,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,93,109,85,12
+    CONTROL         "Not required",IDCB_WL_NOT_REQUIRED,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,181,85,84,12
+    CONTROL         "Execute if TRUE",IDCB_WL_IF_TRUE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,181,97,85,12
+    CONTROL         "Execute if FALSE",IDCB_WL_IF_FALSE,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,181,109,85,12
+    CONTROL         "Update only if newer",IDCB_WL_UPDATE_IF_NEWER,"Button",
+                    BS_AUTOCHECKBOX | WS_TABSTOP,181,121,85,12
+    RTEXT           "Record number",IDC_WL_EF,5,11,55,10
+    RTEXT           "Command",IDC_STATIC,25,26,35,9
+    RTEXT           "Parameter 1",IDC_STATIC,18,41,42,10
+    RTEXT           "Parameter 2",IDC_STATIC,17,56,43,10
+    GROUPBOX        "Execution place",IDC_STATIC,195,0,70,35
+    GROUPBOX        "Execution time",IDC_STATIC,195,40,70,40
+END
+
+#ifdef APSTUDIO_INVOKED
+//////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""test_api.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+/////////////////////////////////////////////////////////////////////////////////////
+#endif    // APSTUDIO_INVOKED
+
+
+#ifndef APSTUDIO_INVOKED
+////////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

@@ -1,0 +1,13 @@
+/Tde/x/l/v/c/k /V3.10 /LC:\BC5\LIB +
+C:\BC5\LIB\c0l.obj+
+videokbd.obj+
+fileio.obj+
+config.obj+
+compkey.obj
+compkey.exe
+
+C:\BC5\LIB\emu.lib+
+C:\BC5\LIB\mathl.lib+
+C:\BC5\LIB\cl.lib
+
+compkey.res

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MDIPanel xmlns:mx="http://www.adobe.com/2006/mxml" xmlns="*" width="500" height="400" title="Query"
+	creationComplete="titleIcon=iconTable">
+
+	<mx:Script>
+		<![CDATA[
+		import mx.controls.DataGrid;
+		import mx.managers.DragManager;
+		import mx.controls.Alert;
+		import mx.collections.*;
+		
+		[Embed(source="assets/icon_table.png")]
+		private static var iconTable:Class;
+
+		[Bindable]
+		public var rows:ArrayCollection;
+		
+		public function executeQuery():void
+		{
+			var result:Object = db.executeQuery(sql.text);
+			if (result.success)
+			{
+				rows = new ArrayCollection(result.data);
+			}
+			else
+			{
+				Alert.show(result.message, "Error");
+			}
+		}	
+		
+		]]>
+	</mx:Script>
+
+	<Database id="db"/>
+		
+	<mx:VDividedBox width="100%" height="100%">
+		<mx:VBox width="100%" height="30%">
+			<mx:TextArea id="sql" width="100%" height="100%"  
+				dragEnter="DragManager.acceptDragDrop(sql)"
+				dragDrop="sql.text=''+(event.dragInitiator as DataGrid).selectedItem.syntax"/>
+			<mx:Button label="Execute" click="executeQuery()"/>
+		</mx:VBox>
+		<mx:DataGrid dataProvider="{rows}" width="100%" height="70%"/>		
+	</mx:VDividedBox>
+
+</MDIPanel>

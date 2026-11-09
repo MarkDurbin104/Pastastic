@@ -1,0 +1,39 @@
+144     CASH LOCKED UP REPORT IN DAILY CASH BOOK
+	Problems with 2 tables - GPAD  (TOM)
+	Tom is unable to complete this report at present.
+
+109     DSS GIROCHEQUES PAID - REPORT
+	Batch totals are required to be 50 per column.  (TONY)
+
+126     TRANSACTION LOG
+	Previous weeks data not available on screen or print (TONY)
+
+128     TOTALLING ON TRANSACTION SCREENS
+	Total not always updated correctly - requires screen refresh eg REMS IN /OUT
+
+UAT FR69        REMOVAL OF DISK DURING BACKUP DOES NOT PRODUCE AN ERROR
+	Backup appears to complete as normal!
+
+UAT FR70        RESTORE - DAMAGED DISK NOT ACKNOWLEDGED WHEN RESTORING
+	Using the same disk as in FR69 - Restore Complete message appears but restore
+	has not taken place.
+
+UAT FR83        RESTORE - REMOVAL OF DISK DURING RESTORE NOT ACKNOWLEDGED
+	Restore appears to complete as normal but system is corrupted.
+
+143     PRINTER COMMAND IS IGNORED IF PRINTER OFF LINE
+	You know about this one
+
+145     P & A ADD LIST - DATE NOT PRINTED ON SUBSIDIARY SHEET
+
+UAT FR73        CASH & STOCK IN HAND - Can enter a Postal Order Fee QTY without a value
+	Get correct error message (PO Fee bands updated automatically) but Qty entry 
+	is held and reports through to Postal Ordres on Hand report.
+	Tony has looked at this but is referring it to you
+
+UAT FR71        2 CURSORS DISPLAYED
+	You know about this one!
+
+132     SCREENS DISPLAYED DURING FAST PATHS
+
+

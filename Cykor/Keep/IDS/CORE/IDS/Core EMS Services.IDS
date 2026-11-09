@@ -1,0 +1,668 @@
+// Defines EMS Supervisor Group and Products
+// Defines EMS Account Payment
+
+PickLists {
+   CustomerType {
+     CREDIT { 'Credit/Billing Customer' }
+     PREPAY { 'Pre-Pay Customer'        }
+   }
+
+   TransactionType {
+     CREDIT { 'Credit' }
+     DEBIT  { 'Debit'  }
+   }
+}
+
+Groups {
+   COREEMSSuperMain {
+      Title { 'EMS Supervisor Menu' }
+      Caption { 'EMS Supervisor Menu' }
+      Prompt { 'Select a Service or Menu' }
+      Hint { 'Select a service by pressing a Function Key^or by using the arrow keys and pressing [ENTER]' }
+      Bitmap { '..\..\core\images\G_EMSSuper.bmp' }
+      Items {
+         'Product.COREAddModCust'
+         'Product.COREDelCust'
+         'Product.CORECustStatement'
+         'Product.CORECustInvoice'
+         'Product.CORECustTransact'
+         'Product.StartOfDay'
+         'Exit'
+         'Shutdown WorkStation'
+      }
+   }
+}
+
+
+
+Products {
+
+   COREBaseEMS {
+      DontBuild
+      SubGroup { 'CORE EMS Services' }
+   }
+   COREAccountPay {
+      BasedOn { COREBaseEMS }
+      Caption { 'Payment on Account' }
+      BitMap {  '..\..\core\images\P_AccountPay.bmp' }
+      Description  { 'Payment on Account' }
+      Title        { 'Payment on Account' }
+    //  PLU          { PLU_AccPay }
+      Domains {
+         COREShowAmount
+         CORECustomerList
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         CORECustomerPayFill
+         CORECustomerPayLog
+         CORECustomerPayExecVars
+      }
+   }
+   COREAddModCust {
+      BasedOn{ COREBaseEMS }
+      Caption { 'Add/Modify EMS Customer' }
+      Bitmap { '..\..\core\images\P_AddModStockItem.bmp' }
+      Description  { 'Add/Modify EMS Customer' }
+      Title        { 'Add/Modify EMS Customer' }
+      Domains {
+         CORECustomerList
+         CORECustomerName
+         CORECustomerType
+         CORECustomerNumber
+         CORECustomerAdd1
+         CORECustomerAdd2
+         CORECustomerPOBox
+         CORECustomerTelNo
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         CORECustomerListFill
+         CORECustomerListUses
+         CORECustomerListVars
+         CORECustomerListLog
+         CORECustomerListDec
+         CORECustomerListDef
+      }
+   }
+   COREDelCust {
+      BasedOn{ COREBaseEMS }
+      Caption { 'Delete EMS Customer' }
+      Bitmap { '..\..\core\images\P_DelStockItem.bmp' }
+      Description  { 'Permanently Delete EMS Customer' }
+      Title        { 'Permanently Delete EMS Customer' }
+      Domains {
+         CORECustomerList
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         COREDelCustomerFill
+         CORECustomerListUses
+         CORECustomerListVars
+         CORECustomerDelLog
+         CORECustomerDelDec
+         CORECustomerDelDef
+      }
+   }
+   CORECustStatement {
+      BasedOn{ COREBaseEMS }
+      Caption { 'EMS Customer Statement' }
+      BitMap {  '..\..\core\images\P_MOReport.bmp' }
+      Description  { 'EMS Customer Statement' }
+      Title        { 'EMS Customer Statement' }
+      Domains {
+         CORECustomerList
+         COREStartDomainEdit
+         COREEndDomainEdit
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         CORECustomerTxnFill
+         CORECustomerListUses
+         CORECustomerStmtLogVars
+         CORECustomerStmtLog
+      }
+   }
+   CORECustInvoice {
+      BasedOn{ COREBaseEMS }
+      Caption { 'Print EMS Customer Invoice' }
+      BitMap {  '..\..\core\images\P_MOReport.bmp' }
+      Description  { 'Print EMS Customer Invoice' }
+      Title        { 'Print EMS Customer Invoice' }
+      Domains {
+         CORECustomerList
+         COREStartDomainEdit
+         COREEndDomainEdit
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         CORECustomerTxnFill
+         CORECustomerListUses
+      }
+   }
+   CORECustTransact {
+      BasedOn{ COREBaseEMS }
+      Caption { 'EMS Customer Transaction' }
+      BitMap {  '..\..\core\images\P_MOReport.bmp' }
+      Description  { 'EMS Customer Transaction' }
+      Title        { 'EMS Customer Transaction' }
+      Domains {
+         CORECustomerList
+         CORETransactionType
+         COREAmount
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         CORECustomerTxnFill
+         CORECustomerListUses
+         CORECustomerTxnLog
+      }
+   }
+   CORECustPayInvoice {
+      BasedOn{ COREBaseEMS }
+      Caption { 'EMS Customer Invoice Payment' }
+      BitMap {  '..\..\core\images\P_MOReport.bmp' }
+      Description  { 'EMS Customer Invoice Payment' }
+      Title        { 'EMS Customer Invoice Payment' }
+      Domains {
+         CORECustomerList
+         COREAmount
+         COREInvoiceNo
+         COREBillingPeriod 
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         CORECustomerTxnFill
+         CORECustomerListUses
+         CORECustInvoicePayLog
+      }
+   }
+}
+
+Snippets {
+   CORECustomerListFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.CORECustomerList   .Ignore:=False;
+         ProdForm.CORECustomerName   .Ignore:=True;
+         ProdForm.CORECustomerType   .Ignore:=True;
+         ProdForm.CORECustomerNumber .Ignore:=True;
+         ProdForm.CORECustomerAdd1   .Ignore:=True;
+         ProdForm.CORECustomerAdd2   .Ignore:=True;
+         ProdForm.CORECustomerPOBox  .Ignore:=True;
+         ProdForm.CORECustomerTelNo  .Ignore:=True;
+         FUIEventSink := UIEventSink ;
+         ProdForm.CORECustomerList.Items.CommaText:= TCustomers.ListNames;
+         ProdForm.CORECustomerList.Items.Insert(0,'New Customer');
+         FUIEventSink := nil ;
+      *]
+      }
+   }
+   CORECustomerListUses {
+      InsertBetween { '{AutoUsesStart}','{AutoUsesEnd}' }
+      CodeBlock {
+      [*
+         CustomerListU,
+      *]
+      }
+   }
+   CORECustomerListVars {
+      InsertBetween { '{PublVarDecStart}','{PublVarDecEnd}' }
+      CodeBlock {
+      [*
+         CustDet:TCustomerDetails;
+         NewCustomer:Boolean;
+         CustList:TPackStringList;
+      *]
+      }
+   }
+   CORECustomerListLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         if ProdForm.CORECustomerName.Text <> '' then
+         begin
+            SaveCustDetails;
+            CustList:=TPackStringList.Create;
+            CustList.CommaText:=TCustomers.ListNames;
+            TxnLog.WriteTransaction('*ListUpdt',0,0,0,0,0,'Customer',CustList.PackText,'','');
+            CustList.Free;
+         end;
+      *]
+      }
+   }
+   CORECustomerListDec {
+     InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+     CodeBlock {
+       [*
+          procedure TriggerBarCode(Value:String); override;
+          procedure SaveCustDetails;
+       *]
+     }
+   }
+   CORECustomerListDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+          procedure {PClass}TCOREAddModCustProduct.SaveCustDetails;
+          begin
+             if NewCustomer then
+             begin
+                TCustomers.CreateTables(False);
+                CustDet:=TCustomerDetails.Create;
+                CustDet.Identifier:=-1;
+             end;
+             CustDet.CustName    :=ProdForm.CORECustomerName   .Text;
+             CustDet.CustType    :=ProdForm.CORECustomerType   .Text;
+             CustDet.CustNumber  :=ProdForm.CORECustomerNumber .Text;
+             CustDet.CustAddress1:=ProdForm.CORECustomerAdd1   .Text;
+             CustDet.CustAddress2:=ProdForm.CORECustomerAdd2   .Text;
+             CustDet.CustPOBox   :=ProdForm.CORECustomerPOBox  .Text;
+             CustDet.CustTelNo   :=ProdForm.CORECustomerTelNo  .Text;
+             TCustomers.SetCustomerDetails(CustDet);
+             CustDet.Free;
+          end;
+          procedure {PClass}TCOREAddModCustProduct.TriggerBarCode(Value:String);
+          begin
+             ProdForm.CORECustomerList   .Ignore:=True;
+             ProdForm.CORECustomerName   .Ignore:=False;
+             ProdForm.CORECustomerType   .Ignore:=False;
+             ProdForm.CORECustomerNumber .Ignore:=False;
+             ProdForm.CORECustomerAdd1   .Ignore:=False;
+             ProdForm.CORECustomerAdd2   .Ignore:=False;
+             ProdForm.CORECustomerPOBox  .Ignore:=False;
+             ProdForm.CORECustomerTelNo  .Ignore:=False;
+             ProdForm.CORECustomerList.ItemIndex:=ProdForm.CORECustomerList.Items.IndexOf(Value);
+             if Value = 'New Customer' then
+             begin
+                NewCustomer:=True;
+                ProdForm.CORECustomerName   .Text:='';
+                ProdForm.CORECustomerType   .Text:='';
+                ProdForm.CORECustomerNumber .Text:='';
+                ProdForm.CORECustomerAdd1   .Text:='';
+                ProdForm.CORECustomerAdd2   .Text:='';
+                ProdForm.CORECustomerPOBox  .Text:='';
+                ProdForm.CORECustomerTelNo  .Text:='';
+             end
+             else
+             begin
+                NewCustomer:=False;
+                CustDet:=TCustomers.GetCustomerDetails(Value,False);
+                ProdForm.CORECustomerName   .Text:=CustDet.CustName    ;
+                ProdForm.CORECustomerType   .Text:=CustDet.CustType    ;
+                ProdForm.CORECustomerNumber .Text:=CustDet.CustNumber  ;
+                ProdForm.CORECustomerAdd1   .Text:=CustDet.CustAddress1;
+                ProdForm.CORECustomerAdd2   .Text:=CustDet.CustAddress2;
+                ProdForm.CORECustomerPOBox  .Text:=CustDet.CustPOBox   ;
+                ProdForm.CORECustomerTelNo  .Text:=CustDet.CustTelNo   ;
+             end;
+             MoveFocusTo(ProdForm.CORECustomerName);
+             FlagComplete(ProdForm.Validate);
+             FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+          end;
+       *]
+     }
+   }
+   COREDelCustomerFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.CORECustomerList   .Ignore:=False;
+         FUIEventSink := UIEventSink ;
+         ProdForm.CORECustomerList.Items.CommaText:= TCustomers.ListNames;
+         FUIEventSink := nil ;
+      *]
+      }
+   }
+   CORECustomerDelLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         DelCustDetails;
+         CustList:=TPackStringList.Create;
+         CustList.CommaText:=TCustomers.ListNames;
+         TxnLog.WriteTransaction('*ListUpdt',0,0,0,0,0,'Customer',CustList.PackText,'','');
+         CustList.Free;
+      *]
+      }
+   }
+   CORECustomerDelDec {
+     InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+     CodeBlock {
+       [*
+          procedure TriggerBarCode(Value:String); override;
+          procedure DelCustDetails;
+       *]
+     }
+   }
+   CORECustomerDelDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+          procedure {PClass}TCOREDelCustProduct.DelCustDetails;
+          var
+            I:Integer;
+          begin
+             for I:=0 to ProdForm.CORECustomerList.Items.Count-1 do
+             begin
+                if Copy(ProdForm.CORECustomerList.Items[I],Length(ProdForm.CORECustomerList.Items[I])-9,10) =' <- DELETE' then
+                   TCustomers.DelCustomerDetails(Copy(ProdForm.CORECustomerList.Items[I],1,Length(ProdForm.CORECustomerList.Items[I])-10));
+             end;
+          end;
+          procedure {PClass}TCOREDelCustProduct.TriggerBarCode(Value:String);
+          begin
+             if Copy(Value,Length(Value)-9,10) =' <- DELETE' then
+             begin
+                ProdForm.CORECustomerList.Items[ProdForm.CORECustomerList.Items.IndexOf(Value)]:=Copy(Value,1,Length(Value)-10);
+             end
+             else
+             begin
+                ProdForm.CORECustomerList.Items[ProdForm.CORECustomerList.Items.IndexOf(Value)]:=Value+' <- DELETE';
+             end;
+             FlagComplete(True);
+             FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+          end;
+       *]
+     }
+   }
+   CORECustomerTxnFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         FUIEventSink := UIEventSink ;
+         ProdForm.CORECustomerList.Items.CommaText:= TCustomers.ListNames;
+         FUIEventSink := nil ;
+      *]
+      }
+   }
+   CORECustomerStmtLogVars {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            SL:TPackStringList;
+      *]
+      }
+   }
+   CORECustomerStmtLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         SL:=TPackStringList.Create;
+         SL.PackText:=
+            TCustomers.CustomerStatement('Customer Transaction Statement',
+                                         ProdForm.CORECustomerList   .Text,
+                                         ProdForm.COREStartDomainEdit.Text,
+                                         ProdForm.COREEndDomainEdit  .Text);
+         PrintReport(SL);
+         SL.Free;
+      *]
+      }
+   }
+   CORECustomerTxnLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+      if ProdForm.CORETransactionType.Text = 'Credit' then
+      begin
+         TCustomers.CustomerTransaction(
+                       ProdForm.CORECustomerList.Text,
+                       ProdForm.CORETransactionType.Text,StrToCurrDef(ProdForm.COREAmount.Text,0));
+      end
+      else
+      begin
+         TCustomers.CustomerTransaction(
+                       ProdForm.CORECustomerList.Text,
+                       ProdForm.CORETransactionType.Text,0-StrToCurrDef(ProdForm.COREAmount.Text,0));
+      end;
+      *]
+      }
+   }
+   CORECustomerPayFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         SL:=TPackStringList.Create;
+         SL.PackText:=GetLocalList('Customer','');
+         ProdForm.CORECustomerList.Items.Text:=SL.Text;
+         ProdForm.COREShowAmount.Text:=CurrToStrF(CurrentTxnTotal,ffNumber,2);
+         SL.Free;
+      *]
+      }
+   }
+   CORECustInvoicePayLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                               StrToCurrDef(ProdForm.COREAmount.Text,0),
+                               StrToCurrDef(ProdForm.COREAmount.Text,0),
+                               Get_Description,ProdForm.COREInvoiceNo.Text,{PProgID}'Product.PayInvoice',
+                               Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.LogTransaction(Index,FQuantity,0,0,0,
+                               'Billing Period',ProdForm.COREBillingPeriod.Text,'BillingPeriod','');
+         Inc(Index);
+         TxnLog.WriteTransaction('Account',0,0,0,
+                               StrToCurrDef(ProdForm.COREAmount.Text,0),
+                               StrToCurrDef(ProdForm.COREAmount.Text,0),
+                               ProdForm.CORECustomerList.Text,'Inv. No. '+ProdForm.COREInvoiceNo.Text,'','');
+      *]
+      }
+   }
+   CORECustomerPayLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                               0-StrToCurrDef(ProdForm.COREShowAmount.Text,0),
+                               0-StrToCurrDef(ProdForm.COREShowAmount.Text,0),
+                               Get_Description,'',{PProgID}'Product.AccountPay',
+                               Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.WriteTransaction('Account',0,0,0,
+                               0-StrToCurrDef(ProdForm.COREShowAmount.Text,0),
+                               0-StrToCurrDef(ProdForm.COREShowAmount.Text,0),
+                               ProdForm.CORECustomerList.Text,'Payment for Services','','');
+      *]
+      }
+   }
+   CORECustomerPayExecVars {
+      InsertBetween { '{ExecuteVarStart}','{ExecuteVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            SL:TPackStringList;
+      *]
+      }
+   }
+}
+
+// -----------------------------------------------------------------------------
+
+Domains{
+   CORECustomerName {
+      Title     { 'Customer Name'             }
+      Prompt    { 'Customer Name'             }
+      Hint      { 'Enter the customers name'  }
+      Error     { 'Invalid Name'              }
+      //Format    {  None                       }
+      Format    {
+         Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }
+      }
+      InputFrom { 'Keyboard'                  }
+   }
+
+   CORECustomerList {
+      Title  { 'Customer Name' }
+      Prompt { 'Customer Name' }
+      Hint   { 'Select a Customer from the list' }
+      Error  { 'Select a Customer from the list' }
+      Format {
+         PickList  { '' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   CORECustomerType {
+      Title  { 'Customer Type' }
+      Prompt { 'Customer Type' }
+      Hint   { 'Select the Customer Type' }
+      Error  { 'Select the Customer Type' }
+      Format {
+         PickList  { 'PickList.CustomerType' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   CORECustomerAdd1 {
+      Title  { 'Customer Address' }
+      Prompt { 'Customer Address' }
+      Hint   { 'Enter the Customer''s Address' }
+      Error  { 'Enter a Valid Customer''s Address' }
+      Format { Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }  }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   CORECustomerAdd2 {
+      Title  { 'Customer Address' }
+      Prompt { 'Customer Address' }
+      Hint   { 'Enter the Customer''s Address' }
+      Error  { 'Enter a Valid Customer''s Address' }
+      Format { Mask { 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx' }  }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   CORECustomerPOBox {
+      Title  { 'Customer P.O. Box' }
+      Prompt { 'Customer P.O. Box' }
+      Hint   { 'Enter the Customer''s POBox' }
+      Error  { 'Enter a Valid Customer''s POBox' }
+      Format { Mask { 'xxxxxxxxxxxxxxxxxxxx' }  }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   CORECustomerNumber {
+      Title  { 'Customer Number' }
+      Prompt { 'Customer Number' }
+      Hint   { 'Enter the Customer Number' }
+      Error  { 'Enter a Valid Customer Number' }
+      Format { Mask { 'xxxxxxxxxxxxxxxxxxxx' }  }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   CORECustomerTelNo {
+      Title     { 'Customer Telephone Number'            }
+      Prompt    { 'Customer Telephone Number'            }
+      Hint      { 'Enter the customers telephone number' }
+      Error     { 'Invalid Telephone Number'             }
+      Format    {
+        //None
+        Mask { 'xxxxxxxxxxxxxxxxxxxxx' }
+      }
+      InputFrom { 'Keyboard'                             }
+   }
+   COREStartDomainEdit{
+      Title  { 'Start Date' }
+      Prompt { 'Start Date' }
+      Hint   { 'Enter required start date' }
+      Error  { 'Enter required start date' }
+      DefaultValue {'Now' }
+
+      Format {
+         Date
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   COREEndDomainEdit{
+      Title  { 'End Date' }
+      Prompt { 'End Date' }
+      Hint   { 'Enter required end date' }
+      Error  { 'Enter required end date' }
+      DefaultValue {'Now' }
+      Format {
+         Date
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   CORETransactionType {
+      Title  { 'Transaction Type' }
+      Prompt { 'Transaction Type' }
+      Hint   { 'Please Select a Transaction Type by Pressing Enter' }
+      Error  { 'Please Select a Transaction Type' }
+      Format {
+         PickList  { 'PickList.TransactionType' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   COREAmount {
+      Title  { 'Amount' }
+      Prompt { 'Amount' }
+      Hint   { 'Enter the Amount' }
+      Error  { 'Enter a Valid Amount' }
+      Format {
+         Mask { 'xxxxxxxxxxxxx' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+   COREShowAmount {
+      Title  { 'Amount' }
+      Prompt { 'Amount' }
+   }
+   COREInvoiceNo { Title  { 'Invoice Number' }
+               Prompt { 'Invoice Number' }
+               Hint   { 'Enter the Invoice Number' }
+               Error  { 'Enter the Invoice Number' }
+               Format {
+                  None
+               }
+               InputFrom {
+                  'Keyboard'
+               }
+   }
+   
+   COREBillingPeriod { Title  { 'Billing Period' }
+               Prompt { 'Billing Period' }
+               Hint   { 'Enter the Billing Period' }
+               Error  { 'Enter the Billing Period' }
+               Format {
+                  None
+               }
+               InputFrom {
+                  'Keyboard'
+               }
+   }
+      
+}
+
+

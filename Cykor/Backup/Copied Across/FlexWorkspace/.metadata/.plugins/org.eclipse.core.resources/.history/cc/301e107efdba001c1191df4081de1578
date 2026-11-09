@@ -1,0 +1,78 @@
+package base
+{
+	import mx.core.UIComponent;
+	import flash.utils.Timer;
+
+	public class AnalogueClock extends UIComponent
+	{
+		public function AnalogueClock()
+		{
+			//TODO: implement function
+			super();
+		}
+	    /**
+	     * The time display component.
+	     */
+	    private var face:AnalogClockFace;
+	    
+	    /**
+	     * The Timer that acts like a heartbeat for the application.
+	     */
+	    private var ticker:Timer;
+	    /**
+    	* Sets up a SimpleClock instance.
+	     */
+	    public function initClock(faceSize:Number = 200) 
+	    {
+	        // creates the clock face and adds it to the display list
+	        face = new AnalogClockFace(Math.max(20, faceSize));
+	        face.init();
+	        addChild(face);
+	        
+	        // draws the initial clock display
+	        face.draw();
+	        // creates a Timer that fires an event once per second
+	        ticker = new Timer(1000); 
+    
+	        // designates the onTick() method to handle Timer events
+	        ticker.addEventListener(TimerEvent.TIMER, onTick);
+	
+	        // starts the clock ticking
+	        ticker.start();
+	    }
+	    public function onTick(evt:TimerEvent):void 
+	    {
+	        // updates the clock display
+	        face.draw();
+	    }
+	    /**
+	     * Called by the parent container when the display is being drawn.
+	     */
+	    public override function draw():void
+	    {
+	        // stores the current date and time in an instance variable
+	        currentTime = new Date();
+	        showTime(currentTime);
+	    }
+
+	    /**
+	     * Displays the given Date/Time in that good old analog clock style.
+	     */
+	    public function showTime(time:Date):void 
+	    {
+	        // gets the time values
+	        var seconds:uint = time.getSeconds();
+	        var minutes:uint = time.getMinutes();
+	        var hours:uint = time.getHours();
+	
+	        // multiplies by 6 to get degrees
+	        this.secondHand.rotation = 180 + (seconds * 6);
+	        this.minuteHand.rotation = 180 + (minutes * 6);
+	
+	        // Multiply by 30 to get basic degrees, then
+	        // add up to 29.5 degrees (59 * 0.5)
+	        // to account for the minutes.
+	        this.hourHand.rotation = 180 + (hours * 30) + (minutes * 0.5);
+	    }
+	}
+}

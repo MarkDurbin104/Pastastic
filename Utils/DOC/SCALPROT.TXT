@@ -1,0 +1,73 @@
+Scale to IRT interface specification.
+
+
+    Communincations Parameters
+
+            Speed                 9600 Baud
+            Data Bits             8
+            Parity                None
+            Stop Bits             1
+
+
+    Transmission Protocol
+
+
+    Each Transmission will conform to the following format:
+
+        <STX> <CC> <LENGTH> <DATA> <ETX> <CRC>
+
+        Where :
+
+            STX    = Start of transmission character.
+            CC     = Command Code.
+            LENGTH = The length of the data in bytes, if any data exists.
+            DATA   = The data elements of the transmission.
+            ETX    = End of transmission character.
+            CRC    = 16 bit Cyclic Redundancy Check (CRTCA) for
+                     the string from STX to ETX - including STX and ETX.
+
+     All favourable transmissions will receive an ACKnoledge.
+
+        <STX> <ACK> <ETX> <CRC>
+
+     All unfavourable transmissions will receive a Negative AcKnoledge.
+
+        <STX> <NAK> <ETX> <CRC>
+
+
+    ษออออออออออออออัอออออออออออออออออออออออออออออออัออออออออออออออออป
+    บ Command Code ณ Command Description           ณ    Direction   บ
+    วฤฤฤฤฤฤฤฤฤฤฤฤฤฤลฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤลฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤถ
+    บ     80h      ณ Request Weight                ณ IRT->Scale     บ
+    บ     81h      ณ Weight Acknoledge             ณ IRT->Scale     บ
+    บ     82h      ณ Send Price                    ณ IRT->Scale     บ
+    บ     83h      ณ Send Mail Class               ณ IRT->Scale     บ
+    บ     84h      ณ Send Additional Service       ณ IRT->Scale     บ
+    บ     85h      ณ Weight Data                   ณ Scale->IRT     บ
+    บ     86h      ณ Price Acknoledge              ณ Scale->IRT     บ
+    บ     87h      ณ Mail Class Acknoledge         ณ Scale->IRT     บ
+    บ     88h      ณ Additional Service Acknoledge ณ Scale->IRT     บ
+    ศออออออออออออออฯอออออออออออออออออออออออออออออออฯออออออออออออออออผ
+
+    Command Sequences
+
+        Request Weight
+
+        IRT :
+            STX         -       Start of Transmission.
+            80h         -       Request weight command code.
+            ETX         -       End of Transmission.
+            CRC         -       Cyclic Redundancy Check.
+
+        Scale :
+
+            STX         -       Start of Transmission.
+            85h         -       Weight data command code.
+            7           -       Data length in characters
+            DATA        -       Zero packed (fixed length) weight 
+                                in ASCII i.e. "00000.0"
+            ETX         -       End of Transmission.
+            CRC         -       Cyclic Redundancy Check.
+
+        
+

@@ -1,0 +1,9 @@
+Microsoft (R) Help Compiler Version 3.10.505
+Copyright (c) Microsoft Corp 1990 - 1992. All rights reserved.
+gpa.HPJ
+
+Warning 4113: topic...2 of c:\hh_demo\gpa.rtf : Unresolved jump or popup 'apple'.
+Warning 4113: topic...2 of c:\hh_demo\gpa.rtf : Unresolved jump or popup 'drink'.
+Warning 4113: topic...3 of c:\hh_demo\gpa.rtf : Unresolved jump or popup 'orange'.
+Warning 4113: topic...7 of c:\hh_demo\gpa.rtf : Unresolved jump or popup 'orange_code'.
+Warning 4113: topic...6 of c:\hh_demo\gpa.rtf : Unresolved jump or popup 'apple_function'.

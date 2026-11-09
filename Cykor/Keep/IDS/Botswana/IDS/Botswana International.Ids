@@ -1,0 +1,245 @@
+//******************************************************************************************//
+//*                                                                                        *//
+//*                           Botswana Postal Service                                      *//
+//*                                                                                        *//
+//*                            International Products                                      *//
+//*                                                                                        *//
+//******************************************************************************************//
+
+Products
+{
+
+//                             Surface Letter
+//---------------------------------------------------------------------------------
+//
+
+  IntSurLetter {
+                 BasedOn     { BaseSurInternational                             }
+                 Caption     { 'International Surface Letter'                   }
+                 BitMap      { '..\images\P_IntSurLetter.bmp' }
+                 Description { 'International Surface Letter'                   }
+                 Title       { 'International Surface Letter'                   }
+                 Domains     { StandardFee { Weight
+                                             MailSurDestination
+                                             'LookUp.IntSurLetter' }            }
+                 Items       {
+                               'Product.IntRegArticle'
+                               'Product.AdviceDelivery'
+                               'Product.ExpressDelivery'
+                             }
+                 LogAS       { IntSurMail                                       }
+                }
+
+//                             Surface Postcard
+//---------------------------------------------------------------------------------
+//
+
+  IntSurPostCard {
+                   BasedOn     { BaseSurInternational                               }
+                   RegDesc     { 'Corvus IntSurPostCard Product'                    }
+                   Caption     { 'International Surface Postcard'                   }
+                   BitMap      { '..\images\P_IntSurPostcard.bmp' }
+                   Description { 'International Surface Postcard'                   }
+                   Title       { 'International Surface Postcard'                   }
+                   Domains     { StandardFee { Weight
+                                               MailSurDestination
+                                               'LookUp.IntSurPostCard' }            }
+                   Items       {
+                                  'Product.ExpressDelivery'
+                        }
+                   LogAS       { IntSurMail                                         }
+                  }
+
+//                             Surface Small Packet
+//---------------------------------------------------------------------------------
+//
+
+  IntSurSmallPacket {
+                      BasedOn     { BaseSurInternational                             }
+                      RegDesc     { 'Corvus IntSurSmallPacket Product'               }
+                      Caption     { 'International Surface Small Packet'             }
+                      BitMap      { '..\images\P_IntSurPacket.bmp' }
+                      Description { 'International Surface Small Packet'             }
+                      Title       { 'International Surface Small Packet'             }
+                      Domains     { StandardFee { Weight
+                                                  MailSurDestination
+                                                  'LookUp.IntSurSmallPacket' }       }
+                      Items       { 'Product.IntRegArticle'
+                                    'Product.AdviceDelivery'
+                                    'Product.ExpressDelivery'                        }
+                      LogAS       { IntSurMail                                       }
+                     }
+
+//                             Surface Printed Paper
+//---------------------------------------------------------------------------------
+//
+
+  IntSurPrintedPaper {
+                       BasedOn     { BaseSurInternational }
+                       RegDesc     { 'Corvus IntSurPrintedPapers Product'             }
+                       Caption     { 'International Surface Printed Paper'            }
+                       BitMap      { '..\images\P_IntSurPPaper.bmp' }
+                       Description { 'International Surface Printed Paper'            }
+                       Title       { 'International Surface Printed Paper'            }
+                       Domains     { StandardFee { Weight
+                                                   MailSurDestination
+                                                   'LookUp.IntSurPrintedPaper' }      }
+                       Items       { 'Product.IntRegArticle'
+                                     'Product.AdviceDelivery'
+                                     'Product.ExpressDelivery'                        }
+                       LogAS       { IntSurMail                                       }
+                      }
+
+//                             Surface Literature for the blind
+//---------------------------------------------------------------------------------
+//
+
+ IntSurBlindLit {
+                  BasedOn     { BaseSurInternational                               }
+                  RegDesc     { 'Corvus IntSurBlindLit Product'                    }
+                  Caption     { 'International Surface Blind Literature'           }
+                  BitMap      { '..\images\P_IntSurBlindLit.bmp' }
+                  Description { 'International Surface Blind Literature'           }
+                  Title       { 'International Surface Blind Literature'           }
+                  Domains     { StandardFee { Weight
+                                              MailSurDestination
+                                              'LookUp.IntSurBlindLit' }            }
+                  LogAS       { IntSurMail                                         }
+                 }
+
+//                             Surface Parcel
+//---------------------------------------------------------------------------------
+//
+
+//  IntSurParcel {
+//                   BasedOn     { BaseIntParcel                                }
+//                 RegDesc     { 'Corvus IntSurParcel Product'                    }
+//                 Caption     { 'International Surface Parcel'                   }
+//                 BitMap      { '..\images\P_IntSurParcel.bmp' }
+//                 Description { 'International Surface Parcel'                   }
+//                 Title       { 'International Surface Parcel'                   }
+//                 Domains     { IntParID
+//                               IntParSurDestination
+//                               StandardFee { Weight
+//                                             IntParSurDestination
+//                                             'LookUp.IntSurParcel' }            }
+//                 Items       { 'Product.IntRegArticle'
+//                               'Product.AdviceDelivery'
+//                               'Product.ExpressDelivery'
+//                               'Product.IntSurParcelIns'
+//                             }
+//                 LogAS       { IntSurPar                                        }
+//                }
+//
+
+// Air International -----------------------------------------------------
+
+//                             Air Letter
+//---------------------------------------------------------------------------------
+//
+
+  IntAirLetter {
+                 BasedOn     { BaseAirInternational                                }
+                 RegDesc     { 'Corvus IntAirLetter Product'                    }
+                 Caption     { 'International Air Letter'                       }
+                 BitMap      { '..\images\P_IntAirLetter.bmp' }
+                 Description { 'International Air Letter'                       }
+                 Title       { 'International Air Letter'                       }
+                 Domains     { StandardFee { Weight
+                                             MailAirDestination
+                                             'LookUp.IntAirLetter' }            }
+                 Items       { 'Product.IntRegArticle'
+                               'Product.AdviceDelivery'
+                               'Product.ExpressDelivery'                        }
+                 LogAS       { IntAirMail                                       }
+	}
+
+//                             Air Postcard
+//---------------------------------------------------------------------------------
+//
+
+  IntAirPostCard {
+                   BasedOn     { BaseAirInternational                                  }
+                   RegDesc     { 'Corvus IntAirPostCard Product'                    }
+                   Caption     { 'International Air Postcard'                       }
+                   BitMap      { '..\images\P_IntAirPostcard.bmp' }
+                   Description { 'International Air Postcard'                       }
+                   Title       { 'International Air Postcard'                       }
+                   Domains     { StandardFee { Weight
+                                               MailAirDestination
+                                               'LookUp.IntAirPostCard' }            }
+                   Items       {
+                                  'Product.ExpressDelivery'
+                        }
+                   LogAS       { IntAirMail                                         }
+                  }
+
+//                             Air Aerogramme
+//---------------------------------------------------------------------------------
+//
+
+  IntAirAerogramme {
+                     BasedOn     { BaseAirInternational                                    }
+                     RegDesc     { 'Corvus IntAirAerogramme Product'                    }
+                     Caption     { 'International Air Aerogramme'                       }
+                     BitMap      { '..\images\P_IntAirAerogramme.bmp' }
+                     Description { 'International Air Aerogramme'                       }
+                     Title       { 'International Air Aerogramme'                       }
+                     Domains     { StandardFee { Weight
+                                                 MailAirDestination
+                                                 'LookUp.IntAirAerogramme' }            }
+                     Items       { 'Product.IntRegArticle'
+                                   'Product.AdviceDelivery'
+                                   'Product.ExpressDelivery'                            }
+                     LogAS       { IntAirMail                                           }
+	}
+
+//                             Air Printed Paper
+//---------------------------------------------------------------------------------
+//
+
+  IntAirPrintedPaper {
+                       BasedOn     { BaseAirInternational                                      }
+                       RegDesc     { 'Corvus IntAirPrintedPaper Product'                    }
+                       Caption     { 'International Air Printed Paper'                      }
+                       BitMap      { '..\images\P_IntAirPrintedPaper.bmp' }
+                       Description { 'International Air Printed Paper'                      }
+                       Title       { 'International Air Printed Paper'                      }
+                       Domains     { StandardFee { Weight
+                                                   MailAirDestination
+                                                   'LookUp.IntAirPrintedPaper' }            }
+                       Items       { 'Product.IntRegArticle'
+                                     'Product.AdviceDelivery'
+                                     'Product.ExpressDelivery'                              }
+                       LogAS       { IntAirMail                                             }
+                      }
+
+//                             Air Parcel
+//---------------------------------------------------------------------------------
+//
+
+//  IntAirParcel {
+//                 BasedOn     { BaseIntParcel                                }
+//                 RegDesc     { 'Corvus IntAirParcel Product'                    }
+//                 Caption     { 'International Air Parcel'                       }
+//                 BitMap      { '..\images\P_IntAirParcel.bmp' }
+//                 Description { 'International Air Parcel'                       }
+//                 Title       { 'International Air Parcel'                       }
+//                 Domains     { IntParID
+//                               IntParAirDestination
+//                               StandardFee { Weight
+//                                             IntParAirDestination
+//                                             'LookUp.IntAirParcel' }            }
+//                 Items       { 'Product.IntRegArticle'
+//                               'Product.AdviceDelivery'
+//                               'Product.ExpressDelivery'
+//                               'Product.IntAirParcelIns'
+//                             }
+//                 LogAS       { IntAirPar                                        }
+//                }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+}

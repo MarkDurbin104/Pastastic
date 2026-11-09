@@ -1,0 +1,29 @@
+
+ Start         Length Name               Class
+
+  0001:0000    5264H  _TEXT              CODE
+  0002:0000    4F7BH  BTREE_TEXT         CODE
+  0003:0000    041CH  PERSIST_TEXT       CODE
+  0003:041C    1483H  DATAFILE_TEXT      CODE
+  0003:18A0    0394H  ERR_RPTR_TEXT      CODE
+  0004:0000    1C29H  STR_TEXT           CODE
+  0005:0000    0995H  TBTREE_TEXT        CODE
+  0006:0000    3730H  _TEXTB             CODE
+  0007:0000    3531H  _TEXTA             CODE
+  0008:0000    0FAFH  _TEXTC             CODE
+  0009:0000    0000H  _FARDATA           FAR_DATA
+  0009:0000    0000H  _FARBSS            FAR_BSS
+  0009:0000    0024H  NULL               BEGDATA
+  0009:0030    103FH  _DATA              DATA
+  0009:1070    0004H  _FPSEG             DATA
+  0009:1074    0002H  _CVTSEG            DATA
+  0009:1076    0006H  _SCNSEG            DATA
+  0009:107C    0000H  _CONST             CONST
+  0009:107C    0042H  _INIT_             INITDATA
+  0009:10BE    0000H  _INITEND_          INITDATA
+  0009:10BE    0024H  _EXIT_             EXITDATA
+  0009:10E2    0000H  _EXITEND_          EXITDATA
+  0009:10E2    0202H  _BSS               BSS
+  0009:12E4    0000H  _BSSEND            BSSEND
+
+

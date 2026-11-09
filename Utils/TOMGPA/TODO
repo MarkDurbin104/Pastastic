@@ -1,0 +1,74 @@
+DCLU                                                            17/03/95 û
+BMPPALET                                                        17/03/95 û
+Tax Disk Printing                                               22/03/95 û
+BMPBUTTON                                                       02/04/95 û
+Language switch                                                 03/04/95 û
+NUMLOCK ON                                                      09/04/95 û
+PRINTSCR ON                                                     09/04/95 û
+move cursor in table processing from actions                    09/04/95 û
+Manager's Temp password & temppass.exe                          09/04/95 û
+Print direct from menu hides cursor                             09/04/95 û
+Full width cursor in tables with only DISPLAY or WAIT fields    09/04/95 û
+HOTKEY with exit help                                           09/04/95 û
+find windows/dos install ware (shareware)                       09/04/95 û
+setstatic only set if new value different from current          09/04/95 û
+Line in BMP on screen                                           10/04/95 û
+print screen PCX                                                17/04/95 û
+Tax Disk Bar Code Reading                                       18/04/95 û
+Change keyboard mapping from actions                            09/04/95 û
+HOTKEY to take Key Description                                  19/04/95 û
+Help Screen Functions with select                               21/04/95 û
+Register GoodSoft "Universal INSTALL" GO SWREG Product id #907  21/04/95 û
+Hard Coded (Calc/Cal etc..) HOTKEY from help screen             21/04/95 û
+calculator                                                      21/04/95 û
+Cursor movement in fields formatted with punctuation            23/04/95 û
+save screen                                                     23/04/95 û
+save screen (region)                                            04/05/95 û
+calc GPFs when PGUP/DN used with less than 1 screen             04/05/95 û
+stdelrec updates G_modified ?                                   04/05/95 û
+screen saver exe                                                04/05/95 û
+show Tom the code associated with serial ports for PDFDEMO      04/05/95 û
+save screen palette update                                      05/05/95 û
+MVL10PFX - cursor movement                                      05/05/95 û
+modified flag for each file                                     05/05/95 û
+calendar                                                        05/05/95 û
+Help Screen Headings                                            05/05/95 û
+EXITFORM leaves cursor on menu in prompt                        05/05/95 û
+calendar Help                                                   06/05/95 û
+add startcal function to CAPGPA.C                               23/05/95 û
+backup Calendar - Move to database directory                    23/05/95 û
+Screen redraw after screen save                                 23/05/95 û
+backup Statics                                                  23/05/95 û
+DISPHOT losing first key in JUMPTO                              23/05/95 û
+PRNTSCRN off in and CAL                                         23/05/95 û
+PRNTSCRN off in and CALC                                        23/05/95 û
+Two tables in GPAD with more than n flds tab1(22) tab2(22)      23/05/95 û
+PGUP in calc is 2 short of list len                             24/05/95 û
+'+' in total box on calc after UP/DN                            24/05/95 û
+Help screen help                                                26/05/95 û
+Quit From Help                                                  26/05/95 û
+Cursor at bottom of table                                       26/05/95 û
+post is posting last entry NOT total                            26/05/95 û
+quick exit from cal gives no cls if in JUMPTO                   26/05/95 û
+
+Cursor move at add new line (end of table)                      15/06/95 û
+Set finred to -1 if finred at end of HELP or CALC               19/06/95 û
+Screen Refresh after CALC CAL PRINT and SAVESCREEN              19/06/95 û
+Free Disk Space Check at startup                                20/06/95 û
+Save screen code size/mem req.                                  20/06/95 û
+Calculator full width input stop ##########                     21/06/95 û
+Refresh after Screen save to single input field                 21/06/95 û
+Post after selecting the calc via F1                            
+
+modified flag CRC
+XTIMER not running at start screen (PMC)
+GPAD table draw with fieldlength > 25                           
+pp GPFs when no GPACFG                                          
+startup palette duff when no start bmp                          
+Find out why the enable in runklf is needed under Windows       
+COMMS in Windows problem                                        
+Functional Specification Generation                             
+keyboard device driver                                          
+Classlib                                                        
+Windows runtime                                                 
+Windows Dev. System                                             

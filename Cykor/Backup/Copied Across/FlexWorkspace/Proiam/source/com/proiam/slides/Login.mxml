@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="100%" height="100%"
+	initialize="init();"
+	backgroundImage="@Embed(source='embedded/LoginBG.jpg')" backgroundSize="100%"
+	label="Login Screen" click="fireLogonClicked(event);" 
+ 	xmlns:slides="com.proiam.slides.*">
+	<mx:Metadata>
+        [Event(name="loginClicked", type="flash.events.MouseEvent")]
+        [Event(name="logoClicked", type="flash.events.MouseEvent")]
+    </mx:Metadata>
+		
+	<mx:Script>
+		<![CDATA[
+			import com.cykorsystems.utils.Configuration;
+			import com.cykorsystems.utils.CachedURLLoader;
+			import com.proiam.crypto.Hex;
+			import com.proiam.crypto.MD5;
+
+	        public var passwords:XML=null;
+	        public var LoggedIn:Boolean=false;
+
+			import flash.events.MouseEvent;
+			public function fireLogonClicked(event:MouseEvent):void {
+				if (!LoggedIn) return;
+                dispatchEvent(new MouseEvent("loginClicked",event.bubbles,event.cancelable,
+                															event.localX,event.localY,event.relatedObject,
+                															event.ctrlKey,event.altKey,event.shiftKey,
+                															event.buttonDown,event.delta));
+                event.stopPropagation();
+            }
+			public function fireLogoClicked(event:MouseEvent):void {
+				if (!LoggedIn) return;
+				if (event.shiftKey) {
+					configurationPanel.show();
+				} else {
+	                dispatchEvent(new MouseEvent("logoClicked",event.bubbles,event.cancelable,
+	                															event.localX,event.localY,event.relatedObject,
+	                															event.ctrlKey,event.altKey,event.shiftKey,
+	                															event.buttonDown,event.delta));
+				}
+                event.stopPropagation();
+            }
+			private function init():void 
+			{
+				configurationPanel.visible=false;
+				var user:String = Configuration.loggedInUser;
+				if ((user != null) && (user!= "")) {
+					userName.text=user;
+		 			userNameLabel.visible=false;
+		 			userName.visible=false;
+		 			password.visible=false;
+		 			passwordLabel.visible=false;
+					LoggedIn=true;
+				} else {
+					var passwordsLoader:CachedURLLoader = new CachedURLLoader(); 
+					passwordsLoader.addEventListener(Event.COMPLETE,loadPasswords);
+					passwordsLoader.load(new URLRequest("resources/password.xml"));
+				}
+			}
+			private function loadPasswords(e:Event):void
+			{
+				passwords=new XML(e.target.data);						
+		 	}
+			private function toHash(data:String):String
+			{
+				var md5:MD5 = new MD5;
+				var src:ByteArray = new ByteArray;
+				src.writeMultiByte(data,"UTF-8");
+				var digest:ByteArray = md5.hash(src);
+				return Hex.fromArray(digest).toUpperCase();
+			}
+		 	private function checkPassword():void
+		 	{
+		 		if (passwords != null) {
+		 			for each (var passwd:XML in passwords.password) {
+		 				if (passwd.@username.toUpperCase() == userName.text.toUpperCase()) {
+		 					if (passwd.@MD5 == toHash(password.text)) {
+		 						Configuration.loggedInUser=userName.text.toUpperCase();
+								LoggedIn=true;
+					 			password.text='';
+					 			userNameLabel.visible=false;
+					 			userName.visible=false;
+					 			password.visible=false;
+					 			passwordLabel.visible=false;
+		 					}
+		 					break;
+		 				}
+		 			}
+		 		} else {
+ 						// login not required
+			 	}
+		 	}
+		]]>
+	</mx:Script>
+
+	<mx:Label y="303" text="Password" fontSize="12" fontWeight="bold" textAlign="right" width="100" horizontalCenter="-100" fontFamily="Verdana" color="#1A4B86" id="passwordLabel"/>
+	<mx:TextInput y="301" displayAsPassword="true" fontSize="12" fontFamily="Verdana" color="#1A4B86" fontWeight="bold" change="checkPassword()" id="password" horizontalCenter="40"/>
+	<mx:Label y="275" text="User Name" fontSize="12" fontWeight="bold" textAlign="right" width="100" horizontalCenter="-100" fontFamily="Verdana" color="#1A4B86" id="userNameLabel"/>
+	<mx:TextInput y="273" text="Guest" fontSize="12" fontFamily="Verdana" color="#1A4B86" fontWeight="bold" change="checkPassword()" id="userName" horizontalCenter="40"/>
+ 	<mx:Canvas x="110" y="113" width="180" height="182" click="fireLogoClicked(event);"/>
+ 	<slides:ConfigurationPanel id="configurationPanel" x="250" y="350" />
+ </mx:Canvas>

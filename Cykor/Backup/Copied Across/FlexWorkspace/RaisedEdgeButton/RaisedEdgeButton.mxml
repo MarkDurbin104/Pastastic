@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" xmlns:controls="flexlib.controls.*" alpha="1.0" backgroundGradientColors="[#0, #0]">
+<mx:Script>
+	<![CDATA[
+	import flash.display.DisplayObject;
+	import flash.display.Stage;
+	import flash.display.StageDisplayState;
+	import flash.geom.Rectangle;
+	
+	public function go(display:DisplayObject):void {
+		var stage:Stage = display.stage;
+//		stage["fullScreenSourceRect"] = new Rectangle(0, 0, stage.width, stage.height);
+		stage.displayState = StageDisplayState.FULL_SCREEN;
+	}
+	public function back(display:DisplayObject):void {
+		display.stage.displayState = StageDisplayState.NORMAL;
+	}
+		
+	]]>
+</mx:Script>
+	<mx:Canvas id="c1" width="100" height="80" backgroundColor="#EFF5F6" x="30" y="78"  click="go(this);"/>
+	<mx:Canvas id="c2" width="100" height="80" backgroundColor="#D7E7E8" x="30" y="178"  click="back(this);"/>
+	<mx:Canvas id="c3" width="100" height="80" backgroundColor="#ACCFDD" x="30" y="278" />
+	<mx:Canvas id="c4" width="100" height="80" backgroundColor="#7DAECC" x="30" y="378"/>
+	<mx:Canvas id="c5" width="100" height="80" backgroundColor="#6B98AF" x="30" y="478" />
+	<mx:Canvas width="405" height="305" cornerRadius="35" borderStyle="solid" backgroundColor="#6B98AF" borderColor="#6B98AF" x="151" y="7" horizontalScrollPolicy="off" verticalScrollPolicy="off" buttonMode="true"/>
+	<mx:Canvas width="400" height="300" cornerRadius="30" borderStyle="solid" backgroundColor="#ACCFDD" borderColor="#ACCFDD" x="151" y="7" horizontalScrollPolicy="off" verticalScrollPolicy="off" themeColor="#6B98AF" buttonMode="true"/>
+	<mx:Canvas width="396" height="296" cornerRadius="30" borderStyle="solid" backgroundColor="#7DAECC" borderColor="#7DAECC" x="155" y="11" horizontalScrollPolicy="off" verticalScrollPolicy="off" themeColor="#6B98AF" buttonMode="true"/>
+	<mx:Canvas width="360" height="262" cornerRadius="20" borderStyle="solid" backgroundColor="#6B98AF" borderColor="#6B98AF" x="171" y="27" horizontalScrollPolicy="off" verticalScrollPolicy="off" buttonMode="true"/>
+	<mx:Canvas width="355" height="257" cornerRadius="20" borderStyle="solid" backgroundColor="#ACCFDD" borderColor="#ACCFDD" x="176" y="32" horizontalScrollPolicy="off" verticalScrollPolicy="off" themeColor="#6B98AF" buttonMode="true"/>
+	<mx:Canvas width="353" height="255" cornerRadius="18" borderStyle="solid" backgroundColor="#EFF5F6" x="175" y="31" horizontalScrollPolicy="off" verticalScrollPolicy="off" buttonMode="true">
+		<mx:Canvas width="100%" height="100%" backgroundColor="#D7E7E8" x="0" y="100"  borderColor="#D7E7E8" cornerRadius="18" borderStyle="solid"/>
+		<mx:Canvas width="380" height="98" backgroundColor="#EFF5F6" x="-14" y="19"  borderStyle="none" alpha="1.0" backgroundAlpha="1.0"/>
+	</mx:Canvas>
+	<mx:Canvas width="805" height="305" cornerRadius="35" borderStyle="solid" backgroundColor="#6B98AF" borderColor="#6B98AF" x="151" y="328" horizontalScrollPolicy="off" verticalScrollPolicy="off"/>
+	<mx:Canvas width="800" height="300" cornerRadius="30" borderStyle="solid" backgroundColor="#ACCFDD" borderColor="#ACCFDD" x="151" y="328" horizontalScrollPolicy="off" verticalScrollPolicy="off"/>
+	<mx:Canvas width="796" height="296" cornerRadius="30" borderStyle="solid" backgroundColor="#7DAECC" borderColor="#7DAECC" x="155" y="332" horizontalScrollPolicy="off" verticalScrollPolicy="off"/>
+	<mx:Canvas width="760" height="262" cornerRadius="20" borderStyle="solid" backgroundColor="#6B98AF" borderColor="#6B98AF" x="171" y="348" horizontalScrollPolicy="off" verticalScrollPolicy="off"/>
+	<mx:Canvas width="755" height="257" cornerRadius="20" borderStyle="solid" backgroundColor="#ACCFDD" borderColor="#ACCFDD" x="176" y="353" horizontalScrollPolicy="off" verticalScrollPolicy="off"/>
+	<mx:Canvas width="753" height="255" cornerRadius="18" borderStyle="solid" backgroundColor="#EFF5F6" x="175" y="352" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+		<mx:Canvas width="100%" height="100%" backgroundColor="#D7E7E8" x="0" y="100"  borderColor="#D7E7E8" cornerRadius="18" borderStyle="solid"/>
+		<mx:Canvas width="780" height="98" backgroundColor="#EFF5F6" x="-14" y="19"  borderStyle="none" alpha="1.0" backgroundAlpha="1.0"/>
+	</mx:Canvas>
+</mx:Application>

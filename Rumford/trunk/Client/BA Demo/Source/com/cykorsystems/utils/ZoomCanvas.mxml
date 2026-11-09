@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="400" height="300">
+	<mx:Script>
+		<![CDATA[
+			[Bindable]
+			public var centerX:Number=0;
+			[Bindable]
+			public var centerY:Number=0;
+			[Bindable]
+			public var actualWidth:Number=200;
+			[Bindable]
+			public var actualHeight:Number=200;
+			[Bindable]
+			public var zoomValue:Number=1;
+			[Bindable]
+			public var imageSource:Object=null;
+			public function get drawingCanvas():Graphics {
+				return container.graphics;
+			}
+		]]>
+	</mx:Script>
+	<Canvas id="maskCanvas" backgroundColor="#FFFFFF" width="100%" height="100%" />
+	<mx:Canvas id="container" mask="maskCanvas" 
+		x="{(width-actualWidth)/2}" y="{(height-actualHeight)/2}" 
+		width="{actualWidth}" height="{actualHeight}" 
+		scaleX="{zoomValue}" scaleY="{zoomValue}"	 
+		backgroundSize="100%" backgroundImage="{imageSource}">
+	</mx:Canvas>
+</mx:Canvas>

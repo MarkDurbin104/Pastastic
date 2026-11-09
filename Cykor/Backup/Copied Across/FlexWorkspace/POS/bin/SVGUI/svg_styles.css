@@ -1,0 +1,32 @@
+.dayButton {
+	font-family:Verdana;
+	font-size:15;
+	font-weight:bold;
+	color: #FFFFFF;
+	text-align:center;
+}
+.normalItem {
+	font-family:Verdana;
+	font-size:15;
+	font-weight:bold;
+	color: #2F4D55;
+	text-align:center;
+}
+.lockedItem {
+	font-family:Verdana;
+	font-size:15;
+	font-weight:bold;
+	color: #FF5524;
+	text-align:center;
+}
+.secondaryItem {
+	font-family:Verdana;
+	font-size:15;
+	font-weight:bold;
+	color: #27726B;
+	text-align:center;
+}
+.embVerdanaStyle {
+	fontFamily:embVerdana;
+}
+

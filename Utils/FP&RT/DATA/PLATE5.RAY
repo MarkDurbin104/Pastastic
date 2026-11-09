@@ -1,0 +1,114 @@
+{   ษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+    บ                                                               บ
+    บ                       Picture of a cone                       บ
+    บ                                                               บ
+    บ                By Roger T. Stevens - 12/31/89                 บ
+    บ                                                               บ
+    ศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+}
+
+FILE_NAME = CONE5.RAW
+
+{  PATTERNS USED}
+
+PATTERN ( x_size = 80,                 { CHECKERED GROUND }
+          y_size = 80,
+          name   = CHECK,
+          RECTANGLE (
+            start_x = 0,
+            start_y = 0,
+            end_x   = 40,
+            end_y   = 40,
+            diff    = (.75, .25, .75),
+            dither  = 0,
+          )
+          RECTANGLE (
+            start_x = 40,
+            start_y = 40,
+            end_x   = 80,
+            end_y   = 80,
+            diff    = (.75, .25, .75),
+            dither  = 0,
+          )
+        )
+{ *********************  OBJECTS  ********************* }
+{ ** ground ** }
+PARALLELOGRAM ( loc  = (  -10000, 0,  -10000),
+                v1   = (20000, 0,    0),
+                v2   = (  0, 0, 20000),
+                diff = (  1, 1, .75),
+                dither  = 0,
+                pattern = CHECK
+                xmult = 2
+                ymult = 2
+              )
+
+BEGIN_BBOX
+        SPHERE ( loc = (230, 90, -70),
+                 radius = 30,
+                 diff = (.7, .7, .7),
+                 xmult   = 1
+                 ymult   = 1
+				 mirror = (.9, .9, .9)
+               )
+
+    CONE           (loc = (230, 60, -70),
+                    radius = 35
+					height = 60
+                    diff = (1, 0, 0),
+                   )
+END_BBOX
+
+BEGIN_BBOX
+        SPHERE ( loc      = (220, 90, 50),
+                 radius   = 30,
+                 diff     = (.7, .7, .7),
+				 mirror = (.9, .9, .9)
+                 xmult   = 1.0,
+                 ymult   = 1.0
+               )
+
+    CONE           (loc = (220, 60, 50),
+                    radius = 30
+					height = 60
+                    diff = (0, 1, 0.6),
+                   )
+END_BBOX
+
+BEGIN_BBOX
+        SPHERE ( loc = (350, 90, 0),
+                 radius = 30,
+                 diff = (.7, .7, .7),
+                 xmult   = 1
+                 ymult   = 1
+				 mirror = (.9, .9, .9)
+               )
+
+	    CONE           (loc = (350, 60, 0),
+                    radius = 35
+					height = 60
+                    diff = (0, 0, 1),
+				   )
+END_BBOX
+
+{ ** An observer ** }
+OBSERVER ( loc    = (-20 , 70, -40),
+           lookat = (200, 50, -15)
+         )
+{ ** A lamp ** }
+LAMP ( loc = (120, 400, -50),
+       radius = 5,
+       dist = 250
+     )
+LAMP ( loc = (-200, 450, 140)
+       radius = 5,
+       dist = 220
+     )
+SKY  ( horiz  = (0, .4, .8),
+       zenith = (0, .4, .9),
+       dither = 1
+     )
+XRES = 320
+YRES = 200
+
+FOC_LENGTH = 65

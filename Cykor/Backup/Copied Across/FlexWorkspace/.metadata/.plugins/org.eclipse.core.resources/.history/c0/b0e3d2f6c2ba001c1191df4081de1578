@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index>
+	<title>Source of POS</title>
+	<nodes>
+		<node label="configuration">
+			<node label="images">
+				<node label="AddContainer.gif" icon="imageIcon" url="source/configuration/images/AddContainer.gif.html"/>
+				<node label="AddUser.gif" icon="imageIcon" url="source/configuration/images/AddUser.gif.html"/>
+				<node label="Admin.gif" icon="imageIcon" url="source/configuration/images/Admin.gif.html"/>
+				<node label="AdminBG.gif" icon="imageIcon" url="source/configuration/images/AdminBG.gif.html"/>
+				<node label="Balance.gif" icon="imageIcon" url="source/configuration/images/Balance.gif.html"/>
+				<node label="BalanceStatus.gif" icon="imageIcon" url="source/configuration/images/BalanceStatus.gif.html"/>
+				<node label="Books.gif" icon="imageIcon" url="source/configuration/images/Books.gif.html"/>
+				<node label="Cash.gif" icon="imageIcon" url="source/configuration/images/Cash.gif.html"/>
+				<node label="CategoryCode.gif" icon="imageIcon" url="source/configuration/images/CategoryCode.gif.html"/>
+				<node label="CertOfMail.gif" icon="imageIcon" url="source/configuration/images/CertOfMail.gif.html"/>
+				<node label="ChangePassword.gif" icon="imageIcon" url="source/configuration/images/ChangePassword.gif.html"/>
+				<node label="Check.gif" icon="imageIcon" url="source/configuration/images/Check.gif.html"/>
+				<node label="Coils.gif" icon="imageIcon" url="source/configuration/images/Coils.gif.html"/>
+				<node label="Commemoratives.gif" icon="imageIcon" url="source/configuration/images/Commemoratives.gif.html"/>
+				<node label="CreditCard.gif" icon="imageIcon" url="source/configuration/images/CreditCard.gif.html"/>
+				<node label="CustomReceiptMessage.gif" icon="imageIcon" url="source/configuration/images/CustomReceiptMessage.gif.html"/>
+				<node label="DataCenter.gif" icon="imageIcon" url="source/configuration/images/DataCenter.gif.html"/>
+				<node label="DataUpload.gif" icon="imageIcon" url="source/configuration/images/DataUpload.gif.html"/>
+				<node label="DebitCard.gif" icon="imageIcon" url="source/configuration/images/DebitCard.gif.html"/>
+				<node label="Definitive.gif" icon="imageIcon" url="source/configuration/images/Definitive.gif.html"/>
+				<node label="DeleteUser.gif" icon="imageIcon" url="source/configuration/images/DeleteUser.gif.html"/>
+				<node label="DuplicateReceipt.gif" icon="imageIcon" url="source/configuration/images/DuplicateReceipt.gif.html"/>
+				<node label="FinancialSummary.gif" icon="imageIcon" url="source/configuration/images/FinancialSummary.gif.html"/>
+				<node label="FundsDownload.gif" icon="imageIcon" url="source/configuration/images/FundsDownload.gif.html"/>
+				<node label="LabelMisprint.gif" icon="imageIcon" url="source/configuration/images/LabelMisprint.gif.html"/>
+				<node label="Lockout.gif" icon="imageIcon" url="source/configuration/images/Lockout.gif.html"/>
+				<node label="Logout.gif" icon="imageIcon" url="source/configuration/images/Logout.gif.html"/>
+				<node label="MailPickup.gif" icon="imageIcon" url="source/configuration/images/MailPickup.gif.html"/>
+				<node label="Mails.gif" icon="imageIcon" url="source/configuration/images/Mails.gif.html"/>
+				<node label="MailShip.gif" icon="imageIcon" url="source/configuration/images/MailShip.gif.html"/>
+				<node label="ManualBarcode.gif" icon="imageIcon" url="source/configuration/images/ManualBarcode.gif.html"/>
+				<node label="MemoView.gif" icon="imageIcon" url="source/configuration/images/MemoView.gif.html"/>
+				<node label="ModifyUser.gif" icon="imageIcon" url="source/configuration/images/ModifyUser.gif.html"/>
+				<node label="MoreOptions.gif" icon="imageIcon" url="source/configuration/images/MoreOptions.gif.html"/>
+				<node label="NoSvcPI.gif" icon="imageIcon" url="source/configuration/images/NoSvcPI.gif.html"/>
+				<node label="Payment.gif" icon="imageIcon" url="source/configuration/images/Payment.gif.html"/>
+				<node label="PendingTransfer.gif" icon="imageIcon" url="source/configuration/images/PendingTransfer.gif.html"/>
+				<node label="PES.gif" icon="imageIcon" url="source/configuration/images/PES.gif.html"/>
+				<node label="PostalStationary.gif" icon="imageIcon" url="source/configuration/images/PostalStationary.gif.html"/>
+				<node label="PrintLabel.gif" icon="imageIcon" url="source/configuration/images/PrintLabel.gif.html"/>
+				<node label="PSD.gif" icon="imageIcon" url="source/configuration/images/PSD.gif.html"/>
+				<node label="PSDAudit.gif" icon="imageIcon" url="source/configuration/images/PSDAudit.gif.html"/>
+				<node label="PSDInstall.gif" icon="imageIcon" url="source/configuration/images/PSDInstall.gif.html"/>
+				<node label="PSDStatus.gif" icon="imageIcon" url="source/configuration/images/PSDStatus.gif.html"/>
+				<node label="PSDWithdraw.gif" icon="imageIcon" url="source/configuration/images/PSDWithdraw.gif.html"/>
+				<node label="Reports.gif" icon="imageIcon" url="source/configuration/images/Reports.gif.html"/>
+				<node label="Stamps.gif" icon="imageIcon" url="source/configuration/images/Stamps.gif.html"/>
+				<node label="StampsBG.gif" icon="imageIcon" url="source/configuration/images/StampsBG.gif.html"/>
+				<node label="StampsMenu.gif" icon="imageIcon" url="source/configuration/images/StampsMenu.gif.html"/>
+				<node label="StockBreakdown.gif" icon="imageIcon" url="source/configuration/images/StockBreakdown.gif.html"/>
+				<node label="StockDisplay.gif" icon="imageIcon" url="source/configuration/images/StockDisplay.gif.html"/>
+				<node label="StockIn.gif" icon="imageIcon" url="source/configuration/images/StockIn.gif.html"/>
+				<node label="StockManagement.gif" icon="imageIcon" url="source/configuration/images/StockManagement.gif.html"/>
+				<node label="StockOut.gif" icon="imageIcon" url="source/configuration/images/StockOut.gif.html"/>
+				<node label="SystemInfo.gif" icon="imageIcon" url="source/configuration/images/SystemInfo.gif.html"/>
+				<node label="TransferIn.gif" icon="imageIcon" url="source/configuration/images/TransferIn.gif.html"/>
+				<node label="TransferOut.gif" icon="imageIcon" url="source/configuration/images/TransferOut.gif.html"/>
+				<node label="USPS.gif" icon="imageIcon" url="source/configuration/images/USPS.gif.html"/>
+			</node>
+			<node label="menus.xml" url="source/configuration/menus.xml.txt"/>
+		</node>
+	</nodes>
+	<zipfile label="Download source (ZIP, 68K)" url="POS.zip"/>
+	<sdklink label="Download Flex 2 SDK" url="http://www.adobe.com/go/flex2_sdk"/>
+</index>

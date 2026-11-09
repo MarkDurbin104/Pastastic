@@ -1,0 +1,141 @@
+//******************************************************************************************//
+//*                                                                                        *//
+//*                           Botswana Postal Service                                      *//
+//*                                                                                        *//
+//*                              Common Products                                           *//
+//*                                                                                        *//
+//*          These products are used by many services in the Botswana Systems              *//
+//*                                                                                        *//
+//******************************************************************************************//
+
+Domains {
+
+  IRCValue {
+     Title { 'IRC Value' }
+     Prompt { 'IRC Value' }
+     InputFrom { Params }
+    // TotalIn { TotalFee }
+  }
+
+}
+
+Products {
+
+//
+//---------------------------------------------------------------------------------
+//
+
+  Cash {  BasedOn     { BaseSales                                }
+          RegDesc     { 'Corvus Cash Product'                    }
+          Caption     { 'Cash'                                   }
+          Description { 'Cash'                                   }
+          Title       { 'Cash'                                   }
+          BitMap      { '..\images\P_Cash.bmp' }
+          Domains     { AmountPaid ,Thebe5Adjustment, Change  }
+          Customer    { 'Cash P',AmountPaid,'^','Change P',Change       }
+          Snippets    { CalcChangeVars  CalcChange  LogCash5ThebeVars LogCash  LogNegativeCash }
+          PLU         { PLU_Cash }
+         }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+  AirLetterRedeemIRC {
+     BasedOn  { BaseOptionalServices }
+     BitMap   { '..\images\P_RedeemIRC.bmp' }
+     Title    { 'Redeem IRC' }
+     TotalIn  { TotalFee     }
+     Domains  {
+        MailAirDestination
+        BulkQuantity
+        IRCValue
+     }
+     Snippets {
+        AirLetterIRCVAL
+        AirLetterIRCLOGVAR
+        AirLetterIRCLOG
+     }
+     PLU { PLU_IntRepCoup }
+  }
+
+}
+
+//
+//---------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------
+//
+
+Snippets {
+
+   AirLetterIRCVAL {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         Result:=CheckMaskEdits(Self);
+         MailAirDestination.ItemIndex:=MailAirDestination.Items.IndexOf(MailAirDestination.Text);
+         if MailAirDestination.ItemIndex >= 0 then
+            IRCValue.Text:=CurrToStrF(0-StrToCurrDef(LookUp(TStringObject(MailAirDestination.Items.Objects[MailAirDestination.ItemIndex]).Value,'1','AirStdLetter',BulkQuantity,Result),0),ffNumber,2);
+
+         BaseProduct.UIEventSink.ReferenceData('SET(IRCValue,'+CurrToStr(StrToCurrDef(IRCValue.Text,0))+')');
+      *]
+      }
+   }
+
+   AirLetterIRCLOGVAR {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+           SubLogTemp:WordBool;
+           Stock     :IStock;
+      *]
+      }
+   }
+
+   AirLetterIRCLOG {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+          SubLogTemp:=TxnLog.SubLogVisible;
+          TxnLog.SubLogVisible:=FALSE;
+
+          // Log as negative IRC value
+          TxnLog.LogTransaction(
+                   Index,
+                   FQuantity, // Quantity
+                   Get_PLU, // PLU
+                   FQuantity*StrToCurrDef(ProdForm.IRCValue.Text,0), // Value
+                   StrToCurrDef(ProdForm.IRCValue.Text,0), // Price
+                   'IRC Value', // Description
+                   '', // Additional Info
+                   Get_ProgramID, // ProgID
+                   Enumerate(ProdForm));  // Domain Info
+          Inc(Index);
+          TxnLog.SubLogVisible:=SubLogTemp;
+          //
+          //TxnLog.WriteTransaction('StockUsed',
+          //                        0,
+          //                        Trunc(StrToCurrDef(ProdForm.IRCValue.Text,0)*100),
+          //                        6100001,
+          //                        FQuantity*StrToCurr(ProdForm.IRCValue.Text), //Value
+          //                        StrToCurr(ProdForm.IRCValue.Text),         //Price ? 0
+          //                        'AirIRC',
+          //                        '',Get_ProgramID,'');
+          //try
+          //   Stock:=CreateStock;
+          //   Stock.AdjustStockLevel(TxnLog.User
+          //                         ,'*AirIRC'
+          //                        // ,-1
+          //                         ,-Trunc(StrToCurrDef(ProdForm.IRCValue.Text,0)*100)
+          //                        );
+          //except
+          //   On E : Exception do
+          //    RaiseGUIDException('{F2F104CA-4136-4BEB-A305-C2ECDD7C7304}', E);
+          //end;
+          Stock:=nil;
+      *]
+      }
+   }
+
+}

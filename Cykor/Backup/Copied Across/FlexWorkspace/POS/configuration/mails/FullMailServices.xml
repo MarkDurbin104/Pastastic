@@ -1,0 +1,334 @@
+<MailServices>
+	<ServiceTree>
+		<Group Name="ExpressMail" 
+			Caption="Express Mail" 
+			FullName="Express Mail"
+			Icon="ExpressMail.gif">
+			<Service Name="DomExpPOtoAddr"
+				Hint="Expedited service with a 1 or 2 day guarantee. Guarantee depends on destination ZIP code and time of acceptance. Extra services are available."
+				Caption="Express PO-Addr." 
+				FullName="Express PO to Addressee"
+				HelpURL="HTMLPage/buttons.html?newsrc=dmm/113.htm"
+				Icon="DExpPOtoAddr.gif">
+				<EXMDInsurance/>
+				<RetReceipt/>
+				<AffixPostage/>
+			</Service>
+			<Service Name="DomExPOtoAddFlat"
+				Hint="Expedited service with a 1 or 2 day guarantee. Guarantee depends on destination ZIP code and time of acceptance. Extra services are available."
+				Caption="Express PO-A. F-R"
+				FullName="Express PO to Addressee Flat Rate"
+				HelpURL="HTMLPage/buttons.html?newsrc=dmm/113.htm"
+				Icon="DExPOtoAddFlat.gif">
+				<EXMDInsurance/>
+				<RetReceipt/>
+				<AffixPostage/>
+			</Service>
+		</Group>
+		<Group Name="PriorityMail" Caption="Priority Mail" FullName="Priority Mail"
+			Icon="PriorityMail.gif">
+			<Service Name="DomPriMail"
+				Hint="Priority Mail is an expedited service for first class mail weighing 13 oz or more and any other mailable item weighing less than 13 oz. Delivery is usually in 2 to 3 days depending on destination ZIP code and time of acceptance. Extra services are available."
+				Caption="Priority Mail" 
+				FullName="Priority Mail"
+				HelpURL="HTMLPage/buttons.html?newsrc=dmm/123.htm"
+				Icon="DPriMail.gif">
+				<Registered/>
+				<Insurance/>
+				<Certified/>
+				<RetReceipt/>
+				<RestrictDel/>
+				<DelivConfirm/>
+				<SignConfirm/>
+				<CertOfMail/>
+				<AffixPostage/>
+			</Service>
+			<Service Name="DomPriMailFlBox"
+				Hint="Priority Mail is an expedited service for first class mail weighing 13 oz or more and any other mailable item weighing less than 13 oz. Delivery is usually in 2 to 3 days depending on destination ZIP code and time of acceptance. Extra services are available."
+				Caption="Priority F-R Box" 
+				FullName="Priority Flat Rate Box"
+				HelpURL="HTMLPage/buttons.html?newsrc=dmm/123.htm&amp;anchor=1_5"
+				Icon="DPriMailFlBox.gif">
+				<Registered/>
+				<Insurance/>
+				<Certified/>
+				<RetReceipt/>
+				<RestrictDel/>
+				<DelivConfirm/>
+				<SignConfirm/>
+				<CertOfMail/>
+				<AffixPostage/>
+			</Service>
+			<Service Name="DomPriMailFlEnv"
+				Hint="Priority Mail is an expedited service for first class mail weighing 13 oz or more and any other mailable item weighing less than 13 oz. Delivery is usually in 2 to 3 days depending on destination ZIP code and time of acceptance. Extra services are available."
+				Caption="Priority F-R Env."
+				FullName="Priority Flat Rate Envelope"
+				HelpURL="HTMLPage/buttons.html?newsrc=dmm/123.htm&amp;anchor=1_5"
+				Icon="DPriMailFlEnv.gif">
+				<Registered/>
+				<Insurance/>
+				<Certified/>
+				<RetReceipt/>
+				<RestrictDel/>
+				<DelivConfirm/>
+				<SignConfirm/>
+				<CertOfMail/>
+				<AffixPostage/>
+			</Service>
+		</Group>
+		<Group Name="FirstClass" Caption="First Class" FullName="First Class"
+			Icon="FirstClass.gif">
+			<Service Name="DomFirstClassLet"
+				Hint="First-Class Mail receives expeditious handling and transportation. Service objectives for delivery are 1 to 3 days; however, delivery time is not guaranteed. Any mailable item is eligible for First-Class mail. Extra services are available."
+				Caption="First Class Letter" 
+				FullName="First Class Letter"
+				HelpURL="HTMLPage/buttons.html?newsrc=dmm/133.htm"
+				Icon="DFirstClassLet.gif">
+				<Registered/>
+				<Insurance/>
+				<Certified/>
+				<RetReceipt/>
+				<RestrictDel/>
+				<CertOfMail/>
+				<AffixPostage/>
+			</Service>
+			<Service Name="DomFirstClassLEn"
+				Hint="First-Class Mail receives expeditious handling and transportation. Service objectives for delivery are 1 to 3 days; however, delivery time is not guaranteed. Any mailable item is eligible for First-Class mail. Extra services are available."
+				Caption="First Class Lg. Env."
+				FullName="First Class Large Envelope"
+				HelpURL="HTMLPage/buttons.html?newsrc=dmm/133.htm"
+				Icon="DFirstClassLEn.gif">
+				<Registered/>
+				<Insurance/>
+				<Certified/>
+				<RetReceipt/>
+				<RestrictDel/>
+				<CertOfMail/>
+				<AffixPostage/>
+			</Service>
+			<Service Name="DomFirstClassPrc"
+				Hint="First-Class Mail receives expeditious handling and transportation. Service objectives for delivery are 1 to 3 days; however, delivery time is not guaranteed. Any mailable item is eligible for First-Class mail. Extra services are available."
+				Caption="First Class Pkg." 
+				FullName="First Class Package"
+				HelpURL="HTMLPage/buttons.html?newsrc=dmm/133.htm"
+				Icon="DFirstClassPrc.gif">
+				<Registered/>
+				<Insurance/>
+				<Certified/>
+				<RetReceipt/>
+				<RestrictDel/>
+				<DelivConfirm/>
+				<SignConfirm/>
+				<CertOfMail/>
+				<AffixPostage/>
+			</Service>
+		</Group>
+		<Group Name="Other" Caption="More..." FullName="More..." Icon="Other.gif">
+			<Service Name="DomParcelPost"
+				Hint="Parcel Post mail consists of mailable matter that is neither mailed nor required to be mailed as First-Class Mail. Parcel post is not an expedited service. Extra services are available."
+				Caption="Parcel Post" 
+				FullName="Parcel Post"
+				HelpURL="HTMLPage/buttons.html?newsrc=dmm/153.htm"
+				Icon="DParcelPost.gif">
+				<Insurance/>
+				<RetReceipt/>
+				<RestrictDel/>
+				<DelivConfirm/>
+				<SignConfirm/>
+				<CertOfMail/>
+				<AffixPostage/>
+			</Service>
+			<Service Name="DomMediaMail"
+				Hint="Media Mail is not an expedited service. Only certain items can quantify. See next help screen for more information."
+				Caption="Media Mail" 
+				FullName="Media Mail"
+				HelpURL="HTMLPage/buttons.html?newsrc=dmm/173.htm"
+				Icon="DMediaMail.gif">
+				<Insurance/>
+				<RetReceipt/>
+				<RestrictDel/>
+				<DelivConfirm/>
+				<SignConfirm/>
+				<CertOfMail/>
+				<AffixPostage/>
+			</Service>
+			<Service Name="DomLibraryMail"
+				Hint="Library mail is not an expedited service. Only certain items and destinations can qualify. See next help screen for more information."
+				Caption="Library Mail" 
+				FullName="Library Mail"
+				HelpURL="HTMLPage/buttons.html?newsrc=dmm/183.htm"
+				Icon="DLibraryMail.gif">
+				<Insurance/>
+				<RetReceipt/>
+				<RestrictDel/>
+				<DelivConfirm/>
+				<SignConfirm/>
+				<CertOfMail/>
+				<AffixPostage/>
+			</Service>
+		</Group>
+		<Service Name="IntGlbExpGr"
+			Hint="Global Express Guaranteed (GXG) service is an international expedited delivery service provided through an alliance with FedEx Corporation. It provides reliable, high-speed, guaranteed, and time-definite service from selected Post Office facilities in the United States to a large number of international destinations."
+			Caption="Global Exp. Gr." 
+			FullName="Global Express Guaranteed"
+			HelpURL="HTMLPage/buttons.html?newsrc=imm/immc2_001.htm"
+			Icon="IGlbExpGr.gif">
+			<GEXGInsurance/>
+			<AffixPostage/>
+		</Service>
+		<Group Name="EXPMI" 
+			Caption="Express Mail Int."
+			FullName="Express Mail Int." 
+			Icon="EXPMI.gif">
+			<Service Name="IntExpressFlt"
+				Hint="Express Mail International is a reliable high-speed mail service available to certain countries (see Individual Country Listings for service availability). Express Mail International with Guarantee service - which offers a date-certain, postage-refund guarantee - is available only to Australia, China, Hong Kong, Japan, and Korea, Republic of (South Korea)."
+				Caption="Express Mail F-R" 
+				FullName="Express Mail Flat Rate"
+				HelpURL="HTMLPage/buttons.html?newsrc=imm/immc2_008.htm"
+				Icon="IExpressFlt.gif">
+				<EXMIInsurance/>
+				<RetReceipt/>
+				<AffixPostage/>
+			</Service>
+			<Service Name="IntExpressMail"
+				Hint="Express Mail International is a reliable high-speed mail service available to certain countries (see Individual Country Listings for service availability). Express Mail International with Guarantee service - which offers a date-certain, postage-refund guarantee - is available only to Australia, China, Hong Kong, Japan, and Korea, Republic of (South Korea)."
+				Caption="Express Mail Int." 
+				FullName="Express Mail International"
+				HelpURL="HTMLPage/buttons.html?newsrc=imm/immc2_008.htm"
+				Icon="IExpressMail.gif">
+				<EXMIInsurance/>
+				<RetReceipt/>
+				<AffixPostage/>
+			</Service>
+		</Group>
+		<Group Name="PRMI" Caption="Priority Mail Int."
+			FullName="Priority Mail Int." 
+			Icon="PRMI.gif">
+			<Service Name="IntGlobalPrioWt"
+				Hint="With the exception of the flat-rate envelope, Priority Mail International is a parcel service. Written correspondence having the nature of current and personal correspondence is not permitted in Priority Mail International parcels, but may be sent in the Priority Mail International flat-rate envelope."
+				Caption="Priority Mail Int."
+				FullName="Priority Mail International"
+				HelpURL="HTMLPage/buttons.html?newsrc=imm/immc2_012.htm"
+				Icon="IGlobalPrioWt.gif">
+				<PRMIInsurance/>
+				<RetReceipt/>
+				<CertOfMail/>
+				<AffixPostage/>
+			</Service>
+			<Service Name="IntGlobalPrioBx"
+				Hint="With the exception of the flat-rate envelope, Priority Mail International is a parcel service. Written correspondence having the nature of current and personal correspondence is not permitted in Priority Mail International parcels, but may be sent in the Priority Mail International flat-rate envelope."
+				Caption="Priority Mail Int. Box"
+				FullName="Priority Mail International Box"
+				HelpURL="HTMLPage/buttons.html?newsrc=imm/immc2_015.htm"
+				Icon="IGlobalPrioBx.gif">
+				<PRMIInsurance/>
+				<RetReceipt/>
+				<CertOfMail/>
+				<AffixPostage/>
+			</Service>
+			<Service Name="IntGlobalPrioEn"
+				Hint="With the exception of the flat-rate envelope, Priority Mail International is a parcel service. Written correspondence having the nature of current and personal correspondence is not permitted in Priority Mail International parcels, but may be sent in the Priority Mail International flat-rate envelope."
+				Caption="Priority Mail Int. En."
+				FullName="Priority Mail International Envelope"
+				HelpURL="HTMLPage/buttons.html?newsrc=imm/immc2_012.htm"
+				Icon="IGlobalPrioEn.gif">
+				<Registered/>
+				<RetReceipt/>
+				<RestrictDel/>
+				<CertOfMail/>
+				<AffixPostage/>
+			</Service>
+		</Group>
+		<Service Name="IntFirstClass"
+			Hint="The First-Class Mail International classification encompasses all the classes of international mail that were formerly categorized as airmail letter-post and economy letter-post, post and postal cards, printed matter, and small packets that were formerly categorized as LC (letters and cards) and AO (other articles)."
+			Caption="First Class Mail Int."
+			FullName="First Class Mail International"
+			HelpURL="HTMLPage/buttons.html?newsrc=imm/immc2_018.htm"
+			Icon="IFirstClass.gif">
+			<Registered/>
+			<RetReceipt/>
+			<RestrictDel/>
+			<CertOfMail/>
+			<AffixPostage/>
+		</Service>
+	</ServiceTree>
+	<SecondaryServices>
+		<SecondaryService Name="AffixPostage"
+			Hint="Provides a mailer an option to specify amount of postage already affixed to mailing item.The affixed amount is deducted from total cost."
+			Caption="Affixed Postage" 
+			FullName="Affixed Postage"
+			Icon="AffixPostage.gif"/>
+		<SecondaryService Name="CertOfMail"
+			Hint="Certificate of mailing service provides evidence that mail has been presented to the USPS for mailing. Certificate of mailing service does not provide a record of delivery. Available for First Class, Priority and Parcel Post."
+			Caption="Certificate of Mailing" 
+			FullName="Certificate of Mailing"
+			HelpURL="HTMLPage/buttons.html?newsrc=certofmail.htm"
+			Icon="CertOfMail.gif"/>
+		<SecondaryService Name="Certified"
+			Hint="Certified Mail service provides the sender with a mailing receipt that is a verification that an article was delivered or that a delivery attempt was made."
+			Caption="Certified" 
+			FullName="Certified"
+			HelpURL="HTMLPage/buttons.html?newsrc=dmm/503.htm&amp;anchor=3_0"
+			Icon="Certified.gif"/>
+		<SecondaryService Name="DelivConfirm"
+			Hint="Delivery Confirmation service provides the mailer with information about the date and time an article was delivered and, if delivery was attempted but not successful, the date and time of the delivery attempt. Delivery Confirmation service is available only at the time of mailing. No record is kept at the office of mailing. Delivery Confirmation service does not include insurance, but insurance may be purchased as an additional service."
+			Caption="Delivery Confirmation" 
+			FullName="Delivery Confirmation"
+			HelpURL="HTMLPage/buttons.html?newsrc=dmm/503.htm&amp;anchor=9_0"
+			Icon="DelivConfirm.gif"/>
+		<SecondaryService Name="EXMDInsurance"
+			Hint="Express mail items can be insured as long as they contain merchandise or items of value. In. Maximum insurance is $5000.00. "
+			Caption="Insurance" 
+			FullName="Insurance"
+			HelpURL="HTMLPage/buttons.html?newsrc=dmm/503.htm&amp;anchor=1_0"
+			Icon="EXMDInsurance.gif"/>
+		<SecondaryService Name="EXMIInsurance"
+			Hint="Express Mail International items can be insured as long as they contain merchandise or items of value. In. Maximum insurance depends on destination."
+			Caption="Insurance" 
+			FullName="Insurance"
+			HelpURL="HTMLPage/buttons.html?newsrc=imm/immc2_008.htm&amp;anchor=221_3"
+			Icon="EXMIInsurance.gif"/>
+		<SecondaryService Name="GEXGInsurance"
+			Hint="Global Express Guaranteed  mail  items can be insured as long as they contain merchandise or items of value. Maximum insurance depends on destination."
+			Caption="Insurance" 
+			FullName="Insurance"
+			HelpURL="HTMLPage/buttons.html?newsrc=imm/immc2_005.htm"
+			Icon="GEXGInsurance.gif"/>
+		<SecondaryService Name="Insurance"
+			Hint="First Class, Priority and Parcel Post mail items can be insured as long as they contain merchandise or items of value. Insurance under $200 does not allow a return receipt. However Delivery Confirmation is available.Insurance over $200 does allow a return receipt. Maximum insurance is $5000.00. "
+			Caption="Insurance" 
+			FullName="Insurance"
+			HelpURL="HTMLPage/buttons.html?newsrc=insurance.htm"
+			Icon="Insurance.gif"/>
+		<SecondaryService Name="PRMIInsurance"
+			Hint="Priority Mail International  mail  items can be insured as long as they contain merchandise or items of value. In. Maximum insurance depends on destination."
+			Caption="Insurance" 
+			FullName="Insurance"
+			HelpURL="HTMLPage/buttons.html?newsrc=imm/immc2_014.htm"
+			Icon="PRMIInsurance.gif"/>
+		<SecondaryService Name="Registered"
+			Hint="Registered Mail is the most secure service that the USPS offers. Only matter prepaid with postage at the First-Class Mail rates (including Priority Mail) may be registered. Insurance is available. See next help screen for more information."
+			Caption="Registered" 
+			FullName="Registered"
+			HelpURL="HTMLPage/buttons.html?newsrc=registered.htm"
+			Icon="Registered.gif"/>
+		<SecondaryService Name="RestrictDel"
+			Hint="Restricted delivery service permits a mailer to direct delivery only to the addressee or addressee's authorized agent. The addressee must be an individual (or natural person) specified by name."
+			Caption="Restricted Delivery" 
+			FullName="Restricted Delivery"
+			HelpURL="HTMLPage/buttons.html?newsrc=restrictedelivery.htm"
+			Icon="RestrictDel.gif"/>
+		<SecondaryService Name="RetReceipt"
+			Hint="Return receipt service provides a mailer with evidence of delivery (to whom the mail was delivered and date of delivery), along with information about the recipient's actual delivery address. Available at time of mailing with Express, Priority, First Class mail along with Certified mail or Insured mail over $200. Parcel post with Insured mail over $200."
+			Caption="Return Receipt" 
+			FullName="Return Receipt"
+			HelpURL="HTMLPage/buttons.html?newsrc=returnreceipt.htm"
+			Icon="RetReceipt.gif"/>
+		<SecondaryService Name="SignConfirm"
+			Hint="Signature Confirmation service provides the mailer with information about the date and time an article was delivered and, if delivery was attempted but not successful, the date and time of the delivery attempt. A delivery record, including the recipient's signature, is maintained by the USPS and is available, via fax or mail, upon request. No acceptance record is kept at the office of mailing. Signature Confirmation service is available only at the time of mailing. Signature Confirmation service does not include insurance, but insurance may be purchased as an additional service."
+			Caption="Sign. Confirmation" 
+			FullName="Signature Confirmation"
+			HelpURL="HTMLPage/buttons.html?newsrc=dmm/503.htm&amp;anchor=10_0"
+			Icon="SignConfirm.gif"/>
+	</SecondaryServices>
+</MailServices>

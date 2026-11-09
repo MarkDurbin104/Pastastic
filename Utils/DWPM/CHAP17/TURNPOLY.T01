@@ -1,0 +1,12 @@
+# File used by TURNPOLY.T -- see POLYTSH.T
+penup
+setxy 160 100
+turn 0
+pendown
+if d>359 then exit
+turn +d
+push s
+do inpoly.t
+pop s
+set d d+c
+goto turnpoly.t01

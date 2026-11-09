@@ -1,0 +1,241 @@
+//******************************************************************************************//
+//*                                                                                        *//
+//*                           Botswana Postal Service                                      *//
+//*                                                                                        *//
+//*                                Sales Services                                          *//
+//*                                                                                        *//
+//******************************************************************************************//
+Snippets {
+   QuickStampLOGVAR {
+     InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+     CodeBlock {
+       [*
+          var
+            Value :Currency;
+            Stock :IStock;
+       *]
+     }
+   }
+
+   QuickStampLOG {
+     InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+     CodeBlock {
+       [*
+          TxnLog.LogTransaction(
+             Index,
+             1,
+             Get_PLU,
+             Get_UnitPrice,
+             Get_UnitPrice,
+             Get_Description,
+             '',
+             Get_ProgramID,
+             Enumerate(ProdForm)
+          );
+
+          Value:=Self.Get_UnitPrice;
+          Stock:=CreateStock;
+          TxnLog.WriteTransaction('StockUsed',0,FQuantity,90100+Trunc(Value*100),
+                                    FQuantity*Value,Value,IntToStr(Trunc(Value))+'t Stamp','','Product.Stamp'+IntToStr(Trunc(Value*100)),'');
+          try
+             Stock.AdjustStockLevel(TxnLog.User,'*'+IntToStr(Trunc(Value))+'t Stamp',0-FQuantity);
+          except
+             // Error in Stock
+          end;
+          Stock:=nil;
+
+          FUIEventSink.OpenCashDrawer;
+          TxnLog.LogTransaction(
+             0,
+             FQuantity,
+             Get_PLU,
+             0-Value,
+             0-Value,
+             'Cash',
+             '',
+             'Product.Cash',
+             Enumerate(ProdForm)
+          );
+
+       *]
+     }
+   }
+   OpenCashDrawer {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         FUIEventSink.OpenCashDrawer;
+      *]
+      }
+   }
+} // End Snippets
+
+
+Products
+{
+
+   BaseRetail {
+      DontBuild
+      SubGroup { 'Retail Items' }
+      Snippets {
+         QuickStampLOGVAR
+         QuickStampLOG
+      }
+   }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   OpenCashDrawer {
+      Title { 'Open Cash Drawer' }
+      Bitmap { '..\Images\OpenCashDrawer.bmp' }
+      SubGroup { 'Method Of Payment' }
+      Snippets { OpenCashDrawer }
+   }
+
+   QuickStamp55 {
+      BasedOn { BaseRetail }
+      Caption { '55t Stamp Sale' }
+      BitMap {  '..\IMAGES\P_Stamp150.bmp' }
+      Description  { '55t Stamp Sale' }
+      Title        { '55t Stamp Sale' }
+      PLU          { PLU_QuickStamp55 }
+      UnitPrice    { '0.55' }
+   }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+  Stamps { BasedOn     { BaseSales                    }
+               RegDesc     { 'Corvus Stamps Product'  }
+               Caption     { 'Stamp Sales'                }
+               BitMap      { '..\images\P_Stamp3.bmp' }
+               Description { 'Stamp Sales'                }
+               Title       { 'Stamp Sales'                }
+               Domains     { StampsList                   }
+               Snippets    {
+                  StampValidateVars
+                  StampValidate
+                  StampSwapVars
+                  StampFillList
+                  StampEnableComplete
+                  StampSwapTo
+                  StampOverrideDec
+                  StampOverrideDef
+               }
+               PLU         { PLU_Stamps }
+             }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+  VendorSales {
+      BasedOn     { BaseSales }
+      Caption     { 'Vendor Sales'}
+      BitMap      { '..\images\P_CashTill1.bmp' }
+      Description { 'Vendor Sales' }
+      Title       { 'Vendor Sales' }
+      Domains     { VendorRetailList }
+      PLU         { PLU_VendorSales }
+      Snippets {
+         ExecVARVendorSales
+         ExecVendorSales
+      }
+  }
+
+  VendorStampSales {
+      BasedOn     { BaseSales }
+      Caption     { 'Vendor Stamp Sales'}
+      BitMap      { '..\images\Stamps.bmp' }
+      Description { 'Vendor Stamp Sales' }
+      Title       { 'Vendor Stamp Sales' }
+      Domains     { VendorRetailList }
+      PLU         { PLU_VendorStampSales }
+      Snippets {
+         ExecVARVendorStampSales
+         ExecVendorStampSales
+         LogVendorStampSales
+      }
+  }
+
+  BWCourierSales {
+      BasedOn     { BaseSales }
+      Caption     { 'Botswana Courier Products'}
+      BitMap      { '..\images\P_CashTill1.bmp' }
+      Description { 'Botswana Courier Products' }
+      Title       { 'Botswana Courier Products' }
+      Domains     { BWCourierList  }
+      PLU         { PLU_RetailSales }
+  }
+  MerchandiseSales {
+      BasedOn     { BaseSales }
+      Caption     { 'Merchandise Products'}
+      BitMap      { '..\images\P_CashTill1.bmp' }
+      Description { 'Merchandise Products' }
+      Title       { 'Merchandise Products' }
+      Domains     { MerchandiseList  }
+      PLU         { PLU_RetailSales }
+  }
+  RetailOtherSales {
+      BasedOn     { BaseSales }
+      Caption     { 'Retail Products'}
+      BitMap      { '..\images\P_CashTill1.bmp' }
+      Description { 'Retail Products' }
+      Title       { 'Retail Products' }
+      Domains     { RetailOtherList  }
+      PLU         { PLU_RetailSales }
+  }
+
+//
+//---------------------------------------------------------------------------------
+//
+  DefinStamps { BasedOn     { BaseSales                    }
+                Caption     { 'Definitive Stamps'          }
+                BitMap      { '..\images\StampStrip.bmp' }
+                Domains     { DStampsList                    }
+                PLU         { PLU_DefinStamps }
+  }
+  ComemStamps { BasedOn     { BaseSales                    }
+                Caption     { 'Commemorative Stamps'          }
+                BitMap      { '..\images\SouvenirSheet.bmp' }
+                Domains     { CStampsList                    }
+                PLU         { PLU_ComemStamps }
+  }
+  FDStamps    { BasedOn     { BaseSales                    }
+                Caption     { 'First Day Covers'          }
+                BitMap      { '..\images\FirstDay.bmp' }
+                Domains     { FDList                    }
+                PLU         { PLU_FDStamps }
+  }
+  SouvStamps  { BasedOn     { BaseSales                    }
+                Caption     { 'Souvenir Sheets'          }
+                BitMap      { '..\images\StampSet.bmp' }
+                Domains     { SSList                    }
+                PLU         { PLU_SouvStamps }
+  }
+  YearPack    { BasedOn     { BaseSales                    }
+                Caption     { 'Year Packs'          }
+                BitMap      { '..\images\Stamps.bmp' }
+                Domains     { YPList                    }
+                PLU         { PLU_YearPack }
+  }
+  SAlbum      { BasedOn     { BaseSales                    }
+                Caption     { 'Philatelic Albums'          }
+                BitMap      { '..\images\P_Stamp3.bmp' }
+                Domains     { AlbumList                    }
+                PLU         { PLU_SAlbum }
+  }
+
+  PhilOther   { BasedOn     { BaseSales                    }
+                Caption     { 'Other Philatelic Items'          }
+                BitMap      { '..\images\P_StampsList.bmp' }
+                Domains     { PhilOther                  }
+                PLU         { PLU_PhilOther }
+  }
+
+
+}
+

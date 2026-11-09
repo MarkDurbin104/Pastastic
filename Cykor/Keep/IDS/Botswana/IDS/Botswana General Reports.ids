@@ -1,0 +1,123 @@
+//Botswana General Reports.ids
+Products {
+   GenReport {
+      Title { 'General Report' }
+      Bitmap { '..\Images\G_Reports.BMP' }
+      Domains { StartDomainEdit,EndDomainEdit,UserName,ReportList }
+      Items { 'Complete' }
+      SubGroup { 'General Reports' }
+      Snippets { GenRepUses,GenRepVars,GenRepExecute,GenRepComplete,GenRepConst }
+   }
+}       
+Domains {
+   ReportList { 
+      Prompt { 'Pick A Report'   }
+      Hint { 'Pick the report you wish to print'   }
+      Error  { 'Invalid Report'  }
+      Title  { 'Required Report'     }
+      Format { PickList { '' } }
+   }
+}
+Snippets {
+   GenRepConst {
+      InsertBetween { '{VarAUStart}','{VarAUEnd}' }
+      CodeBlock {
+      [*
+         const
+            ReportFileName = 'C:\Botswana Report Formats.ids';
+      *]
+     }
+   }
+   GenRepVars {
+     InsertBetween { '{PublVarDecStart}','{PublVarDecEnd}' }
+     CodeBlock {
+     [*
+        ReportsNode:TReportsNode;
+     *]
+     }
+   }
+   GenRepUses {
+     InsertBetween { '{AutoUsesStart}','{AutoUsesEnd}' }
+     CodeBlock {
+     [*
+        ReportIDSU,StringUtil,ShareDataU,
+     *]
+     }
+   }
+   GenRepExecute {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.UserName.Items.CommaText := ListUsers;
+         ProdForm.UserName.Items.Insert(0,'All');
+         ProdForm.UserName.Text:='All';
+         ProdForm.UserName.ItemIndex:=ProdForm.UserName.Items.IndexOf(ProdForm.UserName.Text);
+         ReportsNode:=TReportsNode.Create('Reports',ReportFileName,1);
+         ReportsNode.ParseFile(ExtractFilePath(ReportFileName),ReportFileName,1);
+         ReportsNode.PutInReportTitles(ProdForm.ReportList.Items);
+         ProdForm.ReportList.Sorted:=True;
+         ReportsNode.Free;
+      *]
+     }
+   }
+   GenRepComplete {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+      try
+         if LocalSharedData = nil then
+            LocalSharedData:=TSharedData.Create('CorvusReportShare',False);
+         LocalSharedData.SetVariable('FromPeriod',StrToPeriod(ProdForm.StartDomainEdit.Text));
+         LocalSharedData.SetVariable('ToPeriod'  ,StrToPeriod(ProdForm.EndDomainEdit.Text));
+         if ProdForm.UserName.Text = 'All' then
+         begin
+            LocalSharedData.SetVariable('TellerCondition',' (Teller is not null) ');
+            LocalSharedData.SetVariable('Teller'    ,'')
+         end
+         else
+         begin
+            LocalSharedData.SetVariable('NotTellerCondition',' (Teller <> '''+ProdForm.UserName.Text+''') ');
+            LocalSharedData.SetVariable('TellerCondition',' (Teller = '''+ProdForm.UserName.Text+''') ');
+            LocalSharedData.SetVariable('Teller'    ,ProdForm.UserName.Text);
+         end;
+//         if ProdForm.PostOffice.Text = 'All' then
+//         begin
+//            LocalSharedData.SetVariable('OfficeCondition',' (Office is not null) ');
+//            LocalSharedData.SetVariable('Office'    ,0);
+//         end
+//         else
+//         begin
+//            LocalSharedData.SetVariable('NotOfficeCondition',' (Office <> '+IntToStr(OfficeNameToCode(ProdForm.PostOffice.Text))+')' );
+//            LocalSharedData.SetVariable('OfficeCondition',' (Office = '+IntToStr(OfficeNameToCode(ProdForm.PostOffice.Text))+')' );
+//            LocalSharedData.SetVariable('Office'    ,OfficeNameToCode(ProdForm.PostOffice.Text));
+//         end;
+
+         LocalSharedData.SetVariable('NotOfficeCondition',' (Office <> '+IntToStr(FUIEventSink.Office)+') ');
+         LocalSharedData.SetVariable('OfficeCondition',' (Office = '+IntToStr(FUIEventSink.Office)+') ');
+         LocalSharedData.SetVariable('Office'       ,FUIEventSink.Office);
+
+         LocalSharedData.SetVariable('WorkStation',0);
+         if ProdForm.ReportList.Items.Objects[ProdForm.ReportList.ItemIndex] <> nil then
+         begin
+{ReportNameStart}
+            FUIEventSink.GetComponentReference('Report.'+TStringObject(ProdForm.ReportList.Items.Objects[ProdForm.ReportList.ItemIndex]).Value);
+{ReportNameEnd}
+         end;
+         while ProdForm.ReportList.Items.Count > 0 do
+         begin
+            if ProdForm.ReportList.Items.Objects[0] <> nil then
+            begin
+               TStringObject(ProdForm.ReportList.Items.Objects[0]).Free;
+            end;
+            ProdForm.ReportList.Items.Delete(0);
+         end;
+         LocalSharedData.Free;
+         LocalSharedData:=nil;
+      except
+         on E:Exception do
+            RaiseGUIDException('{769A25D1-05F7-4B53-BBB3-2D8E24134B62}',E);
+      end;
+      *]
+     }
+   }
+}

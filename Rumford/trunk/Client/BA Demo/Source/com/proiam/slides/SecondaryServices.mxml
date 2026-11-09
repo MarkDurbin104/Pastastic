@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" x="0" y="555" width="1024" height="210"
+	xmlns:slides="com.proiam.slides.*" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+	<mx:states>
+		<mx:State name="PrimarySelected" enterState="setSecItemState();" exitState="clearSecItemState();">
+			<mx:SetProperty name="width" value="530"/>
+			<mx:SetProperty name="height" value="680"/>
+			<mx:SetProperty name="x" value="490"/>
+			<mx:SetProperty name="y" value="83"/>
+			<mx:RemoveChild target="{spacer1}"/>
+			<mx:RemoveChild target="{fixedsecondaryitem1}"/>
+			<mx:RemoveChild target="{vbox1}"/>
+			<mx:RemoveChild target="{itemInfo}"/>
+			<mx:RemoveChild target="{label2}"/>
+			<mx:RemoveChild target="{vbox2}"/>
+			<mx:SetProperty target="{ssPanel}" name="x" value="0"/>
+			<mx:SetProperty target="{ssPanel}" name="width" value="100%"/>
+			<mx:SetProperty target="{ssPanel}" name="height" value="100%"/>
+			<mx:SetProperty target="{label1}" name="text" value="Additional Services"/>
+			<mx:SetProperty target="{additional}" name="x" value="5"/>
+			<mx:SetProperty target="{additional}" name="height" value="630"/>
+			<mx:SetProperty target="{additional}" name="width" value="520"/>
+			<mx:SetStyle target="{ssPanel}" name="backgroundImage" value="@Embed(source='embedded/SecBG.png',scaleGridLeft='15',scaleGridTop='34',scaleGridRight='16',scaleGridBottom='35')"/>
+			<mx:SetStyle target="{ssPanel}" name="backgroundSize" value="100%"/>
+			<mx:SetStyle target="{label1}" name="color" value="#FFFFFF"/>
+			<mx:SetProperty target="{additional}" name="y" value="41"/>
+			<mx:AddChild relativeTo="{ssPanel}" position="lastChild">
+				<slides:FeaturesTab id="featuresBox" x="-215" y="41" />
+			</mx:AddChild>
+		</mx:State>
+	</mx:states>
+	<mx:Metadata>
+    [Event(name="BargainClicked", type="flash.events.Event")]
+    [Event(name="GreenClicked", type="flash.events.Event")]
+	</mx:Metadata>
+	<mx:Script>
+		<![CDATA[
+			import com.proiam.mails.MailService;
+			[Bindable]
+			public var primaryService:MailService=null;
+			private function bargainClicked(event:MouseEvent):void {
+				dispatchEvent(new Event("BargainClicked"));
+			}
+			private function greenClicked(event:MouseEvent):void {
+				dispatchEvent(new Event("GreenClicked"));
+			}
+			private function setSecItemState():void {
+				for (var i:int=0;i<additional.numChildren;i++) {
+					if (additional.getChildAt(i) is AdditionalItem) {
+						AdditionalItem(additional.getChildAt(i)).currentState="PrimarySelected";
+					}
+				}
+			}
+			private function clearSecItemState():void {
+				for (var i:int=0;i<additional.numChildren;i++) {
+					if (additional.getChildAt(i) is AdditionalItem) {
+						AdditionalItem(additional.getChildAt(i)).currentState=null;
+					}
+				}
+			}
+			
+		]]>
+	</mx:Script>
+	<mx:Canvas width="1007" height="205" x="10" y="0"  id="ssPanel" borderStyle="solid" cornerRadius="20" backgroundColor="#CFE7D0" borderColor="#CFE7D0" horizontalScrollPolicy="off" verticalScrollPolicy="off" >
+		<mx:Spacer height="100%" width="3" id="spacer1"/>
+		<mx:VBox width="110" height="170" horizontalAlign="right" verticalGap="0" x="4" y="28" id="vbox2">
+			<mx:VBox width="110" height="170" horizontalScrollPolicy="off" verticalScrollPolicy="off" horizontalGap="4" id="vbox1">
+				<slides:FixedSecondaryItem caption="Least Expensive" iconSource="@Embed(source='embedded/BestBargain.png')" click="bargainClicked(event);" id="fixedsecondaryitem1"/>
+				<slides:FixedSecondaryItem caption="Greenest" iconSource="@Embed(source='embedded/Greenest.png')" click="greenClicked(event);" />
+			</mx:VBox>
+		</mx:VBox>
+		<slides:SqueezeCanvas primaryMailService="{primaryService}" height="170" id="additional" horizontalScrollPolicy="off" verticalScrollPolicy="off" width="888" verticalGap="4" horizontalGap="4"  x="116" y="28"/>
+		<mx:Label y="6" text="Additional Services:" fontFamily="Tahoma" fontSize="13" fontWeight="bold" color="#357C74" x="6" width="432" id="label1"/>
+		<mx:Label y="6" text="Select to refine your choices" fontFamily="Tahoma" fontSize="13" fontWeight="normal" color="#357C74" x="158" width="381" id="label2"/>
+		<mx:Label id="itemInfo" y="6" text="Weight: 2.6oz.  Type:Large Letter.  Size:10x15x12. Destination: ARLINGTON, VA" fontFamily="Tahoma" fontSize="13" fontWeight="bold" color="#357C74" width="823" right="20" textAlign="right"/>
+	</mx:Canvas>
+</mx:Canvas>

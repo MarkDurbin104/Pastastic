@@ -1,0 +1,47 @@
+#--------------------------------------------------------------------------
+#
+#       File:           settings.txt
+#
+#       Purpose:        This file contains the LANLINK param settings
+#
+#       Author:         Paul Encarnacion
+#                       Unisys, EISG, Postal Programs
+#                       5151 Camino Ruiz
+#                       Camarillo, CA 93010
+#                       (805)987-6811 
+#
+#       Date of Origin: 1-23-1991
+#
+#       Copyright (c) 1991  Unisys Corp.
+#
+#       $Log$
+#
+#--------------------------------------------------------------------------
+
+LANLINK TUNING PARAMETERS:
+
+LANSAT.SYS
+----------------------------------------------------------------------
+Parameter       Address     Size    Default     Setting
+----------------------------------------------------------------------
+VTIMEOUT        130A        word    30h         30h (2.6 secs)
+RETRYMAX        1308        byte    08h         03h
+MAXRSIZE        130E ?      word    2000h       2000h
+----------------------------------------------------------------------
+
+LANSERVE.COM
+----------------------------------------------------------------------
+Parameter       Address     Size    Default     Setting
+----------------------------------------------------------------------
+VTIMEOUT        0108h       word    5Bh         30h (2.6 secs)
+MAXERRS         010Eh       word    08h         03h
+----------------------------------------------------------------------
+
+WDT Value should be greater than above timeouts.
+
+LANSERVE = 2.6 secs * 3 tries = 7.8 secs
+LANSAT   = 2.6 secs * 3 tries = 7.8 secs
+WDT      = 10 secs 
+
+
+

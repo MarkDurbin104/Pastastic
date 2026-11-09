@@ -1,0 +1,52 @@
+package CorvusVCL5;
+
+{$R *.RES}
+{$ALIGN ON}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO OFF}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST ON}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Corvus/GPCS VCL Components'}
+{$DESIGNONLY}
+{$IMPLICITBUILD ON}
+
+requires
+  vcl50,
+  VCLBDE50,
+  VCLDB50,
+  Vclx50;
+
+contains
+  Bin2String in 'Bin2String.pas',
+  TxnlogU in 'TxnlogU.pas',
+  CompInspector in 'CompInspector.pas',
+  CompressU in 'CompressU.pas',
+  CRC32 in 'CRC32.pas',
+  Domain in 'Domain.pas',
+  IPControl in 'IPControl.pas',
+  KGButton in 'KGButton.pas',
+  Mask2 in 'Mask2.pas',
+  PadControl in 'PadControl.pas',
+  PadLines in 'PadLines.pas',
+  SubTree in 'SubTree.pas',
+  CompExecU in 'CompExecU.pas',
+  VersionInfo in 'VersionInfo.pas',
+  ComServ2 in 'ComServ2.pas';
+
+end.

@@ -1,0 +1,581 @@
+object KeyForm: TKeyForm
+  Left = 37
+  Top = 97
+  Width = 616
+  Height = 336
+  Caption = 'Keyboard'
+  Font.Color = clBlack
+  Font.Height = -11
+  Font.Name = 'Arial'
+  Font.Style = []
+  PixelsPerInch = 96
+  OnCreate = FormCreate
+  TextHeight = 14
+  object BitBtn0: TBitBtn
+    Left = 4
+    Top = 4
+    Width = 40
+    Height = 56
+    Caption = 'ESC'
+    TabOrder = 0
+    Layout = blGlyphTop
+  end
+  object BitBtn1: TBitBtn
+    Left = 84
+    Top = 4
+    Width = 40
+    Height = 56
+    Caption = 'F1'
+    TabOrder = 1
+    Layout = blGlyphTop
+  end
+  object BitBtn2: TBitBtn
+    Left = 124
+    Top = 4
+    Width = 40
+    Height = 56
+    Caption = 'F2'
+    TabOrder = 2
+    Layout = blGlyphTop
+  end
+  object BitBtn3: TBitBtn
+    Left = 164
+    Top = 4
+    Width = 40
+    Height = 56
+    Caption = 'F3'
+    TabOrder = 3
+    Layout = blGlyphTop
+  end
+  object BitBtn4: TBitBtn
+    Left = 204
+    Top = 4
+    Width = 40
+    Height = 56
+    Caption = 'F4'
+    TabOrder = 4
+    Layout = blGlyphTop
+  end
+  object BitBtn5: TBitBtn
+    Left = 264
+    Top = 4
+    Width = 40
+    Height = 56
+    Caption = 'F5'
+    TabOrder = 5
+    Layout = blGlyphTop
+  end
+  object BitBtn6: TBitBtn
+    Left = 304
+    Top = 4
+    Width = 40
+    Height = 56
+    Caption = 'F6'
+    TabOrder = 6
+    Layout = blGlyphTop
+  end
+  object BitBtn7: TBitBtn
+    Left = 344
+    Top = 4
+    Width = 40
+    Height = 56
+    Caption = 'F7'
+    TabOrder = 7
+    Layout = blGlyphTop
+  end
+  object BitBtn8: TBitBtn
+    Left = 384
+    Top = 4
+    Width = 40
+    Height = 56
+    Caption = 'F8'
+    TabOrder = 8
+    Layout = blGlyphTop
+  end
+  object BitBtn9: TBitBtn
+    Left = 444
+    Top = 4
+    Width = 40
+    Height = 56
+    Caption = 'F9'
+    TabOrder = 9
+    Layout = blGlyphTop
+  end
+  object BitBtn10: TBitBtn
+    Left = 484
+    Top = 4
+    Width = 40
+    Height = 56
+    Caption = 'F10'
+    TabOrder = 10
+    Layout = blGlyphTop
+  end
+  object BitBtn11: TBitBtn
+    Left = 524
+    Top = 4
+    Width = 40
+    Height = 56
+    Caption = 'F11'
+    TabOrder = 11
+    Layout = blGlyphTop
+  end
+  object BitBtn12: TBitBtn
+    Left = 564
+    Top = 4
+    Width = 40
+    Height = 56
+    Caption = 'F12'
+    TabOrder = 12
+    Layout = blGlyphTop
+  end
+  object BitBtn13: TBitBtn
+    Left = 4
+    Top = 64
+    Width = 40
+    Height = 56
+    Caption = '`'
+    TabOrder = 13
+    Layout = blGlyphTop
+  end
+  object BitBtn14: TBitBtn
+    Left = 44
+    Top = 64
+    Width = 40
+    Height = 56
+    Caption = '1'
+    TabOrder = 14
+    Layout = blGlyphTop
+  end
+  object BitBtn15: TBitBtn
+    Left = 84
+    Top = 64
+    Width = 40
+    Height = 56
+    Caption = '2'
+    TabOrder = 15
+    Layout = blGlyphTop
+  end
+  object BitBtn16: TBitBtn
+    Left = 124
+    Top = 64
+    Width = 40
+    Height = 56
+    Caption = '3'
+    TabOrder = 16
+    Layout = blGlyphTop
+  end
+  object BitBtn17: TBitBtn
+    Left = 164
+    Top = 64
+    Width = 40
+    Height = 56
+    Caption = '4'
+    TabOrder = 17
+    Layout = blGlyphTop
+  end
+  object BitBtn18: TBitBtn
+    Left = 204
+    Top = 64
+    Width = 40
+    Height = 56
+    Caption = '5'
+    TabOrder = 18
+    Layout = blGlyphTop
+  end
+  object BitBtn19: TBitBtn
+    Left = 244
+    Top = 64
+    Width = 40
+    Height = 56
+    Caption = '6'
+    TabOrder = 19
+    Layout = blGlyphTop
+  end
+  object BitBtn20: TBitBtn
+    Left = 284
+    Top = 64
+    Width = 40
+    Height = 56
+    Caption = '7'
+    TabOrder = 20
+    Layout = blGlyphTop
+  end
+  object BitBtn21: TBitBtn
+    Left = 324
+    Top = 64
+    Width = 40
+    Height = 56
+    Caption = '8'
+    TabOrder = 21
+    Layout = blGlyphTop
+  end
+  object BitBtn22: TBitBtn
+    Left = 364
+    Top = 64
+    Width = 40
+    Height = 56
+    Caption = '9'
+    TabOrder = 22
+    Layout = blGlyphTop
+  end
+  object BitBtn23: TBitBtn
+    Left = 404
+    Top = 64
+    Width = 40
+    Height = 56
+    Caption = '0'
+    TabOrder = 23
+    Layout = blGlyphTop
+  end
+  object BitBtn24: TBitBtn
+    Left = 444
+    Top = 64
+    Width = 40
+    Height = 56
+    Caption = '-'
+    TabOrder = 24
+    Layout = blGlyphTop
+  end
+  object BitBtn25: TBitBtn
+    Left = 484
+    Top = 64
+    Width = 40
+    Height = 56
+    Caption = '='
+    TabOrder = 25
+    Layout = blGlyphTop
+  end
+  object BitBtn26: TBitBtn
+    Left = 524
+    Top = 64
+    Width = 80
+    Height = 56
+    Caption = 'BKSP'
+    TabOrder = 26
+    Layout = blGlyphTop
+  end
+  object BitBtn27: TBitBtn
+    Left = 4
+    Top = 124
+    Width = 60
+    Height = 56
+    Caption = 'TAB'
+    TabOrder = 27
+    Layout = blGlyphTop
+  end
+  object BitBtn28: TBitBtn
+    Left = 64
+    Top = 124
+    Width = 40
+    Height = 56
+    Caption = 'Q'
+    TabOrder = 28
+    Layout = blGlyphTop
+  end
+  object BitBtn29: TBitBtn
+    Left = 104
+    Top = 124
+    Width = 40
+    Height = 56
+    Caption = 'W'
+    TabOrder = 29
+    Layout = blGlyphTop
+  end
+  object BitBtn30: TBitBtn
+    Left = 144
+    Top = 124
+    Width = 40
+    Height = 56
+    Caption = 'E'
+    TabOrder = 30
+    Layout = blGlyphTop
+  end
+  object BitBtn31: TBitBtn
+    Left = 184
+    Top = 124
+    Width = 40
+    Height = 56
+    Caption = 'R'
+    TabOrder = 31
+    Layout = blGlyphTop
+  end
+  object BitBtn32: TBitBtn
+    Left = 224
+    Top = 124
+    Width = 40
+    Height = 56
+    Caption = 'T'
+    TabOrder = 32
+    Layout = blGlyphTop
+  end
+  object BitBtn33: TBitBtn
+    Left = 264
+    Top = 124
+    Width = 40
+    Height = 56
+    Caption = 'Y'
+    TabOrder = 33
+    Layout = blGlyphTop
+  end
+  object BitBtn34: TBitBtn
+    Left = 304
+    Top = 124
+    Width = 40
+    Height = 56
+    Caption = 'U'
+    TabOrder = 34
+    Layout = blGlyphTop
+  end
+  object BitBtn35: TBitBtn
+    Left = 344
+    Top = 124
+    Width = 40
+    Height = 56
+    Caption = 'I'
+    TabOrder = 35
+    Layout = blGlyphTop
+  end
+  object BitBtn36: TBitBtn
+    Left = 384
+    Top = 124
+    Width = 40
+    Height = 56
+    Caption = 'O'
+    TabOrder = 36
+    Layout = blGlyphTop
+  end
+  object BitBtn37: TBitBtn
+    Left = 424
+    Top = 124
+    Width = 40
+    Height = 56
+    Caption = 'P'
+    TabOrder = 37
+    Layout = blGlyphTop
+  end
+  object BitBtn38: TBitBtn
+    Left = 464
+    Top = 124
+    Width = 40
+    Height = 56
+    Caption = '['
+    TabOrder = 38
+    Layout = blGlyphTop
+  end
+  object BitBtn39: TBitBtn
+    Left = 504
+    Top = 124
+    Width = 40
+    Height = 56
+    Caption = ']'
+    TabOrder = 39
+    Layout = blGlyphTop
+  end
+  object BitBtn40: TBitBtn
+    Left = 74
+    Top = 184
+    Width = 40
+    Height = 56
+    Caption = 'A'
+    TabOrder = 40
+    Layout = blGlyphTop
+  end
+  object BitBtn41: TBitBtn
+    Left = 114
+    Top = 184
+    Width = 40
+    Height = 56
+    Caption = 'S'
+    TabOrder = 41
+    Layout = blGlyphTop
+  end
+  object BitBtn42: TBitBtn
+    Left = 154
+    Top = 184
+    Width = 40
+    Height = 56
+    Caption = 'D'
+    TabOrder = 42
+    Layout = blGlyphTop
+  end
+  object BitBtn43: TBitBtn
+    Left = 194
+    Top = 184
+    Width = 40
+    Height = 56
+    Caption = 'F'
+    TabOrder = 43
+    Layout = blGlyphTop
+  end
+  object BitBtn44: TBitBtn
+    Left = 234
+    Top = 184
+    Width = 40
+    Height = 56
+    Caption = 'G'
+    TabOrder = 44
+    Layout = blGlyphTop
+  end
+  object BitBtn45: TBitBtn
+    Left = 274
+    Top = 184
+    Width = 40
+    Height = 56
+    Caption = 'H'
+    TabOrder = 45
+    Layout = blGlyphTop
+  end
+  object BitBtn46: TBitBtn
+    Left = 314
+    Top = 184
+    Width = 40
+    Height = 56
+    Caption = 'J'
+    TabOrder = 46
+    Layout = blGlyphTop
+  end
+  object BitBtn47: TBitBtn
+    Left = 354
+    Top = 184
+    Width = 40
+    Height = 56
+    Caption = 'K'
+    TabOrder = 47
+    Layout = blGlyphTop
+  end
+  object BitBtn48: TBitBtn
+    Left = 394
+    Top = 184
+    Width = 40
+    Height = 56
+    Caption = 'L'
+    TabOrder = 48
+    Layout = blGlyphTop
+  end
+  object BitBtn49: TBitBtn
+    Left = 434
+    Top = 184
+    Width = 40
+    Height = 56
+    Caption = ';'
+    TabOrder = 49
+    Layout = blGlyphTop
+  end
+  object BitBtn50: TBitBtn
+    Left = 474
+    Top = 184
+    Width = 40
+    Height = 56
+    Caption = #39
+    TabOrder = 50
+    Layout = blGlyphTop
+  end
+  object BitBtn51: TBitBtn
+    Left = 514
+    Top = 184
+    Width = 40
+    Height = 56
+    Caption = '#'
+    TabOrder = 51
+    Layout = blGlyphTop
+  end
+  object BitBtn52: TBitBtn
+    Left = 54
+    Top = 244
+    Width = 40
+    Height = 56
+    Caption = '|'
+    TabOrder = 52
+    Layout = blGlyphTop
+  end
+  object BitBtn53: TBitBtn
+    Left = 94
+    Top = 244
+    Width = 40
+    Height = 56
+    Caption = 'Z'
+    TabOrder = 53
+    Layout = blGlyphTop
+  end
+  object BitBtn54: TBitBtn
+    Left = 134
+    Top = 244
+    Width = 40
+    Height = 56
+    Caption = 'X'
+    TabOrder = 54
+    Layout = blGlyphTop
+  end
+  object BitBtn55: TBitBtn
+    Left = 174
+    Top = 244
+    Width = 40
+    Height = 56
+    Caption = 'C'
+    TabOrder = 55
+    Layout = blGlyphTop
+  end
+  object BitBtn56: TBitBtn
+    Left = 214
+    Top = 244
+    Width = 40
+    Height = 56
+    Caption = 'V'
+    TabOrder = 56
+    Layout = blGlyphTop
+  end
+  object BitBtn57: TBitBtn
+    Left = 254
+    Top = 244
+    Width = 40
+    Height = 56
+    Caption = 'B'
+    TabOrder = 57
+    Layout = blGlyphTop
+  end
+  object BitBtn58: TBitBtn
+    Left = 294
+    Top = 244
+    Width = 40
+    Height = 56
+    Caption = 'N'
+    TabOrder = 58
+    Layout = blGlyphTop
+  end
+  object BitBtn59: TBitBtn
+    Left = 334
+    Top = 244
+    Width = 40
+    Height = 56
+    Caption = 'M'
+    TabOrder = 59
+    Layout = blGlyphTop
+  end
+  object BitBtn60: TBitBtn
+    Left = 374
+    Top = 244
+    Width = 40
+    Height = 56
+    Caption = ','
+    TabOrder = 60
+    Layout = blGlyphTop
+  end
+  object BitBtn61: TBitBtn
+    Left = 414
+    Top = 244
+    Width = 40
+    Height = 56
+    Caption = '.'
+    TabOrder = 61
+    Layout = blGlyphTop
+  end
+  object BitBtn62: TBitBtn
+    Left = 454
+    Top = 244
+    Width = 40
+    Height = 56
+    Caption = '/'
+    TabOrder = 62
+    Layout = blGlyphTop
+  end
+end

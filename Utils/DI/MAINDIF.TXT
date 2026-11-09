@@ -1,0 +1,155 @@
+Comparing files preinst.reg and POSTUNINST.REG
+***** preinst.reg
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\cdafile]
+***** POSTUNINST.REG
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CcCP]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CcCP\protocol]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CcCP\protocol\StdFileEditing]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\CcCP\protocol\StdFileEditing\bCDcCP]
+@="0x000AF"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\cdafile]
+*****
+
+***** preinst.reg
+"E:\\WINNTW3\\System32\\ragui32.dll"=dword:00000001
+
+***** POSTUNINST.REG
+"E:\\WINNTW3\\System32\\ragui32.dll"=dword:00000001
+"E:\\WINNTW3\\System32\\tlock32.dll"=dword:00000001
+"E:\\WINNTW3\\System32\\msvcrt.dll"=dword:00000002
+"E:\\WINNTW3\\System32\\mfc42.dll"=dword:00000002
+"E:\\WINNTW3\\System32\\BCCORE.DLL"=dword:00000001
+
+*****
+
+***** preinst.reg
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Postal Solutions Limited]
+***** POSTUNINST.REG
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\NuMega]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Postal Solutions Limited]
+*****
+
+***** preinst.reg
+  5c,53,6f,66,74,50,75,62,2e,64,6c,6c,00
+
+***** POSTUNINST.REG
+  5c,53,6f,66,74,50,75,62,2e,64,6c,6c,00
+"$ActionIDs"=hex:80,d1,b9,64,a2,8d,cf,11,87,36,00,aa,00,a4,85,eb,d0,e8,b2,c6,\
+  05,e0,cf,11,a1,34,00,c0,4f,d7,bf,43
+
+*****
+
+***** preinst.reg
+  5c,53,6f,66,74,50,75,62,2e,64,6c,6c,00
+
+***** POSTUNINST.REG
+  5c,53,6f,66,74,50,75,62,2e,64,6c,6c,00
+"$ActionIDs"=hex:80,d1,b9,64,a2,8d,cf,11,87,36,00,aa,00,a4,85,eb,d0,e8,b2,c6,\
+  05,e0,cf,11,a1,34,00,c0,4f,d7,bf,43
+
+*****
+
+***** preinst.reg
+
+[HKEY_USERS\S-1-5-21-1456425161-1016205199-1221738049-500\Software\Microsoft]
+***** POSTUNINST.REG
+
+[HKEY_USERS\S-1-5-21-1456425161-1016205199-1221738049-500\Software\Borland\Delphi\3.0]
+
+[HKEY_USERS\S-1-5-21-1456425161-1016205199-1221738049-500\Software\Borland\Delphi\3.0\Experts]
+
+[HKEY_USERS\S-1-5-21-1456425161-1016205199-1221738049-500\Software\Microsoft]
+*****
+
+***** preinst.reg
+"Window_Placement"=hex:2c,00,00,00,00,00,00,00,01,00,00,00,ff,ff,ff,ff,ff,ff,\
+  ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,6e,00,00,00,6e,00,00,00,6e,03,00,00,87,02,00,\
+  00
+***** POSTUNINST.REG
+"Window_Placement"=hex:2c,00,00,00,00,00,00,00,01,00,00,00,ff,ff,ff,ff,ff,ff,\
+  ff,ff,ff,ff,ff,ff,ff,ff,ff,ff,2c,00,00,00,2c,00,00,00,2c,03,00,00,45,02,00,\
+  00
+*****
+
+***** preinst.reg
+[HKEY_USERS\S-1-5-21-1456425161-1016205199-1221738049-500\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs]
+"a"=hex:6c,00,6f,00,66,00,74,00,2e,00,70,00,6f,00,76,00,00,00,1c,00,30,00,00,\
+  00,00,00,00,00,00,00,00,00,6c,6f,66,74,2e,70,6f,76,2e,6c,6e,6b,00,00,00,00
+"MRUList"="nomlbkighcfedaj"
+"b"=hex:67,00,70,00,63,00,73,00,2e,00,72,00,65,00,67,00,00,00,1c,00,30,00,00,\
+***** POSTUNINST.REG
+[HKEY_USERS\S-1-5-21-1456425161-1016205199-1221738049-500\Software\Microsoft\Windows\CurrentVersion\Explorer\RecentDocs]
+"a"=hex:70,00,6f,00,73,00,74,00,72,00,75,00,6e,00,2e,00,72,00,65,00,67,00,00,\
+  00,1f,00,30,00,00,00,00,00,00,00,00,00,00,00,70,6f,73,74,72,75,6e,2e,72,65,\
+  67,2e,6c,6e,6b,00,00,00,00
+"MRUList"="ajnomlbkighcfed"
+"b"=hex:67,00,70,00,63,00,73,00,2e,00,72,00,65,00,67,00,00,00,1c,00,30,00,00,\
+*****
+
+***** preinst.reg
+  00,00,00,00,00,00,00,00,00,43,61,73,68,2e,44,50,52,2e,6c,6e,6b,00,00,00,00
+"j"=hex:52,00,45,00,41,00,44,00,4d,00,45,00,2e,00,54,00,58,00,54,00,00,00,1e,\
+  00,30,00,00,00,00,00,00,00,00,00,00,00,52,65,61,64,6d,65,2e,74,78,74,2e,6c,\
+  6e,6b,00,00,00,00
+***** POSTUNINST.REG
+  00,00,00,00,00,00,00,00,00,43,61,73,68,2e,44,50,52,2e,6c,6e,6b,00,00,00,00
+"j"=hex:62,00,61,00,73,00,69,00,63,00,31,00,2e,00,72,00,65,00,67,00,00,00,1e,\
+  00,30,00,00,00,00,00,00,00,00,00,00,00,62,61,73,69,63,31,2e,72,65,67,2e,6c,\
+  6e,6b,00,00,00,00
+*****
+
+***** preinst.reg
+  00,00,8f,22,ea,b8,30,00,73,68,61,72,65,00,00,00,00
+"MRUList"="fkjmczyovwusrite|lqpa}xg{nhdb"
+"b"=hex:14,00,1f,00,e0,4f,d0,20,ea,3a,69,10,a2,d8,08,00,2b,30,30,9d,19,00,23,\
+  4c,3a,5c,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,2d,f7,16,00,31,\
+  00,00,00,00,00,8f,22,11,b9,30,80,54,6f,70,65,6e,64,00,00,13,00,31,00,00,00,\
+  00,00,8f,22,48,bb,30,00,65,74,63,00,00,00,00
+"c"=hex:14,00,1f,00,e0,4f,d0,20,ea,3a,69,10,a2,d8,08,00,2b,30,30,9d,19,00,23,\
+***** POSTUNINST.REG
+  00,00,8f,22,ea,b8,30,00,73,68,61,72,65,00,00,00,00
+"MRUList"="bfkjmczyovwusrite|lqpa}xg{nhd"
+"b"=hex:14,00,1f,00,e0,4f,d0,20,ea,3a,69,10,a2,d8,08,00,2b,30,30,9d,19,00,23,\
+  45,3a,5c,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,09,f0,17,00,31,\
+  00,00,00,00,00,0a,21,cf,99,10,80,57,69,6e,6e,74,77,33,00,00,20,00,31,00,00,\
+  00,00,00,0a,21,28,9a,10,00,50,72,6f,66,69,6c,65,73,00,50,52,4f,46,49,4c,45,\
+  53,00,21,00,31,00,00,00,00,00,0a,21,28,9a,10,00,41,6c,6c,20,55,73,65,72,73,\
+  00,41,4c,4c,55,53,45,7e,31,00,22,00,31,00,00,00,00,00,0a,21,28,9a,10,00,53,\
+  74,61,72,74,20,4d,65,6e,75,00,53,54,41,52,54,4d,7e,31,00,20,00,31,00,00,00,\
+  00,00,0a,21,28,9a,10,00,50,72,6f,67,72,61,6d,73,00,50,52,4f,47,52,41,4d,53,\
+  00,2c,00,31,00,00,00,00,00,95,22,d8,b9,10,00,4e,75,4d,65,67,61,20,42,6f,75,\
+  6e,64,73,43,68,65,63,6b,65,72,00,4e,55,4d,45,47,41,7e,31,00,00,00
+"c"=hex:14,00,1f,00,e0,4f,d0,20,ea,3a,69,10,a2,d8,08,00,2b,30,30,9d,19,00,23,\
+*****
+
+***** preinst.reg
+[HKEY_USERS\S-1-5-21-1456425161-1016205199-1221738049-500\Software\Microsoft\Windows\CurrentVersion\Explorer\Streams\1]
+"CabView"=hex:40,00,00,00,00,00,00,00,01,00,00,00,ff,ff,ff,ff,ff,ff,ff,ff,ff,\
+  ff,ff,ff,ff,ff,ff,ff,00,00,00,00,00,00,00,00,9f,01,00,00,71,01,00,00,01,00,\
+  00,00,00,00,00,00,c0,00,00,00,00,00,00,00,5c,6c,58,01
+***** POSTUNINST.REG
+[HKEY_USERS\S-1-5-21-1456425161-1016205199-1221738049-500\Software\Microsoft\Windows\CurrentVersion\Explorer\Streams\1]
+"CabView"=hex:40,00,00,00,00,00,00,00,02,00,00,00,00,83,ff,ff,00,83,ff,ff,ff,\
+  ff,ff,ff,ff,ff,ff,ff,2c,00,00,00,2c,00,00,00,35,01,00,00,07,01,00,00,01,00,\
+  00,00,00,00,00,00,c0,00,00,00,00,00,00,00,5c,6c,58,01
+*****
+
+***** preinst.reg
+
+[HKEY_USERS\S-1-5-21-1456425161-1016205199-1221738049-500\Software\SCC]
+***** POSTUNINST.REG
+
+[HKEY_USERS\S-1-5-21-1456425161-1016205199-1221738049-500\Software\NuMega]
+
+[HKEY_USERS\S-1-5-21-1456425161-1016205199-1221738049-500\Software\SCC]
+*****
+

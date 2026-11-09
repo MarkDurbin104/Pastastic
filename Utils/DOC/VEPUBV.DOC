@@ -1,0 +1,52 @@
+/***********************************************************************
+*
+*   ECCO+
+*
+*   File Name:          $Workfile:   VEPUBLIC.VH  $
+*
+*   Descriptive Name:   VE public global variables
+*
+*   Author:             Mark Durbin (Unisys)
+*
+*   Date of Origin:     4-12-1990
+*
+*   Copyright:          Copyright THE POST OFFICE 1990
+*
+*   Contents List:      
+*
+*   Notes:              
+*
+*
+*   $Log:   Z:\cm\g\eccorel\inc\vcs\vepublic.vhv  $
+*   
+***********************************************************************/
+#ifndef PVEPUBLIC_VH
+#define PVEPUBLIC_VH
+
+#include <vepublic.dh>
+
+#undef  GLOBAL
+#undef  INIT
+
+#ifdef  PVEDATA_C
+
+#define GLOBAL
+#define INIT    1
+
+#else
+
+#define GLOBAL  extern
+#define INIT    0
+
+#endif /* PVEDATA_C */
+
+GLOBAL INT VE_deverror;
+GLOBAL INT VE_errcode;
+GLOBAL INT *VE_devhdr;
+
+#endif  /* PVEPUBLIC_VH */
+
+
+
+
+

@@ -1,0 +1,23 @@
+FILE_NAME = test.RAW
+
+SPHERE ( loc = (210, 55, 0),
+         radius = 50,
+         diff = (.7, .7, .7),
+         xmult   = 1.5,
+         ymult   = 1.5
+	 mirror = (.9, .9, .9)
+       )
+{ ** An observer ** }
+OBSERVER ( loc    = (-20 , 70, -40),
+           lookat = (200, 50, 0)
+         )
+{ ** A lamp ** }
+LAMP ( loc = (120, 120, -50),
+       radius = 5,
+       dist = 80
+     )
+XRES = 320
+YRES = 200
+
+FOC_LENGTH = 160
+

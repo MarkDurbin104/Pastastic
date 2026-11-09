@@ -1,0 +1,1480 @@
+{\rtf1\ansi
+ {\fonttbl
+ \f0\froman Times New Roman;
+ \f1\fdecor Courier New;
+ \f2\fswiss Arial;
+ }
+ \deff0
+ {\colortbl
+ \red0  \green0  \blue0  ;
+ \red0  \green0  \blue255;
+ \red0  \green255\blue255;
+ \red0  \green255\blue0  ;
+ \red255\green0  \blue255;
+ \red255\green0  \blue0  ;
+ \red255\green255\blue0  ;
+ \red255\green255\blue255;
+ \red0  \green0  \blue128;
+ \red0  \green128\blue128;
+ \red0  \green128\blue0  ;
+ \red128\green0  \blue128;
+ \red128\green0  \blue0  ;
+ \red128\green128\blue0  ;
+ \red128\green128\blue128;
+ \red192\green192\blue192;
+ }
+ #{\footnote Modules }
+ ${\footnote Modules }
+ +{\footnote 0000 }
+ K{\footnote Modules }
+\keepn \f0\fs40 \par \cf8 \b Modules \b0 \par \pard
+\f2\fs20
+\par {\uldb omrplucp.c}{\v omrplucp.c}\par {\uldb fileio.c }{\v fileio.c }\pard \par \page
+ #{\footnote omrplucp.c }
+ ${\footnote omrplucp.c }
+ +{\footnote 0001 }
+ K{\footnote omrplucp.c }
+\keepn\f0\fs40\par\cf8\b Functions \cf0 - \cf12 omrplucp.c\b0\par\pard
+\f2\fs18
+\par {\uldb LogTime}{\v LogTime}\par {\uldb main}{\v main}\pard \par \page
+ #{\footnote fileio.c  }
+ ${\footnote fileio.c  }
+ +{\footnote 0002 }
+ K{\footnote fileio.c  }
+\keepn\f0\fs40\par\cf8\b Functions \cf0 - \cf12 fileio.c \b0\par\pard
+\f2\fs18
+\par {\uldb AddReMACSPLU}{\v AddReMACSPLU}\par {\uldb AuditLog}{\v AuditLog}\par {\uldb CleanBuf}{\v CleanBuf}\par {\uldb FindDept}{\v FindDept}\par {\uldb FindPLU}{\v FindPLU}\par {\uldb FindRePLU}{\v FindRePLU}\par {\uldb FreeCFGList}{\v FreeCFGList}\par {\uldb FreeDeptList}{\v FreeDeptList}\par {\uldb FreePLUList}{\v FreePLUList}\par {\uldb FreeReMACSPLUList}{\v FreeReMACSPLUList}\par {\uldb GetInt}{\v GetInt}\par {\uldb GetLong}{\v GetLong}\par {\uldb GetString}{\v GetString}\par {\uldb ismenu}{\v ismenu}\par {\uldb LoadColours}{\v LoadColours}\par {\uldb LoadConfig}{\v LoadConfig}\par {\uldb LoadDepartment}{\v LoadDepartment}\par {\uldb LoadLayout}{\v LoadLayout}\par {\uldb LoadLocalPLU}{\v LoadLocalPLU}\par {\uldb LoadPLU}{\v LoadPLU}\par {\uldb LoadPrinterParams}{\v LoadPrinterParams}\par {\uldb LoadReMACSPLU}{\v LoadReMACSPLU}\par {\uldb SaveConfig}{\v SaveConfig}\par {\uldb SaveDepartment}{\v SaveDepartment}\par {\uldb SaveLocalPLU}{\v SaveLocalPLU}\par {\uldb SavePLU}{\v SavePLU}\pard \par \page
+ #{\footnote AddReMACSPLU }
+ ${\footnote AddReMACSPLU }
+ +{\footnote 0003 }
+ K{\footnote AddReMACSPLU }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 AddReMACSPLU \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Add a ReMACS PLU structure into a list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 void AddReMACSPLU(REMACSPLU **plulist,REMACSPLU *plu,LONG price,INT plevel);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Add a ReMACS PLU structure into a list \'28i\'2Ee\'2E add the FLT file into the 
+local file\'29
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 REMACSPLU **plulist  \'2D The ReMACS PLU structure list \par REMACSPLU *plu  \'2D The ReMACS PLU structure to add \'28 one price level \'29 \par LONG price  \'2D The price of this level \par INT plevel  \'2D The price level \'5B0\'2D5\'5D \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 None\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Modifies\cell\cell}\pard\intbl{\fs26\cf8 plu plulist \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb LoadReMACSPLU}{\v LoadReMACSPLU}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v AddReMACSPLU_Source}\pard \par \page
+ #{\footnote AuditLog }
+ ${\footnote AuditLog }
+ +{\footnote 0004 }
+ K{\footnote AuditLog }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 AuditLog \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Write dated string to audit log\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 void AuditLog(CHAR *format,...);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Write dated string to audit log 
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *format  \'2D format of string in printf\'28\'29 format \par ...  \'2D variable parameters \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 None\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Modifies\cell\cell}\pard\intbl{\fs26\cf8 donestart \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb LoadReMACSPLU}{\v LoadReMACSPLU}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v AuditLog_Source}\pard \par \page
+ #{\footnote CleanBuf }
+ ${\footnote CleanBuf }
+ +{\footnote 0005 }
+ K{\footnote CleanBuf }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 CleanBuf \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Remove any spaces at the start and end of a string\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 CHAR *CleanBuf(CHAR *str);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Remove any spaces at the start and end of a string\'2C including TAB CR \'26 LF
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *str  \'2D The padded string \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 CHAR *  \'2D The cleaned string\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb GetLong}{\v GetLong}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v CleanBuf_Source}\pard \par \page
+ #{\footnote FindDept }
+ ${\footnote FindDept }
+ +{\footnote 0006 }
+ K{\footnote FindDept }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 FindDept \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Find a department in a list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 DEPARTMENT *FindDept(DEPARTMENT *deptlist,INT dept);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Find a department in a list given the department number
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 DEPARTMENT *deptlist  \'2D The list of departments \par INT dept  \'2D The department number to find \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 DEPARTMENT *  \'2D Pointer to department structure or NULL if not found\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Modifies\cell\cell}\pard\intbl{\fs26\cf8 deptlist \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb SaveDepartment}{\v SaveDepartment}  {\uldb SavePLU}{\v SavePLU}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v FindDept_Source}\pard \par \page
+ #{\footnote FindPLU }
+ ${\footnote FindPLU }
+ +{\footnote 0007 }
+ K{\footnote FindPLU }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 FindPLU \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Find a plu in a list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 PLU *FindPLU(PLU *plulist,LONG plu_code);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Find a plu in a list given the PLU code
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 PLU *plulist  \'2D The list of PLU\'27s \par LONG plu_code  \'2D The PLU code to find \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 PLU *  \'2D Pointer to PLU structure or NULL if not found\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Modifies\cell\cell}\pard\intbl{\fs26\cf8 plulist \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb LoadPLU}{\v LoadPLU}  {\uldb main}{\v main}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v FindPLU_Source}\pard \par \page
+ #{\footnote FindRePLU }
+ ${\footnote FindRePLU }
+ +{\footnote 0008 }
+ K{\footnote FindRePLU }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 FindRePLU \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Find a remacs plu in a list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 REMACSPLU *FindRePLU(REMACSPLU *plulist,LONG plu_code);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Find a remacs plu in a list given the PLU code
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 REMACSPLU *plulist  \'2D The list of remacs PLU\'27s \par LONG plu_code  \'2D The PLU code to find \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 REMACSPLU *  \'2D Pointer to remacs PLU structure or NULL if not found\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Modifies\cell\cell}\pard\intbl{\fs26\cf8 plulist \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb LoadPLU}{\v LoadPLU}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v FindRePLU_Source}\pard \par \page
+ #{\footnote FreeCFGList }
+ ${\footnote FreeCFGList }
+ +{\footnote 0009 }
+ K{\footnote FreeCFGList }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 FreeCFGList \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Free the memory associated with a configuration list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 void FreeCFGList(CONFIG **cfglist);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Free the memory associated with a configuration list
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CONFIG **cfglist  \'2D A pointer to a pointer to the configuration list \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 None\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb SaveConfig}{\v SaveConfig}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v FreeCFGList_Source}\pard \par \page
+ #{\footnote FreeDeptList }
+ ${\footnote FreeDeptList }
+ +{\footnote 0010 }
+ K{\footnote FreeDeptList }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 FreeDeptList \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Free memory associated with a department list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 void FreeDeptList(DEPARTMENT **deptlist);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Free memory associated with a department list
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 DEPARTMENT **deptlist  \'2D The department linked list \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 None\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb SaveDepartment}{\v SaveDepartment}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v FreeDeptList_Source}\pard \par \page
+ #{\footnote FreePLUList }
+ ${\footnote FreePLUList }
+ +{\footnote 0011 }
+ K{\footnote FreePLUList }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 FreePLUList \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Free memory associated with a PLU list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 void FreePLUList(PLU **plulist);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Free memory associated with a PLU list
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 PLU **plulist  \'2D The department linked list \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 None\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb SavePLU}{\v SavePLU}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v FreePLUList_Source}\pard \par \page
+ #{\footnote FreeReMACSPLUList }
+ ${\footnote FreeReMACSPLUList }
+ +{\footnote 0012 }
+ K{\footnote FreeReMACSPLUList }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 FreeReMACSPLUList \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Free the memory associated with a ReMACS PLU linked list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 void FreeReMACSPLUList(REMACSPLU **plulist);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Free the memory associated with a ReMACS PLU linked list
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 REMACSPLU **plulist  \'2D a pointer to the pointer to the list \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 None\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb SaveLocalPLU}{\v SaveLocalPLU}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v FreeReMACSPLUList_Source}\pard \par \page
+ #{\footnote GetInt }
+ ${\footnote GetInt }
+ +{\footnote 0013 }
+ K{\footnote GetInt }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 GetInt \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Get a INT from an ASCII record buffer\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL GetInt(CHAR *line,INT fieldofs,INT fieldlen,INT *val);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Get a INT from an ASCII record buffer given an offset and length
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *line  \'2D The source string \par INT fieldofs  \'2D The offset of the start of the INT \par INT fieldlen  \'2D The length of the string containing a INT \par INT *val  \'2D The address of the returned INT \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  \'2D TRUE return value OK\'2E  FALSE on error\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb LoadConfig}{\v LoadConfig}  {\uldb LoadDepartment}{\v LoadDepartment}  {\uldb LoadPLU}{\v LoadPLU}  {\uldb LoadReMACSPLU}{\v LoadReMACSPLU}  \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb GetLong}{\v GetLong}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v GetInt_Source}\pard \par \page
+ #{\footnote GetLong }
+ ${\footnote GetLong }
+ +{\footnote 0014 }
+ K{\footnote GetLong }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 GetLong \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Get a LONG from an ASCII record buffer\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL GetLong(CHAR *line,INT fieldofs,INT fieldlen,LONG *val);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Get a LONG from an ASCII record buffer given an offset and length
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *line  \'2D The source string \par INT fieldofs  \'2D The offset of the start of the long \par INT fieldlen  \'2D The length of the string containing a long \par LONG *val  \'2D The address of the returned long \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  \'2D TRUE return value OK\'2E  FALSE on error\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Modifies\cell\cell}\pard\intbl{\fs26\cf8 val \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb GetInt}{\v GetInt}  {\uldb LoadDepartment}{\v LoadDepartment}  {\uldb LoadLocalPLU}{\v LoadLocalPLU}  {\uldb LoadPLU}{\v LoadPLU}  {\uldb LoadReMACSPLU}{\v LoadReMACSPLU}  \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb CleanBuf}{\v CleanBuf}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v GetLong_Source}\pard \par \page
+ #{\footnote GetString }
+ ${\footnote GetString }
+ +{\footnote 0015 }
+ K{\footnote GetString }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 GetString \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Get a String from an ASCII record buffer\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL GetString(CHAR *line,INT fieldofs,INT fieldlen,CHAR *buf);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Get a String from an ASCII record buffer given an offset and length
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *line  \'2D The source string \par INT fieldofs  \'2D The offset of the start of the String \par INT fieldlen  \'2D The length of the string containing a String \par CHAR *buf  \'2D The address of the returned String \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  \'2D TRUE return value OK\'2E  FALSE on error\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb LoadConfig}{\v LoadConfig}  {\uldb LoadDepartment}{\v LoadDepartment}  {\uldb LoadLocalPLU}{\v LoadLocalPLU}  {\uldb LoadPLU}{\v LoadPLU}  {\uldb LoadReMACSPLU}{\v LoadReMACSPLU}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v GetString_Source}\pard \par \page
+ #{\footnote ismenu }
+ ${\footnote ismenu }
+ +{\footnote 0016 }
+ K{\footnote ismenu }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 ismenu \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 TRUE if department struct refers to a menu key\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL ismenu(DEPARTMENT *dept);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 TRUE if department struct refers to a menu key
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 DEPARTMENT *dept  \'2D The department structure \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  \'2D TRUE if it\'27s a menu\'2C otherwise FALSE\'2E\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb SavePLU}{\v SavePLU}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v ismenu_Source}\pard \par \page
+ #{\footnote LoadColours }
+ ${\footnote LoadColours }
+ +{\footnote 0017 }
+ K{\footnote LoadColours }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 LoadColours \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Load the colour file\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 void LoadColours(CHAR *name,INT *cbuf);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Load the colour file
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *name  \'2D The colour file \par INT *cbuf  \'2D The address of an array of colour values \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 None\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Modifies\cell\cell}\pard\intbl{\fs26\cf8 cbuf \cell}\pard\intbl\row\pard
+{\uldb Source}{\v LoadColours_Source}\pard \par \page
+ #{\footnote LoadConfig }
+ ${\footnote LoadConfig }
+ +{\footnote 0018 }
+ K{\footnote LoadConfig }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 LoadConfig \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Load the configurations file into a linked list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL LoadConfig(CHAR *name,CONFIG **cfglist);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Load the configurations file into a linked list
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *name  \'2D The name of the configuration file \par CONFIG **cfglist  \'2D A pointer to the empty linked list i\'2Ee\'2E \'2A\'28cfglist\'29\'3D\'3DNULL \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  \'2D TRUE if all OK\'2E FALSE if memory or file error\'2E \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb GetString}{\v GetString}  {\uldb GetInt}{\v GetInt}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v LoadConfig_Source}\pard \par \page
+ #{\footnote LoadDepartment }
+ ${\footnote LoadDepartment }
+ +{\footnote 0019 }
+ K{\footnote LoadDepartment }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 LoadDepartment \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Load a department file into a linked list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL LoadDepartment(CHAR *name,DEPARTMENT **deptlist,INT numbkey);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Load a department file into a linked list
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *name  \'2D the file name \par DEPARTMENT **deptlist  \'2D A pointer to the empty linked list i\'2Ee\'2E \'2A\'28deptlist\'29\'3D\'3DNULL \par INT numbkey  \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  \'2D TRUE if all OK\'2E FALSE if memory or file error\'2E \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb SaveDepartment}{\v SaveDepartment}  {\uldb GetInt}{\v GetInt}  {\uldb GetString}{\v GetString}  {\uldb GetLong}{\v GetLong}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v LoadDepartment_Source}\pard \par \page
+ #{\footnote LoadLayout }
+ ${\footnote LoadLayout }
+ +{\footnote 0020 }
+ K{\footnote LoadLayout }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 LoadLayout \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Load a keyboard layout file\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 ULONG *LoadLayout(CHAR *name,KEYMETRICS *keys);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Load a keyboard layout file into an array of ULONGs in the format
+bits 31\'2D24 the line of the key
+bits 23\'2D16 the column of the key
+bits 15\'2D00 the key number \'28department\'29
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *name  \'2D The keyboard layout file \par KEYMETRICS *keys  \'2D The address of a KEYMETRICS structure \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 ULONG *  \'2D a pointer to an array of ULONGs allocated from the heap\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Modifies\cell\cell}\pard\intbl{\fs26\cf8 keys \cell}\pard\intbl\row\pard
+{\uldb Source}{\v LoadLayout_Source}\pard \par \page
+ #{\footnote LoadLocalPLU }
+ ${\footnote LoadLocalPLU }
+ +{\footnote 0021 }
+ K{\footnote LoadLocalPLU }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 LoadLocalPLU \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Load a Local ReMACS PLU file into a linked list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL LoadLocalPLU(CHAR *name,REMACSPLU **plulist);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Load a Local ReMACS PLU file into a linked list
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *name  \'2D the file name \par REMACSPLU **plulist  \'2D A pointer to the linked list \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  \'2D TRUE if all OK\'2E FALSE if memory or file error\'2E \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb GetLong}{\v GetLong}  {\uldb GetString}{\v GetString}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v LoadLocalPLU_Source}\pard \par \page
+ #{\footnote LoadPLU }
+ ${\footnote LoadPLU }
+ +{\footnote 0022 }
+ K{\footnote LoadPLU }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 LoadPLU \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Load a PLU file into a linked list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL LoadPLU(CHAR *name,PLU **plulist,REMACSPLU *rplulist);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Load a PLU file into a linked list
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *name  \'2D The file name \par PLU **plulist  \'2D A pointer to the empty linked list i\'2Ee\'2E \'2A\'28plulist\'29\'3D\'3DNULL \par REMACSPLU *rplulist  \'2D A pointer to the ReMACS plu list \'28for price updates\'29 \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  \'2D TRUE if all OK\'2E FALSE if memory or file error\'2E \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb main}{\v main}  \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb GetLong}{\v GetLong}  {\uldb GetString}{\v GetString}  {\uldb GetInt}{\v GetInt}  {\uldb FindRePLU}{\v FindRePLU}  {\uldb FindPLU}{\v FindPLU}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v LoadPLU_Source}\pard \par \page
+ #{\footnote LoadPrinterParams }
+ ${\footnote LoadPrinterParams }
+ +{\footnote 0023 }
+ K{\footnote LoadPrinterParams }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 LoadPrinterParams \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Load the printer parameters\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 INT LoadPrinterParams(void);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Load the printer parameters \'28currently only loads printer type 
+i\'2Ee\'2E EPSON or PCL\'29
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 INT  \'2D Printer type i\'2Ee\'2E EPSON or PCL\'28default\'29\cell}\pard\intbl\row\pard
+{\uldb Source}{\v LoadPrinterParams_Source}\pard \par \page
+ #{\footnote LoadReMACSPLU }
+ ${\footnote LoadReMACSPLU }
+ +{\footnote 0024 }
+ K{\footnote LoadReMACSPLU }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 LoadReMACSPLU \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Load a ReMACS PLU file into a linked list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL LoadReMACSPLU(CHAR *name,REMACSPLU **plulist);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Load a ReMACS PLU file into a linked list
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *name  \'2D the file name \par REMACSPLU **plulist  \'2D A pointer to the linked list \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  \'2D TRUE if all OK\'2E FALSE if memory or file error\'2E \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb GetString}{\v GetString}  {\uldb GetLong}{\v GetLong}  {\uldb GetInt}{\v GetInt}  {\uldb AddReMACSPLU}{\v AddReMACSPLU}  {\uldb AuditLog}{\v AuditLog}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v LoadReMACSPLU_Source}\pard \par \page
+ #{\footnote LogTime }
+ ${\footnote LogTime }
+ +{\footnote 0025 }
+ K{\footnote LogTime }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 LogTime \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Print Time Stamp For Log\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 void LogTime(BOOL start,CHAR *cc,INT tid);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb omrplucp.c}{\v omrplucp.c}\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Print Time Stamp For Log
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 BOOL start  \'2D TRUE if start  of log FALSE if end \par CHAR *cc  \'2D The Control Centre \par INT tid  \'2D The Terminal Identifier \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 None\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Modifies\cell\cell}\pard\intbl{\fs26\cf8 donestart \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb main}{\v main}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v LogTime_Source}\pard \par \page
+ #{\footnote main }
+ ${\footnote main }
+ +{\footnote 0026 }
+ K{\footnote main }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 main \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 generate a difference log to stdout between the PLU file and backup\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 INT main(INT argc,char *argv[]);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb omrplucp.c}{\v omrplucp.c}\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 generate a difference log to stdout between the PLU file and backup
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 INT argc  \'2D argument count \'2D should be 3 \par char *argv[]  \'2D arguments Control Centre\'2C Terminal Identifier \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 INT  \'2D Errorlevel \'3D 1 \'2D Invalid Arguments\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb LoadPLU}{\v LoadPLU}  {\uldb FindPLU}{\v FindPLU}  {\uldb LogTime}{\v LogTime}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v main_Source}\pard \par \page
+ #{\footnote SaveConfig }
+ ${\footnote SaveConfig }
+ +{\footnote 0027 }
+ K{\footnote SaveConfig }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 SaveConfig \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Save a configuration file from a linked list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL SaveConfig(CHAR *name,CONFIG **cfglist,BOOL freelist);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Save a configuration file from a linked list and conditionally
+free the memory associated with the list
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *name  \'2D The configuration file \par CONFIG **cfglist  \'2D The configuration linked list \par BOOL freelist  \'2D TRUE if the memory associated with the list should be free\'27d \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  \'2D TRUE if OK\'2C FALSE on file error or cfglist\'3D\'3DNULL or cfglist empty\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb FreeCFGList}{\v FreeCFGList}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v SaveConfig_Source}\pard \par \page
+ #{\footnote SaveDepartment }
+ ${\footnote SaveDepartment }
+ +{\footnote 0028 }
+ K{\footnote SaveDepartment }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 SaveDepartment \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Save a department file from a linked list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL SaveDepartment(CHAR *name,DEPARTMENT **deptlist,INT numbkey,BOOL freelist);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Save a department file from a linked list and conditionally
+free the memory associated with the list\'2E If the department lis
+is empty or NULL\'2C this function creates a file of numbkey departments
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *name  \'2D The department file \par DEPARTMENT **deptlist  \'2D The department linked list \par INT numbkey  \'2D The number of keys in the list \'28used to generate a new list\'29 \par BOOL freelist  \'2D TRUE if the memory associated with the list should be free\'27d \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  \'2D TRUE if OK\'2C FALSE on file error\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Called By\cell\cell}\pard\intbl{\fs26\cf8 {\uldb LoadDepartment}{\v LoadDepartment}  \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb FindDept}{\v FindDept}  {\uldb FreeDeptList}{\v FreeDeptList}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v SaveDepartment_Source}\pard \par \page
+ #{\footnote SaveLocalPLU }
+ ${\footnote SaveLocalPLU }
+ +{\footnote 0029 }
+ K{\footnote SaveLocalPLU }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 SaveLocalPLU \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Save a Local ReMACS PLU file from a linked list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL SaveLocalPLU(CHAR *name,REMACSPLU **plulist,BOOL freelist);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Save a Local ReMACS PLU file from a linked list and conditionally
+free the memory associated with the list
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *name  \'2D The Local ReMACS PLU file \par REMACSPLU **plulist  \'2D The ReMACS PLU linked list \par BOOL freelist  \'2D TRUE if the memory associated with the list should be free\'27d \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  \'2D TRUE if OK\'2C FALSE on file error or deptlist\'3D\'3DNULL or deptlist empty\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb FreeReMACSPLUList}{\v FreeReMACSPLUList}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v SaveLocalPLU_Source}\pard \par \page
+ #{\footnote SavePLU }
+ ${\footnote SavePLU }
+ +{\footnote 0030 }
+ K{\footnote SavePLU }
+\keepn \b\f0\fs40 \par \cf8 Function \tab \cf12 SavePLU \par \b0\pard
+\cellx1600\cellx1700\cellx8500
+\par \f0\fs20 
+\qr\intbl {\b\i\cf14\fs20 Synopsis\cell\cell}\pard\intbl{\fs26\cf8 Save a PLU file from a linked list\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Prototype\cell\cell}\pard\intbl{\fs26\cf8 BOOL SavePLU(CHAR *name,PLU **plulist,DEPARTMENT *deptlist,BOOL freelist);\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Module\cell\cell}\pard\intbl{\fs26\cf8 {\uldb fileio.c }{\v fileio.c }\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Description\cell\cell}\pard\intbl{\fs26\cf8 Save a PLU file from a linked list and conditionally
+free the memory associated with the list
+\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Passed\cell\cell}\pard\intbl{\fs26\cf8 CHAR *name  \'2D The PLU file \par PLU **plulist  \'2D The PLU linked list \par DEPARTMENT *deptlist  \'2D The Department list \'28used to see if an item is not a menu i\'2Ee\'2E assoc\'3D99\'29 \par BOOL freelist  \'2D TRUE if the memory associated with the list should be free\'27d \cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Return Value\cell\cell}\pard\intbl{\fs26\cf8 BOOL  \'2D TRUE if OK\'2C FALSE on file error or plulist\'3D\'3DNULL or plulist empty\cell}\pard\intbl\row\pard
+\qr\intbl {\b\i\cf14\fs20 Calls\cell\cell}\pard\intbl{\fs26\cf8 {\uldb FindDept}{\v FindDept}  {\uldb ismenu}{\v ismenu}  {\uldb FreePLUList}{\v FreePLUList}  \cell}\pard\intbl\row\pard
+{\uldb Source}{\v SavePLU_Source}\pard \par \page
+ #{\footnote AddReMACSPLU_Source }
+ ${\footnote AddReMACSPLU_Source }
+ +{\footnote 1030 }
+ K{\footnote AddReMACSPLU_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb AddReMACSPLU}{\v AddReMACSPLU}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+\b\i void\b0\i0  AddReMACSPLU\'28REMACSPLU \'2A\'2Aplulist\'2CREMACSPLU \'2Aplu\'2CLONG price\'2CINT plevel\'29\par
+\'7B\par
+    \b\i static\b0\i0  LONG today\'3D0L\'3B   \'2F\'2F integer of today\'27s date \par
+    \b\i struct\b0\i0  tm \'2At\'3B           \'2F\'2F used to find \b if\b0  PLU newer than current\par
+    \b\i struct\b0\i0  timeb tb\'3B        \'2F\'2F used to find \b if\b0  PLU newer than current\par
+    REMACSPLU \'2Apluptr\'3B      \'2F\'2F current PLU in list\par
+\par
+    \b if\b0  \'28today\'3D\'3D0L\'29 \'7B        \'2F\'2F first time in \'2D get date\par
+       \tab ftime\'28\'26tb\'29\'3B\par
+    \tab t\'3Dlocaltime\'28\'26tb\'2Etime\'29\'3B\par
+        t\'2D\'3Etm_mon\'2B\'2B\'3B\par
+        today \'3D\'28LONG\'29t\'2D\'3Etm_year\'2A10000L\'3B  \'2F\'2F date as number i\'2Ee\'2E 960618L\par
+        today\'2B\'3D\'28LONG\'29t\'2D\'3Etm_mon \'2A100L  \'3B  \'2F\'2F is 18th June 1996\par
+        today\'2B\'3D\'28LONG\'29t\'2D\'3Etm_mday       \'3B\par
+    \'7D\par
+    \b if\b0  \'28plulist\'3D\'3DNULL\'29 \b return\b0 \'3B  \'2F\'2F this is not a pointer to a list \b return\b0\par
+                                                                   \par
+    pluptr\'3D\'2Aplulist\'3B        \'2F\'2F point to start of list\par
+    \b while\b0  \'28pluptr\'21\'3DNULL\'29 \'7B  \'2F\'2F \b for\b0  each item in list\par
+        \b if\b0  \'28pluptr\'2D\'3Eplu_code\'3D\'3Dplu\'2D\'3Eplu_code\'29 \'7B \'2F\'2F the same plu code\par
+            \b if\b0  \'28pluptr\'2D\'3Eedate\'3D\'3Dplu\'2D\'3Eedate\'29 \'7B   \'2F\'2F same date \'2D add price\par
+                pluptr\'2D\'3Eprice\'5Bplevel\'5D\'3Dprice\'3B\par
+                pluptr\'2D\'3Edone1\'3DTRUE\'3B            \'2F\'2F set flag to stop removal of PLU\par
+                free\'28plu\'29\'3B                     \'2F\'2F don\'27t need this structure\par
+                \b return\b0 \'3B\par
+            \'7D\par
+            \b if\b0  \'28pluptr\'2D\'3Eedate\'3Cplu\'2D\'3Eedate\'29 \'7B     \'2F\'2F later date \par
+                \b if\b0  \'28plu\'2D\'3Eedate\'3C\'3Dtoday\'2B1L\'29 \'7B     \'2F\'2F \b if\b0  ready \b for\b0  load \'2D change\par
+                    pluptr\'2D\'3Eedate\'3Dplu\'2D\'3Eedate\'3B\par
+                    pluptr\'2D\'3Eprice\'5Bplevel\'5D\'3Dprice\'3B\par
+                    pluptr\'2D\'3Edone1\'3DTRUE\'3B         \'2F\'2F set flag to stop removal of PLU\par
+                    free\'28plu\'29\'3B                  \'2F\'2F don\'27t need this structure\par
+                    \b return\b0 \'3B\par
+                \'7D\par
+            \'7D \b else\b0  \'7B                            \'2F\'2F current is newer than latest \'2D ignore latest\par
+                pluptr\'2D\'3Edone1\'3DTRUE\'3B             \'2F\'2F set flag to stop removal of PLU\par
+                free\'28plu\'29\'3B                      \'2F\'2F don\'27t need this structure\par
+                \b return\b0 \'3B\par
+            \'7D\par
+        \'7D\par
+        pluptr\'3Dpluptr\'2D\'3Enext\'3B   \'2F\'2F next item in list\par
+    \'7D\par
+    plu\'2D\'3Eprice\'5Bplevel\'5D\'3Dprice\'3B  \'2F\'2F add \b new\b0  or add one \b for\b0  later\par
+    plu\'2D\'3Edone1\'3DTRUE\'3B           \'2F\'2F set flag to stop removal of PLU\par
+    plu\'2D\'3Enext\'3D\'2Aplulist\'3B        \'2F\'2F add at begining of list\par
+    \'2Aplulist\'3Dplu\'3B      \par
+\'7D\par
+\pard \par \page
+ #{\footnote AuditLog_Source }
+ ${\footnote AuditLog_Source }
+ +{\footnote 1031 }
+ K{\footnote AuditLog_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb AuditLog}{\v AuditLog}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+\b\i void\b0\i0  AuditLog\'28CHAR \'2Aformat\'2C\'2E\'2E\'2E\'29\par
+\'7B\par
+    \b\i static\b0\i0  CHAR outstr\'5BMAXSTRLEN\'5D\'3B                 \'2F\'2F output string buffer\par
+    \b\i static\b0\i0  BOOL donestart\'3DFALSE\'3B                   \'2F\'2F \b\i static\b0\i0  used \b for\b0  heading at start\par
+\tab va_list ap\'3B                                    \'2F\'2F variable arg\'2E list ptr\'2E\par
+    time_t t\'3B                                      \'2F\'2F \b for\b0  time stamp\par
+    FILE \'2Afp\'3B                                      \'2F\'2F audit log file pointer\par
+\par
+    fp\'3Dfopen\'28AUDITFILE\'2C\cf1 \'22a\'2B\'22\cf0 \'29\'3B                      \'2F\'2F open audit log\par
+    \b if\b0  \'28fp\'3D\'3DNULL\'29 \'7B                                \'2F\'2F can\'27t open audit log\'21\'21\'21\par
+        fprintf\'28stderr\'2C\cf1 \'22Can\'27t Open Audit Trail\'21\'5Cn\'22\cf0 \'29\'3B\par
+        \b return\b0 \'3B\par
+    \'7D\par
+\par
+    va_start\'28ap\'2Cformat\'29\'3B                           \'2F\'2F start variable arg\'2E list\par
+    vsprintf\'28outstr\'2Cformat\'2Cap\'29\'3B                    \'2F\'2F convert args to string\par
+    va_end\'28ap\'29\'3B                                    \'2F\'2F end variable arg\'2E list\par
+\par
+    t\'3Dtime\'28NULL\'29\'3B                                  \'2F\'2F get time stamp\par
+\par
+    \b if\b0  \'28\'21donestart\'29 \'7B                              \'2F\'2F this is the first time through\par
+        fprintf\'28fp\'2C\cf1 \'22\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'5Cn\'22\cf0 \'29\'3B\par
+        fprintf\'28fp\'2C\cf1 \'22Audit Log Start \'25s\'22\cf0 \'2Cctime\'28\'26t\'29\'29\'3B\par
+        fprintf\'28fp\'2C\cf1 \'22\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'5Cn\'22\cf0 \'29\'3B\par
+        donestart\'3DTRUE\'3B                            \'2F\'2F reset \b for\b0  next call\par
+    \'7D\par
+    fprintf\'28fp\'2C\cf1 \'22\'25s \'25s\'22\cf0 \'2Coutstr\'2Cctime\'28\'26t\'29\'29\'3B          \'2F\'2F output the string with time\par
+    fclose\'28fp\'29\'3B                                    \'2F\'2F close audit log\par
+\'7D\par
+\pard \par \page
+ #{\footnote CleanBuf_Source }
+ ${\footnote CleanBuf_Source }
+ +{\footnote 1032 }
+ K{\footnote CleanBuf_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb CleanBuf}{\v CleanBuf}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+CHAR \'2ACleanBuf\'28CHAR \'2Astr\'29\par
+\'7B\par
+    \b\i static\b0\i0  CHAR buffer\'5BMAXSTRLEN\'5D\'3B                    \'2F\'2F output string buffer\par
+    CHAR \'2Abufend\'3B                                     \'2F\'2F pointer to end of string\par
+\par
+    \b if\b0  \'28str\'3D\'3DNULL\'29 \b return\b0  str\'3B\par
+\par
+    \b while\b0  \'28\'28\'2Astr\'29\'26\'26\'28\'2Astr\'3D\'3D\'27 \'27\'29\'29 str\'2B\'2B\'3B                \'2F\'2F skip space at beginning\par
+\par
+    strcpy\'28buffer\'2Cstr\'29\'3B                               \'2F\'2F make a copy\par
+\par
+    bufend\'3Dbuffer\'2Bstrlen\'28buffer\'29\'2D1\'3B                   \'2F\'2F point to end\par
+    \b while\b0  \'28\'28bufend\'21\'3Dbuffer\'29                           \'2F\'2F \b while\b0  end not start\par
+       \'26\'26  \'28\'28\'2Abufend\'3D\'3D\'27 \'27\'29                            \'2F\'2F and end spaces\par
+       \'7C\'7C   \'28\'2Abufend\'3D\'3D\'27\'5Cr\'27\'29\par
+       \'7C\'7C   \'28\'2Abufend\'3D\'3D\'27\'5Cn\'27\'29\par
+       \'7C\'7C   \'28\'2Abufend\'3D\'3D\'27\'5Ct\'27\'29  \'29 \'29\par
+        \'2A\'28bufend\'2D\'2D\'29\'3D0\'3B                                \'2F\'2F remove\par
+    \b return\b0  buffer\'3B                                    \'2F\'2F \b return\b0  clean string\par
+\'7D\par
+\pard \par \page
+ #{\footnote FindDept_Source }
+ ${\footnote FindDept_Source }
+ +{\footnote 1033 }
+ K{\footnote FindDept_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb FindDept}{\v FindDept}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+DEPARTMENT \'2AFindDept\'28DEPARTMENT \'2Adeptlist\'2CINT dept\'29\par
+\'7B\par
+    \b while\b0  \'28deptlist\'21\'3DNULL\'29 \'7B               \'2F\'2F work through list\par
+        \b if\b0  \'28deptlist\'2D\'3Edept_number\'3D\'3Ddept\'29   \'2F\'2F same department\'28key\'29 number\par
+            \b return\b0  deptlist\'3B\par
+        deptlist\'3Ddeptlist\'2D\'3Enext\'3B           \'2F\'2F next item in list\par
+    \'7D\par
+    \b return\b0  NULL\'3B                           \'2F\'2F not found\par
+\'7D\par
+\pard \par \page
+ #{\footnote FindPLU_Source }
+ ${\footnote FindPLU_Source }
+ +{\footnote 1034 }
+ K{\footnote FindPLU_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb FindPLU}{\v FindPLU}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+PLU \'2AFindPLU\'28PLU \'2Aplulist\'2CLONG plu_code\'29\par
+\'7B\par
+    \b while\b0  \'28plulist\'21\'3DNULL\'29 \'7B                 \'2F\'2F work through list\par
+        \b if\b0  \'28plulist\'2D\'3Eplu_code\'3D\'3Dplu_code\'29    \'2F\'2F same plu code\par
+            \b return\b0  plulist\'3B\par
+        plulist\'3Dplulist\'2D\'3Enext\'3B              \'2F\'2F next item in list\par
+    \'7D\par
+    \b return\b0  NULL\'3B                            \'2F\'2F not found\par
+\'7D\par
+\pard \par \page
+ #{\footnote FindRePLU_Source }
+ ${\footnote FindRePLU_Source }
+ +{\footnote 1035 }
+ K{\footnote FindRePLU_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb FindRePLU}{\v FindRePLU}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+REMACSPLU \'2AFindRePLU\'28REMACSPLU \'2Aplulist\'2CLONG plu_code\'29\par
+\'7B\par
+    \b while\b0  \'28plulist\'21\'3DNULL\'29 \'7B                \'2F\'2F work through list\par
+        \b if\b0  \'28plulist\'2D\'3Eplu_code\'3D\'3Dplu_code\'29   \'2F\'2F same plu code\par
+            \b return\b0  plulist\'3B\par
+        plulist\'3Dplulist\'2D\'3Enext\'3B             \'2F\'2F next item in list\par
+    \'7D\par
+    \b return\b0  NULL\'3B                           \'2F\'2F not found\par
+\'7D\par
+\pard \par \page
+ #{\footnote FreeCFGList_Source }
+ ${\footnote FreeCFGList_Source }
+ +{\footnote 1036 }
+ K{\footnote FreeCFGList_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb FreeCFGList}{\v FreeCFGList}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+\b\i void\b0\i0  FreeCFGList\'28CONFIG \'2A\'2Acfglist\'29\par
+\'7B\par
+    CONFIG \'2Acfg\'3B                \'2F\'2F current item\par
+    \b while\b0  \'28\'2Acfglist\'21\'3DNULL\'29 \'7B    \'2F\'2F \b for\b0  each item\par
+        cfg\'3D\'28\'2Acfglist\'29\'2D\'3Enext\'3B   \'2F\'2F point to the next\par
+        free\'28\'2Acfglist\'29\'3B         \'2F\'2F free the current\par
+        \'2Acfglist\'3Dcfg\'3B           \'2F\'2F move current to next\par
+    \'7D\par
+\'7D\par
+\pard \par \page
+ #{\footnote FreeDeptList_Source }
+ ${\footnote FreeDeptList_Source }
+ +{\footnote 1037 }
+ K{\footnote FreeDeptList_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb FreeDeptList}{\v FreeDeptList}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+\b\i void\b0\i0  FreeDeptList\'28DEPARTMENT \'2A\'2Adeptlist\'29\par
+\'7B\par
+    DEPARTMENT \'2Adept\'3B           \'2F\'2F next item in list\par
+    \b while\b0  \'28\'2Adeptlist\'21\'3DNULL\'29 \'7B   \'2F\'2F \b for\b0  each item in list\par
+        dept\'3D\'28\'2Adeptlist\'29\'2D\'3Enext\'3B \'2F\'2F get next\par
+        free\'28\'2Adeptlist\'29\'3B        \'2F\'2F free current\par
+        \'2Adeptlist\'3Ddept\'3B         \'2F\'2F move current to next\par
+    \'7D\par
+\'7D\par
+\pard \par \page
+ #{\footnote FreePLUList_Source }
+ ${\footnote FreePLUList_Source }
+ +{\footnote 1038 }
+ K{\footnote FreePLUList_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb FreePLUList}{\v FreePLUList}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+\b\i void\b0\i0  FreePLUList\'28PLU \'2A\'2Aplulist\'29\par
+\'7B\par
+    PLU \'2Aplu\'3B                       \'2F\'2F next item in list\par
+    \b while\b0  \'28\'2Aplulist\'21\'3DNULL\'29 \'7B        \'2F\'2F \b for\b0  each item in list\par
+        plu\'3D\'28\'2Aplulist\'29\'2D\'3Enext\'3B       \'2F\'2F get next\par
+        free\'28\'2Aplulist\'29\'3B             \'2F\'2F free current\par
+        \'2Aplulist\'3Dplu\'3B               \'2F\'2F move current to next\par
+    \'7D\par
+\'7D\par
+\pard \par \page
+ #{\footnote FreeReMACSPLUList_Source }
+ ${\footnote FreeReMACSPLUList_Source }
+ +{\footnote 1039 }
+ K{\footnote FreeReMACSPLUList_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb FreeReMACSPLUList}{\v FreeReMACSPLUList}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+\b\i void\b0\i0  FreeReMACSPLUList\'28REMACSPLU \'2A\'2Aplulist\'29\par
+\'7B\par
+    REMACSPLU \'2Aplu\'3B           \'2F\'2F next item in list\par
+    \b while\b0  \'28\'2Aplulist\'21\'3DNULL\'29 \'7B  \'2F\'2F \b for\b0  each item in list\par
+        plu\'3D\'28\'2Aplulist\'29\'2D\'3Enext\'3B \'2F\'2F get next item\par
+        free\'28\'2Aplulist\'29\'3B       \'2F\'2F free current item\par
+        \'2Aplulist\'3Dplu\'3B         \'2F\'2F move current to next\par
+    \'7D\par
+\'7D\par
+\pard \par \page
+ #{\footnote GetInt_Source }
+ ${\footnote GetInt_Source }
+ +{\footnote 1040 }
+ K{\footnote GetInt_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb GetInt}{\v GetInt}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL GetInt\'28CHAR \'2Aline\'2CINT fieldofs\'2CINT fieldlen\'2CINT \'2Aval\'29\par
+\'7B\par
+    BOOL retval\'3B    \'2F\'2F temp hold \b for\b0  \b return\b0  from {\uldb GetLong}{\v GetLong_Source}\'28\'29\par
+    LONG tempval\'3B   \'2F\'2F temp hold \b for\b0  returned value from {\uldb GetLong}{\v GetLong_Source}\'28\'29\par
+    retval\'3D{\uldb GetLong}{\v GetLong_Source}\'28line\'2Cfieldofs\'2Cfieldlen\'2C\'26tempval\'29\'3B \'2F\'2F use {\uldb GetLong}{\v GetLong_Source} and cast to \b\i int\b0\i0\par
+    \b if\b0  \'28retval\'29 \'2Aval\'3D\'28INT\'29tempval\'3B\par
+    \b return\b0  retval\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote GetLong_Source }
+ ${\footnote GetLong_Source }
+ +{\footnote 1041 }
+ K{\footnote GetLong_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb GetLong}{\v GetLong}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL GetLong\'28CHAR \'2Aline\'2CINT fieldofs\'2CINT fieldlen\'2CLONG \'2Aval\'29\par
+\'7B\par
+    \b\i static\b0\i0  CHAR buf\'5BMAXFIELDLEN\'2B1\'5D\'3B   \'2F\'2F holding buffer\par
+    \b\i char\b0\i0  \'2Astr\'3B                        \'2F\'2F returned clean string\par
+\par
+    \b if\b0  \'28\'28\'28fieldofs\'2Bfieldlen\'29\'3Estrlen\'28line\'29\'29\'7C\'7C\'28fieldlen\'3EMAXFIELDLEN\'29\'29\par
+        \b return\b0  FALSE\'3B                     \'2F\'2F out of range\par
+    memcpy\'28buf\'2Cline\'2Bfieldofs\'2Cfieldlen\'29\'3B   \'2F\'2F get the buffer\par
+    \'2A\'28buf\'2Bfieldlen\'29\'3D\'27\'5C0\'27\'3B                 \'2F\'2F terminate\par
+    str\'3D{\uldb CleanBuf}{\v CleanBuf_Source}\'28buf\'29\'3B                    \'2F\'2F remove white space\par
+    \'2Aval\'3Datol\'28str\'29\'3B                       \'2F\'2F convert to LONG\par
+    \b return\b0  TRUE\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote GetString_Source }
+ ${\footnote GetString_Source }
+ +{\footnote 1042 }
+ K{\footnote GetString_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb GetString}{\v GetString}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL GetString\'28CHAR \'2Aline\'2CINT fieldofs\'2CINT fieldlen\'2CCHAR \'2Abuf\'29\par
+\'7B\par
+    \b if\b0  \'28\'28\'28fieldofs\'2Bfieldlen\'29\'3Estrlen\'28line\'29\'29\'7C\'7C\'28fieldlen\'3EMAXFIELDLEN\'29\'29\par
+        \b return\b0  FALSE\'3B                       \'2F\'2F out of range\par
+    memcpy\'28buf\'2Cline\'2Bfieldofs\'2Cfieldlen\'29\'3B     \'2F\'2F get the buffer\par
+    \'2A\'28buf\'2Bfieldlen\'29\'3D\'27\'5C0\'27\'3B                   \'2F\'2F terminate\par
+    \b return\b0  TRUE\'3B                            \par
+\'7D\par
+\pard \par \page
+ #{\footnote ismenu_Source }
+ ${\footnote ismenu_Source }
+ +{\footnote 1043 }
+ K{\footnote ismenu_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb ismenu}{\v ismenu}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL ismenu\'28DEPARTMENT \'2Adept\'29\par
+\'7B\par
+    \b if\b0  \'28dept\'3D\'3DNULL\'29 \b return\b0 \'28FALSE\'29\'3B                  \'2F\'2F catch error call\par
+\par
+    \b return\b0  \'28strcmp\'28dept\'2D\'3Estatus\'2Eas_string\'2C\cf1 \'2201550050\'22\cf0 \'29\'3D\'3D0\'29\'3B \'2F\'2F use status string\par
+\'7D\par
+\pard \par \page
+ #{\footnote LoadColours_Source }
+ ${\footnote LoadColours_Source }
+ +{\footnote 1044 }
+ K{\footnote LoadColours_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb LoadColours}{\v LoadColours}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+\b\i void\b0\i0  LoadColours\'28CHAR \'2Aname\'2CINT \'2Acbuf\'29\par
+\'7B\par
+    \b\i static\b0\i0  CHAR line\'5BMAXSTRLEN\'5D\'3B \'2F\'2F read line buffer\par
+    FILE \'2Afp\'3B                    \'2F\'2F colour file pointer\par
+    INT curcol\'3D0\'3B                \'2F\'2F current colour array offset\par
+\par
+    fp\'3Dfopen\'28name\'2C\cf1 \'22r\'22\cf0 \'29\'3B          \'2F\'2F no file \'2D use defaults\par
+    \b if\b0  \'28fp\'3D\'3DNULL\'29 \b return\b0 \'3B\par
+\par
+    \b while\b0  \'28\'28fgets\'28line\'2C1000\'2Cfp\'29\'29\'21\'3DNULL\'29 \'7B \'2F\'2F \b for\b0  each line in file\par
+        \b if\b0  \'28line\'5B0\'5D\'21\'3D\'27\'3B\'27\'29 \'7B               \'2F\'2F \b if\b0  line not commented\par
+            \b if\b0  \'28\'28line\'5B0\'5D\'3E\'3D\'270\'27\'29\'26\'26\'28line\'5B0\'5D\'3C\'3D\'279\'27\'29\'29 \'7B  \'2F\'2F convert 2 hex digits\par
+                cbuf\'5Bcurcol\'5D\'3D\'28line\'5B0\'5D\'2D\'270\'27\'29\'2A16\'3B\par
+            \'7D \b else\b0  \b if\b0  \'28\'28line\'5B0\'5D\'3E\'3D\'27A\'27\'29\'26\'26\'28line\'5B0\'5D\'3C\'3D\'27F\'27\'29\'29 \'7B\par
+                cbuf\'5Bcurcol\'5D\'3D\'28line\'5B0\'5D\'2D\'27A\'27\'29\'2A16 \'2B160\'3B\par
+            \'7D\par
+            \b if\b0  \'28\'28line\'5B1\'5D\'3E\'3D\'270\'27\'29\'26\'26\'28line\'5B1\'5D\'3C\'3D\'279\'27\'29\'29 \'7B\par
+                cbuf\'5Bcurcol\'5D\'2B\'3D\'28line\'5B1\'5D\'2D\'270\'27\'29\'3B\par
+            \'7D \b else\b0  \b if\b0  \'28\'28line\'5B1\'5D\'3E\'3D\'27A\'27\'29\'26\'26\'28line\'5B1\'5D\'3C\'3D\'27F\'27\'29\'29 \'7B\par
+                cbuf\'5Bcurcol\'5D\'2B\'3D\'28line\'5B1\'5D\'2D\'27A\'27\'29\'2B10\'3B\par
+            \'7D\par
+            curcol\'2B\'2B\'3B                       \'2F\'2F next colour\par
+            \b if\b0  \'28curcol\'3E\'3DNUMBCOLOUR\'29 \b break\b0 \'3B  \'2F\'2F stop overflow\par
+        \'7D\par
+    \'7D\par
+    fclose\'28fp\'29\'3B \'2F\'2F done \'2D close file\par
+\'7D\par
+\pard \par \page
+ #{\footnote LoadConfig_Source }
+ ${\footnote LoadConfig_Source }
+ +{\footnote 1045 }
+ K{\footnote LoadConfig_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb LoadConfig}{\v LoadConfig}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL LoadConfig\'28CHAR \'2Aname\'2CCONFIG \'2A\'2Acfglist\'29\par
+\'7B\par
+    BOOL retval\'3DTRUE\'3B             \'2F\'2F \b return\b0  value \'28set by ERROREXIT macro\'29\par
+    \b\i static\b0\i0  CHAR line\'5BMAXSTRLEN\'5D\'3B  \'2F\'2F read line buffer\par
+    CONFIG \'2Acfg\'3B                  \'2F\'2F current configuration structure\par
+    CONFIG \'2Anextc\'3B                \'2F\'2F next configuration structure\par
+    CONFIG \'2Aprevc\'3B                \'2F\'2F previous configuration structure\par
+    FILE \'2Afp\'3B                     \'2F\'2F configuration file pointer\par
+    \par
+    \b if\b0  \'28\'28fp\'3Dfopen\'28name\'2C\cf1 \'22r\'22\cf0 \'29\'29\'3D\'3DNULL\'29 \b return\b0  FALSE\'3B \'2F\'2F no file\'2C \b return\b0  error\par
+\par
+    \b while\b0  \'28\'28fgets\'28line\'2C1000\'2Cfp\'29\'29\'21\'3DNULL\'29 \'7B       \'2F\'2F \b for\b0  each line in file\par
+        \b if\b0  \'28\'28cfg\'3Dmalloc\'28\b sizeof\b0 \'28CONFIG\'29\'29\'29\'3D\'3DNULL\'29          ERROREXIT \'2F\'2F get space\par
+        \b if\b0  \'28\'21{\uldb GetString}{\v GetString_Source}\'28line\'2C 0\'2C 2\'2C  cfg\'2D\'3Ectrl_centre\'29\'29   ERROREXIT \'2F\'2F get control centre\par
+        \b if\b0  \'28\'21{\uldb GetString}{\v GetString_Source}\'28line\'2C 2\'2C15\'2C  cfg\'2D\'3Ecc_desc    \'29\'29   ERROREXIT \'2F\'2F description\par
+        \b if\b0  \'28\'21{\uldb GetInt}{\v GetInt_Source}   \'28line\'2C17\'2C 2\'2C\'26\'28cfg\'2D\'3Eterm_id    \'29\'29\'29  ERROREXIT \'2F\'2F terminal identifier\par
+        \b if\b0  \'28\'21{\uldb GetString}{\v GetString_Source}\'28line\'2C19\'2C15\'2C  cfg\'2D\'3Eterm_desc  \'29\'29   ERROREXIT \'2F\'2F terminal description\par
+        \b if\b0  \'28\'21{\uldb GetString}{\v GetString_Source}\'28line\'2C34\'2C 3\'2C  cfg\'2D\'3Eterm_type  \'29\'29   ERROREXIT \'2F\'2F terminal type\par
+        cfg\'2D\'3Enext\'3D\'2Acfglist\'3B                                        \'2F\'2F add to linked list at start\par
+        \'2Acfglist\'3Dcfg\'3B                                               \par
+    \'7D\par
+    fclose\'28fp\'29\'3B                                                    \'2F\'2F close file\par
+\par
+    cfg\'3D\'2Acfglist\'3B               \'2F\'2F reverse the list\par
+    prevc\'3DNULL\'3B                 \'2F\'2F \b new\b0  end of list\par
+    \b while\b0  \'28cfg\'21\'3DNULL\'29 \'7B         \'2F\'2F \b for\b0  each item in list\par
+        nextc\'3Dcfg\'2D\'3Enext\'3B        \'2F\'2F get next item\par
+        cfg\'2D\'3Enext\'3Dprevc\'3B        \'2F\'2F set next to previous\par
+        prevc\'3Dcfg\'3B              \'2F\'2F set previous to current\par
+        cfg\'3Dnextc\'3B              \'2F\'2F move to next\par
+    \'7D\par
+    \'2Acfglist\'3Dprevc\'3B             \'2F\'2F point to \b new\b0  start\par
+    \b return\b0  retval\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote LoadDepartment_Source }
+ ${\footnote LoadDepartment_Source }
+ +{\footnote 1046 }
+ K{\footnote LoadDepartment_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb LoadDepartment}{\v LoadDepartment}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL LoadDepartment\'28CHAR \'2Aname\'2CDEPARTMENT \'2A\'2Adeptlist\'2CINT numbkey\'29\par
+\'7B\par
+    BOOL retval\'3DTRUE\'3B            \'2F\'2F \b return\b0  value \'28set by ERROREXIT macro\'29\par
+    \b\i static\b0\i0  CHAR line\'5BMAXSTRLEN\'5D\'3B \'2F\'2F read line buffer\par
+    DEPARTMENT \'2Adept\'3B            \'2F\'2F current department \b\i struct\b0\i0\par
+    DEPARTMENT \'2Anextd\'3B           \'2F\'2F next department \b\i struct\b0\i0\par
+    DEPARTMENT \'2Aprevd\'3B           \'2F\'2F previous department \b\i struct\b0\i0\par
+    FILE \'2Afp\'3B\par
+    \par
+    \b if\b0  \'28\'28fp\'3Dfopen\'28name\'2C\cf1 \'22r\'22\cf0 \'29\'29\'3D\'3DNULL\'29 \'7B \'2F\'2F can\'27t open so create an empty one\par
+        \b if\b0  \'28\'21{\uldb SaveDepartment}{\v SaveDepartment_Source}\'28name\'2CNULL\'2Cnumbkey\'2CFALSE\'29\'29 \b return\b0  FALSE\'3B \'2F\'2F can\'27t create \'2D \b return\b0  ERROR\par
+        \b if\b0  \'28\'28fp\'3Dfopen\'28name\'2C\cf1 \'22r\'22\cf0 \'29\'29\'3D\'3DNULL\'29 \'7B \'2F\'2F still can\'27t read \'2D \b return\b0  ERROR\par
+            \b return\b0  FALSE\'3B\par
+        \'7D\par
+    \'7D\par
+\par
+    \b while\b0  \'28\'28fgets\'28line\'2C1000\'2Cfp\'29\'29\'21\'3DNULL\'29 \'7B   \'2F\'2F \b for\b0  each line\par
+        \b if\b0  \'28\'28dept\'3Dmalloc\'28\b sizeof\b0 \'28DEPARTMENT\'29\'29\'29\'3D\'3DNULL\'29      ERROREXIT \'2F\'2F get space\par
+        \b if\b0  \'28\'21{\uldb GetInt}{\v GetInt_Source}   \'28line\'2C 8\'2C2\'2C\'26\'28dept\'2D\'3Edept_number\'29\'29\'29   ERROREXIT \'2F\'2F read department number\par
+        \b if\b0  \'28\'21{\uldb GetString}{\v GetString_Source}\'28line\'2C10\'2C8\'2Cdept\'2D\'3Estatus\'2Eas_string\'29\'29 ERROREXIT \'2F\'2F status\par
+        \b if\b0  \'28\'21{\uldb GetString}{\v GetString_Source}\'28line\'2C18\'2C2\'2Cdept\'2D\'3Eactive\'29\'29           ERROREXIT \'2F\'2F active flag\par
+        \b if\b0  \'28\'21{\uldb GetString}{\v GetString_Source}\'28line\'2C20\'2C8\'2Cdept\'2D\'3Edesc\'29\'29             ERROREXIT \'2F\'2F description\par
+        \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}  \'28line\'2C28\'2C6\'2C\'26\'28dept\'2D\'3Eosp_code\'5B0\'5D\'29\'29\'29   ERROREXIT \'2F\'2F keyboard level 1 code\par
+        \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}  \'28line\'2C34\'2C6\'2C\'26\'28dept\'2D\'3Eosp_code\'5B1\'5D\'29\'29\'29   ERROREXIT \'2F\'2F keyboard level 2 code\par
+        \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}  \'28line\'2C40\'2C6\'2C\'26\'28dept\'2D\'3Eosp_code\'5B2\'5D\'29\'29\'29   ERROREXIT \'2F\'2F keyboard level 3 code\par
+        \b if\b0  \'28\'21{\uldb GetInt}{\v GetInt_Source}   \'28line\'2C46\'2C1\'2C\'26\'28dept\'2D\'3Eaction\'29\'29\'29        ERROREXIT \'2F\'2F action flag\par
+        dept\'2D\'3Enext\'3D\'2Adeptlist\'3B                                       \'2F\'2F add at begining of list\par
+        \'2Adeptlist\'3Ddept\'3B\par
+    \'7D\par
+    fclose\'28fp\'29\'3B\par
+\par
+    dept\'3D\'2Adeptlist\'3B             \'2F\'2F reverse the list\par
+    prevd\'3DNULL\'3B                 \'2F\'2F \b new\b0  end of list\par
+    \b while\b0  \'28dept\'21\'3DNULL\'29 \'7B        \'2F\'2F \b for\b0  each item\par
+        nextd\'3Ddept\'2D\'3Enext\'3B       \'2F\'2F get next\par
+        dept\'2D\'3Enext\'3Dprevd\'3B       \'2F\'2F set next to previous\par
+        prevd\'3Ddept\'3B             \'2F\'2F set previous to current\par
+        dept\'3Dnextd\'3B             \'2F\'2F move to next item\par
+    \'7D\par
+    \'2Adeptlist\'3Dprevd\'3B            \'2F\'2F point to \b new\b0  start\par
+    \b return\b0  retval\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote LoadLayout_Source }
+ ${\footnote LoadLayout_Source }
+ +{\footnote 1047 }
+ K{\footnote LoadLayout_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb LoadLayout}{\v LoadLayout}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+ULONG \'2ALoadLayout\'28CHAR \'2Aname\'2CKEYMETRICS \'2Akeys\'29\par
+\'7B\par
+    \b\i static\b0\i0  CHAR line\'5BMAXSTRLEN\'5D\'3B \'2F\'2F read line buffer\par
+    CHAR \'2Atoken\'3B                 \'2F\'2F current token\par
+    FILE \'2Afp\'3B                    \'2F\'2F Layout file pointer\par
+    ULONG \'2Alayout\'3B               \'2F\'2F list of department numbers \'26 flags\par
+    INT curkey\'3D0\'3B                \'2F\'2F the current key\par
+    ULONG curline\'3D0L\'3B            \'2F\'2F the current line i\'2Ee\'2E y coordinate\par
+    ULONG curcol\'3B                \'2F\'2F the current column i\'2Ee\'2E x coordinate\par
+\par
+    \b if\b0  \'28\'28fp\'3Dfopen\'28name\'2C\cf1 \'22r\'22\cf0 \'29\'29\'3D\'3DNULL\'29 \'2F\'2F can\'27t open \'2D \b return\b0  error\par
+        \b return\b0  NULL\'3B\par
+\par
+    \b if\b0  \'28\'28fgets\'28line\'2C1000\'2Cfp\'29\'29\'3D\'3DNULL\'29 \'7B \'2F\'2F can\'27t read first line \'2D \b return\b0  error\par
+        fclose\'28fp\'29\'3B         \'2F\'2F close file first\par
+        \b return\b0  NULL\'3B\par
+    \'7D\par
+    \b if\b0  \'28\'28token\'3Dstrtok\'28line\'2C\cf1 \'22 \'2C\'2E\'3B\'5Cr\'5Cn\'5Ct\'22\cf0 \'29\'29\'3D\'3DNULL\'29 \'7B \'2F\'2F no tokens on line\par
+        fclose\'28fp\'29\'3B   \'2F\'2F close file first\par
+        \b return\b0  NULL\'3B\par
+    \'7D\par
+    keys\'2D\'3Enumber\'3Datoi\'28token\'29\'3B \'2F\'2F first token \'3D number of keys\par
+\par
+    \b if\b0  \'28\'28layout\'3Dmalloc\'28keys\'2D\'3Enumber\'2A\b sizeof\b0 \'28ULONG\'29\'29\'29\'3D\'3DNULL\'29 \'7B \'2F\'2F can\'27t get memory\par
+        fclose\'28fp\'29\'3B\par
+        \b return\b0  NULL\'3B\par
+    \'7D\par
+    \b if\b0  \'28\'28token\'3Dstrtok\'28NULL\'2C\cf1 \'22 \'2C\'2E\'3B\'5Cr\'5Cn\'5Ct\'22\cf0 \'29\'29\'3D\'3DNULL\'29 \'7B \'2F\'2F no second token\par
+        fclose\'28fp\'29\'3B\par
+        \b return\b0  NULL\'3B\par
+    \'7D\par
+    keys\'2D\'3Ewidth\'3Datoi\'28token\'29\'2B1\'3B \'2F\'2F second token \'2D character width of key\par
+\par
+    \b if\b0  \'28\'28token\'3Dstrtok\'28NULL\'2C\cf1 \'22 \'2C\'2E\'3B\'5Cr\'5Cn\'5Ct\'22\cf0 \'29\'29\'3D\'3DNULL\'29 \'7B \'2F\'2F no third token\par
+        fclose\'28fp\'29\'3B\par
+        \b return\b0  NULL\'3B\par
+    \'7D\par
+    keys\'2D\'3Eheight\'3Datoi\'28token\'29\'2B1\'3B \'2F\'2F third token \'2D character height of key\par
+\par
+    \b while\b0  \'28\'28fgets\'28line\'2C1000\'2Cfp\'29\'29\'21\'3DNULL\'29 \'7B \'2F\'2F \b for\b0  each line in the rest of the file\par
+        token\'3Dstrtok\'28line\'2C\cf1 \'22 \'2C\'2E\'3B\'5Cr\'5Cn\'5Ct\'22\cf0 \'29\'3B \'2F\'2F get first token\par
+        curcol\'3D0L\'3B                       \'2F\'2F column \'3D 0\par
+        \b while\b0  \'28token\'21\'3DNULL\'29 \'7B \'2F\'2F \b while\b0  there is a token\par
+            \'2F\'2F set key to bits \'5B31\'2D24\'5D\'3Dline \'5B23\'2D16\'5D\'3Dcolumn \'5B15\'2D0\'5D\'3Ddepartment\par
+            layout\'5Bcurkey\'2B\'2B\'5D\'3D\'28curline\'3C\'3C24\'29\'7C\'28curcol\'3C\'3C16\'29\'7Catol\'28token\'29\'3B\par
+            curcol\'2B\'2B\'3B  \'2F\'2F next column\par
+            token\'3Dstrtok\'28NULL\'2C\cf1 \'22 \'2C\'2E\'3B\'5Cr\'5Cn\'5Ct\'22\cf0 \'29\'3B \'2F\'2F next token\par
+        \'7D\par
+        curline\'2B\'2B\'3B \'2F\'2F next line\par
+    \'7D\par
+\par
+    fclose\'28fp\'29\'3B \'2F\'2F done \'2D close file\par
+    \b return\b0  layout\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote LoadLocalPLU_Source }
+ ${\footnote LoadLocalPLU_Source }
+ +{\footnote 1048 }
+ K{\footnote LoadLocalPLU_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb LoadLocalPLU}{\v LoadLocalPLU}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL LoadLocalPLU\'28CHAR \'2Aname\'2CREMACSPLU \'2A\'2Aplulist\'29\par
+\'7B\par
+    BOOL retval\'3DTRUE\'3B               \'2F\'2F \b return\b0  value \'28set by ERROREXIT macro\'29\par
+    \b\i static\b0\i0  CHAR line\'5BMAXSTRLEN\'5D\'3B    \'2F\'2F read line buffer\par
+    INT plevel\'3B                     \'2F\'2F price level counter\par
+    REMACSPLU \'2Aplu\'3B                 \'2F\'2F current plu\par
+    FILE \'2Afp\'3B                       \'2F\'2F local plu file pointer\par
+\par
+    \b if\b0  \'28\'28fp\'3Dfopen\'28name\'2C\cf1 \'22r\'22\cf0 \'29\'29\'3D\'3DNULL\'29 \b return\b0  FALSE\'3B \'2F\'2F can\'27t open file \'2D \b return\b0  error\par
+\par
+    \b while\b0  \'28\'28fgets\'28line\'2C1000\'2Cfp\'29\'29\'21\'3DNULL\'29 \'7B  \'2F\'2F \b for\b0  each line in file\par
+        \b if\b0  \'28\'28plu\'3Dmalloc\'28\b sizeof\b0 \'28REMACSPLU\'29\'29\'29\'3D\'3DNULL\'29       ERROREXIT  \'2F\'2F get space\par
+        \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}  \'28line\'2C 0\'2C10\'2C\'26\'28plu\'2D\'3Eplu_code\'29\'29\'29     ERROREXIT  \'2F\'2F read plu code\par
+        \b if\b0  \'28\'21{\uldb GetString}{\v GetString_Source}\'28line\'2C10\'2C25\'2Cplu\'2D\'3Edesc\'29\'29            ERROREXIT  \'2F\'2F description\par
+        \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}  \'28line\'2C35\'2C 6\'2C\'26\'28plu\'2D\'3Eedate\'29\'29\'29        ERROREXIT  \'2F\'2F effective date\par
+        \b for\b0  \'28plevel\'3D0\'3Bplevel\'3C6\'3Bplevel\'2B\'2B\'29 \'7B\par
+            \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}\'28line\'2C41\'2Bplevel\'2A10\'2C10\'2C\'26\'28plu\'2D\'3Eprice\'5Bplevel\'5D\'29\'29\'29 \'2F\'2F each price\par
+                ERROREXIT\par
+        \'7D\par
+        plu\'2D\'3Enext\'3D\'2Aplulist\'3B  \'2F\'2F add at begining of list\par
+        \'2Aplulist\'3Dplu\'3B\par
+        plu\'2D\'3Edone1\'3DFALSE\'3B    \'2F\'2F \b if\b0  this is not set to TRUE by LoadReMACS PLU it wil be deleted\par
+    \'7D\par
+    fclose\'28fp\'29\'3B  \'2F\'2F dne \'2D close file\par
+\par
+    \b return\b0  retval\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote LoadPLU_Source }
+ ${\footnote LoadPLU_Source }
+ +{\footnote 1049 }
+ K{\footnote LoadPLU_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb LoadPLU}{\v LoadPLU}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL LoadPLU\'28CHAR \'2Aname\'2CPLU \'2A\'2Aplulist\'2CREMACSPLU \'2Arplulist\'29\par
+\'7B\par
+    BOOL retval\'3DTRUE\'3B       \'2F\'2F \b return\b0  value \'28set by ERROREXIT macro\'29\par
+    \b\i static\b0\i0  CHAR line\'5B1000\'5D\'3B \'2F\'2F read line buffer\par
+    REMACSPLU \'2Arplu\'3B        \'2F\'2F current ReMACS PLU\par
+    PLU \'2Aplu\'3B               \'2F\'2F current PLU\par
+    PLU \'2Anextp\'3B             \'2F\'2F next PLU\par
+    PLU \'2Aprevp\'3B             \'2F\'2F previous PLU\par
+    FILE \'2Afp\'3B               \'2F\'2F PLU file pointer\par
+\par
+    \b if\b0  \'28\'28fp\'3Dfopen\'28name\'2C\cf1 \'22r\'22\cf0 \'29\'29\'21\'3DNULL\'29 \'7B \'2F\'2F \b if\b0  open OK\par
+        \b while\b0  \'28\'28fgets\'28line\'2C1000\'2Cfp\'29\'29\'21\'3DNULL\'29 \'7B \'2F\'2F \b for\b0  each line\par
+            \b if\b0  \'28\'28plu\'3Dmalloc\'28\b sizeof\b0 \'28PLU\'29\'29\'29\'3D\'3DNULL\'29              ERROREXIT \'2F\'2F get space\par
+            \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}  \'28line\'2C 8\'2C 6\'2C\'26\'28plu\'2D\'3Eplu_code\'29\'29\'29      ERROREXIT \'2F\'2F read plu code\par
+            \b if\b0  \'28\'21{\uldb GetString}{\v GetString_Source}\'28line\'2C14\'2C10\'2Cplu\'2D\'3Estatus\'2Eas_string\'29\'29 ERROREXIT \'2F\'2F status string\par
+            \b if\b0  \'28\'21{\uldb GetString}{\v GetString_Source}\'28line\'2C24\'2C12\'2Cplu\'2D\'3Edesc1\'29\'29            ERROREXIT \'2F\'2F first description\par
+            \b if\b0  \'28\'21{\uldb GetString}{\v GetString_Source}\'28line\'2C36\'2C12\'2Cplu\'2D\'3Edesc2\'29\'29            ERROREXIT \'2F\'2F second description \'28unused\'29\par
+            \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}  \'28line\'2C48\'2C 6\'2C\'26\'28plu\'2D\'3Eprice\'5B0\'5D\'29\'29\'29      ERROREXIT \'2F\'2F price level 1\par
+            \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}  \'28line\'2C54\'2C 6\'2C\'26\'28plu\'2D\'3Eprice\'5B1\'5D\'29\'29\'29      ERROREXIT \'2F\'2F price level 2\par
+            \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}  \'28line\'2C60\'2C 6\'2C\'26\'28plu\'2D\'3Eprice\'5B2\'5D\'29\'29\'29      ERROREXIT \'2F\'2F price level 3\par
+            \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}  \'28line\'2C66\'2C 6\'2C\'26\'28plu\'2D\'3Eprice\'5B3\'5D\'29\'29\'29      ERROREXIT \'2F\'2F price level 4\par
+            \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}  \'28line\'2C72\'2C 6\'2C\'26\'28plu\'2D\'3Eprice\'5B4\'5D\'29\'29\'29      ERROREXIT \'2F\'2F price level 5\par
+            \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}  \'28line\'2C78\'2C 6\'2C\'26\'28plu\'2D\'3Eprice\'5B5\'5D\'29\'29\'29      ERROREXIT \'2F\'2F price level 6\par
+            \b if\b0  \'28\'21{\uldb GetInt}{\v GetInt_Source}   \'28line\'2C84\'2C 2\'2C\'26\'28plu\'2D\'3Eiosmtab\'5B0\'5D\'29\'29\'29    ERROREXIT \'2F\'2F iosm table 1 \'28unused\'29\par
+            \b if\b0  \'28\'21{\uldb GetInt}{\v GetInt_Source}   \'28line\'2C86\'2C 2\'2C\'26\'28plu\'2D\'3Eiosmtab\'5B1\'5D\'29\'29\'29    ERROREXIT \'2F\'2F iosm table 2 \'28unused\'29\par
+            \b if\b0  \'28\'21{\uldb GetInt}{\v GetInt_Source}   \'28line\'2C88\'2C 2\'2C\'26\'28plu\'2D\'3Eiosmtab\'5B2\'5D\'29\'29\'29    ERROREXIT \'2F\'2F iosm table 3 \'28unused\'29\par
+            \b if\b0  \'28\'21{\uldb GetInt}{\v GetInt_Source}   \'28line\'2C90\'2C 2\'2C\'26\'28plu\'2D\'3Eiosmtab\'5B3\'5D\'29\'29\'29    ERROREXIT \'2F\'2F iosm table 4 \'28unused\'29\par
+            \b if\b0  \'28\'21{\uldb GetInt}{\v GetInt_Source}   \'28line\'2C92\'2C 2\'2C\'26\'28plu\'2D\'3Eiosmtab\'5B4\'5D\'29\'29\'29    ERROREXIT \'2F\'2F iosm table 5 \'28unused\'29\par
+            \b if\b0  \'28\'21{\uldb GetInt}{\v GetInt_Source}   \'28line\'2C94\'2C 2\'2C\'26\'28plu\'2D\'3Eiosmtab\'5B5\'5D\'29\'29\'29    ERROREXIT \'2F\'2F iosm table 6 \'28unused\'29\par
+            \b if\b0  \'28\'21{\uldb GetInt}{\v GetInt_Source}   \'28line\'2C96\'2C 2\'2C\'26\'28plu\'2D\'3Eassoc_dept\'29\'29\'29    ERROREXIT \'2F\'2F associated department\par
+            \b if\b0  \'28\'21{\uldb GetInt}{\v GetInt_Source}   \'28line\'2C98\'2C 1\'2C\'26\'28plu\'2D\'3Eaction\'29\'29\'29        ERROREXIT \'2F\'2F action\par
+            rplu\'3D{\uldb FindRePLU}{\v FindRePLU_Source}\'28rplulist\'2Cplu\'2D\'3Eplu_code\'29\'3B \'2F\'2F find PLU in ReMACS list\par
+            \b if\b0  \'28rplu\'21\'3DNULL\'29 \'7B                       \'2F\'2F \b if\b0  found\par
+                plu\'2D\'3Eprice\'5B0\'5D\'3Drplu\'2D\'3Eprice\'5B0\'5D\'3B       \'2F\'2F reset pricing\par
+                plu\'2D\'3Eprice\'5B1\'5D\'3Drplu\'2D\'3Eprice\'5B1\'5D\'3B\par
+                plu\'2D\'3Eprice\'5B2\'5D\'3Drplu\'2D\'3Eprice\'5B2\'5D\'3B\par
+                plu\'2D\'3Eprice\'5B3\'5D\'3Drplu\'2D\'3Eprice\'5B3\'5D\'3B\par
+                plu\'2D\'3Eprice\'5B4\'5D\'3Drplu\'2D\'3Eprice\'5B4\'5D\'3B\par
+                plu\'2D\'3Eprice\'5B5\'5D\'3Drplu\'2D\'3Eprice\'5B5\'5D\'3B\par
+            \'7D\par
+            plu\'2D\'3Enext\'3D\'2Aplulist\'3B \'2F\'2F add to start of list\par
+            \'2Aplulist\'3Dplu\'3B\par
+        \'7D\par
+        fclose\'28fp\'29\'3B \'2F\'2F done \'2D close file\par
+    \'7D \par
+\par
+    rplu\'3Drplulist\'3B       \'2F\'2F start of ReMACS plu list\par
+    \b while\b0  \'28rplu\'21\'3DNULL\'29 \'7B \'2F\'2F \b for\b0  each item\par
+        plu\'3D{\uldb FindPLU}{\v FindPLU_Source}\'28\'2Aplulist\'2Crplu\'2D\'3Eplu_code\'29\'3B \'2F\'2F find the ReMACS PLU in the PLU list\par
+        \b if\b0  \'28plu\'3D\'3DNULL\'29 \'7B \'2F\'2F \b if\b0  not found \'2D add a \b new\b0  one\par
+            \b if\b0  \'28\'28plu\'3Dmalloc\'28\b sizeof\b0 \'28PLU\'29\'29\'29\'3D\'3DNULL\'29              ERROREXIT \'2F\'2F get space\par
+            plu\'2D\'3Eplu_code\'3Drplu\'2D\'3Eplu_code\'3B        \'2F\'2F assign values from ReMACS plu list\par
+            strcpy\'28plu\'2D\'3Estatus\'2Eas_string\'2C\cf1 \'220000000000\'22\cf0 \'29\'3B\par
+            sprintf\'28plu\'2D\'3Edesc1\'2C\cf1 \'22\'25\'2D12\'2E12s\'22\cf0 \'2Crplu\'2D\'3Edesc\'29\'3B\par
+            strcpy\'28plu\'2D\'3Edesc2\'2C\cf1 \'22            \'22\cf0 \'29\'3B\par
+            plu\'2D\'3Eprice\'5B0\'5D\'3Drplu\'2D\'3Eprice\'5B0\'5D\'3B\par
+            plu\'2D\'3Eprice\'5B1\'5D\'3Drplu\'2D\'3Eprice\'5B1\'5D\'3B\par
+            plu\'2D\'3Eprice\'5B2\'5D\'3Drplu\'2D\'3Eprice\'5B2\'5D\'3B\par
+            plu\'2D\'3Eprice\'5B3\'5D\'3Drplu\'2D\'3Eprice\'5B3\'5D\'3B\par
+            plu\'2D\'3Eprice\'5B4\'5D\'3Drplu\'2D\'3Eprice\'5B4\'5D\'3B\par
+            plu\'2D\'3Eprice\'5B5\'5D\'3Drplu\'2D\'3Eprice\'5B5\'5D\'3B\par
+            plu\'2D\'3Eiosmtab\'5B0\'5D\'3D0\'3B\par
+            plu\'2D\'3Eiosmtab\'5B1\'5D\'3D0\'3B\par
+            plu\'2D\'3Eiosmtab\'5B2\'5D\'3D0\'3B\par
+            plu\'2D\'3Eiosmtab\'5B3\'5D\'3D0\'3B\par
+            plu\'2D\'3Eiosmtab\'5B4\'5D\'3D0\'3B\par
+            plu\'2D\'3Eiosmtab\'5B5\'5D\'3D0\'3B\par
+            plu\'2D\'3Eassoc_dept\'3D0\'3B\par
+            plu\'2D\'3Eaction    \'3D0\'3B\par
+            plu\'2D\'3Enext\'3D\'2Aplulist\'3B\par
+            \'2Aplulist\'3Dplu\'3B\par
+        \'7D\par
+        rplu\'3Drplu\'2D\'3Enext\'3B \'2F\'2F next item in list\par
+    \'7D\par
+    plu\'3D\'2Aplulist\'3B         \'2F\'2F reverse the list\par
+    prevp\'3DNULL\'3B           \'2F\'2F \b new\b0  end of list\par
+    \b while\b0  \'28plu\'21\'3DNULL\'29 \'7B   \'2F\'2F \b for\b0  each item\par
+        nextp\'3Dplu\'2D\'3Enext\'3B  \'2F\'2F get next\par
+        plu\'2D\'3Enext\'3Dprevp\'3B  \'2F\'2F set next to previous\par
+        prevp\'3Dplu\'3B        \'2F\'2F set previous to current\par
+        plu\'3Dnextp\'3B        \'2F\'2F move to next item\par
+    \'7D\par
+    \'2Aplulist\'3Dprevp\'3B       \'2F\'2F point to \b new\b0  start\par
+    \par
+    \b return\b0  retval\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote LoadPrinterParams_Source }
+ ${\footnote LoadPrinterParams_Source }
+ +{\footnote 1050 }
+ K{\footnote LoadPrinterParams_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb LoadPrinterParams}{\v LoadPrinterParams}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+INT LoadPrinterParams\'28\b\i void\b0\i0 \'29\par
+\'7B\par
+    FILE \'2Afp\'3B                   \'2F\'2F printer file pointer\par
+    CHAR buffer\'5BMAXSTRLEN\'5D\'3B     \'2F\'2F buffer \b for\b0  read string\par
+\par
+    fp\'3Dfopen\'28PRINTERFILE\'2C\cf1 \'22r\'22\cf0 \'29\'3B  \'2F\'2F open the file\par
+    \b if\b0  \'28fp\'3D\'3DNULL\'29 \b return\b0  PCL\'3B   \'2F\'2F no file or error\'2C \b return\b0  \b default\b0\par
+\par
+    \b if\b0  \'28fgets\'28buffer\'2CMAXSTRLEN\'2Cfp\'29\'21\'3DNULL\'29 \'7B \'2F\'2F get string ok\par
+        \b if\b0  \'28buffer\'5B0\'5D\'3D\'3D\'27E\'27\'29 \'7B               \'2F\'2F starts with \'27E\'27 assume EPSON\par
+            fclose\'28fp\'29\'3B                     \'2F\'2F close printer file\par
+            \b return\b0  EPSON\'3B                  \par
+        \'7D\par
+    \'7D\par
+    fclose\'28fp\'29\'3B                            \'2F\'2F first \b\i char\b0\i0  \'21\'3D \'27E\'27\'2C close file\par
+    \b return\b0  PCL\'3B                            \'2F\'2F \b return\b0  \b default\b0\par
+\'7D\par
+\pard \par \page
+ #{\footnote LoadReMACSPLU_Source }
+ ${\footnote LoadReMACSPLU_Source }
+ +{\footnote 1051 }
+ K{\footnote LoadReMACSPLU_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb LoadReMACSPLU}{\v LoadReMACSPLU}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL LoadReMACSPLU\'28CHAR \'2Aname\'2CREMACSPLU \'2A\'2Aplulist\'29\par
+\'7B\par
+    BOOL retval\'3DTRUE\'3B            \'2F\'2F \b return\b0  value \'28set by ERROREXIT macro\'29\par
+    \b\i static\b0\i0  CHAR line\'5BMAXSTRLEN\'5D\'3B \'2F\'2F read line buffer\par
+    \b\i char\b0\i0  tempbuf\'5B20\'5D\'3B            \'2F\'2F temporary buffer \b for\b0  each price line\par
+    INT plevel\'3B                  \'2F\'2F current price level\par
+    REMACSPLU \'2Aplu\'3B              \'2F\'2F current ReMACS plu structure\par
+    REMACSPLU \'2Anextp\'3B            \'2F\'2F next ReMACS plu structure\par
+    REMACSPLU \'2Aprevp\'3B            \'2F\'2F previous ReMACS plu structure\par
+    FILE \'2Afp\'3B                    \'2F\'2F ReMACS PLU file pointer\par
+\par
+    \b if\b0  \'28\'28fp\'3Dfopen\'28name\'2C\cf1 \'22r\'22\cf0 \'29\'29\'3D\'3DNULL\'29 \b return\b0  FALSE\'3B \'2F\'2F can\'27t open \b return\b0  error\par
+\par
+    \b while\b0  \'28\'28fgets\'28line\'2C1000\'2Cfp\'29\'29\'21\'3DNULL\'29 \'7B   \'2F\'2F \b for\b0  each line in the file\par
+        \b if\b0  \'28\'21{\uldb GetString}{\v GetString_Source}\'28line\'2C 0\'2C 1\'2Ctempbuf\'29\'29               ERROREXIT \'2F\'2F get the first character\par
+\par
+        \b if\b0  \'28tempbuf\'5B0\'5D\'3D\'3D\'27P\'27\'29 \'7B                                      \'2F\'2F \b if\b0  it\'27s a P process line\par
+            \b if\b0  \'28\'28plu\'3Dmalloc\'28\b sizeof\b0 \'28REMACSPLU\'29\'29\'29\'3D\'3DNULL\'29    ERROREXIT \'2F\'2F get space\par
+            \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}  \'28line\'2C 1\'2C15\'2C\'26\'28plu\'2D\'3Eplu_code\'29\'29\'29  ERROREXIT \'2F\'2F read the plu code\par
+            \b if\b0  \'28\'21{\uldb GetString}{\v GetString_Source}\'28line\'2C16\'2C25\'2Cplu\'2D\'3Edesc\'29\'29         ERROREXIT \'2F\'2F description\par
+            \b if\b0  \'28\'21{\uldb GetLong}{\v GetLong_Source}  \'28line\'2C41\'2C 6\'2C\'26\'28plu\'2D\'3Eedate\'29\'29\'29     ERROREXIT \'2F\'2F effective date\par
+            \b if\b0  \'28\'21{\uldb GetInt}{\v GetInt_Source}   \'28line\'2C47\'2C10\'2C\'26\'28plevel\'29\'29\'29         ERROREXIT \'2F\'2F price level \'5B1\'2D6\'5D\par
+            \b if\b0  \'28\'21{\uldb GetString}{\v GetString_Source}\'28line\'2C67\'2C10\'2Ctempbuf\'29\'29           ERROREXIT \'2F\'2F price\par
+            {\uldb AddReMACSPLU}{\v AddReMACSPLU_Source}\'28plulist\'2Cplu\'2C\'28LONG\'29\'28atof\'28tempbuf\'29\'2A100\'2E00\'29\'2Cplevel\'2D1\'29\'3B \'2F\'2F add PLU to list\par
+        \'7D\par
+\par
+    \'7D\par
+    fclose\'28fp\'29\'3B  \'2F\'2F done\'2C close file\par
+\par
+    plu\'3D\'2Aplulist\'3B   \'2F\'2F remove redundant data \'28 any PLU not in FLT file is removed from local PLU list\'29\par
+    prevp\'3DNULL\'3B                 \'2F\'2F previous structure\par
+    \b while\b0  \'28plu\'21\'3DNULL\'29 \'7B         \'2F\'2F go through list\par
+        nextp\'3Dplu\'2D\'3Enext\'3B        \'2F\'2F get next item\par
+        \b if\b0  \'28\'21plu\'2D\'3Edone1\'29 \'7B      \'2F\'2F \b if\b0  flag has not been set\par
+            \b if\b0  \'28prevp\'3D\'3DNULL\'29 \'7B  \'2F\'2F first item\par
+                \'2Aplulist\'3Dnextp\'3B \'2F\'2F move start\par
+            \'7D \b else\b0  \'7B\par
+                prevp\'2D\'3Enext\'3Dnextp\'3B \'2F\'2F move previous item\'27s next pointer\par
+            \'7D\par
+            \'2F\'2F signal removal\par
+            {\uldb AuditLog}{\v AuditLog_Source}\'28\cf1 \'22PLU Deleted\'5Cn\'25010ld\'25\'2D25\'2E25s\'2506ld\'25010ld\'25010ld\'25010ld\'25010ld\'25010ld\'25010ld\'5Cnat\'22\cf0 \'2C\par
+                plu\'2D\'3Eplu_code\'2Cplu\'2D\'3Edesc\'2Cplu\'2D\'3Eedate\'2Cplu\'2D\'3Eprice\'5B0\'5D\'2Cplu\'2D\'3Eprice\'5B1\'5D\'2C\par
+                plu\'2D\'3Eprice\'5B2\'5D\'2Cplu\'2D\'3Eprice\'5B3\'5D\'2Cplu\'2D\'3Eprice\'5B4\'5D\'2Cplu\'2D\'3Eprice\'5B5\'5D\'29\'3B\par
+            free\'28plu\'29\'3B \'2F\'2F free associated memory\par
+        \'7D \b else\b0  \'7B\par
+            prevp\'3Dplu\'3B  \'2F\'2F this on is ok \'2D move prev pointer to here\par
+        \'7D\par
+        plu\'3Dnextp\'3B \'2F\'2F next item\par
+    \'7D\par
+\par
+    plu\'3D\'2Aplulist\'3B        \'2F\'2F reverse the list\par
+    prevp\'3DNULL\'3B          \'2F\'2F \b new\b0  end of list\par
+    \b while\b0  \'28plu\'21\'3DNULL\'29 \'7B  \'2F\'2F \b for\b0  each item\par
+        nextp\'3Dplu\'2D\'3Enext\'3B \'2F\'2F get next\par
+        plu\'2D\'3Enext\'3Dprevp\'3B \'2F\'2F set next to previous\par
+        prevp\'3Dplu\'3B       \'2F\'2F set previous to current\par
+        plu\'3Dnextp\'3B       \'2F\'2F move to next item\par
+    \'7D\par
+    \'2Aplulist\'3Dprevp\'3B      \'2F\'2F point to \b new\b0  start\par
+    \par
+    \b return\b0  retval\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote LogTime_Source }
+ ${\footnote LogTime_Source }
+ +{\footnote 1052 }
+ K{\footnote LogTime_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb LogTime}{\v LogTime}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+\b\i void\b0\i0  LogTime\'28BOOL start\'2CCHAR \'2Acc\'2CINT tid\'29\par
+\'7B\par
+    \b\i static\b0\i0  BOOL donestart\'3DFALSE\'3B    \'2F\'2F entry flag\par
+    time_t t\'3B                       \'2F\'2F \b for\b0  time stamp\par
+\par
+    t\'3Dtime\'28NULL\'29\'3B                   \'2F\'2F get time\par
+\par
+    \b if\b0  \'28start\'29 \'7B                    \'2F\'2F start of log\par
+        \b if\b0  \'28\'21donestart\'29 \'7B\par
+            printf\'28\cf1 \'22\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'5Cn\'22\cf0 \'29\'3B\par
+            printf\'28\cf1 \'22PLU Difference Log Control Centre \'25s Terminal \'25d Start \'25s\'22\cf0 \'2Ccc\'2Ctid\'2Cctime\'28\'26t\'29\'29\'3B\par
+            donestart\'3DTRUE\'3B\par
+        \'7D\par
+    \'7D \b else\b0  \'7B                        \'2F\'2F End of log\par
+        \b if\b0  \'28donestart\'29 \'7B\par
+            printf\'28\cf1 \'22PLU Difference Log Control Centre \'25s Terminal \'25d Ended \'25s\'22\cf0 \'2Ccc\'2Ctid\'2Cctime\'28\'26t\'29\'29\'3B\par
+            printf\'28\cf1 \'22\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'2D\'5Cn\'22\cf0 \'29\'3B\par
+        \'7D\par
+    \'7D\par
+\'7D\par
+\pard \par \page
+ #{\footnote main_Source }
+ ${\footnote main_Source }
+ +{\footnote 1053 }
+ K{\footnote main_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb main}{\v main}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+INT main\'28INT argc\'2C\b\i char\b0\i0  \'2Aargv\'5B\'5D\'29\par
+\'7B\par
+    PLU  \'2Aoplu\'3B              \'2F\'2F current backup plu\par
+    PLU  \'2Aoplulist \'3DNULL\'3B    \'2F\'2F backup plu list\par
+    PLU  \'2Aplu\'3B               \'2F\'2F current plu\par
+    PLU  \'2Aplulist  \'3DNULL\'3B    \'2F\'2F plu list\par
+    PLU  \'2Afoundplu\'3B          \'2F\'2F returned plu from find function\par
+    CHAR ctrl_centre\'5B3\'5D\'3B     \'2F\'2F Control Centre\par
+    INT  term_id\'3B            \'2F\'2F Terminal Identifier\par
+    CHAR plufile\'5BMAXSTRLEN\'5D\'3B \'2F\'2F e\'2Eg\'2E \'5CKEYMAINT\'5CXX\'5CPLU99\'2EOMR\par
+    CHAR pluback\'5BMAXSTRLEN\'5D\'3B \'2F\'2F e\'2Eg\'2E \'5CKEYMAINT\'5CXX\'5CPLU99\'2EBAK\par
+    INT  pindex\'3B             \'2F\'2F price level index counter\par
+\par
+    \b if\b0  \'28\'28argc\'3C3\'29\'7C\'7C\'28strlen\'28argv\'5B1\'5D\'29\'3E2\'29\'29 \'7B \par
+        fprintf\'28stdout\'2C\cf1 \'22Invalid arguments\'21\'5CnUsage\'3A\'5Cn       \'25s CONTROL_CENTRE TERMINAL\'5Cnpress a key\'2E\'2E\'2E\'22\cf0 \'2Cargv\'5B0\'5D\'29\'3B\par
+        getch\'28\'29\'3B\par
+        \b return\b0  1\'3B\par
+    \'7D\par
+\par
+    strcpy\'28ctrl_centre\'2Cargv\'5B1\'5D\'29\'3B \'2F\'2F save control centre \'26 terminal identifier\par
+    term_id    \'3Datoi\'28argv\'5B2\'5D\'29\'3B\par
+\par
+    \'2F\'2F set paths\par
+    sprintf\'28plufile\'2CPLUFILE\'2Cctrl_centre\'2Cterm_id\'2C\cf1 \'22OMR\'22\cf0 \'29\'3B\par
+    sprintf\'28pluback\'2CPLUBACK\'2Cctrl_centre\'2Cterm_id\'29\'3B\par
+\par
+    {\uldb LoadPLU}{\v LoadPLU_Source}\'28plufile\'2C\'26\'28plulist\'29\'2CNULL\'29\'3B  \'2F\'2F load current plu file\par
+    {\uldb LoadPLU}{\v LoadPLU_Source}\'28pluback\'2C\'26\'28oplulist\'29\'2CNULL\'29\'3B \'2F\'2F load backup plu file\par
+\par
+    plu\'3Dplulist\'3B        \'2F\'2F start of list\par
+    \b while\b0  \'28plu\'21\'3DNULL\'29 \'7B \'2F\'2F \b for\b0  each item\par
+        foundplu\'3D{\uldb FindPLU}{\v FindPLU_Source}\'28oplulist\'2Cplu\'2D\'3Eplu_code\'29\'3B \'2F\'2F find in backup\par
+        \b if\b0  \'28foundplu\'3D\'3DNULL\'29 \'7B  \'2F\'2F not found \'2D Added\par
+            {\uldb LogTime}{\v LogTime_Source}\'28TRUE\'2Cctrl_centre\'2Cterm_id\'29\'3B \'2F\'2F output log Entry\par
+            printf\'28\cf1 \'22Added PLU Code \'25ld\'5Cn\'22\cf0 \'2Cplu\'2D\'3Eplu_code\'29\'3B\par
+        \'7D\par
+        plu\'3Dplu\'2D\'3Enext\'3B \'2F\'2F next item\par
+    \'7D\par
+    oplu\'3Doplulist\'3B      \'2F\'2F start of backup list\par
+    \b while\b0  \'28oplu\'21\'3DNULL\'29 \'7B \'2F\'2F \b for\b0  each item\par
+        foundplu\'3D{\uldb FindPLU}{\v FindPLU_Source}\'28plulist\'2Coplu\'2D\'3Eplu_code\'29\'3B \'2F\'2F find in current list\par
+        \b if\b0  \'28foundplu\'3D\'3DNULL\'29 \'7B  \'2F\'2F not found \'2D Deleted\par
+            {\uldb LogTime}{\v LogTime_Source}\'28TRUE\'2Cctrl_centre\'2Cterm_id\'29\'3B \'2F\'2F output log Entry\par
+            printf\'28\cf1 \'22Deleted PLU Code \'25ld\'5Cn\'22\cf0 \'2Coplu\'2D\'3Eplu_code\'29\'3B \par
+        \'7D\par
+        oplu\'3Doplu\'2D\'3Enext\'3B\par
+    \'7D\par
+    plu\'3Dplulist\'3B       \'2F\'2F next item\par
+    \b while\b0  \'28plu\'21\'3DNULL\'29 \'7B \'2F\'2F \b for\b0  each item \par
+        foundplu\'3D{\uldb FindPLU}{\v FindPLU_Source}\'28oplulist\'2Cplu\'2D\'3Eplu_code\'29\'3B\par
+        \b if\b0  \'28foundplu\'21\'3DNULL\'29 \'7B \'2F\'2F \b if\b0  found check price changes\par
+            \b for\b0  \'28pindex\'3D0\'3Bpindex\'3C6\'3Bpindex\'2B\'2B\'29 \'7B\par
+                \b if\b0  \'28plu\'2D\'3Eprice\'5Bpindex\'5D\'21\'3Dfoundplu\'2D\'3Eprice\'5Bpindex\'5D\'29 \'7B\par
+                    {\uldb LogTime}{\v LogTime_Source}\'28TRUE\'2Cctrl_centre\'2Cterm_id\'29\'3B \'2F\'2F output log Entry\par
+                    printf\'28\cf1 \'22PLU \'25ld Price Change at Level \'25d From \'253ld\'2E\'2502ld To \'253ld\'2E\'2502ld\'5Cn\'22\cf0 \'2C\par
+                        plu\'2D\'3Eplu_code\'2Cpindex\'2B1\'2Cfoundplu\'2D\'3Eprice\'5Bpindex\'5D\'2F100\'2Cfoundplu\'2D\'3Eprice\'5Bpindex\'5D\'25100\'2C\par
+                        plu\'2D\'3Eprice\'5Bpindex\'5D\'2F100\'2Cplu\'2D\'3Eprice\'5Bpindex\'5D\'25100\'29\'3B\par
+                \'7D\par
+            \'7D\par
+        \'7D\par
+        plu\'3Dplu\'2D\'3Enext\'3B \'2F\'2F next item\par
+    \'7D\par
+    {\uldb LogTime}{\v LogTime_Source}\'28FALSE\'2Cctrl_centre\'2Cterm_id\'29\'3B \'2F\'2F output log Footer\par
+    \b return\b0  0\'3B \'2F\'2F \b return\b0  OK\par
+\'7D\par
+\pard \par \page
+ #{\footnote SaveConfig_Source }
+ ${\footnote SaveConfig_Source }
+ +{\footnote 1054 }
+ K{\footnote SaveConfig_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb SaveConfig}{\v SaveConfig}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL SaveConfig\'28CHAR \'2Aname\'2CCONFIG \'2A\'2Acfglist\'2CBOOL freelist\'29\par
+\'7B\par
+    FILE \'2Afp\'3B       \'2F\'2F configuation file pointer\par
+    CONFIG \'2Acfg\'3B    \'2F\'2F current item\par
+\par
+    \b if\b0  \'28\'28cfglist\'3D\'3DNULL\'29\'7C\'7C\'28\'2Acfglist\'3D\'3DNULL\'29\'29\par
+        \b return\b0  FALSE\'3B           \'2F\'2F empty list\'2C or error \'2D \b return\b0  ERROR\par
+\par
+    \b if\b0  \'28\'28fp\'3Dfopen\'28name\'2C\cf1 \'22w\'22\cf0 \'29\'29\'3D\'3DNULL\'29 \'2F\'2F can\'27t open\par
+        \b return\b0  FALSE\'3B               \'2F\'2F \b return\b0  ERROR\par
+\par
+    cfg\'3D\'2Acfglist\'3B                   \'2F\'2F point to start of list\par
+    \b while\b0  \'28cfg\'21\'3DNULL\'29 \'7B             \'2F\'2F \b for\b0  each item in list\par
+        fprintf\'28fp\'2C\cf1 \'22\'2503d\'25\'2D15\'2E15s\'2502d\'25\'2D15\'2E15s\'25\'2D3\'2E3s\'5Cn\'22\cf0 \'2C\par
+            cfg\'2D\'3Ectrl_centre\'2C\par
+            cfg\'2D\'3Ecc_desc    \'2C\par
+            cfg\'2D\'3Eterm_id    \'2C\par
+            cfg\'2D\'3Eterm_desc  \'2C\par
+            cfg\'2D\'3Eterm_type  \'29\'3B\par
+        cfg\'3Dcfg\'2D\'3Enext\'3B          \'2F\'2F next item\par
+    \'7D\par
+\par
+    fclose\'28fp\'29\'3B \'2F\'2F close file\par
+\par
+    \b if\b0  \'28freelist\'29 {\uldb FreeCFGList}{\v FreeCFGList_Source}\'28cfglist\'29\'3B \'2F\'2F free associated memory\par
+    \b return\b0  TRUE\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote SaveDepartment_Source }
+ ${\footnote SaveDepartment_Source }
+ +{\footnote 1055 }
+ K{\footnote SaveDepartment_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb SaveDepartment}{\v SaveDepartment}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL SaveDepartment\'28CHAR \'2Aname\'2CDEPARTMENT \'2A\'2Adeptlist\'2CINT numbkey\'2CBOOL freelist\'29\par
+\'7B\par
+    FILE \'2Afp\'3B         \'2F\'2F the department file pointer\par
+    DEPARTMENT \'2Adept\'3B \'2F\'2F the current department\par
+    INT kindex\'3B       \'2F\'2F key index counter\par
+\par
+    \b if\b0  \'28\'28fp\'3Dfopen\'28name\'2C\cf1 \'22w\'22\cf0 \'29\'29\'3D\'3DNULL\'29 \'2F\'2F can\'27t open \'2D \b return\b0  error\par
+        \b return\b0  FALSE\'3B\par
+\par
+    \b if\b0  \'28\'28deptlist\'3D\'3DNULL\'29\'7C\'7C\'28\'2Adeptlist\'3D\'3DNULL\'29\'29 \'7B \'2F\'2F no department info\par
+        \b for\b0  \'28kindex\'3D0\'3Bkindex\'3Cnumbkey\'3Bkindex\'2B\'2B\'29 \'7B \'2F\'2F create empty dept\'2E file\par
+            fprintf\'28fp\'2C\cf1 \'2200000000\'2502d\'25s\'25s\'25\'2D8\'2E8s\'2506ld\'2506ld\'2506ld\'25d0000000000\'5Cn\'22\cf0 \'2C\par
+                kindex\'2B1\'2C\cf1 \'2200000000\'22\cf0 \'2C\cf1 \'2200\'22\cf0 \'2C\cf1 \'22\'22\cf0 \'2C0L\'2C0L\'2C0L\'2C1\'29\'3B\par
+        \'7D\par
+        fclose\'28fp\'29\'3B \'2F\'2F done \'2D close file\par
+        \b return\b0  TRUE\'3B\par
+    \'7D\par
+\par
+    \b for\b0  \'28kindex\'3D0\'3Bkindex\'3Cnumbkey\'3Bkindex\'2B\'2B\'29 \'7B \'2F\'2F output in key order\par
+        dept\'3D{\uldb FindDept}{\v FindDept_Source}\'28\'2Adeptlist\'2Ckindex\'2B1\'29\'3B \'2F\'2F find the department structure\par
+        \b if\b0  \'28dept\'21\'3DNULL\'29 \'7B   \par
+            \'2F\'2F \b if\b0  key is a single shot\par
+            \b if\b0  \'28\'21strcmp\'28dept\'2D\'3Estatus\'2Eas_string\'2C\cf1 \'2201550040\'22\cf0 \'29\'29 \'7B\par
+                fprintf\'28fp\'2C\cf1 \'2200000000\'2502d\'25s\'25s\'25\'2D8\'2E8s\'2506ld\'2506ld\'2506ld\'25d0000000000\'5Cn\'22\cf0 \'2C\par
+                    dept\'2D\'3Edept_number\'2C\cf1 \'2201550040\'22\cf0 \'2C\cf1 \'2200\'22\cf0 \'2C\cf1 \'22\'22\cf0 \'2C\par
+                    dept\'2D\'3Eosp_code\'5B0\'5D\'2Cdept\'2D\'3Eosp_code\'5B1\'5D\'2Cdept\'2D\'3Eosp_code\'5B2\'5D\'2C0\'29\'3B\par
+            \'7D \b else\b0  \'7B \'2F\'2F otherwise save as menu\par
+                \b if\b0  \'28strcmp\'28dept\'2D\'3Estatus\'2Eas_string\'2C\cf1 \'2200000000\'22\cf0 \'29\'29 \'7B\par
+                    fprintf\'28fp\'2C\cf1 \'2200000000\'2502d\'25s\'25s\'25\'2D8\'2E8s\'2506ld\'2506ld\'2506ld\'25d0000000000\'5Cn\'22\cf0 \'2C\par
+                        dept\'2D\'3Edept_number\'2C\cf1 \'2201550050\'22\cf0 \'2C\cf1 \'2200\'22\cf0 \'2Cdept\'2D\'3Edesc\'2C0L\'2C0L\'2C0L\'2C0\'29\'3B\par
+                \'7D \b else\b0  \'7B \'2F\'2F or empty \'28deleted\'29 key\par
+                    fprintf\'28fp\'2C\cf1 \'2200000000\'2502d\'25s\'25s\'25\'2D8\'2E8s\'2506ld\'2506ld\'2506ld\'25d0000000000\'5Cn\'22\cf0 \'2C\par
+                        kindex\'2B1\'2C\cf1 \'2200000000\'22\cf0 \'2C\cf1 \'2200\'22\cf0 \'2C\cf1 \'22\'22\cf0 \'2C0L\'2C0L\'2C0L\'2C1\'29\'3B\par
+                \'7D\par
+            \'7D\par
+        \'7D \b else\b0  \'7B \'2F\'2F not found \'2D create \b new\b0 \'2C empty key\par
+            fprintf\'28fp\'2C\cf1 \'2200000000\'2502d\'25s\'25s\'25\'2D8\'2E8s\'2506ld\'2506ld\'2506ld\'25d0000000000\'5Cn\'22\cf0 \'2C\par
+                kindex\'2B1\'2C\cf1 \'2200000000\'22\cf0 \'2C\cf1 \'2200\'22\cf0 \'2C\cf1 \'22\'22\cf0 \'2C0L\'2C0L\'2C0L\'2C1\'29\'3B\par
+        \'7D\par
+    \'7D\par
+    fclose\'28fp\'29\'3B \'2F\'2F done \'2D close file\par
+\par
+    \b if\b0  \'28freelist\'29 {\uldb FreeDeptList}{\v FreeDeptList_Source}\'28deptlist\'29\'3B \'2F\'2F free associated memory\par
+    \b return\b0  TRUE\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote SaveLocalPLU_Source }
+ ${\footnote SaveLocalPLU_Source }
+ +{\footnote 1056 }
+ K{\footnote SaveLocalPLU_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb SaveLocalPLU}{\v SaveLocalPLU}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL SaveLocalPLU\'28CHAR \'2Aname\'2CREMACSPLU \'2A\'2Aplulist\'2CBOOL freelist\'29\par
+\'7B\par
+    FILE \'2Afp\'3B       \'2F\'2F local plu file pointer\par
+    REMACSPLU \'2Aplu\'3B \'2F\'2F current plu\par
+\par
+    \b if\b0  \'28\'28plulist\'3D\'3DNULL\'29\'7C\'7C\'28\'2Aplulist\'3D\'3DNULL\'29\'29 \'2F\'2F empty or invalid ptr \'2D \b return\b0  error\'3B\par
+        \b return\b0  FALSE\'3B\par
+\par
+    \b if\b0  \'28\'28fp\'3Dfopen\'28name\'2C\cf1 \'22w\'22\cf0 \'29\'29\'3D\'3DNULL\'29 \'2F\'2F can\'27t open file \'2D \b return\b0  error\par
+        \b return\b0  FALSE\'3B\par
+\par
+    plu\'3D\'2Aplulist\'3B   \'2F\'2F start of list\par
+    \b while\b0  \'28plu\'21\'3DNULL\'29 \'7B \'2F\'2F \b for\b0  each item\par
+        fprintf\'28fp\'2C\cf1 \'22\'25010ld\'25\'2D25\'2E25s\'2506ld\'25010ld\'25010ld\'25010ld\'25010ld\'25010ld\'25010ld\'5Cn\'22\cf0 \'2C\par
+            plu\'2D\'3Eplu_code\'2C\par
+            plu\'2D\'3Edesc\'2C\par
+            plu\'2D\'3Eedate\'2C\par
+            plu\'2D\'3Eprice\'5B0\'5D\'2C\par
+            plu\'2D\'3Eprice\'5B1\'5D\'2C\par
+            plu\'2D\'3Eprice\'5B2\'5D\'2C\par
+            plu\'2D\'3Eprice\'5B3\'5D\'2C\par
+            plu\'2D\'3Eprice\'5B4\'5D\'2C\par
+            plu\'2D\'3Eprice\'5B5\'5D\'29\'3B\par
+        plu\'3Dplu\'2D\'3Enext\'3B  \'2F\'2F next item\par
+    \'7D \par
+\par
+    fclose\'28fp\'29\'3B \'2F\'2F done \'2D close file\par
+\par
+    \b if\b0  \'28freelist\'29 {\uldb FreeReMACSPLUList}{\v FreeReMACSPLUList_Source}\'28plulist\'29\'3B \'2F\'2F free associated memory\par
+    \b return\b0  TRUE\'3B\par
+\'7D\par
+\pard \par \page
+ #{\footnote SavePLU_Source }
+ ${\footnote SavePLU_Source }
+ +{\footnote 1057 }
+ K{\footnote SavePLU_Source }
+\keepn\f0\fs40\par\cf8\b source code  {\uldb SavePLU}{\v SavePLU}\b0\par\pard
+\f1\cf0\fs20\tx500\tx1000\tx1500\tx2000\tx2500\tx3000\tx3500\tx4000
+BOOL SavePLU\'28CHAR \'2Aname\'2CPLU \'2A\'2Aplulist\'2CDEPARTMENT \'2Adeptlist\'2CBOOL freelist\'29\par
+\'7B\par
+    FILE \'2Afp\'3B   \'2F\'2F PLU file pointer\par
+    PLU \'2Aplu\'3B   \'2F\'2F current PLU\par
+    INT pindex\'3B \'2F\'2F price level index counter\par
+    INT tindex\'3B \'2F\'2F iosm table index counter\par
+\par
+    \b if\b0  \'28\'28plulist\'3D\'3DNULL\'29\'7C\'7C\'28\'2Aplulist\'3D\'3DNULL\'29\'29 \b return\b0  FALSE\'3B \'2F\'2F empty or invalid \'2D \b return\b0  error\par
+\par
+    \b if\b0  \'28\'28fp\'3Dfopen\'28name\'2C\cf1 \'22w\'22\cf0 \'29\'29\'3D\'3DNULL\'29 \b return\b0  FALSE\'3B \'2F\'2F can\'27t open \'2D \b return\b0  error\par
+\par
+    plu\'3D\'2Aplulist\'3B           \'2F\'2F start of list\par
+    \b while\b0  \'28plu\'21\'3DNULL\'29 \'7B     \'2F\'2F \b for\b0  each item in list\par
+        fprintf\'28fp\'2C\cf1 \'2200000000\'2506ld\'25s\'25\'2D12\'2E12s\'25\'2D12\'2E12s\'22\cf0 \'2C\par
+            plu\'2D\'3Eplu_code\'2Cplu\'2D\'3Estatus\'2Eas_string\'2Cplu\'2D\'3Edesc1\'2Cplu\'2D\'3Edesc2\'29\'3B\par
+\par
+        \b for\b0  \'28pindex\'3D0\'3Bpindex\'3C6\'3Bpindex\'2B\'2B\'29  \'2F\'2F \b for\b0  each price level\par
+            fprintf\'28fp\'2C\cf1 \'22\'2506ld\'22\cf0 \'2Cplu\'2D\'3Eprice\'5Bpindex\'5D\'29\'3B\par
+\par
+        \b for\b0  \'28tindex\'3D0\'3Btindex\'3C6\'3Btindex\'2B\'2B\'29  \'2F\'2F \b for\b0  iosm table item\par
+            fprintf\'28fp\'2C\cf1 \'22\'2502d\'22\cf0 \'2Cplu\'2D\'3Eiosmtab\'5Btindex\'5D\'29\'3B\par
+\par
+        plu\'2D\'3Eaction\'3D4\'3B \'2F\'2F set to always replace\par
+\par
+        \'2F\'2F \b if\b0  item is not 0 and a menu then save as\'2Dis\par
+        \b if\b0  \'28 \'28plu\'2D\'3Eassoc_dept\'21\'3D0\'29\par
+        \'26\'26 {\uldb ismenu}{\v ismenu_Source}\'28{\uldb FindDept}{\v FindDept_Source}\'28deptlist\'2Cplu\'2D\'3Eassoc_dept\'29\'29 \'29 \'7B\par
+            fprintf\'28fp\'2C\cf1 \'22\'2502d\'25d0000000000\'5Cn\'22\cf0 \'2Cplu\'2D\'3Eassoc_dept\'2Cplu\'2D\'3Eaction\'29\'3B\par
+        \'7D \b else\b0  \'7B \'2F\'2F otherwise set associated department to 99\par
+            fprintf\'28fp\'2C\cf1 \'22\'2502d\'25d0000000000\'5Cn\'22\cf0 \'2C99\'2Cplu\'2D\'3Eaction\'29\'3B\par
+        \'7D\par
+        plu\'3Dplu\'2D\'3Enext\'3B \'2F\'2F next item\par
+    \'7D\par
+\par
+    fclose\'28fp\'29\'3B \'2F\'2F done \'2D close file\par
+\par
+    \b if\b0  \'28freelist\'29 {\uldb FreePLUList}{\v FreePLUList_Source}\'28plulist\'29\'3B \'2F\'2F free associated memory\par
+    \b return\b0  TRUE\'3B\par
+\'7D\par
+\pard \par \page
+}

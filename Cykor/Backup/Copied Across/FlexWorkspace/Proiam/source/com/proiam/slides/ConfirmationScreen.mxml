@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml"
+	label="Confirmation Screen" 
+	width="100%" height="100%" 
+	backgroundImage="@Embed(source='embedded/ConfirmationScreen.jpg')" backgroundSize="100%"
+	creationComplete="onCreationComplete(event)"
+	verticalScrollPolicy="off" xmlns:slides="com.proiam.slides.*">
+	<mx:Metadata>
+        [Event(name="nextClicked", type="flash.events.Event")]
+        [Event(name="orignChange", type="flash.events.Event")]
+        [Event(name="destinationChange", type="flash.events.Event")]
+        [Event(name="contactChange", type="flash.events.Event")]
+        [Event(name="infoClicked", type="flash.events.Event")]
+    </mx:Metadata>
+		
+	<mx:Script>
+		<![CDATA[
+			import mx.core.UIComponent;
+			import mx.controls.Image;
+			import com.proiam.mails.ItemData;
+			import flash.events.Event;
+			import com.cykorsystems.utils.*;
+			private var addressData:ItemData;
+			public function SetItemData(value:ItemData,tariffData:String,validDestAddress:Boolean=true,validOriginAddress:Boolean=true):void {
+				addressData=value
+				originBox.title="Origin adddress";
+				originBox.text=addressData.origin.asText();
+				destBox.title="Destination adddress";
+				destBox.text=addressData.destination.asText();
+				destBox.error=!validDestAddress;
+				originBox.error=!validOriginAddress;
+				contactBox.title="Contact information" 
+				contactBox.catagory="Origin:\n\nDest:";
+				contactBox.text=addressData.origin.contact()+"\n"+addressData.destination.contact();
+				postageBox.title="Postage and services";
+				postageBox.catagory="Postage:\n\nServices:";
+				postageBox.text=(addressData.postage!=""?addressData.postage:"None found")+"\n\n"+
+											    (addressData.services!=""?addressData.services:"None found");
+			    infoBox.title="Parcel information";
+			    infoBox.catagory="Weight:\nSize:\nLen+Girth:\nType:"; 
+			    infoBox.text=addressData.weight.lbOzString+"\n"+
+			    						addressData.dimensions.inchesString()+"\n"+
+			    						addressData.dimensions.girthInInches()+"\n"+
+			    						addressData.dimensions.itemType(addressData.weight.weightInOunces);
+			    tariffBox.title="Tariff Information";
+			    tariffBox.catagory="Source:\nDest:\nZone:\nInterBMC:\nOrigin:";
+			    tariffBox.text=tariffData;
+			    itemImage.source=addressData.imageFile;
+			    itemImage.addEventListener(Event.COMPLETE,imageLoaded);
+			    
+			}
+			private function imageLoaded(event:Event):void {
+			    var scale:Number=itemImage.height/itemImage.contentHeight;
+			    itemOverImage.graphics.clear();
+			    itemOverImage.graphics.lineStyle(2,0x0000C0);//0xB2D2C7);
+			    var inRect:Rectangle=addressData.destination.inRect;
+			    itemOverImage.graphics.drawEllipse	((inRect.left-(inRect.width*0.15))*scale,(inRect.top-(inRect.height*0.15))*scale,
+			    																	inRect.width*1.3*scale,inRect.height*1.3*scale);
+			    inRect=addressData.origin.inRect;
+			    itemOverImage.graphics.drawEllipse	((inRect.left-(inRect.width*0.15))*scale,(inRect.top-(inRect.height*0.15))*scale,
+			    																	inRect.width*1.3*scale,inRect.height*1.3*scale);
+			}
+			private function onCreationComplete(event:Event):void {
+				UIUtils.addExpand(originBox,1.1,1);
+				UIUtils.addExpand(destBox,1.1,20);
+				UIUtils.addExpand(contactBox,1.1,20);
+			}			
+			public function fireNextClicked(event:MouseEvent):void {
+                dispatchEvent(new Event("nextClicked"));
+            }
+			public function fireOriginChange(event:Event):void {
+                dispatchEvent(new Event("orignChange"));
+            }
+			public function fireDestinationChange(event:Event):void {
+                dispatchEvent(new Event("destinationChange"));
+            }
+			public function fireContactChange(event:Event):void {
+                dispatchEvent(new Event("contactChange"));
+            }
+			public function fireInfoClicked(event:Event):void {
+                dispatchEvent(new Event("infoClicked"));
+            }
+		]]>
+	</mx:Script>
+ 	<mx:Canvas x="832" y="626" width="133" height="89" click="fireNextClicked(event);" buttonMode="true"/>
+ 	<slides:ConfButton id="originBox"  x="752" y="135" click="fireOriginChange(event);" />
+ 	<slides:ConfButton id="destBox"  x="752" y="303"  click="fireDestinationChange(event);"/>
+ 	<slides:CCatButton id="contactBox"  x="752" y="473"  click="fireContactChange(event);"/>
+ 	<slides:CCatButton id="postageBox" x="520" y="474" />
+ 	<slides:CCatButton id="infoBox" x="289" y="474" click="fireInfoClicked(event);"/>
+ 	<slides:CCatButton id="tariffBox" x="58" y="474" />
+ 	<mx:Canvas id="itemImageCanvas" x="58" y="135" width="675" height="316" borderStyle="solid" borderThickness="2" borderColor="#B2D2C7"	>
+ 	 	<mx:Image x="0" y="0" width="100%" height="100%" id="itemImage" scaleContent="true"/>
+ 	 	<mx:Canvas x="0" y="0" width="100%" height="100%" id="itemOverImage"/>
+ 	</mx:Canvas>
+</mx:Canvas>

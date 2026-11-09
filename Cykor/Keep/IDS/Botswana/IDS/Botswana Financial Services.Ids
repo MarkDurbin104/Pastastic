@@ -1,0 +1,3157 @@
+//PLU_MOOAdviceRecipient
+//PLU_MOOAdvicePayment
+
+//******************************************************************************************//
+//*                                                                                        *//
+//*                           Botswana Postal Service                                      *//
+//*                                                                                        *//
+//*                             Financial Services                                         *//
+//*                                                                                        *//
+//******************************************************************************************//
+
+LookUps {
+   IntSpdCash {
+     SubGroup { 'Money Order' }
+     Range { 50, 100, 300, 500, 1000 }
+     Value { 5, 10, 20, 25, 50 }
+   }
+
+}
+
+// ----
+
+LogFormats {
+   MOOAdviceRecipient { 'Name',MOOAdviceRecipientFee }
+   MOOAdvicePayment { 'Name',MOOAdvicePaymentFee }
+   MOTransmission { 'Name',MOTransmissionFee }
+}
+
+// ----
+
+Domains {
+
+  PostalOrderBulkPayCompany {
+    Title     { 'Company Name' }
+    Prompt    { 'Company Name' }
+    Hint      { 'Enter the Company Name' }
+    Error     { 'Enter a Valid Company Name' }
+    Format    { Mask {'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'} }
+    InputFrom { 'Keyboard' }
+  }
+
+  PostalOrderBulkPayRepName {
+    Title     { 'Representative Name'               }
+    Prompt    { 'Representative Name'               }
+    Hint      { 'Enter the Representative''s Name'  }
+    Error     { 'Enter a Valid Representative Name' }
+    Format    { Mask {'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'} }
+    InputFrom { 'Keyboard'                          }
+  }
+
+  PostalOrderBulkPayRepID {
+    Title     { 'Representative Identification'               }
+    Prompt    { 'Representative Identification'               }
+    Hint      { 'Enter the Representative''s Identification'  }
+    Error     { 'Enter a Valid Representative Identification' }
+    Format    { Mask {'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'} }
+    InputFrom { 'Keyboard'                                    }
+  }
+
+  DestinationValue {
+    Title  { 'Destination Value' }
+    Prompt { 'Destination Value' }
+    Hint   { 'Enter the Destination Value' }
+    Error  { 'Enter a Valid Destination Value' }
+    Format { Range { '0,99999999' } }
+    InputFrom { 'Keyboard' }
+   }
+
+   Commission {
+      Title  { 'Commission' }
+      Prompt { 'Commission' }
+      InputFrom {
+         'Params'
+      }
+      TotalIn { TotalFee }
+   }
+   DollarRate{
+      Title  { 'Dollar exchange Rate' }
+      Prompt { 'Dollar exchange Rate' }
+      Hint   { 'Enter the Commission' }
+      Error  { 'Enter a Valid Commission' }
+   }
+
+   DollarComm{
+      Title  { 'Commission in Dollars' }
+      Prompt { 'Commission in Dollars' }
+      Hint   { 'Enter the Commission' }
+      Error  { 'Enter a Valid Commission' }
+   }
+
+
+   MOTransmissionFee {
+      Title     { 'Transmission Fee' }
+      Prompt    { 'Transmission Fee' }
+      InputFrom { Params }
+      TotalIn   { TotalFee }
+   }
+
+   MOOAdviceRecipientFee {
+      Title     { 'Advise Recipient Fee' }
+      Prompt    { 'Advise Recipient Fee' }
+      InputFrom { Params }
+      TotalIn   { TotalFee }
+   }
+
+   MOOAdvicePaymentFee {
+      Title     { 'Advice Payment Fee' }
+      Prompt    { 'Advice Payment Fee' }
+      InputFrom { Params }
+      TotalIn   { TotalFee }
+   }
+
+
+   MonOrdModFee {
+     Title     { 'Money Order Modify Fee'    }
+     Prompt    { 'Modify Fee'                }
+     Hint      { 'Enter the Modify Fee'      }
+     Error     { 'Invalid Modify Fee'        }
+     Format    { Currency { 0,9999999999 }   }
+     InputFrom { 'Keyboard'                  }
+   }
+
+   POSerialNumber {
+      Title  { 'Serial Number' }
+      Prompt { 'Serial Number' }
+      Hint   { 'Enter the Serial Number' }
+      Error  { 'Enter a Valid Serial Number' }
+      Format {
+         Mask { '99999999999' }
+      }
+      InputFrom { 'Keyboard' }
+   }
+
+   MOPayOffice {
+      Title  { 'Payment Office' }
+      Prompt { 'Payment Office' }
+      Hint   { 'Select the Payment Office' }
+      Error  { 'Select the Payment Office' }
+      Format {
+         PickList  { 'PickList.MoneyOrderOffices' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   Identification {
+      Title { 'Identification' }
+      Prompt { 'Enter Details of Identification Used' }
+      Hint { 'Enter Details of Identification Used^e.g PASSPORT No. 500161289 or ID CARD 1234567' }
+      Error { 'Invalid Identification ' }
+      Format { Mask {'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'} }
+      InputFrom { 'Keyboard' }
+   }
+
+   MOValue {
+      Title  { 'Value' }
+      Prompt { 'Value' }
+      Hint   { 'Enter the Value' }
+      Error  { 'Enter a Valid Value' }
+      Format {
+         Mask { 'xxxxxxxxxxxxxxxxxxxx' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   MOIssueOffice {
+      Title  { 'Issuing Office' }
+      Prompt { 'Issuing Office' }
+      Hint   { 'Select the Issuing Office' }
+      Error  { 'Select the Issuing Office' }
+      Format {
+         PickList  { 'PickList.MoneyOrderOffices' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+   MOIssueDate {
+      Title { 'Issue Date' }
+      Prompt { 'Enter the issue date range' }
+      Hint { 'Enter the issue date range in the format^050201-080201 or 050201 i.e. 5th Feb 2001' }
+      Error { 'Invalid issue date range' }
+      Format { None }
+      InputFrom { 'Keyboard' }
+   }
+
+   MOSenderName {
+      Title { 'Sender''s Name' }
+      Prompt { 'Enter The Sender''s Name' }
+      Hint { 'Enter The Sender''s Name' }
+      Error { 'Invalid Sender''s Name' }
+      Format { 'xxxxxxxxxxxxxxxxxxxxxxxxx' }
+      InputFrom { 'Keyboard' }
+   }
+
+   MOSenderStreet {
+      Title { 'Sender''s Street' }
+      Prompt { 'Enter The Sender''s Street' }
+      Hint { 'Enter The Sender''s Street' }
+      Error { 'Invalid Sender''s Street' }
+      Format { None }
+      InputFrom { 'Keyboard' }
+   }
+
+   MOSenderPOBox {
+      Title { 'Sender''s POBox Number' }
+      Prompt { 'Enter The Sender''s POBox Number' }
+      Hint { 'Enter The Sender''s POBox Number' }
+      Error { 'Invalid Sender''s POBox Number' }
+      Format { None }
+      InputFrom { 'Keyboard' }
+   }
+
+   MOSenderTelephone {
+      Title { 'Sender''s Telephone Number' }
+      Prompt { 'Enter The Sender''s Telephone Number' }
+      Hint { 'Enter The Sender''s Telephone Number' }
+      Error { 'Invalid Sender''s Telephone Number' }
+      Format { None }
+      InputFrom { 'Keyboard' }
+   }
+
+   MOSenderMessage {
+      Title { 'Sender''s Message' }
+      Prompt { 'Enter The Sender''s Message' }
+      Hint { 'Enter The Sender''s Message' }
+      Error { 'Invalid Sender''s Message' }
+      Format { None }
+      InputFrom { 'Keyboard' }
+   }
+
+   MOPayeeName {
+      Title { 'Payee''s Name' }
+      Prompt { 'Enter The Payee''s Name' }
+      Hint { 'Enter The Payee''s Name' }
+      Error { 'Invalid Payee''s Name' }
+      Format { None }
+      InputFrom { 'Keyboard' }
+   }
+
+   MOPayeeStreet {
+      Title { 'Payee''s Street' }
+      Prompt { 'Enter The Payee''s Street' }
+      Hint { 'Enter The Payee''s Street' }
+      Error { 'Invalid Payee''s Street' }
+      Format { None }
+      InputFrom { 'Keyboard' }
+   }
+
+   MOPayeePOBox {
+      Title { 'Payee''s POBox Number' }
+      Prompt { 'Enter The Payee''s POBox Number' }
+      Hint { 'Enter The Payee''s POBox Number' }
+      Error { 'Invalid Payee''s POBox Number' }
+      Format { None }
+      InputFrom { 'Keyboard' }
+   }
+
+   MOPayeeTelephone {
+      Title { 'Payee''s Telephone Number' }
+      Prompt { 'Enter The Payee''s Telephone Number' }
+      Hint { 'Enter The Payee''s Telephone Number' }
+      Error { 'Invalid Payee''s Telephone Number' }
+      Format { None }
+      InputFrom { 'Keyboard' }
+   }
+
+   MOResultsList {
+      Title  { 'Results List' }
+      Prompt { 'Results List' }
+      Hint   { 'Select a Money Order from the list' }
+      Error  { 'Invalid Money Order' }
+      Format {
+         PickList  { '' }
+      }
+      InputFrom {
+         'Keyboard'
+      }
+   }
+
+}
+
+
+// ----
+
+Snippets {
+
+  PostalOrderBulkPayEXECUTE {
+    InsertBetween { '{SetProgStart}','{SetProgEnd}' }
+    CodeBlock {
+    [*
+      AdditionalInfo:='';
+    *]
+    }
+  }
+
+  PostalOrderBulkPayNOTIFY {
+    InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+    CodeBlock {
+    [*
+      if Name = 'Next Postal Order' then
+      begin
+        if ProdForm.Validate then
+        begin
+          //save this postal orders details
+          if StrToFloatDef(ProdForm.POValue.Text,0) <> 0 then
+          begin
+            With TPackStringList.Create do
+            begin
+              try
+                PackText:=AdditionalInfo; //previous postal orders
+                Add(ProdForm.POSerialNumber.Text);
+                Add(ProdForm.PostalOrderValue.Text);
+                Add(ProdForm.POValue.Text);
+                AdditionalInfo := PackText;
+              finally
+                Free;
+              end;
+            end; //with TPackStringList
+          end;  //PO Value filled
+
+          //blank the screen
+          ProdForm.POSerialNumber.Text    := '';
+          ProdForm.PostalOrderValue.Text  := '';
+          ProdForm.POValue.Text           := '';
+          ProdForm.TotalFee.Text          := '0.00';
+
+          MoveFocusTo(ProdForm.POSerialNumber);
+          FlagComplete(true);  // already validated
+          FUIEventSink.DataChanged(Self,GetFormData(ProdForm),not ValidateOK);
+
+        end;  //if validate
+        Exit;
+      end;  //IF NAME = 'Next Postal Order'
+    *]
+    }
+  }
+
+  PostalOrderBulkPayLOG {
+    InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+    CodeBlock {
+    [*
+      //description
+      TxnLog.LogTransaction(Index, 0, Get_PLU, 0, 0, Get_Description, '', Get_ProgramID, Enumerate(ProdForm));
+      Inc(Index);
+
+      //company
+      TxnLog.LogTransaction(Index, 0, Get_PLU, 0, 0,
+                            ProdForm.PostalOrderBulkPayCompany.Text,
+                            '', Get_ProgramID, '');
+      Inc(Index);
+      // representative
+      TxnLog.LogTransaction(Index, 0, Get_PLU, 0, 0,
+                            ProdForm.PostalOrderBulkPayRepName.Text,
+                            ', ID - ' + ProdForm.PostalOrderBulkPayRepId.Text, Get_ProgramID, '');
+      Inc(Index);
+
+      //log each recorded PO
+      With TPackStringList.Create do
+      begin
+        try
+          Packtext := AdditionalInfo; //grab previously entered POs
+
+          //save the last postal orders details only if not already added by barcode trigger
+          //Trigger barcode adds all Ser Numbers to list if not alrady in list
+          if StrToFloatDef(ProdForm.POValue.Text,0) <> 0 then
+          begin
+            Add(ProdForm.POSerialNumber.Text);
+            Add(ProdForm.PostalOrderValue.Text);
+            Add(ProdForm.POValue.Text);
+            AdditionalInfo := PackText;
+          end;  //PO Value filled
+
+          //extract fields in groups of four
+          //0 = POSerialNumber
+          //1 = PostalOrderValue
+          //2 = POValue
+
+          While (AdditionalInfo <> '') and (Count > 0) do
+          begin
+            TxnLog.LogTransaction(Index, 1, Get_PLU,
+                                  -StrToCurrDef(Strings[2],0),
+                                  -StrToCurrDef(Strings[2],0),
+                                  'No ' + Strings[0], //serial number
+                                  '',  // MOIssueOffice
+                                  Get_ProgramID, '');
+            Inc(Index);
+            Delete(0);Delete(0);Delete(0);  //delete the stored PO  (3 fields)
+          end;
+        finally
+          Free;
+        end;
+
+      end;
+      if CombineList <> nil then
+        CombineList.LogTransactions(Index,TxnLog);
+       *]
+     }
+   }
+
+
+  MoneyOrderUses {
+    InsertBetween { '{UsesStart}','{UsesEnd}' }
+    CodeBlock {
+      [*
+         uses stdctrls;
+      *]
+    }
+  }
+
+   ChangeCaptionPosExecute {
+      InsertBetween { '{PostExecuteStart}','{PostExecuteEnd}' }
+      CodeBlock {
+      [*
+
+         if ProdForm.FindComponent('COREMoneyOrderNumberLabel') <> nil then
+            TLabel( ProdForm.FindComponent('COREMoneyOrderNumberLabel')).Caption := 'Order Number';
+
+         if ProdForm.FindComponent('SerialNumberLabel') <> nil then
+            TLabel( ProdForm.FindComponent('SerialNumberLabel')).Caption := 'Order Number';
+
+         if ProdForm.FindComponent('CORESerialNumberLabel') <> nil then
+            TLabel( ProdForm.FindComponent('CORESerialNumberLabel')).Caption := 'Order Number';
+
+      *]
+      }
+   }
+
+   PreCeasePaymnetPostVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+         if Result then
+          try
+            StrToDate( COREMOIssueDate.Text ) ;
+          except
+            MoveFocusTo( COREMOIssueDate );
+            Result := False ;
+          end ;
+         TotalFee.Text := CurrToStrF( StrToCurrDef( CORERefundFee.Text, 0 ), ffnumber, 2 ) ;
+      *]
+      }
+   }
+
+   PreAOPAfterIssuePostVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+         TotalFee.Text := CurrToStrF( StrToCurrDef( MOOAdvicePaymentFee.Text, 0 ), ffnumber, 2 ) ;
+      *]
+      }
+   }
+
+   MoneyOrderRefundPostVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+         if Result then
+          try
+            StrToDate( COREMOIssueDate.Text ) ;
+          except
+            MoveFocusTo( COREMOIssueDate );
+            Result := False ;
+          end ;
+      *]
+      }
+   }
+
+   CeasePaymnetLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               StrToCurrDef(ProdForm.CORERefundFee.Text,0), // Value
+               StrToCurrDef(ProdForm.CORERefundFee.Text,0), // Price
+               Get_Description, // Description
+               ProdForm.CORESerialNumber.Text, // Additional Info
+               Get_ProgramID, // ProgID
+               Enumerate(ProdForm)); // Domain Info
+         Inc(Index);
+
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0, // Value
+               0, // Price
+               'Value  '+ProdForm.COREValueNoTotal.Text, // Description
+               '', // Additional Info
+               Get_ProgramID, // ProgID
+               Enumerate(ProdForm)); // Domain Info
+         Inc(Index);
+
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               0, // PLU
+               0, // Value
+               0, // Price
+               'Issue Date - ', // Description
+               ProdForm.COREMOIssueDate.Text, // Additional Info
+               '', // ProgID
+               ''); // Domain Info
+         Inc(Index);
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               0, // PLU
+               0, // Value
+               0, // Price
+               'Office - ', // Description
+               ProdForm.COREMOPayOffice.Text, // Additional Info
+               '', // ProgID
+               ''); // Domain Info
+         Inc(Index);
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+
+   AOPAfterIssueLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               StrToCurrDef(ProdForm.MOOAdvicePaymentFee.Text,0), // Value
+               StrToCurrDef(ProdForm.MOOAdvicePaymentFee.Text,0), // Price
+               Get_Description, // Description
+               '', // Additional Info
+               Get_ProgramID, // ProgID
+               Enumerate(ProdForm)); // Domain Info
+         Inc(Index);
+
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0, // Value
+               0, // Price
+               'Order No. '+ProdForm.CORESerialNumber.Text+'  Value  '+ProdForm.COREValueNoTotal.Text, // Description
+               '', // Additional Info
+               Get_ProgramID, // ProgID
+               Enumerate(ProdForm)); // Domain Info
+         Inc(Index);
+
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               0, // PLU
+               0, // Value
+               0, // Price
+               'Payee''s Name - ', // Description
+               ProdForm.COREMOPayeeName.Text, // Additional Info
+               '', // ProgID
+               ''); // Domain Info
+         Inc(Index);
+
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               0, // PLU
+               0, // Value
+               0, // Price
+               'Payment Office - ', // Description
+               ProdForm.COREMOPayOffice.Text, // Additional Info
+               '', // ProgID
+               ''); // Domain Info
+         Inc(Index);
+
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+
+   MoneyOrderRefundLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               -StrToCurrDef(ProdForm.COREValue.Text,0), // Value
+               -StrToCurrDef(ProdForm.COREValue.Text,0), // Price
+               Get_Description, // Description
+               ProdForm.CORESerialNumber.Text, // Additional Info
+               Get_ProgramID, // ProgID
+               Enumerate(ProdForm)); // Domain Info
+         Inc(Index);
+
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               0, // PLU
+               0, // Value
+               0, // Price
+               'Issue Date - ', // Description
+               ProdForm.COREMOIssueDate.Text, // Additional Info
+               '', // ProgID
+               ''); // Domain Info
+         Inc(Index);
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               0, // PLU
+               0, // Value
+               0, // Price
+               'Office - ', // Description
+               ProdForm.COREMOPayOffice.Text, // Additional Info
+               '', // ProgID
+               ''); // Domain Info
+         Inc(Index);
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+   MOChangeRecipientLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+
+      TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          Get_PLU, // PLU
+          FQuantity*StrToCurrDef(ProdForm.COREStandardFee.Text,0), // Value
+          StrToCurrDef(ProdForm.COREStandardFee.Text,0), // Price
+          Get_Description, // Description
+          '  '+' '+ProdForm.CORESerialNumber.Text, // Additional Info
+          Get_ProgramID, // ProgID
+          Enumerate(ProdForm)); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          0, // PLU
+          0, // Value
+          0, // Price
+          'Value ', // Description
+          ProdForm.COREValueNoTotal.Text, // Additional Info
+          '', // ProgID
+          ''); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          0, // PLU
+          0, // Value
+          0, // Price
+          'Original Name ', // Description
+          ProdForm.COREOriginalName.Text, // Additional Info
+          '', // ProgID
+          ''); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          0, // PLU
+          0, // Value
+          0, // Price
+          'Original Address ', // Description
+          ProdForm.COREOriginalAddress.Text, // Additional Info
+          '', // ProgID
+          ''); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          0, // PLU
+          0, // Value
+          0, // Price
+          'New Name ', // Description
+          ProdForm.CORENewName.Text, // Additional Info
+          '', // ProgID
+          ''); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          0, // PLU
+          0, // Value
+          0, // Price
+          'New Address ', // Description
+          ProdForm.CORENewAddress.Text, // Additional Info
+          '', // ProgID
+          ''); // Domain Info
+    Inc(Index);
+   TxnLog.LogTransaction(
+          Index,
+          FQuantity, // Quantity
+          0, // PLU
+          0, // Value
+          0, // Price
+          'New Telephone ', // Description
+          ProdForm.CORENewTelephone.Text, // Additional Info
+          '', // ProgID
+          ''); // Domain Info
+    Inc(Index);
+    if CombineList <> nil then
+       CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+
+ CoreSerialNumberChangeMaskExec
+ { InsertBetween { '{IsListStart}'
+                   '{IsListEnd}'
+                  }
+       CodeBlock { [*
+                     Prodform.CORESerialNumber.Validation := 'Mask(9999999)' ;
+                   *]
+                  }
+  }
+
+ CoreMoneyOrderNumberChangeMaskExec
+ { InsertBetween { '{IsListStart}'
+                   '{IsListEnd}'
+                  }
+       CodeBlock { [*
+                     Prodform.COREMoneyOrderNumber.Validation := 'Mask(9999999)' ;
+                   *]
+                  }
+  }
+
+   DomMoneyOrderValVar {
+         InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+         CodeBlock {
+         [*
+            var
+            TotalValue : Real ;
+            TotalCommission : Real;
+
+         *]
+         }
+   }
+
+  DomMoneyOrderVal {
+    InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+    CodeBlock {[*
+      Result := True;
+      CheckDomain(CORESerialNumber,CORESerialNumber.ValidationComplete, Result);
+      CheckDomain(COREValue,COREValue.ValidationComplete, Result);
+      CheckDomain(COREPayeesSearchName,COREPayeesSearchName.ValidationComplete, Result);
+      CheckDomain(COREPayeesOtherNames,COREPayeesOtherNames.Text <> '', Result);
+      CheckDomain(COREMOPayOffice,COREMOPayOffice.Text <> '', Result);
+      CheckDomain(COREPayeesPOBox,COREPayeesPOBox.Text <> '', Result);
+      CheckDomain(CORESendersSearchName,CORESendersSearchName.ValidationComplete, Result);
+      CheckDomain(CORESendersOtherNames,CORESendersOtherNames.ValidationComplete, Result);
+      TotalValue := StrToCurrDef( CoreValue.Text, 0 ) ;
+      TotalCommission := 0 ;
+      while TotalValue > 500 do
+      begin
+       TotalCommission :=TotalCommission + StrToCurrDef( LookUp('Value','50000','DomMoneyOrder',COREValue,Result), 0 );
+       TotalValue := TotalValue - 500 ;
+      end ;
+      TotalCommission :=TotalCommission + StrToCurrDef( LookUp('Value',CurrToStr(TotalValue*100) ,'DomMoneyOrder',COREValue,Result), 0 );
+      CORECommission.Text := CurrToStrF( TotalCommission, ffNumber, 2 );
+    *]}
+  }
+
+   IntMoneyOrderVal {
+         InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+         CodeBlock {
+         [*
+             Result:=CheckMaskEdits(Self);
+             TotalValue := StrToCurrDef( COREMoneyOrderValue.Text, 0 ) ;
+
+             TotalCommission := 0 ;
+             while TotalValue > 500 do
+             begin
+               TotalCommission :=TotalCommission + StrToCurrDef( LookUp('Value','50000','IntMoneyOrder',COREMoneyOrderValue,Result), 0 );
+               TotalValue := TotalValue - 500 ;
+             end ;
+             TotalCommission :=TotalCommission + StrToCurrDef( LookUp('Value',CurrToStr(TotalValue*100) ,'IntMoneyOrder',COREMoneyOrderValue,Result), 0 );
+             CORECommission.Text := CurrToStrF( TotalCommission, ffNumber, 2 );
+         *]
+         }
+   }
+
+
+    CeasePaymnetExec {
+         InsertBetween { '{SetProgStart}','{SetProgEnd}' }
+         CodeBlock {
+         [*
+             ProdForm.CORERefundFee.Text := '15.40' ;
+         *]
+         }
+      }
+
+    AOPAfterIssueExec {
+         InsertBetween { '{SetProgStart}','{SetProgEnd}' }
+         CodeBlock {
+         [*
+             ProdForm.MOOAdvicePaymentFee.Text := '15.40' ;
+         *]
+         }
+      }
+
+   PostalOrderTrigger {
+     InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+     CodeBlock {
+       [*
+          procedure TriggerBarCode(Value:String); override;
+       *]
+     }
+   }
+
+//--------
+
+   PostalOrderTriggerDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+
+     procedure {PClass}TFinPostalOrderProduct.TriggerBarCode(Value:String);
+         var
+            b : WordBool ;
+         begin
+            ProdForm.POSerialNumber.Text := Value ;
+
+            SetExecData( GetExecData, b );
+
+            //CompleteExecute ;
+
+            if not FlagComplete(ProdForm.Validate) then
+               FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False)
+            else
+            begin
+               FUIEventSink.Restore ;
+            end ;
+
+         end;
+
+       *]
+     }
+   }
+
+   PostalOrderPayTriggerDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+
+         procedure {PClass}TPostalOrderPayProduct.TriggerBarCode(Value:String);
+         begin
+            ProdForm.POSerialNumber.Text := Value;
+            MoveFocusTo(ProdForm.PostalOrderValue);
+            FlagComplete(ProdForm.Validate);
+            FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+         end;
+
+       *]
+     }
+   }
+
+   PostalOrderBulkPayTriggerDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+
+         procedure {PClass}TPostalOrderPayProduct.TriggerBarCode(Value:String);
+         begin
+            ProdForm.POSerialNumber.Text := Value;
+            MoveFocusTo(ProdForm.PostalOrderValue);
+//            FlagComplete(ProdForm.Validate);
+            FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+            if (ProdForm.Validate) then
+            begin
+              //save this postal orders details
+              if StrToFloatDef(ProdForm.POValue.Text,0) <> 0 then
+              begin
+                With TPackStringList.Create do
+                begin
+                  try
+                    PackText:=AdditionalInfo; //previous postal orders
+                    Add(ProdForm.POSerialNumber.Text);
+                    Add(ProdForm.PostalOrderValue.Text);
+                    Add(ProdForm.POValue.Text);
+                    AdditionalInfo := PackText;
+                  finally
+                    Free;
+                  end;
+                end; //with TPackStringList
+              end;  //PO Value filled
+
+              //blank the screen
+              ProdForm.POSerialNumber.Text    := '';
+              ProdForm.PostalOrderValue.Text  := '';
+              ProdForm.POValue.Text           := '';
+              ProdForm.TotalFee.Text          := '0.00';
+
+              FlagComplete(True);
+              FUIEventSink.DataChanged(Self,GetFormData(ProdForm),not ValidateOK);
+            end
+            else
+            begin
+              ProdForm.POSerialNumber.Text    := Value;
+              ProdForm.PostalOrderValue.Text  := '';
+              ProdForm.POValue.Text           := '';
+              ProdForm.TotalFee.Text          := '0.00';
+              if (AdditionalInfo <> '') then  // allow to complete as long as at leat one PO added to list
+                FlagComplete(True);
+            end;
+         end;
+
+       *]
+     }
+   }
+
+   PostalOrderPayExecute {
+     InsertBetween { '{PostExecuteStart}','{PostExecuteEnd}' }
+     CodeBlock {
+       [*
+         ProdForm.PostalOrderValue.Enabled := False ;
+       *]
+     }
+   }
+
+   PostalOrderExecute {
+     InsertBetween { '{PostExecuteStart}','{PostExecuteEnd}' }
+     CodeBlock {
+       [*
+         ProdForm.PostalOrderValue.Enabled := False ;
+       *]
+     }
+   }
+
+
+//--------
+
+
+   EndorsePostalOrder {
+      InsertBetween { '{EndorseStart}','{EndorseEnd}' }
+      CodeBlock {
+      [*
+
+         FUIEventSink.DisplayInstructions(isBMPRightText,'"Insert the Postal Order into the slip printer, until the green light comes on"','Insert Postal Order');
+
+         SL:=TStringList.Create;
+         SL.Add('   ');
+         SL.Add('                                                       '+IntToStr(FUIEventSink.Office));
+         SL.Add('                                                     '+DateToStr(Now));
+         SL.Add('                                                     '+TimeToStr(Now));
+         SL.Add('                                                     '+FUIEventSink.User);
+         SL.Add('                                                       '+ProdForm.Commission.Text);
+         FUIEventSink.Endorse(0,0,2,SL.CommaText);
+         FUIEventSink.DisplayInstructions(isRestore,'','');
+
+         SL.Free; {CodeChange}
+      *]
+      }
+   }
+
+   LogPostVars {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            Value:Currency;
+            SL:TStringList;
+            Stock:IStock;
+      *]
+      }
+   }
+
+   PostalOrderLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+        Value:=StrToCurrDef(ProdForm.POValue.Text,0);
+        TxnLog.LogTransaction(Index,FQuantity,5100000+Trunc(Value*10),Value,Value,Get_Description,
+                               ' No. '+ProdForm.POSerialNumber.Text,
+                               Get_ProgramID,Enumerate(ProdForm));
+        Inc( Index ) ;
+        Stock:=CreateStock;
+        TxnLog.WriteTransaction('StockUsed',0,FQuantity,5100000+Trunc(Value*10),
+                                 FQuantity*Value,Value,'P'+CurrToStrF(Value, ffNumber, 2)+' Postal Order','','Product.PostOrd','');
+        try
+          Stock.AdjustStockLevel(TxnLog.User,'*'+'P'+CurrToStrF(Value, ffNumber, 2)+' Postal Order',0-FQuantity);
+        except
+         On E : Exception do
+          RaiseGUIDException('{849CE0E4-D769-467C-96E8-45AD4F1A8F2D}', E);  // Error in Stock
+        end;
+        Stock := nil ;
+
+        Value:=StrToCurrDef(ProdForm.Commission.Text,0);
+        Inc( Index ) ;
+        TxnLog.LogTransaction(Index,FQuantity,100021,Value,Value,ProdForm.Commission.PromptLabel.Caption,
+                             '','PostOrd Commission','LogSeparatelyToAccounts');
+        Inc( Index );
+        if CombineList <> nil then
+          CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+   PostalOrderValidateVar {
+      InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            n : integer ;
+      *]
+      }
+   }
+
+   PostalOrderPayValidateVar {
+      InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            n : integer ;
+            ValueP : String ;
+      *]
+      }
+   }
+
+
+  PostalOrderValidate {
+    InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+    CodeBlock {
+    [*
+      Result := False;
+      MoveFocusTo(ProdForm.POSerialNumber);
+      if POSerialNumber.Text <> '' then
+      begin
+        for n := 0 to PostalOrderValue.Items.Count -1 do                            //go through picklist of denominations
+        begin
+          if 'P'+CurrToStr( StrToInt( LeftString( POSerialNumber.Text,5) ) / 100 )  //12345999999 -> ValueP = P123.45
+             = DelimitedString( PostalOrderValue.Items[n], ' ', False) then         //compare up to space in description
+          begin
+            Result := True;
+            PostalOrderValue.Text := PostalOrderValue.Items[n] ;
+            POValue.Text:=Copy(PostalOrderValue.Text,2,Pos(' ',PostalOrderValue.Text)-2);
+            Commission.Text:=LookUp('Value',CurrToStr(StrToCurr(POValue.Text)*10),'DomPostalOrder',POValue,Result)
+          end;
+        end;
+      end;
+
+      if not Result then
+      begin
+        PostalOrderValue.Text := '';
+        POValue.Text          := '';
+        Commission.Text       := '';
+      end;
+
+      Result := CheckMaskEdits(self);
+    *]
+    }
+  }
+
+
+  PostalOrderPayValidate {
+    InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+    CodeBlock {
+    [*
+      MoveFocusTo(ProdForm.POSerialNumber);
+      PostalOrderValue.Text := '';
+      POValue.Text := '';
+
+      //check previously scanned barcodes
+      With TPackStringList.Create do
+      begin
+        try
+          PackText := BaseProduct.AdditionalInfo;
+          If IndexOf(ProdForm.POSerialNumber.Text) <> -1 then
+            ProdForm.POSerialNumber.Text := ''
+        finally
+          Free;
+        end;
+      end;
+
+      if POSerialNumber.Text <> '' then
+      begin
+        ValueP := 'P'+CurrToStr( StrToInt( LeftString( POSerialNumber.Text,5) ) / 100 );  //build the denomination pattern
+        for n := 0 to PostalOrderValue.Items.Count -1 do
+        begin
+          if  LeftOf( PostalOrderValue.Items[n], ValueP+' ') then //found the denomination
+          begin
+            PostalOrderValue.Text := PostalOrderValue.Items[n] ;
+            POValue.Text :=Copy(PostalOrderValue.Text,2,Pos(' ',PostalOrderValue.Text)-2)
+          end;
+        end;
+      end;
+      Result := CheckMaskEdits(Self) and (POValue.Text <> '');
+
+    *]
+    }
+  }
+
+   IntPostalOrderPayValidate {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+         try
+
+            if ( POVAlueInput.Text <> '' ) and  ( ExchangeRate.Text <> '' ) and Result then
+            begin
+               StrToCurr( ExchangeRate.Text ) ;
+               GrossPay.Text := CurrToStr( StrToCurr(  POValueInput.Text ) * StrToCurr( ExchangeRate.Text ) );
+            end ;
+         except
+            GrossPay.Text := '' ;
+            result := False ;
+         end ;
+
+      *]
+      }
+   }
+
+   IntPostalOrderPayExecute {
+     InsertBetween { '{PostExecuteStart}','{PostExecuteEnd}' }
+     CodeBlock {
+       [*
+         ProdForm.GrossPay.Ignore := True ;
+       *]
+     }
+   }
+
+
+   PostalOrderPayLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+       [*
+          TxnLog.LogTransaction(
+                 Index,
+                 FQuantity, // Quantity
+                 Get_PLU, // PLU
+                 FQuantity*(-StrToCurrDef(ProdForm.TotalFee.Text,0)), // Value
+                 -StrToCurrDef(ProdForm.TotalFee.Text,0), // Price
+                 Get_Description, // Description
+                 ' No '+ProdForm.POSerialNumber.Text, // Additional Info
+                 Get_ProgramID, // ProgID
+                 Enumerate(ProdForm)); // Domain Info
+           Inc(Index);
+           if CombineList <> nil then
+              CombineList.LogTransactions(Index,TxnLog);
+       *]
+     }
+   }
+
+   PostalOrderPayIntLogVars {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+       [*
+               var
+               PostalOrderPayIntPLU:Integer;
+       *]
+     }
+   }
+
+
+   PostalOrderPayIntLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+       [*
+
+         If ( ProdForm.RatesPosOrdCountry.Text = 'United Kingdom' )
+         then PostalOrderPayIntPLU := StrToInt(PLU_PostalOrderPayIntUK)
+         else PostalOrderPayIntPLU := StrToInt(PLU_PostalOrderPayIntOther) ;
+
+          TxnLog.LogTransaction(
+                 Index,
+                 FQuantity, // Quantity
+                 PostalOrderPayIntPLU, // PLU
+                 FQuantity*(-StrToCurrDef(ProdForm.TotalFee.Text,0)), // Value
+                 -StrToCurrDef(ProdForm.TotalFee.Text,0), // Price
+                 Get_Description, // Description
+                 '', // Additional Info
+                 Get_ProgramID, // ProgID
+                 Enumerate(ProdForm)); // Domain Info
+           Inc(Index);
+
+          TxnLog.LogTransaction(
+                 Index,
+                 1, // Quantity
+                 PostalOrderPayIntPLU, // PLU
+                 0, // Value
+                 0, // Price
+                 'Serial Number  ', // Description
+                 ProdForm.IntPosOrdSerialNumber.Text, // Additional Info
+                 Get_ProgramID, // ProgID
+                 ''); // Domain Info
+           Inc(Index);
+
+          TxnLog.LogTransaction(
+                 Index,
+                 1, // Quantity
+                 PostalOrderPayIntPLU, // PLU
+                 0, // Value
+                 0, // Price
+                 'Postal Order Value ', // Description
+                 ProdForm.POValueInput.Text, // Additional Info
+                 Get_ProgramID, // ProgID
+                 ''); // Domain Info
+           Inc(Index);
+
+           if not ProdForm.SAAuthorityNumber.Ignore
+           then begin
+                  TxnLog.LogTransaction(Index
+                                       ,1
+                                       ,PostalOrderPayIntPLU
+                                       ,0
+                                       ,0
+                                       ,'Authority Number',ProdForm.SAAuthorityNumber.Text
+                                       ,Get_ProgramID
+                                       ,'');
+                  Inc(Index);
+                end ;
+
+          TxnLog.LogTransaction(
+                 Index,
+                 1, // Quantity
+                 PostalOrderPayIntPLU, // PLU
+                 0, // Value
+                 0, // Price
+                 'Exchange Value ', // Description
+                 ProdForm.ExchangeRate.Text, // Additional Info
+                 Get_ProgramID, // ProgID
+                 ''); // Domain Info
+           Inc(Index);
+
+          TxnLog.LogTransaction(
+                 Index,
+                 1, // Quantity
+                 PostalOrderPayIntPLU, // PLU
+                 0, // Value
+                 0, // Price
+                 'Country of Origin ', // Description
+                 ProdForm.RatesPosOrdCountry.Text, // Additional Info
+                 Get_ProgramID, // ProgID
+                 ''); // Domain Info
+           Inc(Index);
+
+           if CombineList <> nil then
+              CombineList.LogTransactions(Index,TxnLog);
+       *]
+     }
+   }
+
+   DomMoneyOrderRefundLog {
+   InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+   CodeBlock {
+        [*
+      TxnLog.LogTransaction(
+             Index,
+             FQuantity, // Quantity
+             Get_PLU, // PLU
+             FQuantity*(-StrToCurrDef(ProdForm.MoneyOrderValue.Text,0)), // Value
+             -StrToCurrDef(ProdForm.MoneyOrderValue.Text,0), // Price
+             Get_Description, // Description
+             '- Number'+' '+ProdForm.MoneyOrderNumber.Text, // Additional Info
+             Get_ProgramID, // ProgID
+             Enumerate(ProdForm)); // Domain Info
+       Inc(Index);
+      TxnLog.LogTransaction(
+             Index,
+             FQuantity, // Quantity
+             Get_PLU, // PLU
+             0, // Value
+             0, // Price
+             'Sender Name - ', // Description
+             ProdForm.MOSenderName.Text, // Additional Info
+             Get_ProgramID, // ProgID
+             ''); // Domain Info
+       Inc(Index);
+       if CombineList <> nil then
+          CombineList.LogTransactions(Index,TxnLog);
+         *]
+      }
+   }
+
+   DomMoneyOrderExec {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         ProdForm.COREValue.Validation := 'Format(Currency)';
+          Prodform.CORESerialNumber.Validation := 'Mask(9999999)' ;
+         //UIEventSink.Restore ;
+
+      *]
+      }
+   }
+
+   MOChangeRecipientExec {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         Prodform.CORESerialNumber.Validation := 'Mask(9999999)' ;
+         ProdForm.COREValueNoTotal.Validation := 'Format(Currency)';
+         //UIEventSink.Restore ;
+
+      *]
+      }
+   }
+
+}
+
+Products
+{
+
+//
+//------------------------------------------------------------------------------
+//
+  DomMoneyOrder {
+    Caption     { 'Inland Money Order Issued' }
+    Description { 'Money Order Iss.' }
+    Title       { 'Inland Money Order Issued' }
+    BasedOn     { COREDomMoneyOrder }
+    Domains     { CORECommission { COREValue, 'LookUp.DomMoneyOrder' } }
+    Items {
+      'Product.MonOrdDetails'
+      'Product.MOOAdviceRecipient'
+      'Product.MOOAdvicePayment'
+      'Product.MOTransmissionFee'
+    }
+    Snippets {
+//    CoreSerialNumberChangeMaskExec
+      DomMoneyOrderExec
+      DomMoneyOrderVal
+      DomMoneyOrderValVar
+      ChangeCaptionPosExecute
+      MoneyOrderUses
+    }
+    Customer { 'Dom.Mon Order ','^','Total ','P',TotalFee }
+  }
+  IssueMoneyOrder {
+    Caption     { 'Issue Money Order' }
+    Description { 'Issue Money Order' }
+    Title       { 'Issue Money Order' }
+    BitMap  { '..\IMAGES\i3Issue.bmp' }
+    SubGroup { 'MoneyOrder' }
+    BasedOn     { COREDomMoneyOrder }
+    Domains     { CORECommission { COREValue, 'LookUp.DomMoneyOrder' } }
+    Items {
+      'Product.MonOrdDetails'
+      'Product.MOOAdviceRecipient'
+      'Product.MOOAdvicePayment'
+      'Product.MOTransmissionFee'
+    }
+    Snippets {
+//    CoreSerialNumberChangeMaskExec
+      DomMoneyOrderExec
+      DomMoneyOrderVal
+      DomMoneyOrderValVar
+      ChangeCaptionPosExecute
+      MoneyOrderUses
+    }
+    Customer { 'Issue Money Order','^','Total ','P',TotalFee }
+  }
+
+  MonOrdDetails {
+    BasedOn { COREMonOrdDetails }
+  }
+
+  DomMoneyOrderPay {
+      BasedOn { COREDomMoneyOrderPay }
+      Caption      { 'Inland Money Order Pay' }
+      Description  { 'Inland Money Order Pay' }
+      Title        { 'Inland Money Order Pay' }
+      PLU { PLU_DomMoneyOrderPay }
+      Customer { 'Ind.Mon Order  Pay','^','Total ','P',COREMOValue }
+      Snippets {
+                  ChangeCaptionPosExecute
+                  MoneyOrderUses
+      }
+   }
+
+
+//
+//---------------------------------------------------------------------------------
+//
+
+  DomMoneyOrderMod {
+      BasedOn     { COREDomMoneyOrderMod }
+      Caption     { 'Inland Money Order Modify' }
+      Title       {}
+      Customer { 'Dom.Mon Order Paid','^','Total ',TotalFee }
+   }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+  DomMoneyOrderRefund {
+     //BasedOn { COREDomMoneyOrderRefund }
+     BasedOn     { BaseFinancial }
+     Caption     { 'Domestic Money Order Refund' }
+     Description { 'Domestic Money Order Refund' }
+     Title       { 'Domestic Money Order Refund' }
+     BitMap      { 'e:\projects\botswana\images\P_DomMoneyOrderRefund.bmp'   }
+     //UnitPrice   { 10.00 }
+     Domains     {
+                  MoneyOrderNumber
+                  MOSenderName
+                  MoneyOrderValue { UnitPrice }
+                  }
+    //  LogAs       { DomMonOrdRef }
+      Snippets     { DomMoneyOrderRefundLog
+                    }
+      PLU         { PLU_DomMoneyOrderRefund }
+   }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+  IntMoneyOrder {
+     BasedOn { COREIntMoneyOrder }
+     Caption      { 'Foreign Money Order Issued' }
+     Description  { 'Foreign Money Order Issued' }
+     Title        { 'Foreign Money Order Issued' }
+     Domains       {
+                     CORECommission { COREMoneyOrderValue 'LookUp.IntMoneyOrder' }
+                   }
+     Items         {
+                     'Product.MonOrdDetails'
+              //       'Product.MOOAdviceRecipient'
+              //       'Product.MOOAdvicePayment'
+                     'Product.MOIntTransmissionFee'
+                   }
+      Snippets {
+         CoreMoneyOrderNumberChangeMaskExec
+         IntMoneyOrderVal
+         DomMoneyOrderValVar
+         ChangeCaptionPosExecute
+         MoneyOrderUses
+      }
+      Customer { 'Int.Mon Order ','^','Total ','P',TotalFee}
+     }
+
+
+//
+//---------------------------------------------------------------------------------
+//
+
+
+   ChangeRecipient {
+      BasedOn     { COREBaseMoneyOrd }
+      Caption     { 'Change of Recipient' }
+      BitMap      { '..\..\core\images\P_ChangePayeeName.bmp' }
+      Description { 'Change of Recipient' }
+      Title       { 'Change of Recipient' }
+      UnitPrice   { 15.40 }
+      Domains     {
+                     CORESerialNumber
+                     COREValueNoTotal
+                     COREOriginalName
+                     COREOriginalAddress
+                     CORENewName
+                     CORENewAddress
+                     CORENewTelephone
+                     COREStandardFee { UnitPrice }
+                   }
+      Snippets    { MOChangeRecipientExec
+                    MOChangeRecipientLog
+                    ChangeCaptionPosExecute
+                    MoneyOrderUses
+                  }
+      Customer { 'Change Recipient','^','Total ','P',TotalFee }
+      PLU         { PLU_ChangeRecipient }
+   }
+
+
+//
+//---------------------------------------------------------------------------------
+//
+
+   ChangePayeeLocation {
+      BasedOn     { COREChangePayeeLocation }
+      UnitPrice   { 30.80 }
+      PLU         { PLU_ChangePayeeLocation }
+      Snippets    {CoreSerialNumberChangeMaskExec
+                   ChangeCaptionPosExecute
+                   MoneyOrderUses
+                  }
+      Customer { 'Chg. Payee Location','^','Total ','P',TotalFee }
+   }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+   CeasePayment {
+      BasedOn     { COREBaseMoneyOrd }
+      Caption     { 'Cease Payment and Refund' }
+      BitMap      { '..\..\core\images\P_CeasePaymnet.bmp' }
+      Description { 'Cease Payment and Refund' }
+      Title       { 'Cease Payment and Refund' }
+      UnitPrice   { 15.40 }
+      Domains     {
+                     CORESerialNumber
+                     COREValueNoTotal
+                     COREMOPayOffice
+                     COREMOIssueDate
+                     CORERefundFee { UnitPrice }
+                     TotalFee
+                  }
+      Snippets    {  CoreSerialNumberChangeMaskExec
+                     CeasePaymnetLog
+                     PreCeasePaymnetPostVal
+                     CeasePaymnetExec
+                     ChangeCaptionPosExecute
+                     MoneyOrderUses
+                  }
+      Customer { 'Cease Payment/Refund','^','Total ','P',TotalFee }
+      PLU         { PLU_CeasePaymnet }
+   }
+
+
+//
+//---------------------------------------------------------------------------------
+//
+
+   AdviceOfPaymentAfterIssue {
+      SubGroup { 'CORE MoneyOrder' }
+      Caption     { 'Advice of Payment  after issue' }
+      BitMap      { '..\..\core\images\P_CeasePaymnet.bmp' }
+      Description { 'Advice of Payment after issue' }
+      Title       { 'Advice of Payment after issue' }
+      UnitPrice   { 15.40 }
+      Domains     {
+                     CORESerialNumber
+                     COREMOPayeeName
+                     COREMOPayOffice
+                     COREValueNoTotal
+                     MOOAdvicePaymentFee { UnitPrice }
+                  }
+      Snippets    {  CoreSerialNumberChangeMaskExec
+                     AOPAfterIssueLog
+//                     PreAOPAfterIssuePostVal
+ //                    AOPAfterIssueExec
+                     ChangeCaptionPosExecute
+                     MoneyOrderUses
+                  }
+      Customer    { 'Adv. Payment Issue','^','Total ','P',TotalFee }
+      PLU         { PLU_AdviceOfPaymentAfterIssue }
+   }
+
+
+//
+//---------------------------------------------------------------------------------
+//
+
+   MoneyOrderRefund {
+      BasedOn     { COREBaseMoneyOrd }
+      Caption     { 'Money Order Refund' }
+      BitMap      { '..\..\core\images\P_CeasePaymnet.bmp' }
+      Description { 'Money Order Refund' }
+      Title       { 'Money Order Refund' }
+      Domains     {
+                     CORESerialNumber
+                     COREValue
+                     COREMOPayOffice
+                     COREMOIssueDate
+                  }
+      Snippets    {  CoreSerialNumberChangeMaskExec
+                     MoneyOrderRefundLog
+                     MoneyOrderRefundPostVal
+                     ChangeCaptionPosExecute
+                     MoneyOrderUses
+                  }
+      Customer    { 'Money Order Refund','^','Total ','P',TotalFee }
+      PLU         { PLU_DomMoneyOrderRefund }
+   }
+
+
+//   CeasePaymnet {
+//      BasedOn     { CORECeasePaymnet }
+//      UnitPrice     { 10 }
+//      Snippets      {
+//                        CeasePaymnetExec
+//                    }
+//   }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+   PaymentCopy {
+      BasedOn     { COREPaymentCopy }
+      //BasedOn     { BaseFinancial }
+      //Caption     { 'Certificate Payment Copy' }
+      //BitMap      { '..\images\P_PaymentCopy.bmp' }
+      //Description { 'Certificate Payment Copy' }
+      //Title       { 'Certificate Payment Copy' }
+      //Items       { 'Product.MOOptionalService' }
+      //UnitPrice   { 5.00 }
+      //Domains     { StandardFee { UnitPrice } }
+      //LogAs       { GenericFinancial }
+      //PLU         { PLU_PaymentCopy }
+   }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+   MOTransmissionFee {
+      BasedOn     { BaseOptionalServices }
+      Caption     { 'Transmission Fee' }
+      BitMap      { '..\images\P_TelegramCharges.bmp' }
+      Description { 'Transmission Fee' }
+      Title       { 'Transmission Fee' }
+      UnitPrice   { 7.70 }
+      Domains     { MOTransmissionFee { UnitPrice } }
+      LogAs       { MOTransmission }
+      PLU         { PLU_TransmissionFee }
+   }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+   MOIntTransmissionFee {
+      BasedOn     { BaseOptionalServices }
+      Caption     { 'Transmission Fee' }
+      BitMap      { '..\images\P_TelegramCharges.bmp' }
+      Description { 'Transmission Fee' }
+      Title       { 'Transmission Fee' }
+      UnitPrice   { 23.10 }
+      Domains     { MOTransmissionFee { UnitPrice } }
+      LogAs       { MOTransmission }
+      PLU         { PLU_IntTransmissionFee }
+   }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+   MOOAdviceRecipient {
+      BasedOn     { BaseOptionalServices }
+      Caption     { 'Advice Recipient Fee' }
+      BitMap      { '..\images\P_MOORecipient.bmp' }
+      Description { 'Advice Recipient Fee' }
+      Title       { 'Advice Recipient Fee' }
+      UnitPrice   { 3.10 }
+      Domains     { MOOAdviceRecipientFee { UnitPrice } }
+      LogAs       { MOOAdviceRecipient }
+      PLU         { PLU_MOOAdviceRecipient }
+   }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+   MOOAdvicePayment {
+      BasedOn     { BaseOptionalServices }
+      Caption     { 'Advice of Payment Fee' }
+      Description { 'Advice of Payment Fee' }
+      Title       { 'Advice of Payment Fee' }
+      BitMap      { '..\images\P_MOOPayment.bmp' }
+      UnitPrice   { 7.70 }
+      Domains     { MOOAdvicePaymentFee { UnitPrice } }
+      LogAs       { MOOAdvicePayment }
+      PLU         { PLU_MOOAdvicePayment }
+   }
+
+   //MOOptionalService {
+   //   BasedOn { COREMOOptionalService }
+   //   SubGroup    { Services }
+   //   Caption     { 'Optional Service Fee' }
+   //   BitMap      { '..\images\P_MOOptionalService.bmp' }
+   //   Description { 'Optional Service Fee' }
+   //   Title       { 'Optional Service Fee' }
+   //   UnitPrice   { 2.00 }
+   //   Domains     { MOOptionalServiceFee { UnitPrice } }
+   //   LogAs       { MOOptionalService }
+   //   PLU         { PLU_MOOptionalService }
+   //}
+
+//
+//------------------------------------------------------------------------------
+//
+
+//   MOForcePaid {
+//        BasedOn { COREMOForcePaid }
+//   }
+   MOForcePaid {
+        BasedOn { COREMOForcePaid }
+        Caption     { 'Inland Money Order Paid' }
+        Description { 'Inland Money Order Paid' }
+        Title       { 'Inland M.O. Paid' }
+        PLU         { PLU_DomMoneyOrderPay }
+        Customer { 'Dom.Mon Order Paid','^','Total ','P',COREMOValue }
+        Snippets {   CoreSerialNumberChangeMaskExec
+                     ChangeCaptionPosExecute
+                     MoneyOrderUses
+                 }
+     }
+
+
+//
+//                          Pay Bulk Money Orders
+//---------------------------------------------------------------------------------
+//
+
+ BulkMOPayment { BasedOn     {  BaseFinancial                            }
+                 RegDesc     { 'Corvus Bulk Money Order Payment Product' }
+                 Caption     { 'Bulk Money Order Payment'                }
+                 Description { 'Bulk Money Order Payment'                }
+                 Title       { 'Bulk Money Order Payment'                }
+                 BitMap      { '..\images\P_BoxAnnualRent.bmp'           }
+                 Domains     {  BulkMOCompany
+                                BulkMORepName
+                                BulkMORepID
+                                Comment
+                                Amount                                   }
+                 PLU         { PLU_BulkMOPayment                         }
+                 Snippets    {
+                               BulkMOPaymentExeVar
+                               CustomerFillPO
+                               BulkMOPaymentsLog                         }
+                 Customer    { 'Bulk Money O.Payment','^','Total ','P',Amount }
+                }
+
+
+
+
+//                                Postal Order
+//---------------------------------------------------------------------------------
+//
+
+
+
+  PostalOrderBulkPay {
+    BasedOn { BaseFinancial                                   }
+    Caption { 'Pay Bulk Postal Orders'                        }
+    BitMap  { 'e:\projects\botswana\images\P_PostalOrder.bmp' }
+    Domains {
+      PostalOrderBulkPayCompany
+      PostalOrderBulkPayRepName
+      PostalOrderBulkPayRepID
+      POSerialNumber
+      PostalOrderValue
+      POValue
+    }
+    Items {
+      'Complete'
+      'Next Postal Order'
+    }
+    PLU   { PLU_PostalOrderPayBulk }
+    Snippets {
+      BulkBoxUses
+      PostalOrderBulkPayEXECUTE
+      PostalOrderPayValidate
+      PostalOrderPayValidateVar
+      PostalOrderBulkPayNOTIFY
+      PostalOrderTrigger
+      PostalOrderBulkPayTriggerDef
+      PostalOrderPayExecute
+      PostalOrderBulkPayLOG
+    }
+    Customer { 'Postal Order Pay ','^','Total ','P',TotalFee }
+  }
+
+  PostalOrderPay {
+    BasedOn     { BaseFinancial                                            }
+    Caption { 'Pay Postal Order' }
+    BitMap      { 'e:\projects\botswana\images\P_PostalOrder.bmp'          }
+    Domains {
+      POSerialNumber
+      PostalOrderValue
+      POValue
+    }
+    Items { 'Complete' }
+    PLU { PLU_PostalOrderPay }
+    Snippets {
+      BulkBoxUses
+      PostalOrderPayValidate
+      PostalOrderPayValidateVar
+      PostalOrderTrigger
+      PostalOrderPayTriggerDef
+      PostalOrderPayExecute
+      PostalOrderPayLog
+    }
+    Customer { 'Postal Order Pay ','^','Total ','P',TotalFee }
+  }
+
+  PostalOrderPayInt {
+    BasedOn     { BaseFinancial                                            }
+    Caption { 'Pay Foreign Postal Order' }
+    BitMap      { 'e:\projects\botswana\images\P_PostalOrder.bmp'          }
+    Domains {
+      IntPosOrdSerialNumber
+      RatesPosOrdCountry
+      POValueInput
+      SAAuthorityNumber
+      ExchangeRate
+         //DestinationValue
+         //GrossPay
+         //Commission
+         //DollarRate
+         //DollarComm
+         TotalFee
+      }
+      Items {
+         'Complete'
+      }
+      PLU { PLU_PostalOrderPayInt }
+      Snippets {
+         //IntPostalOrderPayExecute
+         //IntPostalOrderPayValidate
+         PostalOrderPayIntPreVal
+         PostalOrderPayIntValVar
+         PostalOrderPayIntVal
+         PostalOrderPayIntLogVars
+         PostalOrderPayIntLog
+         MoneyOrderUses
+      }
+      Customer { 'Pay Fore. Post.Order','^','Total ','P',TotalFee }
+      PLU { PLU_PostalOrderPayInt }
+   }
+
+   //PostalOrderExt {
+   //   BasedOn     { BaseFinancial                                            }
+   //   Caption { 'Postal Order Extension' }
+   //   BitMap      { 'e:\projects\botswana\images\P_PostalOrder.bmp'          }
+   //   Domains {
+   //      POValue
+   //   }
+   //   Items {
+   //      'Complete'
+   //   }
+   //   PLU { PLU_PostalOrderExt }
+   //}
+
+   PostalOrderDup {
+      BasedOn     { BaseFinancial                                            }
+      Caption { 'Duplicate Postal Order' }
+      BitMap      { 'e:\projects\botswana\images\P_PostalOrder.bmp'          }
+      Domains {
+         POValue
+      }
+      Items {
+         'Complete'
+      }
+      Customer { 'Duplicate Post.Order','^','Total ','P',TotalFee }
+      PLU { PLU_PostalOrderDup }
+   }
+
+   FinPostalOrder {
+      BasedOn     { BaseFinancial                                            }
+      Caption { 'Postal Order Issued' }
+      BitMap      { 'e:\projects\botswana\images\P_PostalOrder.bmp'          }
+      Description  { 'Postal Order Issued' }
+      Title        { 'Postal Order Issued' }
+      PLU          { PLU_PostOrd }
+      Domains {
+         POSerialNumber
+         PostalOrderValue
+         POValue
+         Commission {POValue,'LookUp.DomPostalOrder' }
+      }
+      Items {
+         'Complete'
+      }
+      PLU { PLU_FinPostalOrder }
+      Snippets {
+         EndorsePostalOrder
+         LogPostVars
+         PostalOrderLog
+         PostalOrderValidate
+         PostalOrderValidateVar
+         PostalOrderTrigger
+         PostalOrderTriggerDef
+         PostalOrderExecute
+      }
+      Customer { 'Postal Order Issued ','^','Total ','P',TotalFee }
+   }
+
+//
+//---------------------------------------------------------------------------------
+//
+
+   IntMoneyOrderPaid {
+      SubGroup { 'CORE MoneyOrder' }
+      Caption { 'Foreign Money Order Paid' }
+      Title   { 'Foreign M.O. Paid' }
+      BitMap {  '..\IMAGES\P_ExpOrdPaid.bmp' }
+      PLU          { PLU_IntMoneyOrderPaid }
+      Domains {
+         SerialNumber
+         Identification
+         IntMoneyOrderOrigin
+         MOValue
+      }
+      Items {
+         'Complete'
+      }
+      Snippets {
+         SerialNumberPostVars
+         SerialNumberPostVal
+         MOIssueUses
+         MFLogPaidVars
+         ForceMOrdLogPaid
+         ForceMOPaidTriggerDec
+         ForceMOPaidTriggerDef
+         ChangeCaptionPosExecute
+         MoneyOrderUses
+      }
+      Customer { 'Int. Mon Order Pay','^','Total ','P',MOValue}
+   }
+
+
+}
+
+Snippets {
+
+   MOIssueUses {
+      InsertBetween { '{AutoUsesStart}','{AutoUsesEnd}' }
+      CodeBlock {
+      [*
+         StringUtil,
+      *]
+      }
+   }
+
+   EndorseExpressSlip {
+      InsertBetween { '{EndorseStart}','{EndorseEnd}' }
+      CodeBlock {
+      [*
+          SL:=TStringList.Create;
+          SL.Add('                              BOTSWANA POST');
+          SL.Add('                              '+Copy(DateTimeToStr(Now),1,Length(DateTimeToStr(Now))-3));
+          SL.Add('                              '+Get_Description);
+          SL.Add('                              No: '+ProdForm.SerialNumber.Text);
+          SL.Add('                              Value: '+CurrToStrF(StrToCurr(ProdForm.Value.Text),ffNumber,2));
+          SL.Add('                              Commission: '+ProdForm.Commission.Text);
+          if ( CombineList <> nil ) and ( CombineList.IsSelected( 'Product.ExpAdvDely' ) ) then
+             SL.Add('                              Advice of Delivery Req.');
+
+
+          FUIEventSink.DisplayInstructions(isBMPRightText,'"Insert the Receipt into the slip printer, until the green light comes on"','Insert Receipt');
+          FUIEventSink.Endorse(0,0,2,SL.CommaText);
+          FUIEventSink.DisplayInstructions(isRestore,'','');
+          SL.Free;
+      *]
+      }
+   }
+
+   LogMOReport {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         ResultCR := MOReportData( ProdForm.StartDomainEdit.Text , ProdForm.EndDomainEdit.Text,
+                                   FUIEventSink.User, IntToStr(FUIEventSink.Office), FALSE );
+         try
+            ReceiptPrinter:=FUIEventSink.GetComponentReference(GUIDToString(Class_ReceiptDevice)) as IDevice;
+            ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+            ReceiptPrinter.WriteDevice(dcList5Data,ResultCR,1);
+            ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+         finally
+            ReceiptPrinter := nil;
+         end ;
+      *]
+      }
+   }
+   LogMFReport {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         ResultCR := MFReportData( ProdForm.StartDomainEdit.Text , ProdForm.EndDomainEdit.Text,
+                                   FUIEventSink.User, IntToStr(FUIEventSink.Office), FALSE );
+         try
+            ReceiptPrinter:=FUIEventSink.GetComponentReference(GUIDToString(Class_ReceiptDevice)) as IDevice;
+            ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+            ReceiptPrinter.WriteDevice(dcList5Data,ResultCR,1);
+            ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+         finally
+            ReceiptPrinter := nil;
+         end ;
+      *]
+      }
+   }
+   MOPrivVar {
+      InsertBetween { '{PrivVarDecStart}','{PrivVarDecEnd}' }
+      CodeBlock {
+      [*
+        MoneyOrders:TMoneyOrders;
+      *]
+      }
+   }
+
+
+   MOPaidUses {
+      InsertBetween { '{AutoUsesStart}','{AutoUsesEnd}' }
+      CodeBlock {
+      [*
+         Indigo3U,MOItemsU,StringUtil,Indigo3_TLB,
+      *]
+      }
+   }
+
+   MOPaidExec {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         MoneyOrders:=TMoneyOrders.Create(False);
+         ProdForm.SerialNumber.Ignore     :=False;
+         ProdForm.Identification.Ignore   :=True;
+         ProdForm.MOResultsList.Ignore    :=True;
+         ProdForm.MOSenderName.Ignore     :=True;
+         ProdForm.MOSenderStreet.Ignore   :=True;
+         ProdForm.MOSenderPOBox.Ignore    :=True;
+         ProdForm.MOSenderTelephone.Ignore:=True;
+         ProdForm.MOSenderMessage.Ignore:=True;
+         ProdForm.MOPayeeName.Ignore      :=True;
+         ProdForm.MOPayeeStreet.Ignore    :=True;
+         ProdForm.MOIssueOffice.Text:='ANY';
+      *]
+      }
+   }
+   MFPaidExec {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         MoneyOrders:=TMoneyOrders.Create(False);
+         ProdForm.SerialNumber.Ignore     :=False;
+         ProdForm.Identification.Ignore   :=True;
+         ProdForm.MOResultsList.Ignore    :=True;
+         ProdForm.MOSenderName.Ignore     :=True;
+         ProdForm.MOSenderStreet.Ignore   :=True;
+         ProdForm.MOSenderPOBox.Ignore    :=True;
+         ProdForm.MOSenderTelephone.Ignore:=True;
+         ProdForm.MOSenderMessage.Ignore:=True;
+         ProdForm.MOPayeeName.Ignore      :=True;
+         ProdForm.MOPayeeStreet.Ignore    :=True;
+         ProdForm.MFIssueOffice.Text:='ANY';
+      *]
+      }
+   }
+   MOPaidTerminate {
+      InsertBetween { '{TerminateCleanUpStart}','{TerminateCleanUpEnd}' }
+      CodeBlock {
+      [*
+      if MoneyOrders <> nil then
+      begin
+         MoneyOrders.Free;
+         MoneyOrders:=nil;
+      end;
+      *]
+      }
+   }
+   MOPaidValidate {
+      InsertBetween { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock {
+      [*
+         if not Identification.Ignore then
+            Result:=CheckMaskEdits(Self)
+         else
+            Result:=True;
+      *]
+      }
+   }
+   MOPaidEnableComplete {
+      InsertBetween { '{EnableCompleteStart}','{EnableCompleteEnd}' }
+      CodeBlock {
+      [*
+         if (ProdForm.MOResultsList.Ignore) and (ProdForm.Identification.Ignore) then
+         begin
+            FUIEventSink.DisplayItemInfo(Self,0,'','Search',0,0,True,False);
+            FUIEventSink.DisplayItemInfo(Self,1,'','Search Paid',0,0,True,False);
+         end
+         else if (Value) and (ProdForm.MOResultsList.Ignore) then
+         begin
+            FUIEventSink.DisplayItemInfo(Self,0,'','Complete',0,0,False,False);
+            FUIEventSink.DisplayItemInfo(Self,1,'','',0,0,True,False);
+         end
+         else
+         begin
+            FUIEventSink.DisplayItemInfo(Self,0,'','',0,0,True,False);
+            FUIEventSink.DisplayItemInfo(Self,1,'','',0,0,True,False);
+         end;
+      *]
+      }
+   }
+   MOPaidCompleteResitem {
+      InsertBetween { '{ItemResStart}','{ItemResEnd}' }
+      CodeBlock {
+      [*
+         riItemBase     :
+            if (ProdForm.MOResultsList.Ignore) and (ProdForm.Identification.Ignore) then
+               Result:='Search'
+            else if ValidateOK and (ProdForm.MOResultsList.Ignore) then
+               Result:=ResItem00
+            else
+               Result:='';
+         riItemBase+1   :
+            if (ProdForm.MOResultsList.Ignore) and (ProdForm.Identification.Ignore) then
+               Result:='Search Paid'
+            else
+               Result:='';
+      *]
+      }
+   }
+   MOPaidSearchClick {
+      InsertBetween { '{SwapToStart}','{SwapToEnd}' }
+      CodeBlock {
+      [*
+         if Name = 'Search' then
+         begin
+            PopulateMOList(False);
+            Exit;
+         end
+         else if Name = 'Search Paid' then
+         begin
+            PopulateMOList(True);
+            Exit;
+         end;
+      *]
+      }
+   }
+
+   MOPaidTriggerDec {
+     InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+     CodeBlock {
+       [*
+          procedure TriggerBarCode(Value:String); override;
+          procedure PopulateMOList(IncludePaid:Boolean);
+          procedure FillForm(MOItem:TMOIssued);
+          procedure GetMOValues(Value:String);
+          function MOPaidSlip:String;
+       *]
+     }
+   }
+   MOPaidTriggerDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+          procedure {PClass}TFaxOrdPaidProduct.TriggerBarCode(Value:String);
+          begin
+             GetMOValues(Value);
+          end;
+          procedure {PClass}TFaxOrdPaidProduct.PopulateMOList(IncludePaid:Boolean);
+          var
+            SL,NSL:TPackStringList;
+            MOItemList:TMOItemList;
+            MOItem:TMOIssued;
+            I:Integer;
+            IO:String;
+          begin
+             if ProdForm.MFIssueOffice.Text = 'ANY' then
+                IO:=''
+             else
+                IO:=ProdForm.MFIssueOffice.Text;
+             if IO <> '' then
+                IO:=Copy(TStringObject(ProdForm.MFIssueOffice.Items.Objects[ProdForm.MFIssueOffice.Items.IndexOf(IO)]).Value,2,999);
+             MOItemList:=TMOItemList.Create(nil);
+             if IncludePaid then
+                MOItemList.Details:=MoneyOrders.IssuedMOList(ProdForm.MOIssueDate.Text,IO,IntToStr(FUIEventSink.Office),'',ProdForm.MOValue.Text,'FAX',ProdForm.MOPayeeTelephone.Text,ProdForm.MOPayeePOBox.Text,ProdForm.SerialNumber.Text)
+             else
+                MOItemList.Details:=MoneyOrders.UnPaidMOList(ProdForm.MOIssueDate.Text,IO,IntToStr(FUIEventSink.Office),'',ProdForm.MOValue.Text,'FAX',ProdForm.MOPayeeTelephone.Text,ProdForm.MOPayeePOBox.Text,ProdForm.SerialNumber.Text);
+             if MOItemList.Count = 1 then
+             begin
+                FillForm(TMOIssued(MOItemList[0]));
+             end
+             else if MOItemList.Count > 1 then
+             begin
+                SL:=TPackStringList.Create;
+                NSL:=TPackStringList.Create;
+                for I:=0 to MOItemList.Count-1 do
+                begin
+                   MOItem:=TMOIssued(MOItemList[I]);
+                   SL.Add( '-1'); SL.Add(CurrToStrF(MOItem.Value,ffFixed,0));
+                   SL.Add('100'); SL.Add(' ');
+                   NSL.PackText:=MOItem.SendersName;
+                   SL.Add('102'); 
+                   if NSL.Count > 1 then
+                      SL.Add(NSL[1]+' '+NSL[0])
+                   else
+                      SL.Add(' ');
+                   SL.Add('372'); SL.Add('>');
+                   NSL.PackText:=MOItem.RecipientsName;
+                   SL.Add('383');
+                   if NSL.Count > 1 then
+                      SL.Add(NSL[1]+' '+NSL[0])
+                   else
+                      SL.Add(' ');
+                   SL.Add('999');
+                   SL.Add(IntToStr(I));
+                   ProdForm.MOResultsList.Items.AddObject(SL.PackText,MOItem);
+                   SL.Clear;
+                end;
+                SL.Free;
+                NSL.Free;
+                ProdForm.SerialNumber.Ignore     :=True;
+                ProdForm.MOResultsList.Ignore    :=False;
+                ProdForm.MFIssueOffice.Ignore    :=True;
+                ProdForm.MOIssueDate.Ignore      :=True;
+                ProdForm.MOPayeeTelephone.Ignore :=True;
+                ProdForm.MOPayeePOBox.Ignore     :=True;
+                ProdForm.MOValue.Ignore          :=True;
+                FUIEventSink.DisplayItemInfo(Self,0,'','',0,0,True,False);
+                FUIEventSink.DisplayItemInfo(Self,1,'','',0,0,True,False);
+                FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+             end;
+          end;
+          procedure {PClass}TFaxOrdPaidProduct.FillForm(MOItem:TMOIssued);
+          var
+            IO:String;
+            SL:TPackStringList;
+            I:Integer;
+          begin 
+             if MOItem = nil then Exit;
+             ProdForm.SerialNumber.Text       :=MOItem.Identifier;
+             ProdForm.MOValue.Text            :=CurrToStrF(MOItem.Value,ffFixed,0);
+
+             IO:=IntToStr(MOItem.IssuingOffice);
+             for I:=0 to ProdForm.MFIssueOffice.Items.Count-1 do
+             begin
+                if TStringObject(ProdForm.MFIssueOffice.Items.Objects[I]).Value = 'O'+IO then
+                begin
+                   IO:=ProdForm.MFIssueOffice.Items[I];
+                   break;
+                end;
+             end;
+             ProdForm.MFIssueOffice.Text      :=IO;
+             ProdForm.MOIssueDate.Text        :=DateToStr(MOItem.DateTime);
+             SL:=TPackStringList.Create;
+             SL.PackText:=MOItem.SendersName;
+             if SL.Count > 1 then
+                ProdForm.MOSenderName.Text       :=Trim(SL[1]+' '+SL[0]);
+             SL.PackText:=MOItem.SendersAddress;
+             if SL.Count > 1 then
+                ProdForm.MOSenderStreet.Text     :=Trim(SL[0]+' '+SL[1]);
+             if SL.Count > 2 then
+                ProdForm.MOSenderTelephone.Text  :=Trim(SL[2]);
+             if SL.Count > 3 then
+                ProdForm.MOSenderPOBox.Text      :=Trim(SL[3]);
+             ProdForm.MOSenderMessage.Text:=MOItem.Information;
+             SL.PackText:=MOItem.RecipientsName;
+             if SL.Count > 1 then
+                ProdForm.MOPayeeName.Text        :=Trim(SL[1]+' '+SL[0]);
+             SL.PackText:=MOItem.RecipientsAddress;
+             if SL.Count > 1 then
+                ProdForm.MOPayeeStreet.Text      :=Trim(SL[0]+' '+SL[1]);
+             ProdForm.MOPayeePOBox.Text       :=MOItem.RContact2;
+             ProdForm.MOPayeeTelephone.Text   :=MOItem.RContact1;
+             SL.Free;
+             
+             ProdForm.MOResultsList.Ignore    :=True;
+             ProdForm.SerialNumber.Ignore     :=False;
+             ProdForm.Identification.Ignore   :=False;
+             ProdForm.MFIssueOffice.Ignore    :=False;
+             ProdForm.MOIssueDate.Ignore      :=False;
+             ProdForm.MOSenderName.Ignore     :=False;
+             ProdForm.MOSenderStreet.Ignore   :=False;
+             ProdForm.MOSenderPOBox.Ignore    :=False;
+             ProdForm.MOSenderTelephone.Ignore:=False;
+             ProdForm.MOSenderMessage.Ignore:=False;
+             ProdForm.MOPayeeName.Ignore      :=False;
+             ProdForm.MOPayeeStreet.Ignore    :=False;
+             ProdForm.MOPayeeTelephone.Ignore :=False;
+             ProdForm.MOPayeePOBox.Ignore     :=False;
+             ProdForm.MOValue.Ignore          :=False;
+             
+             ProdForm.SerialNumber.Enabled     :=False;
+             ProdForm.MFIssueOffice.Enabled    :=False;
+             ProdForm.MOIssueDate.Enabled      :=False;
+             ProdForm.MOSenderName.Enabled     :=False;
+             ProdForm.MOSenderStreet.Enabled   :=False;
+             ProdForm.MOSenderPOBox.Enabled    :=False;
+             ProdForm.MOSenderTelephone.Enabled:=False;
+             ProdForm.MOSenderMessage.Enabled:=False;
+             ProdForm.MOPayeeName.Enabled      :=False;
+             ProdForm.MOPayeeStreet.Enabled    :=False;
+             ProdForm.MOPayeeTelephone.Enabled :=False;
+             ProdForm.MOPayeePOBox.Enabled     :=False;
+             ProdForm.MOValue.Enabled          :=False;
+             FlagComplete(ProdForm.Validate);
+             FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+          end;
+
+          procedure {PClass}TFaxOrdPaidProduct.GetMOValues(Value:String);
+          var
+            Index:Integer;
+          begin 
+             Index:=ProdForm.MOResultsList.Items.IndexOf(Value);
+             if Index >=0 then
+             begin
+                FillForm(TMOIssued(ProdForm.MOResultsList.Items.Objects[Index]));
+             end;
+          end;
+          function {PClass}TFaxOrdPaidProduct.MOPaidSlip:String;
+          var
+             SL:TStringList;
+             Status:MOStatus;
+          begin
+                SL:=TPackStringList.Create;
+                SL.Add('"Money Fax Authorization Form",""');
+                SL.Add('"",""');
+                MoneyOrders.GetMOStatus(ProdForm.SerialNumber.Text,2001,Status);
+                case Status of
+                   mosNone   : SL.Add('"Status NA",""');
+                   mosIssued : SL.Add('"Status OK",""');
+                   mosPaid   : SL.Add('"Status PP",""');
+                end;
+                SL.Add('"Serial Number","'+ProdForm.SerialNumber.Text +'"');
+                SL.Add('"Value","'        +ProdForm.MOValue.Text      +'"');
+                SL.Add('"Issue Office","' +ProdForm.MFIssueOffice.Text+'"');
+                SL.Add('"Issue Date","'   +ProdForm.MOIssueDate.Text  +'"');
+                SL.Add('"Sender:",""');
+                SL.Add('"Name  :'+ProdForm.MOSenderName     .Text+'",""');
+                SL.Add('"Street:'+ProdForm.MOSenderStreet   .Text+'",""');
+                SL.Add('"Tel   :'+ProdForm.MOSenderTelephone.Text+'",""');
+                SL.Add('"POBox :'+ProdForm.MOSenderPOBox    .Text+'",""');
+                SL.Add('"Payee:",""');
+                SL.Add('"ID    :'+ProdForm.Identification  .Text+'",""');
+                SL.Add('"Name  :'+ProdForm.MOPayeeName     .Text+'",""');
+                SL.Add('"Street:'+ProdForm.MOPayeeStreet   .Text+'",""');
+                SL.Add('"Tel   :'+ProdForm.MOPayeeTelephone.Text+'",""');
+                SL.Add('"POBox :'+ProdForm.MOPayeePOBox    .Text+'",""');
+                SL.Add('"",""');
+                SL.Add('"Message :",""');
+                SL.Add('"'+ProdForm.MOSenderMessage.Text+'",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"I Certify that I am the designated",""');
+                SL.Add('"recipient of the above Money Order",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"Name:",""');
+                SL.Add('"","__________________________________"');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"Signature:",""');
+                SL.Add('"","__________________________________"');
+                SL.Add('"",""');
+                SL.Add('"FOR OFFICIAL USE:",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"Authorised by:",""');
+                SL.Add('"","__________________________________"');
+                Result:=SL.CommaText;
+                SL.Free;
+          end;
+       *]
+     }
+   }
+   MoneyFaxLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         Value:=StrToCurrDef(ProdForm.MOValue.Text,0);
+         TxnLog.LogTransaction(Index,FQuantity,2000030,Value,Value,Get_Description,
+                               'No. '+ProdForm.SerialNumber.Text,
+                               Get_ProgramID,Enumerate(ProdForm));
+         Inc(Index);
+         Value:=StrToCurrDef(ProdForm.Commission.Text,0);
+         TxnLog.LogTransaction(Index,FQuantity,2000040,
+                           Value,Value,ProdForm.Commission.PromptLabel.Caption,
+                           '','Money Fax Comm.','');
+         Inc(Index);
+         Value:=StrToCurrDef(ProdForm.StandardFee.Text,0);
+         TxnLog.LogTransaction(Index,FQuantity,70000020,
+                           Value,Value,'Fee',
+                           '','Money Fax Fee','');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,FQuantity,0,
+                           0,0,'Pay Office '+ProdForm.PayOffice.Text+' ('+Copy(TStringObject(ProdForm.PayOffice.Items.Objects[ProdForm.PayOffice.Items.IndexOf(ProdForm.PayOffice.Text)]).Value,2,999)+')',
+                           '','Pay Office','');
+         Inc(Index);
+         TxnLog.WriteTransaction('MFIssue',0,Trunc(StrToCurrDef(ProdForm.StandardFee.Text,-1)),0,
+                                 StrToCurrDef(ProdForm.Commission.Text,0),
+                                 StrToCurrDef(ProdForm.MOValue.Text,0),
+                                 ProdForm.SerialNumber.Text,
+                                 Copy(TStringObject(ProdForm.PayOffice.Items.Objects[ProdForm.PayOffice.Items.IndexOf(ProdForm.PayOffice.Text)]).Value,2,999),
+                                 'MFIssue','');
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+   MFLogPaid {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                               0-StrToCurrDef(ProdForm.MOValue.Text,0),
+                               0-StrToCurrDef(ProdForm.MOValue.Text,0),
+                               Get_Description,ProdForm.SerialNumber.Text,Get_ProgramID,
+                               Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.LogTransaction(Index,FQuantity,0,
+                           0,0,'Issue Office '+ProdForm.MFIssueOffice.Text+' ('+Copy(TStringObject(ProdForm.MFIssueOffice.Items.Objects[ProdForm.MFIssueOffice.Items.IndexOf(ProdForm.MFIssueOffice.Text)]).Value,2,999)+')',
+                           '','Issue Office','');
+         Inc(Index);
+         ResultList:=MOPaidSlip;
+         TxnLog.WriteTransaction('*MFPaid',0,0,0,StrToCurrDef(ProdForm.MOValue.Text,0),0,
+                               ProdForm.SerialNumber.Text,ProdForm.SerialNumber.Text,'MFPaid','');
+         TxnLog.WriteTransaction('MFPaid',0,0,0,0-StrToCurrDef(ProdForm.MOValue.Text,0),0,
+                               ProdForm.SerialNumber.Text,ProdForm.SerialNumber.Text,'MFPaid Complete',ResultList);
+
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+
+         try
+            ReceiptPrinter:=FUIEventSink.GetComponentReference(GUIDToString(Class_ReceiptDevice)) as IDevice;
+            ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+            ReceiptPrinter.WriteDevice(dcList5Data,ResultList,1);
+            ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+            ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+            ReceiptPrinter.WriteDevice(dcList5Data,ResultList,1);
+            ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+         finally
+            ReceiptPrinter := nil;
+         end ;
+      *]
+      }
+   }
+   MFLogPaidVars {
+      InsertBetween { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            ResultList:String;
+            ReceiptPrinter:IDevice;
+      *]
+      }
+   }
+   MOPaidItemCount {
+      InsertBetween { '{ItemResCountStart}','{ItemResCountEnd}' }
+      CodeBlock {
+      [*
+       riCount        : Result:='2';
+      *]
+      }
+   }
+   EndorseMFSlip {
+      InsertBetween { '{EndorseStart}','{EndorseEnd}' }
+      CodeBlock {
+      [*
+          SL:=TStringList.Create;
+          SL.Add('                              BOTSWANA POST');
+          SL.Add('                              '+Copy(DateTimeToStr(Now),1,Length(DateTimeToStr(Now))-3));
+          SL.Add('                              '+Get_Description);
+          SL.Add('                              No: '+ProdForm.SerialNumber.Text);
+          SL.Add('                              Value: '+CurrToStrF(StrToCurr(ProdForm.MOValue.Text),ffNumber,2));
+          SL.Add('                              Commission: '+ProdForm.Commission.Text);
+          SL.Add('                              Fee: '+ProdForm.StandardFee.Text);
+          if ( CombineList <> nil ) and ( CombineList.IsSelected( 'Product.ExpAdvDely' ) ) then
+             SL.Add('                              Advice of Delivery Req.');
+
+
+          FUIEventSink.DisplayInstructions(isBMPRightText,'"Insert the Receipt into the slip printer, until the green light comes on"','Insert Receipt');
+          FUIEventSink.Endorse(0,0,2,SL.CommaText);
+          FUIEventSink.DisplayInstructions(isRestore,'','');
+          SL.Free;
+      *]
+      }
+   }
+
+   MoneyOrdLog {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         Value:=StrToCurrDef(ProdForm.Value.Text,0);
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,Value,Value,Get_Description,
+                               'No. '+ProdForm.SerialNumber.Text,
+                               {PProgID}Get_ProgramID,Enumerate(ProdForm));
+                              // {PProgID}'Product.ExpMonOrd',Enumerate(ProdForm));
+
+         Value:=StrToCurrDef(ProdForm.Commission.Text,0);
+         Inc(Index);
+         TxnLog.LogTransaction(1,FQuantity,100003,
+                           Value,Value,ProdForm.Commission.PromptLabel.Caption,
+                           '','Money Order Commission','LogSeparatelyToAccounts');
+         Inc(Index);
+         TxnLog.LogTransaction(Index,FQuantity,0,
+                           0,0,'Pay Office '+ProdForm.MOPayOffice.Text+' ('+Copy(TStringObject(ProdForm.MOPayOffice.Items.Objects[ProdForm.MOPayOffice.Items.IndexOf(ProdForm.MOPayOffice.Text)]).Value,2,999)+')',
+                           '','Pay Office','');
+         Inc(Index);
+         TxnLog.WriteTransaction('MOIssue',0,0,0,
+                                 StrToCurrDef(ProdForm.Commission.Text,0),
+                                 StrToCurrDef(ProdForm.Value.Text,0),
+                                 ProdForm.SerialNumber.Text,
+                                 Copy(TStringObject(ProdForm.MOPayOffice.Items.Objects[ProdForm.MOPayOffice.Items.IndexOf(ProdForm.MOPayOffice.Text)]).Value,2,999),
+                                 'MOIssue','');
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+      *]
+      }
+   }
+   MOrdLogPaid {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                               0-StrToCurrDef(ProdForm.MOValue.Text,0),
+                               0-StrToCurrDef(ProdForm.MOValue.Text,0),
+                               Get_Description,ProdForm.SerialNumber.Text,Get_ProgramID,
+                               Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.LogTransaction(Index,FQuantity,0,
+                           0,0,'Issue Office '+ProdForm.MOIssueOffice.Text+' ('+Copy(TStringObject(ProdForm.MOIssueOffice.Items.Objects[ProdForm.MOIssueOffice.Items.IndexOf(ProdForm.MOIssueOffice.Text)]).Value,2,999)+')',
+                           '','Issue Office','');
+         Inc(Index);
+         ResultList:=MOPaidSlip;
+         TxnLog.WriteTransaction('*MOPaid',0,0,0,StrToCurrDef(ProdForm.MOValue.Text,0),0,
+                               ProdForm.SerialNumber.Text,ProdForm.SerialNumber.Text,'MOPaid','');
+         TxnLog.WriteTransaction('MOPaid',0,0,0,0-StrToCurrDef(ProdForm.MOValue.Text,0),0,
+                               ProdForm.SerialNumber.Text,ProdForm.SerialNumber.Text,'MOPaid Complete',ResultList);
+
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+
+         try
+            ReceiptPrinter:=FUIEventSink.GetComponentReference(GUIDToString(Class_ReceiptDevice)) as IDevice;
+            ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+            ReceiptPrinter.WriteDevice(dcList5Data,ResultList,1);
+            ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+            ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+            ReceiptPrinter.WriteDevice(dcList5Data,ResultList,1);
+            ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+         finally
+            ReceiptPrinter := nil;
+         end ;
+      *]
+      }
+   }
+
+   ExpMOPaidTriggerDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+          procedure {PClass}TDomMoneyOrderPayProduct.TriggerBarCode(Value:String);
+          begin
+             GetMOValues(Value);
+          end;
+          procedure {PClass}TDomMoneyOrderPayProduct.PopulateMOList(IncludePaid:Boolean);
+          var
+            SL,NSL:TPackStringList;
+            MOItemList:TMOItemList;
+            MOItem:TMOIssued;
+            I:Integer;
+            IO:String;
+          begin
+             if ProdForm.MOIssueOffice.Text = 'ANY' then
+                IO:=''
+             else
+                IO:=ProdForm.MOIssueOffice.Text;
+             if IO <> '' then
+                IO:=Copy(TStringObject(ProdForm.MOIssueOffice.Items.Objects[ProdForm.MOIssueOffice.Items.IndexOf(IO)]).Value,2,999);
+             MOItemList:=TMOItemList.Create(nil);
+             if IncludePaid then
+                MOItemList.Details:=MoneyOrders.IssuedMOList(ProdForm.MOIssueDate.Text,IO,IntToStr(FUIEventSink.Office),'',ProdForm.MOValue.Text,'EXP',ProdForm.MOPayeeTelephone.Text,ProdForm.MOPayeePOBox.Text,ProdForm.SerialNumber.Text)
+             else
+                MOItemList.Details:=MoneyOrders.UnPaidMOList(ProdForm.MOIssueDate.Text,IO,IntToStr(FUIEventSink.Office),'',ProdForm.MOValue.Text,'EXP',ProdForm.MOPayeeTelephone.Text,ProdForm.MOPayeePOBox.Text,ProdForm.SerialNumber.Text);
+             if MOItemList.Count = 1 then
+             begin
+                FillForm(TMOIssued(MOItemList[0]));
+             end
+             else if MOItemList.Count > 1 then
+             begin
+                SL:=TPackStringList.Create;
+                NSL:=TPackStringList.Create;
+                for I:=0 to MOItemList.Count-1 do
+                begin
+                   MOItem:=TMOIssued(MOItemList[I]);
+                   SL.Add( '-1'); SL.Add(CurrToStrF(MOItem.Value,ffFixed,0));
+                   SL.Add('100'); SL.Add(' ');
+                   NSL.PackText:=MOItem.SendersName;
+                   SL.Add('102');
+                   if NSL.Count > 1 then
+                      SL.Add(NSL[1]+' '+NSL[0])
+                   else
+                      SL.Add(' ');
+                   SL.Add('372'); SL.Add('>');
+                   NSL.PackText:=MOItem.RecipientsName;
+                   SL.Add('383');
+                   if NSL.Count > 1 then
+                      SL.Add(NSL[1]+' '+NSL[0])
+                   else
+                      SL.Add(' ');
+                   SL.Add('999');
+                   SL.Add(IntToStr(I));
+                   ProdForm.MOResultsList.Items.AddObject(SL.PackText,MOItem);
+                   SL.Clear;
+                end;
+                SL.Free;
+                NSL.Free;
+                ProdForm.MOResultsList.Ignore    :=False;
+                ProdForm.SerialNumber.Ignore     :=True;
+                ProdForm.MOIssueOffice.Ignore    :=True;
+                ProdForm.MOIssueDate.Ignore      :=True;
+                ProdForm.MOPayeeTelephone.Ignore :=True;
+                ProdForm.MOPayeePOBox.Ignore     :=True;
+                ProdForm.MOValue.Ignore          :=True;
+                FUIEventSink.DisplayItemInfo(Self,0,'','',0,0,True,False);
+                FUIEventSink.DisplayItemInfo(Self,1,'','',0,0,True,False);
+                FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+             end;
+          end;
+          procedure {PClass}TDomMoneyOrderPayProduct.FillForm(MOItem:TMOIssued);
+          var
+            IO:String;
+            SL:TPackStringList;
+            I:Integer;
+          begin
+             if MOItem = nil then Exit;
+             ProdForm.SerialNumber.Text       :=MOItem.Identifier;
+             ProdForm.MOValue.Text            :=CurrToStrF(MOItem.Value,ffFixed,0);
+
+             IO:=IntToStr(MOItem.IssuingOffice);
+             for I:=0 to ProdForm.MOIssueOffice.Items.Count-1 do
+             begin
+                if TStringObject(ProdForm.MOIssueOffice.Items.Objects[I]).Value = 'O'+IO then
+                begin
+                   IO:=ProdForm.MOIssueOffice.Items[I];
+                   break;
+                end;
+             end;
+             ProdForm.MOIssueOffice.Text      :=IO;
+             ProdForm.MOIssueDate.Text        :=DateToStr(MOItem.DateTime);
+             SL:=TPackStringList.Create;
+             SL.PackText:=MOItem.SendersName;
+             if SL.Count > 1 then
+                ProdForm.MOSenderName.Text       :=Trim(SL[1]+' '+SL[0]);
+             SL.PackText:=MOItem.SendersAddress;
+             if SL.Count > 1 then
+                ProdForm.MOSenderStreet.Text     :=Trim(SL[0]+' '+SL[1]);
+             if SL.Count > 2 then
+                ProdForm.MOSenderTelephone.Text  :=Trim(SL[2]);
+             if SL.Count > 3 then
+                ProdForm.MOSenderPOBox.Text      :=Trim(SL[3]);
+             SL.PackText:=MOItem.RecipientsName;
+             if SL.Count > 1 then
+                ProdForm.MOPayeeName.Text        :=Trim(SL[1]+' '+SL[0]);
+             SL.PackText:=MOItem.RecipientsAddress;
+             if SL.Count > 1 then
+                ProdForm.MOPayeeStreet.Text      :=Trim(SL[0]+' '+SL[1]);
+             ProdForm.MOPayeePOBox.Text       :=MOItem.RContact2;
+             ProdForm.MOPayeeTelephone.Text   :=MOItem.RContact1;
+             ProdForm.MOSenderMessage.Text    :=MOItem.Information;
+             SL.Free;
+
+             ProdForm.MOResultsList.Ignore    :=True;
+             ProdForm.SerialNumber.Ignore     :=False;
+             ProdForm.Identification.Ignore   :=False;
+             ProdForm.MOIssueOffice.Ignore    :=False;
+             ProdForm.MOIssueDate.Ignore      :=False;
+             ProdForm.MOSenderName.Ignore     :=False;
+             ProdForm.MOSenderStreet.Ignore   :=False;
+             ProdForm.MOSenderPOBox.Ignore    :=False;
+             ProdForm.MOSenderTelephone.Ignore:=False;
+             ProdForm.MOSenderMessage.Ignore:=False;
+             ProdForm.MOPayeeName.Ignore      :=False;
+             ProdForm.MOPayeeStreet.Ignore    :=False;
+             ProdForm.MOPayeeTelephone.Ignore :=False;
+             ProdForm.MOPayeePOBox.Ignore     :=False;
+             ProdForm.MOValue.Ignore          :=False;
+
+             ProdForm.SerialNumber.Enabled     :=False;
+             ProdForm.MOIssueOffice.Enabled    :=False;
+             ProdForm.MOIssueDate.Enabled      :=False;
+             ProdForm.MOSenderName.Enabled     :=False;
+             ProdForm.MOSenderStreet.Enabled   :=False;
+             ProdForm.MOSenderPOBox.Enabled    :=False;
+             ProdForm.MOSenderTelephone.Enabled:=False;
+             ProdForm.MOSenderMessage.Enabled:=False;
+             ProdForm.MOPayeeName.Enabled      :=False;
+             ProdForm.MOPayeeStreet.Enabled    :=False;
+             ProdForm.MOPayeeTelephone.Enabled :=False;
+             ProdForm.MOPayeePOBox.Enabled     :=False;
+             ProdForm.MOValue.Enabled          :=False;
+             FlagComplete(ProdForm.Validate);
+             FUIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+          end;
+
+          procedure {PClass}TDomMoneyOrderPayProduct.GetMOValues(Value:String);
+          var
+            Index:Integer;
+          begin
+             Index:=ProdForm.MOResultsList.Items.IndexOf(Value);
+             if Index >=0 then
+             begin
+                FillForm(TMOIssued(ProdForm.MOResultsList.Items.Objects[Index]));
+             end;
+          end;
+          function {PClass}TDomMoneyOrderPayProduct.MOPaidSlip:String;
+          var
+             SL:TStringList;
+             Status:MOStatus;
+          begin
+                SL:=TPackStringList.Create;
+                SL.Add('"Money Order Authorization Form",""');
+                SL.Add('"",""');
+                MoneyOrders.GetMOStatus(ProdForm.SerialNumber.Text,2001,Status);
+                case Status of
+                   mosNone   : SL.Add('"Status NA",""');
+                   mosIssued : SL.Add('"Status OK",""');
+                   mosPaid   : SL.Add('"Status PP",""');
+                end;
+                SL.Add('"Serial Number","'+ProdForm.SerialNumber.Text +'"');
+                SL.Add('"Value","'        +ProdForm.MOValue.Text      +'"');
+                SL.Add('"Issue Office","' +ProdForm.MOIssueOffice.Text+'"');
+                SL.Add('"Issue Date","'   +ProdForm.MOIssueDate.Text  +'"');
+                SL.Add('"Sender:",""');
+                SL.Add('"Name  :'+ProdForm.MOSenderName     .Text+'",""');
+                SL.Add('"Street:'+ProdForm.MOSenderStreet   .Text+'",""');
+                SL.Add('"Tel   :'+ProdForm.MOSenderTelephone.Text+'",""');
+                SL.Add('"POBox :'+ProdForm.MOSenderPOBox    .Text+'",""');
+                SL.Add('"Payee:",""');
+                SL.Add('"ID    :'+ProdForm.Identification  .Text+'",""');
+                SL.Add('"Name  :'+ProdForm.MOPayeeName     .Text+'",""');
+                SL.Add('"Street:'+ProdForm.MOPayeeStreet   .Text+'",""');
+                SL.Add('"Tel   :'+ProdForm.MOPayeeTelephone.Text+'",""');
+                SL.Add('"POBox :'+ProdForm.MOPayeePOBox    .Text+'",""');
+                SL.Add('"",""');
+                SL.Add('"Message :",""');
+                SL.Add('"'+ProdForm.MOSenderMessage.Text+'",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"I Certify that I am the designated",""');
+                SL.Add('"recipient of the above Money Order",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"Name:",""');
+                SL.Add('"","__________________________________"');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"Signature:",""');
+                SL.Add('"","__________________________________"');
+                SL.Add('"",""');
+                SL.Add('"FOR OFFICIAL USE:",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"Authorised by:",""');
+                SL.Add('"","__________________________________"');
+                Result:=SL.CommaText;
+                SL.Free;
+          end;
+       *]
+     }
+   }
+   ForceMOrdLogPaid {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                               0-StrToCurrDef(ProdForm.MOValue.Text,0),
+                               0-StrToCurrDef(ProdForm.MOValue.Text,0),
+                               'Exp. Money Order Paid',ProdForm.SerialNumber.Text,'Product.ExpOrdPaid',
+                               Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.LogTransaction(Index,FQuantity,0,
+                           0,0,'Country of Origin  '+ProdForm.IntMoneyOrderOrigin.Text,
+                           '','Issue Office','');
+         Inc(Index);
+         ResultList:=MOPaidSlip;
+         TxnLog.WriteTransaction('*MOPaid',0,0,0,StrToCurrDef(ProdForm.MOValue.Text,0),0,
+                               ProdForm.SerialNumber.Text,ProdForm.SerialNumber.Text,'MOPaid','');
+         TxnLog.WriteTransaction('MOPaid',0,0,0,0-StrToCurrDef(ProdForm.MOValue.Text,0),0,
+                               ProdForm.SerialNumber.Text,ProdForm.SerialNumber.Text,'MOPaid Complete',ResultList);
+
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+
+         try
+            ReceiptPrinter:=FUIEventSink.GetComponentReference(GUIDToString(Class_ReceiptDevice)) as IDevice;
+            ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+            ReceiptPrinter.WriteDevice(dcList5Data,ResultList,1);
+            ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+            ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+            ReceiptPrinter.WriteDevice(dcList5Data,ResultList,1);
+            ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+         finally
+            ReceiptPrinter := nil;
+         end ;
+      *]
+      }
+   }
+   ForceMOPaidTriggerDec {
+     InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+     CodeBlock {
+       [*
+          function MOPaidSlip:String;
+       *]
+     }
+   }
+   ForceMOPaidTriggerDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+          function {PClass}TIntMoneyOrderPaidProduct.MOPaidSlip:String;
+          var
+             SL:TStringList;
+          begin
+                SL:=TPackStringList.Create;
+                SL.Add('"Money Order Authorization Form",""');
+                SL.Add('"",""');
+                SL.Add('"Status NA",""');
+                SL.Add('"Order Number","'     +ProdForm.SerialNumber.Text +'"');
+                SL.Add('"Value","'             +ProdForm.MOValue.Text      +'"');
+                SL.Add('"Country of Origin","' +ProdForm.IntMoneyOrderOrigin.Text+'"');
+                SL.Add('"Payee ID:'+ProdForm.Identification  .Text+'",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"I Certify that I am the designated",""');
+                SL.Add('"recipient of the above Money Order",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"Name:",""');
+                SL.Add('"","__________________________________"');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"Signature:",""');
+                SL.Add('"","__________________________________"');
+                SL.Add('"",""');
+                SL.Add('"FOR OFFICIAL USE:",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"Authorised by:",""');
+                SL.Add('"","__________________________________"');
+                Result:=SL.CommaText;
+                SL.Free;
+          end;
+       *]
+     }
+   }
+   ForceMFaxLogPaid {
+      InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock {
+      [*
+         FUIEventSink.OpenCashDrawer;
+         TxnLog.LogTransaction(Index,FQuantity,Get_PLU,
+                               0-StrToCurrDef(ProdForm.MOValue.Text,0),
+                               0-StrToCurrDef(ProdForm.MOValue.Text,0),
+                               'Money Fax Pay',ProdForm.SerialNumber.Text,'Product.FaxOrdPaid',
+                               Enumerate(ProdForm));
+         Inc(Index);
+         TxnLog.LogTransaction(Index,FQuantity,0,
+                           0,0,'Issue Office '+ProdForm.MFIssueOffice.Text+' ('+Copy(TStringObject(ProdForm.MFIssueOffice.Items.Objects[ProdForm.MFIssueOffice.Items.IndexOf(ProdForm.MFIssueOffice.Text)]).Value,2,999)+')',
+                           '','Issue Office','');
+         Inc(Index);
+         ResultList:=MFPaidSlip;
+         TxnLog.WriteTransaction('*MFPaid',0,0,0,StrToCurrDef(ProdForm.MOValue.Text,0),0,
+                               ProdForm.SerialNumber.Text,ProdForm.SerialNumber.Text,'MFPaid','');
+         TxnLog.WriteTransaction('MFPaid',0,0,0,0-StrToCurrDef(ProdForm.MOValue.Text,0),0,
+                               ProdForm.SerialNumber.Text,ProdForm.SerialNumber.Text,'MFPaid Complete',ResultList);
+
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+
+         try
+            ReceiptPrinter:=FUIEventSink.GetComponentReference(GUIDToString(Class_ReceiptDevice)) as IDevice;
+            ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+            ReceiptPrinter.WriteDevice(dcList5Data,ResultList,1);
+            ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+            ReceiptPrinter.WriteDevice(dcInitialise,'',1);
+            ReceiptPrinter.WriteDevice(dcList5Data,ResultList,1);
+            ReceiptPrinter.WriteDevice(dcShutdown,'',0);
+         finally
+            ReceiptPrinter := nil;
+         end ;
+         Inc(Index);
+      *]
+      }
+   }
+   ForceMFPaidTriggerDec {
+     InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+     CodeBlock {
+       [*
+          function MFPaidSlip:String;
+       *]
+     }
+   }
+   ForceMFPaidTriggerDef {
+     InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+     CodeBlock {
+       [*
+          function {PClass}TMFForcePaidProduct.MFPaidSlip:String;
+          var
+             SL:TStringList;
+          begin
+                SL:=TPackStringList.Create;
+                SL.Add('"Money Fax Authorization Form",""');
+                SL.Add('"",""');
+                SL.Add('"Status NA",""');
+                SL.Add('"Serial Number","'+ProdForm.SerialNumber.Text +'"');
+                SL.Add('"Value","'        +ProdForm.MOValue.Text      +'"');
+                SL.Add('"Issue Office","' +ProdForm.MFIssueOffice.Text+'"');
+                SL.Add('"Payee ID:'+ProdForm.Identification  .Text+'",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"I Certify that I am the designated",""');
+                SL.Add('"recipient of the above Money Order",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"Name:",""');
+                SL.Add('"","__________________________________"');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"Signature:",""');
+                SL.Add('"","__________________________________"');
+                SL.Add('"",""');
+                SL.Add('"FOR OFFICIAL USE:",""');
+                SL.Add('"",""');
+                SL.Add('"",""');
+                SL.Add('"Authorised by:",""');
+                SL.Add('"","__________________________________"');
+                Result:=SL.CommaText;
+                SL.Free;
+          end;
+       *]
+     }
+   }
+ SerialNumberPostVars {
+  InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+  CodeBlock {
+  [*
+
+  var Index : Integer;
+  *]
+  }
+ }
+ 
+ SerialNumberPostVal {
+ InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+ CodeBlock {
+ [*
+   if result then
+   if result then
+         begin
+           for Index := 1 to Length(SerialNumber.Text)  do
+            begin
+            Try 
+             Case StrToInt(SerialNumber.Text[Index]) of
+             0..9 : begin 
+               		if Length(SerialNumber.Text) <= 11 then 
+               		begin
+               		  Result := True; 
+               		end 
+               		else 
+               		begin 
+               		MoveFocusTo(SerialNumber);
+               		Result := False ;
+               		end;
+                    end;
+             else
+              MoveFocusTo(SerialNumber);
+              Result := False ;
+             end;
+            Except on Exception do begin MoveFocusTo(SerialNumber);Result := False ;Break;end;
+            end;
+           end;
+   end;
+ *]
+ }
+ }
+
+//----
+   PostalOrderPayIntPreVal {
+      InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+      CodeBlock {
+      [*
+// Ask for the authority number if origin is South Africa and amount = 300 or above
+         ProdForm.SAAuthorityNumber.Ignore := True;
+         If ( RatesPosOrdCountry.Text = 'South Africa' ) then
+            SAAuthorityNumber.Ignore :=( StrToCurrDef( POValueInput.Text, 0 ) < 300 );
+      *]
+      }
+   }
+
+   PostalOrderPayIntValVar {
+      InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            //Total:Currency;
+            //Rate:Currency;
+            //CompMan:ICompMan;
+            //LookUp:ILookUp;
+            //DollarCommission:Currency;
+            ExchangeRateServer:IExchangeRateServer;
+      *]
+      }
+   }
+
+
+    PostalOrderPayIntVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+
+          ClearFocus(self);
+          //Total:=0;
+          //Result:=True;
+          //DollarCommission:=-1;
+          //CompMan:=CreateCompMan;
+          //if CompMan <> nil then
+          //begin
+             If Length(Trim(IntPosOrdSerialNumber.Text)) < 1 then
+             begin
+                If Result then MoveFocusTo(IntPosOrdSerialNumber);
+                Result := False;
+             end;
+             ExchangeRateServer:=CreateRemoteExchangeRateServer(GetGPCSRegString('','ServerName',GetLocalMachineName));
+             ExchangeRate.Text:=CurrToStr(ExchangeRateServer.RateFor(RatesPosOrdCountry.Text));
+
+             TotalFee.Text := CurrToStrF( StrToCurrDef( ExchangeRate.Text, 0 ) * StrToCurrDef( POValueInput.Text, 0 ), ffNumber, 2 ) ;
+
+             //if ExchangeRate.Text <> '0' then
+             //begin
+             //   if (CurrentLine = 2) then
+             //   begin
+             //      Rate:=ExchangeRateServer.RateFor(RatesPosOrdCountry.Text);
+             //      DestinationValue.Text:=IntToStr(Round(StrToCurrDef(POValueInput.Text,0)/Rate));
+             //   end
+             //   else if (CurrentLine = 3) then
+             //   begin
+             //      DestinationValue.Text:=IntToStr(Round(ExchangeRateServer.Exchange(RatesPosOrdCountry.Text,StrToCurrDef(POValueInput.Text,0))));
+             //   end;
+             //   LookUp:=CompMan.LoadComponent('LookUp.IntSpdCash') as ILookUp;
+             //   if LookUp <> nil then
+             //   begin
+             //     DollarRate.Text:=CurrToStr(ExchangeRateServer.RateFor('America'));
+             //     DollarCommission:=StrToCurrDef(LookUp.Value[Trunc(StrToCurr(DestinationValue.Text) / ExchangeRateServer.RateFor('America'))],-1);
+             //     if DollarCommission > 0 then
+             //     begin
+             //        if DollarRate.Text <> '0' then
+             //        begin
+             //           Commission.Text:=CurrToStr(ExchangeRateServer.Exchange('America',DollarCommission));
+             //        end;
+             //     end;
+             //   end;
+             //   Total:=Total+StrToCurr(DestinationValue.Text);
+             //   If (Length(Trim(DestinationValue.Text)) < 1) or (DollarCommission < 0) then
+             //   begin
+             //      If Result then MoveFocusTo(POValueInput);
+             //      if (DollarCommission < 0) then Result := False;
+             //   end
+             //   else
+             //   begin
+             //        DollarComm.Text:=CurrToStr(DollarCommission);
+             //        If Result then MoveFocusTo(POValueInput);
+             //   end;
+             //end
+             //else
+             //begin
+             //   If Result then MoveFocusTo(RatesPosOrdCountry);
+             //   Result := False;
+             //end;
+             //Total:=Total+StrToCurrDef(Commission.Text,0);
+          //end;
+
+          //TotalFee.Text:=CurrToStr(Total);
+      *]
+      }
+   }
+
+   BulkMOPaymentsLog  {
+   InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+        CodeBlock {
+        [*
+     TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0-(FQuantity*StrToCurrDef(ProdForm.Amount.Text,0)), // Value
+               0-StrToCurrDef(ProdForm.Amount.Text,0), // Price
+               Get_Description, // Description
+               '', // Additional Info
+               Get_ProgramID, // ProgID
+               Enumerate(ProdForm)); // Domain Info
+         Inc(Index);
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0, // Value
+               0, // Price
+               'Company Name -', // Description
+               ProdForm.BulkMOCompany.Text, // Additional Info
+               Get_ProgramID, // ProgID
+               ''); // Domain Info
+         Inc(Index);
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0, // Value
+               0, // Price
+               'Collected by -', // Description
+               ProdForm.BulkMORepName.Text, // Additional Info
+               Get_ProgramID, // ProgID
+               ''); // Domain Info
+         Inc(Index);
+        TxnLog.LogTransaction(
+               Index,
+               FQuantity, // Quantity
+               Get_PLU, // PLU
+               0, // Value
+               0, // Price
+               'Identification -', // Description
+               ProdForm.BulkMORepID.Text, // Additional Info
+               Get_ProgramID, // ProgID
+               ''); // Domain Info
+         Inc(Index);
+         if CombineList <> nil then
+            CombineList.LogTransactions(Index,TxnLog);
+           *]
+        }
+    }
+
+   CustomerFillPO {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         SL:=TPackStringList.Create;
+         SL.PackText:=GetLocalList('Customer','MOD');
+         ProdForm.BulkMOCompany.Items.Text:=SL.Text;
+         SL.Free;
+      *]
+      }
+   }
+
+   BulkMOPaymentExeVar {
+      InsertBetween { '{ExecuteVarStart}','{ExecuteVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            SL:TPackStringList;
+      *]
+      }
+   }
+
+
+}
+
+
+

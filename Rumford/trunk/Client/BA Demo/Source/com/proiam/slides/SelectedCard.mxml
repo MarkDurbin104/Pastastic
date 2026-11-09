@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:slides="com.proiam.slides.*" xmlns:mx="http://www.adobe.com/2006/mxml" 
+	backgroundImage="@Embed('embedded/SelectedCard1.png')" 
+	backgroundSize="100%"
+	width="212" height="564"
+	horizontalScrollPolicy="off" verticalScrollPolicy="off"
+	xmlns:filters="flash.filters.*" fontFamily="Tahoma" fontSize="12" fontWeight="bold"> 
+	<mx:Metadata>
+		[Event(name="CancelClicked", type="flash.events.Event")]
+		[Event(name="AddClicked", type="flash.events.Event")]
+    </mx:Metadata>
+	<mx:Script>
+        <![CDATA[
+        	import com.proiam.mails.MailService;
+        	import flash.events.Event;
+    		[Bindable]
+    		public var inputComplete:Boolean=true;    	
+
+			public var service:MailService=null;
+
+            [Bindable] public var caption:String;
+            [Bindable] public var price:String;
+            [Bindable] public var totalprice:String;
+            [Bindable] public var hint:String;
+            [Bindable] public var iconSource:Object;
+            
+            private function CancelClick(event:Event):void {
+            	dispatchEvent(new Event("CancelClicked"));
+            }
+            private function AddClick(event:Event):void {
+            	dispatchEvent(new Event("AddClicked"));
+            }
+        ]]>
+    </mx:Script>
+	<mx:Text id="selectedTitle" text="Selected Services" x="12" y="6" textAlign="left" enabled="true" selectable="false" fontWeight="bold" color="#FFFFFF" fontSize="14" width="200" fontFamily="Tahoma"/>
+	<mx:Image source="{iconSource}" left="6" top="37" width="178" height="75" scaleContent="true" alpha="0.75"/>
+	<mx:Text text="{caption}" styleName="embVerdanaStyle" top="38" textAlign="right" width="107" right="5" fontSize="14" color="#2A6E9F" height="56" fontFamily="Tahoma"/>	
+	<mx:Text text="{hint}" top="118" fontSize="12" styleName="embVerdanaNormalStyle" width="200" fontFamily="Tahoma" textAlign="left" color="#2A6E9F" height="180" x="4" fontWeight="bold"/>
+	<mx:Text text="{price}" textAlign="right" styleName="embVerdanaStyle" color="#FFFFFF" top="301" height="23" fontFamily="Tahoma" fontSize="14" width="200" x="5"/>
+	<slides:SelectedList id="secondaryList" x="5" y="323" width="200" height="144"  fontFamily="Tahoma" color="#FFFFFF"/>
+	<mx:filters>
+		<filters:DropShadowFilter angle="45" alpha=".1" distance="4" blurX="0" blurY="0"/>
+	</mx:filters>
+	<mx:Text text="{totalprice}" textAlign="right" styleName="embVerdanaStyle" color="#FFFFFF" top="468" height="23" fontFamily="Tahoma" fontSize="14" width="200" x="5"/>
+	<mx:Canvas x="14" y="492" width="85" height="58" backgroundImage="@Embed('embedded/SelectedCardButtonOK.png')" click="AddClick(event);" visible="{inputComplete}">
+	</mx:Canvas>
+	<mx:Canvas x="113" y="492" width="85" height="58" backgroundImage="@Embed('embedded/SelectedCardButtonCancel.png')" click="CancelClick(event);">
+	</mx:Canvas>
+</mx:Canvas>

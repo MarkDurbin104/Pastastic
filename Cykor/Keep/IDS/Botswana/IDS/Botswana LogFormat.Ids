@@ -1,0 +1,188 @@
+//****************************************************************************************//
+//**                                                                                    **//
+//**                              Botswana Post                                         **//
+//**                               Log Formats                                          **//
+//**                                                                                    **//
+//****************************************************************************************//
+
+LogFormats
+{
+
+//
+//-----------------------------------------------------------------------------------------
+//
+
+
+   DomEMS         { 'Name,^,Weight,"*g","*  ID =",DomEMSID',StandardFee }
+   DomEMSContract { 'Name,^,Weight,"*g","*  ID =",DomEMSID,^,CustomerList',StandardFee }
+
+//
+//-----------------------------------------------------------------------------------------
+//
+
+   IntEMS         { 'Name,^,Weight,"*g","*  To",IntEMSDestination,^,"*ID =",IntEMSID',StandardFee }
+   IntEMSContract { 'Name,^,Weight,"*g","*  To",IntEMSDestination,^,"*ID =",IntEMSID,^,CustomerList',StandardFee }
+
+//
+//-----------------------------------------------------------------------------------------
+//
+//   IntReg         { 'Name,"*ID =",IntRegID,^
+//                                 ,"*Customer Name ",CustomerName,^
+//                                 ,"*Customer Address ",CustomerAddress,^
+//                                 ,"*Post Office ",CustomerPostOffice,^
+//                                 ,"*Recipient Name ",IntRecipientName,^
+//                                 ,"*Recipient Address ",IntRecipientAddress1,^
+//                                 ,"*Recipient Address ",IntRecipientAddress2',RegFee }
+//
+//   DomReg         { 'Name,"*ID =",DomRegID,^
+//                                 ,"*Customer Name ",CustomerName,^
+//                                 ,"*Customer Address ",CustomerAddress,^
+//                                 ,"*Customer Post Office ",CustomerPostOffice,^
+//                                 ,"*Recipient Name ",DomRecipientName,^
+//                                 ,"*Recipient Address ",DomRecipientAddress,^
+//                                 ,"*Recipient Post Office ",DomRecipientPostOffice',RegFee }
+
+//   AdvOfDel       { 'Name,"*",CustomerName,^
+//                         ,"*Customer Address ",CustomerAddress,^
+//                         ,"*Customer Post Office ",CustomerPostOffice',AdvOfDelFee }
+   AdvOfDel        { 'Name',AdvOfDelFee }
+   IpolokengJoin   { 'Name',IpolokengJoiningFee }
+   ExpressDel     { 'Name',ExpressDelFee }
+//   StandardLetterDel { 'Name',DummyDomain}
+//   DomIns         { 'Name,"*To value of",InsValue',InsFee }
+
+//
+//-----------------------------------------------------------------------------------------
+//
+
+   PBQuarterRent     { 'Name,^,"*Box Number ",PrivBoxNumber,^,"*Location -",PostOffice,^,"*Customer Name ",CustomerName,^,"*Customer Telephone ",CustomerTelNo,^,"*Quarter ",Quarter',StandardFee }
+   BGQuarterRent     { 'Name,^,"*Box Number ",POBoxNumber,^,"*Location -",PostOffice,^,"*Customer Name ",CustomerName,^,"*Customer Telephone ",CustomerTelNo,^,"*Quarter ",Quarter',StandardFee }
+   PBNewLockKey      { 'Name,^,"*Box Number ",PrivBoxNumber,^,"*Location -",PostOffice,^,"*Customer Name ",CustomerName,^,"*Customer Telephone ",CustomerTelNo',TotalFee }
+   BGNewLockKey      { 'Name,^,"*Box Number ",POBoxNumber,^,"*Location -",PostOffice,^,"*Customer Name ",CustomerName,^,"*Customer Telephone ",CustomerTelNo',TotalFee }
+   BagNewLockKey     { 'Name,^,"*Location -",PostOffice,^,"*Bag no. -",PrivBagNumber,^,"*Customer Name -",CustomerName,^,"*Customer Telephone no. -",CustomerTelNo',TotalFee }
+   PrivBAg           { 'Name,^,"*Location -",PostOffice,^,"*Bag no. -",PrivBagNumber,^,"*Customer Name -",CustomerName,^,"*Customer Telephone no. -",CustomerTelNo',TotalFee }
+   BagQuarterRent    { 'Name,^,"*Bag Number ",PrivBagNumber,^,"*Location -",PostOffice,^,"*Customer Name ",CustomerName,^,"*Customer Telephone ",CustomerTelNo,^,"*Quarter ",Quarter',StandardFee }
+   BagOnlyQuarterRent{ 'Name,^,"*Quarter ",Quarter',StandardFee }
+   POBoxLatePayment  { 'Name',PBLatePaymentFee                   }
+   BagPenalty        { 'Name',BagPenaltyFee }
+   BagOnlyAnnualRent { 'Name',PrivBagAnnualRentFee }
+   BagOnlyAnnualRentTotal{ 'Name',PrivBagAnnualRentTotalFee }
+
+//
+//-----------------------------------------------------------------------------------------
+//
+
+//   SBDep  { 'Name
+//                ,^,"*Account Number -",AccountNumber
+//                ,^,"*Account Name -",CustomerName
+//                ,^,"*Deposit P",DepositAmount
+//                ,^,"*Closing Balance P",ClosingBalance'
+//                ,TotalFee                                                   }
+//
+//
+//-----------------------------------------------------------------------------------------
+//
+
+ //  NatSavCert     {'Name,^,"*Customer Name - ",CustomerName,^,"*Customer Address. - ",CustomerAddress
+ //         	              ,^,"*Omang No. - ",CustID_Number',SavingsAmount}
+ // 
+   //NatSavCertFPay {'Name,^,"*Omang Number. -       ",CustID_Number,^,"*Certificate Number. - ",CertificateNumber
+   //                ,^,"*Date Of Issue. -      ",DateOfIssue,^,"*Certificate Value. -  ",CertValue
+   //                ,^,"*Months Difference. -  ",MonthsDiff,^,"*Interest Value. -     ",InterestValue',TotalFee}
+   DomMonOrd  { 'Name,"*- Number",MoneyOrderNumber
+                ,^,"*Value =",MoneyOrderValue,"*,Commission =",StandardFee'
+                ,TotalFee                                                   }
+   DomMonOrdPay  { 'Name,"*- Number",MoneyOrderNumber'
+                ,MoneyOrderValue                                                   }
+   DomMonOrdMod  { 'Name,"*- Number",MoneyOrderNumber'
+                ,MonOrdModFee                                                 }
+
+   DomMonOrdRef { 'Name,"*- Number",MoneyOrderNumber,^,"*Sender Name - ", MOSenderName'
+                ,MoneyOrderValue                                                   }
+
+
+   IntMonOrd  { 'Name,"*- Number",COREMoneyOrderNumber
+                ,^,"*To",COREIntMoneyOrderDestination
+                ,"*,Value =",COREMoneyOrderValue,"*,Commission =",COREStandardFee'
+                ,TotalFee                                                   }
+
+//   GenericFinancial { 'Name',COREStandardFee }
+
+
+//
+//-----------------------------------------------------------------------------------------
+//
+
+   ElecBill    { 'Name,^,"*Acct No",ElecBillAccountNo,"* Dated",ElecBillDate',BillAmount}
+   TelecomBill { 'Name
+                ,^,"*Account Number",TelecomBillID
+                ,^,"*Telephone Number",CustomerTelNo
+                ,^,"*Customer Name",CustomerName
+                ,^,"*Billing Period",TelecomBillPeriod'
+                ,BillAmount}
+   FuneralBill { 'Name,^,"*Account Number ",AccountNumber,^,"*Customer Name ",CustomerName,^,"*Funeral Scheme ",FuneralCompanies',AmountPaidTotal}
+   RIPCBill { 'Name,^,"*Customer Name ",CustomerName,^,"*Customer Number ",CustomerNumber',AmountPaidTotal}
+   IpolokengScheme { 'Name,^,"*Contract Number ",IpolokengContractNumber,^,"*Customer Name ",CustomerName,',TotalAmountToPay}
+   GenericBill { 'Name,^,"*Customer Name ",CustomerName,^,"*Account Number ",AccountNumber',AmountPaidTotal}
+   // MOOptionalService { 'Name',MOOptionalServiceFee }
+
+//
+//-----------------------------------------------------------------------------------------
+//
+
+//   PhotoCopy      { 'Name,PageCount,"*Pages"',TotalFee }
+//   Permit         { 'Name,^,CustomerName,^,CustomerID',AmountPaid }
+//   AddMail        { 'Name',AmountPaid }
+
+     FrankMachine   { 'Name,^,"*For -",CustomerName,^,"*Licence No -",FrankMachineLicenceNo',AmountPaid }
+     BankOpen       { 'Name,^,"*Account Number -",AccountNumber,^,"*Account Holder ",AccountName',Amount }
+     BankClose      { 'Name,^,"*Account Number -",AccountNumber,^,"*Warrant Reference",Warrant',FinalInputBalance }
+     BankDeposit    { 'Name,^,"*Account Number -",AccountNumber,^,"*Opening Balance ",OpeningBalance,^,"*Final Balance ",FinalBalance',Amount  }
+
+//   CustomsBOE     { 'Name', BOEFee }
+//   CustomsDeposit { 'Name,BOEFormNumber,^,CustomerName,ParcelNumber',AmountPaid }
+//   DogLicence     { 'Name,LicenceNo',TotalFee }
+//   Fax            { 'Name,PageCount,"*Pages",^,"*To",FDestination',TotalFee }
+
+//
+//-----------------------------------------------------------------------------------------
+//
+
+//   LetterRegID       { 'Name,"*ID ",IntLetterRegID',RegFee }
+//   AerogrammeRegID   { 'Name,"*ID ",IntAerogrammeRegID',RegFee }
+//   PostCardRegID     { 'Name,"*ID ",IntPostCardRegID',RegFee }
+//   PrintedPaperRegID { 'Name,"*ID ",IntPrintedPaperRegID',RegFee }
+//   SmallPacketID     { 'Name,"*ID ",IntSmallPacketRegID',RegFee }
+//   DomRegID          { 'Name,"*ID ",DomRegID',RegFee }
+   CODFee            { 'Name,^,"*Trade Charge -",CODTradeChargeFee',CODFee }
+   SurParInsurance   { 'Name,InsValue', InsFee }
+   AirParInsurance   { 'Name,InsValue', InsFee }
+
+//
+//-----------------------------------------------------------------------------------------
+//
+
+   BaseSurParcelGov { 'Name,Weight,"*g",^,
+                       "*Parcel Number -",ParcelNumber,^,
+                       "*To ",ParSurDestination,^,
+                       "*Recipient ",AddresseeName', StandardFee }
+
+   BaseAirParcelGov { 'Name,Weight,"*g",^,
+                      "*Parcel Number -",^,ParcelNumber,^,
+                      "*To ",ParAirDestination,^,
+                      "*Recipient ",AddresseeName', StandardFee }
+
+
+   PaySalary { 'Name,^,
+                "*Payee Name -",PayeeName,^,
+                "*Payroll Number -",PayrollNumber', AmountPaid }
+
+
+   Claims { 'Name,^,
+            "*Payee Name -", PayeeName,^,
+            "*Payee Identification -",PayeeIdentification,^,
+            "*Comment -",Comment', AmountPaid }
+
+}
+
+

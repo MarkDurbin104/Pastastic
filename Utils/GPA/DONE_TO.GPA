@@ -1,0 +1,105 @@
+18/09/95
+gpa.c           changed type LONG in reference to G_vars, to type VARTYPE
+
+translog.c      changed definition of j in outll() to a NUMB and 
+                the access functions to ATON line 226
+
+function.c      changed :-
+                        PUBLIC LONG  G_vars[50];
+                to:
+                        PUBLIC VARTYPE  G_vars[50];
+                and added 
+                        #include "arith.h"
+                to the include list at top of file.
+
+actions.c       changed all accesses to G_vars and varspace to type VARTYPE
+                from type LONG
+
+gpa.c           changed :-
+                        extern LONG G_vars[50];
+                to:
+                        typedef double VARTYPE;
+                        extern VARTYPE G_vars[50];
+
+actions.h       moved :-
+                        typedef double VARTYPE;
+                from line 59 to line 39 i.e. above the line:
+                        #ifdef ACTIONS_C
+arith.h
+                commented out the define "LONGS"                
+                changes PUSHS and PUSHN to use 3 parameters
+                changed push declaration
+arith.c
+                changed push definition
+
+control.c
+                changed myfree mymalloc mystrdup & myrealloc to perform
+                better memory checking under error conditions
+
+control.h       changed definition of MALLOC FREE STRDUP & REALLOC to
+                use __LINE__ and __FILE__
+19/09/95
+                modified CTOS code to match PC code
+                in case of error the PC code should be used as the baseline
+
+gpa.c           changed the function CWaitInp() to set CF=NUMITEM
+                to try and force an exit in the form.
+
+fldproc.c
+                added code to applyformat() so that right justified fields
+                greater than the format length are filled with *'s
+
+arith.h
+                changed :
+                        NTOA(a,b) sprintf(a,"%0.0f",b)
+                to :
+                        NTOA(a,b) { sprintf(a,"%lf",b); truncate(a); }
+                and added declaration for truncate();
+                to resolve rounding on string-numbers
+
+arith.h         
+                added truncate(); to remove any data after the decimal point
+                from a string-number.
+
+actions.c       
+                added {}'s around NTOA's in if() statements
+
+CONTROL.C CONFIG.C FORMHAND.C ACTIONC.C PP.C GPA.C
+GPAMAIN.C FUNCTION.C ACTIONS.C TRANSLOG.C FLDPROC.C
+TABPROC.C CONFIG.H FR.C
+
+                removed all compiler warning message from Klemens version 
+                i.e. the DOS version of the code:
+
+tabproc.c       added debug to CTOS version to find problem between MALLOC
+                and REALLOC at line 142 in getnumrec() case 1
+
+tabproc.c       changed l+1 (next record number) to call the database 
+                module with MESSAGE_un (URI next)
+
+types.h         added MESSAGE_un
+
+pdxdev.c        added support for MESSAGE_un  PARADOX in pdx_control()
+
+20/09/95
+
+arith.h         
+                made the divide() operator truncate the result when
+                TURNCONDIV (TRUNCate ON DIVide) is defined
+
+gpa.c           changed (1%2) to (i%2) in line 555
+
+actions.c       added G_checkresult to PUSH(0) on to the stack when
+                you return from a LOOKUP() with no valid range
+
+dbm.c(CTOS)     changes calculation of the record buffer length to use
+                the actual field lengths not the compressed the numbers
+                i.e "9999" is len 4 bytes, NOT 2 bytes.
+
+tabproc.c       check if "nr" returned by getnumrec is ZERO and return before
+                any memory allocation etc.
+
+tabproc.c       changed redraw of tables on hot key to force the code to
+                redraw it's self by making numrec != the number of records
+                in tableinput().
+

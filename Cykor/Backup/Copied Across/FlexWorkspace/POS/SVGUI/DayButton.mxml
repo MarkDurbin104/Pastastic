@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg:ReSizeCanvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:svg="SVGUI.*"
+	width="130" height="38"
+	backgroundImage="@Embed(source='svg_graphics/DayButton.svg')" 
+	initialize="day=getDayName();"
+	backgroundSize="100%"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	styleName="dayButton">
+	<mx:Script>
+		<![CDATA[
+
+			private var _offset:int = 0;
+			[Bindable]
+			[Inspectable]
+			public function get offset():int {
+				return _offset;
+			}
+			public function set offset(value:int):void {
+				_offset=value;
+				day=getDayName();
+			}
+			[Bindable]
+			public var day:String="Today";
+			private function getDayName():String
+			{
+				if (offset == -1) return day; // not using offset, setting day directly
+
+				var days:Array = new Array("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Tomorrow");
+				var now:Date =new Date();
+				var dayToShow:int = now.day;
+				if (dayToShow == 6) dayToShow=0; // working on Saturday!, show next day as Monday.
+			    else if (offset == 0) return days[6];  // otherwise just show it as "tomorrow"
+					
+				return days[(dayToShow+offset)%6];
+			}
+			
+		]]>
+	</mx:Script>	
+	<mx:Label  text="{day}" horizontalCenter="-2"  verticalCenter="-2"  width="100%"	/> 
+</svg:ReSizeCanvas>

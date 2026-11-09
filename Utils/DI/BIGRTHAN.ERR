@@ -1,0 +1,5 @@
+Borland C++ 4.5 Copyright (c) 1987, 1994 Borland International
+bigrthan.c:
+Error bigrthan.c 27: Undefined symbol 'FA_VOLUME' in function findfile
+Warning bigrthan.c 29: Ambiguous operators need parentheses in function findfile
+*** 1 errors in Compile ***

@@ -1,0 +1,6 @@
+    <?xml version="1.0" ?>');
+    <cross-domain-policy>');
+	    <allow-access-from domain="*.proiam.com" to-ports="80,8000,45001,45000"/>');
+	    <allow-access-from domain="*.proiamsource.com" to-ports="80,8000,45001,45000"/>');
+	    <allow-access-from domain="*.cykorsystems.com" to-ports="80,8000,45001,45000"/>');
+    </cross-domain-policy>')

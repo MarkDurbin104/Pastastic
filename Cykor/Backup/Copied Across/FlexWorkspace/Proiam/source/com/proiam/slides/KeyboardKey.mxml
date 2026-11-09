@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" width="82" height="65"
+ 	backgroundSize="100%" backgroundImage="@Embed('embedded/NormalKey.png')" 
+ 	verticalScrollPolicy="off" horizontalScrollPolicy="off" >
+	<mx:String id="key"></mx:String>
+	<mx:String id="shiftKey"></mx:String>
+	<mx:Boolean id="shiftState"></mx:Boolean>
+	<mx:int id="yPos">3</mx:int>
+	<mx:int id="fontSize">40</mx:int>
+  	<mx:Text id="cap" x="-1" y="{yPos}" 
+  		text="{shiftState?shiftKey:key}" 
+  		fontWeight="bold" fontFamily="Verdana" fontSize="{fontSize}" 
+  		color="#496384" 
+  		width="82" 
+  		selectable="false"  textAlign="center"/>
+</mx:Canvas>

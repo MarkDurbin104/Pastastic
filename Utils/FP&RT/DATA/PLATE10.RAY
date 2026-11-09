@@ -1,0 +1,175 @@
+{   ษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+    บ                                                               บ
+    บ                   Picture of Trojan horse                     บ
+    บ                                                               บ
+    บ                By Roger T. Stevens - 6/24/90                  บ
+    บ                                                               บ
+    ศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+}
+
+FILE_NAME = HORSE.RAW
+
+PATTERN ( x_size = 80,                    { PATTERN FOR BRICKS }
+          y_size = 50,
+          name   = BRICK,
+          RECTANGLE (                     { 1st half brick 1 }
+            start_x = 0, start_y = 2,
+            end_x   = 18, end_y   = 23,
+            diff    = (1.00, .20, .20);
+            dither  = 0,
+          )
+          RECTANGLE (                     { 2nd half brick 1 }
+            start_x = 62, start_y = 2,
+            end_x   = 80, end_y   = 23,
+            diff    = (1.00, .24, .20);
+            dither  = 2,
+          )
+          RECTANGLE (                     { brick 2 }
+            start_x = 22, start_y = 2,
+            end_x   = 58, end_y   = 23,
+            diff    = (.80, .20, .20);
+            dither  = 0,
+          )
+          RECTANGLE (                     { brick 3 }
+            start_x = 2, start_y = 27,
+            end_x   = 38, end_y   = 48,
+            diff    = (.85, .35, .10);
+            dither  = 0,
+          )
+          RECTANGLE (                     { brick 4 }
+            start_x = 42, start_y = 27,
+            end_x   = 78, end_y   = 48,
+            diff    = (.70, .25, .20);
+            dither  = 0,
+          )
+        )
+
+{ *********************  OBJECTS  ********************* }
+{ ** ground ** }
+PARALLELOGRAM ( loc  = (  -10000, 0,  -10000),
+                v1   = (20000, 0,    0),
+                v2   = (  0, 0, 20000),
+				amb = (.48, .32, .40)
+                diff = (  1.0, .8, .4),
+                dither  = 0,
+              )
+
+
+
+BEGIN_BBOX
+
+
+	QUADRATIC 		(loc= (130, 50, 0) {ellipsoid}
+                a       = 8, b  = 4, c  = 1,
+                d       = 5000,
+                xmin    = -100, xmax = 100,
+                ymin    = -80,   ymax = 80,
+                zmin    = -100, zmax = 100,
+                diff    = (1.0, .6, .4),
+			)
+
+	QUADRATIC 		(loc= (130, 85, -65)   {cylinder}
+                a       = 1, b  = 0, c  = 1,
+                d       = 80,
+                xmin    = -18, xmax = 18,
+                ymin    = 0,   ymax = 30,
+                zmin    = -18, zmax = 18,
+                diff    = (1.0, .6, .4),
+				dir     = (1, .6, .4)
+              )
+
+	QUADRATIC 		(loc= (130, 80, -90) {ellipsoid}
+                a       = 1, b  = 1, c  = 5,
+                d       = 1400,
+                xmin    = -100, xmax = 100,
+                ymin    = -150,   ymax = 100,
+                zmin    = -100, zmax = 100,
+                diff    = (1, .6, .4),
+				dir     = (0, -1, 1)
+              )
+
+	SPHERE			(loc = (100, 90, -70)
+					radius = 5
+					diff = (0, 1, 0)
+			)
+				
+
+	QUADRATIC 		(loc= (140, 0, -30)   {cylinder}
+                a       = 1, b  = 0, c  = 1,
+                d       = 50,
+                xmin    = -18, xmax = 18,
+                ymin    = 0,   ymax = 30,
+                zmin    = -18, zmax = 18,
+                diff    = (1.0, .6, .4),
+              )
+	QUADRATIC 		(loc= (120, 0, -30)   {cylinder}
+                a       = 1, b  = 0, c  = 1,
+                d       = 50,
+                xmin    = -18, xmax = 18,
+                ymin    = 0,   ymax = 30,
+                zmin    = -18, zmax = 18,
+                diff    = (1.0, .6, .4),
+              )
+	QUADRATIC 		(loc= (140, 0, 30)   {cylinder}
+                a       = 1, b  = 0, c  = 1,
+                d       = 50,
+                xmin    = -18, xmax = 18,
+                ymin    = 0,   ymax = 30,
+                zmin    = -18, zmax = 18,
+                diff    = (1.0, .6, .4),
+              )
+	QUADRATIC 		(loc= (120, 0, 30)   {cylinder}
+                a       = 1, b  = 0, c  = 1,
+                d       = 50,
+                xmin    = -18, xmax = 18,
+                ymin    = 0,   ymax = 30,
+                zmin    = -18, zmax = 18,
+                diff    = (1.0, .6, .4),
+              )
+END_BBOX
+
+    PARALLELOGRAM ( loc = (300, 00, -400),
+                    v1  = (0, 0, 1200),
+                    v2  = (0, 150, 0)
+                    diff = (1, 1, 1),
+                    pattern = BRICK
+                    xmult = .3,
+                    ymult = .3
+                  )
+ {   PARALLELOGRAM ( loc = (300, 150, -200),
+                    v1  = (0, 0, 1000),
+                    v2  = (20, 0, 0)
+                    diff = (1, 1, 1),
+                    pattern = BRICK
+                    xmult = .5,
+                    ymult = .5
+                  )
+}
+{ ** An observer ** }
+OBSERVER ( loc    = (-20 , 70, -80)
+           lookat = (200, 50, -15)
+)
+{OBSERVER ( loc    = (-20 , 170, -40),
+           lookat = (200, 100, 0)
+         )}
+{ ** A lamp ** }
+LAMP ( loc = (120, 180,  80),
+       radius = 5,
+       dist = 70
+     )
+
+LAMP ( loc = (-20, 350, -400),
+       radius = 5,
+       dist = 1500
+     )
+SKY  ( horiz  = (0, .4, .7),
+       zenith = (0, .4, .7),
+       dither = 1
+     )
+XRES = 320
+YRES = 200
+
+FOC_LENGTH = 40
+
+
+

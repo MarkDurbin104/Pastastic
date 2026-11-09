@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	width="1024" height="768"
+  	xmlns:screens="screens.*" 
+	backgroundColor="#FFFFFF"
+  >
+<!--#19233B -->
+ 	<mx:Image x="10" y="10" source="resources/graphics/Logo.jpg"/>
+	<screens:RaisedEdgeButton x="35" y="189" title="News"/>
+	<screens:RaisedEdgeButton x="35" y="249" title="Services"/>
+	<screens:RaisedEdgeButton x="35" y="309" title="About Us"/>
+	<screens:RaisedEdgeButton x="35" y="369" title="Contact"/>
+</mx:Canvas>

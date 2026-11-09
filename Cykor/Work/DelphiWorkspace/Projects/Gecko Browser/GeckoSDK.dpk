@@ -1,0 +1,45 @@
+package GeckoSDK;
+
+{$R *.res}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO ON}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION ON}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES OFF}
+{$TYPEDADDRESS ON}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DESCRIPTION 'Gecko SDK'}
+{$IMPLICITBUILD OFF}
+
+requires
+  rtl;
+
+contains
+  nsGeckoStrings in 'nsGeckoStrings.pas',
+  nsTypes in 'nsTypes.pas',
+  nsXPCOM in 'nsXPCOM.pas',
+  nsError in 'nsError.pas',
+  nsMemory in 'nsMemory.pas',
+  nsXPCOMGlue in 'nsXPCOMGlue.pas',
+  nsConsts in 'nsConsts.pas',
+  nsStream in 'nsStream.pas',
+  nsUtil in 'nsUtil.pas',
+  nsNetUtil in 'nsNetUtil.pas',
+  nsCID in 'nsCID.pas',
+  nsProfile in 'nsProfile.pas';
+
+end.

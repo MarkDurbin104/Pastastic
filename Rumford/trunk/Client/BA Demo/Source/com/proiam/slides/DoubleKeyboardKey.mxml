@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<slides:KeyboardKey xmlns:mx="http://www.adobe.com/2006/mxml" width="164" height="65"
+ 	backgroundSize="100%" backgroundImage="@Embed('embedded/DoubleKey.png')" 
+ 	xmlns:slides="com.proiam.slides.*"
+ 	verticalScrollPolicy="off" horizontalScrollPolicy="off" 
+ 	initialize="fontSize=20; yPos=15; cap.width=164;"
+ 	>
+</slides:KeyboardKey>

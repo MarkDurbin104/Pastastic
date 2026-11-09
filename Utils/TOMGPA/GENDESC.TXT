@@ -1,0 +1,22 @@
+To generate the DESCRIPT.DB and PX :-
+Add the following lines to the top of action Cainit int CAPTURER.DAT:
+    v[0]=0
+    where (caform.name S!= "BLAH") {
+        descript.line=v[0]
+        descript.name=caform.name
+        stwrite(descript)
+        v[0]=v[0]+1
+    }
+
+Then add the store DESCRIPT with the following format:
+  P S NAME  TYPE SIZE
+     line   9    04
+      name   X    30
+
+Run pp on capture
+
+Run capture
+
+Copy DESCRIPT.* from the capture DBM directory to a safe place and the 
+reverse all the above!
+

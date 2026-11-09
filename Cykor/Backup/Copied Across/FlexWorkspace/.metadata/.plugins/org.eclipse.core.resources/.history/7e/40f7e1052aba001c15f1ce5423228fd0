@@ -1,0 +1,281 @@
+<menus>
+	<menu name="main" caption="" icon="images/USPS.gif">
+		<group name="MailShip" caption="MAIL/SHIP" >
+		    <icon>images/MailShip.gif</icon>
+			<menuitem title="Mails" execute="mails();"
+				id="7.1"	caption="Mails"	access="S,C"	alt="M"	shortcut="F1"	 	
+				helptext="Touch this button to rates and services for mailing."	>
+				<icon>images/Mails.gif</icon>				
+			</menuitem>
+			<menuitem title="Certificate Of Mail" execute="certOfMail();"
+				id="7.2"	caption ="Cert of Mail"	access ="S,C"	alt="C"	shortcut ="F2"	 	
+				helptext="Touch this button for additional Certificate of Mailing labels."	>
+				<icon>images/CertOfMail.gif</icon>				
+			</menuitem>
+			<menuitem title="Print Label" execute="printLabel();"
+				id="7.3"	caption ="Print Label"	access ="S,C"	alt="P"	shortcut ="F3"	 	
+				helptext="Touch this button to print a Non-Specific Postage label."	>
+				<icon>images/PrintLabel.gif</icon>				
+			</menuitem>
+		</group>
+		<group name="Stamps" icon="images/StampsBG.gif" caption="STAMPS" >
+			<menuitem title="Stamps" execute="menu.stamps"
+				id="7.4"	caption ="Stamps"	access ="S,C"	alt="R"	shortcut ="F5"	 	
+				helptext="Touch this button for Stamps."	>
+				<icon>images/Stamps.gif</icon>				
+			</menuitem>
+			<menuitem title="More Options" execute="menu.moreoptions"
+				id="7.5"	caption ="More Options"	access ="S,C"	alt="O"	shortcut ="F6"	 	
+				helptext="Touch this button for additional options."	>
+				<icon>images/MoreOptions.gif</icon>				
+			</menuitem>
+			<menuitem title="Manual Barcode" execute="manualBarcode();"
+				id="7.6"	caption ="Manual Barcode"	access ="S,C"	alt="B"	shortcut ="F4"	 
+				helptext="Touch this button to manually enter a bar code number."	>
+				<icon>images/ManualBarcode.gif</icon>				
+			</menuitem>
+		</group>
+		<group name="Admin" icon="images/AdminBG.gif" caption="ADMIN">
+			<menuitem title="Lockout" execute="lockout();"
+				id="7.7"	caption ="Lockout"	access ="S,C"	alt="K"	shortcut ="F7"	 
+				helptext="Touch this button to temporarily lock the screen."	>
+				<icon>images/Lockout.gif</icon>				
+			</menuitem>
+			<menuitem title="Admin" execute="menu.admin"
+				id="7.8"	caption ="Admin"	access ="S,C"	alt="A"	shortcut ="F8"	 
+				helptext="Touch this button for Administrative functions."	>
+				<icon>images/Admin.gif</icon>				
+			</menuitem>
+			<menuitem title="Logout" execute="logout();"
+				id="7.9"	caption ="Logout"	access ="S,C"	alt="L"	shortcut ="F9"	 
+				helptext="Touch this button to Logout."	>
+				<icon>images/Logout.gif</icon>				
+			</menuitem>
+		</group>
+	</menu>
+	<menu name="stamps" caption="Stamps" icon="images/StampsMenu.gif">
+		<group>
+			<menuitem title="Books" execute="books();"
+				id="7.4.1"	caption="Books"	access ="S,C"		shortcut="F1"	 	>
+				<icon>images/Books.gif</icon>				
+			</menuitem>
+			<menuitem title="Coils" execute="coils();"
+				id="7.4.2"	caption="Coils"	Access ="S,C"		shortcut="F2"	 	>
+				<icon>images/Coils.gif</icon>				
+			</menuitem>
+			<menuitem title="Commemoratives" execute="commemoratives();"
+				id="7.4.3"	caption="Commemoratives"	Access ="S,C"		shortcut="F3"	 	>
+				<icon>images/Commemoratives.gif</icon>				
+			</menuitem>
+		</group>
+	</menu>
+	<menu name="moreoptions" caption="More Options" icon="images/MoreOptions.gif">
+		<group>
+			<menuitem title="Definitive" execute="definitive();"
+				id="7.5.1"	caption="Definitive"	access ="S,C"		shortcut="F1"	 	>
+				<icon>images/Definitive.gif</icon>				
+			</menuitem>
+			<menuitem title="Postal Stationary" execute="postalStationary();"
+				id="7.5.2"	caption="Postal Stationary"	Access ="S,C"		shortcut="F2"	 	>
+				<icon>images/PostalStationary.gif</icon>				
+			</menuitem>
+		</group>
+	</menu>
+	<menu name="admin" caption="Administration" icon="images/Admin.gif">
+		<group>
+			<menuitem title="Change Password" execute="changepassword();"
+				id="7.8.1"	caption="Change Password"	access ="C"		>	 	
+				<icon>images/ChangePassword.gif</icon>				
+			</menuitem>
+			<menuitem title="Duplicate Receipt" execute="duplicatereceipt();"
+				id="7.8.2"	caption="Duplicate Receipt"	access ="C"	>		 	
+				<icon>images/DuplicateReceipt.gif</icon>				
+			</menuitem>
+			<menuitem title="Reports" execute="menu.reports"
+				id="7.8.3"	caption="Reports"	access ="S,C"			> 	
+				<icon>images/Reports.gif</icon>				
+			</menuitem>
+		</group>
+		<group>
+			<menuitem title="PSD" execute="menu.psd"
+				id="7.8.4"	caption="PSD"	access ="S,C"			 	>
+				<icon>images/PSD.gif</icon>				
+			</menuitem>
+			<menuitem title="Mail Pickup" execute="mailpickup();"
+				id="7.8.5"	caption="Mail Pickup"	access ="S,C"			 	>
+				<icon>images/MailPickup.gif</icon>				
+			</menuitem>
+			<menuitem title="Stock Management" execute="menu.stockmanagement"
+				id="7.8.6"	caption="Stock Management"	access ="S,C"			 	>
+				<icon>images/StockManagement.gif</icon>				
+			</menuitem>
+		</group>
+		<group>
+			<menuitem title="Memo View" execute="memoview();"
+				id="7.8.7"	caption="Memo View"	access ="S,C"			>
+				<icon>images/MemoView.gif</icon>				
+			</menuitem>
+			<menuitem title="System Info" execute="systeminfo();"
+				id="7.8.8"	caption="System Info"				 	>
+				<icon>images/SystemInfo.gif</icon>				
+			</menuitem>
+			<menuitem title="Custom Receipt Message" execute="customreceiptmessage();"
+				id="7.8.9"	caption="Custom Rcpt Msg"	access ="S"			 	>
+				<icon>images/CustomReceiptMessage.gif</icon>				
+			</menuitem>
+			<menuitem title="Data Center" execute="menu.datacenter"
+				id="7.8.10"	caption="Data Center"	access ="S"		>	 	
+				<icon>images/DataCenter.gif</icon>				
+			</menuitem>
+		</group>
+		<group>
+			<menuitem title="Add User" execute="adduser();"
+				id="7.8.11"	caption="Add User"	access ="S"			 	>
+				<icon>images/AddUser.gif</icon>				
+			</menuitem>
+			<menuitem title="Modify User" execute="modifyuser();"
+				id="7.8.12"	caption="Modify User"	access ="S"			 	>
+				<icon>images/ModifyUser.gif</icon>				
+			</menuitem>
+			<menuitem title="Delete User" execute="deleteuser();"
+				id="7.8.13"	caption="Delete User"	access ="S"			 	>
+				<icon>images/DeleteUser.gif</icon>				
+			</menuitem>
+			<menuitem title="Add Container" execute="addcontainer();"
+				id="7.8.14"	caption="Add Contnr"	access ="S"			 	>
+				<icon>images/AddContainer.gif</icon>				
+			</menuitem>
+		</group>
+	</menu>
+	<menu name="reports" caption="Reports" icon="images/Reports.gif">
+		<group>
+			<menuitem title="Payment" execute="payment();"
+				id="7.8.3.1"	caption="Payment"	>	
+				<icon>images/Payment.gif</icon>				
+			</menuitem>
+			<menuitem title="Category Code" execute="categorycode();"
+				id="7.8.3.2"	caption="Category Code" >				 	
+				<icon>images/CategoryCode.gif</icon>				
+			</menuitem>
+			<menuitem title="No Svc PI" execute="nosvcpi();"
+				id="7.8.3.3"	caption="No Svc PI"	 >
+				<icon>images/NoSvcPI.gif</icon>				
+			</menuitem>
+			<menuitem title="Label Misprint" execute="labelmisprint();"
+				id="7.8.3.4"	caption="Label Misprint"			 	>
+				<icon>images/LabelMisprint.gif</icon>				
+			</menuitem>
+		</group>
+		<group>
+			<menuitem title="Financial Summary" execute="financialsummary();"
+				id="7.8.3.5"	caption="Financial Summary"			>	 	
+				<icon>images/FinancialSummary.gif</icon>				
+			</menuitem>
+			<menuitem title="PES" execute="pes();"
+				id="7.8.3.6"	caption="PES"	>			 	
+				<icon>images/PES.gif</icon>				
+			</menuitem>
+		</group>
+	</menu>
+	<menu name="PSD Admin" caption="PSD Administration" icon="images/PSD.gif">
+		<group>
+			<menuitem title="PSD Status" execute="psdstatus();"
+				id="7.8.4.1"	caption="PSD Status"	access ="S,C" >
+				<icon>images/PSDStatus.gif</icon>				
+			</menuitem>
+			<menuitem title="Funds Download" execute="fundsdownload();"
+				id="7.8.4.2"	caption="Funds Download"	access ="S,C" >
+				<icon>images/FundsDownload.gif</icon>				
+			</menuitem>
+			<menuitem title="PSD Audit" execute="psdaudit();"
+				id="7.8.4.3"	caption="PSD Audit"	access ="S,C" >
+				<icon>images/PSDAudit.gif</icon>				
+			</menuitem>
+		</group>
+		<group>
+		</group>
+		<group>
+		</group>
+		<group>
+			<menuitem title="PSD Install" execute="psdinstall();"
+				id="7.8.4.4"	caption="PSD Install"	access ="S" >
+				<icon>images/PSDInstall.gif</icon>				
+			</menuitem>
+			<menuitem title="PSD Withdraw" execute="psdwithdraw();"
+				id="7.8.4.5"	caption="PSD Wdraw"	access ="S" >
+				<icon>images/PSDWithdraw.gif</icon>				
+			</menuitem>
+		</group>
+	</menu>
+	<menu name="Stock Management" caption="Stock Management" icon="images/StockManagement.gif">
+		<group>
+			<menuitem title="Stock Display" execute="stockdisplay();"
+				id="7.8.6.1"	caption="Stock Display"	access ="S,C"	alt="S"	shortcut="F1" >
+				<icon>images/StockDisplay.gif</icon>				
+			</menuitem>
+			<menuitem title="Stock Breakdown" execute="stockbreakdown();"
+				id="7.8.6.2"	caption="Stock Breakdown"	access ="S,C"	alt="D"	shortcut="F2" >
+				<icon>images/StockBreakdown.gif</icon>				
+			</menuitem>
+		</group>
+		<group>
+			<menuitem title="Transfer In" execute="transferin();"
+				id="7.8.6.3"	caption="Transfer In"	access ="S,C"	alt="T"	shortcut="F3" >
+				<icon>images/TransferIn.gif</icon>				
+			</menuitem>
+			<menuitem title="Transfer Out" execute="transferout();"
+				id="7.8.6.4"	caption="Transfer Out"	access ="S,C"	alt="R"	shortcut="F4" >
+				<icon>images/TransferOut.gif</icon>				
+			</menuitem>
+			<menuitem title="Balance" execute="balance();"
+				id="7.8.6.5"	caption="Balance"	access ="S,C"	alt="B"	shortcut="F5" >
+				<icon>images/Balance.gif</icon>				
+			</menuitem>
+		</group>
+		<group>
+			<menuitem title="Balance Status" execute="balancestatus();"
+				id="7.8.6.6"	caption="Balance Status"	access ="S,C"	alt="A"	shortcut="F6" >
+				<icon>images/BalanceStatus.gif</icon>				
+			</menuitem>
+			<menuitem title="Pending Transfer" execute="pendingtransfer();"
+				id="7.8.6.7"	caption="Pending Transfer"	access ="S,C"	alt="P"	shortcut="F7" >
+				<icon>images/PendingTransfer.gif</icon>				
+			</menuitem>
+		</group>
+		<group>
+			<menuitem title="Stock In" execute="stockin();"
+				id="7.8.6.8"	caption="Stock In"	access ="S,C"	alt="I"	shortcut="F8" > 
+				<icon>images/StockIn.gif</icon>				
+			</menuitem>
+			<menuitem title="Stock Out" execute="stockout();"
+				id="7.8.6.9"	caption="Stock Out"	Access ="S,C"	alt="O"	shortcut="F9" >
+				<icon>images/StockOut.gif</icon>				
+			</menuitem>
+		</group>
+	</menu>
+	<menu name="Data Centre" caption="Data Center" icon="images/DataCenter.gif">
+		<group>
+			<menuitem title="Data Upload" execute="dataupload();"
+				id="7.8.9.1"	caption="Data Upload"	access ="S,C"	alt="I"	shortcut="F8" > 
+				<icon>images/DataUpload.gif</icon>				
+			</menuitem>
+			<menuitem title="Data Connect" execute="dataconnect();"
+				id="7.8.9.2"	caption="Connect"	access ="S,C"	alt="I"	shortcut="F8" > 
+				<icon>images/DataUpload.gif</icon>				
+			</menuitem>
+			<menuitem title="Data Status" execute="datastatus();"
+				id="7.8.9.3"	caption="Status"	access ="S,C"	alt="I"	shortcut="F8" > 
+				<icon>images/DataUpload.gif</icon>				
+			</menuitem>
+			<menuitem title="Data Disconnect" execute="datadisconnect();"
+				id="7.8.9.4"	caption="Disconnect"	access ="S,C"	alt="I"	shortcut="F8" > 
+				<icon>images/DataUpload.gif</icon>				
+			</menuitem>
+		</group>
+	</menu>
+id=”7.8.9.1”	caption=”Data Upload”
+id=”7.8.9.2”	caption=”Data Connect”
+id=”7.8.9.3”	caption=”Data Status”
+id=”7.8.9.4”	caption=”Data Disconnect”
+	
+</menus>

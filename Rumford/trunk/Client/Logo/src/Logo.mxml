@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute"
+	
+	creationComplete="onCreationComplete()" backgroundGradientAlphas="[1.0, 1.0]" backgroundGradientColors="[#FFFFFF, #FFFFFF]">
+<mx:Script>
+	<![CDATA[
+		private var points:Array=new Array;
+		private var r:Number;
+		private function drawPoly(a:int,b:int,c:int,d:int,col:uint):void {
+			with (bg.graphics) {
+				lineStyle(r/10,0xFFFFFF);
+				beginFill(col,1);
+				moveTo(points[a].x,points[a].y);
+				lineTo(points[b].x,points[b].y);
+				lineTo(points[c].x,points[c].y);
+				lineTo(points[d].x,points[d].y);
+				lineTo(points[a].x,points[a].y);
+				endFill();
+				//miniPoly(a,b,c,d,col);
+				trace("Polygon("+points[a].x+","+points[a].y+","+points[b].x+","+points[b].y+","+points[c].x+","+points[c].y+","+points[d].x+","+points[d].y+",#"+col.toString(16)+")");
+			}
+		}		
+		private function miniPoly(a:int,b:int,c:int,d:int,col:uint):void {
+			with (bg.graphics) {
+				lineStyle(3,0xFFFFFF);
+				beginFill(col,1);
+				var scaler:Number=3;
+				//lineStyle(r/40,0xFFFFFF);
+				moveTo(points[a].x/scaler,points[a].y/scaler);
+				lineTo(points[b].x/scaler,points[b].y/scaler);
+				lineTo(points[c].x/scaler,points[c].y/scaler);
+				lineTo(points[d].x/scaler,points[d].y/scaler);
+				lineTo(points[a].x/scaler,points[a].y/scaler);
+				endFill();
+			}
+		}		
+/*
+	Polygon(400,450,	227,350,	400,250,	573,350,	#406488)
+	Polygon(400,450,	573,350,	573,550,	400,650,	#678eb7)
+	Polygon(400,450,	400,650,	227,550,	227,350,	#b4c8dc)
+	Polygon(227,350,	400,250,	573,350,	400, 50,	#678eb7)
+	Polygon(573,350,	573,550,	400,650,	746,650,	#b4c8dc)
+	Polygon(400,650,	227,550,	227,350,	 54,650,	#406488)
+*/		
+		
+		private function onCreationComplete():void {
+			var degRad:Number=Math.PI/180;
+//			r=height/10;
+//			var x:Number=width/2;
+//			var y:Number=(height/2)+r;
+			r=100;
+			var x:Number=500;
+			var y:Number=550;
+			points.push({x:x,y:y});
+			for (var i:int=0;i<360;i+=60) {
+				var xp:Number=x+r*2*Math.sin(i*degRad);
+				var yp:Number=y-r*2*Math.cos(i*degRad);
+				points.push({x:xp,y:yp});
+			}
+			for (i=0;i<360;i+=120) {
+				xp=x+r*4*Math.sin(i*degRad);
+				yp=y-r*4*Math.cos(i*degRad);
+				points.push({x:xp,y:yp});
+			}
+			
+			for (i=0;i<10;i++) {
+//				points[i].x=Math.round(points[i].x/5)*5;
+//				points[i].y=Math.round(points[i].y/5)*5;
+				points[i].x=Math.round(points[i].x);
+				points[i].y=Math.round(points[i].y);
+			}
+			drawPoly(0,6,1,2,0x406488);
+			drawPoly(0,2,3,4,0x678EB7);
+			drawPoly(0,4,5,6,0xB4C8DC);
+			drawPoly(6,1,2,7,0x678EB7);
+			drawPoly(2,3,4,8,0xB4C8DC);
+			drawPoly(4,5,6,9,0x406488);
+
+			bg.graphics.lineStyle(2,0);
+			for (i=0;i<10;i++) {
+				bg.graphics.drawCircle(points[i].x,points[i].y,r);
+			}
+			/*bg.graphics.moveTo(points[6].x,points[6].y);
+			for (i=0;i<6;i++) bg.graphics.lineTo(points[i+1].x,points[i+1].y);
+			bg.graphics.moveTo(points[6].x,points[6].y);
+			bg.graphics.lineTo(points[0].x,points[0].y);
+			bg.graphics.moveTo(points[4].x,points[4].y);
+			bg.graphics.lineTo(points[0].x,points[0].y);
+			bg.graphics.moveTo(points[2].x,points[2].y);
+			bg.graphics.lineTo(points[0].x,points[0].y);
+			bg.graphics.moveTo(points[9].x,points[9].y);
+			for (i=0;i<3;i++) bg.graphics.lineTo(points[i+7].x,points[i+7].y);*/
+//			bg.graphics.drawRect(100,100,800,700);
+		}
+	]]>
+</mx:Script>
+	<mx:Canvas id="bg" x="0" y="0" width="100%" height="100%" >
+	</mx:Canvas>
+	
+</mx:Application>

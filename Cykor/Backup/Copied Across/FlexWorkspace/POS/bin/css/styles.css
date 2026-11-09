@@ -1,0 +1,45 @@
+
+.gradientRectangleSkin {
+	
+    fontFamily: Arial;
+    fontSize: 12;
+    color: #FFFFFF;
+    textAlign:left;
+    width:150;
+    height:30;
+    cornerRadius:12;
+
+	
+	fillColorIT:#F1F3F0;
+	fillColorIB:#D7E7E7; 
+	fillColorBT:#A3C6DC;
+	fillColorBB:#6C98B5;
+	fillColorET:#C6E0EF;
+	fillColorEB:#6F9BB8; 
+	innerStart:0.32;
+	innerEnd:0.32;
+	gradiantAngle:90;  
+	highlightAngle:45;
+	outerEdge:1;
+	borderThickness:4;
+	innerEdge:1;
+
+    upSkin:ClassReference('base.GradientRectangleSkin');
+	downSkin:ClassReference('base.GradientRectangleSkin');
+	overSkin:ClassReference('base.GradientRectangleSkin');
+	disabledSkin:ClassReference('base.GradientRectangleSkin');
+}
+.gradientRoundBaseSkin {
+	
+    fontFamily: Arial;
+    fontSize: 12;
+    color: #FFFFFF;
+    textAlign:left;
+    width:150;
+    height:30;
+    
+    upSkin:ClassReference('base.GradientRoundBaseSkin');
+	downSkin:ClassReference('base.GradientRoundBaseSkin');
+	overSkin:ClassReference('base.GradientRoundBaseSkin');
+	disabledSkin:ClassReference('base.GradientRoundBaseSkin');
+}

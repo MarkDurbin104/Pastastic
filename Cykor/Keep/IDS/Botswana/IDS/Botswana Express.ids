@@ -1,0 +1,220 @@
+//****************************************************************************************//
+//**                                                                                    **//
+//**                              Express Products                                      **//
+//**                                                                                    **//
+//****************************************************************************************//
+
+Domains {
+  EMSContractId {
+    Title     { 'Contract ID'               }
+    Prompt    { 'Contract ID'               }
+    Hint      { 'Enter the Contract ID' }
+    Error     { 'Invalid Contract ID' }
+    Format {
+         PickList  { '' }
+      }
+    InputFrom { 'Keyboard'                     }
+  }
+}
+
+
+Snippets {
+
+   EMSCustomerFill {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         SL:=TPackStringList.Create;
+         SL.PackText:=GetLocalList('Customer','EMS');
+         ProdForm.EMSContractId.Items.Text:=SL.Text;
+         SL.Free;
+      *]
+      }
+   }
+   EMSTriggerDec {
+    InsertBetween { '{OverrideDecStart}','{OverrideDecEnd}' }
+    CodeBlock { [*
+     procedure TriggerBarCode(Value:String); override;
+    *] }
+   }
+   EMSTriggerDef {
+    InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+    CodeBlock { [*
+     procedure {PClass}TIntEMSProduct.TriggerBarCode(Value:String);
+     begin
+        ProdForm.IntEMSID.Text:=Value;
+        FlagComplete(ProdForm.Validate);
+        UIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+     end;
+    *] }
+   }
+   EMSDomTriggerDef {
+    InsertBetween { '{OverrideDefStart}','{OverrideDefEnd}' }
+    CodeBlock { [*
+     procedure {PClass}TIntEMSProduct.TriggerBarCode(Value:String);
+     begin
+        ProdForm.DomEMSID.Text:=Value;
+        FlagComplete(ProdForm.Validate);
+        UIEventSink.DataChanged(Self,GetFormData(ProdForm),False);
+     end;
+    *] }
+   }
+
+   IntEMS {
+   InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+   CodeBlock {
+   [*
+   
+   TxnLog.LogTransaction(
+             Index,
+             FQuantity, // Quantity
+             Get_PLU, // PLU
+             FQuantity*StrToCurrDef(ProdForm.StandardFee.Text,0), // Value
+             StrToCurrDef(ProdForm.StandardFee.Text,0), // Price
+             Get_Description, // Description
+             ProdForm.Weight.Text+' '+'g', // Additional Info
+             Get_ProgramID, // ProgID
+             Enumerate(ProdForm)); // Domain Info
+       Inc(Index);
+      TxnLog.LogTransaction(
+             Index,
+             FQuantity, // Quantity
+             Get_PLU, // PLU
+             0, // Value
+             0, // Price
+             'To', // Description
+             ProdForm.IntEMSDestination.Text, // Additional Info
+             Get_ProgramID, // ProgID
+             Enumerate(ProdForm)); // Domain Info
+       Inc(Index);
+      TxnLog.LogTransaction(
+             Index,
+             FQuantity, // Quantity
+             Get_PLU, // PLU
+             0, // Value
+             0, // Price
+             'ID =', // Description
+             ProdForm.IntEMSID.Text, // Additional Info
+             Get_ProgramID, // ProgID
+             Enumerate(ProdForm)); // Domain Info
+       Inc(Index);
+       if CombineList <> nil then
+          CombineList.LogTransactions(Index,TxnLog);
+       *]
+      }
+   }
+ }
+
+Products
+{
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  DomEMS { BasedOn     { BaseExpress                                 }
+           Caption     { 'Domestic EMS'                              }
+           BitMap      { '..\images\P_DomEMS.bmp'  }
+           Description { 'Domestic EMS'                              }
+           Title       { 'Domestic EMS'                              }
+           Domains     { DomEMSID
+                         StandardFee { Weight, 'LookUp.DomEMSCash' }     }
+           LogAs       { DomEMS }
+           Snippets    { EMSTriggerDec,EMSDomTriggerDef }
+           Customer    { 'Dom. EMS ',Weight,'g','^','Total ','P',TotalFee }
+           PLU         { PLU_DomEMS }
+          }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+   DomEMSContract {
+      BasedOn { DomEMS }
+      Caption     { 'Dom EMS Contract (account)'                              }
+      Description { 'Dom EMS Contract (account)'                              }
+      Title       { 'Dom EMS Contract (account)'                              }
+      Domains     {
+                     CustomerList
+                     StandardFee { Weight, 'LookUp.DomEMSContract' }
+                  }
+      Snippets    { UtilsUses, CustomerFillEMS, CustomerPayExecVars , EMSContractSetLastCustomer}
+      LogAs       { DomEMSContract }
+      Customer    { 'Dom. EMS Ct. ',Weight,'g','^','Total ','P',TotalFee }
+      PLU         { PLU_DomEMSContract }
+    }
+
+   DomEMSContractCash {
+      BasedOn { DomEMS }
+      Caption     { 'Dom EMS Contract (cash/cheque)'                              }
+      Description { 'Dom EMS Contract (cash/cheque)'                              }
+      Title       { 'Dom EMS Contract (cash/cheque)'                              }
+      Domains     {
+                     CustomerList
+                     StandardFee { Weight, 'LookUp.DomEMSContract' }
+                  }
+      Snippets    { UtilsUses, CustomerFillEMS, CustomerPayExecVars , EMSContractSetLastCustomer}
+      LogAs       { DomEMSContract }
+      Customer    { 'Dom. EMS Ct. ',Weight,'g','^','Total ','P',TotalFee }
+      PLU         { PLU_DomEMSContractCash }
+    }
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+  IntEMS { BasedOn     { BaseExpress                                }
+           RegDesc     { 'Corvus IntEMS Product'                    }
+           Caption     { 'International EMS'                        }
+           BitMap      { '..\images\P_IntEMS.bmp' }
+           Description { 'International EMS'                        }
+           Title       { 'International EMS'                        }
+           Domains     { IntEMSDestination
+                         IntEMSID
+                         StandardFee { Weight
+                                       IntEMSDestination
+                                       'LookUp.IntEMSCash'    }         }
+           LogAs       { IntEMS }
+           Snippets    { EMSTriggerDec,EMSTriggerDef }
+           Customer    { 'Int. EMS ',Weight,'g','^','Total ','P',TotalFee }
+           PLU         { PLU_IntEMS }
+          }
+
+   IntEMSContract {
+      BasedOn { IntEMS }
+      Caption     { 'Int. EMS Contract (Account)'                        }
+      Description { 'Int. EMS Contract (Account)'                        }
+      Title       { 'Int. EMS Contract (Account)'                        }
+      Domains     {
+                     CustomerList
+                     StandardFee { Weight
+                                   IntEMSDestination
+                                   'LookUp.IntEMSContract' }            }
+      Snippets    { UtilsUses, CustomerFillEMS, CustomerPayExecVars , EMSContractSetLastCustomer}
+      LogAs       { IntEMSContract }
+      Customer    { 'Int. EMS Ct. ',Weight,'g','^','Total ','P',TotalFee }
+      PLU         { PLU_IntEMSContract }
+    }
+
+   IntEMSContractCash {
+      BasedOn { IntEMS }
+      Caption     { 'Int. EMS Contract (cash/cheque)'                        }
+      Description { 'Int. EMS Contract (cash/cheque)'                        }
+      Title       { 'Int. EMS Contract (cash/cheque)'                        }
+      Domains     {
+                     CustomerList
+                     StandardFee { Weight
+                                   IntEMSDestination
+                                   'LookUp.IntEMSContract' }            }
+      Snippets    { UtilsUses, CustomerFillEMS, CustomerPayExecVars , EMSContractSetLastCustomer}
+      LogAs       { IntEMSContract }
+      Customer    { 'Int. EMS Ct. ',Weight,'g','^','Total ','P',TotalFee }
+      PLU         { PLU_IntEMSContractCash }
+    }
+
+
+//
+//------------------------------------------------------------------------------------------
+//
+
+}

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas 
+	xmlns:mx="http://www.adobe.com/2006/mxml"
+	xmlns:svg="SVGUI.*"
+	width="{mailScreenWidth}" 
+	height="{mailScreenHeight}"  
+	backgroundImage="@Embed(source='svg_graphics/MailScreenBG.svg',mimeType='image/svg')" 
+	backgroundSize="100%"  
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"  >
+	<mx:Script>
+		<![CDATA[
+			public const mailScreenWidth:Number=1024;
+			public const mailScreenHeight:Number=768;
+		]]>
+	</mx:Script>
+	<mx:VBox id="bgVBox" x="44" y="0" width="{mailScreenWidth-44}" height="100%" verticalGap="4" horizontalAlign="left" verticalAlign="top" horizontalScrollPolicy="off">
+		<mx:HBox horizontalGap="0" width="100%" height="128">
+		</mx:HBox>
+		<svg:CalcSizeBox width="100%" horizontalGap="5" verticalAlign="top" horizontalAlign="left" id="dayBar">
+			<svg:DayButton offset="0"/>
+			<svg:DayButton offset="1"/>
+			<svg:DayButton offset="2"/>
+			<svg:DayButton offset="3"/>
+			<svg:DayButton offset="4"/>
+			<svg:DayButton offset="5"/>
+			<svg:DayButton id="day7" offset="6"/>
+		</svg:CalcSizeBox>
+		<svg:CalcSizeBox width="100%" horizontalGap="5" verticalAlign="top" horizontalAlign="left" id="calBar0">
+			<svg:OneDayItem/>
+			<svg:OneDayItem/>
+			<svg:TwoDayItem/>
+			<svg:DaySpacer/>
+			<svg:DaySpacer/>
+			<svg:ThreeDayItem/>
+		</svg:CalcSizeBox>
+		<svg:CalcSizeBox width="100%" horizontalGap="5" verticalAlign="top" horizontalAlign="left" id="calBar1">
+			<svg:OneDayItem/>
+			<svg:OneDayItem/>
+			<svg:OneDayItem/>
+			<svg:ThreeDayItem />
+			<svg:DaySpacer/>
+		</svg:CalcSizeBox>
+		<svg:CalcSizeBox width="100%" horizontalGap="5" verticalAlign="top" horizontalAlign="left" id="calBar2">
+			<svg:LockedOneDayItem />
+			<svg:DaySpacer/>
+			<svg:DaySpacer/>
+			<svg:DaySpacer/>
+			<svg:FourDayItem />
+		</svg:CalcSizeBox>
+		<svg:CalcSizeBox width="100%" horizontalGap="5" verticalAlign="top" horizontalAlign="left" id="calBar3">
+			<svg:DaySpacer/>
+			<svg:DaySpacer/>
+			<svg:DaySpacer/>
+			<svg:DaySpacer/>
+			<svg:DaySpacer/>
+			<svg:DaySpacer/>
+			<svg:DaySpacer/>
+		</svg:CalcSizeBox>
+		<mx:Spacer width="40" height="6"/>
+		<mx:Image source="@Embed(source='svg_graphics/ProdServ.png')" scaleContent="true"/>
+		<svg:CalcSizeBox width="100%" horizontalGap="5" verticalAlign="top" horizontalAlign="left" id="servBar">
+			<svg:SecondaryItem caption="Least Expensive Service"/>
+			<svg:SecondaryItem caption="Fastest Service"/>
+			<svg:SecondaryItem caption="Insurance"/>
+			<svg:SecondaryItem caption="C O D"/>
+			<svg:SecondaryItem caption="Certificate of Mailing"/>
+			<svg:SecondaryItem caption="Registration"/>
+		</svg:CalcSizeBox>
+	</mx:VBox>
+</mx:Canvas>

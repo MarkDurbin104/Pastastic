@@ -1,0 +1,1447 @@
+Products {
+
+//_______________________________________________________________
+//
+//                      BASE MAIL
+//_______________________________________________________________
+
+
+   BaseSurValue {
+      DontBuild
+      BasedOn { BaseSurfaceDest }
+      Items   {
+                'SwapTo.Stamps'
+                'Product.PrePaidStamps'
+               }
+      Domains  {
+               StandardFee
+               }
+      Snippets {
+                MailItemSwapVar
+                MailItemLogVars
+                MailItemPreLog
+                MailItemLogStamps
+                MailSWAPTO
+                MailStampTrigger
+                //MailStampTriggerVar
+                GranVarAU
+                DisableComple
+               }
+   }
+
+   BaseAirValue {
+      DontBuild
+      BasedOn { BaseAirDest }
+      Items    {
+               'SwapTo.Stamps'
+               'Product.PrePaidStamps'
+               }
+      Domains  {
+               StandardFee
+               }
+      Snippets {
+               MailItemSwapVar
+               MailItemLogVars
+               MailItemPreLog
+               MailItemLogStamps
+               MailSWAPTO
+               MailStampTrigger
+               //MailStampTriggerVar
+               GranVarAU
+               DisableComple
+               }
+   }
+
+
+
+//________________Express + ( Register ) Value
+
+   BaseAirExpAdvValue {
+      DontBuild
+      BasedOn { BaseAirValue }
+      Items {
+               'Product.ExpressDelivery'
+               'Product.AdviceDelivery'
+      }
+      Domains {
+         IntExpressDestination
+      }
+      Snippets {
+                  DisableExpressExecute
+                  DisableBottomVar
+                  DisableAdviceBottom
+                }
+   }
+
+
+   BaseSurExpAdvValue {
+      DontBuild
+      BasedOn { BaseSurValue }
+      Items {
+               'Product.ExpressDelivery'
+               'Product.AdviceDelivery'
+      }
+      Domains {
+         IntExpressDestination
+      }
+      Snippets {
+                  DisableExpressExecute
+                  DisableBottomVar
+                  DisableAdviceBottom
+                  LetterWeightPosVal
+                }
+   }
+
+
+   BaseAirExpValue {
+      DontBuild
+      BasedOn { BaseAirValue }
+      Items {
+               'Product.ExpressDelivery'
+            }
+      Domains {
+         IntExpressDestination
+      }
+      Snippets {
+                  DisableExpressExecute
+                  DisableBottomVar
+                  DisableAdviceBottom
+                }
+   }
+
+   BaseSurExpValue {
+      DontBuild
+      BasedOn { BaseSurValue }
+      Items {
+               'Product.ExpressDelivery'
+            }
+      Domains {
+         IntExpressDestination
+      }
+      Snippets {
+                  DisableExpressExecute
+                  DisableBottomVar
+                  DisableAdviceBottom
+                  LetterWeightPosVal
+                }
+   }
+
+
+//________________Franked
+
+   BaseAirFrq {
+      DontBuild
+      BasedOn { BaseAirDest }
+      Domains {
+                IntExpressDestination
+                StandardFee
+              }
+      Items  {
+               'Product.ExpressDeliveryFree'
+               'Product.AdviceDeliveryFree'
+             }
+      Snippets {
+                  BaseFrqVarVal
+                  BaseFrqPreVal
+                  BaseFrqPosVal
+                  DisableExpressExecute
+               }
+   }
+
+   BaseSurFrq {
+      DontBuild
+      BasedOn { BaseSurfaceDest }
+      Domains {
+                IntExpressDestination
+                StandardFee
+              }
+      Items  {
+               'Product.ExpressDeliveryFree'
+               'Product.AdviceDeliveryFree'
+             }
+      Snippets {
+                  BaseFrqVarVal
+                  BaseFrqPreVal
+                  DisableExpressExecute
+               }
+   }
+
+//________________Government
+
+   BaseAirAdvGov {
+      DontBuild
+      BasedOn { BaseGovAirDest }
+      Items {
+               'Product.AdviceDelivery'
+               'Product.ExpressDelivery'
+            }
+      Domains  {
+               IntGovExpressDestination
+               //IntGovRegDestination
+               StandardFee
+               }
+      Snippets {
+                  DisableGovExpressExecute
+                  DisableBottomVar
+                  DisableAdviceBottom
+                  SelectRegister
+                }
+   }
+
+   BaseSurAdvGov {
+      DontBuild
+      BasedOn { BaseGovSurfaceDest }
+      Domains  {
+               IntGovExpressDestination
+               //IntGovRegDestination
+               StandardFee
+               }
+      Items {
+               'Product.AdviceDelivery'
+               'Product.ExpressDelivery'
+            }
+      Snippets {
+                  DisableGovExpressExecute
+                  DisableBottomVar
+                  DisableAdviceBottom
+                  SelectRegister
+                }
+   }
+
+
+   BaseAirGov {
+      DontBuild
+      BasedOn { BaseGovAirDest }
+      Domains  {
+               IntGovExpressDestination
+               StandardFee
+               }
+      Items    {
+               'Product.ExpressDelivery'
+               }
+      Snippets {
+                  DisableGovExpressExecute
+                  DisableBottomVar
+                  DisableAdviceBottom
+                  SelectRegister
+                }
+   }
+
+   BaseSurGov {
+      DontBuild
+      BasedOn { BaseGovSurfaceDest }
+      Domains  {
+               IntGovExpressDestination
+               //IntGovRegDestination
+               StandardFee
+               }
+      Items    {
+               'Product.ExpressDelivery'
+               'Product.AdviceDelivery'
+               }
+      Snippets {
+                  DisableGovExpressExecute
+                  DisableBottomVar
+                  DisableAdviceBottom
+                  SelectRegister
+                }
+   }
+
+
+//________________Bulk
+
+
+   BaseSurBulk {
+      DontBuild
+      BasedOn { BaseSurface }
+      Domains {
+         IndividualFee
+         CustomerName
+         GrossBulk
+         DiscountBulk
+      }
+      Items {
+         'Product.Sorted'
+         'Product.UnSorted'
+      }
+      Snippets {
+         PostExecuteBulk
+         PostValidBulk
+         BulkNotifyChild
+      }
+   }
+
+//________________Parcel
+
+   BaseSurParcel {
+      DontBuild
+      BasedOn  { BaseParcel  }
+      Domains  {
+                 ParSurDestination
+                 PostOffice
+                 //CustomerName
+                 //CustomerAddress
+                 AddresseeName
+                 ParcelNumber
+                 Weight
+                 //BulkQuantity
+                 StandardFee { Weight,ParSurDestination,'LookUp.SurParcel' }
+               }
+      Items    { 'SwapTo.Stamps'
+                 'Product.PrePaidStamps'
+                 'Product.AdviceDelivery'
+                 'Product.ExpressDelivery'
+                 'Product.CODFee'
+                 'Product.SurParInsurance'
+               }
+      Snippets { MailItemSwapVar
+                 MailItemLogVars
+                 MailItemLog
+                 MailItemPreLog
+                 MailItemLogStamps
+                 ParcelMailSWAPTO
+                 DisableParcelBottomVar
+                 DisableParcelBottom
+                 DisableComple
+               }
+   }
+
+   BaseSurParcelGov {
+      DontBuild
+      BasedOn  { BaseParcel  }
+      Domains  {
+                 ParSurDestination
+                 PostOffice
+                 //CustomerName
+                 //CustomerAddress
+                 AddresseeName
+                 ParcelNumber
+                 Weight
+                 //BulkQuantity
+                 StandardFee { Weight,ParSurDestination,'LookUp.SurParcel' }
+               }
+      Items    {
+                 'Product.PrePaidStamps'
+                 'Product.AdviceDelivery'
+                 'Product.ExpressDelivery'
+                 'Product.CODFee'
+                 'Product.SurParInsurance'
+               }
+      Snippets {
+                 DisableParcelBottomVar
+                 DisableParcelBottom
+               }
+      LogAs    { BaseSurParcelGov }
+   }
+
+   BaseAirParcel {
+      DontBuild
+      BasedOn  { BaseParcel  }
+      Domains  {
+                 ParAirDestination
+                 PostOffice
+                 //CustomerName
+                 //CustomerAddress
+                 AddresseeName
+                 ParcelNumber
+                 Weight
+                 //BulkQuantity
+                 StandardFee { Weight,ParAirDestination,'LookUp.AirParcel' }
+               }
+      Items    { 'SwapTo.Stamps'
+                 'Product.PrePaidStamps'
+                 'Product.AdviceDelivery'
+                 'Product.ExpressDelivery'
+                 'Product.CODFee'
+                 'Product.AirParInsurance'
+               }
+      Snippets { MailItemSwapVar
+                 MailItemLogVars
+                 MailItemLog
+                 MailItemPreLog
+                 MailItemLogStamps
+                 ParcelMailSWAPTO
+                 DisableParcelBottomVar
+                 DisableParcelBottom
+                 DisableComple
+               }
+   }
+
+   BaseAirParcelGov {
+      DontBuild
+      BasedOn  { BaseParcel  }
+      Domains  {
+                 ParAirDestination
+                 PostOffice
+                 //CustomerName
+                 //CustomerAddress
+                 AddresseeName
+                 ParcelNumber
+                 Weight
+                 //BulkQuantity
+                 StandardFee { Weight,ParAirDestination,'LookUp.AirParcel' }
+               }
+      Items    {
+                 'Product.PrePaidStamps'
+                 'Product.AdviceDelivery'
+                 'Product.ExpressDelivery'
+                 'Product.CODFee'
+                 'Product.AirParInsurance'
+               }
+      Snippets {
+                 DisableParcelBottomVar
+                 DisableParcelBottom
+               }
+      LogAs    { BaseAirParcelGov }
+   }
+
+
+//_______________________________________________________________
+//
+//                     Parcel Mail
+//_______________________________________________________________
+
+
+   SurParcel {
+      Caption { 'Surface Parcel' }
+      Title   { 'Surface Parcel' }
+      BitMap  { '..\images\P_DomSurParcel.bmp' }
+      Domains {
+               StandardFee { Weight,ParSurDestination,'LookUp.SurParcel' }
+      }
+      BasedOn { BaseSurparcel }
+      Customer { 'S. Parcel ',Weight,'g','^','Total ','P',TotalFee }
+      PLU     { PLU_SurParcel }
+   }
+
+   AirParcel {
+      Caption { 'Air Parcel' }
+      Title   { 'Air Parcel' }
+      BitMap   { '..\images\P_DomAirParcel.bmp' }
+      BasedOn { BaseAirparcel }
+      Domains {
+               StandardFee { Weight,ParAirDestination,'LookUp.AirParcel' }
+      }
+      Customer { 'A. Parcel ',Weight,'g','^','Total ','P',TotalFee }
+      PLU     { PLU_AirParcel }
+   }
+
+   GovSurParcel {
+      Caption { 'Surface Government Parcel' }
+      Title   { 'Surface Government Parcel' }
+      BitMap   { '..\images\P_DomSurParcel.bmp' }
+      BasedOn { BaseSurParcelGov }
+   //BaseSurparcel }
+      Domains {
+               StandardFee { Weight,ParSurDestination,'LookUp.SurParcel' }
+      }
+      Customer { 'S. Gv.Parcel ',Weight,'g','^','Total ','P',TotalFee }
+      PLU     { PLU_GovSurParcel }
+   }
+
+   GovAirParcel {
+      Caption { 'Air Government Parcel' }
+      Title   { 'Air Government Parcel' }
+      BitMap   { '..\images\P_DomAirParcel.bmp' }
+      BasedOn { BaseAirParcelGov }
+      Domains {
+               StandardFee { Weight,ParAirDestination,'LookUp.AirParcel' }
+      }
+      Customer { 'A. Gv.Parcel ',Weight,'g','^','Total ','P',TotalFee }
+      PLU     { PLU_GovAirParcel }
+   }
+
+
+//_______________________________________________________________
+//
+//                Air Ordinary
+//_______________________________________________________________
+
+   AirLetterStd {
+      BasedOn { BaseAirExpAdvValue }
+      Caption      { 'Air Standard Letter' }
+      BitMap       { '..\images\P_DomAirLetter.bmp' }
+      Domains { StandardFee { Weight,MailAirDestination,'LookUp.AirStdLetter' }  }
+      Items {
+         'Product.AirLetterRegID'
+         'Product.AirLetterRedeemIRC'
+      }
+      Snippets {
+         AirLetterNOTIFYVAR
+         AirLetterSWAPTO
+      }
+      Customer { 'A. Letter Std','^','Total ','P',TotalFee }
+      PLU     { PLU_AirLetterStd }
+   }
+
+   AirLetterLrg {
+      BasedOn { BaseAirExpAdvValue }
+      Caption      { 'Air Large Letter' }
+      BitMap       { '..\images\P_DomAirLetter.bmp' }
+      Domains { StandardFee { Weight,MailAirDestination,'LookUp.AirLargeLetter' }  }
+      Items { 'Product.AirLetterRegID' }
+      Customer { 'A. Letter Lrg','^','Total ','P',TotalFee }
+      PLU     { PLU_AirLetterLrg }
+   }
+
+   AirLetterOver {
+      BasedOn { BaseAirExpAdvValue }
+      Caption      { 'Air Oversize Letter' }
+      BitMap       { '..\images\P_DomAirLetter.bmp' }
+      Domains { StandardFee { Weight,MailAirDestination,'LookUp.AirOversizeLetter' }  }
+      Items { 'Product.AirLetterRegID' }
+      Customer { 'A. Letter Over','^','Total ','P',TotalFee }
+      PLU     { PLU_AirLetterOver }
+   }
+
+   AirAerogramme {
+      BasedOn { BaseAirExpAdvValue }
+      Caption      { 'Air Aerogramme' }
+      BitMap       { '..\images\P_DomAirAerogramme.bmp' }
+      Domains { StandardFee { Weight,MailAirDestination,'LookUp.AirAerogramme' }  }
+      Items { 'Product.AerogrammeRegID' }
+      Customer { 'A. Aerogramme','^','Total ','P',TotalFee }
+      PLU     { PLU_AirAerogramme }
+      Snippets { ExecuteNeedsWeight }
+   }
+
+   AirPostCard {
+      BasedOn { BaseAirExpValue }
+      Caption      { 'Air PostCard' }
+      BitMap       { '..\images\P_DomAirPostCard.bmp' }
+      Domains { StandardFee { Weight,MailAirDestination,'LookUp.AirPostCard' }  }
+      Customer { 'A. PostCard','^','Total ','P',TotalFee }
+      PLU     { PLU_AirPostCard }
+      Snippets { ExecuteNeedsWeight }
+   }
+
+   AirSmallPacket {
+      BasedOn { BaseAirExpAdvValue }
+      Caption      { 'Air Small Packet' }
+      BitMap       { '..\images\P_DomAirSmallPacket.bmp' }
+      Domains { StandardFee { Weight,MailAirDestination,'LookUp.AirSmallPacket' }  }
+      //Items { 'Product.SurSmallPacketRegID' }
+      Items { 'Product.AirSmallPacketRegID' }
+      Customer { 'A. Sml Pkt ',Weight,'g','^','Total ','P',TotalFee }
+      PLU     { PLU_AirSmallPacket }
+   }
+
+
+
+//_______________________________________________________________
+//
+//                Surface Ordinary
+//_______________________________________________________________
+
+   SurLetterStd {
+      BasedOn { BaseSurExpAdvValue }
+      Caption      { 'Surface Standard Letter' }
+      BitMap       { '..\images\P_DomSurLetter.bmp' }
+      Domains { StandardFee { Weight,MailSurDestination,'LookUp.SurStdLetter' }  }
+      Items { 'Product.SurLetterRegID' }
+      Customer { 'S. Letter Std','^','Total ','P',TotalFee }
+      PLU     { PLU_SurLetterStd }
+   }
+
+   SurLetterLrg {
+      BasedOn { BaseSurExpAdvValue }
+      Caption      { 'Surface Large Letter' }
+      BitMap       { '..\images\P_DomSurLetter.bmp' }
+      Domains { StandardFee { Weight,MailSurDestination,'LookUp.SurLargeLetter' }  }
+      Items { 'Product.SurLetterRegID' }
+      Customer { 'S. Letter Lrg','^','Total ','P',TotalFee }
+      PLU     { PLU_SurLetterLrg }
+   }
+
+   SurLetterOver {
+      BasedOn { BaseSurExpAdvValue }
+      Caption      { 'Surface Oversize Letter' }
+      BitMap       { '..\images\P_DomSurLetter.bmp' }
+      Domains { StandardFee { Weight,MailSurDestination,'LookUp.SurOversizeLetter' }  }
+      Items { 'Product.SurLetterRegID' }
+      Customer { 'S. Letter Over','^','Total ','P',TotalFee }
+      PLU     { PLU_SurLetterOver }
+   }
+
+   SurPostCard {
+      BasedOn { BaseSurExpValue }
+      Caption      { 'Surface PostCard' }
+      BitMap       { '..\images\P_DomSurPostCard.bmp' }
+      Domains { StandardFee { Weight,MailSurDestination,'LookUp.SurPostCard' }  }
+      Customer { 'S. PostCard','^','Total ','P',TotalFee }
+      PLU     { PLU_SurPostCard }
+      Snippets { ExecuteNeedsWeight }
+   }
+
+   SurSmallPacket {
+      BasedOn { BaseSurExpAdvValue }
+      Caption      { 'Surface Small Packet' }
+      BitMap       { '..\images\P_DomAirSmallPacket.bmp' }
+      Domains { StandardFee { Weight,MailSurDestination,'LookUp.SurSmallPacket' }  }
+      Items { 'Product.SurSmallPacketRegID' }
+      Customer { 'S. Sml Pkt ',Weight,'g','^','Total ','P',TotalFee }
+      PLU     { PLU_SurSmallPacket }
+   }
+
+   SurBlindLit {
+      BasedOn { BaseSurfaceDest }
+      Caption      { 'Surface Literature for the blind' }
+      BitMap       { '..\images\P_DomSurBlindLit.bmp' }
+      Domains { StandardFee { Weight,MailSurDestination,'LookUp.SurBlindLit' }  }
+      Customer { 'S. Blind Lit. ',Weight,'g','^','Total ','P',TotalFee }
+      PLU     { PLU_SurBlindLit }
+   }
+
+
+//_______________________________________________________________
+//
+//                Air Franked
+//_______________________________________________________________
+
+   AirFrqLetterStd {
+      BasedOn { BaseAirFrq }
+      Caption      { 'Air Franked Standard Letter' }
+      BitMap       { '..\images\P_DomAirLetter.bmp' }
+      Domains { StandardFee { Weight,MailAirDestination,'LookUp.LetterFree' }  }
+      Items   { 'Product.AirFrankRegID' }
+      Customer { 'A. Fq.Letter Std','^','Total ','P',TotalFee }
+      PLU     { PLU_AirFrqLetterStd }
+   }
+
+   AirFrqLetterLrg {
+      BasedOn { BaseAirFrq }
+      Caption      { 'Air Franked Large Letter' }
+      BitMap       { '..\images\P_DomAirLetter.bmp' }
+      Domains { StandardFee { Weight,MailAirDestination,'LookUp.LetterFree' }  }
+      Items   { 'Product.AirFrankRegID' }
+      Customer { 'A. Fq.Letter Lrg','^','Total ','P',TotalFee }
+      PLU     { PLU_AirFrqLetterLrg }
+   }
+
+   AirFrqLetterOver {
+      BasedOn { BaseAirFrq }
+      Caption      { 'Air Franked Oversize Letter' }
+      BitMap       { '..\images\P_DomAirLetter.bmp' }
+      Domains { StandardFee { Weight,MailAirDestination,'LookUp.LetterFree' }  }
+      Items   { 'Product.AirFrankRegID' }
+      Customer { 'A. Fq.Letter Over','^','Total ','P',TotalFee }
+      PLU     { PLU_AirFrqLetterOver }
+   }
+
+   AirFrqPostCard {
+      BasedOn { BaseAirFrq }
+      Caption      { 'Air Franked PostCard' }
+      BitMap       { '..\images\P_DomAirPostCard.bmp' }
+      Domains { StandardFee { Weight,MailAirDestination,'LookUp.PostCardFree' }  }
+      Customer { 'A. Fq.PostCard','^','Total ','P',TotalFee }
+      PLU     { PLU_AirFrqPostCard }
+      Snippets { ExecuteNeedsWeight }
+   }
+
+
+//_______________________________________________________________
+//
+//                Surface Franked
+//_______________________________________________________________
+
+   SurFrqLetterStd {
+      BasedOn { BaseSurFrq }
+      Caption      { 'Surface Franked Standard Letter' }
+      BitMap       { '..\images\P_DomSurLetter.bmp' }
+      Domains { StandardFee { Weight,MailSurDestination,'LookUp.LetterFree' }  }
+      Items   { 'Product.SurFrankRegID' }
+      Customer { 'S. Fq.Letter Std','^','Total ','P',TotalFee }
+      PLU     { PLU_SurFrqLetterStd }
+   }
+
+   SurFrqLetterLrg {
+      BasedOn { BaseSurFrq }
+      Caption      { 'Surface Franked Large Letter' }
+      BitMap       { '..\images\P_DomSurLetter.bmp' }
+      Domains { StandardFee { Weight,MailSurDestination,'LookUp.LetterFree' }  }
+      Items   { 'Product.SurFrankRegID' }
+      Customer { 'S. Fq.Letter Lrg','^','Total ','P',TotalFee }
+      PLU     { PLU_SurFrqLetterLrg }
+   }
+
+   SurFrqLetterOver {
+      BasedOn { BaseSurFrq }
+      Caption      { 'Surface Franked Oversize Letter' }
+      BitMap       { '..\images\P_DomSurLetter.bmp' }
+      Domains { StandardFee { Weight,MailSurDestination,'LookUp.LetterFree' }  }
+      Items   { 'Product.SurFrankRegID' }
+      Customer { 'S. Fq.Letter Over','^','Total ','P',TotalFee }
+      PLU     { PLU_SurFrqLetterOver }
+   }
+
+   SurFrqPostCard {
+      BasedOn { BaseAirFrq }
+      Caption      { 'Surface Franked PostCard' }
+      BitMap       { '..\images\P_DomSurPostCard.bmp' }
+      Domains { StandardFee { Weight,MailAirDestination,'LookUp.PostCardFree' }  }
+      Customer { 'S. Fq.PostCard','^','Total ','P',TotalFee }
+      PLU     { PLU_SurFrqPostCard }
+      Snippets { ExecuteNeedsWeight }
+   }
+
+//_______________________________________________________________
+//
+//                Surface Bulk
+//_______________________________________________________________
+
+   SurBlkLetterStd {
+      BasedOn { BaseSurBulk }
+      Caption      { 'Surface Bulk Standard Letter' }
+      BitMap       { '..\images\P_DomSurLetter.bmp' }
+      Domains { IndividualFee { Weight,'LookUp.SurStdLetterBulk' }  }
+      Customer { 'S. Bk.Letter Std','^','Total ','P',TotalFee }
+      PLU     { PLU_SurBlkLetterStd }
+   }
+
+   SurBlkLetterLrg {
+      BasedOn { BaseSurBulk }
+      Caption      { 'Surface Bulk Large Letter' }
+      BitMap       { '..\images\P_DomSurLetter.bmp' }
+      Domains { IndividualFee { Weight,'LookUp.SurLargeLetterBulk' }  }
+      Customer { 'S. Bk.Letter Lrg','^','Total ','P',TotalFee }
+      PLU     { PLU_SurBlkLetterLrg }
+   }
+
+   SurBlkLetterOver {
+      BasedOn { BaseSurBulk }
+      Caption      { 'Surface Bulk OverSize Letter' }
+      BitMap       { '..\images\P_DomSurLetter.bmp' }
+      Domains { IndividualFee { Weight,'LookUp.SurOversizeLetterBulk' }  }
+      Customer { 'S. Bk.Letter Over','^','Total ','P',TotalFee }
+      PLU     { PLU_SurBlkLetterOver }
+   }
+
+   SurBlkPostCard {
+      BasedOn { BaseSurBulk }
+      Caption      { 'Surface Bulk PostCard' }
+      BitMap       { '..\images\P_DomSurPostCard.bmp' }
+      Domains { IndividualFee { Weight,'LookUp.SurPostCardBulk' }  }
+      Customer { 'S. Bk.PostCard','^','Total ','P',TotalFee }
+      PLU     { PLU_SurBlkPostCard }
+      Snippets { ExecuteNeedsWeight }
+   }
+
+   SurBlkSmallPacket {
+      BasedOn { BaseSurBulk }
+      Caption      { 'Surface Bulk Small Packet' }
+      BitMap       { '..\images\P_DomSurSmallPacket.bmp' }
+      Domains { IndividualFee { Weight,'LookUp.SurSmallPacketBulk' }  }
+      Customer { 'S. Bk.Sml Pkt ',Weight,'g','^','Total ','P',TotalFee }
+      PLU     { PLU_SurBlkSmallPacket }
+   }
+//_______________________________________________________________
+//
+//                Air Government
+//_______________________________________________________________
+
+   AirGovLetterStd {
+      BasedOn { BaseAirAdvGov }
+      Caption      { 'Air Government Standard Letter' }
+      BitMap       { '..\images\P_DomAirLetter.bmp' }
+      Domains { StandardFee { Weight,IntGovAirRegDestination,'LookUp.AirStdLetter' }  }
+      Items { 'Product.AirGovRegID' }
+      Customer { 'A. Gv.Letter Std','^','Total ','P',TotalFee }
+      PLU     { PLU_AirGovLetterStd }
+   }
+
+   AirGovLetterLrg {
+      BasedOn { BaseAirAdvGov }
+      Caption      { 'Air Government Large Letter' }
+      BitMap       { '..\images\P_DomAirLetter.bmp' }
+      Domains { StandardFee { Weight,IntGovAirRegDestination,'LookUp.AirLargeLetter' }  }
+      Items { 'Product.AirGovRegID' }
+      Customer { 'A. Gv.Letter Lrg','^','Total ','P',TotalFee }
+      PLU     { PLU_AirGovLetterLrg }
+   }
+
+   AirGovLetterOver {
+      BasedOn { BaseAirAdvGov }
+      Caption      { 'Air Government Oversize Letter' }
+      BitMap       { '..\images\P_DomAirLetter.bmp' }
+      Domains { StandardFee { Weight,IntGovAirRegDestination,'LookUp.SurOversizeLetter' }  }
+      Items { 'Product.AirGovRegID' }
+      Customer { 'A. Gv.Letter Over','^','Total ','P',TotalFee }
+      PLU     { PLU_AirGovLetterOver }
+   }
+
+   AirGovPostCard {
+      BasedOn { BaseAirGov }
+      Caption      { 'Air Government PostCard' }
+      BitMap       { '..\images\P_DomAirPostCard.bmp' }
+      Domains { StandardFee { Weight,IntGovAirRegDestination,'LookUp.AirPostCard' }  }
+      Customer { 'A. Gv.PostCard','^','Total ','P',TotalFee }
+      PLU     { PLU_AirGovPostCard }
+      Snippets { ExecuteNeedsWeight }
+   }
+
+   AirGovSmallPacket {
+      BasedOn { BaseAirAdvGov }
+      Caption      { 'Air Government Small Packet' }
+      BitMap       { '..\images\P_DomAirSmallPacket.bmp' }
+      Domains { StandardFee { Weight,IntGovAirRegDestination,'LookUp.AirSmallPacket' }  }
+      Items { 'Product.AirGovRegID' }
+      Customer { 'A. Gv.Sml Pkt ',Weight,'g','^','Total ','P',TotalFee }
+      PLU     { PLU_AirGovSmallPacket }
+   }
+
+
+//_______________________________________________________________
+//
+//                Surface Government
+//_______________________________________________________________
+
+   SurGovLetterStd {
+      BasedOn { BaseSurAdvGov }
+      Caption      { 'Surface Government Standard Letter' }
+      BitMap       { '..\images\P_DomSurLetter.bmp' }
+      Domains { StandardFee { Weight,IntGovSurRegDestination,'LookUp.SurStdLetter' }  }
+      Customer { 'S. Gv.Letter Std','^','Total ','P',TotalFee }
+      Items { 'Product.SurGovRegID' }
+      PLU     { PLU_SurGovLetterStd }
+   }
+
+   SurGovLetterLrg {
+      BasedOn { BaseSurAdvGov }
+      Caption      { 'Surface Government Large Letter' }
+      BitMap       { '..\images\P_DomSurLetter.bmp' }
+      Domains { StandardFee { Weight,IntGovSurRegDestination,'LookUp.SurLargeLetter' }  }
+      Items { 'Product.SurGovRegID' }
+      Customer { 'S. Gv.Letter Lrg','^','Total ','P',TotalFee }
+      PLU     { PLU_SurGovLetterLrg }
+   }
+
+   SurGovLetterOver {
+      BasedOn { BaseSurAdvGov }
+      Caption      { 'Surface Government Oversize Letter' }
+      BitMap       { '..\images\P_DomSurLetter.bmp' }
+      Domains { StandardFee { Weight,IntGovSurRegDestination,'LookUp.SurOversizeLetter' }  }
+      Items { 'Product.SurGovRegID' }
+      Customer { 'S. Gv.Letter Over','^','Total ','P',TotalFee }
+      PLU     { PLU_SurGovLetterOver }
+   }
+
+   SurGovPostCard {
+      BasedOn { BaseSurGov }
+      Caption      { 'Surface Government PostCard' }
+      BitMap       { '..\images\P_DomSurPostCard.bmp' }
+      Domains { StandardFee { Weight,IntGovSurRegDestination,'LookUp.SurPostCard' }  }
+      Customer { 'S. Gv.PostCard','^','Total ','P',TotalFee }
+      PLU     { PLU_SurGovPostCard }
+      Snippets { ExecuteNeedsWeight }
+   }
+
+   SurGovSmallPacket {
+      BasedOn { BaseSurGov }
+      Caption      { 'Surface Government Small Packet' }
+      BitMap       { '..\images\P_DomSurSmallPacket.bmp' }
+      Domains { StandardFee { Weight,IntGovSurRegDestination,'LookUp.SurSmallPacket' }  }
+      Items { 'Product.SurGovRegID' }
+      Customer { 'S. Gv.Sml Pkt ',Weight,'g','^','Total ','P',TotalFee }
+      PLU     { PLU_SurGovSmallPacket }
+   }
+
+//_______________________________________________________________
+//
+//                Delivery
+//_______________________________________________________________
+
+
+//   DelDomParcel {
+//          SubGroup     { 'Delivery' }
+//          Caption      { 'Domestic Parcel Delivery'                        }
+//          BitMap       { '..\images\P_DelDomParcel.bmp' }
+//          Domains      { StandardFee  }
+//          PLU          { PLU_DelDomParcel }
+//   }
+
+//   DelIntParcel {
+//          SubGroup     { 'Delivery' }
+//          Caption      { 'International Parcel Delivery'                        }
+//          BitMap       { '..\images\P_DelIntParcel.bmp' }
+//          Domains      { StandardFee  }
+//          PLU          { PLU_DelIntParcel }
+//   }
+
+//   DelCODDomParcel {
+//          SubGroup     { 'Delivery' }
+//          Caption      { 'Domestic COD Parcel Delivery'                        }
+//          BitMap       { '..\images\P_DelCODDomParcel.bmp' }
+//          Domains      { StandardFee  }
+//          PLU          { PLU_DelCODDomParcel }
+//   }
+
+//   DelCODIntParcel {
+//          SubGroup     { 'Delivery' }
+//          Caption      { 'International COD Parcel Delivery   '                     }
+//          BitMap       { '..\images\P_DelCODIntParcel.bmp' }
+//          Domains      { StandardFee  }
+//          PLU          { PLU_DelCODIntParcel }
+//   }
+
+//   DelDomEMS {
+//          SubGroup     { 'Delivery' }
+//          Caption      { 'Domestic EMS Delivery'                        }
+//          BitMap       { '..\images\P_DelDomEMS.bmp' }
+//          Domains      { StandardFee  }
+//          PLU          { PLU_DelDomEMS }
+//   }
+
+//   DelIntEMS {
+//          SubGroup     { 'Delivery' }
+//          Caption      { 'International EMS Delivery   '                     }
+//          BitMap       { '..\images\P_DelIntEMS.bmp' }
+//          Domains      { StandardFee  }
+//          PLU          { PLU_DelIntEMS }
+//   }
+
+}
+
+//________________________________________________________________
+//
+//                     SNIPPETS
+//________________________________________________________________
+
+Snippets {
+
+
+  ExecuteNeedsWeight {
+    InsertBetween { '{NeedsWeightStart}','{NeedsWeightEnd}' }
+    CodeBlock {
+      [*
+         ProdForm.Weight.Ignore:=True;
+         ProdForm.Weight.Text :='0';
+         NeedsWeight:=False;
+      *]
+     }
+  }
+
+  BulkBoxUses {
+    InsertBetween { '{UsesStart}','{UsesEnd}' }
+    CodeBlock {
+      [*
+         uses StringUtil;
+      *]
+    }
+  }
+
+
+   PostExecuteBulk {
+      InsertBetween { '{PostExecuteStart}','{PostExecuteEnd}' }
+      CodeBlock {
+      [*
+         CombineList.ForceSelect('Product.Sorted') ;
+      *]
+      }
+   }
+
+   PostValidBulk {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+
+         if ( IndividualFee.Text <> 'Invalid' ) then
+         begin
+            if ( IndividualFee.Text <> '' ) and (BulkQuantity.Text<> '') then
+               GrossBulk.Text := CurrToStrF( StrToCurr(IndividualFee.Text)* StrToCurr(BulkQuantity.Text),ffNumber,2);
+
+            if ( IndividualFee.Text <> '' ) and ( StrToIntDef( BulkQuantity.Text, 0 ) > 499 ) then
+            begin
+               if BaseProduct.CombineList.IsSelected('Product.Sorted') then
+                  DiscountBulk.Text := CurrToStrF( -( StrToCurr(IndividualFee.Text)*
+                                                      StrToCurr(BulkQuantity.Text) *
+                                                      (5/100)
+                                                     ),ffNumber,2)
+               else
+                  //DiscountBulk.Text := CurrToStrF( -( StrToCurr(IndividualFee.Text)*
+                  //                                     StrToCurr(BulkQuantity.Text) *
+                  //                                    (2/100)
+                  //                                   ),ffNumber,2);
+                  DiscountBulk.Text := '0.00';  // no discount for unsorted as from 1 May 2004
+            end
+            else DiscountBulk.Text := '0.00';
+            
+         end ;
+
+         if Result and ( StrToIntDef( BulkQuantity.Text, 0 ) < 100 ) then
+         begin
+            Result := false ;
+            MoveFocusTo( BulkQuantity );
+         end ;
+
+         if Result then
+         begin
+            if ( Pos( 'Letter', BaseProduct.Get_ProgramID) > 0 ) then
+            begin
+               result :=  ( StrToIntDef( Weight.Text, 0 ) <= 1000 ) ;
+               if not result then IndividualFee.Text := 'Invalid'
+            end ;
+         end ;
+
+      *]
+      }
+   }
+
+   DisableBottomVar {
+      InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+      CodeBlock {
+      [*
+         var
+         ActProd : String ;
+         CountrySelected : String ;
+      *]
+      }
+   }
+
+   DisableParcelBottomVar  {
+      InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+      CodeBlock {
+      [*
+         var
+         Zone : String ;
+         ActProd : String ;
+         CountrySelected : String ;
+      *]
+      }
+   }
+
+   BaseFrqVarVal {
+      InsertBetween { '{ValidateVarStart}','{ValidateVarEnd}' }
+      CodeBlock {
+      [*
+         var
+            CountrySelected,ActProd:String;
+      *]
+      }
+   }
+
+   FrqVarAU {
+      InsertBetween { '{VarAUStart}','{VarAUEnd}' }
+      CodeBlock {
+      [*
+         var
+            ActProd:String;
+
+      *]
+      }
+   }
+   BaseFrqPosVal {
+      InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+      CodeBlock {
+      [*
+         if  result and not BaseProduct.CombineList.IsSelected( ActProd ) and
+                        not BaseProduct.CombineList.IsSelected('Product.ExpressDeliveryFree') then
+            result := false ;
+
+      *]
+      }
+   }
+
+
+   BaseFrqPreVal {
+      InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+      CodeBlock {
+      [*
+         ActProd := '' ;
+         if BaseProduct.CombineList.IndexOf('Product.AirFrankRegID') >= 0 then ActProd := 'Product.AirFrankRegID' ;
+         if BaseProduct.CombineList.IndexOf('Product.AirFrankRegID') >= 0 then ActProd := 'Product.AirFrankRegID' ;
+         if BaseProduct.CombineList.IndexOf('Product.SurFrankRegID') >= 0 then ActProd := 'Product.SurFrankRegID' ;
+         if BaseProduct.CombineList.IndexOf('Product.SurFrankRegID') >= 0 then ActProd := 'Product.SurFrankRegID' ;
+         if BaseProduct.CombineList.IndexOf('Product.SurFrankRegID') >= 0 then ActProd := 'Product.SurFrankRegID' ;
+
+         //if ActProd <> '' then
+         //   BaseProduct.CombineList.Select(ActProd);
+
+         if ProdForm.FindComponent('MailSurDestination') <> nil then
+         begin
+            CountrySelected := TDomainCombo( ProdForm.FindComponent('MailSurDestination')).Text ;
+         end ;
+
+         if ProdForm.FindComponent('MailAirDestination') <> nil then
+         begin
+            CountrySelected := TDomainCombo( ProdForm.FindComponent('MailAirDestination')).Text ;
+         end ;
+
+        if IntExpressDestination.Items.IndexOf( CountrySelected ) >=0 then
+           BaseProduct.CombineList.Enable('Product.ExpressDeliveryFree')
+        else
+           BaseProduct.CombineList.Disable('Product.ExpressDeliveryFree') ;
+
+
+         if BaseProduct.CombineList.IsSelected( ActProd ) then //or
+            //BaseProduct.CombineList.IsSelected('Product.ExpressDeliveryFree') then
+            BaseProduct.CombineList.Enable('Product.AdviceDeliveryFree')
+         else
+            BaseProduct.CombineList.Disable('Product.AdviceDeliveryFree') ;
+
+      *]
+      }
+   }
+
+
+
+   DisableAdviceBottom {
+      InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+      CodeBlock {
+      [*
+
+         ActProd := '' ;
+         if BaseProduct.CombineList.IndexOf('Product.AirLetterRegID')        >= 0 then ActProd := 'Product.AirLetterRegID' ;
+         if BaseProduct.CombineList.IndexOf('Product.SurLetterRegID')        >= 0 then ActProd := 'Product.SurLetterRegID' ;
+         if BaseProduct.CombineList.IndexOf('Product.AerogrammeRegID')       >= 0 then ActProd := 'Product.AerogrammeRegID' ;
+         if BaseProduct.CombineList.IndexOf('Product.AirPostCardRegID')      >= 0 then ActProd := 'Product.AirPostCardRegID' ;
+         if BaseProduct.CombineList.IndexOf('Product.SurPostCardRegID')      >= 0 then ActProd := 'Product.SurPostCardRegID' ;
+         if BaseProduct.CombineList.IndexOf('Product.AirPrintedPaperRegID')  >= 0 then ActProd := 'Product.AirPrintedPaperRegID' ;
+         // if BaseProduct.CombineList.IndexOf('Product.SurPrintedPaperRegID')  >= 0 then ActProd := 'Product.SurPrintedPaperRegID' ;
+         if BaseProduct.CombineList.IndexOf('Product.SurSmallPacketRegID')   >= 0 then ActProd := 'Product.SurSmallPacketRegID' ;
+         if BaseProduct.CombineList.IndexOf('Product.SurBlindRegID')         >= 0 then ActProd := 'Product.SurBlindRegID' ;
+         if BaseProduct.CombineList.IndexOf('Product.AirSmallPacketRegID')   >= 0 then ActProd := 'Product.AirSmallPacketRegID' ;
+         if BaseProduct.CombineList.IndexOf('Product.AirGovRegID')           >= 0 then ActProd := 'Product.AirGovRegID' ;
+         if BaseProduct.CombineList.IndexOf('Product.SurGovRegID')           >= 0 then ActProd := 'Product.SurGovRegID' ;
+
+         CountrySelected := '' ;
+         if ProdForm.FindComponent('MailAirDestination') <> nil then
+         begin
+            CountrySelected := TDomainCombo( ProdForm.FindComponent('MailAirDestination')).Text ;
+         end ;
+
+         if ProdForm.FindComponent('MailSurDestination') <> nil then
+         begin
+            CountrySelected := TDomainCombo( ProdForm.FindComponent('MailSurDestination')).Text ;
+         end ;
+
+         if ProdForm.FindComponent('IntGovSurRegDestination') <> nil then
+         begin
+            CountrySelected := TDomainCombo( ProdForm.FindComponent('IntGovSurRegDestination')).Text ;
+         end ;
+
+         if ProdForm.FindComponent('IntGovAirRegDestination') <> nil then
+         begin
+            CountrySelected := TDomainCombo( ProdForm.FindComponent('IntGovAirRegDestination')).Text ;
+         end ;
+
+
+         if CountrySelected = '' then
+         begin
+            //if BaseProduct.CombineList.IndexOf('Product.AdviceDelivery')  >= 0 then
+            //   BaseProduct.CombineList.Disable('Product.AdviceDelivery');
+            //BaseProduct.CombineList.Disable( ActProd);
+            BaseProduct.CombineList.Disable('Product.ExpressDelivery')
+
+         end
+         else
+         begin
+            if ( BaseProduct.CombineList.IndexOf('Product.ExpressDelivery') >= 0 ) and
+               ( ProdForm.FindComponent('IntExpressDestination') <> nil ) then
+               if TDomainCombo( ProdForm.FindComponent('IntExpressDestination')).Items.IndexOf( CountrySelected ) >=0 then
+                  BaseProduct.CombineList.Enable('Product.ExpressDelivery')
+               else
+                  BaseProduct.CombineList.Disable('Product.ExpressDelivery') ;
+
+            if ( BaseProduct.CombineList.IndexOf('Product.ExpressDelivery') >= 0 ) and
+               ( ProdForm.FindComponent('IntGovExpressDestination') <> nil ) then
+               if TDomainCombo( ProdForm.FindComponent('IntGovExpressDestination')).Items.IndexOf( CountrySelected ) >=0 then
+                  BaseProduct.CombineList.Enable('Product.ExpressDelivery')
+               else
+                  BaseProduct.CombineList.Disable('Product.ExpressDelivery') ;
+
+
+            //BaseProduct.CombineList.Enable( ActProd );
+
+         end ;
+
+         if BaseProduct.CombineList.IndexOf('Product.PrePaidStamps') >= 0 then
+            if StrToIntDef(ProdForm.BulkQuantity.Text,0) = 1 then
+               BaseProduct.CombineList.Enable('Product.PrePaidStamps')
+            else
+               BaseProduct.CombineList.Disable('Product.PrePaidStamps') ;
+
+         if BaseProduct.CombineList.IndexOf('Product.AdviceDelivery')  >= 0 then
+            if BaseProduct.CombineList.IsSelected(ActProd) and
+               BaseProduct.CombineList.IsEnabled(ActProd) then
+               BaseProduct.CombineList.Enable('Product.AdviceDelivery')
+            else
+               BaseProduct.CombineList.Disable('Product.AdviceDelivery');
+
+      *]
+      }
+   }
+
+
+
+   DisableParcelBottom {
+      InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+      CodeBlock {
+      [*
+
+         CountrySelected := '' ;
+         if ProdForm.FindComponent('ParAirDestination') <> nil then
+         begin
+            CountrySelected := TDomainCombo( ProdForm.FindComponent('ParAirDestination')).Text ;
+         end
+         else if ProdForm.FindComponent('ParSurDestination') <> nil then
+         begin
+            CountrySelected := TDomainCombo( ProdForm.FindComponent('ParSurDestination')).Text ;
+         end ;
+
+         ActProd := '' ;
+         if BaseProduct.CombineList.IndexOf('Product.SurParInsurance') >= 0 then ActProd := 'Product.SurParInsurance';
+         if BaseProduct.CombineList.IndexOf('Product.AirParInsurance') >= 0 then ActProd := 'Product.AirParInsurance';
+
+
+         if CountrySelected = '' then
+         begin
+            BaseProduct.CombineList.Disable('Product.AdviceDelivery');
+            BaseProduct.CombineList.Disable('Product.CODFee' );
+            BaseProduct.CombineList.Disable('Product.ExpressDelivery');
+            BaseProduct.CombineList.Disable( ActProd );
+         end
+         else
+         begin
+            BaseProduct.CombineList.Enable('Product.AdviceDelivery');
+            if UpperCase( CountrySelected ) = 'BOTSWANA' then
+               BaseProduct.CombineList.Enable('Product.CODFee' )
+            else
+               BaseProduct.CombineList.Disable('Product.CODFee' );
+
+
+            Zone := '';
+
+            if ParcelExpress.Items.IndexOf( CountrySelected ) >=0 then
+               Zone := TStringObject(ParcelExpress.Items.Objects[ParcelExpress.Items.IndexOf( CountrySelected )]).Value ;
+
+            if Zone = 'Express' then
+               BaseProduct.CombineList.Enable('Product.ExpressDelivery')
+            else
+               BaseProduct.CombineList.Disable('Product.ExpressDelivery') ;
+
+            Zone := '';
+            if ParcelInsurance.Items.IndexOf( CountrySelected ) >=0 then
+                Zone := TStringObject(ParcelInsurance.Items.Objects[ParcelInsurance.Items.IndexOf( CountrySelected )]).Value ;
+
+            if Zone = 'Insurance' then
+            begin
+               BaseProduct.CombineList.Enable( ActProd );
+               if BaseProduct.CombineList.IsSelected(ActProd) then
+                  BaseProduct.CombineList.Enable('Product.AdviceDelivery')
+               else
+                  BaseProduct.CombineList.Disable('Product.AdviceDelivery');
+            end
+            else
+            begin
+               BaseProduct.CombineList.Disable( ActProd );
+               BaseProduct.CombineList.Disable( 'Product.AdviceDelivery' );
+            end ;
+
+         end ;
+
+         PostOffice.Ignore := not BaseProduct.CombineList.IsEnabled('Product.CODFee' );
+
+      *]
+      }
+   }
+
+  SelectRegister {
+    InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+    CodeBlock {
+    [*
+      if not BaseProduct.CombineList.IsSelected( ActProd ) then
+        BaseProduct.CombineList.Select( ActProd );
+
+      if Result then
+      begin
+        if (ProdForm.FindComponent('IntGovSurRegDestination') <> nil)
+        and (TDomainCombo(ProdForm.FindComponent('IntGovSurRegDestination')).Items.IndexOf( CountrySelected ) < 0) then
+          Result := False ;
+
+        if  (ProdForm.FindComponent('IntGovAirRegDestination') <> nil)
+        and (TDomainCombo(ProdForm.FindComponent('IntGovAirRegDestination')).Items.IndexOf( CountrySelected ) < 0) then
+          Result := false ;
+      end;
+
+      if  (BaseProduct.CombineList.IndexOf('Product.AdviceDelivery')  >= 0)
+      and (BaseProduct.CombineList.IsSelected(ActProd)) then
+        BaseProduct.CombineList.Enable('Product.AdviceDelivery')
+      else
+        BaseProduct.CombineList.Disable('Product.AdviceDelivery');
+
+      BaseProduct.GetFormData(self);
+      BulkTotal.text  := CurrToStrF( StrToIntDef(BulkQuantity.text,0)
+                                      * StrToCurrDef(TotalFee.Text,0),ffNumber, CurrencyDecimals);
+
+      if Result
+      and ( Pos( 'Letter', BaseProduct.Get_ProgramID) > 0 )
+      and ( UpperCase( CountrySelected ) = 'BOTSWANA' ) then
+      begin
+        Result :=  ( StrToIntDef( Weight.Text, 0 ) <= 200 ) ;
+        if not Result then StandardFee.Text := 'Invalid'
+      end ;
+    *]
+    }
+  }
+
+   DisableGovExpressExecute {
+      InsertBetween { '{SetProgStart}','{SetProgEnd}' }
+      CodeBlock {
+      [*
+      //if ProdForm.FindComponent('IntGovExpressDestination') <> nil then
+         ProdForm.IntGovExpressDestination.Ignore := TRUE ;
+         //ProdForm.IntGovRegDestination.Ignore := TRUE ;
+      *]
+      }
+   }
+
+  LetterWeightPosVal {
+    InsertBetween { '{PostValidateStart}','{PostValidateEnd}' }
+    CodeBlock {
+    [*
+      BaseProduct.GetFormData(self);
+      BulkTotal.text  := CurrToStrF( StrToIntDef(BulkQuantity.text,0)
+                                      * StrToCurrDef(TotalFee.Text,0),ffNumber, CurrencyDecimals);
+      if Result
+      and  ( Pos( 'Letter', BaseProduct.Get_ProgramID) > 0 )
+      and ( UpperCase( CountrySelected ) <> 'BOTSWANA' ) then
+      begin
+        Result :=  ( StrToIntDef( Weight.Text, 0 ) <= 200 ) ;
+        if not Result then StandardFee.Text := 'Invalid'
+      end ;
+    *]
+    }
+  }
+
+   //DisableFrqReg {
+   //   InsertBetween { '{PreValidateStart}','{PreValidateEnd}' }
+   //   CodeBlock {
+   //   [*
+   //      BaseProduct.CombineList.Disable('Product.AirFrankRegID');
+   //   *]
+   //   }
+   //}
+
+   CustomerFillGov {
+      InsertBetween { '{IsListStart}','{IsListEnd}' }
+      CodeBlock {
+      [*
+         SL:=TPackStringList.Create;
+         SL.PackText:=GetLocalList('Customer','GOV');
+         ProdForm.CustomerList.Items.Text:=SL.Text;
+         SL.Free;
+      *]
+      }
+   }
+
+  GovMailSetLastCustomer {
+    InsertBetween { '{PostLogTransactionStart}','{PostLogTransactionEnd}' }
+    CodeBlock {
+    [*
+       SetRecentValues(ProdForm.CustomerList, 'Text');
+    *]
+    }
+  }
+
+  GovMailLog {
+    InsertBetween { '{LogTransactionStart}','{LogTransactionEnd}' }
+    CodeBlock {
+    [*
+         if ProdForm.FindComponent('BulkQuantity') <> nil then
+         begin
+            if StrToIntDef(TDomainEdit( ProdForm.FindComponent('BulkQuantity')).Text,0) < 1 then
+               TDomainEdit( ProdForm.FindComponent('BulkQuantity')).Text:='1';
+               FQuantity:=StrToIntDef( TDomainEdit(ProdForm.FindComponent('BulkQuantity')).Text,1)
+         end
+         else
+            FQuantity:=1;
+
+         FUIEventSink.ReferenceData('SET(Quantity,'+IntToStr(FQuantity)+')');
+
+         if ProdForm.FindComponent('StandardFee') <> nil then
+         begin
+             TxnLog.LogTransaction(
+                      Index,
+                      FQuantity, // Quantity
+                      Get_PLU, // PLU
+                      FQuantity*StrToCurrDef(TDomainEdit( ProdForm.FindComponent('StandardFee')).Text,0), // Value
+                      StrToCurrDef(TDomainEdit( ProdForm.FindComponent('StandardFee')).Text,0), // Price
+                      Get_Description, // Description
+                      ProdForm.Weight.Text+' '+'g', // Additional Info
+                      Get_ProgramID, // ProgID
+                      Enumerate(ProdForm));  // Domain Info
+             Inc(Index);
+         end
+         else if ProdForm.FindComponent('IndividualFee') <> nil then
+         begin
+             TxnLog.LogTransaction(
+                      Index,
+                      FQuantity, // Quantity
+                      Get_PLU, // PLU
+                      FQuantity*StrToCurrDef(TDomainEdit( ProdForm.FindComponent('IndividualFee')).Text,0), // Value
+                      StrToCurrDef(TDomainEdit( ProdForm.FindComponent('IndividualFee')).Text,0), // Price
+                      Get_Description, // Description
+                      ProdForm.Weight.Text+' '+'g', // Additional Info
+                      Get_ProgramID, // ProgID
+                      Enumerate(ProdForm));  // Domain Info
+             Inc(Index);
+          end ;
+
+         if ProdForm.FindComponent('IntGovAirRegDestination') <> nil then
+         begin
+             TxnLog.LogTransaction(
+                    Index,
+                    1, // Quantity
+                    Get_PLU, // PLU
+                    0, // Value
+                    0, // Price
+                    'To', // Description
+                    TDomainCombo(ProdForm.FindComponent('IntGovAirRegDestination')).Text, // Additional Info
+                    Get_ProgramID, // ProgID
+                    ''); // Domain Info
+              Inc(Index);
+          end ;
+
+          if ProdForm.FindComponent('IntGovSurRegDestination') <> nil then
+          begin
+             TxnLog.LogTransaction(
+                    Index,
+                    1, // Quantity
+                    Get_PLU, // PLU
+                    0, // Value
+                    0, // Price
+                    'To', // Description
+                    TDomainCombo(ProdForm.FindComponent('IntGovSurRegDestination')).Text, // Additional Info
+                    Get_ProgramID, // ProgID
+                    ''); // Domain Info
+              Inc(Index);
+          end ;
+
+         TxnLog.LogTransaction(  Index
+                                , 1                      // Quantity
+                                , Get_PLU                // PLU
+                                , 0                      // Value
+                                , 0                      // Price
+                                , 'Customer -'           // Description
+                                , TDomainEdit( ProdForm.FindComponent('CustomerList')).Text   // Additional Info
+                                , Get_ProgramID          // ProgID
+                                , Enumerate(ProdForm));  // Domain Info
+         Inc(Index);
+
+          if CombineList <> nil then
+             CombineList.LogTransactions(Index,TxnLog);
+
+         FUIEventSink.ReferenceData('SET(Quantity,1)');
+    *]
+    }
+  }
+
+
+}
+
+
+
+
+
+
+

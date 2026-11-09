@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bookmarks>
+   <site name="NSIS " url="http://eclipsensis.sf.net/update" web="false" selected="true" local="false"/>
+   <site name="GEF" url="file:/T:/Download/Eclipse/eclipse/" web="false" selected="true" local="true"/>
+   <site name="JDT" url="http://org.eclipse.jdt.core" web="false" selected="true" local="false"/>
+   <site name="Adobe Labs" url="http://download.macromedia.com/pub/labs/jseclipse/autoinstall/" web="false" selected="false" local="false"/>
+   <site name="Graphical Editing Framework (GEF) Update Site" url="http://download.eclipse.org/tools/gef/update-site/releases/site.xml" web="false" selected="false" local="false"/>
+   <site name="The Eclipse Project Updates" url="http://update.eclipse.org/updates/3.3" web="false" selected="false" local="false"/>
+   <site name="Europa Discovery Site" url="http://download.eclipse.org/releases/europa" web="false" selected="false" local="false"/>
+   <site name="CFEclipse" url="http://www.cfeclipse.org/update" web="false" selected="false" local="false"/>
+</bookmarks>

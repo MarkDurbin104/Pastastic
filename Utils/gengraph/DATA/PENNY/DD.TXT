@@ -1,0 +1,407 @@
+SQL> set heading off
+SQL> select * from bft_blocked_tubes where g_version = 500151;
+
+    500151  100010959          7 PA                                             
+
+SQL> select * from bft_equipment where g_version = 500151;
+
+    500151  100010973 PA    100010867  100010958  100010959 RESV_BQ             
+          1           5                                                         
+                                                                                
+    500151  100010974 PA    100010867  100010958  100010959 RESV_BQ             
+          2           2                                                         
+                                                                                
+    500151  100010976 PA    100010869  100010959  100010960 RESV_BQ             
+          1           1                                                         
+                                                                                
+    500151  100010978 PA    100010873  100010962  100010961 RESV_BQ             
+          2           2                                                         
+                                                                                
+    500151  100010979 PA    100010873  100010962  100010961 RESV_BQ             
+
+          1           1                                                         
+                                                                                
+    500151  100010981 PA    100010879  100010967  100010968 RESV_BQ             
+          1           2                                                         
+                                                                                
+    500151  100010983 PA    100010881  100010970  100010969 RESV_BQ             
+          3           2                                                         
+                                                                                
+    500151  100010984 PA    100010881  100010970  100010969 RESV_BQ             
+          1           1                                                         
+                                                                                
+
+8 rows selected.
+
+SQL> select * from bft_joints where g_version = 500151;
+
+    500151  100010972 PA    100010867 UNK                                       
+                                                                                
+                                                                                
+    500151  100010975 PA    100010869 UNK                                       
+                                                                                
+                                                                                
+    500151  100010977 PA    100010873 UNK                                       
+                                                                                
+                                                                                
+    500151  100010980 PA    100010879 UNK                                       
+                                                                                
+                                                                                
+    500151  100010982 PA    100010881 UNK                                       
+
+                                                                                
+                                                                                
+
+SQL> select * from bft_sections where g_version = 500151;
+
+    500151  100010958 BFT1                 PA          100010865                
+                              100010972 BFT 2 PE MK 2 8/6    Y   2        128   
+         1996                                                                   
+FFD                                                                             
+                                                                                
+                                                                                
+    500151  100010959 BFT1                 PA                                   
+                   100010972  100010975 BFT 7 PE MK 1 8/6        2        123   
+         1996                                                                   
+FD                                                                              
+                                                                                
+                                                                                
+    500151  100010960 BFT1                 PA                                   
+
+       100010871   100010975            BFT 2 PE MK 2 5/3.5    Y 2         79   
+         1996                                                                   
+FD                                                                              
+                                                                                
+                                                                                
+    500151  100010961 BFT1                 PA          100010869                
+                              100010977 BFT 1 PE MK 2 5/3.5  Y   2        105   
+         1996                                                                   
+FD                                                                              
+                                                                                
+                                                                                
+    500151  100010962 BFT1                 PA                                   
+       100010875   100010977            BFT 4 PE MK 1 8/6      Y 2         78   
+
+         1996                                                                   
+FDS                                                                             
+                                                                                
+                                                                                
+    500151  100010967 BFT2                 PA          100010867                
+                              100010980 BFT 4 PE MK 1 8/6    Y   2        213   
+         1996                                                                   
+FD                                                                              
+                                                                                
+                                                                                
+    500151  100010968 BFT2                 PA                                   
+       100010877   100010980            BFT 7 PE MK 1 8/6      Y 2         48   
+         1996                                                                   
+
+FD                                                                              
+                                                                                
+                                                                                
+    500151  100010969 BFT2                 PA          100010879                
+                              100010982 BFT 1 PE MK 2 8/6    Y   2         94   
+         1996                                                                   
+GF                                                                              
+                                                                                
+                                                                                
+    500151  100010970 BFT2                 PA                                   
+       100010883   100010982            BFT 7 PE MK 1 8/6      Y 2         76   
+         1996                                                                   
+FDS                                                                             
+
+                                                                                
+                                                                                
+    500151  100010971 BFT2                 PA          100010865                
+       100010867                        BFT 7 PE MK 1 8/6    Y Y 2        128   
+         1996                                                                   
+FD                                                                              
+                                                                                
+                                                                                
+
+10 rows selected.
+
+SQL> select * from blown_fibre_tubing where bft_cd in ('BFT1', 'BFT2');
+
+         0          1 BFT1                 TEST_EX            1 ON   EX         
+                                                                                
+                                                                                
+                                                                                
+         0          2 BFT2                 TEST_EX            2 ON   EX         
+                                                                                
+                                                                                
+                                                                                
+
+SQL> select * from fibre_bundle_parts where g_version = 500151 ;
+
+    500151  100010988  100010967 PA          1                                  
+                                                                                
+                                                                                
+    500151  100010988  100010968 PA          2                                  
+                                                                                
+                                                                                
+
+SQL> select * from fibre_bundles where g_version = 500151 ;
+
+    500151  100010988 BFTFB1               ZNH                1 ON   PA         
+         100010867        100010877 BFB 07 SM                   522             
+          1996 1                                                                
+                                                                                
+                                                                                
+                                                                                
+
+SQL>  select * from network_access_points where g_version = 500151 ;
+
+    500151  100010864 ZNH       SB   1023      PA ZNH       A                   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+    500151  100010865 ZNH       TU   MD1       PA ZNH       F                   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+    500151  100010866 ZNH       SB   1024      PA ZNH       A                   
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+    500151  100010867 ZNH       TU   MD2       PA ZNH       F                   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+    500151  100010868 ZNH       SB   1025      PA ZNH       A                   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+    500151  100010869 ZNH       TU   MD3       PA ZNH       F                   
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+    500151  100010870 ZNH       SB   1026      PA ZNH       A                   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+    500151  100010871 ZNH       TU   MD4       PA ZNH       F                   
+                                                                                
+                                                                                
+                                                                                
+
+                                                                                
+    500151  100010872 ZNH       SB   1027      PA ZNH       A                   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+    500151  100010873 ZNH       TU   MD5       PA ZNH       F                   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+    500151  100010874 ZNH       SB   1028      PA ZNH       A                   
+                                                                                
+
+                                                                                
+                                                                                
+                                                                                
+    500151  100010875 ZNH       TU   MD6       PA ZNH       F                   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+    500151  100010876 ZNH       SB   1029      PA ZNH       A                   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+    500151  100010877 ZNH       TU   MD7       PA ZNH       F                   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+    500151  100010878 ZNH       SB   1030      PA ZNH       A                   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+    500151  100010879 ZNH       TU   MD8       PA ZNH       F                   
+                                                                                
+                                                                                
+
+                                                                                
+                                                                                
+    500151  100010880 ZNH       SB   1031      PA ZNH       A                   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+    500151  100010881 ZNH       TU   MD9       PA ZNH       F                   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+    500151  100010882 ZNH       SB   1032      PA ZNH       A                   
+
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+    500151  100010883 ZNH       YU   YU1       PA ZNH       F                   
+                                                                                
+                                                                                
+                                                                                
+                                                                                
+
+20 rows selected.
+
+SQL> select * from bft_types;
+
+BFT 4 PE MK 1 8/6                                                               
+Blown Fibre Tubing 4 Bore PE (8mm Diam)                                         
+          24              4                     8                     6         
+                                                                                
+BFT 7 PE MK 1 8/6                                                               
+Blown Fibre Tubing 7 Bore PE (8mm Diam)                                         
+          29              7                     8                     6         
+                                                                                
+BFT 1 PE MK 2 8/6                                                               
+Blown Fibre Tubing 1 Bore PE (8mm Diam)                                         
+          13              2                     8                     6         
+                                                                                
+BFT 2 PE MK 2 8/6                                                               
+
+Blown Fibre Tubing 2 Bore PE (8mm Diam)                                         
+          20              2                     8                     6         
+                                                                                
+BFT 4 PE MK 2 8/6                                                               
+Blown Fibre Tubing 4 Bore PE (8mm Diam)                                         
+          23              4                     8                     6         
+                                                                                
+BFT 7 PE MK 2 8/6                                                               
+Blown Fibre Tubing 7 Bore PE (8mm Diam)                                         
+          29              7                     8                     6         
+                                                                                
+BFT 1 PE MK 2 5/3.5                                                             
+Blown Fibre Tubing 1 Bore PE (5mm Diam)                                         
+
+          10              2                     5                   3.5         
+                                                                                
+BFT 2 PE MK 2 5/3.5                                                             
+Blown Fibre Tubing 2 Bore PE (5mm Diam)                                         
+          15              2                     5                   3.5         
+                                                                                
+BFT 4 PE MK 2 5/3.5                                                             
+Blown Fibre Tubing 4 Bore PE (5mm Diam)                                         
+          17              4                     5                   3.5         
+                                                                                
+BFT 7 PE MK 2 5/3.5                                                             
+Blown Fibre Tubing 7 Bore PE (5mm Diam)                                         
+          19              7                     5                   3.5         
+
+                                                                                
+BFT 1 PVC MK 1 8/6                                                              
+Blown Fibre Tubing 1 Bore PVC (8mm Diam)                                        
+          11              1                     8                     6         
+                                                                                
+BFT 2 PVC MK 1 8/6                                                              
+Blown Fibre Tubing 2 Bore PVC (8mm Diam)                                        
+          19              2                     8                     6         
+                                                                                
+BFT 4 PVC MK 1 8/6                                                              
+Blown Fibre Tubing 4 Bore PVC (8mm Diam)                                        
+          23              4                     8                     6         
+                                                                                
+
+BFT 7 PVC MK 1 8/6                                                              
+Blown Fibre Tubing 7 Bore PVC (8mm Diam)                                        
+          28              7                     8                     6         
+                                                                                
+BFT 1 PVC MK 2 8/6                                                              
+Blown Fibre Tubing 1 Bore PVC (8mm Diam)                                        
+          13              1                     8                     6         
+                                                                                
+BFT 2 PVC MK 2 8/6                                                              
+Blown Fibre Tubing 2 Bore PVC (8mm Diam)                                        
+          19              2                     8                     6         
+                                                                                
+BFT 4 PVC MK 2 8/6                                                              
+
+Blown Fibre Tubing 4 Bore PVC (8mm Diam)                                        
+          23              4                     8                     6         
+                                                                                
+BFT 7 PVC MK 2 8/6                                                              
+Blown Fibre Tubing 7 Bore PVC (8mm Diam)                                        
+          28              7                     8                     6         
+                                                                                
+BFT 1 PVC MK 2 5/3.5                                                            
+Blown Fibre Tubing 1 Bore PVC (5mm Diam)                                        
+           8              1                     5                   3.5         
+                                                                                
+BFT 2 PVC MK 2 5/3.5                                                            
+Blown Fibre Tubing 2 Bore PVC (5mm Diam)                                        
+
+          13              2                     5                   3.5         
+                                                                                
+BFT 4 PVC MK 2 5/3.5                                                            
+Blown Fibre Tubing 4 Bore PVC (5mm Diam)                                        
+          16              4                     5                   3.5         
+                                                                                
+BFT 7 PVC MK 2 5/3.5                                                            
+Blown Fibre Tubing 7 Bore PVC (5mm Diam)                                        
+          19              7                     5                   3.5         
+                                                                                
+BFT 1 RFH 5/3.5                                                                 
+Blown Fibre Tubing 1 Bore RFH (5mm Diam)                                        
+           5              1                     5                   3.5         
+
+                                                                                
+BFT 4 RFH 5/3.5                                                                 
+Blown Fibre Tubing 4 Bore RFH (5mm Diam)                                        
+          13              4                     5                   3.5         
+                                                                                
+BFT 7 RFH 5/3.5                                                                 
+Blown Fibre Tubing 7 Bore RFH (5mm Diam)                                        
+          19              7                     5                   3.5         
+                                                                                
+BFT 1 ST MK1 8/4.5                                                              
+Blown Fibre Tubing 1 Bore ST (8mm Diam)                                         
+           8              1                     8                   4.5         
+                                                                                
+
+BFT 1 ST MK2 8/6                                                                
+Blown Fibre Tubing 1 Bore ST (8mm Diam)                                         
+           8              1                     8                     6         
+                                                                                
+BFT 1                                                                           
+Blown Fibre Tubing 1 Bore (Conversion Default?)                                 
+          13              1                                                     
+                                                                                
+BFT 2                                                                           
+Blown Fibre Tubing 2 Bore (Conversion Default?)                                 
+          20              2                                                     
+                                                                                
+BFT 4                                                                           
+
+Blown Fibre Tubing 4 Bore (Conversion Default?)                                 
+          24              4                                                     
+                                                                                
+BFT 7                                                                           
+Blown Fibre Tubing 7 Bore (Conversion Default?)                                 
+          29              7                                                     
+                                                                                
+UNK                                                                             
+Unknown                                                                         
+         999              7                                                     
+                                                                                
+
+32 rows selected.
+
+SQL> spool off;

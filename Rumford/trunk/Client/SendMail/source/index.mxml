@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+		pageTitle="Registration Form" 
+		layout="absolute" horizontalScrollPolicy="off" verticalScrollPolicy="off" >
+	
+	<mx:Script>
+		<![CDATA[
+		
+			import mx.controls.Alert;
+			
+			private var phpPath:String = "php/mail_sender.php";
+			
+			private function sendLoadData():void {
+				var dataRequest:URLRequest = new URLRequest(phpPath);
+				dataRequest.method = URLRequestMethod.POST;				
+				
+				var params:URLVariables = new URLVariables();
+				params.vName = visitorName.text;
+				params.vMail = visitorMail.text;
+				params.vCompany = visitorCompany.text;
+				params.vSubj = "Registration request from "+visitorName.text;
+				params.vMessage = "Registration request from "+visitorName.text;
+				params.vTo = "ProiamRegistration@i82q.com";
+				
+				dataRequest.data = params;
+				
+				var urlLoader:URLLoader = new URLLoader();
+				urlLoader.dataFormat = URLLoaderDataFormat.VARIABLES;
+				urlLoader.addEventListener(Event.COMPLETE, urlLoaderComplete);
+				try {
+					urlLoader.load(dataRequest);
+				} catch (event:Error) {
+					Alert.show("ERROR - Message could not be sent");
+				}
+			}
+			
+			private function urlLoaderComplete(event:Event):void {
+				//sendBtn.label=event.target.data;
+				if (event.target.data.sent != '"OK"') {
+					Alert.show("ERROR. Message could not be sent - "+event.target.data.sent);
+				} else {
+					sendBtn.enabled=false;
+				}
+			}
+			
+		]]>
+	</mx:Script>
+	
+	<mx:VBox width="100%" horizontalAlign="center">
+		<mx:Spacer height="5" id="imgSpacer"/>
+		<mx:Image source="VU.iTLogo.png" id="logo_img"/>
+		
+		<mx:Form width="100%" height="100%" id="masterForm">		
+
+			<mx:FormItem label="Full Name" width="100%" required="true" id="nameForm">
+				<mx:TextInput width="200" id="visitorName" borderStyle="solid"/>
+			</mx:FormItem>
+			
+			<mx:FormItem label="E-mail" width="100%" required="true" id="mailForm">
+				<mx:TextInput width="200" id="visitorMail" borderStyle="solid"/>
+			</mx:FormItem>
+			
+			<mx:FormItem label="Company" width="100%" required="true" id="phoneForm">
+				<mx:TextInput width="200" id="visitorCompany" borderStyle="solid"/>
+			</mx:FormItem>
+						
+			<mx:Spacer height="5" id="bottomMenuSpacer"/>
+			
+			<mx:Button label="Send Message" width="100%" click="sendLoadData()" id="sendBtn" tabEnabled="false" buttonMode="true"/>
+		</mx:Form>
+	</mx:VBox>
+	
+</mx:Application>

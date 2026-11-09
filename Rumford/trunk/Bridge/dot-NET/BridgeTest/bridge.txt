@@ -1,0 +1,43 @@
+- Connect on 45000 to the TCP Server (must be started manually)
+- Client is responsible for disconnection from server at all times.
+- problem with vista 64 has not been sorted yet
+- errors are logged to "C:\bridge.log" 
+
+once a message is received the bridge streams it into an xmltextreader for processing.  If poor XML is found during processing then an XMLException is thrown and the error is logged to "bridge.log"
+
+End tags must exist even on single lines eg.
+<policy-file-request/> 
+
+policy file
+-----------
+
+If while processing an XML stream an element name "policy-file-request" is found then the file C:\polfile.xml is loaded and returned to the client as a string.  The client should then disconnect/reconnect/shake it all about....or whatever else flex demands.
+
+If C:\polfile.xml does not exist then it is created with some default settings (as outlined in the Bridge Communications document).  It can then be edited as necessary.
+
+SQLLite
+-------
+
+If an element named "Query" is found then the query is processed and the resulting data is returned as xml.  Currently a Query has 4 available attributes.
+These are:
+
+QueryType   = "Scaler" || "NonQuery" || "DataQuery" (default "DataQuery")
+DataBase    = (default "C:\Bridge.s3db")
+Transaction = (default "false")
+sql         = (required)
+
+***do not use transactions yet or Scaler Queries***
+use nonquery for inserts, creates, etc with no result set.  it will be quicker.  Elements/Attributes are not case sensitive.
+
+example
+<Query Transaction="false" DataBase="C:\Bridge.s3db" QueryType="DataQuery" sql="select * from names" />
+
+or simple result set usage
+<Query sql="select * from names" />
+
+Operating System
+----------------
+
+<operating-system/>
+returns eg.
+<OS Type="Windows"/>

@@ -1,0 +1,13 @@
+[Compiler]
+W=1
+D=1
+UnitAliases=WinTypes=Windows;WinProcs=Windows;DbiProcs=BDE;DbiTypes=BDE;DbiErrs=BDE;
+
+[Linker]
+DebugInfo=1
+[Directories]
+OutputDir=C:\qatar\Binary
+UnitOutputDir=E:\CorvusV3\Corvus\Binary\Other
+Packages=VCL30;VCLX30;VCLDBX30;DBX30;vcldb30;
+UsePackages=1
+Conditionals=abc=1

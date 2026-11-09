@@ -1,0 +1,65 @@
+# Makefile for WINX and WINRUN
+# Use Borland MAKE or MICROSOFT NMAKE
+# !!! Be sure to set the right variable below
+# depending on your compiler
+
+
+BORLAND=0
+MICROSOFT=1
+
+!if $(BORLAND)
+CC=bcc
+CCOPT=-2 -c -w-par -w-pia
+WCCOPT=-2 -W -v -c -w-par -w-pia
+LD=bcc
+LDOPT=
+WLDOPT=-W -v
+OBJOPT=-o
+!endif
+
+!if $(MICROSOFT)
+CC=cl
+CCOPT=-G2 -c
+WCCOPT=-G2 -GA -Zp -c
+LD=cl
+LDOPT=-G2 -F 0800
+WLDOPT=-G2 -GA -Zp
+OBJOPT=-Fo
+!endif
+
+
+all : winrun.exe runstub.exe winxdos.exe winx.exe
+
+
+winrun.exe : winrun.obj
+           $(LD) $(LDOPT) winrun.obj
+
+runstub.exe : runstub.obj
+            $(LD) $(LDOPT) runstub.obj
+
+!if $(MICROSOFT)
+mscint.obj : mscint.c
+           $(CC) $(WCCOPT) mscint.c
+
+winx.exe : winx.obj mscint.obj winxdos.exe
+            $(LD) $(WLDOPT) winx.obj mscint.obj winx.def
+!else
+winx.exe : winx.obj winxdos.exe
+            $(LD) $(WLDOPT) winx.obj
+!endif
+
+winxdos.exe : winxdos.obj
+            $(LD) $(LDOPT) winxdos.obj
+
+winxdos.obj : winxdos.c
+            $(CC) $(CCOPT) winxdos.c
+
+winx.obj : winx.c
+            $(CC) $(WCCOPT) winx.c
+
+winrun.obj : winrun.c
+            $(CC) $(CCOPT) winrun.c
+
+runstub.obj : winrun.c
+       $(CC) $(CCOPT) $(OBJOPT)runstub.obj \
+       -DWINRUN_STUB winrun.c

@@ -1,0 +1,8 @@
+Borland C++ 4.5 Copyright (c) 1987, 1994 Borland International
+interp.c:
+Warning interp.c 379: Possible use of 'cpos' before definition in function check_line
+Warning interp.c 407: Parameter 'lineno' is never used in function check_line
+Warning interp.c 407: Parameter 'filename' is never used in function check_line
+Warning interp.c 407: Parameter 'l' is never used in function check_line
+Warning interp.c 407: Parameter 'defs' is never used in function check_line
+Warning interp.c 706: 'i' is declared but never used in function FuncNames

@@ -1,0 +1,8 @@
+[OPTIONS]
+HCW=0
+LCID=0x809 0x0 0x0 ;English (British)
+REPORT=Yes
+HLP=.\compkey.hlp
+
+[WINDOWS]
+COMPKEY="",(653,102,360,600),28932,(r14876671),(r4227327),f3

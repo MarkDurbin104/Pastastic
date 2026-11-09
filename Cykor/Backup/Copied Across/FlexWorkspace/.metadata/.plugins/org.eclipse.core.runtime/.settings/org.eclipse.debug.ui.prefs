@@ -1,0 +1,12 @@
+#Sat Apr 26 14:33:24 BST 2008
+org.eclipse.debug.ui.PREF_LAUNCH_PERSPECTIVES=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<launchPerspectives/>\r\n
+org.eclipse.debug.ui.cancel_launch_with_compile_errors=never
+org.eclipse.debug.ui.views_to_not_open=org.eclipse.debug.ui.VariableView,org.eclipse.debug.ui.BreakpointView,
+pref_state_memento.org.eclipse.debug.ui.VariableView=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<VariablesViewMemento org.eclipse.debug.ui.SASH_DETAILS_PART\="173" org.eclipse.debug.ui.SASH_VIEW_PART\="815"/>
+org.eclipse.debug.ui.USE_STEP_FILTERS=true
+preferredDetailPanes=DefaultDetailPane\:DefaultDetailPane|
+org.eclipse.debug.ui.switch_perspective_on_suspend=always
+eclipse.preferences.version=1
+org.eclipse.debug.ui.save_dirty_editors_before_launch=always
+org.eclipse.debug.ui.MemoryView.viewPanesVisibility=org.eclipse.debug.ui.MemoryView.MemoryBlocksTreeViewPane,org.eclipse.debug.ui.MemoryView.RenderingViewPane.1,
+org.eclipse.debug.ui.DebugView+org.eclipse.debug.ui.debugview.toolbar.toggleStepFilters=true

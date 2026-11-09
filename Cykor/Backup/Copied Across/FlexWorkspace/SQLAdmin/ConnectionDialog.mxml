@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:TitleWindow xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" 
+	width="300" height="180" title="Connection" showCloseButton="true" cornerRadius="4"
+	close="PopUpManager.removePopUp(this)">
+	 
+	<mx:Script>
+		<![CDATA[
+			import mx.managers.PopUpManager;
+			
+			private function okHandler():void
+			{
+				if (dbName.text!="")
+				{
+					dispatchEvent(new MyEvent('change', dbName.text));
+				}
+			}
+		]]>
+	</mx:Script>
+
+	<mx:Label x="24" y="16" text="Enter a database Name:"/>
+	<mx:TextInput id="dbName" y="42" width="242" horizontalCenter="0" enter="okHandler()"/>
+	<mx:Button x="148" y="86" label="Cancel" width="60" click="PopUpManager.removePopUp(this)"/>
+	<mx:Button x="80" y="86" label="OK" width="60" click="okHandler()"/>
+	
+</mx:TitleWindow>

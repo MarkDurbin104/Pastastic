@@ -1,0 +1,12704 @@
+S<^>1
+<<<<< Table of Unicode Strings placed in SCURes.Dll >>>>>
+S<^>999
+<<<<< Names of Key Entries in the Local Registry >>>>>
+S<^>1000
+SOFTWARE\\Universal Postal Union\\IPS 96
+S<^>1001
+SOFTWARE\\Universal Postal Union\\IPS Pre-Compiler
+S<^>1002
+SOFTWARE\\Universal Postal Union\\IPS EDIFact Manager
+S<^>1099
+<<<<< Names of IPS Values in the Local Registry >>>>>
+S<^>1100
+Operational System Version
+S<^>1101
+Office Full Code
+S<^>1102
+IPS'96 Directory
+S<^>1103
+Log File Fully Qualified Path
+S<^>1104
+Trace File Fully Qualified Name
+S<^>1105
+Datasource Name
+S<^>1107
+Database Connection Timeout
+S<^>1108
+Database Query Timeout
+S<^>1199
+<<<<< Names of DDE Server Values in the Local Registry >>>>>
+S<^>1200
+DDE Server Fully Qualified Name
+S<^>1299
+<<<<< Names of Pre-Compiler Values in the Local Registry >>>>>
+S<^>1300
+Queries
+S<^>1399
+<<<<< Names of EDIFact Manager Values in the Local Registry >>>>>
+S<^>1400
+Scheduler Periodicity
+S<^>1401
+Format Files Directory
+S<^>1402
+Output Directory
+S<^>1403
+Input Directory
+S<^>1999
+<<<<< Names of IPS Values in the Database >>>>>
+S<^>2000
+Is EMS Item Local Id Mandatory
+S<^>2001
+Is EMS Item Outbound Weight Mandatory
+S<^>2002
+Is Receptacle Inbound Weight Mandatory
+S<^>2003
+Receptacle Otb Weight Limit
+S<^>2004
+Receptacle Inb Weight Limit
+S<^>2005
+Default Currency Full Code
+S<^>3400
+<<<<< Strings for Dialog Titles and Control Captions >>>>> ClaudeV
+S<^>3401
+Define Parameters Of Our Own Country
+S<^>3402
+%u C&onsignment(s) selected
+S<^>3403
+Closed &Consignment(s)
+S<^>3404
+C&onsignment(s) To Close
+S<^>3405
+C&onsignment(s) To Reopen
+S<^>3406
+&Consignment(s) Currently Opened
+S<^>3407
+%u D&espatch(es) selected
+S<^>3408
+Item Details
+S<^>3409
+Remove Item (Item Details)
+S<^>3410
+&Print (F8)
+S<^>3411
+&Remove
+S<^>3412
+%.2f %s
+S<^>3413
+%.0f g
+S<^>3414
+Dest. &Country:
+S<^>3415
+%u I&tem(s) selected
+S<^>3416
+Orig. &Country:
+S<^>3417
+%s (UPU %s)
+S<^>3418
+International Postal System'96
+S<^>3419
+De&select (F3)
+S<^>3420
+&Select (F3)
+S<^>3421
+Exit (Esc)\n52
+S<^>3422
+Help (F1)\n52
+S<^>3423
+&Store (F2)\n52
+S<^>3424
+Lis&t of items : %u
+S<^>3425
+C&ondition of receipt
+S<^>3426
+Page %u on %u
+S<^>3427
+Next &office
+S<^>3428
+Reas&on for retention
+S<^>3429
+Central Tables
+S<^>3430
+Local Tables
+S<^>3431
+National Tables
+S<^>3432
+%u &Item(s) selected
+S<^>3433
+Despatch Id: %s
+S<^>3434
+EMS Item Id: %s
+S<^>3435
+No Despatch
+S<^>3436
+No Item
+S<^>3437
+%.2f %s
+S<^>3438
+dll
+S<^>3439
+Libraries (*.dll)|*.dll|Executable Files (*.exe)|*.exe||
+S<^>3440
+trc
+S<^>3441
+All Files (*.*)|*.*||
+S<^>3442
+Airports
+S<^>3443
+Mail Sub-Classes
+S<^>3444
+&Associated Functions for Group '%s'
+S<^>3445
+&Associated Functions for Authorization Level '%s'
+S<^>3446
+&Continue
+S<^>3447
+IPS'96 Pre-Compiler
+S<^>3500
+<<<<< Strings for Dialog Titles and Control Captions >>>>> DavidA
+S<^>3501
+&Generate Report\n64
+S<^>3502
+Create Routes
+S<^>3503
+Edit Route
+S<^>3504
+Inb. &Weight (kg):
+S<^>3505
+C&ondition of receipt
+S<^>3506
+Mail Sub-&Class:
+S<^>3507
+%1 / Type: %2 / AV7: %8   %10
+S<^>3508
+Orig.: %1 / Dest.: %2 / Flight: %3 / DepT: %5 / ArrT: %6
+S<^>3509
+Inb. &Weight (kg):
+S<^>3511
+R&eceptacles: %u
+S<^>3512
+&Items: %u
+S<^>3513
+Current year: %u
+S<^>3514
+Next year: %u
+S<^>3515
+Previous year: %u
+S<^>3516
+&Associated Offices:
+S<^>3517
+&Group:
+S<^>3518
+Define Group of Offices
+S<^>3519
+Next &Office
+S<^>3520
+Verify Outbound Despatch (UPU OUT17)
+S<^>3521
+&List of Shipped Consignments:
+S<^>3522
+Preadvice C&onsignment
+S<^>3523
+&List of Shipped Despatches:
+S<^>3524
+Selection
+S<^>3525
+Sen&t Despatch:
+S<^>3526
+Destination &Country:
+S<^>3527
+Inbound weight
+S<^>3528
+Destination &Country:
+S<^>3529
+Sen&t Consignment:
+S<^>3530
+Stop
+S<^>3531
+Start
+S<^>3532
+EDIFact Inbound Process
+S<^>3533
+EDIFact Outbound Process
+S<^>3800
+<<<<< Strings for Dialog Titles and Control Captions >>>>> RemiR
+S<^>3801
+%1\t\t%2 Grammes
+S<^>3802
+Select A Receptacle (UPU OUT13)
+S<^>3803
+Add EMS Items In Receptacles (UPU OUT13)
+S<^>3804
+New Despatch (UPU OUT13)
+S<^>3806
+%1
+S<^>3807
+%1   %8 Kg   %2 items
+S<^>3808
+%1
+S<^>3809
+&Search (F3)
+S<^>3810
+Searc&h
+S<^>3811
+Orig: %1   Dest: %2   Flig: %3   DepT: %5   ArrT: %6
+S<^>3812
+&Update (F6)
+S<^>3813
+Re&set (F3)
+S<^>5300
+<<<<< Strings for User Messages >>>>> ClaudeV
+S<^>5301
+Information (%04u)
+S<^>5302
+Question (%04u)
+S<^>5303
+Warning (%04u)
+S<^>5304
+Error (%04u)
+S<^>5305
+Fatal Error (%04u)
+S<^>5306
+Unable to retrieve weight from an automatic scale!
+S<^>5307
+Cannot init application!
+S<^>5308
+Cannot open database connexion!
+S<^>5309
+This will end your IPS'96 session.\nPlease confirm!
+S<^>5310
+Date format is invalid!\nIt must be "%1".
+S<^>5311
+Time format is invalid!\nIt must be "%1".
+S<^>5312
+Cannot init application.\nYou probably do not have the appropriate rights\nto execute this application.
+S<^>5313
+A database error has occured.\nPlease, notify your support organization.
+S<^>5314
+%1: This consignment is already used by another user!
+S<^>5315
+%1: This consignment has been closed since the begining of your session.\nIt is about to be removed from your list of opened consignments!
+S<^>5316
+%1: This despatch is already used by another user!
+S<^>5317
+%1: This despatch is no more valid for the selected consignment.\nIt is about to be removed from your list of selectable despatches!
+S<^>5318
+%1 despatch(es) must be stored in the current consignment.\nDo you want to proceed without storing?
+S<^>5319
+%1\nAdding this despatch will provoque a weight overflow.\nDo you still want to add it?
+S<^>5320
+%1\nRemoving this despatch will provoque a weight underflow.\nDo you still want to remove it?
+S<^>5321
+A database error has occured.\nPlease, notify your support organization.
+S<^>5322
+A database error has occured.\nPlease, notify your support organization.
+S<^>5323
+The event date is invalid!\nFormat must be "%1".
+S<^>5324
+No consignment with these criteria\nwas found in the database!
+S<^>5325
+A database error has occured.\nPlease, notify your support organization.
+S<^>5326
+%1: This consignment is already used by another user!
+S<^>5327
+%1: This consignment has been reopen since the begining of your session.\nIt is about to be removed from your list of opened consignments!
+S<^>5328
+%1: This consignment has been closed since the begining of your session.\nIt is about to be removed from your list of opened consignments!
+S<^>5329
+You cannot close consignment %1 because\nits despatch %2 is used by another user!
+S<^>5330
+%1 : Failed to print CN38.\nDo you want to retry?
+S<^>5331
+%1 consignment(s) must be closed.\nDo you want to exit without closing?
+S<^>5332
+%1 consignment(s) must be reopened.\nDo you want to exit without reopening?
+S<^>5333
+The consignment weight is over the weight limit.\nDo you still want to close it?
+S<^>5334
+The delivery agent %1 already exists.\nDo you wish to modified it?
+S<^>5335
+Cannot delete the delivery agent %1 because\nit is already referenced in the database!
+S<^>5336
+Do you want to delete the delivery agent %1?
+S<^>5337
+Data have not been stored.\nDo you want to exit without storing?
+S<^>5338
+All changes will be lost,\nPlease confirm!
+S<^>5339
+All changes will be lost,\nPlease confirm!
+S<^>5340
+Do you really want to delete group %1?
+S<^>5341
+The group %1 already exists.\nDo you want to modify it?
+S<^>5342
+Cannot delete group %1 because\nit is already referenced in the database!
+S<^>5343
+Data have not been stored.\nDo you want to exit without storing?
+S<^>5344
+Do you want to delete the service indicator %1?
+S<^>5345
+All changes will be lost,\nPlease confirm!
+S<^>5346
+The service indicator %1 already exists.\nDo you wish to modified it?
+S<^>5347
+Cannot delete the service indicator %1 because\nit is already referenced in the database!
+S<^>5348
+Data have not been stored.\nDo you want to exit without storing?
+S<^>5349
+Do you want to delete the tracking node %1?
+S<^>5350
+All changes will be lost.\nPlease confirm!
+S<^>5351
+The tracking node %1 already exists.\nDo you want to modify it?
+S<^>5352
+Cannot delete the tracking node %1 because\nit is already referenced in the database!
+S<^>5353
+Data have not been stored\nDo you realy want to exit without storing?
+S<^>5354
+All changes will be lost,\nPlease confirm!
+S<^>5355
+Do you really want to delete user %1?
+S<^>5356
+There is no SQL login created for user %1.\nThe IPS'96 user is created but not the\nSQL user, you must create a SQL login\nand user for the IPS'96 user %1.\n(See user guide for more informations)
+S<^>5357
+The user %1 already exists.\nDo you want to modify it?
+S<^>5358
+Cannot delete user %1 because\nit is already referenced in the database!
+S<^>5359
+A database error has occured.\nPlease, notify your support organization.
+S<^>5360
+The event date is invalid!\nFormat must be "%1".
+S<^>5361
+The departure date is invalid!\nFormat must be "%1".
+S<^>5362
+No despatch with these criteria\nwas found in the database!
+S<^>5363
+A database error has occured.\nPlease, notify your support organization.
+S<^>5364
+Data have not been stored.\nDo you want to proceed without storing?
+S<^>5365
+Field "Destination Office" must be filled in!
+S<^>5366
+The EMS item identifier is invalid!
+S<^>5367
+The receptacle identifier is invalid!
+S<^>5368
+Field "Origin Office" must be filled in!
+S<^>5369
+The country code is invalid!
+S<^>5370
+The method of notification code is invalid!
+S<^>5371
+The sender identifier is invalid!
+S<^>5372
+The type of goods code is invalid!
+S<^>5373
+A database error has occured.\nPlease, notify your support organization.
+S<^>5374
+The event date is invalid!\nFormat must be "%1".
+S<^>5375
+No item with these criteria\nwas found in the database!
+S<^>5376
+Do you really want to remove selected Item(s)?
+S<^>5377
+Field "Destination Country" must be filled in!
+S<^>5378
+Field "Item Weight" must be filled in!
+S<^>5379
+The Item outbound weight cannot exeed %1 Kg!
+S<^>5380
+The information stored in the database about this item will be overriden.\nPlease confirm!
+S<^>5381
+A database error has occured.\nPlease, notify your support organization.
+S<^>5382
+Field "Condition of receipt" must be filled in!
+S<^>5383
+The EMS item identifier is unknown or invalid!
+S<^>5384
+The EMS item identifier is invalid!
+S<^>5385
+The receptacle identifier is invalid!
+S<^>5386
+There is already an EMS item with this id in the list box.\nDo you want to duplicate it?
+S<^>5387
+The Item inbound weight cannot exeed %1 Kg!
+S<^>5388
+Field "Local Id" must be filled in!
+S<^>5389
+This local identifier is unknown!
+S<^>5390
+Field "Receptacle Id" must be filled in!
+S<^>5391
+This EMS item status is "Return to sender"!
+S<^>5392
+Field "Status" must be filled in!
+S<^>5393
+%1 EMS Item(s) to store.\nDo you want to exit without storing?
+S<^>5394
+This receptacle is unknown!
+S<^>5395
+There is no database installed!\nYou must first install the IPS'96 database\nwith the setup program!
+S<^>5396
+No valid data file found on %1!
+S<^>5397
+A database error has occured.\nPlease, notify your support organization.
+S<^>5398
+This operation will virtually remove the item from the database\nDo you really want to remove EMS Item %1?
+S<^>5399
+The format file %1 cannot be found!
+S<^>5400
+This item has an invalid status!
+S<^>5401
+This EMS item is currently damaged or violated!
+S<^>5402
+Unable to launch "%1" !
+S<^>5403
+This EMS item has been delivered!
+S<^>5404
+This EMS item is currently retained by customs!
+S<^>5405
+This item is %1!
+S<^>5406
+This EMS item is unknown!
+S<^>5407
+All changes will be lost,\nPlease confirm!
+S<^>5408
+Field "Next office" must be filled in!
+S<^>5409
+Field "Reason for retention" must be filled in!
+S<^>5410
+The Authorization Level '%1' already exists.\nDo you want to modify it?
+S<^>5411
+A database error has occured.\nPlease, notify your support organization.
+S<^>5412
+The date of lodging is invalid!\nFormat must be "%1".
+S<^>5413
+No item with these criteria\nwas found in the database!
+S<^>5414
+The country code is invalid!
+S<^>5415
+Invalid Despatch!
+S<^>5416
+Invalid Port!
+S<^>5417
+Invalid Receptacle!
+S<^>5418
+Invalid Route!
+S<^>5419
+Invalid Type Of Goods!
+S<^>5420
+A database error has occured.\nPlease, notify your support organization.
+S<^>5421
+This consignment has already been selected.\nChoose another one!
+S<^>5422
+%1: This consignment is already used by another user!
+S<^>5423
+%1: This consignment has been closed since the begining of your session.\nIt is about to be removed from your list of opened consignments!
+S<^>5424
+%1: This despatch is already used by another user!
+S<^>5425
+%1: This despatch is no more valid for the selected consignment.\nIt is about to be removed from your list of selectable despatches!
+S<^>5426
+Despatch(es) have been exchanged and must be stored.\nDo you really want to process without storing?
+S<^>5427
+%1,\nExchanging this despatch will provoque a weight overflow.\nDo you still want to exchange it?
+S<^>5428
+%1,\nExchanging this despatch will provoque a weight underflow.\nDo you still want to exchange it?
+S<^>5429
+This EMS Item has already been processed at this point,\nDo you want to duplicate the event?
+S<^>5430
+This EMS item already exists in the list box,\nYou cannot duplicate the event during the same session!
+S<^>5431
+%1
+S<^>5432
+Unable to execute command :\n%1!
+S<^>5433
+Do you really want to delete Authorization Level '%1'?
+S<^>5434
+Cannot delete Authorization Levl '%1' because\nit is already referenced in the database!
+S<^>5435
+Data have not been stored\nDo you realy want to exit without storing?
+S<^>5436
+A database error has occured.\nPlease, notify your support organization.
+S<^>5437
+You must set a local office to enable this page!
+S<^>5500
+<<<<< Strings for User Messages >>>>> DavidA
+S<^>5501
+This consignment is not stored.\nDo you want to exit without storing?
+S<^>5502
+This despatch identifier exists in the list!
+S<^>5503
+The consignment identifier is invalid.
+S<^>5504
+The despatch identifier is invalid.
+S<^>5505
+The consignment inbound weight is: %1 kg!
+S<^>5506
+The consignment weight is: %1 kg!
+S<^>5507
+The weight must be lower than 100,000,000.0 Kg!
+S<^>5508
+Field "Airline" must be filled in.
+S<^>5509
+Do you want to delete this route?
+S<^>5510
+This route is not stored. Do you want to exit without storing?
+S<^>5511
+Field "Destination Airport" must be filled in.
+S<^>5512
+A database error has occured.\nPlease, notify your support organization.
+S<^>5513
+A database error has occured.\nPlease, notify your support organization.
+S<^>5514
+A database error has occured.\nPlease, notify your support organization.
+S<^>5515
+Field "Flight number" must be filled in.
+S<^>5516
+One segment must be selected for the AV7.
+S<^>5517
+At least one mail sub class must be selected.
+S<^>5518
+Field "Origin Airport" must be filled in.
+S<^>5519
+This route is currently used. It can not be deleted.
+S<^>5520
+Airport cannot be null.
+S<^>5521
+No airport was found with this office.
+S<^>5522
+The consignment weight is over the weight limit.\nDo you still want to add this despatch?
+S<^>5523
+The consignment identifier is invalid!
+S<^>5524
+The despatch(es) are not stored.\nDo you want to exit without storing?
+S<^>5525
+This despatch is in the free despatch list.\nIt cannot be removed from the associated list.
+S<^>5526
+This despatch is in the associated despatch list.\nIt cannot be added.
+S<^>5527
+Field "Despatch whose consignment is unknown" must be filled in.
+S<^>5528
+Do you want to remove this despatch?
+S<^>5529
+Do you really want to remove receptacle %1?
+S<^>5530
+This despatch is not stored.\nDo you want to exit without storing?
+S<^>5531
+The despatch identifier is invalid!
+S<^>5532
+Item identifier is invalid.
+S<^>5533
+The receptacle identifier is invalid!
+S<^>5534
+This EMS item exists in the list.
+S<^>5535
+The despatch weight is: %1 kg!
+S<^>5536
+A receptacle with the same serial number exists in the list.
+S<^>5537
+The receptacle serial number cannot be null.
+S<^>5538
+The receptacle outbound weight limit is: %1 kg!
+S<^>5539
+The weight must be lower than 100,000,000.0 Kg!
+S<^>5540
+The carrier identifier cannot be null.
+S<^>5541
+The changes are not stored. Do you want to exit without storing?
+S<^>5542
+All changes will be lost,\nPlease confirm!
+S<^>5543
+Searching will delete the current flight list.\nDo you still want to search?
+S<^>5544
+The destination airport must be different from the origin airport.
+S<^>5545
+Field "Destination airport" must be filled in.
+S<^>5546
+A flight with the same number exists in the list.\nIt cannot be added.
+S<^>5547
+There is no flight with this number in the list.\nThe modification cannot be done.
+S<^>5548
+Field "Origin airport" must be filled in.
+S<^>5549
+%1: This flight cannot be operational because one (or both) of its airports is suspended.
+S<^>5550
+The weight limit must be lower than 100,000,000.0 Kg!
+S<^>5551
+The data have not been stored.\nDo you want to exit without storing?
+S<^>5552
+Field "Mail Category" must be filled in.
+S<^>5553
+Field "Mail Sub-Class" must be filled in.
+S<^>5554
+The new serial number must be higher than %1.
+S<^>5555
+The serial number for next year must be higher than %1.
+S<^>5556
+Field "Destination Office" must be filled in.
+S<^>5557
+Field "Origin Office" must be filled in.
+S<^>5558
+The despatch serial number must be lower than 10,000.
+S<^>5559
+Field "City" must be filled in.
+S<^>5560
+All changes will be lost,\nPlease confirm!
+S<^>5561
+All changes will be lost,\nPlease confirm!
+S<^>5562
+A group with the same code exists in the list.\nThis group cannot be added.
+S<^>5563
+There is no group with this code in the list.\nThe modification cannot be done.
+S<^>5564
+%1: this group cannot be deleted because it is referenced in database.
+S<^>5565
+An office with the same code exists in the list.\nThis office cannot be added.
+S<^>5566
+%1: this office cannot be deleted because it is referenced in database.
+S<^>5567
+%1: this office type cannot be deleted because it is referenced in database.
+S<^>5568
+Field "Office Type" must be filled in.
+S<^>5569
+There is no office with this code in the list.\nThe modification cannot be done.
+S<^>5570
+%1: Cannot create an office type with this code because it is referenced in database.
+S<^>5571
+An office type with the same code exists in the list.\nThis office type cannot be added.
+S<^>5572
+There is no office type with this code in the list.\nThe modification cannot be done.
+S<^>5573
+All changes will be lost,\nPlease confirm!
+S<^>5574
+Field "Country" must be filled in.
+S<^>5575
+This action will delete the current port list.\nDo you still want to search?
+S<^>5576
+No port with these criteria\nwas found in the database!
+S<^>5577
+This port cannot be "Own" because it is not in the current country.
+S<^>5578
+There is no port with this full code in the list.\nThe modification cannot be done.
+S<^>5579
+Field "Delivery agent" must be filled in.
+S<^>5580
+The EMS item identifier is invalid!
+S<^>5581
+%1: Information about this EMS item were already stored.\nDo you want to store it again?
+S<^>5582
+This item already exists in the list box.\nDo you want to duplicate it?
+S<^>5583
+This EMS item identifier is not in database!
+S<^>5584
+This local identifier is unknown!
+S<^>5585
+Field "Measure for non delivery" must be filled in.
+S<^>5586
+The current office is not a point of delivery.\nThis action is impossible.
+S<^>5587
+Field "Office" must be filled in.
+S<^>5588
+Field "Reason for non delivery" must be filled in.
+S<^>5589
+%1 item(s) have not been stored.\nDo you want to exit without storing?
+S<^>5590
+Field "Carrier" must be filled in.
+S<^>5591
+Field "Country" must be filled in.
+S<^>5592
+Field "Office" must be filled in.
+S<^>5593
+Field "Mail Subclass" must be filled in.
+S<^>5594
+The receptacle identifier is invalid!
+S<^>5595
+Field "Condition of receipt" must be filled in!
+S<^>5596
+Field "Despatch serial number" must be filled in,\nIt is composed by 4 digits!
+S<^>5597
+The despatch %1 is not closed!
+S<^>5598
+The destination office is not a local office of exchange.\nDo you still want to add this receptacle?
+S<^>5599
+Field "Mail category" must be filled in!
+S<^>5600
+Field "Mail sub-class" must be filled in!
+S<^>5601
+Field "OEI" must be filled in!
+S<^>5602
+Field "OEO" must be filled in!
+S<^>5603
+Field "Office" must be filled in!
+S<^>5604
+This receptacle identifier exists in the list!
+S<^>5605
+%1: Information about this receptacle were already stored.\nDo you want to store it again?
+S<^>5606
+This receptacle is %1!
+S<^>5607
+%1 receptacle(s) to store.\nDo you want to exit without storing?
+S<^>5608
+This receptacle identifier was not found in database.
+S<^>5609
+The receptacle inbound weight limit is: %1 kg!
+S<^>5610
+Field "Receptacle serial number" must be filled in,\nIt is composed by 3 digits!
+S<^>5611
+Field "Weight" must be filled in!
+S<^>5612
+Field "Origin Airport" must be filled in!
+S<^>5613
+This consignment verification information is not stored.\nDo you want to exit without storing?
+S<^>5614
+There is no information about the content of this consignment.\nDo you want to capture the missing information?
+S<^>5615
+No consignment was found with this origin airport.
+S<^>5616
+The despatch verification information are not stored.\nDo you want to exit without storing?
+S<^>5617
+There is no information about the content of this despatch.\nDo you want to capture the missing information?
+S<^>5618
+No despatch was found with these parameters.
+S<^>5619
+Field "Country" must be filled in!
+S<^>5620
+Field "OEO" must be filled in!
+S<^>5621
+This action will delete the current country 's despatches informations.\nDo you still want to search?\n
+S<^>5622
+All receptacles in this consignment are well received.
+S<^>5623
+This EMS Item has already been processed at this point,\nDo you want to duplicate the event?
+S<^>5624
+Field "Year" must be filled in!
+S<^>5625
+This action will delete the current despatch information.\nDo you still want to verify?\n
+S<^>5626
+Receptacle %s was expected but not received.\r\n
+S<^>5627
+Receptacle %s was received but unexpected.\r\n
+S<^>5628
+Receptacle %s:\r\n\t- expected weight was %.1f kg\r\n\t- received weight is %.1f kg\r\n
+S<^>5629
+Receptacle %s was sent but not received.\r\n
+S<^>5630
+Receptacle %s was received but not sent.\r\n
+S<^>5631
+Receptacle %s:\r\n\t- sent weight was %.1f kg\r\n\t- received weight is %.1f kg\r\n
+S<^>5632
+Field "Country" must be filled in!
+S<^>5633
+This action will delete the current country 's consignments informations.\nDo you still want to search?\n
+S<^>5634
+No consignment was found with these parameters.
+S<^>5635
+This action will delete the current consignment information.\nDo you still want to verify?\n
+S<^>5636
+Despatch %s was expected but not received.\r\n
+S<^>5637
+Despatch %s was received but unexpected.\r\n
+S<^>5638
+Despatch %s:\r\n
+S<^>5639
+\tReceptacle %s was expected but not received.\r\n
+S<^>5640
+\tReceptacle %s was received but unexpected.\r\n
+S<^>5641
+\tReceptacle %s:\r\n\t\t- expected weight was %.1f kg\r\n\t\t- received weight is %.1f kg\r\n
+S<^>5642
+Despatch %s was sent but not received.\r\n
+S<^>5643
+Despatch %s was received but not sent.\r\n
+S<^>5644
+\tReceptacle %s was sent but not received.\r\n
+S<^>5645
+\tReceptacle %s was received but not sent.\r\n
+S<^>5646
+\tReceptacle %s:\r\n\t\t- sent weight was %.1f kg\r\n\t\t- received weight is %.1f kg\r\n
+S<^>5647
+Expected and Received despatches are identical.
+S<^>5648
+Sent and Received despatches are identical.
+S<^>5649
+Expected and Received consignments are identical.
+S<^>5650
+Sent and Received consignments are identical.
+S<^>5651
+The receptacle weight limit is: %1 kg!
+S<^>5652
+999.9
+S<^>5653
+Do you really want to remove this (these) receptacle(s) from the list?
+S<^>5654
+Do you really want to remove this (these) despatch(es) from the list?
+S<^>5655
+Do you really want to remove this (these) despatch(es) from the list?
+S<^>5656
+Do you really want to remove EMSItem %1?
+S<^>5657
+This time exists in the list!
+S<^>5658
+The list is full: 12 hours can be entered!
+S<^>5659
+At least one of the two EDIFact services is not well installed!
+S<^>5660
+Attempting to stop %s
+S<^>5661
+Attempting to start %s
+S<^>5662
+Service '%1':\nAre you sure that startup parameters are correct?
+S<^>5663
+-test
+S<^>5664
+%1: This despatch was not found!
+S<^>5665
+%1: This consignment was not found!
+S<^>5666
+Captured informations were not found for this despatch.\nDo you want to capture informations?
+S<^>5667
+RESDES message was not found for this despatch.\nDo you want to compare with captured informations?
+S<^>5668
+RESCON message was not found for this consignment.\nDo you want to compare with captured informations?
+S<^>5669
+Captured informations were not found for this consignment.\nDo you want to capture informations?
+S<^>5670
+PRECON message was not found for this consignment.\nDo you want to compare with captured informations?
+S<^>5671
+PREDES message was not found for this despatch.\nDo you want to compare with captured informations?
+S<^>5672
+All changes will be lost,\nPlease confirm!
+S<^>5800
+<<<<< Strings for User Messages >>>>> RemiR
+S<^>5801
+The last receptacle can only be closed by closing the despatch!
+S<^>5802
+The receptacle is temporary closed. Do you want to print a temporary label?
+S<^>5803
+The receptacle is temporary closed. Do you want to print a temporary label?
+S<^>5804
+The previous receptacle is temporary closed. Do you want to print a temporary label?
+S<^>5805
+The despatch can not be closed.
+S<^>5806
+The despatch can not de closed.
+S<^>5807
+The receptacle can not be closed as it is empty.
+S<^>5808
+The receptacle can not be closed.
+S<^>5809
+A new receptacle can not be created.
+S<^>5810
+The despatch %1 must be open.
+S<^>5811
+An EMS item with the same identifier has been already stored.
+S<^>5812
+The EMS item identifier is invalid!
+S<^>5813
+The destination country of the item is different from the destination country of the receptacle.\nIs the item "a decouvert"?
+S<^>5814
+This item is already in the list box.
+S<^>5815
+An EMS item received in bad conditions can not be added in a receptacle.
+S<^>5816
+This item is stored as being retained by customs.
+S<^>5817
+The despatch can not be closed as the last receptacle is empty.
+S<^>5818
+The despatch can not be closed as more than one receptacle is not closed.
+S<^>5819
+The despatch can not be closed as more than one receptacle is not closed.
+S<^>5820
+Field "Mail Subclass" must be filled in!
+S<^>5821
+All changes will be lost,\nPlease confirm!
+S<^>5822
+Click on OK when you are ready to print the despatch manifest.
+S<^>5823
+Click on OK when you are ready to print the 2nd part of the despatch manifest.
+S<^>5824
+Click on OK when you are ready to print the despatch summary.
+S<^>5825
+Click on OK when you are ready to print the label of the last receptacle.
+S<^>5826
+Click on OK when you are ready to print the manifest of the last receptacle.
+S<^>5827
+Click on OK when you are ready to print the label of the receptacle.
+S<^>5828
+Click on OK when you are ready to print the manifest of the receptacle.
+S<^>5829
+The last receptacle can not be closed without closing the despatch.
+S<^>5830
+This receptacle can not be closed without closing the despatch.
+S<^>5831
+The receptacle weight cannot exceed %1 Kg.
+S<^>5832
+Printing failed. Do you want to try again?
+S<^>5833
+Printing failed. Do you want to try again?
+S<^>5834
+Printing failed. Do you want to try again?
+S<^>5835
+Printing failed. Do you want to try again?
+S<^>5836
+Printing failed. Do you want to try again?
+S<^>5837
+Printing failed. Do you want to try again?
+S<^>5838
+Printing failed. Do you want to try again?
+S<^>5839
+Printing failed. Do you want to try again?
+S<^>5840
+Printing failed. Do you want to try again?
+S<^>5841
+Printing failed. Do you want to try again?
+S<^>5842
+Printing failed. Do you want to try again?
+S<^>5843
+Printing failed. Do you want to try again?
+S<^>5844
+Printing failed. Do you want to try again?
+S<^>5845
+The EMS item %1 is unknown.
+S<^>5846
+The despatch can not be closed.
+S<^>5847
+A new receptacle cannot be created, probably because the selected despatch is not opened.
+S<^>5848
+The selected receptacle can not be reopened.
+S<^>5849
+Despatch %1 must be open.
+S<^>5850
+The despatch can not be closed as the last receptacle is empty.
+S<^>5851
+The last receptacle of the despatch is not temporary closed : it must being used.
+S<^>5852
+The despatch can not be closed as more than one receptacle is not closed.
+S<^>5853
+This receptacle is neither closed nor temporary closed.
+S<^>5854
+This receptacle is closed. Do you want to reopen it?
+S<^>5855
+You (user %1) are not authorized to reopen a receptacle.
+S<^>5856
+A database error has occured.\nPlease, notify your support organization.
+S<^>5857
+All changes will be lost.\nPlease confirm!
+S<^>5858
+Next departure time is at %1
+S<^>5859
+Field "Destination Office of Exchange" must be filled in!
+S<^>5860
+Field "Mail Category" must be filled in!
+S<^>5861
+Field "Mail Class" must be filled in!
+S<^>5862
+Field "Mail Subclass" must be filled in!
+S<^>5863
+The despatch %1 has been created, linked to the consignment %2.
+S<^>5864
+All changes will be lost,\nPlease confirm!
+S<^>5865
+The despatch can not be reopened.
+S<^>5866
+Do you want to reopen the despatch %1?
+S<^>5867
+Cannot reopen the despatch as its consignment %1 is not open.\nPlease reopen it before reopening the despatch.
+S<^>5868
+The despatch %1 and its last receptacle %2 are now reopen.
+S<^>5869
+The despatch is not closed.
+S<^>5870
+The item can not be removed.
+S<^>5871
+Cannot remove this item as its despatch cannot be reopen,\nprobably because its consignment %1 is not open.\nPlease reopen the consignment then try again.
+S<^>5872
+The despatch %1 must be open.
+S<^>5873
+The EMS item identifier is invalid.
+S<^>5874
+The item has been removed. Receptacle %1 and despatch %2 are open.
+S<^>5875
+Item in receptacle %s (%s) of despatch %s (%s)
+S<^>5876
+This receptacle is neither closed nor temporary closed.
+S<^>5877
+A database error has occured.\nPlease, notify your support organization.
+S<^>5878
+An EMS item with the same identifier has already been stored,\nyou cannot duplicate it!
+S<^>5880
+This EMS item identifier is unknown.
+S<^>5881
+The EMS item identifier is invalid!
+S<^>5882
+The EMS item identifier is invalid!
+S<^>5883
+The EMS item identifier is invalid!
+S<^>5884
+The item weight cannot exceed %1g!
+S<^>5885
+All changes will be lost.\nPlease confirm!
+S<^>5886
+This sender identifier is unknown.
+S<^>5887
+The selected receptacle can not be reopened.
+S<^>5888
+Despatch %1 must be open.
+S<^>5889
+This receptacle is neither closed nor temporary closed.
+S<^>5890
+This receptacle is closed. Do you want to reopen it?
+S<^>5891
+You (user %1) are not authorized to reopen a receptacle.
+S<^>5892
+This item is already inside receptacle %1.
+S<^>5893
+A database error has occured during item loading.\nPlease, notify your support organization.
+S<^>5894
+Format of customer identifier is not valid!
+S<^>5895
+Despatch %1 is currently used!
+S<^>5896
+Consignment %1 of despatch %2 is currently used!
+S<^>5897
+Despatch %1 is currently used and cannot be modified!
+S<^>5898
+Consignment %1 is currently used and cannot be modified!
+S<^>5899
+Receptacle %1 is currently used and cannot be modified!
+S<^>5900
+Last receptacle %1 of despatch %2 is reopened.
+S<^>5901
+Receptacle %1 is currently used and cannot be modified!
+S<^>5902
+Receptacle %1 is currently used and cannot be modified!
+S<^>5903
+Despatch %1 is currently used and cannot be modified!
+S<^>5904
+At least one receptacle of despatch is currently used : cannot close the despatch!
+S<^>5905
+At least one receptacle of despatch is currently used : cannot close the despatch!
+S<^>5906
+Despatch %1 is currently used and cannot be modified!
+S<^>5949
+<<<<< Miscelaneous >>>>>
+S<^>5950
+Yes
+S<^>5951
+No
+S<^>5952
+Merchandises
+S<^>5953
+Documents
+S<^>5954
+  
+S<^>5955
+Suspended
+S<^>5956
+  
+S<^>5957
+Suspended
+S<^>5958
+  
+S<^>5959
+Suspended
+S<^>5960
+Final
+S<^>5961
+ 
+S<^>5962
+Unknown
+S<^>5963
+Registered
+S<^>5964
+ 
+S<^>5965
+Unknown
+S<^>5999
+<<<<< Strings for titles of report columns (BasicBS) >>>>>
+S<^>6000
+Code\n20
+S<^>6001
+Description\n80
+S<^>6032
+Code\n15
+S<^>6033
+Name\n75
+S<^>6034
+Type of Office\n10
+S<^>6035
+Server\n15
+S<^>6096
+Code\n15
+S<^>6097
+Name\n75
+S<^>6098
+Merchandise Accepted in EMS\n10
+S<^>6099
+EDIFact Address\n25
+S<^>6124
+Code\n15
+S<^>6125
+Type of Mail\n10
+S<^>6126
+Description\n75
+S<^>6156
+Code\n15
+S<^>6157
+Description\n75
+S<^>6158
+Type of Mail\n10
+S<^>6188
+Code\n15
+S<^>6189
+Description\n75
+S<^>6190
+Type of Mail\n10
+S<^>7023
+<<<<< Strings for titles of report columns (TransportBS) >>>>>
+S<^>7024
+Code\n15
+S<^>7025
+Name\n70
+S<^>7026
+Type of Port\n8
+S<^>7027
+Status\n7
+S<^>7028
+Qualifier\n5
+S<^>7056
+Code\n20
+S<^>7057
+Type\n10
+S<^>7058
+Orig. Office\n25
+S<^>7059
+Dest. Office\n25
+S<^>7060
+Serial Nb\n10
+S<^>7061
+Days Of Exploitation\n20
+S<^>7062
+Mail Category\n10
+S<^>7063
+Seg. For CN38\n10
+S<^>7064
+Weight Limit (Kg)\n10
+S<^>7088
+Orig. Airport\n10
+S<^>7089
+Dest. Airport\n10
+S<^>7090
+Flight Nb\n10
+S<^>7091
+Days Of Operation\n10
+S<^>7092
+Dep. Time\n10
+S<^>7093
+Arr. Time\n10
+S<^>7094
+Status\n10
+S<^>7095
+Days After\n10
+S<^>7096
+Weight Limit (Kg)\n10
+S<^>7120
+Code\n15
+S<^>7121
+Name\n80
+S<^>7122
+Type\n5
+S<^>8047
+<<<<< Strings for titles of report columns (PostalBS) >>>>>
+S<^>8048
+Identifier\n15
+S<^>8049
+Family Name\n20
+S<^>8050
+Given Name\n20
+S<^>8080
+Identifier\n15
+S<^>8081
+Family Name\n20
+S<^>8082
+Given Name\n20
+S<^>8083
+Address\n35
+S<^>8084
+Phone\n20
+S<^>8085
+Fax\n20
+S<^>8112
+Identifier\n20
+S<^>8113
+Location\n15
+S<^>8114
+Event Office\n15
+S<^>8115
+Event Date (GMT)\n15
+S<^>8116
+Workstation Id\n15
+S<^>8117
+User Id\n15
+S<^>8118
+State\n10
+S<^>8119
+Status\n10
+S<^>8144
+Next Office\n15
+S<^>8145
+Local Id\n20
+S<^>8146
+Non Delivery Reason\n10
+S<^>8147
+Non Delivery Measure\n10
+S<^>8148
+Reason For Retention\n10
+S<^>8149
+Condition\n10
+S<^>8150
+Receptacle Id\n20
+S<^>8176
+Next Office\n15
+S<^>8177
+Condition\n10
+S<^>8208
+Consignment Id\n25
+S<^>8272
+Identifier\n20
+S<^>8273
+Weight (g)\n10
+S<^>8274
+Value\n10
+S<^>8275
+Currency\n10
+S<^>8276
+Place Of Lodging\n20
+S<^>8277
+Date Of Lodging\n20
+S<^>8278
+Dest. Country\n20
+S<^>8279
+Type\n10
+S<^>8280
+Type Of Goods\n10
+S<^>8281
+Method Of Notification\n10
+S<^>8282
+Sender Id\n20
+S<^>8283
+Delivery Agent Id\n20
+S<^>8284
+Name Signatory\n20
+S<^>8285
+Date of Delivery\n20
+S<^>8304
+Identifier\n20
+S<^>8305
+Nb of Items\n10
+S<^>8306
+Mail Subclass\n10
+S<^>8307
+Despatch Id\n25
+S<^>8308
+Serial Nb\n10
+S<^>8309
+Final Ind.\n10
+S<^>8310
+Insured Ind.\n10
+S<^>8311
+Weight (Kg)\n15
+S<^>8312
+Inbound Weight (Kg)\n10
+S<^>8336
+Identifier\n30
+S<^>8337
+Dep. Date\n25
+S<^>8338
+Route\n25
+S<^>8339
+Orig. Office\n20
+S<^>8340
+Dest. Office\n20
+S<^>8341
+Mail Category\n10
+S<^>8342
+Mail Subclass\n10
+S<^>8343
+Year\n10
+S<^>8344
+Serial Nb\n20
+S<^>8345
+Weight (Kg)\n10
+S<^>8346
+Nb of Receptacles\n10
+S<^>8347
+Date of Closing (GMT)\n15
+S<^>8348
+Inbound Weight (Kg)\n10
+S<^>8349
+Weight Limit (Kg)\n10
+S<^>8368
+Identifier\n30
+S<^>8369
+Dep. Date\n25
+S<^>8370
+Weight (Kg)\n20
+S<^>8371
+Orig. Country\n20
+S<^>8372
+Orig. Airport\n20
+S<^>8373
+Year\n10
+S<^>8374
+Serial Number\n20
+S<^>8375
+Nb of Despatches\n10
+S<^>8376
+Inbound Weight (Kg)\n10
+S<^>8377
+Weight Limit (Kg)\n10
+S<^>9071
+<<<<< Strings for titles of report columns (ApplicationBS) >>>>>
+S<^>9072
+Identifier\n15
+S<^>9073
+Family Name\n20
+S<^>9074
+Given Name\n20
+S<^>9075
+Authorization Level\n10
+S<^>9104
+Identifier\n20
+S<^>9105
+Name\n80
+S<^>9106
+Parent Id\n20
+S<^>9107
+Tracking Node\n20
+S<^>9108
+Module Name\n30
+S<^>9109
+Function Name\n30
+S<^>9110
+Icon Index\n10
+S<^>9136
+Identifier\n20
+S<^>9137
+Name\n80
+S<^>9138
+Type\n15
+S<^>9139
+Column Nb\n20
+S<^>9168
+Code\n20
+S<^>9169
+Name\n80
+S<^>9170
+Version\n20
+S<^>20000
+<<<<< Strings for User Messages >>>>> CecileD
+S<^>32767
+!!!!!!!!!! Do not enter any string after that point!!!!!!!!!!
+D<^>10
+About IPS'96 Scafolding
+8
+MS Sans Serif
+34
+22
+235
+78
+5
+I
+id 0190
+
+16
+16
+18
+20
+0
+T
+IPS'96 Scafolding Version 1.30
+
+58
+8
+119
+8
+1
+T
+Copyright \251 Universal Postal Union, 1996
+
+49
+23
+136
+8
+2
+D
+OK
+
+91
+56
+52
+16
+3
+T
+Praxis Informatique, 1995
+
+49
+38
+136
+8
+4
+D<^>11
+About IPS'96
+8
+MS Sans Serif
+34
+22
+235
+78
+5
+I
+id 0190
+
+16
+16
+18
+20
+0
+T
+IPS'96 Version 1.30
+
+58
+8
+119
+8
+1
+T
+Copyright \251 Universal Postal Union, 1996
+
+49
+23
+136
+8
+2
+D
+OK
+
+91
+56
+52
+16
+3
+T
+Praxis Informatique, 1995
+
+49
+38
+136
+8
+4
+D<^>102
+Add Items In Receptacle ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+28
+L
+Receptacle:
+
+8
+10
+41
+8
+0
+G
+&Mail Sub-Class
+
+8
+36
+168
+36
+1
+C
+
+
+40
+52
+84
+64
+2
+P
+...
+
+128
+52
+16
+12
+3
+G
+Item
+
+8
+76
+168
+56
+4
+T
+I&d:
+
+12
+94
+10
+8
+5
+E
+
+
+40
+92
+84
+12
+6
+D
+&Add (Ins.)
+
+128
+92
+40
+12
+7
+E
+
+
+56
+112
+68
+12
+8
+L
+W&eight (g):
+
+12
+114
+40
+8
+9
+P
+&Add (Ins.)
+
+128
+112
+40
+12
+10
+G
+Receptacle
+
+8
+136
+168
+60
+11
+E
+
+
+56
+152
+68
+12
+12
+L
+&Weight (Kg):
+
+12
+154
+42
+8
+13
+P
+&Add (Ins.)
+
+128
+152
+40
+12
+14
+G
+&Items Added In Receptacle : %d
+
+184
+36
+168
+204
+15
+B
+
+
+192
+52
+152
+156
+16
+P
+&Remove
+
+244
+216
+52
+16
+17
+P
+&Close (F5)
+
+36
+172
+52
+16
+18
+P
+&Next (F6)
+
+96
+172
+52
+16
+19
+P
+Cl&ose (F7)
+
+36
+216
+52
+16
+20
+P
+O&ther (F8)
+
+96
+216
+52
+16
+21
+P
+Exit (Esc)
+
+244
+248
+52
+16
+22
+P
+Help (F1)
+
+300
+248
+52
+16
+23
+G
+Despatch
+
+8
+200
+168
+41
+24
+E
+
+
+52
+8
+212
+12
+25
+L
+Total Nb. of Items:
+
+268
+10
+62
+8
+26
+E
+
+
+332
+8
+20
+12
+27
+D<^>103
+Add Transit Despatches to Consignment ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+14
+G
+Consignments Currently &Open
+
+8
+4
+344
+100
+0
+O
+Generic3
+SysListView32
+16
+16
+328
+80
+1
+D
+&Select (F3)
+
+8
+248
+52
+16
+2
+G
+Transit &Despatch(es)
+
+8
+108
+168
+132
+3
+O
+Generic1
+SysListView32
+16
+120
+152
+96
+4
+P
+&Add (Ins.)
+
+66
+220
+52
+16
+5
+G
+Transit D&espatch(es) Added
+
+184
+108
+168
+132
+6
+L
+New weight:
+
+192
+122
+44
+8
+7
+E
+
+
+240
+120
+104
+12
+8
+O
+Generic1
+SysListView32
+192
+136
+152
+80
+9
+P
+&Remove
+
+242
+220
+52
+16
+10
+P
+S&tore (F2)
+
+66
+248
+52
+16
+11
+P
+Exit (Esc)
+
+242
+248
+52
+16
+12
+P
+Help (F1)
+
+300
+248
+52
+16
+13
+D<^>104
+Flight used by Routes
+8
+MS Sans Serif
+0
+0
+359
+254
+6
+L
+Cannot delete/update this flight:
+
+10
+12
+110
+8
+0
+E
+
+
+124
+10
+110
+12
+1
+G
+Routes that are using this Flight:
+
+8
+32
+344
+176
+2
+O
+Generic1
+SysListView32
+16
+44
+328
+156
+3
+T
+You must remove the flight from these routes before deleting/updating the flight
+
+8
+216
+340
+8
+4
+D
+OK
+
+153
+232
+52
+16
+5
+D<^>105
+List of Selected Routes ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+8
+G
+Air &Routing Plan
+
+8
+4
+344
+236
+0
+O
+Generic1
+SysTreeView32
+16
+16
+328
+200
+1
+P
+&Print (F8)
+
+156
+220
+52
+16
+2
+D
+&New (Ins.)...
+
+8
+248
+52
+16
+3
+P
+&Edit (F5)...
+
+64
+248
+52
+16
+4
+P
+&Delete
+
+120
+248
+56
+16
+5
+P
+Exit (Esc)
+
+244
+248
+52
+16
+6
+P
+Help (F1)
+
+300
+248
+52
+16
+7
+D<^>106
+Associate Next Offices
+8
+MS Sans Serif
+0
+0
+359
+254
+6
+R
+&Office:
+
+84
+10
+30
+8
+0
+E
+
+
+120
+8
+119
+13
+1
+G
+&Next Offices
+
+8
+28
+344
+196
+2
+O
+Generic1
+SysListView32
+16
+40
+328
+176
+3
+D
+&Store (F2)
+
+125
+232
+52
+16
+4
+P
+Cancel (Esc)
+
+181
+232
+52
+16
+5
+D<^>107
+Associate Functions and Groups
+8
+MS Sans Serif
+0
+0
+359
+254
+5
+G
+&Associated Functions for Group %s
+
+8
+4
+344
+220
+0
+O
+Generic1
+SysTreeView32
+16
+16
+328
+200
+1
+P
+&Store (F2)
+
+8
+232
+52
+16
+2
+P
+Cancel (Esc)
+
+244
+232
+52
+16
+3
+P
+Help (F1)
+
+300
+232
+52
+16
+4
+D<^>108
+Browse Table
+8
+MS Sans Serif
+0
+0
+352
+223
+5
+R
+Tables:
+
+8
+12
+77
+8
+0
+C
+
+
+88
+10
+132
+60
+1
+P
+...
+
+224
+10
+16
+12
+2
+D
+Select (F3)
+
+292
+8
+52
+16
+3
+O
+Generic1
+SysListView32
+8
+32
+336
+184
+4
+D<^>109
+%s : Consignment cannot be closed
+8
+MS Sans Serif
+0
+0
+359
+254
+4
+G
+Not closed Despatch(es)
+
+8
+4
+344
+220
+0
+O
+Generic1
+SysListView32
+16
+16
+328
+200
+1
+P
+Exit (Esc)
+
+244
+232
+52
+16
+2
+P
+Help (F1)
+
+300
+232
+52
+16
+3
+D<^>110
+Carrier Details
+8
+MS Sans Serif
+0
+0
+352
+223
+17
+G
+Selection Criteria
+
+8
+4
+336
+212
+0
+G
+Origin
+
+16
+12
+320
+72
+1
+3
+Single Office of Exchange
+
+24
+28
+100
+10
+2
+C
+
+
+204
+27
+104
+61
+3
+P
+...
+
+312
+27
+16
+12
+4
+3
+All Offices Individualy
+
+24
+46
+100
+10
+5
+3
+All Offices Combined
+
+24
+64
+92
+10
+6
+G
+Carrier
+
+16
+88
+320
+120
+7
+3
+Single Carrier - Individual Flights
+
+24
+104
+124
+10
+8
+C
+
+
+204
+103
+104
+59
+9
+P
+...
+
+312
+103
+16
+12
+10
+3
+Single Carrier - Combined Flights
+
+24
+126
+120
+10
+11
+C
+
+
+204
+125
+104
+61
+12
+P
+...
+
+312
+125
+16
+12
+13
+3
+All Carriers - Individual Flights
+
+24
+148
+116
+10
+14
+3
+All Carriers - Combined Flights
+
+24
+170
+112
+10
+15
+3
+All Carriers Combined
+
+24
+192
+84
+10
+16
+D<^>111
+Choose Origin Airport
+8
+MS Sans Serif
+0
+0
+191
+82
+4
+D
+OK
+
+70
+60
+52
+16
+0
+C
+
+
+8
+24
+156
+52
+1
+P
+...
+
+168
+24
+16
+12
+2
+L
+Airport:
+
+8
+8
+30
+8
+3
+D<^>112
+Close/Reopen Consignment ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+13
+G
+Closed/Opened &Consignment(s)
+
+8
+4
+344
+104
+0
+O
+Generic2
+SysListView32
+16
+16
+328
+84
+1
+G
+C&onsignment(s) to Reopen/Close
+
+8
+112
+344
+128
+2
+O
+Generic2
+SysListView32
+16
+125
+328
+83
+3
+D
+&Add (Ins.)
+
+16
+216
+52
+16
+4
+P
+&Remove
+
+72
+216
+52
+16
+5
+R
+&History:
+
+196
+218
+36
+8
+6
+C
+
+
+236
+216
+88
+46
+7
+P
+...
+
+328
+216
+16
+12
+8
+P
+&Store (F2)
+
+8
+248
+52
+16
+9
+P
+Re&print (F8)
+
+64
+248
+52
+16
+10
+P
+Exit (Esc)
+
+244
+248
+52
+16
+11
+P
+Help (F1)
+
+300
+248
+52
+16
+12
+D<^>113
+Consignment Details - Capture & Verification ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+30
+G
+Consignment Details
+
+5
+3
+348
+65
+0
+L
+&Id:
+
+14
+18
+10
+8
+1
+E
+
+
+28
+16
+84
+12
+2
+L
+&Nb of Desp.:
+
+116
+18
+44
+8
+3
+E
+
+
+173
+16
+48
+12
+4
+L
+&Weight (kg):
+
+233
+18
+59
+8
+5
+E
+
+
+296
+16
+48
+12
+6
+L
+&Flight Nb:
+
+14
+34
+38
+8
+7
+E
+
+
+64
+32
+48
+12
+8
+L
+De&parture Date:
+
+116
+34
+56
+8
+9
+E
+
+
+173
+32
+48
+12
+10
+L
+Departure &Time:
+
+233
+34
+56
+8
+11
+E
+
+
+296
+32
+48
+12
+12
+P
+&Add (Ins.)
+
+152
+48
+52
+16
+13
+G
+Despatches
+
+4
+72
+348
+168
+14
+G
+Desp. Details
+
+12
+80
+332
+52
+15
+L
+&Id:
+
+18
+94
+12
+8
+16
+E
+
+
+30
+92
+142
+12
+17
+L
+&Nb of Rec.:
+
+176
+94
+40
+8
+18
+E
+
+
+216
+92
+28
+12
+19
+R
+&Weight (kg):
+
+248
+94
+56
+8
+20
+E
+
+
+308
+92
+28
+12
+21
+P
+&Add (Ins.)
+
+152
+111
+52
+16
+22
+G
+Desp. &List
+
+12
+136
+332
+96
+23
+O
+Generic1
+SysListView32
+20
+148
+316
+56
+24
+P
+&Remove
+
+152
+210
+52
+16
+25
+D
+&Store (F2)
+
+4
+248
+52
+16
+26
+P
+Store && &Verify
+
+60
+248
+52
+16
+27
+P
+Exit (Esc)
+
+244
+248
+52
+16
+28
+P
+Help (F1)
+
+300
+248
+52
+16
+29
+D<^>114
+Consignement Details
+8
+MS Sans Serif
+0
+0
+359
+254
+6
+G
+Despatch &list for Consignement Id: %s
+
+8
+4
+344
+224
+0
+O
+Generic1
+SysListView32
+16
+16
+328
+204
+1
+P
+Help (F1)
+
+300
+232
+52
+16
+2
+P
+Exit (Esc)
+
+244
+232
+52
+16
+3
+D
+&Details (F5)
+
+8
+232
+52
+16
+4
+P
+&Print (F8)
+
+64
+232
+52
+16
+5
+D<^>115
+Consignment Enquiry ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+22
+G
+Selection Criteria
+
+8
+4
+344
+64
+0
+R
+Consgnt &Id:
+
+12
+18
+48
+8
+1
+E
+
+
+64
+16
+108
+12
+2
+R
+Dest. &Country:
+
+12
+34
+48
+8
+3
+C
+
+
+64
+32
+88
+60
+4
+P
+...
+
+156
+32
+16
+12
+5
+R
+&Airport:
+
+24
+50
+36
+8
+6
+C
+
+
+64
+48
+88
+60
+7
+P
+...
+
+156
+48
+16
+12
+8
+R
+&Flight Nb:
+
+196
+18
+36
+8
+9
+C
+
+
+236
+16
+40
+60
+10
+E
+
+
+280
+16
+44
+12
+11
+P
+...
+
+328
+16
+16
+12
+12
+R
+Dep&t. Date:
+
+184
+34
+48
+8
+13
+E
+
+
+236
+32
+108
+12
+14
+G
+%u C&onsignment(s) selected
+
+8
+72
+344
+168
+15
+O
+Generic1
+SysListView32
+16
+84
+328
+124
+16
+P
+&Details (F5)
+
+120
+216
+56
+16
+17
+P
+&Print (F8)
+
+184
+216
+56
+16
+18
+D
+&Select (F3)
+
+8
+248
+56
+16
+19
+P
+Exit (Esc)
+
+236
+248
+56
+16
+20
+P
+Help (F1)
+
+296
+248
+56
+16
+21
+D<^>117
+Details
+8
+MS Sans Serif
+0
+0
+352
+223
+22
+G
+Destination / Origin OE
+
+8
+4
+164
+52
+0
+L
+&From:
+
+16
+17
+20
+11
+1
+C
+
+
+37
+16
+108
+60
+2
+P
+...
+
+149
+16
+16
+12
+3
+L
+&To:
+
+24
+38
+12
+8
+4
+C
+
+
+37
+36
+108
+60
+5
+P
+...
+
+149
+36
+16
+12
+6
+G
+Operational Days
+
+180
+4
+164
+52
+7
+2
+&Daily
+
+188
+16
+35
+10
+8
+2
+Monday
+
+188
+40
+43
+10
+9
+2
+Tuesday
+
+236
+16
+45
+10
+10
+2
+Wednesday
+
+236
+29
+52
+10
+11
+2
+Thursday
+
+236
+40
+48
+10
+12
+2
+Friday
+
+292
+16
+37
+10
+13
+2
+Saturday
+
+292
+29
+46
+10
+14
+2
+Sunday
+
+292
+40
+42
+10
+15
+G
+Mail &Category
+
+8
+60
+164
+76
+16
+O
+Generic2
+SysListView32
+16
+72
+148
+56
+17
+G
+Type of &Routing
+
+8
+140
+164
+76
+18
+O
+Generic3
+SysListView32
+16
+152
+148
+56
+19
+G
+Type of &Mail
+
+180
+60
+164
+156
+20
+O
+Generic1
+SysTreeView32
+188
+72
+148
+136
+21
+D<^>118
+Create & Close Despatch
+8
+MS Sans Serif
+0
+0
+359
+270
+12
+G
+Des&patches and Receptacles
+
+8
+4
+344
+236
+0
+O
+Generic1
+SysTreeView32
+16
+20
+328
+180
+1
+D
+&Explode
+
+8
+248
+52
+16
+2
+P
+Re&fresh
+
+64
+248
+52
+16
+3
+P
+Exit (Esc)
+
+244
+248
+52
+16
+4
+P
+Help (F1)
+
+300
+248
+52
+16
+5
+P
+&New (F7)
+
+36
+216
+52
+16
+6
+P
+&Close (F9)
+
+104
+216
+52
+16
+7
+P
+Re&open (F11)
+
+204
+216
+52
+16
+8
+P
+Ne&w (F12)
+
+272
+216
+52
+16
+9
+G
+Receptacle
+
+184
+204
+160
+32
+10
+G
+Despatch
+
+16
+204
+160
+32
+11
+D<^>119
+Route
+8
+MS Sans Serif
+0
+0
+352
+223
+25
+G
+&Leg
+
+8
+4
+336
+88
+0
+R
+&Orig. Airport:
+
+12
+18
+44
+8
+1
+C
+
+
+60
+16
+92
+60
+2
+P
+...
+
+156
+16
+16
+12
+3
+R
+Dest. &Airport:
+
+12
+38
+44
+8
+4
+C
+
+
+60
+36
+92
+60
+5
+P
+...
+
+156
+36
+16
+12
+6
+R
+A&irline:
+
+193
+18
+28
+8
+7
+C
+
+
+223
+16
+92
+60
+8
+P
+...
+
+319
+16
+16
+12
+9
+R
+Fli&ght Nb:
+
+189
+38
+32
+8
+10
+C
+
+
+223
+36
+92
+60
+11
+P
+...
+
+319
+36
+16
+12
+12
+1
+
+
+16
+60
+320
+1
+13
+R
+Flig&ht Days:
+
+12
+74
+40
+8
+14
+E
+
+
+56
+72
+60
+13
+15
+R
+Dep. &Time:
+
+122
+74
+40
+8
+16
+E
+
+
+167
+72
+60
+13
+17
+R
+Da&ys After:
+
+232
+74
+39
+8
+18
+E
+
+
+276
+72
+60
+13
+19
+G
+&Route
+
+8
+96
+336
+120
+20
+O
+Generic1
+SysListView32
+16
+108
+320
+76
+21
+D
+A&dd Leg (Ins.)
+
+92
+192
+52
+16
+22
+P
+D&elete Leg
+
+148
+192
+52
+16
+23
+P
+&Set AV7
+
+204
+192
+52
+16
+24
+D<^>120
+Create Transit Consignment ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+22
+G
+&OED:
+
+8
+4
+168
+76
+0
+C
+
+
+20
+28
+127
+84
+1
+P
+...
+
+150
+28
+16
+12
+2
+P
+S&earch (F3)
+
+64
+56
+52
+16
+3
+L
+Route &Code:
+
+196
+14
+44
+8
+4
+C
+
+
+256
+12
+71
+84
+5
+P
+...
+
+330
+12
+16
+12
+6
+L
+First Flight:
+
+224
+34
+40
+8
+7
+E
+
+
+288
+32
+33
+12
+8
+L
+Weight Limit (kg):
+
+224
+50
+60
+8
+9
+E
+
+
+288
+48
+33
+12
+10
+L
+Cons. Weight (kg):
+
+224
+66
+64
+10
+11
+E
+
+
+288
+64
+33
+12
+12
+G
+&Transit or Missent Despatches
+
+8
+84
+168
+160
+13
+O
+Generic1
+SysListView32
+16
+96
+152
+124
+14
+P
+&Add (Ins.)
+
+64
+224
+52
+16
+15
+G
+List of Selected &Despatches
+
+184
+84
+168
+160
+16
+O
+Generic2
+SysListView32
+192
+96
+152
+124
+17
+P
+&Remove
+
+244
+224
+52
+16
+18
+D
+&Store (F2)
+
+8
+248
+52
+16
+19
+P
+Exit (Esc)
+
+244
+248
+52
+16
+20
+P
+Help (F1)
+
+300
+248
+52
+16
+21
+D<^>121
+Define Delivery Agents
+8
+MS Sans Serif
+0
+0
+359
+270
+10
+G
+&Delivery Agents
+
+8
+4
+344
+236
+0
+O
+Generic1
+SysListView32
+16
+16
+268
+216
+1
+P
+&New (Ins.)...
+
+292
+20
+52
+16
+2
+P
+&Edit (F5)...
+
+292
+40
+52
+16
+3
+P
+&Delete
+
+292
+60
+52
+16
+4
+P
+&Print (F8)
+
+292
+192
+52
+16
+5
+P
+&Reset
+
+292
+212
+52
+16
+6
+D
+&Store (F2)
+
+8
+248
+52
+16
+7
+P
+Exit (Esc)
+
+244
+248
+52
+16
+8
+P
+Help (F1)
+
+300
+248
+52
+16
+9
+D<^>122
+Groups
+8
+MS Sans Serif
+0
+0
+352
+223
+7
+O
+Generic1
+SysListView32
+8
+8
+276
+208
+0
+P
+&New (Ins.)...
+
+292
+12
+52
+16
+1
+D
+&Edit (F5)...
+
+292
+32
+52
+16
+2
+P
+&Delete
+
+292
+52
+52
+16
+3
+P
+&Print (F8)
+
+292
+176
+52
+16
+4
+P
+&Reset
+
+292
+196
+52
+16
+5
+P
+&Associate...
+
+292
+80
+52
+16
+6
+D<^>123
+Authorization Levels
+8
+MS Sans Serif
+0
+0
+352
+223
+7
+O
+Generic1
+SysListView32
+8
+8
+276
+208
+0
+P
+&New (Ins.)...
+
+292
+12
+52
+16
+1
+D
+&Edit (F5)...
+
+292
+32
+52
+16
+2
+P
+&Delete
+
+292
+52
+52
+16
+3
+P
+&Print (F8)
+
+292
+176
+52
+16
+4
+P
+&Reset
+
+292
+196
+52
+16
+5
+P
+&Associate...
+
+292
+80
+52
+16
+6
+D<^>124
+Define Inbound Consignment ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+13
+G
+&Consignment Id
+
+8
+4
+168
+56
+0
+E
+
+
+16
+20
+152
+12
+1
+P
+&Search (F3)
+
+65
+40
+52
+16
+2
+G
+&Despatches whose consignment is unknown
+
+184
+4
+168
+56
+3
+C
+
+
+192
+20
+132
+60
+4
+P
+...
+
+328
+20
+16
+12
+5
+P
+&Add (Ins.)
+
+244
+40
+52
+16
+6
+G
+Des&patches to be associated with consignment 
+
+8
+64
+344
+180
+7
+O
+Generic1
+SysListView32
+16
+76
+328
+144
+8
+P
+&Remove
+
+154
+224
+52
+16
+9
+D
+S&tore (F2)
+
+8
+248
+52
+16
+10
+P
+Exit (Esc)
+
+244
+248
+52
+16
+11
+P
+Help (F1)
+
+300
+248
+52
+16
+12
+D<^>125
+Office of Exchange Characteristics
+8
+MS Sans Serif
+0
+0
+359
+270
+16
+R
+Select &Office:
+
+16
+12
+48
+8
+0
+C
+
+
+68
+10
+144
+60
+1
+P
+...
+
+216
+10
+16
+12
+2
+P
+Select (F3)
+
+244
+8
+52
+16
+3
+P
+&Reset
+
+300
+8
+52
+16
+4
+O
+Tab1
+SysTabControl32
+8
+28
+344
+212
+5
+O
+Generic1
+SysTreeView32
+16
+48
+328
+184
+6
+L
+Air&ports to associate:
+
+16
+54
+66
+8
+7
+O
+Generic2
+SysListView32
+20
+64
+156
+168
+8
+L
+Asso&ciated airports:
+
+184
+54
+62
+8
+9
+O
+Generic2
+SysListView32
+188
+64
+156
+144
+10
+P
+&Add
+
+212
+216
+52
+16
+11
+P
+&Remove
+
+272
+216
+52
+16
+12
+D
+&Store (F2)
+
+8
+248
+52
+16
+13
+P
+Exit (Esc)
+
+244
+248
+52
+16
+14
+P
+Help (F1)
+
+300
+248
+52
+16
+15
+D<^>126
+Define EMS Service Indicators
+8
+MS Sans Serif
+0
+0
+359
+270
+10
+G
+E&MS Service Indicators
+
+8
+4
+344
+236
+0
+O
+Generic1
+SysListView32
+16
+16
+268
+216
+1
+P
+&New (Ins.)...
+
+292
+20
+52
+16
+2
+P
+&Edit (F5)...
+
+292
+40
+52
+16
+3
+P
+&Delete
+
+292
+60
+52
+16
+4
+P
+&Print (F8)
+
+292
+192
+52
+16
+5
+P
+&Reset
+
+292
+212
+52
+16
+6
+D
+&Store (F2)
+
+8
+248
+52
+16
+7
+P
+Exit (Esc)
+
+244
+248
+52
+16
+8
+P
+Help (F1)
+
+300
+248
+52
+16
+9
+D<^>127
+Define Own Tracking Nodes
+8
+MS Sans Serif
+0
+0
+359
+270
+10
+G
+&Own Tracking Nodes
+
+8
+4
+344
+236
+0
+O
+Generic1
+SysListView32
+16
+16
+268
+216
+1
+P
+&New (Ins.)...
+
+292
+20
+52
+16
+2
+P
+&Edit (F5)...
+
+292
+40
+52
+16
+3
+P
+&Delete
+
+292
+60
+52
+16
+4
+P
+&Print (F8)
+
+292
+192
+52
+16
+5
+P
+&Reset
+
+292
+212
+52
+16
+6
+D
+&Store (F2)
+
+8
+248
+52
+16
+7
+P
+Exit (Esc)
+
+244
+248
+52
+16
+8
+P
+Help (F1)
+
+300
+248
+52
+16
+9
+D<^>128
+Users
+8
+MS Sans Serif
+0
+0
+352
+223
+7
+O
+Generic1
+SysListView32
+8
+8
+276
+208
+0
+P
+&New (Ins.)...
+
+292
+12
+52
+16
+1
+D
+&Edit (F5)...
+
+292
+32
+52
+16
+2
+P
+&Delete
+
+292
+52
+52
+16
+3
+P
+Add &Group...
+
+292
+76
+52
+16
+4
+P
+&Print (F8)
+
+292
+176
+52
+16
+5
+P
+&Reset
+
+292
+196
+52
+16
+6
+D<^>129
+Workstations
+8
+MS Sans Serif
+0
+0
+352
+223
+7
+R
+&Workstation:
+
+8
+12
+60
+8
+0
+C
+
+
+72
+10
+132
+60
+1
+P
+...
+
+208
+10
+16
+12
+2
+D
+Select (F3)
+
+236
+8
+52
+16
+3
+P
+&Reset
+
+292
+8
+52
+16
+4
+G
+&Associated Groups
+
+8
+28
+336
+188
+5
+O
+Generic1
+SysListView32
+16
+40
+320
+168
+6
+D<^>130
+Define Exchange with Interchange Partners ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+11
+G
+Interchange &Partner
+
+8
+4
+344
+36
+0
+C
+
+
+104
+18
+132
+92
+1
+P
+...
+
+240
+18
+16
+12
+2
+D
+&Search (F3)
+
+292
+16
+52
+16
+3
+G
+&Messages Sent to %s
+
+8
+44
+344
+196
+4
+O
+Generic1
+SysTreeView32
+16
+60
+328
+152
+5
+R
+EDIFact Address:
+
+228
+222
+76
+8
+6
+E
+
+
+308
+220
+36
+12
+7
+P
+S&tore (F2)
+
+8
+248
+52
+16
+8
+P
+Exit (Esc)
+
+244
+248
+52
+16
+9
+P
+Help (F1)
+
+300
+248
+52
+16
+10
+D<^>131
+Despatch Details - Capture and Verification (UPU xxxx)
+8
+MS Sans Serif
+0
+0
+359
+270
+36
+G
+Despatch Characteristics
+
+8
+4
+344
+80
+0
+R
+Despatch &Id:
+
+16
+18
+44
+8
+1
+E
+
+
+64
+16
+176
+12
+2
+R
+&Weight (kg):
+
+16
+34
+44
+8
+3
+E
+
+
+64
+32
+56
+12
+4
+R
+N&b of Rec.:
+
+16
+50
+44
+8
+5
+E
+
+
+64
+48
+56
+12
+6
+R
+&Date of Closing:
+
+124
+34
+56
+8
+7
+E
+
+
+184
+32
+56
+12
+8
+R
+&Flight Nb:
+
+144
+50
+36
+8
+9
+E
+
+
+184
+48
+56
+12
+10
+R
+D&pt. Date:
+
+248
+34
+36
+8
+11
+E
+
+
+288
+32
+56
+12
+12
+R
+Dpt. &Time:
+
+248
+50
+36
+8
+13
+E
+
+
+288
+48
+56
+12
+14
+P
+&Add (Ins.)
+
+152
+64
+52
+16
+15
+G
+Receptacle
+
+8
+88
+148
+100
+16
+L
+Serial &Nb:
+
+14
+103
+38
+8
+17
+E
+
+
+80
+99
+68
+12
+18
+2
+Fina&l Ind.
+
+31
+116
+44
+10
+19
+2
+Ins&ured Ind.
+
+80
+116
+52
+10
+20
+L
+Weig&ht (kg):
+
+14
+136
+59
+8
+21
+E
+
+
+80
+132
+68
+12
+22
+L
+Nb &of Items:
+
+14
+152
+48
+8
+23
+E
+
+
+80
+148
+68
+12
+24
+P
+&Add (Ins.)
+
+56
+166
+52
+16
+25
+G
+Ite&m
+
+8
+192
+148
+52
+26
+E
+
+
+36
+204
+92
+12
+27
+P
+&Add (Ins.)
+
+56
+224
+52
+16
+28
+G
+Despat&ch
+
+164
+88
+188
+156
+29
+O
+Generic1
+SysTreeView32
+170
+100
+176
+120
+30
+P
+R&emove
+
+232
+224
+52
+16
+31
+D
+&Store (F2)
+
+8
+248
+52
+16
+32
+P
+Store && &Verify
+
+64
+248
+52
+16
+33
+P
+Exit (Esc)
+
+244
+248
+52
+16
+34
+P
+Help (F1)
+
+300
+248
+52
+16
+35
+D<^>132
+Despatch Number Maintenance ( UPU xxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+30
+G
+Selection
+
+8
+4
+344
+92
+0
+L
+OE&O:
+
+16
+26
+20
+8
+1
+C
+
+
+39
+24
+88
+60
+2
+P
+...
+
+131
+24
+16
+12
+3
+L
+OE&D:
+
+16
+50
+20
+8
+4
+C
+
+
+39
+48
+88
+60
+5
+P
+...
+
+131
+48
+16
+12
+6
+L
+Mail &Category:
+
+156
+26
+48
+8
+7
+C
+
+
+211
+24
+112
+60
+8
+P
+...
+
+327
+24
+16
+12
+9
+L
+Mail Sub Cl&ass:
+
+156
+50
+52
+8
+10
+C
+
+
+211
+48
+112
+60
+11
+P
+...
+
+327
+48
+16
+12
+12
+P
+&Search (F3)
+
+154
+72
+52
+16
+13
+G
+Previous Year
+
+8
+100
+344
+40
+14
+R
+Last Serial Number Used:
+
+109
+118
+86
+8
+15
+E
+
+
+204
+116
+40
+13
+16
+G
+Current Year
+
+8
+144
+344
+52
+17
+R
+Current Serial Number (Last used):
+
+82
+158
+113
+8
+18
+E
+
+
+204
+156
+40
+13
+19
+R
+&New Serial Number (Next used):
+
+91
+178
+104
+8
+20
+E
+
+
+204
+176
+40
+13
+21
+O
+Generic1
+msctls_updown32
+244
+176
+20
+13
+22
+G
+Next Year
+
+8
+200
+344
+40
+23
+R
+&First Serial Number (Next used):
+
+80
+218
+115
+8
+24
+E
+
+
+204
+216
+40
+13
+25
+O
+Generic1
+msctls_updown32
+244
+216
+20
+13
+26
+D
+S&tore (F2)
+
+8
+248
+52
+16
+27
+P
+Exit (Esc)
+
+244
+248
+52
+16
+28
+P
+Help (F1)
+
+300
+248
+52
+16
+29
+D<^>133
+Despatch Details
+8
+MS Sans Serif
+0
+0
+359
+254
+6
+G
+Receptacles list for Despatch &Id: %s
+
+8
+4
+344
+220
+0
+O
+Generic1
+SysListView32
+16
+16
+328
+200
+1
+D
+&Details (F5)
+
+8
+232
+52
+16
+2
+P
+&Print (F8)
+
+64
+232
+52
+16
+3
+P
+Exit (Esc)
+
+244
+232
+52
+16
+4
+P
+Help (F1)
+
+300
+232
+52
+16
+5
+D<^>134
+Despatch Enquiry ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+30
+G
+Despatch Criteria
+
+8
+4
+344
+88
+0
+R
+&Identifier:
+
+56
+18
+48
+8
+1
+E
+
+
+107
+16
+144
+12
+2
+1
+
+
+16
+34
+328
+1
+3
+R
+E&vent (GMT):
+
+16
+42
+48
+8
+4
+E
+
+
+68
+40
+108
+12
+5
+R
+&Mail Category:
+
+16
+58
+48
+8
+6
+C
+
+
+68
+56
+88
+60
+7
+P
+...
+
+160
+56
+16
+12
+8
+R
+&Flight Nb:
+
+16
+74
+48
+8
+9
+C
+
+
+68
+72
+40
+60
+10
+E
+
+
+112
+72
+44
+12
+11
+P
+...
+
+160
+72
+16
+12
+12
+R
+Dest. &Office:
+
+184
+42
+48
+8
+13
+C
+
+
+236
+40
+88
+60
+14
+P
+...
+
+328
+40
+16
+12
+15
+R
+Dest. &Country:
+
+184
+58
+48
+8
+16
+C
+
+
+236
+56
+88
+60
+17
+P
+...
+
+328
+56
+16
+12
+18
+R
+Dept. D&ate:
+
+184
+74
+48
+8
+19
+E
+
+
+236
+72
+60
+12
+20
+R
+&Year:
+
+304
+74
+20
+8
+21
+E
+
+
+328
+72
+16
+12
+22
+G
+%u D&espatch(es) selected
+
+8
+96
+344
+144
+23
+O
+Generic1
+SysListView32
+16
+108
+328
+100
+24
+P
+&Details (F5)
+
+124
+216
+52
+16
+25
+P
+&Print (F8)
+
+184
+216
+52
+16
+26
+D
+&Select (F3)
+
+8
+248
+52
+16
+27
+P
+Exit (Esc)
+
+244
+248
+52
+16
+28
+P
+Help (F1)
+
+300
+248
+52
+16
+29
+D<^>136
+Details
+8
+MS Sans Serif
+0
+0
+353
+223
+17
+G
+Selection Criteria
+
+8
+4
+336
+212
+0
+G
+Origin
+
+16
+12
+320
+96
+1
+3
+Single Office of Exchange
+
+25
+28
+100
+10
+2
+C
+
+
+204
+27
+104
+61
+3
+P
+...
+
+312
+27
+16
+12
+4
+3
+Single Country - Individual Offices of Exchange
+
+25
+56
+168
+10
+5
+C
+
+
+204
+55
+104
+61
+6
+P
+...
+
+312
+55
+16
+12
+7
+3
+Single Country - Combined Offices of Exchange
+
+25
+84
+168
+10
+8
+C
+
+
+204
+83
+104
+61
+9
+P
+...
+
+312
+83
+16
+12
+10
+G
+Destination
+
+16
+112
+320
+96
+11
+3
+Single Office Exchange
+
+25
+129
+92
+10
+12
+C
+
+
+204
+128
+104
+61
+13
+P
+...
+
+312
+128
+16
+12
+14
+3
+All Offices Individualy
+
+25
+158
+96
+10
+15
+3
+All Offices Combined
+
+25
+187
+88
+10
+16
+D<^>137
+Details
+8
+MS Sans Serif
+0
+0
+352
+223
+20
+G
+Selection Criteria
+
+8
+4
+336
+212
+0
+G
+Origin
+
+16
+12
+320
+64
+1
+3
+Single Office of Exchange
+
+28
+26
+100
+10
+2
+C
+
+
+204
+25
+104
+61
+3
+P
+...
+
+312
+25
+16
+12
+4
+3
+All Offices Individualy
+
+28
+42
+100
+10
+5
+3
+All Offices Combined
+
+28
+58
+92
+10
+6
+G
+Destination
+
+16
+80
+320
+128
+7
+3
+Single Office Exchange
+
+28
+97
+92
+10
+8
+C
+
+
+204
+96
+104
+61
+9
+P
+...
+
+312
+96
+16
+12
+10
+3
+Single Country - Individual Offices of Exchange
+
+28
+115
+168
+10
+11
+C
+
+
+204
+114
+104
+61
+12
+P
+...
+
+312
+114
+16
+12
+13
+3
+Single Country - Combined Offices of Exchange
+
+28
+133
+168
+10
+14
+C
+
+
+204
+132
+104
+61
+15
+P
+...
+
+312
+132
+16
+12
+16
+3
+All Countries - Individual Offices of Exchange
+
+28
+151
+164
+10
+17
+3
+All Countries - Combined Offices of Exchange
+
+28
+169
+164
+10
+18
+3
+All Countries Combined
+
+28
+187
+88
+10
+19
+D<^>138
+Select Directory
+8
+MS Sans Serif
+0
+0
+207
+146
+7
+D
+OK
+
+148
+8
+52
+14
+0
+P
+Cancel
+
+148
+25
+52
+14
+1
+B
+
+
+8
+32
+128
+72
+2
+C
+
+
+8
+124
+128
+52
+3
+L
+&Directory:
+
+8
+8
+36
+8
+4
+L
+Directory Name
+
+8
+20
+128
+8
+5
+L
+Dri&ves:
+
+8
+112
+36
+8
+6
+D<^>139
+Consignment Differencies
+8
+MS Sans Serif
+0
+0
+359
+242
+7
+L
+Consignment &FId:
+
+85
+10
+64
+8
+0
+E
+
+
+153
+8
+107
+13
+1
+G
+&Detailed Differencies:
+
+8
+24
+344
+196
+2
+E
+
+
+16
+36
+328
+160
+3
+P
+&Print (F8)
+
+152
+200
+52
+16
+4
+D
+Exit (Esc)
+
+244
+224
+52
+16
+5
+P
+Help (F1)
+
+300
+224
+52
+16
+6
+D<^>140
+Despatch Differencies
+8
+MS Sans Serif
+0
+0
+359
+242
+7
+L
+Despatch &FId:
+
+68
+10
+52
+8
+0
+E
+
+
+124
+8
+152
+13
+1
+G
+&Detailed Differencies:
+
+8
+24
+344
+196
+2
+E
+
+
+16
+36
+328
+160
+3
+P
+&Print (F8)
+
+152
+200
+52
+16
+4
+D
+Exit (Esc)
+
+244
+224
+52
+16
+5
+P
+Help (F1)
+
+300
+224
+52
+16
+6
+D<^>141
+Edit Delivery Agent
+8
+MS Sans Serif
+0
+0
+219
+90
+8
+L
+&Identifier:
+
+8
+11
+44
+8
+0
+E
+
+
+60
+8
+152
+13
+1
+L
+&Name:
+
+8
+30
+44
+8
+2
+E
+
+
+60
+28
+152
+13
+3
+L
+&Given name:
+
+8
+50
+44
+8
+4
+E
+
+
+60
+48
+152
+13
+5
+D
+&Ok
+
+56
+68
+52
+16
+6
+P
+Cancel (Esc)
+
+112
+68
+52
+16
+7
+D<^>142
+Edit Group of Functions
+8
+MS Sans Serif
+0
+0
+219
+70
+6
+L
+Group &Id:
+
+8
+11
+44
+8
+0
+E
+
+
+60
+8
+152
+13
+1
+L
+&Name:
+
+8
+30
+44
+8
+2
+E
+
+
+60
+28
+152
+13
+3
+D
+&Ok
+
+56
+48
+52
+16
+4
+P
+Cancel (Esc)
+
+112
+48
+52
+16
+5
+D<^>143
+Edit EMS Service Indicator
+8
+MS Sans Serif
+0
+0
+219
+70
+6
+L
+&Indicator:
+
+8
+11
+44
+8
+0
+E
+
+
+60
+8
+152
+13
+1
+L
+&Name:
+
+8
+30
+44
+8
+2
+E
+
+
+60
+28
+152
+13
+3
+D
+&Ok
+
+56
+48
+52
+16
+4
+P
+Cancel (Esc)
+
+112
+48
+52
+16
+5
+D<^>144
+Edit Authorization Level
+8
+MS Sans Serif
+0
+0
+219
+70
+6
+L
+Level &Id:
+
+8
+11
+44
+8
+0
+E
+
+
+60
+8
+152
+13
+1
+L
+&Name:
+
+8
+30
+44
+8
+2
+E
+
+
+60
+28
+152
+13
+3
+D
+&Ok
+
+56
+48
+52
+16
+4
+P
+Cancel (Esc)
+
+112
+48
+52
+16
+5
+D<^>145
+Edit Own Tracking Node
+8
+MS Sans Serif
+0
+0
+219
+70
+6
+L
+Node &Id:
+
+8
+11
+44
+8
+0
+E
+
+
+60
+8
+152
+13
+1
+L
+&Name:
+
+8
+30
+44
+8
+2
+E
+
+
+60
+28
+152
+13
+3
+D
+&Ok
+
+56
+48
+52
+16
+4
+P
+Cancel (Esc)
+
+112
+48
+52
+16
+5
+D<^>146
+Edit Office
+8
+MS Sans Serif
+0
+0
+247
+130
+14
+L
+&City:
+
+4
+10
+56
+8
+0
+C
+
+
+64
+8
+156
+60
+1
+P
+...
+
+224
+8
+16
+12
+2
+L
+S&ubsidiary Code:
+
+4
+30
+56
+8
+3
+E
+
+
+64
+28
+176
+13
+4
+L
+&Name:
+
+4
+50
+56
+8
+5
+E
+
+
+64
+48
+176
+13
+6
+L
+Office &Type:
+
+4
+70
+56
+8
+7
+C
+
+
+64
+68
+156
+60
+8
+P
+...
+
+224
+68
+16
+12
+9
+L
+Ser&ver Name:
+
+4
+90
+56
+8
+10
+E
+
+
+64
+88
+176
+13
+11
+D
+OK
+
+69
+108
+52
+16
+12
+P
+Cancel (Esc)
+
+125
+108
+52
+16
+13
+D<^>147
+Edit User Data & Privileges
+8
+MS Sans Serif
+0
+0
+219
+114
+11
+L
+User &Id:
+
+8
+10
+44
+8
+0
+C
+
+
+60
+8
+152
+60
+1
+L
+&Family Name:
+
+8
+30
+44
+8
+2
+E
+
+
+60
+28
+152
+13
+3
+L
+&Given Name:
+
+8
+50
+44
+8
+4
+E
+
+
+60
+48
+152
+13
+5
+L
+&Privileges:
+
+8
+70
+44
+8
+6
+C
+
+
+60
+68
+132
+60
+7
+P
+...
+
+196
+68
+16
+12
+8
+D
+&Ok
+
+56
+92
+52
+16
+9
+P
+Cancel (Esc)
+
+112
+92
+52
+16
+10
+D<^>149
+Exception Entry for Inbound Receptacle
+8
+MS Sans Serif
+0
+0
+251
+226
+26
+G
+Characteristics
+
+8
+4
+236
+196
+0
+L
+OE&O:
+
+16
+22
+100
+8
+1
+C
+
+
+120
+20
+96
+60
+2
+P
+...
+
+220
+20
+16
+12
+3
+L
+OE&I:
+
+16
+42
+100
+8
+4
+C
+
+
+120
+40
+96
+60
+5
+P
+...
+
+220
+40
+16
+12
+6
+L
+&Mail Category:
+
+16
+62
+100
+8
+7
+C
+
+
+120
+60
+96
+60
+8
+P
+...
+
+220
+60
+16
+12
+9
+L
+Mail &Sub-Class:
+
+16
+82
+100
+8
+10
+C
+
+
+120
+80
+96
+60
+11
+P
+...
+
+220
+80
+16
+12
+12
+L
+Last Digit Of The Year:
+
+16
+102
+100
+8
+13
+E
+
+
+120
+100
+116
+12
+14
+L
+&Despatch Serial Number:
+
+16
+122
+100
+8
+15
+E
+
+
+120
+120
+116
+12
+16
+L
+&Receptacle Serial Number:
+
+16
+142
+88
+8
+17
+E
+
+
+120
+140
+116
+12
+18
+2
+Final Indicator
+
+59
+162
+57
+10
+19
+2
+Insured Indicator
+
+123
+162
+68
+10
+20
+L
+Receptacle Weight (kg):
+
+16
+182
+100
+8
+21
+E
+
+
+120
+180
+116
+12
+22
+D
+&Confirm
+
+8
+204
+52
+16
+23
+P
+Exit (Esc)
+
+136
+204
+52
+16
+24
+P
+Help (F1)
+
+192
+204
+52
+16
+25
+D<^>150
+Manual Entry of Flight Schedule ( UPUxxx)
+8
+MS Sans Serif
+0
+0
+359
+270
+47
+G
+Flight &Details
+
+8
+4
+344
+128
+0
+L
+&Flight Nb:
+
+16
+20
+35
+8
+1
+C
+
+
+16
+32
+36
+58
+2
+E
+
+
+56
+32
+40
+12
+3
+P
+...
+
+100
+32
+16
+12
+4
+R
+&Orig. Airport:
+
+132
+18
+44
+8
+5
+C
+
+
+180
+16
+84
+60
+6
+P
+...
+
+268
+16
+16
+12
+7
+R
+Dest. A&irport:
+
+128
+34
+48
+8
+8
+C
+
+
+180
+32
+84
+58
+9
+P
+...
+
+268
+32
+16
+12
+10
+G
+Op. Da&ys
+
+288
+12
+60
+112
+11
+2
+Daily
+
+292
+24
+35
+10
+12
+2
+Monday
+
+292
+39
+40
+10
+13
+2
+Tuesday
+
+292
+51
+44
+10
+14
+2
+Wednesday
+
+292
+63
+51
+10
+15
+2
+Thursday
+
+292
+75
+44
+10
+16
+2
+Friday
+
+292
+87
+32
+10
+17
+2
+Saturday
+
+292
+99
+40
+10
+18
+2
+Sunday
+
+292
+111
+40
+10
+19
+1
+
+
+16
+52
+268
+1
+20
+R
+D&ep. Time:
+
+36
+62
+36
+8
+21
+E
+
+
+75
+60
+40
+12
+22
+R
+A&rr. Time:
+
+124
+62
+32
+8
+23
+E
+
+
+161
+60
+40
+12
+24
+R
+Days Af&ter:
+
+203
+62
+36
+8
+25
+E
+
+
+244
+60
+40
+12
+26
+R
+&Weight Limit (kg):
+
+12
+82
+60
+8
+27
+E
+
+
+75
+80
+40
+12
+28
+R
+Valid From:
+
+120
+82
+36
+8
+29
+E
+
+
+161
+80
+40
+12
+30
+R
+Valid To:
+
+205
+82
+34
+8
+31
+E
+
+
+244
+80
+40
+12
+32
+2
+Suspended
+
+120
+96
+52
+10
+33
+P
+&Add (Ins.)
+
+92
+112
+52
+16
+34
+P
+&Modify (F6)
+
+148
+112
+52
+16
+35
+G
+&List of Flights
+
+8
+136
+344
+108
+36
+O
+Generic1
+SysListView32
+16
+148
+328
+72
+37
+P
+&Edit (F5)
+
+64
+224
+52
+16
+38
+P
+&Remove
+
+120
+224
+52
+16
+39
+P
+&Print (F8)
+
+188
+224
+52
+16
+40
+P
+Reset
+
+244
+224
+52
+16
+41
+P
+Select Fli&ght
+
+244
+224
+52
+16
+42
+D
+&Store (F2)
+
+8
+248
+52
+16
+43
+P
+Searc&h (F3)
+
+64
+248
+52
+16
+44
+P
+Exit (Esc)
+
+244
+248
+52
+16
+45
+P
+Help (F1)
+
+300
+248
+52
+16
+46
+D<^>151
+Flight Selection
+8
+MS Sans Serif
+0
+0
+199
+70
+5
+D
+&Ok
+
+44
+44
+52
+16
+0
+P
+Cancel (Esc)
+
+100
+44
+52
+16
+1
+L
+&Flight Number:
+
+8
+12
+48
+8
+2
+C
+
+
+64
+10
+108
+58
+3
+P
+...
+
+176
+10
+16
+12
+4
+D<^>152
+Forms & Labels Generation
+8
+MS Sans Serif
+0
+0
+359
+270
+35
+G
+Type
+
+8
+4
+168
+56
+0
+3
+Free Format &Label
+
+16
+16
+88
+10
+1
+3
+&Mail Processing Labels
+
+16
+30
+88
+10
+2
+3
+&Empty Forms
+
+16
+44
+88
+10
+3
+G
+Printing parameters
+
+184
+4
+168
+56
+4
+L
+Number of &Copies:
+
+208
+28
+60
+8
+5
+E
+
+
+272
+26
+48
+12
+6
+O
+Generic2
+msctls_updown32
+320
+26
+12
+12
+7
+G
+Free Format Label
+
+8
+64
+344
+52
+8
+3
+L&abel
+
+16
+77
+88
+10
+9
+3
+Function &Key
+
+16
+97
+88
+10
+10
+E
+
+
+132
+76
+212
+13
+11
+C
+
+
+132
+96
+212
+60
+12
+G
+Mail Processing Label
+
+8
+120
+344
+52
+13
+3
+EMS &Item
+
+16
+134
+44
+10
+14
+3
+CN3&5
+
+16
+154
+35
+10
+15
+R
+Standard EMS Id:
+
+68
+135
+60
+8
+16
+E
+
+
+132
+132
+212
+13
+17
+R
+Receptacle Id:
+
+64
+155
+64
+8
+18
+E
+
+
+132
+152
+212
+13
+19
+G
+Forms
+
+8
+176
+344
+64
+20
+3
+CN3&1
+
+16
+188
+35
+10
+21
+3
+CN3&8
+
+16
+205
+35
+10
+22
+3
+&Receptacle Manifest
+
+68
+189
+80
+10
+23
+3
+Des&patch Manifest
+
+68
+205
+80
+10
+24
+3
+D&espatch Summary
+
+68
+221
+80
+10
+25
+R
+&Orig. Office:
+
+180
+194
+44
+8
+26
+C
+
+
+228
+192
+96
+60
+27
+P
+...
+
+328
+192
+16
+12
+28
+R
+&Dest. Office:
+
+180
+218
+44
+8
+29
+C
+
+
+228
+216
+96
+60
+30
+P
+...
+
+328
+216
+16
+12
+31
+D
+&Print (F8)
+
+8
+248
+52
+16
+32
+P
+Cancel (Esc)
+
+244
+248
+52
+16
+33
+P
+Help (F1)
+
+300
+248
+52
+16
+34
+D<^>153
+General
+8
+MS Sans Serif
+0
+0
+352
+223
+20
+G
+Selection Criteria
+
+8
+4
+336
+212
+0
+G
+Results on
+
+16
+12
+68
+104
+1
+3
+Screen
+
+28
+43
+35
+10
+2
+3
+Printer
+
+28
+79
+35
+10
+3
+G
+Concerning
+
+92
+12
+148
+104
+4
+3
+Item Statistics
+
+108
+32
+76
+10
+5
+3
+Despatch Statistics
+
+108
+53
+100
+10
+6
+3
+Carrier Statistics
+
+108
+74
+80
+10
+7
+3
+Item and Despatch Volume
+
+108
+95
+112
+10
+8
+G
+Report Period
+
+248
+12
+88
+104
+9
+L
+From:
+
+256
+44
+24
+8
+10
+E
+
+
+280
+41
+48
+13
+11
+L
+To:
+
+256
+80
+16
+8
+12
+E
+
+
+280
+77
+48
+13
+13
+G
+Mail Sub-Class
+
+16
+120
+320
+88
+14
+3
+Single Sub-Class
+
+28
+137
+72
+10
+15
+C
+
+
+196
+136
+112
+60
+16
+P
+...
+
+312
+136
+16
+12
+17
+3
+All Sub-Classes Individualy
+
+28
+162
+104
+10
+18
+3
+All Sub-Classes Combined
+
+28
+187
+100
+10
+19
+D<^>154
+
+8
+MS Sans Serif
+0
+0
+359
+270
+4
+O
+Tab1
+SysTabControl32
+8
+8
+344
+232
+0
+P
+&Store (F2)
+
+8
+248
+52
+16
+1
+P
+Exit (Esc)
+
+244
+248
+52
+16
+2
+P
+Help (F1)
+
+300
+248
+52
+16
+3
+D<^>155
+Groups
+8
+MS Sans Serif
+0
+0
+352
+223
+14
+G
+Group Details
+
+8
+4
+336
+60
+0
+R
+F&ull code:
+
+14
+22
+36
+8
+1
+E
+
+
+55
+20
+68
+13
+2
+R
+&Name:
+
+160
+22
+30
+8
+3
+E
+
+
+196
+20
+140
+13
+4
+P
+&Add (Ins.)
+
+120
+40
+52
+16
+5
+P
+&Modify (F6)
+
+176
+40
+52
+16
+6
+G
+&Groups
+
+8
+68
+336
+148
+7
+O
+Generic1
+SysListView32
+16
+80
+320
+112
+8
+P
+&Edit (F5)
+
+16
+196
+52
+16
+9
+P
+&Delete
+
+72
+196
+52
+16
+10
+P
+De&fine Group
+
+128
+196
+52
+16
+11
+P
+&Print (F8)
+
+228
+196
+52
+16
+12
+P
+&Reset
+
+284
+196
+52
+16
+13
+D<^>156
+
+10
+MS Sans Serif
+0
+0
+152
+148
+0
+D<^>157
+IPS97
+8
+MS Sans Serif
+0
+0
+359
+274
+9
+P
+Button1
+
+8
+4
+112
+84
+0
+P
+Button2
+
+124
+4
+112
+84
+1
+P
+Button3
+
+240
+4
+112
+84
+2
+P
+Button4
+
+8
+92
+112
+84
+3
+P
+Button5
+
+124
+92
+112
+84
+4
+P
+Button6
+
+240
+92
+112
+84
+5
+P
+Exit (Esc)
+
+240
+180
+112
+84
+6
+P
+Button7
+
+8
+180
+112
+84
+7
+P
+Button8
+
+124
+180
+112
+84
+8
+D<^>158
+Item Details
+8
+MS Sans Serif
+0
+0
+359
+254
+27
+P
+
+
+8
+232
+52
+16
+0
+D
+Exit (Esc)
+
+244
+232
+52
+16
+1
+P
+Help (F1)
+
+300
+232
+52
+16
+2
+G
+Item
+
+8
+8
+344
+40
+3
+R
+Id:
+
+16
+26
+12
+8
+4
+E
+
+
+32
+24
+72
+12
+5
+R
+Country:
+
+120
+26
+28
+8
+6
+E
+
+
+152
+24
+72
+12
+7
+R
+Weight:
+
+240
+26
+28
+8
+8
+E
+
+
+272
+24
+72
+12
+9
+G
+Customs
+
+8
+56
+344
+40
+10
+R
+Merchandise:
+
+16
+74
+44
+8
+11
+E
+
+
+64
+72
+160
+12
+12
+R
+Value:
+
+244
+74
+24
+7
+13
+E
+
+
+272
+72
+72
+12
+14
+G
+Notification of Delivery
+
+8
+104
+344
+116
+15
+R
+Via:
+
+12
+122
+16
+8
+16
+E
+
+
+32
+120
+72
+12
+17
+R
+Name:
+
+120
+122
+28
+8
+18
+E
+
+
+152
+120
+192
+12
+19
+R
+Address:
+
+120
+142
+28
+8
+20
+E
+
+
+152
+140
+192
+32
+21
+R
+Phone:
+
+120
+182
+28
+8
+22
+E
+
+
+152
+180
+192
+12
+23
+R
+Fax:
+
+120
+202
+28
+8
+24
+E
+
+
+152
+201
+192
+12
+25
+I
+id 0191
+
+52
+156
+18
+20
+26
+D<^>159
+
+8
+MS Sans Serif
+0
+0
+359
+270
+28
+G
+Selection Criteria
+
+8
+4
+344
+80
+0
+R
+&Item Identifier:
+
+16
+18
+48
+8
+1
+E
+
+
+68
+17
+108
+12
+2
+R
+Item Stat&us:
+
+16
+34
+48
+8
+3
+C
+
+
+68
+33
+88
+60
+4
+P
+...
+
+160
+33
+16
+12
+5
+R
+Delivery &Agent:
+
+12
+50
+52
+8
+6
+C
+
+
+68
+49
+88
+60
+7
+P
+...
+
+160
+49
+16
+12
+8
+R
+Dest. &Country:
+
+16
+66
+48
+8
+9
+C
+
+
+68
+65
+88
+60
+10
+P
+...
+
+160
+65
+16
+12
+11
+R
+Local Ite&m Id:
+
+184
+18
+48
+8
+12
+E
+
+
+236
+17
+108
+12
+13
+R
+E&vent (GMT):
+
+184
+35
+48
+8
+14
+E
+
+
+236
+33
+108
+12
+15
+R
+Mail Categor&y:
+
+184
+50
+48
+8
+16
+C
+
+
+236
+49
+88
+60
+17
+P
+...
+
+328
+49
+16
+12
+18
+2
+Sho&w Deleted:
+
+184
+66
+60
+10
+19
+G
+%u I&tem(s) Selected
+
+8
+88
+344
+152
+20
+O
+Generic1
+SysListView32
+16
+100
+328
+108
+21
+P
+&Details (F5)
+
+124
+216
+52
+16
+22
+P
+&Print (F8)
+
+184
+216
+52
+16
+23
+P
+&Delete
+
+184
+216
+52
+16
+24
+D
+&Select (F3)
+
+8
+248
+52
+16
+25
+P
+Exit (Esc)
+
+244
+248
+52
+16
+26
+P
+Help (F1)
+
+300
+248
+52
+16
+27
+D<^>160
+International Postal System 96
+8
+MS Sans Serif
+0
+0
+359
+270
+4
+D
+E&xecute (F3)
+
+8
+248
+52
+16
+0
+P
+Exit (Esc)
+
+244
+248
+52
+16
+1
+P
+Help (F1)
+
+300
+248
+52
+16
+2
+O
+Generic1
+SysTabControl32
+8
+8
+344
+232
+3
+D<^>161
+New Despatch ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+21
+G
+Characteristics for Despatch
+
+8
+4
+344
+84
+0
+L
+Destination &OE:
+
+16
+26
+52
+8
+1
+C
+
+
+68
+25
+76
+60
+2
+P
+...
+
+148
+25
+16
+12
+3
+L
+&Mail Category:
+
+16
+42
+48
+8
+4
+C
+
+
+68
+41
+76
+60
+5
+P
+...
+
+148
+41
+16
+12
+6
+G
+Class of Mail
+
+172
+12
+172
+48
+7
+3
+Mail &Class
+
+180
+25
+44
+10
+8
+C
+
+
+240
+25
+76
+60
+9
+P
+...
+
+320
+25
+16
+12
+10
+3
+Mail &Sub-Class
+
+180
+41
+59
+10
+11
+C
+
+
+240
+41
+76
+60
+12
+P
+...
+
+320
+41
+16
+12
+13
+P
+&Display Routes (F3)
+
+144
+65
+72
+16
+14
+G
+List of &Routes
+
+8
+92
+344
+148
+15
+O
+Generic1
+SysTreeView32
+16
+104
+328
+128
+16
+D
+&Confirm (F2)
+
+8
+248
+52
+16
+17
+D
+&Reset
+
+68
+248
+52
+16
+18
+P
+Exit (Esc)
+
+244
+248
+52
+16
+19
+P
+Help (F1)
+
+300
+248
+52
+16
+20
+D<^>162
+Office Types
+8
+MS Sans Serif
+0
+0
+352
+223
+13
+G
+Office Type Details
+
+8
+4
+336
+60
+0
+R
+F&ull code:
+
+14
+22
+36
+8
+1
+E
+
+
+55
+20
+68
+13
+2
+R
+&Name:
+
+160
+22
+30
+8
+3
+E
+
+
+196
+20
+140
+13
+4
+P
+&Add (Ins.)
+
+120
+40
+52
+16
+5
+P
+&Modify (F6)
+
+176
+40
+52
+16
+6
+G
+&Offices Types
+
+8
+68
+336
+148
+7
+O
+Generic1
+SysListView32
+16
+80
+320
+112
+8
+P
+&Edit (F5)
+
+16
+196
+52
+16
+9
+P
+&Delete
+
+72
+196
+52
+16
+10
+P
+&Print (F8)
+
+228
+196
+52
+16
+11
+P
+&Reset
+
+284
+196
+52
+16
+12
+D<^>163
+Offices
+8
+MS Sans Serif
+0
+0
+352
+223
+7
+O
+Generic1
+SysListView32
+8
+4
+276
+212
+0
+P
+&New (Ins.)
+
+292
+8
+52
+16
+1
+D
+&Edit (F5)
+
+292
+28
+52
+16
+2
+P
+&Delete
+
+292
+48
+52
+16
+3
+P
+Define Ne&xt
+
+292
+72
+52
+16
+4
+P
+&Print (F8)
+
+292
+176
+52
+16
+5
+P
+&Reset
+
+292
+196
+52
+16
+6
+D<^>164
+Define own / destination Airports 
+8
+MS Sans Serif
+0
+0
+359
+270
+18
+G
+Port
+
+8
+4
+344
+48
+0
+R
+Port &Type:
+
+12
+18
+36
+8
+1
+C
+
+
+52
+16
+56
+30
+2
+P
+...
+
+112
+16
+16
+12
+3
+R
+Country:
+
+136
+18
+30
+8
+4
+C
+
+
+170
+16
+98
+60
+5
+P
+...
+
+272
+16
+16
+12
+6
+2
+Suspended
+
+296
+17
+48
+10
+7
+P
+Sear&ch (F3)
+
+153
+32
+52
+16
+8
+G
+Selected P&orts
+
+8
+56
+344
+184
+9
+O
+Generic1
+SysListView32
+16
+68
+328
+144
+10
+P
+Change Own
+
+92
+216
+52
+16
+11
+P
+Change Dest
+
+92
+216
+52
+16
+12
+P
+Change Suspend
+
+148
+216
+60
+16
+13
+P
+&Print (F8)
+
+213
+216
+52
+16
+14
+D
+&Store (F2)
+
+8
+248
+52
+16
+15
+P
+Exit (Esc)
+
+244
+248
+52
+16
+16
+P
+Help (F1)
+
+300
+248
+52
+16
+17
+D<^>165
+National Offices
+8
+MS Sans Serif
+0
+0
+352
+223
+13
+O
+Generic1
+SysListView32
+8
+8
+164
+208
+0
+P
+S&elect (F3)
+
+292
+8
+52
+16
+1
+L
+Default &Currency:
+
+184
+42
+64
+8
+2
+C
+
+
+248
+40
+76
+60
+3
+P
+...
+
+328
+40
+16
+12
+4
+G
+Receptacle Weight Limits (Kg)
+
+184
+68
+160
+64
+5
+L
+&Outbound:
+
+192
+86
+36
+8
+6
+E
+
+
+232
+84
+104
+12
+7
+L
+&Inbound:
+
+192
+110
+36
+8
+8
+E
+
+
+232
+108
+104
+12
+9
+2
+&Local EMS Item Identifier Is Mandatory
+
+188
+153
+148
+10
+10
+2
+E&MS Item Outbound Weight Is Mandatory
+
+188
+173
+148
+10
+11
+2
+&Receptacle Inbound Weight Is Mandatory
+
+188
+193
+148
+10
+12
+D<^>166
+Local Workstation
+8
+MS Sans Serif
+0
+0
+351
+223
+20
+L
+Local Office:
+
+16
+14
+72
+8
+0
+C
+
+
+120
+12
+144
+60
+1
+P
+...
+
+268
+12
+16
+12
+2
+G
+Database parameters
+
+8
+32
+336
+104
+3
+G
+Timeouts (s)
+
+20
+44
+316
+56
+4
+L
+At &Connection:
+
+28
+62
+88
+8
+5
+E
+
+
+120
+60
+92
+12
+6
+L
+On &Query:
+
+28
+82
+88
+8
+7
+E
+
+
+120
+80
+92
+12
+8
+L
+&ODBC Data Source Name:
+
+24
+114
+92
+8
+9
+C
+
+
+120
+112
+216
+60
+10
+G
+Log parameters
+
+8
+144
+336
+48
+11
+L
+Log File Fully Qualified Path:
+
+16
+158
+104
+8
+12
+E
+
+
+120
+156
+196
+12
+13
+P
+...
+
+320
+156
+16
+12
+14
+L
+Trace File Fully Qualified Name:
+
+16
+174
+104
+8
+15
+E
+
+
+120
+172
+196
+12
+16
+P
+...
+
+320
+172
+16
+12
+17
+L
+Operational System Version:
+
+16
+202
+104
+8
+18
+E
+
+
+120
+200
+44
+12
+19
+D<^>167
+Printing...
+8
+MS Sans Serif
+0
+0
+119
+54
+2
+D
+Cancel
+
+36
+32
+48
+16
+0
+T
+Click on Cancel button to cancel printing...
+
+9
+8
+100
+16
+1
+D<^>168
+Send/Receive Items from/at  XXX ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+23
+G
+Receptacle
+
+8
+4
+344
+32
+0
+R
+I&dentifier:
+
+16
+18
+32
+8
+1
+E
+
+
+52
+16
+272
+12
+2
+G
+EMS Item
+
+8
+40
+168
+64
+3
+R
+&Identifier:
+
+16
+54
+32
+8
+4
+E
+
+
+52
+52
+116
+12
+5
+R
+&Local Id:
+
+16
+70
+32
+8
+6
+E
+
+
+52
+68
+116
+12
+7
+D
+&Add (Ins.)
+
+66
+84
+52
+16
+8
+G
+Status && C&ondition of receipt
+
+184
+40
+168
+64
+9
+C
+
+
+192
+52
+132
+60
+10
+P
+...
+
+328
+52
+16
+12
+11
+C
+
+
+192
+68
+132
+60
+12
+P
+...
+
+328
+68
+16
+12
+13
+P
+&Modify (F6)
+
+242
+84
+52
+16
+14
+G
+Lis&t of Items : 0
+
+8
+108
+344
+132
+15
+O
+Generic1
+SysListView32
+16
+120
+328
+96
+16
+P
+&Remove
+
+96
+220
+52
+16
+17
+P
+&Print Local Id
+
+154
+220
+52
+16
+18
+P
+Print &EMS Id
+
+212
+220
+52
+16
+19
+P
+&Store (F2)
+
+8
+248
+52
+16
+20
+P
+Exit (Esc)
+
+244
+248
+52
+16
+21
+P
+Help (F1)
+
+300
+248
+52
+16
+22
+D<^>169
+Receive Item from Customer ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+44
+G
+Item
+
+8
+0
+344
+40
+0
+T
+I&d:
+
+16
+18
+12
+8
+1
+E
+
+
+28
+16
+84
+12
+2
+L
+&Weight (g):
+
+132
+10
+41
+8
+3
+E
+
+
+192
+8
+56
+12
+4
+L
+Dest. &Country:
+
+132
+26
+48
+8
+5
+C
+
+
+192
+24
+132
+60
+6
+P
+...
+
+328
+24
+16
+12
+7
+G
+Lodging
+
+8
+44
+344
+32
+8
+L
+D&ate:
+
+16
+58
+17
+8
+9
+E
+
+
+40
+56
+72
+13
+10
+L
+&Time:
+
+132
+58
+17
+8
+11
+E
+
+
+156
+56
+48
+13
+12
+L
+P&lace:
+
+224
+58
+20
+8
+13
+C
+
+
+252
+56
+72
+60
+14
+P
+...
+
+328
+56
+16
+12
+15
+G
+Customs
+
+8
+80
+344
+48
+16
+2
+Me&rchandise or Gift:
+
+16
+93
+96
+10
+17
+L
+Type of &Goods:
+
+132
+94
+51
+8
+18
+C
+
+
+192
+92
+132
+60
+19
+P
+...
+
+328
+92
+16
+12
+20
+L
+&Value:
+
+16
+110
+24
+8
+21
+E
+
+
+40
+108
+72
+12
+22
+L
+Currenc&y:
+
+132
+110
+35
+8
+23
+C
+
+
+192
+108
+132
+60
+24
+P
+...
+
+328
+108
+16
+12
+25
+G
+Notification of Delivery
+
+8
+132
+344
+108
+26
+L
+Meth&od:
+
+16
+148
+28
+8
+27
+C
+
+
+24
+160
+88
+72
+28
+L
+Customer &Id:
+
+132
+146
+42
+8
+29
+E
+
+
+192
+144
+96
+12
+30
+P
+&New
+
+292
+144
+52
+13
+31
+L
+Na&me:
+
+132
+162
+24
+8
+32
+E
+
+
+192
+160
+152
+12
+33
+L
+Addr&ess:
+
+132
+178
+32
+8
+34
+E
+
+
+192
+176
+152
+24
+35
+L
+&Phone:
+
+132
+206
+22
+8
+36
+E
+
+
+192
+204
+152
+12
+37
+L
+&Fax:
+
+132
+222
+13
+8
+38
+E
+
+
+192
+220
+152
+12
+39
+D
+Ne&xt Item (F3)
+
+8
+248
+68
+16
+40
+P
+Next C&ustomer (F6)
+
+80
+248
+68
+16
+41
+P
+Exit (Esc)
+
+244
+248
+52
+16
+42
+P
+Help (F1)
+
+300
+248
+52
+16
+43
+D<^>170
+Receive Items At OEO
+8
+MS Sans Serif
+0
+0
+359
+270
+21
+G
+EMS Item
+
+8
+4
+168
+48
+0
+R
+&Identifier:
+
+16
+18
+32
+8
+1
+E
+
+
+52
+16
+116
+12
+2
+P
+&Add (Ins.)
+
+66
+32
+52
+16
+3
+G
+C&ondition of receipt
+
+184
+4
+168
+48
+4
+C
+
+
+192
+16
+132
+60
+5
+P
+...
+
+328
+16
+16
+12
+6
+P
+&Modify (F6)
+
+242
+32
+52
+16
+7
+G
+Outbound Information
+
+8
+56
+344
+52
+8
+R
+Destination &Country:
+
+12
+70
+68
+8
+9
+C
+
+
+84
+68
+72
+60
+10
+P
+...
+
+160
+68
+16
+12
+11
+R
+Item &Weight (g):
+
+184
+70
+56
+8
+12
+E
+
+
+244
+68
+100
+13
+13
+P
+&Update (F7)
+
+154
+88
+52
+16
+14
+G
+Lis&t of Items : 0
+
+8
+112
+344
+128
+15
+O
+Generic1
+SysListView32
+16
+124
+328
+92
+16
+P
+&Remove
+
+154
+220
+52
+16
+17
+P
+&Store (F2)
+
+8
+248
+52
+16
+18
+D
+Exit (Esc)
+
+244
+248
+52
+16
+19
+P
+Help (F1)
+
+300
+248
+52
+16
+20
+D<^>171
+Record Delivery Information ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+33
+G
+EMS Item Delivery Information
+
+8
+4
+344
+120
+0
+T
+I&dentifier:
+
+32
+20
+32
+8
+1
+E
+
+
+68
+18
+100
+12
+2
+E
+
+
+68
+18
+100
+12
+3
+3
+Sta&ndard
+
+184
+14
+44
+10
+4
+3
+&Local
+
+184
+24
+44
+10
+5
+P
+&Add (Ins.)
+
+272
+16
+52
+16
+6
+1
+
+
+16
+40
+328
+1
+7
+G
+Delivered
+
+20
+48
+48
+48
+8
+3
+&Yes
+
+31
+61
+24
+10
+9
+3
+N&o
+
+31
+77
+21
+10
+10
+L
+Da&te:
+
+76
+62
+22
+8
+11
+E
+
+
+100
+60
+44
+12
+12
+L
+T&ime:
+
+76
+78
+22
+8
+13
+E
+
+
+100
+76
+44
+12
+14
+G
+&Measure and Reason for Non Delivery
+
+152
+48
+188
+48
+15
+C
+
+
+160
+60
+152
+60
+16
+P
+...
+
+316
+60
+16
+12
+17
+C
+
+
+160
+76
+152
+60
+18
+P
+...
+
+316
+76
+16
+12
+19
+3
+O&ffice
+
+24
+100
+35
+10
+20
+3
+A&gent
+
+24
+110
+35
+10
+21
+C
+
+
+68
+104
+84
+60
+22
+C
+
+
+68
+104
+84
+60
+23
+P
+...
+
+156
+104
+16
+12
+24
+L
+Name Signator&y:
+
+184
+106
+56
+8
+25
+E
+
+
+240
+104
+100
+12
+26
+G
+It&ems: 00
+
+8
+128
+344
+116
+27
+O
+Generic1
+SysListView32
+16
+140
+328
+80
+28
+P
+&Remove
+
+153
+224
+52
+16
+29
+D
+&Store (F2)
+
+8
+248
+52
+16
+30
+P
+Exit (Esc)
+
+244
+248
+52
+16
+31
+P
+Help (F1)
+
+300
+248
+52
+16
+32
+D<^>172
+Receptacle Details
+8
+MS Sans Serif
+0
+0
+359
+254
+6
+G
+Items list for Receptacle &Id: %s
+
+8
+4
+344
+220
+0
+O
+Generic1
+SysListView32
+16
+16
+328
+200
+1
+D
+&Details (F5)
+
+8
+232
+52
+16
+2
+P
+&Print (F8)
+
+64
+232
+52
+16
+3
+P
+Exit (Esc)
+
+244
+232
+52
+16
+4
+P
+Help (F1)
+
+300
+232
+52
+16
+5
+D<^>174
+Remove Item From Despatch ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+9
+G
+Item To Remove
+
+8
+4
+344
+36
+0
+R
+I&dentifier:
+
+116
+22
+32
+8
+1
+E
+
+
+150
+20
+82
+12
+2
+G
+%d Item(s) %s Found Inside a Receptacle
+
+8
+44
+344
+196
+3
+O
+Generic1
+SysListView32
+16
+56
+328
+176
+4
+D
+&Search (F3)
+
+8
+248
+52
+16
+5
+P
+&Remove
+
+64
+248
+52
+16
+6
+P
+Exit (Esc)
+
+244
+248
+52
+16
+7
+P
+Help (F1)
+
+300
+248
+52
+16
+8
+D<^>175
+Reopen Despatch ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+5
+G
+Despatches and Receptacles &Tree
+
+8
+4
+344
+232
+0
+O
+Generic1
+SysTreeView32
+16
+16
+328
+212
+1
+D
+&Reopen (F6)
+
+8
+248
+52
+16
+2
+P
+Exit (Esc)
+
+244
+248
+52
+16
+3
+P
+Help (F1)
+
+300
+248
+52
+16
+4
+D<^>176
+IPS'96 Data Scaffolding
+8
+MS Sans Serif
+0
+0
+191
+98
+8
+L
+&Source files:
+
+8
+8
+80
+8
+0
+E
+
+
+12
+20
+152
+12
+1
+P
+...
+
+168
+19
+16
+14
+2
+L
+&Format files:
+
+8
+40
+80
+8
+3
+E
+
+
+12
+52
+152
+12
+4
+P
+...
+
+168
+51
+16
+14
+5
+D
+&Go
+
+44
+76
+52
+16
+6
+P
+Exit (Esc)
+
+104
+76
+52
+16
+7
+D<^>177
+Select an element for the combo box
+8
+MS Sans Serif
+0
+0
+359
+254
+4
+O
+Generic1
+SysListView32
+8
+8
+344
+216
+0
+D
+&Select (F3)
+
+8
+232
+52
+16
+1
+P
+Cancel (Esc)
+
+244
+232
+52
+16
+2
+P
+Help (F1)
+
+300
+232
+52
+16
+3
+D<^>178
+Select A Receptacle (UPU OUT13)
+8
+MS Sans Serif
+0
+0
+359
+270
+7
+G
+&Despatches Currently Open And Their Receptacles
+
+8
+4
+344
+236
+0
+O
+Generic1
+SysTreeView32
+16
+16
+328
+216
+1
+D
+&Explode
+
+8
+248
+52
+16
+2
+P
+&Select (F3)
+
+64
+248
+52
+16
+3
+P
+&Refresh
+
+120
+248
+52
+16
+4
+P
+Exit (Esc)
+
+244
+248
+52
+16
+5
+P
+Help (F1)
+
+300
+248
+52
+16
+6
+D<^>179
+%s : EMS Item duplicated
+8
+MS Sans Serif
+0
+0
+359
+254
+7
+T
+This EMS Identifier is duplicated,\nSelect the Item it applies to by highligting it in the list and press the "Select" button...
+
+8
+8
+344
+16
+0
+T
+or choose to create a new one by pressing the "New" button...
+
+8
+24
+344
+8
+1
+O
+Generic1
+SysListView32
+8
+36
+344
+188
+2
+D
+&Select (F3)
+
+8
+232
+52
+16
+3
+P
+&New (Ins.)
+
+64
+232
+52
+16
+4
+P
+Cancel (Esc)
+
+248
+232
+52
+16
+5
+P
+Help (F1)
+
+304
+232
+48
+16
+6
+D<^>180
+Send Items To Customs
+8
+MS Sans Serif
+0
+0
+359
+270
+12
+G
+EMS Item
+
+8
+4
+344
+52
+0
+L
+EMS &Standard Identifier:
+
+16
+18
+92
+8
+1
+E
+
+
+112
+16
+124
+12
+2
+L
+&Local Identifier:
+
+16
+38
+92
+8
+3
+E
+
+
+112
+36
+124
+12
+4
+P
+&Add (Ins.)
+
+268
+22
+52
+16
+5
+G
+Lis&t of Items : 0
+
+8
+60
+344
+180
+6
+O
+Generic1
+SysListView32
+16
+72
+328
+136
+7
+P
+&Remove
+
+154
+216
+52
+16
+8
+P
+&Store (F2)
+
+8
+248
+52
+16
+9
+D
+Exit (Esc)
+
+244
+248
+52
+16
+10
+P
+Help (F1)
+
+300
+248
+52
+16
+11
+D<^>181
+Send/Receive Items from/at  XXX ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+17
+G
+EMS Item
+
+8
+4
+168
+60
+0
+R
+&Identifier:
+
+16
+22
+32
+8
+1
+E
+
+
+52
+20
+116
+12
+2
+E
+
+
+52
+20
+116
+12
+3
+3
+Sta&ndard
+
+120
+38
+44
+10
+4
+3
+&Local
+
+120
+48
+44
+10
+5
+P
+&Add (Ins.)
+
+44
+40
+52
+16
+6
+G
+
+
+184
+4
+168
+60
+7
+C
+
+
+192
+20
+132
+60
+8
+P
+...
+
+328
+20
+16
+12
+9
+P
+&Modify (F6)
+
+240
+40
+52
+16
+10
+G
+Lis&t of Items : 0
+
+8
+68
+344
+172
+11
+O
+Generic1
+SysListView32
+16
+80
+328
+128
+12
+P
+&Remove
+
+154
+216
+52
+16
+13
+P
+&Store (F2)
+
+8
+248
+52
+16
+14
+D
+Exit (Esc)
+
+244
+248
+52
+16
+15
+P
+Help (F1)
+
+300
+248
+52
+16
+16
+D<^>182
+Send/receive Receptacles from/at XXX ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+19
+G
+Receptacle
+
+8
+4
+344
+52
+0
+L
+&Identifier:
+
+36
+18
+32
+8
+1
+E
+
+
+73
+16
+212
+12
+2
+D
+&Add (Ins.)
+
+154
+36
+52
+16
+3
+G
+
+
+8
+60
+168
+52
+4
+C
+
+
+16
+72
+132
+60
+5
+P
+...
+
+152
+72
+16
+12
+6
+P
+&Modify (F6)
+
+66
+92
+52
+16
+7
+G
+Inbound Weight
+
+184
+60
+168
+52
+8
+L
+Rec. &Weight (kg):
+
+192
+74
+60
+8
+9
+E
+
+
+256
+72
+88
+12
+10
+P
+A&dd (Ins.)
+
+242
+92
+52
+16
+11
+G
+R&eceptacles : 0
+
+8
+116
+344
+124
+12
+O
+Generic1
+SysListView32
+16
+128
+328
+84
+13
+P
+&Remove
+
+154
+220
+52
+16
+14
+P
+&Store (F2)
+
+8
+248
+52
+16
+15
+P
+&Xcpt Entry
+
+64
+248
+52
+16
+16
+P
+Exit (Esc)
+
+244
+248
+52
+16
+17
+P
+Help (F1)
+
+300
+248
+52
+16
+18
+D<^>183
+Country code is not the local country
+8
+MS Sans Serif
+0
+0
+163
+62
+4
+L
+&Status is:
+
+8
+8
+148
+8
+0
+C
+
+
+8
+20
+148
+60
+1
+D
+OK
+
+28
+40
+52
+16
+2
+P
+Cancel (Esc)
+
+84
+40
+52
+16
+3
+D<^>184
+Template
+8
+MS Sans Serif
+0
+0
+352
+223
+3
+L
+Select mail sub-classes to be template:
+
+16
+20
+132
+8
+0
+G
+Type of &Mail
+
+8
+4
+336
+212
+1
+O
+Generic1
+SysTreeView32
+16
+36
+320
+172
+2
+D<^>185
+List of Selected Items
+8
+MS Sans Serif
+0
+0
+359
+254
+6
+G
+%u &Item(s) Selected
+
+8
+4
+344
+220
+0
+O
+Generic1
+SysListView32
+16
+16
+328
+200
+1
+D
+&Summary (F5)
+
+8
+232
+52
+16
+2
+P
+&Print (F8)
+
+64
+232
+52
+16
+3
+P
+Exit (Esc)
+
+244
+232
+52
+16
+4
+P
+Help (F1)
+
+300
+232
+52
+16
+5
+D<^>186
+Track & Trace - Item Selection ( UPU xxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+21
+G
+Selection Criteria
+
+8
+8
+344
+232
+0
+L
+Item &Identifier:
+
+68
+30
+69
+8
+1
+E
+
+
+144
+28
+144
+12
+2
+L
+Local Item Identifier:
+
+68
+59
+69
+8
+3
+E
+
+
+144
+57
+144
+12
+4
+L
+Mail Sub-Class:
+
+68
+86
+69
+8
+5
+C
+
+
+144
+84
+124
+60
+6
+P
+...
+
+272
+84
+16
+12
+7
+L
+Date of Lodging:
+
+68
+115
+69
+8
+8
+E
+
+
+144
+113
+144
+12
+9
+L
+Place of Lodging:
+
+68
+142
+69
+8
+10
+E
+
+
+144
+140
+144
+12
+11
+L
+Destination Country:
+
+68
+170
+69
+8
+12
+C
+
+
+144
+168
+124
+60
+13
+P
+...
+
+272
+168
+16
+12
+14
+L
+Delivery Agent:
+
+68
+198
+69
+8
+15
+E
+
+
+144
+196
+144
+12
+16
+2
+Sho&w Deleted:
+
+68
+220
+84
+10
+17
+D
+&Select (F3)
+
+8
+248
+52
+16
+18
+P
+Exit (Esc)
+
+244
+248
+52
+16
+19
+P
+Help (F1)
+
+300
+248
+52
+16
+20
+D<^>187
+Item Summary
+8
+MS Sans Serif
+0
+0
+359
+254
+35
+G
+EMS Item Id: %s
+
+8
+4
+344
+80
+0
+R
+Local Id:
+
+12
+18
+60
+8
+1
+E
+
+
+76
+16
+104
+12
+2
+R
+Date of Lodging:
+
+12
+34
+60
+8
+3
+E
+
+
+76
+32
+104
+12
+4
+R
+Place of Lodging:
+
+12
+50
+60
+8
+5
+E
+
+
+76
+48
+104
+12
+6
+R
+Dest. Country:
+
+188
+18
+48
+8
+7
+E
+
+
+240
+16
+104
+12
+8
+R
+Type of Goods:
+
+184
+34
+52
+8
+9
+E
+
+
+240
+32
+104
+12
+10
+R
+Value:
+
+204
+50
+32
+8
+11
+E
+
+
+240
+48
+104
+12
+12
+R
+Name of Signatory:
+
+168
+66
+68
+8
+13
+E
+
+
+240
+64
+104
+12
+14
+G
+Despatch Id: %s
+
+8
+88
+344
+48
+15
+R
+Orig. Airport:
+
+12
+102
+44
+8
+16
+E
+
+
+60
+100
+60
+13
+17
+R
+Dest. Airport:
+
+12
+118
+44
+8
+18
+E
+
+
+60
+116
+60
+13
+19
+R
+Flight Nb:
+
+124
+102
+48
+8
+20
+E
+
+
+176
+100
+60
+13
+21
+R
+Rec.Serial Nb:
+
+124
+118
+48
+8
+22
+E
+
+
+176
+116
+60
+13
+23
+R
+Dep. Time:
+
+244
+102
+36
+8
+24
+E
+
+
+284
+100
+60
+13
+25
+R
+Arriv. Time:
+
+240
+118
+40
+8
+26
+E
+
+
+284
+116
+60
+13
+27
+G
+Events
+
+8
+140
+344
+84
+28
+O
+Generic1
+SysListView32
+16
+152
+328
+64
+29
+D
+&Print (F8)
+
+8
+232
+52
+16
+30
+P
+&Previous Item
+
+64
+232
+52
+16
+31
+P
+&Next Item
+
+120
+232
+52
+16
+32
+P
+Exit (Esc)
+
+244
+232
+52
+16
+33
+P
+Help (F1)
+
+300
+232
+52
+16
+34
+D<^>188
+Update Item Informations At OEI
+8
+MS Sans Serif
+0
+0
+359
+270
+26
+G
+EMS Item Selection Criteria
+
+8
+4
+344
+64
+0
+R
+&Identifier:
+
+28
+22
+72
+8
+1
+E
+
+
+103
+20
+152
+12
+2
+R
+&Local Id:
+
+28
+46
+72
+8
+3
+E
+
+
+103
+44
+152
+12
+4
+G
+Item Informations
+
+8
+76
+344
+160
+5
+R
+Rece&ptacle Id:
+
+17
+94
+52
+8
+6
+E
+
+
+73
+92
+212
+12
+7
+1
+
+
+16
+116
+328
+1
+8
+R
+&Destination Country:
+
+28
+130
+72
+8
+9
+C
+
+
+103
+128
+132
+60
+10
+P
+...
+
+239
+128
+16
+12
+11
+R
+&Weight (g):
+
+28
+154
+72
+8
+12
+E
+
+
+103
+152
+152
+13
+13
+1
+
+
+16
+176
+328
+1
+14
+R
+St&atus:
+
+28
+190
+72
+8
+15
+C
+
+
+103
+188
+132
+60
+16
+P
+...
+
+239
+188
+16
+12
+17
+R
+&Condition of Receipt:
+
+28
+214
+72
+8
+18
+C
+
+
+103
+212
+132
+60
+19
+P
+...
+
+239
+212
+16
+12
+20
+D
+&Search (F3)
+
+8
+248
+52
+16
+21
+P
+&Reset
+
+8
+248
+52
+16
+22
+P
+&Update (F6)
+
+64
+248
+52
+16
+23
+P
+Exit (Esc)
+
+244
+248
+52
+16
+24
+P
+Help (F1)
+
+300
+248
+52
+16
+25
+D<^>189
+Dialog
+8
+MS Sans Serif
+0
+0
+359
+258
+19
+G
+Criteria
+
+8
+4
+168
+52
+0
+L
+Origin &Country:
+
+16
+18
+64
+8
+1
+C
+
+
+84
+16
+64
+60
+2
+P
+...
+
+153
+16
+16
+12
+3
+P
+S&earch (F3)
+
+72
+36
+52
+16
+4
+G
+Compare With:
+
+8
+60
+168
+32
+5
+3
+E&DIFact Messages
+
+16
+75
+72
+10
+6
+3
+C&aptured Cons.
+
+92
+75
+76
+10
+7
+G
+&List of Received Consignments:
+
+184
+4
+168
+88
+8
+O
+Generic1
+SysListView32
+192
+16
+152
+52
+9
+P
+&Verify
+
+248
+72
+52
+16
+10
+G
+E&xpected Consignment:
+
+8
+96
+168
+132
+11
+O
+Generic2
+SysTreeView32
+16
+108
+152
+112
+12
+G
+&Received Consignment:
+
+184
+96
+168
+132
+13
+O
+Generic3
+SysTreeView32
+192
+108
+152
+112
+14
+P
+Sho&w Differences (F5)
+
+8
+236
+80
+16
+15
+P
+&Store Verify (F2)
+
+92
+236
+64
+16
+16
+P
+Exit (Esc)
+
+244
+236
+52
+16
+17
+P
+Help (F1)
+
+300
+236
+52
+16
+18
+D<^>190
+Dialog
+8
+MS Sans Serif
+0
+0
+359
+258
+19
+G
+Criteria
+
+8
+4
+168
+52
+0
+L
+Origin &Country:
+
+16
+18
+64
+8
+1
+C
+
+
+84
+16
+64
+60
+2
+P
+...
+
+153
+16
+16
+12
+3
+P
+S&earch (F3)
+
+72
+36
+52
+16
+4
+G
+Compare With:
+
+8
+60
+168
+32
+5
+3
+E&DIFact Messages
+
+16
+75
+72
+10
+6
+3
+C&aptured Despatch
+
+92
+75
+76
+10
+7
+G
+&List of Received Despatches
+
+184
+4
+168
+88
+8
+O
+Generic1
+SysListView32
+192
+16
+152
+52
+9
+P
+&Verify
+
+248
+72
+52
+16
+10
+G
+E&xpected Despatch:
+
+8
+96
+168
+132
+11
+O
+Generic2
+SysTreeView32
+16
+108
+152
+112
+12
+G
+&Received Despatch:
+
+184
+96
+168
+132
+13
+O
+Generic3
+SysTreeView32
+192
+108
+152
+112
+14
+P
+Sho&w Differences (F5)
+
+8
+236
+80
+16
+15
+P
+&Store Verify (F2)
+
+92
+236
+64
+16
+16
+P
+Exit (Esc)
+
+244
+236
+52
+16
+17
+P
+Help (F1)
+
+300
+236
+52
+16
+18
+D<^>191
+
+8
+MS Sans Serif
+0
+0
+136
+39
+3
+1
+
+
+4
+3
+128
+32
+0
+I
+id 0190
+
+12
+9
+18
+20
+1
+L
+Waiting for Database...
+
+36
+15
+88
+8
+2
+D<^>192
+
+8
+MS Sans Serif
+0
+0
+136
+39
+3
+1
+
+
+4
+3
+128
+32
+0
+I
+id 0190
+
+12
+9
+18
+20
+1
+L
+Filling table:\n%s...
+
+36
+11
+92
+16
+2
+D<^>193
+Exchange of Despatch between Consignments ( UPU xxxx )
+8
+MS Sans Serif
+0
+0
+359
+270
+24
+G
+Consignments Currently &Opened
+
+8
+4
+344
+104
+0
+O
+Generic1
+SysListView32
+16
+16
+328
+68
+1
+D
+Select Cons &1
+
+58
+88
+52
+16
+2
+P
+Select Cons &2
+
+250
+88
+52
+16
+3
+G
+Consignment 1
+
+8
+112
+152
+128
+4
+L
+Identifier:
+
+16
+126
+32
+8
+5
+E
+
+
+52
+124
+100
+12
+6
+L
+Weight:
+
+16
+142
+32
+8
+7
+E
+
+
+52
+140
+100
+12
+8
+L
+&Closed Despatch(es):
+
+16
+158
+72
+9
+9
+O
+Generic2
+SysListView32
+16
+168
+136
+64
+10
+G
+Consignment 2
+
+200
+112
+152
+128
+11
+L
+Identifier:
+
+208
+126
+32
+8
+12
+E
+
+
+244
+124
+100
+12
+13
+L
+Weight:
+
+208
+142
+32
+8
+14
+E
+
+
+244
+140
+100
+12
+15
+L
+Closed &Despatch(es):
+
+208
+158
+72
+9
+16
+O
+Generic2
+SysListView32
+208
+168
+136
+64
+17
+P
+&>>
+
+164
+188
+32
+16
+18
+P
+&<<
+
+164
+208
+32
+16
+19
+P
+&Store (F2)
+
+8
+248
+52
+16
+20
+P
+&Reset
+
+64
+248
+52
+16
+21
+P
+Exit (Esc)
+
+244
+248
+52
+16
+22
+P
+Help (F1)
+
+300
+248
+52
+16
+23
+D<^>198
+Edifact
+8
+MS Sans Serif
+0
+0
+352
+223
+33
+G
+Working Directories:
+
+124
+4
+220
+92
+0
+L
+&Format Files:
+
+132
+23
+40
+8
+1
+E
+
+
+188
+20
+128
+12
+2
+P
+...
+
+320
+20
+16
+12
+3
+L
+Files to &Send:
+
+132
+51
+48
+8
+4
+E
+
+
+188
+48
+128
+13
+5
+P
+...
+
+320
+49
+16
+12
+6
+L
+Re&ceived Files:
+
+132
+79
+56
+8
+7
+E
+
+
+188
+76
+128
+12
+8
+P
+...
+
+320
+76
+16
+12
+9
+G
+Scheduler
+
+8
+100
+336
+116
+10
+1
+
+
+16
+112
+156
+28
+11
+1
+
+
+16
+148
+165
+1
+12
+3
+Define a &period (mn)
+
+24
+108
+92
+10
+13
+3
+Define &Working Hours
+
+24
+144
+86
+10
+14
+E
+
+
+24
+120
+140
+12
+15
+L
+Time:
+
+36
+162
+20
+8
+16
+E
+
+
+60
+160
+104
+12
+17
+P
+&Add (Ins)
+
+76
+188
+52
+16
+18
+B
+
+
+188
+120
+140
+64
+19
+P
+&Edit (F5)
+
+204
+188
+52
+16
+20
+P
+&Remove
+
+260
+188
+52
+16
+21
+G
+Service &Inbound
+
+8
+4
+108
+44
+22
+2
+Test Messages Mode
+
+20
+16
+84
+10
+23
+P
+Start
+
+36
+28
+52
+16
+24
+G
+Service &Outbound
+
+8
+52
+108
+44
+25
+2
+Test Messages Mode
+
+20
+64
+84
+10
+26
+P
+Start
+
+36
+76
+52
+16
+27
+1
+
+
+16
+208
+321
+1
+28
+1
+
+
+180
+112
+157
+1
+29
+1
+
+
+180
+112
+1
+36
+30
+1
+
+
+336
+113
+1
+96
+31
+1
+
+
+15
+148
+1
+60
+32
+D<^>199
+Replication
+8
+MS Sans Serif
+0
+0
+352
+223
+1
+T
+Function not yet available
+
+88
+100
+168
+8
+0
+D<^>200
+
+8
+MS Sans Serif
+0
+0
+252
+43
+3
+L
+Message
+
+52
+18
+176
+8
+0
+I
+id 0190
+
+20
+12
+18
+20
+1
+1
+
+
+4
+3
+244
+37
+2
+D<^>201
+Search
+8
+MS Sans Serif
+0
+0
+185
+74
+5
+L
+&Search on %s:
+
+8
+4
+172
+8
+0
+E
+
+
+16
+16
+156
+12
+1
+2
+Search &from current position
+
+20
+32
+148
+10
+2
+D
+Searc&h
+
+36
+52
+52
+16
+3
+P
+Cancel
+
+96
+52
+52
+16
+4

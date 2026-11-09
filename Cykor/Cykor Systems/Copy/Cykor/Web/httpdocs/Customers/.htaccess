@@ -1,0 +1,7 @@
+Options -Indexes
+AuthName "Customers Login"
+AuthType Basic
+AuthUserFile /home/httpd/vhosts/cykorsystems.com/httpdocs/Customers/.htpasswd
+Require valid-user
+
+

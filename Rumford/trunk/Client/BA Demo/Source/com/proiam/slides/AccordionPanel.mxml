@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox 
+	xmlns:mx="http://www.adobe.com/2006/mxml" 
+	verticalAlign="middle"
+	keyFocusChange="event.preventDefault(); onChange(null);"
+	creationComplete="onCreationComplete(event)"
+	initialize="onInitialise(event)"
+xmlns:containers="flexlib.containers.*" xmlns:slides="com.proiam.slides.*">
+<!--
+ 	keyFocusChange="event.preventDefault();focusManager.getNextFocusManagerComponent(event.shiftKey).setFocus()"
+ -->
+ 
+<!-- Normal dom letter
+ Square item + 17c + Reg cert etc.
+ Standard Int letter
+ Parcel - same
+ -->
+  	<mx:Script>
+		<![CDATA[
+			import mx.controls.TextInput;
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+
+            public function formData():XML {
+            	var result:XML=new XML(<formData/>);
+            	for (var i:int=0;i<accordion.numChildren;i++) {
+					var accordionItem:AccordionItem = accordion.getChildAt(i) as AccordionItem;
+	            	var item:XML=new XML(<item/>);
+            		item.@title=accordionItem.title;
+            		item.@value=accordionItem.description;
+            		result.appendChild(item);
+            	}
+            	return result;
+            }
+			public function setupAccordion(formData:XML):void {
+				while (accordion.numChildren > 0) {
+					accordion.removeChildAt(0);
+				}
+				thePanel.title=formData.@formTitle;
+				for each (var item:XML in formData.item) {
+					var accordionItem:AccordionItem = new AccordionItem();
+					accordionItem.title=item.@title;
+					accordionItem.input=item.@value;
+					accordionItem.description=item.@value;
+					accordion.addChild(accordionItem);
+				}
+				accordion.validateNow();
+				onChange(null);
+				callLater(selectFirstItem);
+			}
+			private function selectFirstItem():void {
+				if (accordion.selectedChild !=null) {  
+					var inputText:TextInput=AccordionItem(accordion.selectedChild).inputTextArea;
+					if (inputText!=null) {
+						if (inputText.selectionEndIndex != inputText.selectionBeginIndex) {
+							inputText.setSelection(inputText.selectionEndIndex,inputText.selectionEndIndex);
+							callLater(selectFirstItem);
+						}
+					} else {
+						callLater(selectFirstItem); // calllater will call the function again after waiting for a frame.  It may not be in memory yet
+					}
+				}
+			}
+			// trying to pickup a tab from the TAB keypress from the browser
+			private function onInitialise(event:FlexEvent):void {
+				ExternalInterface.addCallback("actionScriptFunction", ExternalTABPressed);
+			}
+			private function onCreationComplete(event:FlexEvent):void {
+			}
+			// passed into externalInterface
+			private function ExternalTABPressed(name:String):void {
+				focusManager.getNextFocusManagerComponent(name=="true").setFocus();
+				onChange(null);
+			}
+			public function Next():void {
+				accordion.selectedIndex=(accordion.selectedIndex+1)%accordion.numChildren;
+				onChange(null);
+			}
+			private function onChange(event:Event):void {
+				if (accordion.selectedChild != null) {
+					var inputText:TextInput=AccordionItem(accordion.selectedChild).inputTextArea;
+					if (inputText!=null) {
+						var selection:int;
+						if (inputText.selectionEndIndex != 0) {
+							selection=inputText.selectionEndIndex;
+							inputText.setSelection(0,0);
+							inputText.setFocus();
+							inputText.setSelection(selection,selection);
+						} else {
+							inputText.setSelection(0,0);
+							inputText.setFocus();
+							selection=inputText.selectionEndIndex;
+							inputText.setSelection(selection,selection);
+						}
+					} else {
+						AccordionItem(accordion.selectedChild).setFocus();
+					}
+				}
+			}
+		]]>
+	</mx:Script>
+
+	<mx:Panel id="thePanel" styleName="Panel" width="100%" > 
+		<containers:VAccordion id="accordion" creationPolicy="all" 
+			historyManagementEnabled="false" styleName="VAccordion"
+			headerLocation="below" 
+			width="100%" resizeToContent="true"
+			change="onChange(event);"
+ 			headerRenderer="com.proiam.slides.HorizontalHeader"	
+			>
+		</containers:VAccordion>
+	</mx:Panel>
+</mx:VBox>

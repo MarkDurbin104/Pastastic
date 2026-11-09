@@ -1,0 +1,54 @@
+// CRC 00000000
+OfficesRoutes {
+   Version { 1 }
+   System { 'Qatar Posts' }
+   Schedules {
+      CentralSystem {
+         MainPOBuilding          { 10 } // Central System calls Main PO Building every 10 minutes
+         AlMirqabAlJadeedAlNasr  { 30 } // Central System calls Al Mirqab Al Jadeed/Al Nasr every 30 minutes
+      }
+   }                     
+   Offices {
+      CentralSystem            { Title { 'Central System'              } AccessVia { '10.10.1.13'   } Code { 9000 } I3Code { 90 } SCode {O90} Automated }
+      MainPOBuilding           { Title { 'Main PO Building'            } AccessVia { '192.168.0.58' } Code { 1000 } I3Code { 10 } SCode {O10} Automated }
+      DohaInternationalAirport { Title { 'Doha International Airport'  } AccessVia { '10.10.3.10' 	 } Code { 1100 } I3Code { 11 } SCode {O11} }
+      AbdulazizBinAhmadStreet  { Title { 'Abdulaziz Bin Ahmad Street'  } AccessVia { '10.10.3.11' 	 } Code { 1200 } I3Code { 12 } SCode {O12} }
+      AlMansoura               { Title { 'Al Mansoura'                 } AccessVia { '10.10.3.12' 	 } Code { 1300 } I3Code { 13 } SCode {O13} }
+      AlMirqabAlJadeedAlNasr   { Title { 'Al Mirqab Al Jadeed/Al Nasr' } AccessVia { '10.10.3.13' 	 } Code { 1400 } I3Code { 14 } SCode {O14} Automated }
+      DohaPostOffice           { Title { 'Doha Post Office'            } AccessVia { '10.10.3.14' 	 } Code { 1500 } I3Code { 15 } SCode {O15} }
+      LuLuHypermarket          { Title { 'LuLu Hypermarket'            } AccessVia { '10.10.3.15' 	 } Code { 1600 } I3Code { 16 } SCode {O16} }
+      NorthKhalifaTown         { Title { 'North Khalifa Town'          } AccessVia { '10.10.3.16' 	 } Code { 1700 } I3Code { 17 } SCode {O17} }
+      SouthKhalifaTown         { Title { 'South Khalifa Town'          } AccessVia { '10.10.3.17' 	 } Code { 1800 } I3Code { 18 } SCode {O18} }
+      OldAirport               { Title { 'Old Airport'                 } AccessVia { '10.10.3.18' 	 } Code { 1900 } I3Code { 19 } SCode {O19} }
+      QatarUniversityFemale    { Title { 'Qatar University – Female'   } AccessVia { '10.10.3.19' 	 } Code { 2000 } I3Code { 20 } SCode {O20} }
+      AlGhuwairiya             { Title { 'Al Ghuwairiya'               } AccessVia { '10.10.3.20' 	 } Code { 2100 } I3Code { 21 } SCode {O21} }
+      AlKhor                   { Title { 'Al Khor'                     } AccessVia { '10.10.3.21' 	 } Code { 2200 } I3Code { 22 } SCode {O22} }
+      AlKhorResdComplex        { Title { 'Al Khor Resd. Complex'       } AccessVia { '10.10.3.22' 	 } Code { 2300 } I3Code { 23 } SCode {O23} }
+      AlKharaitiyat            { Title { 'Al Kharaitiyat'              } AccessVia { '10.10.3.23' 	 } Code { 2400 } I3Code { 24 } SCode {O24} }
+      AlRayyan                 { Title { 'Al Rayyan'                   } AccessVia { '10.10.3.24' 	 } Code { 2500 } I3Code { 25 } SCode {O25} }
+      AlShahhniyah             { Title { 'Al Shahhniyah'               } AccessVia { '10.10.3.25' 	 } Code { 2600 } I3Code { 26 } SCode {O26} }
+      AlShamalTown             { Title { 'Al Shamal Town'              } AccessVia { '10.10.3.26' 	 } Code { 2700 } I3Code { 27 } SCode {O27} }
+      AlWakrah                 { Title { 'Al Wakrah'                   } AccessVia { '10.10.3.27' 	 } Code { 2800 } I3Code { 28 } SCode {O28} }
+      CentralMarket            { Title { 'Central Market'              } AccessVia { '10.10.3.28' 	 } Code { 2900 } I3Code { 29 } SCode {O29} }
+      Dukhan                   { Title { 'Dukhan'                      } AccessVia { '10.10.3.29' 	 } Code { 3000 } I3Code { 30 } SCode {O30} }
+      IndustrialArea           { Title { 'Industrial Area'             } AccessVia { '10.10.3.30' 	 } Code { 3100 } I3Code { 31 } SCode {O31} }
+      Mesaieed                 { Title { 'Mesaieed'                    } AccessVia { '10.10.3.31' 	 } Code { 3200 } I3Code { 32 } SCode {O32} }
+      UmmSalalAli              { Title { 'Umm Salal Ali'               } AccessVia { '10.10.3.32' 	 } Code { 3300 } I3Code { 33 } SCode {O33} }
+   }
+   Routes {
+      Data {
+         CentralSystem {
+             MainPOBuilding          ,DohaInternationalAirport,AbdulazizBinAhmadStreet 
+             AlMansoura              ,AlMirqabAlJadeedAlNasr  ,DohaPostOffice          
+             LuLuHypermarket         ,NorthKhalifaTown        ,SouthKhalifaTown        
+             OldAirport              ,QatarUniversityFemale   ,AlGhuwairiya            
+             AlKhor                  ,AlKhorResdComplex       ,AlKharaitiyat           
+             AlRayyan                ,AlShahhniyah            ,AlShamalTown            
+             AlWakrah                ,CentralMarket           ,Dukhan                  
+             IndustrialArea          ,Mesaieed                ,UmmSalalAli             
+         }
+      }
+   }
+}
+
+

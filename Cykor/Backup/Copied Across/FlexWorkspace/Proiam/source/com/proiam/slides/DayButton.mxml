@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+	xmlns:slides="com.proiam.slides.*"
+	width="130" height="38"
+	backgroundImage="@Embed(source='embedded/DayButton.svg')" 
+	initialize="day=getDayName();"
+	backgroundSize="100%"
+	verticalScrollPolicy="off" horizontalScrollPolicy="off"
+	styleName="dayButton">
+	<mx:Script>
+		<![CDATA[
+
+			private var _offset:int = 0;
+			[Bindable]
+			[Inspectable]
+			public function get offset():int {
+				return _offset;
+			}
+			public function set offset(value:int):void {
+				_offset=value;
+				day=getDayName();
+			}
+			[Bindable]
+			public var day:String="Today";
+			private function getDayName():String
+			{
+				if (offset == -1) return day; // not using offset, setting day directly
+
+				var days:Array = new Array("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday","Tomorrow");
+				var now:Date =new Date();
+				var dayToShow:int = now.day;
+				
+			    if (offset == 0) 
+			    	return days[7];  // show tomorrow it as "tomorrow"
+			    else
+					return days[(dayToShow+offset)%7];
+			}
+			
+		]]>
+	</mx:Script>	
+	<mx:Label  text="{day}" horizontalCenter="-2"  verticalCenter="-2"  width="100%"	/> 
+</mx:Canvas>

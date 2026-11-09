@@ -1,0 +1,1924 @@
+   1: //===============|========================================================|
+   2: //               |                                                        |
+   3: // Module        | COMPKEY.C                                              |
+   4: //               |                                                        |
+   5: // Project       | Compass In-Unit Trading Project                        |
+   6: //               |                                                        |
+   7: // Description   | EPoS Keymap Maintenance Application                    |
+   8: //               |                                                        |
+   9: // Functions     |                                                        |
+  10: //               |                                                        |
+  11: // Global Vars.  | None.                                                  |
+  12: //               |                                                        |
+  13: //===============|========================================================|
+  14: //               |                                                        |
+  15: // Copyright (c) | Unisys Limited                                         |
+  16: //               | 22 Southwark Bridge Road                               |
+  17: //               | London SE1 9HB                                         |
+  18: //               |                                                        |
+  19: // Author        | Mark Durbin                                            |
+  20: //               | P.S.L.                                                 |
+  21: //               | 160 Charles street, Greenhithe, Kent. DA9 9AJ          |
+  22: //               |                                                        |
+  23: //===============|========================================================|
+  24: // Date          | Modifications                                 | By     |
+  25: //===============|===============================================|========|
+  26: // 23/04/96      | Initial Version DEMO Screen Layout            | MJD    |
+  27: //===============|========================================================|
+  28: // 03/05/96      | Initial Version Added File read and keyboard  | MJD    |
+  29: //               | Functions for moving around                   |        |
+  30: //               | Added font overload and layout in file        |        |
+  31: //               | for other terminal types                      |        |
+  32: //===============|========================================================|
+  33: //               |                                               |        |
+  34: //===============|========================================================|
+  35: 
+  36: #define __COMPKEY_C
+  37: 
+  38: 
+  39: //=========================================================================
+  40: // Include Section
+  41: //=========================================================================
+  42: 
+  43: #include <stdio.h>       // For stdout printf() etc...
+  44: #include <stdlib.h>      // For max()
+  45: #include <string.h>      // For strlen() vsprintf() etc...
+<INSERT2>
+  46: #include <stdarg.h>      // For va_arg va_start() va_end() etc...
+<END>
+  47: #include <memory.h>      // For memset() etc...
+  48: #include <ctype.h>       // For isdigit() isalpha().
+<INSERT2>
+  49: #include <time.h>        // For time() & time_t
+<END>
+  50: 
+  51: #include <dos.h>         // BORLAND For delay()
+<INSERT2>
+  52: #include <direct.h>      // BORLAND For mkdir()
+<END>
+  53: #include <conio.h>       // BORLAND For getch() kbhit() cprintf() etc...
+  54: 
+  55: #include "defines.h"     // definitions
+  56: #include "types.h"       // type definitions
+  57: #include "fileio.h"      // File i/o declarations
+  58: #include "videokbd.h"    // Video & Keyboard declarations
+  59: #include "keydef.h"      // key code definitions
+  60: #include "config.h"      // key code definitions
+  61: #include "compkey.h"      // key code definitions
+  62: 
+  63: 
+  64: 
+  65: //=========================================================================
+  66: // Globals Section
+  67: //=========================================================================
+  68: 
+  69: CHAR G_helpfile   [MAXSTRLEN]; // e.g. \KEYMAINT\HELPFILE.OMR
+  70: CHAR G_layoutfile [MAXSTRLEN]; // e.g. \KEYMAINT\LAYOUT.OMR
+  71: CHAR G_keymapfile [MAXSTRLEN]; // e.g. \KEYMAINT\999\KEYMAP99.OMR
+  72: CHAR G_plufile    [MAXSTRLEN]; // e.g. \KEYMAINT\999\PLU99.OMR
+  73: CHAR G_keymapback [MAXSTRLEN]; // e.g. \KEYMAINT\999\KEYMAP99.BAK
+  74: CHAR G_pluback    [MAXSTRLEN]; // e.g. \KEYMAINT\999\PLU99.BAK
+  75: CHAR G_plu_keypath[MAXSTRLEN]; // e.g. \KEYMAINT\999
+  76: CHAR G_rplufile   [MAXSTRLEN]; // e.g. \ISS\POSUPDT\POSom999.FLT
+  77: CHAR G_lrplufile  [MAXSTRLEN]; // e.g. \KEYMAINT\999\LOCALPLU.OMR
+  78: CHAR G_lrpluback  [MAXSTRLEN]; // e.g. \KEYMAINT\999\LOCALPLU.BAK
+  79: 
+  80: //=========================================================================
+  81: // Define Section
+  82: //=========================================================================
+  83: 
+  84: //=========================================================================
+  85: // Declarations Section
+  86: //=========================================================================
+  87: 
+  88: //=========================================================================
+  89: // Definitions Section
+  90: //=========================================================================
+<INSERT2>
+  91: void AuditLog(CHAR *format,...)
+  92: {
+  93:     static CHAR outstr[MAXSTRLEN];                 // output string buffer
+  94:     static BOOL donestart=FALSE;
+  95:     va_list ap;                                    // variable arg. list ptr.
+  96:     time_t t;
+  97:     FILE *fp;
+  98: 
+  99:     fp=fopen(AUDITFILE,"a+");
+ 100:     if (fp==NULL) {
+ 101:         fprintf(stderr,"Can't Open Audit Trail!\n");
+ 102:         return;
+ 103:     }
+ 104: 
+ 105:     va_start(ap,format);                           // start variable arg. list
+ 106:     vsprintf(outstr,format,ap);                    // convert args to string
+ 107:     va_end(ap);                                    // end variable arg. list
+ 108: 
+ 109:     t=time(NULL);
+ 110: 
+ 111:     if (!donestart) {
+ 112:         fprintf(fp,"-------------------------------------------------------------------------------\n");
+ 113:         fprintf(fp,"Audit Log Start %s",ctime(&t));
+ 114:         fprintf(fp,"-------------------------------------------------------------------------------\n");
+ 115:         donestart=TRUE;
+ 116:     }
+ 117:     fprintf(fp,"%s %s",outstr,ctime(&t));
+ 118:     fclose(fp);
+ 119: }
+<END>
+ 120: void RunHelp(INT helplevel)
+ 121: {
+ 122:     static UINT scrbuffer[25*80];
+ 123:     static LINELINK *firstline=NULL;
+ 124:     static LINELINK *lines=NULL;
+ 125:     static LINELINK *curline;
+ 126:     CHAR line[MAXSTRLEN];
+ 127:     INT linenum=0;
+ 128: //    BOOL xit=FALSE;
+ 129: //    INT key;
+ 130: //    INT topline=0;
+ 131: //    INT numlines;
+ 132:     FILE *fp;
+ 133: 
+ 134:     if (lines==NULL) {
+ 135:         if ((fp=fopen(G_helpfile,"r"))!=NULL) {
+ 136:             while (fgets(line,MAXSTRLEN,fp)!=NULL) {
+ 137:                 if ((curline=malloc(sizeof(LINELINK)))!=NULL) {
+ 138:                     curline->line=strdup(CleanBuf(line));
+ 139:                     curline->next=NULL;
+ 140:                     if (lines==NULL) {
+ 141:                         lines=curline;
+ 142:                         firstline=lines;
+ 143:                     } else {
+ 144:                         lines->next=curline;
+ 145:                         lines=curline;
+ 146:                     }
+ 147:                 }
+ 148:             }
+ 149:         }
+ 150:         fclose(fp);
+ 151:         lines=firstline;
+ 152:     }
+ 153:     memcpy(scrbuffer,((UINT far *)SCREENBASE),25*80*2);
+ 154: 
+ 155: //    StatusLine(G_tsearch,0);
+ 156: 
+ 157:     SetViewPort(0,0,79,21,G_colour[27]);
+ 158:     Rectangle(0,0,79,21,G_colour[26],0);
+ 159:     if (lines==NULL) {
+ 160:         OutFormat(1,1,G_colour[28],"No Help Available For Help Level %d",helplevel);
+ 161:     } else {
+ 162:         curline=lines;
+ 163:         while ((curline!=NULL) && (linenum<19)) {
+ 164:             if (curline->line[0]=='0'+helplevel) {
+ 165:                 OutFormat(1,1+(linenum++),G_colour[28],"%s",&(curline->line[2]));
+ 166:             }
+ 167:             curline=curline->next;
+ 168:         }
+ 169:     }
+ 170:     getch();
+ 171:     SetViewPort(0,0,80,25,0);
+ 172:     memcpy(((UINT far *)SCREENBASE),scrbuffer,25*80*2);
+ 173: }
+ 174: 
+ 175: INT ListPLULines(INT x,INT y,INT len,INT topline,INT highlight,SORTRPLU *plulist,LONG *curplu)
+ 176: {
+ 177:     INT retval=0;
+ 178:     INT starty=y;
+ 179:     while (plulist!=NULL) {
+ 180:         if ((retval>=topline)&&(retval<=topline+len)) {
+ 181:             OutFormat(x   ,y,G_colour[6],"%06ld "   ,plulist->elem->plu_code);
+ 182:             OutFormat(x+7 ,y,G_colour[8],"%-25.25s ",plulist->elem->desc);
+ 183:             OutFormat(x+33,y,G_colour[7],
+ 184:                 "    %3ld.%02ld %3ld.%02ld %3ld.%02ld %3ld.%02ld %3ld.%02ld %3ld.%02ld",
+ 185:                 plulist->elem->price[0]/100L,plulist->elem->price[0]%100L,
+ 186:                 plulist->elem->price[1]/100L,plulist->elem->price[1]%100L,
+ 187:                 plulist->elem->price[2]/100L,plulist->elem->price[2]%100L,
+ 188:                 plulist->elem->price[3]/100L,plulist->elem->price[3]%100L,
+ 189:                 plulist->elem->price[4]/100L,plulist->elem->price[4]%100L,
+ 190:                 plulist->elem->price[5]/100L,plulist->elem->price[5]%100L);
+ 191:             if (highlight==retval) {
+ 192:                 DrawCBar(x,y,78,G_colour[25]);
+ 193:                 *curplu=plulist->elem->plu_code;
+ 194:             }
+ 195:             y++;
+ 196:         }
+ 197:         retval++;
+ 198:         plulist=plulist->next;
+ 199:     }
+ 200:     while (y<=starty+len) OutFormat(x,y++,G_colour[7],"%78.78s","");
+ 201:     return retval;
+ 202: }
+ 203: 
+ 204: SORTRPLU *SortList(REMACSPLU *plulist,BOOL by_code)
+ 205: {
+ 206:     SORTRPLU *firstelem=NULL;
+ 207:     SORTRPLU *traverse;
+ 208:     SORTRPLU *lastelem;
+ 209:     SORTRPLU *curelem;
+ 210:     BOOL additem;
+ 211: 
+ 212:     while (plulist!=NULL) {
+ 213:         if ((curelem=malloc(sizeof(SORTRPLU)))==NULL) return NULL;
+ 214:         curelem->elem=plulist;
+ 215:         if (firstelem==NULL) {
+ 216:             firstelem=curelem;
+ 217:             firstelem->next=NULL;
+ 218:         } else {
+ 219:             traverse=firstelem;
+ 220:             lastelem=NULL;
+ 221:             while (traverse!=NULL) {
+ 222:                 if (by_code) {
+ 223:                     additem=(curelem->elem->plu_code<traverse->elem->plu_code);
+ 224:                 } else {
+ 225:                     additem=(strcmp(curelem->elem->desc,traverse->elem->desc)<=0);
+ 226:                 }
+ 227:                 if (additem) {
+ 228:                     if (lastelem==NULL) {
+ 229:                         curelem->next=traverse;
+ 230:                         firstelem=curelem;
+ 231:                     } else {
+ 232:                         curelem->next=traverse;
+ 233:                         lastelem->next=curelem;
+ 234:                     }
+ 235:                     break;
+ 236:                 } else {
+ 237:                     if (traverse->next==NULL) {
+ 238:                         curelem->next=NULL;
+ 239:                         traverse->next=curelem;
+ 240:                         break;
+ 241:                     }
+ 242:                 }
+ 243:                 lastelem=traverse;
+ 244:                 traverse=traverse->next;
+ 245:             }
+ 246:         }
+ 247:         plulist=plulist->next;
+ 248:     }
+ 249:     return firstelem;
+ 250: }
+ 251: //==========================================================================
+ 252: //F RunSearch
+ 253: //S Run the Search Function
+ 254: //D Run the Search Function
+ 255: //R PLU selected or 0 for none
+ 256: void RunSearch(MAINDS *ds,LONG *selected_plu)
+ 257: {
+ 258:     static UINT scrbuffer[25*80];
+ 259:     static SORTRPLU *code_list=NULL; 
+ 260:     static SORTRPLU *desc_list=NULL;
+ 261:     SORTRPLU *curlist;
+ 262:     BOOL xit=FALSE;
+ 263:     INT key;
+ 264:     INT topline=0;
+ 265:     INT curline=0;
+ 266:     INT numlines;
+ 267:     LONG curplu;
+ 268: 
+ 269:     memcpy(scrbuffer,((UINT far *)SCREENBASE),25*80*2);
+ 270: 
+ 271:     StatusLine(G_tsearch,0);
+ 272: 
+ 273:     SetViewPort(0,0,79,21,G_colour[18]);
+ 274:     Rectangle(0,0,79,21,G_colour[17],0);
+ 275: 
+ 276:     if (code_list==NULL) code_list=SortList(ds->rplulist,TRUE);
+ 277:     if (desc_list==NULL) desc_list=SortList(ds->rplulist,FALSE);
+ 278: 
+ 279:     curlist=code_list;
+ 280:     if (curlist==NULL) return;
+ 281: 
+ 282:     while (!xit) {
+ 283:         numlines=ListPLULines(1,1,19,topline,curline,curlist,&curplu);
+ 284:         key=GetKey();
+ 285:         switch (key) {
+ 286:             case F09 :
+ 287:                 RunHelp(SEARCHHELP1);
+ 288:                 break;
+ 289:             case STAB :
+ 290:             case UP :
+ 291:                 if (curline>topline) {
+ 292:                     curline--;
+ 293:                 } else {
+ 294:                     if (topline>0) {
+ 295:                         topline--;
+ 296:                         curline--;
+ 297:                     }
+ 298:                 }
+ 299:                 break;
+ 300:             case PGUP :
+ 301:                 if (topline>19) {
+ 302:                     topline-=19;
+ 303:                     curline-=19;
+ 304:                 } else {
+ 305:                     topline=0;
+ 306:                     curline=0;
+ 307:                 }
+ 308:                 break;
+ 309:             case TAB :
+ 310:             case DOWN :
+ 311:                 if (curline<numlines-1) {
+ 312:                     if (curline>=topline+19) {
+ 313:                         topline++;
+ 314:                     }
+ 315:                     curline++;
+ 316:                 }
+ 317:                 break;
+ 318:             case PGDN :
+ 319:                 if (topline<numlines-20) {
+ 320:                     topline+=19;
+ 321:                     curline+=19;
+ 322:                 } else {
+ 323:                     topline=numlines-20;
+ 324:                     curline=numlines-1;
+ 325:                 }
+ 326:                 break;
+ 327:             case ENTER :
+ 328:                 *selected_plu=curplu;
+ 329:                 xit=TRUE;
+ 330:                 break;
+ 331:             case ESC :
+ 332:                 xit=TRUE;
+ 333:                 break;
+ 334:             default :
+ 335:                 if ((key>31)&&(key<126)) {
+ 336:                     curlist=desc_list;
+ 337:                     topline=0;
+ 338:                     while (curlist!=NULL) {
+ 339:                         if (toupper(curlist->elem->desc[0])==toupper(key)) {
+ 340:                             break;
+ 341:                         }
+ 342:                         topline++;
+ 343:                         curlist=curlist->next;
+ 344:                     }
+ 345:                     if (curlist==NULL) {
+ 346:                         topline=0;
+<INSERT2>
+ 347:                         Beep();
+<END>
+<SPACE>
+
+
+<END>
+ 348:                     }
+ 349:                     curlist=desc_list;
+ 350:                     curline=topline;
+ 351:                 } else {
+<INSERT2>
+ 352:                     Beep();
+<END>
+<SPACE>
+
+
+<END>
+ 353:                 }
+ 354:         }
+ 355:     }
+ 356:     SetViewPort(0,0,80,25,0);
+ 357:     memcpy(((UINT far *)SCREENBASE),scrbuffer,25*80*2);
+ 358: }
+ 359: //__________________________________________________________________________
+ 360: BOOL isvalid(INT *key,CHAR type)
+ 361: {
+ 362:     if ((*key<32)||(*key>126)) return FALSE;
+ 363:     switch (type) {
+<INSERT2>
+ 364:         case 'D' :
+ 365:             if (isdigit(*key)||(*key=='/')) return TRUE;
+ 366:             break;
+ 367:         case '.' :
+ 368:             if (isalnum(*key)||(*key=='\\')||(*key=='.')) return TRUE;
+ 369:             break;
+<END>
+ 370:         case 'X' :
+ 371:             if (isalnum(*key)||(*key==' ')) return TRUE;
+ 372:             break;
+ 373:         case '9' :
+ 374:             if (isdigit(*key)) return TRUE;
+ 375:             break;
+ 376:         case 'Y' :
+ 377:             if ((toupper(*key)=='Y')||(toupper(*key)=='N')) {
+ 378:                 *key=toupper(*key);
+ 379:                 return TRUE;
+ 380:             }
+ 381:             break;
+ 382:     }
+ 383:     return FALSE;
+ 384: }
+ 385: //==========================================================================
+ 386: //F InputLine
+ 387: //S Input a character string
+ 388: //D Input a character string
+ 389: //P Zero based X co-ordinate (origin Top left)
+ 390: //P Zero based Y co-ordinate (origin Top left)
+ 391: //P The attribute
+ 392: //P The string to start with
+ 393: //P The maximum width of the input string
+ 394: //P The current keyboard cursor x co-ordinate (the flashing cursor)
+ 395: //P The current keyboard cursor y co-ordinate 
+ 396: //P The current keyboard cursor width 
+ 397: //P The current keyboard cursor height 
+ 398: //P The last key pressed (the key that caused exit)
+ 399: //P input format type 'X' alphanum '9' numeric 'Y' yes/no
+ 400: //R The input string
+ 401: CHAR *InputLine(MAINDS *ds,INT x,INT y,INT attr,CHAR *str,INT maxwid,INT cx,INT cy,INT *lastkey,CHAR type)
+ 402: {
+ 403:     static CHAR buffer[MAXSTRLEN];
+ 404:     INT cursor;
+ 405:     INT key;
+ 406:     BOOL xit=FALSE;
+ 407: 
+ 408:     if (str==NULL)
+ 409:         buffer[0]='\0';
+ 410:     else
+ 411:         strcpy(buffer,str);
+ 412: 
+ 413:     cursor=strlen(buffer);
+ 414:     while (!xit) {
+ 415:         OutFormat(x,y,attr,"%-*.*s",maxwid,maxwid,buffer);
+ 416:         LargeCursor();
+<INSERT2>
+ 417:         PlaceCursor(x+cursor+1,y+1);
+ 418: //        gotoxy(x+cursor+1,y+1);
+ 419:         if (cx>=0) {
+ 420:             KeyCursor(GRIDLEFT+1+cx*ds->keys.width,GRIDTOP+1+cy*ds->keys.height,
+<END>
+ 421:                   ds->keys.width-1,ds->keys.height-1,G_colour[0]);
+<INSERT2>
+ 422:         }
+<END>
+ 423:         key=GetKey();
+ 424:         HideCursor();
+ 425:         switch (key) {
+ 426:             case BKSP :
+ 427:                 if (cursor>0) cursor--;
+ 428:                 buffer[cursor]='\0';
+ 429:                 break;
+ 430:             case ESC :
+ 431:                 if (str==NULL)
+ 432:                     buffer[0]='\0';
+ 433:                 else
+ 434:                     strcpy(buffer,str);
+ 435:                 cursor=strlen(buffer);
+ 436:                 xit=1;
+ 437:                 break;
+ 438:             case STAB :
+ 439:             case TAB :
+ 440:             case ENTER :
+ 441:             case F01 :
+ 442:             case F02 :
+ 443:             case PGDN:
+ 444:             case PGUP:
+ 445:             case INS :
+ 446:             case DEL :
+ 447:                 xit=TRUE;
+ 448:                 break;
+ 449:             case F09 :
+ 450:                 RunHelp(EDITHELP);
+ 451:                 break;
+ 452:             default :
+ 453:                 if ((cursor<maxwid)&&(isvalid(&key,type))) {
+ 454:                     buffer[cursor++]=(CHAR)key;
+ 455:                     buffer[cursor]='\0';
+ 456:                 } else {
+<INSERT2>
+ 457:                     Beep();
+<END>
+<SPACE>
+
+
+<END>
+ 458:                 }
+ 459:         }
+ 460:     }
+ 461:     *lastkey=key;
+ 462:     return buffer;
+ 463: }
+ 464: //__________________________________________________________________________
+ 465: 
+ 466: //==========================================================================
+ 467: //F TitleBar
+ 468: //S Output the Title bar
+ 469: //D Output the Title bar
+ 470: //P The product code i.e. PLU
+ 471: //P The product description
+ 472: //P The 12 character product description for the key top
+ 473: //P Value (price level) 1
+ 474: //P Value (price level) 2
+ 475: //P Value (price level) 3
+ 476: //P Value (price level) 4
+ 477: //P Value (price level) 5
+ 478: //P Value (price level) 6
+ 479: //P TRUE kitchen print == 'Y', FALSE kitchen print == 'N'
+ 480: //P TRUE key is a MENU key, FALSE key is a Single Shot key
+ 481: void TitleBar(LONG prodcode,CHAR *desc,CHAR *desc12,LONG v1,LONG v2,LONG v3,LONG v4,LONG v5,LONG v6,BOOL kp,BOOL state)
+ 482: {
+ 483:     Rectangle(0,0,79,3,G_colour[5],TOPBTYPE);
+ 484:     if ((state&1)==1) {
+ 485:         OutFormat(1,1,G_colour[6],"*MENU* ");
+ 486:     } else {
+ 487:         if (prodcode==0) {
+ 488:             OutFormat(1,1,G_colour[7],"%*.*s",78,78,"");
+ 489:             OutFormat(1,2,G_colour[7],"%*.*s",78,78,"");
+ 490:             return;
+ 491:         }
+ 492:         OutFormat(1,1,G_colour[6],"%06ld ",prodcode);
+ 493:     }
+ 494:     OutFormat(9,1,G_colour[7],"%-24.24s",desc);
+ 495:     if ((state&1)==1) {
+ 496:         OutFormat(38,1,G_colour[7],"%*.*s",41,41,"");
+ 497:     } else {
+ 498:         OutFormat(38,1,G_colour[7],
+ 499:           "%3ld.%02ld %3ld.%02ld %3ld.%02ld %3ld.%02ld %3ld.%02ld %3ld.%02ld",
+ 500:           v1/100L,v1%100L,v2/100L,v2%100L,v3/100L,v3%100L,
+ 501:           v4/100L,v4%100L,v5/100L,v5%100L,v6/100L,v6%100L);
+ 502:     }
+ 503:     if (desc12==NULL) {
+ 504:         OutFormat(9,2,G_colour[8],"%-12.12s ",desc);
+ 505:     } else {
+ 506:         OutFormat(9,2,G_colour[8],"%-12.12s ",desc12);
+ 507:     }
+ 508:     if ((state&2)==2) {
+ 509:         OutFormat(63,2,G_colour[9],"Kitchen Print");
+ 510:         OutFormat(77,2,G_colour[10] ,"%c ",((kp)?'Y':'N'));
+ 511:     } else {
+ 512:         OutFormat(63,2,G_colour[9],"%*.*s",16,16,"");
+ 513:     }
+ 514: }
+ 515: //__________________________________________________________________________
+ 516: 
+ 517: //==========================================================================
+ 518: //F StatusLine
+ 519: //S Output a series of status items in the status box
+ 520: //D Output a series of status items in the status box
+ 521: //P A series of string pairs the first is the key the second the action
+ 522: //P TRUE if the status bar should FLASH
+ 523: void StatusLine(CHAR **keys,BOOL flash)
+ 524: {
+ 525:     CHAR **curkey;
+ 526:     INT oddeve=0;
+ 527:     INT dwid=0;
+ 528:     INT fullwid=-1;
+ 529:     INT curofs;
+ 530: 
+ 531:     OutFormat(1,23,G_colour[13],"%*.*s",78,78,"");
+ 532:     curkey=keys;
+ 533:     while (*curkey!=NULL) {
+ 534:         if (oddeve) {
+ 535:             fullwid+=dwid+strlen(*curkey)+1;
+ 536:         } else {
+ 537:             dwid=strlen(*curkey)+1;
+ 538:         }
+ 539:         oddeve^=1;
+ 540:         curkey++;
+ 541:     }                           
+ 542:     curkey=keys;                
+ 543:     oddeve=0;                   
+ 544:     curofs=(78-fullwid)/2;      
+ 545:     while (*curkey!=NULL) {
+ 546:         if (oddeve) {
+ 547:             if (flash)
+ 548:                 OutFormat(curofs+dwid,23,G_colour[12]|0x80,*curkey);
+ 549:             else 
+ 550:                 OutFormat(curofs+dwid,23,G_colour[12],*curkey);
+ 551:             curofs+=dwid+strlen(*curkey)+1;
+ 552:         } else {
+ 553:             dwid=strlen(*curkey)+1;
+ 554:             if (flash)
+ 555:                 OutFormat(curofs,23,G_colour[11]|0x80,"%s ",*curkey);
+ 556:             else 
+ 557:                 OutFormat(curofs,23,G_colour[11],"%s ",*curkey);
+ 558:         }
+ 559:         oddeve^=1;
+ 560:         curkey++;
+ 561:     }
+ 562:     Rectangle(0,22,79,24,G_colour[14],BOTBTYPE);
+ 563: }
+ 564: //__________________________________________________________________________
+ 565: 
+ 566: //==========================================================================
+ 567: //F KeyInd
+ 568: //S Output the key movement indicator
+ 569: //D Output the key movement indicator i.e. show the key number, level and 
+ 570: //D available movement keys
+ 571: //P Zero based X co-ordinate (origin Top left)
+ 572: //P Zero based Y co-ordinate (origin Top left)
+ 573: //P The key number (department)
+ 574: //P Bit flags of available movement keys, bit 4-left 3-right 2-up 1-down 
+ 575: //P The current keyboard level (0-2)
+ 576: void KeyInd(INT x,INT y,INT key,INT bounds,INT level)
+ 577: {
+ 578:     if ((bounds&8)!=0)                       
+ 579:         OutChar(x  ,y+1,G_colour[15],27);      
+ 580:     else                                     
+ 581:         OutChar(x  ,y+1,G_colour[15],' ');     
+ 582:     if ((bounds&4)!=0)                       
+ 583:         OutChar(x+4,y+1,G_colour[15],26);
+ 584:     else
+ 585:         OutChar(x+4,y+1,G_colour[15],' ');
+ 586:     if ((bounds&2)!=0)
+ 587:         OutChar(x+2,y+0,G_colour[15],24);
+ 588:     else
+ 589:         OutChar(x+2,y+0,G_colour[15],' ');
+ 590:     if ((bounds&1)!=0)  
+ 591:         OutChar(x+2,y+2,G_colour[15],25);
+ 592:     else
+ 593:         OutChar(x+2,y+2,G_colour[15],' ');
+ 594: 
+ 595:     OutFormat(x+1,y+1,G_colour[15],"%03d",key);
+ 596:     OutFormat(x+8,y+1,G_colour[15],"Keyboard Level %d",level+1);
+ 597: }
+ 598: //__________________________________________________________________________
+ 599: 
+ 600: //==========================================================================
+ 601: //F SetCurXY
+ 602: //S Set the cursor X and Y co-ordinates from the key number
+ 603: //D Set the cursor X and Y co-ordinates from the key number
+ 604: //P The List of keyboard layout information
+ 605: //P The number of keys on the keyboard
+ 606: //P The address of the integer to set to the X co-ordinate
+ 607: //P The address of the integer to set to the Y co-ordinate
+ 608: void SetCurXY(ULONG *layout,INT numkeys,INT keypos,INT *cx,INT *cy)
+ 609: {
+ 610:     INT kindex;
+ 611:     for (kindex=0;kindex<numkeys;kindex++) {
+ 612:         if ((KEYVAL(layout[kindex])==keypos)) {
+ 613:             *cy=LINEVAL(layout[kindex]);
+ 614:             *cx=COLVAL (layout[kindex]);
+ 615:             return;
+ 616:         }
+ 617:     }
+ 618:     return;
+ 619: }
+ 620: //__________________________________________________________________________
+ 621: 
+ 622: //==========================================================================
+ 623: //F KeyAtPos
+ 624: //S Return TRUE if there is a key at a given X/Y co-ordinate
+ 625: //D Return TRUE if there is a key at a given X/Y co-ordinate
+ 626: //P The List of keyboard layout information
+ 627: //P The number of keys on the keyboard
+ 628: //P The X co-ordinate of the key
+ 629: //P The Y co-ordinate of the key
+ 630: //R TRUE there is a key, FALSE there isn't
+ 631: INT KeyAtPos(ULONG *layout,INT numkeys,INT x,INT y)
+ 632: {
+ 633:     INT kindex;
+ 634:     for (kindex=0;kindex<numkeys;kindex++) {
+ 635:         if ((LINEVAL(layout[kindex])==y)&&(COLVAL(layout[kindex])==x)) {
+ 636:             return KEYVAL(layout[kindex]);
+ 637:         }
+ 638:     }
+ 639:     return 0;
+ 640: }
+ 641: //__________________________________________________________________________
+ 642: 
+ 643: BOOL HasAssoc(INT dept,PLU *plulist)
+ 644: {
+ 645:     while (plulist!=NULL) {
+ 646:         if (plulist->assoc_dept==dept)
+ 647:             return TRUE;
+ 648:         plulist=plulist->next;
+ 649:     }
+ 650: //    return FALSE;
+ 651:     return TRUE;
+ 652: }
+ 653: BOOL ismenu(DEPARTMENT *dept)
+ 654: {
+ 655:     if (dept==NULL) return(FALSE);
+ 656: 
+ 657:     return (strcmp(dept->status.as_string,"01550050")==0);
+ 658: }
+ 659: //==========================================================================
+ 660: //F DrawKey
+ 661: //S Draw one key with it's text
+ 662: //D Draw one key with it's text
+ 663: //P The List of keyboard layout information
+ 664: //P The number of keys on the keyboard
+ 665: //P The key index
+ 666: //P The start X co-ordinate of the key
+ 667: //P The start Y co-ordinate of the key
+ 668: //P The keyboard overlay information
+ 669: //P The current keyboard level
+ 670: //P TRUE if the title bar should be draw as well (i.e. the current key)
+ 671: //P The width in characters of the key
+ 672: //P The height in characters of the key
+ 673: //R The available movement key flags (see KeyInd()) if the title is drawn
+ 674: INT DrawKey(MAINDS *ds,INT kindex,INT startx,INT starty,INT level,BOOL drawt)
+ 675: {
+ 676:     INT xofs;
+ 677:     INT yofs;
+ 678:     INT bxofs;
+ 679:     INT byofs;
+ 680:     INT kl;
+ 681:     INT kr;
+ 682:     INT kt;
+ 683:     INT kb;
+ 684:     INT lastline;
+ 685:     DEPARTMENT *dept;
+ 686:     PLU *plu;
+ 687:     REMACSPLU *rplu;
+ 688: 
+ 689:     xofs=COLVAL (ds->layout[kindex]);
+ 690:     yofs=LINEVAL(ds->layout[kindex]);
+ 691: 
+ 692:     kl=KeyAtPos(ds->layout,ds->keys.number,xofs-1,yofs);
+ 693:     kr=KeyAtPos(ds->layout,ds->keys.number,xofs+1,yofs);
+ 694:     kt=KeyAtPos(ds->layout,ds->keys.number,xofs,yofs-1);
+ 695:     kb=KeyAtPos(ds->layout,ds->keys.number,xofs,yofs+1);
+ 696: 
+ 697:     xofs-=startx;
+ 698:     yofs-=starty;
+ 699:         
+ 700:     bxofs=GRIDLEFT+xofs*ds->keys.width;
+ 701:     byofs=GRIDTOP +yofs*ds->keys.height;
+ 702:     Rectangle(bxofs,byofs,bxofs+ds->keys.width,byofs+ds->keys.height,
+ 703:         G_colour[1],KEYMAPBTYPE);
+ 704:               
+ 705: 
+ 706:     if (kl) {
+ 707:         if (kt) {
+ 708:             OutChar(bxofs,byofs,G_colour[1],*(BOXCROSS+KEYMAPBTYPE));
+ 709:         } else {
+ 710:             OutChar(bxofs,byofs,G_colour[1],*(BOXTOPIN+KEYMAPBTYPE));
+ 711:         }
+ 712:         if (kb) {
+ 713:             OutChar(bxofs,byofs+ds->keys.height,G_colour[1],*(BOXCROSS+KEYMAPBTYPE));
+ 714:         } else {
+ 715:             OutChar(bxofs,byofs+ds->keys.height,G_colour[1],*(BOXBOTIN+KEYMAPBTYPE));
+ 716:         }
+ 717:     } else {
+ 718:         if (kt) {
+ 719:             OutChar(bxofs,byofs,G_colour[1],*(BOXLEFTIN+KEYMAPBTYPE));
+ 720:         }
+ 721:         if (kb) {
+ 722:             OutChar(bxofs,byofs+ds->keys.height,G_colour[1],*(BOXLEFTIN+KEYMAPBTYPE));
+ 723:         }
+ 724:     }
+ 725:     if (kr) {
+ 726:         if (kt) {
+ 727:             OutChar(bxofs+ds->keys.width,byofs,G_colour[1],*(BOXCROSS+KEYMAPBTYPE));
+ 728:         } else {
+ 729:             OutChar(bxofs+ds->keys.width,byofs,G_colour[1],*(BOXTOPIN+KEYMAPBTYPE));
+ 730:         }
+ 731:         if (kb) {
+ 732:             OutChar(bxofs+ds->keys.width,byofs+ds->keys.height,G_colour[1],*(BOXCROSS+KEYMAPBTYPE));
+ 733:         } else {
+ 734:             OutChar(bxofs+ds->keys.width,byofs+ds->keys.height,G_colour[1],*(BOXBOTIN+KEYMAPBTYPE));
+ 735:         }
+ 736:     } else {
+ 737:         if (kt) {
+ 738:             OutChar(bxofs+ds->keys.width,byofs,G_colour[1],*(BOXRIGHTIN+KEYMAPBTYPE));
+ 739:         }
+ 740:         if (kb) {
+ 741:             OutChar(bxofs+ds->keys.width,byofs+ds->keys.height,G_colour[1],*(BOXRIGHTIN+KEYMAPBTYPE));
+ 742:         }
+ 743:     }
+ 744: 
+ 745:     dept=ds->deptlist;
+ 746:     while (dept!=NULL) {
+ 747:        if (dept->dept_number==KEYVAL(ds->layout[kindex])) {
+ 748:             if ((ismenu(dept))||((plu=FindPLU(ds->plulist,dept->osp_code[level]))!=NULL) 
+ 749:             && ((rplu=FindRePLU(ds->rplulist,dept->osp_code[level]))!=NULL)
+ 750:             && (plu->plu_code!=0L) ) {
+ 751:                 if (ismenu(dept)) {
+ 752:                     lastline=OutWrap(bxofs+1,byofs+1,ds->keys.width-1,ds->keys.height-1,
+ 753:                         G_colour[2],dept->desc);
+ 754:                     if (lastline<ds->keys.height-1) {
+ 755:                         OutChar(bxofs+ds->keys.width/2,byofs+ds->keys.height-1,
+<INSERT2>
+ 756:                             G_colour[2],MENUXCHAR);
+<END>
+ 757:                     } else {
+ 758:                         OutChar(bxofs+ds->keys.width-1,byofs+ds->keys.height-1,
+<INSERT2>
+ 759:                             G_colour[2],MENUXCHAR);
+<END>
+ 760:                     }
+ 761:                 } else {
+ 762:                     OutWrap(bxofs+1,byofs+1,ds->keys.width-1,ds->keys.height-1,
+ 763:                         G_colour[2],plu->desc1);
+ 764:                 }
+ 765:                 if (drawt) {
+ 766:                     TitleBar(dept->osp_code[level],
+ 767:                             ((ismenu(dept))?"":rplu->desc),
+ 768:                             ((ismenu(dept))?dept->desc:plu->desc1),
+ 769:                             rplu->price[0],
+ 770:                             rplu->price[1],
+ 771:                             rplu->price[2],
+ 772:                             rplu->price[3],
+ 773:                             rplu->price[4],
+ 774:                             rplu->price[5],
+ 775:                             plu->status.as_struct.kitch_prnt!='0',ismenu(dept)?1:2);
+ 776:                     return ((kl!=0)<<3)|((kr!=0)<<2)|((kt!=0)<<1)|((kb!=0)|(ismenu(dept)<<4));
+ 777:                 }
+ 778:                 return 0;
+ 779:             }
+ 780:         }
+ 781:         dept=dept->next;
+ 782:     }
+ 783:     OutFormat(bxofs+1,byofs+1,G_colour[2],"%02d",KEYVAL(ds->layout[kindex]));
+ 784:     if (drawt) {
+ 785:         TitleBar(0,"","",0,0,0,0,0,0,FALSE,FALSE);
+ 786:         return ((kl!=0)<<3)|((kr!=0)<<2)|((kt!=0)<<1)|((kb!=0));
+ 787:     }
+ 788:     return 0;
+ 789: }
+ 790: //__________________________________________________________________________
+ 791: 
+ 792: //==========================================================================
+ 793: //F DrawMenu
+ 794: //S Draw a menu box on the right hand side
+ 795: //D Draw a menu box on the right hand side
+ 796: //P The current key
+ 797: //P The keyboard overlay information
+ 798: //P The current keyboard level
+ 799: INT DrawMenu(INT curkey,MAINDS *ds,BOOL draw,INT top)
+ 800: {
+ 801:     PLU *plu;
+ 802:     INT yp=MENUTOP+1;
+ 803:     INT retval=0;
+ 804:     SetViewPort(MENULEFT,MENUTOP,MENURIGHT,MENUBOTTOM,G_colour[3]);
+ 805:     if (draw) {
+ 806:         Rectangle(MENULEFT,MENUTOP,MENURIGHT,MENUBOTTOM,G_colour[3],MENUBTYPE);
+ 807:         plu=ds->plulist;
+ 808:         while (plu!=NULL) {
+ 809:             if (plu->assoc_dept==curkey) {
+ 810:                 if ((yp<MENUBOTTOM)&&(retval>=top)) {
+ 811:                     OutFormat(MENULEFT+1,yp  ,G_colour[4],"%06d",plu->plu_code);
+ 812:                     OutFormat(MENULEFT+1+8,yp,G_colour[4],"%s",plu->desc1);
+ 813:                     yp++;
+ 814:                 }
+ 815:                 retval++;
+ 816:             }
+ 817:             plu=plu->next;
+ 818:         }
+ 819:     }
+ 820:     if (top!=0)
+ 821:         OutFormat(MENULEFT+7,MENUTOP,G_colour[15],"PAGE UP %c",24);
+ 822:     if (yp==MENUBOTTOM)
+ 823:         OutFormat(MENULEFT+6,MENUBOTTOM,G_colour[15],"PAGE DOWN %c",25);
+ 824:     SetViewPort(0,0,80,25,0);
+ 825:     return retval;
+ 826: }
+ 827: //__________________________________________________________________________
+ 828: 
+ 829: //==========================================================================
+ 830: //F ToggleState
+ 831: //S Toggle the state of a key between Menu and Single Shot
+ 832: //D Toggle the state of a key between Menu and Single Shot
+ 833: //P The key to toggle
+ 834: //P The main data structures
+ 835: void ToggleState(INT key,MAINDS *ds)
+ 836: {
+ 837:     DEPARTMENT *dept;
+ 838:     dept=FindDept(ds->deptlist,key);
+ 839:     if (dept==NULL) return;
+ 840:     if (strcmp(dept->status.as_string,"01550050")) {
+ 841:         strcpy(dept->status.as_string,"01550050");
+ 842:     } else {
+ 843:         strcpy(dept->status.as_string,"01550040");
+ 844:     }
+ 845: }
+ 846: //__________________________________________________________________________
+ 847: 
+ 848: //==========================================================================
+ 849: //F KeyGrid
+ 850: //S Draw the keyboard grid
+ 851: //D Draw the keyboard grid
+ 852: //P The current key
+ 853: //P The keyboard layout information
+ 854: //P The number of keys
+ 855: //P The start X co-ordinate
+ 856: //P The start Y co-ordinate
+ 857: //P The keyboard overlay information
+ 858: //P The current keyboard level
+ 859: //P The key width in characters
+ 860: //P The key height in characters
+ 861: BOOL KeyGrid(INT curkey,MAINDS *ds,INT *startx,INT *starty,INT level,BOOL forcedraw)
+ 862: {
+ 863:     static BOOL drawall=TRUE;
+ 864:     INT curindex;
+ 865:     INT cursorx;
+ 866:     INT cursory;
+ 867:     INT kindex;
+ 868:     INT bound;
+ 869: 
+ 870:     if (forcedraw) drawall=TRUE;
+ 871:     for (kindex=0;kindex<ds->keys.number;kindex++) {
+ 872:         if (KEYVAL(ds->layout[kindex])==curkey) break;
+ 873:     }
+ 874:     if (kindex==ds->keys.number) return FALSE;
+ 875:     curindex=kindex;
+ 876:     cursorx=COLVAL (ds->layout[kindex])-*startx;
+ 877:     cursory=LINEVAL(ds->layout[kindex])-*starty;
+ 878: 
+ 879:     if (cursorx<0) { (*startx)+=cursorx;   drawall=TRUE; }
+ 880:     if (cursory<0) { (*starty)+=cursory;   drawall=TRUE; }
+ 881:     if (cursorx>3) { (*startx)+=cursorx-3; drawall=TRUE; }
+ 882:     if (cursory>3) { (*starty)+=cursory-3; drawall=TRUE; }
+ 883: 
+ 884:     cursorx=COLVAL (ds->layout[kindex])-*startx;
+ 885:     cursory=LINEVAL(ds->layout[kindex])-*starty;
+ 886: 
+ 887:     if (drawall) {
+ 888:         SetViewPort(1,4,48,21,G_colour[2]);
+ 889:         for (kindex=0;kindex<ds->keys.number;kindex++) {
+ 890:             DrawKey(ds,kindex,*startx,*starty,level,FALSE);
+ 891:         }
+ 892:         SetViewPort(0,0,80,25,0);
+ 893:         drawall=FALSE;
+ 894:     }
+ 895:     bound=DrawKey(ds,curindex,*startx,*starty,level,TRUE);
+ 896:     KeyInd(51,19,curkey,bound,level);
+ 897: 
+ 898:     return ((bound&0x10)!=0);
+ 899: }
+ 900: BOOL StartUp(MAINDS *ds)
+ 901: {
+ 902:     CONFIG *cfglist=NULL;
+ 903:     CHAR ctrl_centre[3];
+ 904:     INT  term_id;
+ 905:     CHAR term_t[4];
+ 906:     INT key;
+ 907: 
+ 908:     SetBlinkBit();
+ 909:     LoadColours(COLOURFILE,G_colour);
+ 910: 
+ 911:     LoadFont();
+ 912: 
+ 913:     if ((LoadConfig(CONFIGFILE,&cfglist))==FALSE) {
+ 914:         printf("Error Loading Configuration File!\n");
+ 915:         if (cfglist==NULL) return FALSE;
+ 916:         printf("Some data in the file is correct !\nDo you wish to proceed? Y/N");
+ 917:         key=getch();
+ 918:         if ((key!='Y')&&(key!='y')) return FALSE;
+ 919:     }
+ 920: 
+ 921:     if (!StartScreen(cfglist,ctrl_centre,&term_id)) {
+ 922:         return FALSE;
+ 923:     }
+ 924:     OutFormat(28,14,G_colour[21],"Loading Data Please Wait...");
+ 925:     strcpy(term_t,TerminalType(cfglist,ctrl_centre,term_id));
+ 926:     FreeCFGList(&cfglist);
+ 927: 
+ 928:     sprintf(G_layoutfile ,LAYOUTFILE ,term_t);
+ 929:     sprintf(G_helpfile   ,HELPFILE   ,term_t);
+ 930:     sprintf(G_keymapfile ,KEYMAPFILE ,ctrl_centre,term_id,term_t);
+ 931:     sprintf(G_plufile    ,PLUFILE    ,ctrl_centre,term_id,term_t);
+ 932:     sprintf(G_keymapback ,KEYMAPBACK ,ctrl_centre,term_id);
+ 933:     sprintf(G_pluback    ,PLUBACK    ,ctrl_centre,term_id);
+ 934:     sprintf(G_plu_keypath,PLU_KEYPATH,ctrl_centre);
+ 935:     sprintf(G_rplufile   ,RPLUFILE   ,term_t,ctrl_centre);
+ 936:     sprintf(G_lrplufile  ,LRPLUFILE  ,ctrl_centre,term_t);
+ 937:     sprintf(G_lrpluback  ,LRPLUBACK  ,ctrl_centre);
+ 938:     
+ 939:     mkdir(G_plu_keypath);
+ 940: 
+<INSERT2>
+ 941:     AuditLog("COMPKEY Started");
+<END>
+ 942:     if ((ds->layout=LoadLayout(G_layoutfile,&(ds->keys)))==NULL) {
+<INSERT2>
+ 943:         AuditLog("Can't Load Keyboard Layout!  %s",G_layoutfile);
+<END>
+ 944:         printf("Can't Load Keyboard Layout!  %s\n",G_layoutfile);
+ 945:         return FALSE;
+ 946:     }
+ 947: 
+ 948:     LoadLocalPLU(G_lrplufile,&(ds->rplulist));
+<INSERT2>
+ 949:     if (ds->rplulist==NULL) AuditLog("No Local PLU file %s",G_lrplufile);
+<END>
+ 950:     LoadReMACSPLU(G_rplufile,&(ds->rplulist));
+<INSERT2>
+ 951:     if (ds->rplulist==NULL) AuditLog("No ReMACS PLU file %s",G_rplufile);
+<END>
+ 952:     LoadPLU(G_plufile,&(ds->plulist),ds->rplulist);
+<INSERT2>
+ 953:     if (ds->plulist==NULL) AuditLog("No PLU file %s",G_plufile);
+<END>
+ 954:     LoadDepartment(G_keymapfile,&(ds->deptlist),ds->keys.number);
+<INSERT2>
+ 955:     if (ds->deptlist==NULL) AuditLog("No KEYMAP file %s",G_keymapfile);
+<END>
+ 956: 
+ 957:     HideCursor();
+ 958:     SetViewPort(0,0,80,25,G_colour[16]);
+ 959: 
+ 960:     return TRUE;
+ 961: }
+ 962: void ShutDown(MAINDS *ds,BOOL save)
+ 963: {
+ 964:     if (save) {
+<INSERT2>
+ 965:         AuditLog("Removing KEYMAP Backup File %s",G_keymapback);
+<END>
+ 966:         unlink(G_keymapback);
+<INSERT2>
+ 967:         AuditLog("Renaming KEYMAP File %s to %s",G_keymapfile,G_keymapback);
+<END>
+ 968:         rename(G_keymapfile,G_keymapback);
+<INSERT2>
+ 969:         AuditLog("Saving KEYMAP File %s",G_plufile);
+<END>
+ 970:         SaveDepartment(G_keymapfile,&(ds->deptlist),ds->keys.number,TRUE);
+<INSERT2>
+ 971:         AuditLog("Removing PLU Backup File %s",G_pluback);
+<END>
+ 972:         unlink(G_pluback);
+<INSERT2>
+ 973:         AuditLog("Renaming PLU File %s to %s",G_plufile,G_pluback);
+<END>
+ 974:         rename(G_plufile,G_pluback);
+<INSERT2>
+ 975:         AuditLog("Saving PLU File %s",G_plufile);
+<END>
+ 976:         SavePLU(G_plufile,&(ds->plulist),TRUE);
+ 977:     } else {
+ 978:         FreeDeptList(&(ds->deptlist));
+ 979:         FreePLUList(&(ds->plulist));
+ 980:     }
+ 981:     if (ds->rplulist!=NULL) {
+<INSERT2>
+ 982:         AuditLog("Removing Local PLU Backup File %s",G_lrpluback);
+<END>
+ 983:         unlink(G_lrpluback);
+<INSERT2>
+ 984:         AuditLog("Renaming Local PLU File %s to %s",G_lrplufile,G_lrpluback);
+<END>
+ 985:         rename(G_lrplufile,G_lrpluback);
+<INSERT2>
+ 986:         AuditLog("Saving Local PLU File %s",G_lrplufile);
+<END>
+ 987:         SaveLocalPLU(G_lrplufile,&(ds->rplulist),TRUE);
+ 988:     }
+ 989:     if (ds->layout!=NULL) free(ds->layout);
+<INSERT2>
+ 990:     SetViewPort(0,0,80,25,0x07);
+<END>
+<SPACE>
+
+<END>
+ 991:     RestFont();
+ 992:     RestCursor();
+<INSERT2>
+ 993:     AuditLog("COMPKEY Finished");
+<END>
+ 994: }
+ 995: INT PLUInput(MAINDS *ds,INT keypos,INT cursorx,INT cursory,INT level,INT lastkey,CHAR *curdesc,BOOL *kitprnt,LONG update)
+ 996: {
+ 997:     CHAR ibuffer[MAXSTRLEN];
+ 998:     CHAR ibuffercopy[MAXSTRLEN];
+ 999:     REMACSPLU *rplu;
+1000:     PLU *plu;
+1001:     DEPARTMENT *dept;
+1002: 
+1003:     dept=FindDept(ds->deptlist,keypos);
+1004:     if (update==0L) {
+1005:         if (dept!=NULL) {
+1006:             sprintf(ibuffer,"%ld",dept->osp_code[level]);
+1007:         } else {
+1008:             ibuffer[0]='\0';
+1009:         }
+1010:         strcpy(ibuffercopy,ibuffer);
+1011:         strcpy(ibuffer,InputLine(ds,1,1,G_colour[6],ibuffer,6,cursorx,cursory,&lastkey,'9'));
+1012:     } else {
+1013:         sprintf(ibuffer,"%ld",update);
+1014:         ibuffercopy[0]='\0';
+1015:     }
+1016:     if (strcmp(ibuffercopy,ibuffer)) {
+1017:         rplu=FindRePLU(ds->rplulist,atol(ibuffer));
+1018:         plu=FindPLU(ds->plulist,atol(ibuffer));
+1019:         if (plu!=NULL)
+1020:             *kitprnt=plu->status.as_struct.kitch_prnt!='0';
+1021:         else {
+1022:             *kitprnt=FALSE;
+1023:         }
+1024:         if (rplu!=NULL) {
+1025:             dept=FindDept(ds->deptlist,keypos);
+1026:             if (dept!=NULL) {
+1027:                 dept->osp_code[level]=rplu->plu_code;
+1028:                 if (plu==NULL) {
+1029:                     if (rplu==NULL)
+1030:                         curdesc[0]='\0';
+1031:                     else
+1032:                         sprintf(curdesc,"%-.12s",rplu->desc);
+1033:                 } else {
+1034:                     strcpy(curdesc,CleanBuf(plu->desc1));
+1035:                 }
+1036:                 TitleBar(dept->osp_code[level],
+1037:                         rplu->desc,
+1038:                         curdesc,
+1039:                         rplu->price[0],
+1040:                         rplu->price[1],
+1041:                         rplu->price[2],
+1042:                         rplu->price[3],
+1043:                         rplu->price[4],
+1044:                         rplu->price[5],
+<INSERT2>
+1045:                         *kitprnt,2);
+<END>
+1046:             }
+1047:         } else {
+<INSERT2>
+1048:              Beep();
+<END>
+<SPACE>
+
+
+<END>
+1049:         }
+1050:         if (lastkey==F01) lastkey=0;
+1051:     }
+1052:     return lastkey;
+1053: }
+1054: INT InputDesc(MAINDS *ds,INT cursorx,INT cursory,CHAR *curdesc,INT len)
+1055: {
+1056:     INT lastkey;
+1057:     strcpy(curdesc,InputLine(ds,9,2,G_colour[8],curdesc,len,cursorx,cursory,&lastkey,'X'));
+1058:     return lastkey;
+1059: }
+1060: INT InputKP(MAINDS *ds,INT cursorx,INT cursory,BOOL *kitprnt)
+1061: {
+1062:     CHAR ibuffer[MAXSTRLEN];
+1063:     INT lastkey;
+1064: 
+1065:     ibuffer[1]='\0';
+1066:     if (*kitprnt) {
+1067:         ibuffer[0]='Y';
+1068:     } else {
+1069:         ibuffer[0]='N';
+1070:     }
+1071:     strcpy(ibuffer,InputLine(ds,77,2,G_colour[10],ibuffer,1,cursorx,cursory,&lastkey,'Y'));
+1072:     if (ibuffer[0]=='Y') {
+1073:         *kitprnt=TRUE;
+1074:     } else {
+1075:         *kitprnt=FALSE;
+1076:     }
+1077:     return lastkey;
+1078: }
+1079: INT MenuPLUInput(MAINDS *ds,PLU *plu,INT cursorx,INT cursory,INT lastkey,CHAR *curdesc,BOOL *kitprnt,LONG *update)
+1080: {
+1081:     CHAR ibuffer[MAXSTRLEN];
+1082:     CHAR ibuffercopy[MAXSTRLEN];
+1083:     REMACSPLU *rplu;
+1084: 
+1085:     if (*update==0L) {
+1086:         if (plu==NULL) {
+1087:             ibuffer[0]='\0';
+1088:             ibuffercopy[0]='\0';
+1089:         } else {
+1090:             sprintf(ibuffer,"%ld",plu->plu_code);
+1091:             strcpy(ibuffercopy,ibuffer);
+1092:         }
+1093:         strcpy(ibuffer,InputLine(ds,1,1,G_colour[6],ibuffer,6,cursorx,cursory,&lastkey,'9'));
+1094:         *update=atol(ibuffer);
+1095:     } else {
+1096:         sprintf(ibuffer,"%ld",*update);
+1097:         ibuffercopy[0]='\0';
+1098:     }
+1099:     if (strcmp(ibuffercopy,ibuffer)) {
+1100:         rplu=FindRePLU(ds->rplulist,atol(ibuffer));
+1101:         plu=FindPLU(ds->plulist,atol(ibuffer));
+1102:         if (plu!=NULL) {
+1103:             *kitprnt=plu->status.as_struct.kitch_prnt!='0';
+1104:             strcpy(curdesc,CleanBuf(plu->desc1));
+1105:         } else {
+1106:             *kitprnt=FALSE;
+1107:             if (rplu==NULL)
+1108:                 curdesc[0]='\0';
+1109:             else
+1110:                 sprintf(curdesc,"%-.12s",rplu->desc);
+1111:         }
+1112:         if (rplu!=NULL) {
+1113:             TitleBar(atol(ibuffer),
+1114:                     rplu->desc,
+1115:                     curdesc,
+1116:                     rplu->price[0],
+1117:                     rplu->price[1],
+1118:                     rplu->price[2],
+1119:                     rplu->price[3],
+1120:                     rplu->price[4],
+1121:                     rplu->price[5],
+<INSERT2>
+1122:                     *kitprnt,2);
+<END>
+1123:         }
+1124:         if (lastkey==F01) lastkey=0;
+1125:     }
+1126:     return lastkey;
+1127: }
+1128: BOOL MenuInput(MAINDS *ds,INT keypos,INT cursorx,INT cursory)
+1129: {
+1130:     REMACSPLU *rplu;
+1131:     LONG plu_code;
+1132:     PLU *plu;
+1133:     CHAR curdesc[13];
+1134:     BOOL xit=FALSE;
+1135:     BOOL retval=FALSE;
+1136:     INT  lastkey=0;
+1137:     INT  ipos;
+1138:     LONG newcode;
+1139:     BOOL kitprnt=FALSE;
+1140:     INT  menutop=0;
+1141:     INT  menulines;
+1142:     DEPARTMENT *dept;
+1143: 
+1144:     dept=FindDept(ds->deptlist,keypos);
+1145:     if (dept==NULL) return FALSE;
+1146:     strcpy(curdesc,CleanBuf(dept->desc)); 
+1147:     lastkey=InputDesc(ds,cursorx,cursory,curdesc,8);
+1148:     if (lastkey==ENTER)
+1149:         strcpy(dept->desc,curdesc);
+1150: 
+1151:     menulines=DrawMenu(keypos,ds,TRUE,menutop);
+1152:     plu_code=0;
+1153:     plu=ds->plulist;
+1154:     while (plu!=NULL) {
+1155:         if (plu->assoc_dept==keypos) {
+1156:             plu_code=plu->plu_code;
+1157:             break;
+1158:         }
+1159:         plu=plu->next;
+1160:     }
+1161:     if ((plu=FindPLU(ds->plulist,plu_code))==NULL) {
+1162:         kitprnt=FALSE;
+1163:         if ((rplu=FindRePLU(ds->rplulist,plu_code))==NULL)
+1164:             curdesc[0]='\0';
+1165:         else
+1166:             sprintf(curdesc,"%-.12s",rplu->desc);
+1167:     } else {
+1168:          kitprnt=plu->status.as_struct.kitch_prnt!='0';
+1169:          strcpy(curdesc,CleanBuf(plu->desc1));
+1170:     }
+1171: 
+1172:     StatusLine(G_tinputkeys,0);
+1173:     ipos=0;
+1174: 
+1175:     if (plu_code!=0L) MenuPLUInput(ds,plu,cursorx,cursory,lastkey,curdesc,&kitprnt,&plu_code);
+1176:     while (!xit) {
+1177:         switch (ipos) {
+1178:             case 0 :
+1179:                 plu=FindPLU(ds->plulist,plu_code);
+1180:                 newcode=0L;
+1181:                 lastkey=MenuPLUInput(ds,plu,cursorx,cursory,lastkey,curdesc,&kitprnt,&newcode);
+1182:                 plu=FindPLU(ds->plulist,newcode);
+1183:                 if ((plu==NULL)&&(lastkey!=F01)) {
+1184:                     plu=FindPLU(ds->plulist,plu_code);
+1185:                     MenuPLUInput(ds,plu,cursorx,cursory,lastkey,curdesc,&kitprnt,&plu_code);
+<INSERT2>
+1186:                     Beep();
+<END>
+<SPACE>
+
+
+<END>
+1187:                 } else {
+1188:                     plu_code=newcode;
+1189:                 }
+1190:                 break;
+1191:             case 1 :
+1192:                 lastkey=InputDesc(ds,cursorx,cursory,curdesc,12);
+<INSERT2>
+1193:                 break;
+1194:             case 2 :
+1195:                 lastkey=InputKP(ds,cursorx,cursory,&kitprnt);
+<END>
+1196:                 break;
+1197:         }
+1198:         switch (lastkey) {
+1199:             case PGUP :
+1200:                 if (menutop>MENULENGTH) {
+1201:                     menutop-=MENULENGTH-1;
+1202:                 } else {
+1203:                     menutop=0;
+1204:                 }
+1205:                 menulines=DrawMenu(keypos,ds,TRUE,menutop);
+1206:                 break;
+1207:             case PGDN :
+1208:                 if (menutop+MENULENGTH<=menulines) {
+1209:                     menutop+=MENULENGTH-1;
+1210:                     menulines=DrawMenu(keypos,ds,TRUE,menutop);
+1211:                 }
+1212:                 break;
+1213:             case F01 :
+1214:                 RunSearch(ds,&plu_code);
+1215:                 plu=FindPLU(ds->plulist,plu_code);
+1216:                 MenuPLUInput(ds,plu,cursorx,cursory,lastkey,curdesc,&kitprnt,&plu_code);
+1217:                 break;
+1218:             case TAB :
+1219:                 ipos++;
+1220:                 ipos%=3;
+1221:                 break;
+1222:             case STAB :
+1223:                 ipos+=2;
+1224:                 ipos%=3;
+1225:                 break;
+1226:             case F02 :
+1227:                 xit=TRUE;
+1228:                 break;
+1229:             case DEL :
+1230:                 if (plu_code!=0L) {
+1231:                     menutop=0;
+1232:                     plu->assoc_dept=0;
+1233:                     menulines=DrawMenu(keypos,ds,TRUE,menutop);
+1234:                 }
+1235:                 break;
+1236:             case INS :
+1237:             case ENTER :
+1238:                 if (ipos==1) {
+1239:                     if (plu!=NULL) strcpy(plu->desc1,curdesc);
+1240:                     ipos=0;
+<INSERT2>
+1241:                 } else if (ipos==2) {
+1242:                     if (plu!=NULL) {
+1243:                         if (kitprnt)
+1244:                             strcpy(plu->status.as_string,"1000000004");
+1245:                         else
+1246:                             strcpy(plu->status.as_string,"0000000004");
+1247:                     }
+<END>
+1248:                 } else {
+1249:                     if (plu_code!=0L) {
+1250:                         menutop=0;
+1251:                         plu->assoc_dept=keypos;
+1252:                         menulines=DrawMenu(keypos,ds,TRUE,menutop);
+1253:                     }
+1254:                 }
+1255:                 break;
+1256:         }
+1257:     }
+1258:     StatusLine(G_stdkeys,0);
+1259:     return retval;
+1260: }
+1261: BOOL TitleInput(MAINDS *ds,INT keypos,INT cursorx,INT cursory,INT level)
+1262: {
+1263:     REMACSPLU *rplu;
+1264:     LONG plu_code;
+1265:     PLU *plu;
+1266:     DEPARTMENT *dept;
+1267:     CHAR curdesc[13];
+1268:     LONG oldcode;
+1269:     BOOL xit=FALSE;
+1270:     BOOL retval=FALSE;
+1271:     INT  lastkey=0;
+1272:     INT  ipos;
+1273:     BOOL kitprnt=FALSE;
+1274: 
+1275: 
+1276:     dept=FindDept(ds->deptlist,keypos);
+1277: 
+1278:     if (ismenu(dept)) {
+1279:         return MenuInput(ds,keypos,cursorx,cursory);
+1280:     }
+1281:     if (dept!=NULL) {
+1282:         oldcode=dept->osp_code[level];
+1283:         if ((plu=FindPLU(ds->plulist,oldcode))==NULL) {
+1284:             kitprnt=FALSE;
+1285:             if ((rplu=FindRePLU(ds->rplulist,oldcode))==NULL)
+1286:                 curdesc[0]='\0';
+1287:             else
+1288:                 sprintf(curdesc,"%-.12s",rplu->desc);
+1289:         } else {
+1290:             kitprnt=plu->status.as_struct.kitch_prnt!='0';
+1291:             strcpy(curdesc,CleanBuf(plu->desc1));
+1292:         }
+1293:     } else {
+1294:         oldcode=0;
+1295:     }
+1296:     StatusLine(G_tinputkeys,0);
+1297:     ipos=0;
+1298:     while (!xit) {
+1299:         switch (ipos) {
+1300:             case 0 :
+1301:                 lastkey=PLUInput(ds,keypos,cursorx,cursory,level,lastkey,curdesc,&kitprnt,0L);
+1302:                 break;
+1303:             case 1 :
+1304:                 lastkey=InputDesc(ds,cursorx,cursory,curdesc,12);
+1305:                 break;
+1306:             case 2 :
+1307:                 lastkey=InputKP(ds,cursorx,cursory,&kitprnt);
+1308:                 break;
+1309:         }
+1310:         if (lastkey==F01) {
+1311:             RunSearch(ds,&plu_code);
+1312:             PLUInput(ds,keypos,cursorx,cursory,level,lastkey,curdesc,&kitprnt,plu_code);
+1313:         }
+1314:         if (lastkey==TAB)  { ipos++; ipos%=3; }
+1315:         if (lastkey==STAB) { ipos+=2; ipos%=3; }
+1316:         if ((lastkey==ENTER)||(lastkey==ESC)) xit=TRUE;
+<INSERT2>
+1317:         if ((lastkey==DEL)&&(ipos==0)) {
+1318:             dept=FindDept(ds->deptlist,keypos);
+1319:             dept->osp_code[level]=0;
+1320:             strcpy(dept->status.as_string,"00000000");
+1321:             strcpy(dept->desc,"        ");
+1322:             strcpy(dept->active,"00");
+1323:             dept->action=1;
+1324:             StatusLine(G_stdkeys,0);
+1325:             return TRUE;
+1326:         }
+<END>
+1327:     }
+1328:     dept=FindDept(ds->deptlist,keypos);
+1329:     plu=FindPLU(ds->plulist,dept->osp_code[level]);
+1330:     if (dept!=NULL) {
+1331:         if (lastkey==ENTER) {
+1332:             strcpy(dept->status.as_string,"01550040");
+1333:             if (FindRePLU(ds->rplulist,dept->osp_code[level])!=NULL) {
+1334:                 strcpy(plu->desc1,curdesc);
+1335:             } else {
+1336:                 dept->osp_code[level]=oldcode;
+1337:                 retval=FALSE;
+1338:             }
+1339:             if (kitprnt)
+<SPACE>
+
+
+<END>
+1340:                 strcpy(plu->status.as_string,"1000000004");
+<INSERT2>
+1341:             else
+1342:                 strcpy(plu->status.as_string,"0000000004");
+<END>
+1343:         } else {
+1344:             dept->osp_code[level]=oldcode;
+1345:             retval=FALSE;
+1346:         }
+1347:     }
+1348:     StatusLine(G_stdkeys,0);
+1349:     return retval;
+1350: }
+<INSERT2>
+1351: 
+1352: CHAR *GetWrapLine(char *str,INT w,INT h,INT line)
+<END>
+1353: {
+<INSERT2>
+1354:     static CHAR retval[MAXSTRLEN];
+1355:     CHAR *cptr;
+1356:     INT ch;
+1357: 
+1358:     if (strlen(str)<w) {
+1359:         if (line==0)
+1360:             return str;
+1361:         else
+1362:             return "";
+1363:     } else {
+1364:         ch=0;
+1365:         while ((strlen(str)>w)&&(ch!=h)) {
+1366:             cptr=str+w;
+1367:             while ((cptr!=str)&&(*cptr!=' ')&&(!ispunct(*cptr))) cptr--;
+1368:             if (cptr==str) {
+1369:                 cptr=str+w-1;
+1370:                 if (ch==line) {
+1371:                     sprintf(retval,"%-*.*s-",w-1,w-1,str);
+1372:                     return retval;
+1373:                 }
+1374:             } else {
+1375:                 if (ch==line) {
+1376:                     if (ispunct(*cptr)) cptr++;
+1377:                     sprintf(retval,"%-*.*s",
+1378:                         (INT)(cptr-str),(INT)(cptr-str),str);
+1379:                     return retval;
+1380:                 }
+1381:                 cptr++;
+1382:             }
+1383:             str=cptr;
+1384:             ch++;
+1385:         }
+1386:         if ((ch!=h)&&(ch==line)) {
+1387:             if (ch==line) {
+1388:                 sprintf(retval,"%-*.*s",w-1,w-1,str);
+1389:                 return retval;
+1390:             }
+1391:         }    
+1392:     }
+1393:     return "";
+1394: }
+1395: void SetPrYofs(FILE *fp,LONG ofs)
+1396: {
+1397:     static LONG lofs=0;
+1398:     LONG tempofs;
+1399: 
+1400:     if (G_prtype==PCL) {
+1401:         fprintf(fp,"%c%c%c%ld%c",ESC,'*','p',ofs,'Y');
+1402:     } else {
+1403:         ofs-=94;
+1404:         ofs*=100L;
+1405:         ofs/=167L;
+1406:         if (lofs>ofs) lofs=0;
+1407:         tempofs=ofs;
+1408:         ofs-=lofs;
+1409:         lofs=tempofs;
+1410: 
+1411:         while (ofs>255) {
+1412:             fprintf(fp,"%c%c%c",ESC,'J',255);
+1413:             ofs-=255;
+1414:         }
+1415:         fprintf(fp,"%c%c%c",ESC,'J',ofs);
+1416:     }
+1417: }
+1418: void SetPrXofs(FILE *fp,INT ofs)
+1419: {
+1420:     if (G_prtype==PCL) {
+1421:         fprintf(fp,"%c%c%c%d%c",ESC,'*','p',ofs,'X');
+1422:     } else {
+1423:         ofs-=61;
+1424:         ofs/=5;
+1425:         fprintf(fp,"%c%c%c%c",ESC,'$',ofs%256,ofs/256);
+1426:     }
+1427: }
+1428: void Set15CPI(FILE *fp)
+1429: {
+1430:     if (G_prtype==PCL) {
+1431:         fprintf(fp,"%c%c%c%c%c",ESC,'&','k',50,'S');
+1432:     } else {
+1433:         fprintf(fp,"%c%c",ESC,'g');
+1434:     }
+1435: }
+1436: void Set10CPI(FILE *fp)
+1437: {
+1438:     if (G_prtype==PCL) {
+1439:         fprintf(fp,"%c%c%c%c%c",ESC,'&','k',48,'S');
+1440:     } else {
+1441:         fprintf(fp,"%c%c",ESC,'P');
+<END>
+1442:     }
+1443: }
+<INSERT2>
+1444: 
+1445: void PrintLine(FILE *fp,MAINDS *ds,DEPARTMENT *dept,INT x,INT line,INT level)
+<END>
+1446: {
+<INSERT2>
+1447:     INT ofs;
+1448:     PLU *plu;
+1449:     CHAR *str;
+1450:     ofs=PRINTXOFS+PRINTXSTEP*x+PRINTXMID;
+1451: 
+1452:     if (ismenu(dept)) {
+1453:         switch (line) {
+1454:             case 0 :
+1455:                 ofs-=(strlen(CleanBuf(dept->desc))*PRINTCHARWID)/2;
+1456:                 SetPrXofs(fp,ofs);
+1457:                 fprintf(fp,"%s",CleanBuf(dept->desc));
+1458:                 break;
+1459:             case 2 :
+1460:                 ofs-=PRINTCHARWID;
+1461:                 SetPrXofs(fp,ofs);
+1462:                 Set10CPI(fp);
+1463:                 fprintf(fp,"X");
+1464:                 Set15CPI(fp);
+1465:                 break;
+1466:         }
+1467:     } else {
+1468:         if (dept->osp_code[level]!=0) {
+1469:             plu=FindPLU(ds->plulist,dept->osp_code[level]);
+1470:             if (plu!=NULL) {
+1471:                 str=CleanBuf(GetWrapLine(CleanBuf(plu->desc1),ds->keys.width-1,ds->keys.height,line));
+1472:                 ofs-=(strlen(str)*PRINTCHARWID)/2;
+1473:                 SetPrXofs(fp,ofs);
+1474:                 fprintf(fp,"%s",str);
+1475:             }
+1476:         }
+1477:     }
+1478: }
+1479: void PrintKeyboard(MAINDS *ds,INT level)
+1480: {
+1481:     INT kindex;
+1482:     INT maxc=0,maxl=0,line;
+<END>
+1483:     INT c,l;
+1484:     DEPARTMENT *dept;
+1485:     FILE *fp;
+1486: 
+1487:     
+<INSERT2>
+1488: //    fp=fopen("TEST.PRN","w");
+1489: //    if (fp==NULL) {
+<END>
+1490:         fp=stdprn;
+<INSERT2>
+1491: //    }
+<END>
+1492:     for (kindex=0;kindex<ds->keys.number;kindex++) {
+1493:         maxc=max(maxc,COLVAL (ds->layout[kindex]));
+1494:         maxl=max(maxl,LINEVAL(ds->layout[kindex]));
+1495:     }
+<INSERT2>
+1496:     Set15CPI(fp);
+1497:     for (l=0;l<=maxl;l++) {
+1498:         for (line=0;line<3;line++) {
+1499:             SetPrYofs(fp,PRINTYOFS+PRINTYSTEP*l+line*PRINTLINESTEP);
+1500:             for (c=0;c<=maxc;c++) {
+1501:                 kindex=KeyAtPos(ds->layout,ds->keys.number,c,l);
+1502:                 dept=FindDept(ds->deptlist,kindex);
+1503:                 if (dept!=NULL) {
+1504:                     PrintLine(fp,ds,dept,c,line,level);
+1505:                 }
+<END>
+1506:             }
+<INSERT2>
+1507: 
+1508:         }
+1509:     }
+1510:     Set10CPI(fp);
+<END>
+1511:     fprintf(fp,"%c",12);
+1512:     if (fp!=stdprn) fclose(fp);
+1513: }
+1514: BOOL ExitMenu(MAINDS *ds)
+1515: {
+1516:     static UINT scrbuffer[25*80];
+1517:     BOOL xit=FALSE;
+<INSERT2>
+1518:     CHAR ibuffer[MAXSTRLEN];
+1519:     INT lastkey;
+<END>
+1520:     memcpy(scrbuffer,((UINT far *)SCREENBASE),25*80*2);
+1521:     SetViewPort(0,0,80,25,G_colour[18]);
+1522:     StatusLine(G_exitsstat,0);
+1523: 
+1524:     OutFormat(10, 3,G_colour[18],"1 - Transmit to EPos Now");
+1525:     OutFormat(10, 5,G_colour[18],"2 - Transmit to EPos at End-of-Day");
+1526:     OutFormat(10, 7,G_colour[18],"3 - Transmit to EPos on Specific date");
+1527:     OutFormat(10, 9,G_colour[18],"4 - Save Layout to File");
+<INSERT2>
+1528:     OutFormat(10,11,G_colour[18],"5 - Print Layout Keyboard Level 1");
+1529:     OutFormat(10,13,G_colour[18],"6 - Print Layout Keyboard Level 2");
+1530:     OutFormat(10,15,G_colour[18],"7 - Print Layout Keyboard Level 3");
+1531:     OutFormat(10,17,G_colour[18],"8 - Exit");
+<END>
+1532:     while (!xit) {
+<INSERT2>
+1533:         lastkey=GetKey();
+1534:         switch (lastkey) {
+<END>
+1535:             case ESC :
+1536:                 memcpy(((UINT far *)SCREENBASE),scrbuffer,25*80*2);
+1537:                 return FALSE;
+1538:             case '1' : // transmit now
+<INSERT2>
+1539:                 AuditLog("Transmit Now Selected");
+<END>
+1540:                 break;
+1541:             case '2' : // transmit EoD
+<INSERT2>
+1542:                 AuditLog("Transmit End-of-Day Selected");
+<END>
+1543:                 break;
+1544:             case '3' : // transmit Date
+<INSERT2>
+1545:                 OutFormat(10,19,G_colour[18],"Enter The Date in the format YY/MM/DD [        ]");
+1546:                 strcpy(ibuffer,"96/06/11");
+1547:                 strcpy(ibuffer,InputLine(ds,49,19,G_colour[6],ibuffer,8,-1,-1,&lastkey,'D'));
+1548:                 if (lastkey==ENTER) {
+1549:                     OutFormat(10,19,G_colour[18],"                                                ");
+1550:                     AuditLog("Transmit Date Selected [%s]",ibuffer);
+1551:                 }
+<END>
+1552:                 break; 
+1553:             case '4' : // Save to file
+<INSERT2>
+1554:                 OutFormat(10,19,G_colour[18],"Enter the File Name [                                        ]");
+1555:                 strcpy(ibuffer,"");
+1556:                 strcpy(ibuffer,InputLine(ds,31,19,G_colour[6],ibuffer,40,-1,-1,&lastkey,'.'));
+1557:                 if (lastkey==ENTER) {
+1558:                     OutFormat(10,19,G_colour[18],"                                                              ");
+1559:                     AuditLog("Save Keymap to File [%s]",ibuffer);
+1560:                 }
+<END>
+1561:                 break;
+<INSERT2>
+1562:             case '5' : // Print Level 1
+1563:             case '6' : // Print Level 2
+1564:             case '7' : // Print Level 3
+1565:                 PrintKeyboard(ds,lastkey-'5');
+1566:                 AuditLog("Print KeyMap Level %d",lastkey-'5');
+1567: //                xit=TRUE;
+<END>
+1568:                 break;
+<INSERT2>
+1569:             case '8' : // Exit
+<END>
+1570:                 StatusLine(G_exitstat2,1);
+1571:                 if (toupper(GetKey())=='Y') {
+1572:                     xit=TRUE;
+<INSERT2>
+1573:                     AuditLog("Save and Exit Selected");
+<END>
+1574:                 } else {
+1575:                     memcpy(((UINT far *)SCREENBASE),scrbuffer,25*80*2);
+1576:                     return FALSE;
+1577:                 }
+1578:                 break;
+1579:             default :
+<INSERT2>
+1580:                 Beep();
+<END>
+<SPACE>
+
+
+<END>
+1581:         }
+1582:     }
+1583:     return TRUE;
+1584: }
+1585: //==========================================================================
+1586: //F main
+1587: //S COMPKEY.EXE
+1588: //D COMPKEY.EXE
+1589: //R ErrorLevel = 0 on error 1 OK
+1590: int main(void)
+1591: {
+1592:     MAINDS ds;
+1593:     BOOL save;
+1594:     BOOL modified=FALSE;
+1595:     BOOL forcedraw=TRUE;
+1596:     BOOL xit=FALSE;
+1597:     BOOL onmenu;
+1598:     DEPARTMENT *dept;
+1599:     INT menulines;
+1600:     INT menutop=0;
+1601:     INT keypos;
+1602:     INT kp;
+1603:     INT level=0;
+1604:     INT x,y;
+1605:     INT cx,cy;
+1606: 
+1607:     ds.layout  =NULL;
+1608:     ds.deptlist=NULL;
+1609:     ds.plulist =NULL;
+1610:     ds.rplulist=NULL;
+1611:     
+1612:     sprintf(G_helpfile,HELPFILE,"DEF");
+1613: 
+1614:     if (!StartUp(&ds)) {
+1615:         RestCursor();
+<INSERT2>
+1616:         SetViewPort(0,0,80,25,0x07);
+<END>
+<SPACE>
+
+<END>
+1617:         return 0;
+1618:     }
+1619: 
+1620:     StatusLine(G_stdkeys,0);
+1621: 
+1622:     x=0;
+1623:     y=0;
+1624:     cx=0;
+1625:     cy=0;
+1626:     keypos=1;
+1627: 
+1628:     while (!xit) {
+1629:         onmenu=KeyGrid(keypos,&ds,&x,&y,level,forcedraw);
+1630:         forcedraw=FALSE;
+1631:         menulines=DrawMenu(keypos,&ds,onmenu,menutop);
+1632:         KeyCursor(GRIDLEFT+1+(cx-x)*ds.keys.width,GRIDTOP+1+(cy-y)*ds.keys.height,ds.keys.width-1,ds.keys.height-1,G_colour[0]);
+1633:         switch(GetKey()) {
+1634:             case AF01 :
+1635:                 level++;
+1636:                 level%=3;
+1637:                 forcedraw=TRUE;
+1638:                 break;
+1639:             case F09 :
+1640:                 RunHelp(MAINHELP);
+1641:                 break;
+1642:             case F10:
+1643:                 if (ExitMenu(&ds)) {
+1644:                     xit=TRUE;
+1645:                     save=TRUE;
+1646:                 }
+1647:                 break;
+1648:             case ESC :
+1649:                 modified=TRUE; // force question !!!
+1650:                 if (modified) {
+1651:                     StatusLine(G_exitstat,1);
+1652:                     if (GetKey()==ESC) {
+1653:                         xit=TRUE;
+1654:                         save=FALSE;
+1655:                     } else {
+1656:                         StatusLine(G_stdkeys,0);
+1657:                     }
+1658:                 } else {
+1659:                     xit=TRUE;
+1660:                     save=FALSE;
+1661:                 }
+1662:                 break;
+1663:             case UP :
+1664:                 if ((kp=KeyAtPos(ds.layout,ds.keys.number,cx,cy-1))!=0) {
+1665:                     menutop=0;
+1666:                     keypos=kp;
+1667:                     cy--;
+1668:                 }
+1669:                 break;
+1670:             case DOWN :
+1671:                 if ((kp=KeyAtPos(ds.layout,ds.keys.number,cx,cy+1))!=0) {
+1672:                     menutop=0;
+1673:                     keypos=kp;
+1674:                     cy++;
+1675:                 }
+1676:                 break;
+1677:             case LEFT :
+1678:                 if ((kp=KeyAtPos(ds.layout,ds.keys.number,cx-1,cy))!=0) {
+1679:                     menutop=0;
+1680:                     keypos=kp;
+1681:                     cx--;
+1682:                 }
+1683:                 break;
+1684:             case RGT :
+1685:                 if ((kp=KeyAtPos(ds.layout,ds.keys.number,cx+1,cy))!=0) {
+1686:                     menutop=0;
+1687:                     keypos=kp;
+1688:                     cx++;
+1689:                 }
+1690:                 break;
+1691:             case TAB :
+1692:                 if (keypos<ds.keys.number) {
+1693:                     keypos++;
+1694:                 } else {
+1695:                     keypos=1;
+1696:                 }
+1697:                 menutop=0;
+1698:                 SetCurXY(ds.layout,ds.keys.number,keypos,&cx,&cy);
+1699:                 break;
+1700:             case STAB :
+1701:                 if (keypos>1) {
+1702:                     keypos--;
+1703:                 } else {
+1704:                     keypos=ds.keys.number;
+1705:                 }
+1706:                 menutop=0;
+1707:                 SetCurXY(ds.layout,ds.keys.number,keypos,&cx,&cy);
+1708:                 break;
+1709:             case HOME :
+1710:                 keypos=1;
+1711:                 menutop=0;
+1712:                 SetCurXY(ds.layout,ds.keys.number,keypos,&cx,&cy);
+1713:                 break;
+1714:             case END :
+1715:                 keypos=ds.keys.number;
+1716:                 menutop=0;
+1717:                 SetCurXY(ds.layout,ds.keys.number,keypos,&cx,&cy);
+1718:                 break;
+1719:             case F05 :
+1720:                 menutop=0;
+1721:                 forcedraw=TRUE;
+1722:                 ToggleState(keypos,&ds);
+1723:                 break;
+1724:             case F02 :
+1725:                 if (TitleInput(&ds,keypos,cx-x,cy-y,level)) {
+1726:                     modified=TRUE;
+1727:                     forcedraw=TRUE;
+1728:                 }
+1729:                 break;
+1730:             case DEL :
+1731:                 dept=FindDept(ds.deptlist,keypos);
+1732:                 if (dept!=NULL) {
+<INSERT2>
+1733:                     if (ismenu(dept)) {
+1734:                         dept->osp_code[0]=0;
+1735:                         dept->osp_code[1]=0;
+1736:                         dept->osp_code[2]=0;
+1737:                     } else {
+1738:                         dept->osp_code[level]=0;
+1739:                     }
+<END>
+1740:                     strcpy(dept->status.as_string,"00000000");
+1741:                     strcpy(dept->desc,"        ");
+1742:                     strcpy(dept->active,"00");
+1743:                     dept->action=1;
+1744:                     forcedraw=TRUE;
+1745:                 }
+1746:             case PGUP :
+1747:                 if (onmenu) {
+1748:                     if (menutop>MENULENGTH) {
+1749:                         menutop-=MENULENGTH-1;
+1750:                     } else {
+1751:                         menutop=0;
+1752:                     }
+1753:                 }
+1754:                 break;
+1755:             case PGDN :
+1756:                 if (onmenu) {
+1757:                     if (menutop+MENULENGTH<=menulines) {
+1758:                         menutop+=MENULENGTH-1;
+1759:                     } 
+1760:                 }
+1761:                 break;
+1762:         }
+1763:     }
+1764: 
+1765:     ShutDown(&ds,save);
+1766: 
+1767:     return 1;
+1768: }
+1769: //__________________________________________________________________________
+1770: 
+1771: 
+1772: //=========================================================================
+1773: // End of file (COMPKEY.C)
+1774: //=========================================================================

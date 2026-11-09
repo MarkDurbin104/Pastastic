@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vuitResult>
+	<status>OK</status>
+	<itemType>Invoice</itemType>
+	<payee>C.P.C.</payee>
+	<image>CPC Binder SM.jpg</image>
+	<postage/>
+	<services/>
+	<addressee>
+		<country>UNITED KINGDOM</country>
+		<rawString>MR R BINDER UPMARTON BANBURYSHIRE UNITED KINGDOM OD15 5SM</rawString>
+		<imageLocation>30, 100, 100, 140</imageLocation>
+		<address>
+			<name>MR R BINDER</name>
+			<line1>UPMARTON</line1>
+			<line2></line2>
+			<line3>BANBURYSHIRE</line3>
+			<city></city>
+			<state></state>
+			<zip>OD15 5SM</zip>
+			<telephone></telephone>
+			<email></email>
+		</address>
+	</addressee>
+	<account>
+		<imageLocation>50, 545, 110, 560</imageLocation>
+		<number>CSH407272</number>
+	</account>
+	<invoice>
+		<imageLocation>50, 569, 104, 582</imageLocation>
+		<number>6751351</number>
+	</invoice>
+	<amount>
+		<imageLocation>185, 605, 255, 625</imageLocation>
+		<value>164.35</value>
+		<currency>GBP</currency>
+	</amount>
+</vuitResult>

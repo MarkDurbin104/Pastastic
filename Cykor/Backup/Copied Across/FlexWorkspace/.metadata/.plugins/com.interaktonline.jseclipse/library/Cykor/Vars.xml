@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<completion version="1.5.0" prefix="Vars" extends="" parent="" >
+	<file path="C:/FlexWorkspace/Cykor/bin/history.js" creation="1198145108531">
+		<item repl="toString()" display="toString(pre)" chrno="22" />
+	</file>
+	<file path="C:/FlexWorkspace/Cykor/html-template/history.js" creation="1198145108531">
+		<item repl="toString()" display="toString(pre)" chrno="22" />
+	</file>
+</completion>

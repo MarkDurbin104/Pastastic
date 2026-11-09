@@ -1,0 +1,22 @@
+18-Apr-2008 00:17:12 com.interaktonline.jseclipse.JavaScriptEditorPlugin start
+INFO: JSEclipse start
+18-Apr-2008 00:17:13 com.interaktonline.jseclipse.library.ResourceParser run
+INFO: parsing project: Base64Decode
+18-Apr-2008 00:17:13 com.interaktonline.jseclipse.library.ResourceParser run
+INFO: parsing project: Base64Decode
+18-Apr-2008 00:17:14 com.interaktonline.jseclipse.library.ResourceParser run
+INFO: parsing project: Cykor
+18-Apr-2008 00:17:14 com.interaktonline.jseclipse.library.ResourceParser run
+INFO: parsing project: Cykor
+18-Apr-2008 00:17:14 com.interaktonline.jseclipse.library.ResourceParser run
+INFO: parsing project: POS
+18-Apr-2008 00:17:14 com.interaktonline.jseclipse.library.ResourceParser run
+INFO: parsing project: Proiam
+18-Apr-2008 00:17:14 com.interaktonline.jseclipse.library.ResourceParser run
+INFO: parsing project: POS
+18-Apr-2008 00:17:14 com.interaktonline.jseclipse.library.ResourceParser run
+INFO: parsing project: Proiam
+18-Apr-2008 00:17:14 com.interaktonline.jseclipse.library.ResourceParser run
+INFO: -- JsLibraryManager -- parsing for: 875
+18-Apr-2008 00:17:14 com.interaktonline.jseclipse.library.ResourceParser run
+INFO: -- HtmlLibraryManager -- parsing for: 875

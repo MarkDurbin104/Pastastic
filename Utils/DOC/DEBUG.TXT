@@ -1,0 +1,14 @@
+DEBUG Patch Offsets for LANLink Release 2.3u
+
+LANSAT.SYS
+        
+        vtimeout = 130A
+        retrymax = 1308
+        maxrsize = 130E
+
+LANSERVE.COM
+
+        vtimeout = 108
+        maxerrs  = 10E
+
+

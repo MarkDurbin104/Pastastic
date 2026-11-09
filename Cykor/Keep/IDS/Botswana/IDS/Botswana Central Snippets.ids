@@ -1,0 +1,1477 @@
+Snippets {
+   CentralGenRepComplete {
+      InsertBetween  { '{LogTransactionStart}','{LogTransactionEnd}' }
+      CodeBlock  { [*
+      try
+         if LocalSharedData = nil then
+            LocalSharedData:=TSharedData.Create('CorvusReportShare',False);
+         LocalSharedData.SetVariable('FromPeriod',StrToPeriod(ProdForm.StartDomainEdit.Text));
+         LocalSharedData.SetVariable('ToPeriod'  ,StrToPeriod(ProdForm.EndDomainEdit.Text));
+         if ProdForm.UserName.Text = 'All' then
+         begin
+            LocalSharedData.SetVariable('TellerCondition',' (Teller is not null) ');
+            LocalSharedData.SetVariable('Teller'    ,'')
+         end
+         else
+         begin
+            LocalSharedData.SetVariable('NotTellerCondition',' (Teller <> '+ProdForm.UserName.Text+') ');
+            LocalSharedData.SetVariable('TellerCondition',' (Teller = '''+ProdForm.UserName.Text+''') ');
+            LocalSharedData.SetVariable('Teller'    ,ProdForm.UserName.Text);
+         end;
+
+         if ProdForm.PostOffice.Text = 'All' then
+         begin
+            LocalSharedData.SetVariable('OfficeCondition',' (Office is not null) ');
+            LocalSharedData.SetVariable('Office'    ,0);
+         end
+         else
+         begin
+            LocalSharedData.SetVariable('NotOfficeCondition',' (Office <> '+Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99)+')' );
+            LocalSharedData.SetVariable('OfficeCondition',' (Office = '+Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99)+')' );
+            LocalSharedData.SetVariable('Office',Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99));
+         end;
+         
+         LocalSharedData.SetVariable('WorkStation',0);
+         if ProdForm.ReportList.Items.Objects[ProdForm.ReportList.ItemIndex] <> nil then
+         begin
+{ReportNameStart}
+            FUIEventSink.GetComponentReference('Report.'+TStringObject(ProdForm.ReportList.Items.Objects[ProdForm.ReportList.ItemIndex]).Value);
+{ReportNameEnd}
+         end;
+         while ProdForm.ReportList.Items.Count > 0 do
+         begin
+            if ProdForm.ReportList.Items.Objects[0] <> nil then
+            begin
+               TStringObject(ProdForm.ReportList.Items.Objects[0]).Free;
+            end;
+            ProdForm.ReportList.Items.Delete(0);
+         end;
+         LocalSharedData.Free;
+         LocalSharedData:=nil;
+      except
+         on E:Exception do
+            RaiseGUIDException('{5AA3960F-60D8-43C6-980A-D7C8B29B6FA0}',E);
+      end;
+      *] 
+      }
+   }
+   CentralGenRepConst {
+      InsertBetween  { '{VarAUStart}','{VarAUEnd}' }
+      CodeBlock  { [*
+         const
+            ReportFileName = 'C:\Botswana Report Formats.ids';
+      *]
+      }
+   }
+   CentralGenRepExecute {
+      InsertBetween  { '{IsListStart}','{IsListEnd}' }
+      CodeBlock  { [*
+         ProdForm.PostOffice.Items.Insert(0,'All');
+         ProdForm.PostOffice.Text:='All';
+         ProdForm.PostOffice.ItemIndex:=ProdForm.PostOffice.Items.IndexOf(ProdForm.PostOffice.Text);
+         ProdForm.UserName.Items.CommaText := ListUsers;
+         ProdForm.UserName.Items.Insert(0,'All');
+         ProdForm.UserName.Text:='All';
+         ProdForm.UserName.ItemIndex:=ProdForm.UserName.Items.IndexOf(ProdForm.UserName.Text);
+         ReportsNode:=TReportsNode.Create('Reports',ReportFileName,1);
+         ReportsNode.ParseFile(ExtractFilePath(ReportFileName),ReportFileName,1);
+         ReportsNode.PutInReportTitles(ProdForm.ReportList.Items);
+         ProdForm.ReportList.Sorted:=True;
+         ReportsNode.Free;
+      *]
+      }
+   }
+   CentralGenRepUses {
+      InsertBetween  { '{AutoUsesStart}','{AutoUsesEnd}' }
+      CodeBlock  { [*
+        ReportIDSU,StringUtil,ShareDataU,
+     *]
+      }
+   }
+   CentralGenRepVars {
+      InsertBetween  { '{PublVarDecStart}','{PublVarDecEnd}' }
+      CodeBlock  { [*
+        ReportsNode:TReportsNode;
+     *]
+      }
+   }
+   CentralGetClerkList {
+      InsertBetween  { '{IsListStart}','{IsListEnd}' }
+      CodeBlock  { [*
+         FUIEventSink := UIEventSink ;
+         ProdForm.PostOffice.Items.Insert(0,'All');
+         ProdForm.PostOffice.Text:='All';
+         ProdForm.PostOffice.ItemIndex:=ProdForm.PostOffice.Items.IndexOf(ProdForm.PostOffice.Text);
+         ProdForm.UserName.Items.CommaText := ListUsers;
+         ProdForm.UserName.Items.Insert(0,'All');
+         ProdForm.UserName.Text:='All';
+         ProdForm.UserName.ItemIndex:=ProdForm.UserName.Items.IndexOf(ProdForm.UserName.Text);
+         FUIEventSink := nil ;
+      *]
+      }
+   }
+   CentralRepJourSumPensionStartVAL {
+      InsertBetween  { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock  { [*
+        ReportingMonth.Ignore  := not(ReportType.Text = 'Summary');
+        StartDomainEdit.Ignore := (ReportType.Text = 'Summary');
+        PensionType.Ignore     := (ReportType.Text = 'Summary');
+
+        Result:=CheckMaskEdits(Self);
+     *]
+      }
+   }
+   CentralRepJourSumStartEndVAL {
+      InsertBetween  { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock  { [*
+        ReportingMonth.Ignore  := not(ReportType.Text = 'Summary');
+        StartDomainEdit.Ignore := (ReportType.Text = 'Summary');
+        EndDomainEdit.Ignore   := (ReportType.Text = 'Summary');
+
+        Result:=CheckMaskEdits(Self);
+     *]
+      }
+   }
+   CentralRepJourSumStartVAL {
+      InsertBetween  { '{ValidateStart}','{ValidateEnd}' }
+      CodeBlock  { [*
+        ReportingMonth.Ignore  := not(ReportType.Text = 'Summary');
+        StartDomainEdit.Ignore := (ReportType.Text = 'Summary');
+
+        Result:=CheckMaskEdits(Self);
+     *]
+      }
+   }
+
+   CentralRepMoneyOrdLOG {
+      InsertBetween  { '{PreLogTransactionStart}','{PreLogTransactionEnd}' }
+      CodeBlock  { [*
+        try
+           ReportLines := TStringList.Create;
+           Lines       := TTransactionLines.Create;
+           TotalVal  :=0;
+           TotalComm :=0;
+           TotalPaid :=0;
+
+           if TStringObject(ProdForm.IssuePaid.Items.Objects[ProdForm.IssuePaid.Items.IndexOf(ProdForm.IssuePaid.Text)]).Value = 'Issued' then
+           begin  // ISSUED
+               if ProdForm.UserName.Text <> 'All' then
+               begin
+               Lines := TTxnTranslate.TranslateQuery('',
+                         ' select * from TxnLog'
+                       + ' where PLU IN(50021001)'
+                       + ' and Teller = ''' + ProdForm.UserName.Text + ''''
+                       + ' and Period = ' + StrToPeriod(ProdForm.StartDomainEdit.Text));
+               end
+               else
+               begin
+               Lines := TTxnTranslate.TranslateQuery('',
+                         ' select * from TxnLog'
+                       + ' where PLU IN(50021001,50021002)'
+                       + ' and Period = ' + StrToPeriod(ProdForm.StartDomainEdit.Text));
+               end;
+               Lines.ConvertToTable('C:\Botswana\Database','ReportResult');
+               with TQueryMap.Create do
+               begin
+                   DataAlias := 'C:\Botswana\DataBase';
+                   ClearMaps;
+                   ReportLines.CommaText := '';
+                   if Lines.Count > 0 then
+                   begin
+                     SelectFields := 'ordernumber,paymentoffice,itemvalue,commission';
+                     ResultFields := 'ordernumber,paymentoffice,itemvalue,commission';
+                     ResultTableName := 'ReportResult';
+                     if ProdForm.UserName.Text <> 'All' then
+                     begin
+                       SQL :=
+                          '  select OrderNumber, PaymentOffice, ItemValue, Commission from ReportResult'
+                        + ' where PLU = 50021001 and Teller = ''' + ProdForm.UserName.Text + '''';
+                     end
+                     else
+                     begin
+                       SQL :=
+                                  '  select OrderNumber, PaymentOffice, ItemValue, Commission from ReportResult'
+                                + ' where PLU = 50021001 ';
+                     end;
+                     ReportLines.CommaText := Execute;
+                   end;
+                   with TStringList.Create do
+                   begin
+                      for i:=0 to ReportLines.Count-1 do
+                      begin
+                        CommaText:=ReportLines[i];
+                        TotalVal   := TotalVal  + StrToCurrDef(Strings[2],0);
+                        TotalComm  := TotalComm + StrToCurrDef(Strings[3],0);
+                        TotalPaid  := TotalPaid + (StrToCurrDef(Strings[2],0) + StrToCurrDef(Strings[3],0));
+                        Strings[0] := '<' + Strings[0];
+                        Strings[1] := '<' + Strings[1];
+                        Strings[2] := '>' + CurrToStrF(StrToCurrDef(Strings[2],0),ffNumber,2);
+                        Strings[3] := '>' + CurrToStrF(StrToCurrDef(Strings[3],0),ffNumber,2);
+                        Add('>' + CurrToStrF(StrToCurrDef(Strings[2],0) + StrToCurrDef(Strings[3],0),ffNumber,2));
+                        ReportLines[i]:= CommaText;
+                      end;
+                   end;
+                   Free;
+                 end;
+             A4ReportPrint(ProdForm.UserName.Text, // User
+                            IntToStr(FUIEventSink.Office), // Office
+                            '"<Domestic Money Orders Issued : ' + ProdForm.StartDomainEdit.Text, // Report Title
+                            '"<MO Number","<Payment Office",">Value",">Commission",">Total Paid","^Remarks"',  // Column Headers
+                            '"<Total"," ",">' + CurrToStrF(TotalVal,ffNumber,2) + '",">' + CurrToStrF(TotalComm,ffNumber,2) + '",">' + CurrToStrF(TotalPaid,ffNumber,2) + '"',  // Total Line
+                            '-300,-450,-300,-300,-300,-350',  // Column Widths
+                            ReportLines.CommaText);  // Report Lines
+           end
+           else if TStringObject(ProdForm.IssuePaid.Items.Objects[ProdForm.IssuePaid.Items.IndexOf(ProdForm.IssuePaid.Text)]).Value = 'Paid' then
+           begin  // PAID
+              If ProdForm.UserName.Text <> 'All' then
+                               begin
+                  Lines := TTxnTranslate.TranslateQuery('',
+                   ' select * from TxnLog'
+                    + ' where PLU IN(50021002)'
+                    + ' and Teller = ''' + ProdForm.UserName.Text + ''''
+                    + ' and Period = ' + StrToPeriod(ProdForm.StartDomainEdit.Text));
+              end
+               else
+               begin
+                       Lines := TTxnTranslate.TranslateQuery('',
+                         ' select * from TxnLog'
+                       + ' where PLU IN(50021002)'
+                       + ' and Period = ' + StrToPeriod(ProdForm.StartDomainEdit.Text));
+               end;
+               Lines.ConvertToTable('C:\Botswana\Database','ReportResult');
+               with TQueryMap.Create do
+               begin
+                       DataAlias := 'C:\Botswana\DataBase';
+                       ClearMaps;
+                  ReportLines.CommaText := '';
+                  if Lines.Count > 0 then
+                  begin
+                     SelectFields := 'ordernumber,issuingoffice,itemvalue,identification';
+                     ResultFields := 'ordernumber,issuingoffice,itemvalue,identification';
+                     ResultTableName := 'ReportResult';
+                     if ProdForm.UserName.Text <> 'All' then
+                     begin
+                          SQL :=
+                      ' select OrderNumber, IssuingOffice, ItemValue, Identification from ReportResult'
+                        + ' where PLU = 50021002 and Teller = ''' + ProdForm.UserName.Text + '''';
+                     end
+                     else
+                     begin
+                       SQL :=
+                                               ' select OrderNumber, IssuingOffice, ItemValue, Identification from ReportResult'
+                                                 + ' where PLU = 50021002';
+                     end;
+                     ReportLines.CommaText := Execute;
+                  end;
+                 Free;
+              end;
+              with TStringList.Create do
+              begin
+                 for i:=0 to ReportLines.Count-1 do
+                 begin
+                    CommaText:=ReportLines[i];
+                    TotalVal   := TotalVal  + StrToCurrDef(Strings[2],0);
+                    Strings[0] := '<' + Strings[0];
+                    Strings[1] := '<' + Strings[1];
+                    Strings[2] := '>' + CurrToStrF(StrToCurrDef(Strings[2],0),ffNumber,2);
+                    Strings[3] := '<  ' + Strings[3];
+                    ReportLines[i]:= CommaText;
+                 end;
+                 Free;
+              end;
+              A4ReportPrint(ProdForm.UserName.Text, // User
+                            IntToStr(FUIEventSink.Office), // Office
+                            '"<Domestic Money Orders Paid : ' + ProdForm.StartDomainEdit.Text, // Report Title
+                            '"<MO Number","<Issue Office",">Value","<  Identification"',  // Column Headers
+                            '"<Total"," ",">' + CurrToStrF(TotalVal,ffNumber,2) + '"',  // Total Line
+                            '-300,-450,-300,-300,-300,-350',  // Column Widths
+                            ReportLines.CommaText);  // Report Lines
+           end;
+           Lines.Free;
+           ReportLines.Free;
+        except
+           On E : Exception do
+             RaiseGUIDException('{06EB53A9-AECC-4B0B-A780-160186A943B9}', E);
+        end;
+    *]
+      }
+   }
+
+   CentralRepMoneyOrdLOGNew {
+     InsertBetween  { '{LogTransactionStart}','{LogTransactionEnd}' }
+     CodeBlock  { [*
+        SetSharedVariable('CorvusReportShare', 'FromPeriod',StrToPeriod(ProdForm.StartDomainEdit.Text));
+        SetSharedVariable('CorvusReportShare', 'ToPeriod'  ,StrToPeriod(ProdForm.StartDomainEdit.Text));
+        if TStringObject(ProdForm.IssuePaid.Items.Objects[ProdForm.IssuePaid.Items.IndexOf(ProdForm.IssuePaid.Text)]).Value = 'Issued' then
+        begin  // ISSUED
+{ReportNameStart}
+          FUIEventSink.GetComponentReference('Report.PMOIssuedInland');
+{ReportNameEnd}
+        end
+        else if TStringObject(ProdForm.IssuePaid.Items.Objects[ProdForm.IssuePaid.Items.IndexOf(ProdForm.IssuePaid.Text)]).Value = 'Paid' then
+        begin  // PAID
+{ReportNameStart}
+          FUIEventSink.GetComponentReference('Report.PMOForcePaid');
+{ReportNameEnd}
+        end;
+     *]
+     }
+   }
+
+   CentralRepMoneyOrdLOGIntNew {
+     InsertBetween  { '{LogTransactionStart}','{LogTransactionEnd}' }
+     CodeBlock  { [*
+        SetSharedVariable('CorvusReportShare', 'FromPeriod',StrToPeriod(ProdForm.StartDomainEdit.Text));
+        SetSharedVariable('CorvusReportShare', 'ToPeriod'  ,StrToPeriod(ProdForm.StartDomainEdit.Text));
+        if TStringObject(ProdForm.IssuePaid.Items.Objects[ProdForm.IssuePaid.Items.IndexOf(ProdForm.IssuePaid.Text)]).Value = 'Issued' then
+        begin  // ISSUED
+{ReportNameStart}
+          FUIEventSink.GetComponentReference('Report.PMOIssuedForeign');
+{ReportNameEnd}
+        end
+        else if TStringObject(ProdForm.IssuePaid.Items.Objects[ProdForm.IssuePaid.Items.IndexOf(ProdForm.IssuePaid.Text)]).Value = 'Paid' then
+        begin  // PAID
+{ReportNameStart}
+          FUIEventSink.GetComponentReference('Report.PIntMoneyOrderPaid');
+{ReportNameEnd}
+        end;
+     *]
+     }
+   }
+
+   CentralRepMoneyOrdLOGInt {
+      InsertBetween  { '{PreLogTransactionStart}','{PreLogTransactionEnd}' }
+      CodeBlock  { [*
+	        try
+	           ReportLines := TStringList.Create;
+	           Lines := TTransactionLines.Create;
+	           TotalVal  :=0;
+	           TotalComm :=0;
+	           TotalPaid :=0;
+	           ReportLines.CommaText := '';
+	           if TStringObject(ProdForm.IssuePaid.Items.Objects[ProdForm.IssuePaid.Items.IndexOf(ProdForm.IssuePaid.Text)]).Value = 'Issued' then
+	           begin  // ISSUED
+	              if ProdForm.UserName.Text <> 'All' then
+	 	     	    begin
+	 	        	   Lines := TTxnTranslate.TranslateQuery('',
+	 	                 ' select * from TxnLog'
+	 	               + ' where PLU IN(50021005)'
+	 	               + ' and Teller = ''' + ProdForm.UserName.Text + ''''
+	 	               + ' and Period = ' + StrToPeriod(ProdForm.StartDomainEdit.Text));
+	 	         end
+	 	         else
+	 	       	begin
+	 	     	    Lines := TTxnTranslate.TranslateQuery('',
+	 	                 ' select * from TxnLog'
+	 	               + ' where PLU IN(50021005)'
+	 	               + ' and Period = ' + StrToPeriod(ProdForm.StartDomainEdit.Text));
+	 	     	   end;
+	 	     	   Lines.ConvertToTable('C:\Botswana\Database','ReportResult');
+	 	         with TQueryMap.Create do
+	 	     	   begin
+	             	 DataAlias := 'C:\Botswana\DataBase';
+	 	       	    ClearMaps;
+	                 If Lines.Count > 0 then
+	 	             begin
+	 	               SelectFields := 'OrderNumber,DestinationCountry,MoneyOrderValue,commission';
+	 	               ResultFields := 'OrderNumber,DestinationCountry,MoneyOrderValue,commission';
+	 	               If ProdForm.UserName.Text <> 'All' then
+	 	               begin
+	 	                  SQL :=
+	 	                     '  select OrderNumber,DestinationCountry,MoneyOrderValue,commission from ReportResult'
+	 	                   + ' where PLU = 50021005 and Teller = ''' + ProdForm.UserName.Text + '''';
+	 	               end
+	 	               else
+	 	               begin
+	 	                  SQL :=
+	 	     		   	     '  select OrderNumber,DestinationCountry,MoneyOrderValue,commission from ReportResult'
+	 	     		   	   + ' where PLU = 50021005 ';
+	 	               end;
+	 	               ReportLines.CommaText := Execute;
+	                  end;
+	 	           Free;
+	 	         end;
+	 	         with TStringList.Create do
+	 	         begin
+	 	            for i:=0 to ReportLines.Count-1 do
+	 	            begin
+	 	               CommaText:=ReportLines[i];
+	 	               TotalVal   := TotalVal  + StrToCurrDef(Strings[2],0);
+	 	               TotalComm  := TotalComm + StrToCurrDef(Strings[3],0);
+	 	               TotalPaid  := TotalPaid + (StrToCurrDef(Strings[2],0) + StrToCurrDef(Strings[3],0));
+	 	               Strings[0] := '<' + Strings[0];
+	 	               Strings[1] := '<' + Strings[1];
+	 	               Strings[2] := '<' + CurrToStrF(StrToCurrDef(Strings[2],0),ffNumber,2);
+	 	               Strings[3] := '<' + CurrToStrF(StrToCurrDef(Strings[3],0),ffNumber,2);
+	 	               Add('>' + CurrToStrF(StrToCurrDef(Strings[2],0) + StrToCurrDef(Strings[3],0),ffNumber,2));
+	 	               ReportLines[i]:= CommaText;
+	 	            end;
+	 	            Free;
+	 	         end;
+	 	         A4ReportPrint(ProdForm.UserName.Text, // User
+	 	                                IntToStr(FUIEventSink.Office), // Office
+	 	                                '"<Foreign Money Orders Issued : ' + ProdForm.StartDomainEdit.Text, // Report Title
+	 	                                '"<MO Number","<Country","<Value","<Commission",">Total Paid"',  // Column Headers
+	 	                                '"<Total"," ","<' + CurrToStrF(TotalVal,ffNumber,2) + '","<' + CurrToStrF(TotalComm,ffNumber,2) + '",">' + CurrToStrF(TotalPaid,ffNumber,2) + '"',  // Total Line
+	 	                                '-300,-450,-300,-300,-300',  // Column Widths
+	 	                                ReportLines.CommaText);  // Report Lines
+	            end
+	           else if TStringObject(ProdForm.IssuePaid.Items.Objects[ProdForm.IssuePaid.Items.IndexOf(ProdForm.IssuePaid.Text)]).Value = 'Paid' then
+	           begin  // PAID
+	                if ProdForm.UserName.Text <> 'All' then
+	 	     	  	  begin
+	 	               Lines := TTxnTranslate.TranslateQuery('',
+	 	                             ' select * from TxnLog'
+	 	                           + ' where PLU IN(50021006)'
+	 	                           + ' and Teller = ''' + ProdForm.UserName.Text + ''''
+	 	                           + ' and Period = ' + StrToPeriod(ProdForm.StartDomainEdit.Text));
+	 	               end
+	 	               else
+	 	               begin
+	 	               Lines := TTxnTranslate.TranslateQuery('',
+	 	                             ' select * from TxnLog'
+	 	                           + ' where PLU IN(50021006)'
+	 	                           + ' and Period = ' + StrToPeriod(ProdForm.StartDomainEdit.Text));
+	 	               end;
+	 	               Lines.ConvertToTable('C:\Botswana\Database','ReportResult');
+	 	               with TQueryMap.Create do
+	                   begin
+	 	                  DataAlias := 'C:\Botswana\DataBase';
+	 	                  ClearMaps;
+	                   if Lines.Count > 0 then
+	                   begin
+	                      SelectFields := 'OrderNumber,Identification,CountryOfOrigin,ItemValue';
+	                      ResultFields := 'OrderNumber,Identification,CountryOfOrigin,ItemValue';
+	                      if ProdForm.UserName.Text <> 'All' then
+	                      begin
+	                         SQL :=
+	                         '  select OrderNumber,Identification,CountryOfOrigin,ItemValue from ReportResult'
+	                       + ' where PLU = 50021006 and Teller = ''' + ProdForm.UserName.Text + '''';
+	                      end
+	                      else
+	                      begin
+	                        SQL :=
+	                          '  select OrderNumber,Identification,CountryOfOrigin,ItemValue from ReportResult'
+	                         + ' where PLU = 50021006 ';
+	                      end;
+	                   end;
+	               ReportLines.CommaText := Execute;
+	               Free;
+	               end;
+	              with TStringList.Create do
+	              begin
+	                 for i:=0 to ReportLines.Count-1 do
+	                 begin
+	                    CommaText:=ReportLines[i];
+	                    TotalVal   := TotalVal  + StrToCurrDef(Strings[3],0);
+	                    Strings[0] := '<' + Strings[0];
+	                    Strings[1] := '<' + Strings[1];
+	                    Strings[2] := '<' + Strings[2];
+	                    Strings[3] := '>' + CurrToStrF(StrToCurrDef(Strings[3],0),ffNumber,2);
+	                    ReportLines[i]:= CommaText;
+	                 end;
+	                 Free;
+	              end;
+	              A4ReportPrint(ProdForm.UserName.Text, // User
+	                            IntToStr(FUIEventSink.Office), // Office
+	                            '"<Foreign Money Orders Paid : ' + ProdForm.StartDomainEdit.Text, // Report Title
+	                            '"<Serial","<Identification","<Country",">Value"',  // Column Headers
+	                            '"<Total","<          ","<      ",">' + CurrToStrF(TotalVal,ffNumber,2) + '"',  // Total Line
+	                            '-300,-450,-300,-500',  // Column Widths
+	                            ReportLines.CommaText);  // Report Lines
+	           end;
+	           Lines.Free;
+	           ReportLines.Free;
+	        except
+	           On E : Exception do
+	             RaiseGUIDException('{D523A1F0-D34B-4F10-838C-54BDEB47AEDE}', E);
+	        end;
+    *]
+      }
+   }
+   CentralRepMoneyOrdLOGVAR {
+      InsertBetween  { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock  { [*
+      var
+        ReportLines       : TStringList;
+        i                 : Integer;
+        TotalVal,
+        TotalComm,
+        TotalPaid         : Currency;
+        Lines             : TTransactionLines;
+    //    QueryMap          : TQueryMap;
+    *]
+      }
+   }
+  CentralRepMonthlyBankLOGVAR {
+    InsertBetween  { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+    CodeBlock  { [*
+      var
+        BankAccountType : String;
+        SL,
+        ReportLines    : TStringList;
+        i,
+        linecount,
+        TotalDepTxn,
+        TotalWithTxn,
+        SubTotalWithTxn,
+        SubTotalDepTxn,
+        RepMonth       : Integer;
+        PLURangeDep,
+        PLURangeWith,
+        FromDate,
+        ToDate         : String;
+        Year,
+        Month,
+        Day            : Word;
+        TotalDep,
+        TotalWith,
+        SubTotalWith,
+        SubTotalDep    : Currency;
+        Lines          : TTransactionLines;
+    *]}
+  }
+
+  CentralRepMonthlyBankLOG {
+    InsertBetween  { '{LogTransactionStart}','{LogTransactionEnd}' }
+    CodeBlock  { [*
+      try
+        ReportLines     := TStringList.Create;
+        TotalDepTxn     := 0;
+        SubTotalDepTxn  := 0;
+        TotalWithTxn    := 0;
+        SubTotalWithTxn := 0;
+        TotalDep        := 0;
+        SubTotalDep     := 0;
+        TotalWith       := 0;
+        SubTotalWith    := 0;
+        BankAccountType := TStringObject(ProdForm.BankAccType.Items.Objects[ProdForm.BankAccType.Items.IndexOf(ProdForm.BankAccType.Text)]).Value;
+        if  BankAccountType = 'Ordinary' then
+        begin
+          PLURangeDep  := '090000201,090000203';
+          PLURangeWith := '090000202,090000204';
+        end
+        else if BankAccountType = 'Trust' then
+        begin
+          PLURangeDep := '090000211,090000213';
+          PLURangeWith := '090000212,090000214';
+        end
+        else if BankAccountType = 'Special' then
+        begin
+          PLURangeDep  := '090000221,090000223';
+          PLURangeWith := '090000222,090000224';
+        end
+        else
+        begin  // SAYE
+          PLURangeDep  := '090000230';
+          PLURangeWith := '-1'
+        end;
+
+        if ProdForm.ReportType.Text = 'Summary' then
+        begin
+          With TQueryMap.Create do
+          begin
+            try
+              DataAlias       := 'C:\Botswana\DataBase';
+              SelectFields 	  := 'DepNum,DepAmt,Period,WithNum,WithAmt';
+              ResultFields    := 'DepNum,DepAmt,Period,WithNum,WithAmt';
+              TotalFields     := 'DepNum,DepAmt.WithNum,WithAmt';
+              ResultTableName := 'ReportResult';
+              SQL                 := ReplaceParams(':',
+               	    ' select Count(*) as DepNum, Sum(TxnValue) as DepAmt, Period, Cast(0 as Integer) as WithNum, Cast(0 as Money) as WithAmt '
+                  + ' from txnlog'
+                  + ' where PLU in (' + PLURangeDep + ')'
+                  + ' and :TellerCondition: '
+                  + ' and :OfficeCondition: '
+                  + ' and (Period >= ' + StrToPeriod(FromDate) + ' and Period < ' + StrToPeriod(ToDate) + ')'
+                  + ' and rectype = ''TxnTotal'''
+                  + ' group by period'
+                  + ' 						         UNION'
+                  + ' select 0  ,  0 ,  Period , Count(*) ,  Sum(TxnValue)  from txnlog'
+                  + ' where PLU in (' + PLURangeWith + ')'
+                  + ' and :TellerCondition: '
+                  + ' and :OfficeCondition: '
+                  + ' and (Period >= ' + StrToPeriod(FromDate) + ' and Period < ' + StrToPeriod(ToDate) + ')'
+                  + ' and rectype = ''TxnTotal'''
+                  + ' group by period');
+              ClearMaps;
+             	ReportLines.CommaText := Execute;
+              If (Copy(ReportLines[0],1,6) <> '""""""') OR (Copy(ReportLines[1],1,6) <> '""""""')then
+              begin
+                SQL :=  ' select Sum(DepNum),Sum(DepAmt),Period,Sum(WithNum),Sum(WithAmt) from ReportResult'
+                      + ' where Period <> ''''  '
+                      + ' group by Period'
+              end;
+              ClearMaps;
+              ReportLines.CommaText := Execute;
+            finally
+              Free;
+            end;
+          end;
+          with TStringList.Create do
+          begin
+            linecount:=0;
+            SL:=TStringList.Create;
+            for i:=StrToIntDef(StrToPeriod(FromDate),0) to StrToIntDef(StrToPeriod(ToDate),0)-1 do
+            begin
+              DecodeDate(StrToDate(PeriodToDateStr(i)),Year,Month,Day);
+              SL.Add('0,0,' + IntToStr(Day) + ',0,0');
+              CommaText:=ReportLines[linecount];
+              if i=StrToIntDef(Strings[2],0) then
+              begin
+                TotalDepTxn := TotalDepTxn  + StrToIntDef  (Strings[0],0); //1  deptxn
+                TotalDep    := TotalDep     + StrToCurrDef (Strings[1],0); //2  depamt
+                TotalWithTxn:= TotalWithTxn + StrTointDef  (Strings[3],0); //3  withtxn
+                TotalWith   := TotalWith    + StrToCurrDef (Strings[4],0); //4  withamt
+                Strings[2]  := IntToStr(Day); //2=period
+                SubTotalDepTxn  := SubTotalDepTxn  + StrToIntDef  (Strings[0],0); //1  deptxn
+                SubTotalDep     := SubTotalDep     + StrToCurrDef (Strings[1],0); //2  depamt
+                SubTotalWithTxn := SubTotalWithTxn + StrTointDef  (Strings[3],0); //3  withtxn
+                SubTotalWith    := SubTotalWith    + StrToCurrDef (Strings[4],0); //4  withamt
+                SL[SL.Count-1]:= CommaText;// adds the line
+                if LineCount < ReportLines.Count-1 then
+                  Inc(linecount);
+              end;
+              if ((Day = 7) or (Day = 14) or (day = 21)) then
+              begin
+                SL.Add('"' + IntToStr(SubTotalDepTxn) + '","' + CurrToStr(SubTotalDep) + '","Weekly Total","' + IntToStr(SubTotalWithTxn) + '"' + CurrToStr(SubTotalWith) + '"');
+                SubTotalDepTxn := 0;
+                SubTotalDep := 0;
+                SubTotalWithTxn := 0;
+                SubTotalWith := 0;
+              end;
+            end;
+            SL.Add('"' + IntToStr(SubTotalDepTxn) + '","' + CurrToStr(SubTotalDep) + '","Weekly Total","' + IntToStr(SubTotalWithTxn) + '"' + CurrToStr(SubTotalWith) + '"');
+            SL.Add(Format('"%d","%m","Total","%d","%m"',[TotalDepTxn,TotalDep,TotalWithTxn,TotalWith]));
+            ReportLines.CommaText:=SL.CommaText;
+            SL.Free;
+          end;
+          ReportLines.SaveToFile('C:\Botswana\Database\CentralRepMonthlyBank.csv');
+          UIEventSink.GetComponentReference('Report.CentralRepMonthlyBank');
+          If not DeleteFile('C:\Botswana\Database\CentralRepMonthlyBank.csv') then
+            RaiseGUIDError('{3DAA6C40-3BA3-43EB-9FE5-9F85B6D53B28}', 'Unable to delete temp report file');
+        end
+        else // JOURNAL
+        begin
+          Lines := TTxnTranslate.TranslateQuery('',ReplaceParams(':',
+                         ' select * from txnlog'
+                       + ' where PLU IN('+ PLURangeDep + ',' + PLURangeWith +')'
+                       + ' and :TellerCondition: '
+                       + ' and :OfficeCondition: '
+                   		 + ' and Period = ' + StrToPeriod(ProdForm.StartDomainEdit.Text)));
+          try
+            Lines.ConvertToTable('C:\Botswana\Database','ReportResult');
+            if Lines.Count > 0 then
+            begin
+              With TQueryMap.Create do
+              begin
+                try
+                  DataAlias           := 'C:\Botswana\DataBase';
+                  SelectFields        := 'datetime,accountnumber,depamount,withamount';
+                  ResultFields        := 'accountnumber,depamount,withamount';
+                  TotalFields         := 'depamount,withamount';
+                  SQL                 :=
+                      ' select DateTime, AccountNumber, Cast(Amount as Money), Cast(0 as Money) from ReportResult'
+                    + ' where PLU in (090000201,090000203,090000211,090000213,090000221,090000223,090000230)'
+                    + ' union'
+                    + ' select DateTime, AccountNumber, Cast(0 as Money), Cast(Amount as Money) from ReportResult'
+                    + ' where PLU in (090000202,090000204,090000212,090000214,090000222,090000224)'
+                    + ' order by DateTime ';
+                  ClearMaps;
+                  ReportLines.CommaText := Execute;
+                finally
+                  Free;
+                end;
+              end;
+            end;
+          finally
+            Lines.Free;
+          end;
+          ReportLines.SaveToFile('C:\Botswana\Database\CentralRepBankJournal.csv');
+          UIEventSink.GetComponentReference('Report.CentralRepBankJournal');
+          If not DeleteFile('C:\Botswana\Database\CentralRepBankJournal.csv') then
+            RaiseGUIDError('{22A625A9-D399-42F9-9A32-1585CF13CF9E}', 'Unable to delete temp report file');
+        end; // if
+        ReportLines.Free;
+      except
+        On E : Exception do
+          RaiseGUIDException('{A125CA8A-5272-4739-B9F9-953D07EE62E6}', E);
+      end;
+    *]}
+  }
+  CentralRepMonthlyCertLOG {
+    InsertBetween  { '{PreLogTransactionStart}','{PreLogTransactionEnd}' }
+    CodeBlock  { [*
+      try
+        if LocalSharedData = nil then
+          LocalSharedData:=TSharedData.Create('CorvusReportShare',False);
+
+        ReportLines := TStringList.Create;
+        TotalIssTxn := 0;
+        TotalIssVal := 0;
+        TotalPaidTxn := 0;
+        TotalPaidVal := 0;
+
+        //Shared data for reports
+        if ProdForm.PostOffice.Text = 'All' then
+        begin
+          LocalSharedData.SetVariable('OfficeCondition',' (Office is not null) ');
+          LocalSharedData.SetVariable('Office'    ,0);
+        end
+        else
+        begin
+          LocalSharedData.SetVariable('NotOfficeCondition',' (Office <> '+Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99)+')' );
+          LocalSharedData.SetVariable('OfficeCondition',' (Office = '+Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99)+')' );
+          LocalSharedData.SetVariable('Office',Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99));
+        end;
+
+        if ProdForm.UserName.Text = 'All' then
+        begin
+          LocalSharedData.SetVariable('TellerCondition',' (Teller is not null) ');
+          LocalSharedData.SetVariable('Teller'    ,'')
+        end
+        else
+        begin
+          LocalSharedData.SetVariable('NotTellerCondition',' (Teller <> '+ProdForm.UserName.Text+') ');
+          LocalSharedData.SetVariable('TellerCondition',' (Teller = '''+ProdForm.UserName.Text+''') ');
+          LocalSharedData.SetVariable('Teller'    ,ProdForm.UserName.Text);
+        end;
+        LocalSharedData.SetVariable('ReportMonth' , ProdForm.ReportingMonth.Text);
+
+        With TQueryMap.Create do
+        begin
+          try
+            if ProdForm.ReportType.Text = 'Summary' then
+            begin
+              RepMonth := ProdForm.ReportingMonth.Items.IndexOf(ProdForm.ReportingMonth.Text)+1;
+              DecodeDate(Now, Year, Month, Day);
+              If RepMonth > Month then
+                Dec(Year);
+              FromDate := DateToStr(EncodeDate(Year, RepMonth, 01));
+              FromDate := Copy(FromDate,1,6) + Copy(FromDate,9,2);   // Convert to 2 digit year to use with StrToPeriod
+
+              if RepMonth = 12 then
+                 ToDate := DateToStr(EncodeDate(Year+1, 01, 01))
+              else
+                 ToDate := DateToStr(EncodeDate(Year, RepMonth+1, 01));
+              ToDate := Copy(ToDate,1,6) + Copy(ToDate,9,2);
+              DataAlias           := 'C:\Botswana\DataBase';
+              SelectFields        := 'period,IssNum,IssAmt,PaidNum,PaidAmt';
+              ResultFields        := 'period,IssNum,IssAmt,PaidNum,PaidAmt';
+              ResultTableName     := 'ReportResult';
+              ClearMaps;
+
+              SQL := ReplaceParams(':',
+                    ' select period, count(*) as IssNum, sum(TxnValue) AS IssAmt, Cast(0 as Integer) as PaidNum, Cast(0 as Money) as  PaidAmt from txnlog where RecType = ''TxnLine'''
+                  + ' and (Period >= ' + StrToPeriod(FromDate) + ' and Period < ' + StrToPeriod(ToDate) + ')'
+                  + ' and RecIndex = 0 and PLU = 90000100 '
+                  + ' and :TellerCondition: '
+                  + ' and :OfficeCondition: '
+                  + ' group by Period '
+                  + ' UNION '
+                  + ' select period, 0 ,0, count(*), sum(TxnValue)  from txnlog where RecType = ''TxnTotal'''
+                  + ' and (Period >= ' + StrToPeriod(FromDate) + ' and Period < ' + StrToPeriod(ToDate) + ')'
+                  + ' and RecIndex IN(0,3) and (PLU BETWEEN 90000101 AND 90000102) '
+                  + ' and :TellerCondition: '
+                  + ' and :OfficeCondition: '
+                  + ' group by Period ');
+              ReportLines.CommaText := Execute;
+              If (Copy(ReportLines[0],1,6) <> '""""""') OR (Copy(ReportLines[1],1,6) <> '""""""') then
+                SQL := ' select Period, Sum(IssNum), Sum(IssAmt), Sum(PaidNum) , Sum(PaidAmt) from ReportResult where Period <> ''''  '
+                     + ' group by Period';
+              ClearMaps;
+              ReportLines.CommaText := Execute;
+
+              SL := TStringList.Create;
+              with TStringList.Create  do
+              begin
+                try
+                  LineCount:=0;
+                  for i:=StrToIntDef(StrToPeriod(FromDate),0) to StrToIntDef(StrToPeriod(ToDate),0)-1 do
+                  begin
+                    SL.Add(PeriodToDateStr(i) + ',0,0,0,0');
+                    CommaText:=ReportLines[LineCount];
+                    if i=StrToIntDef(Strings[0],0) then
+                    begin
+                      TotalIssTxn := TotalIssTxn + StrToIntDef (Strings[1],0);
+                      TotalIssVal := TotalIssVal + StrToCurrDef(Strings[2],0);
+                      TotalPaidTxn := TotalPaidTxn + StrToIntDef (Strings[3],0);
+                      TotalPaidVal := TotalPaidVal + StrToCurrDef(Strings[4],0);
+                      Strings[0]  := PeriodToDateStr(StrToIntDef(Strings[0],0));
+                      SL[SL.Count-1]:= CommaText;
+                        if LineCount < ReportLines.Count-1 then
+                          inc(linecount);
+                    end;
+                  end;
+                  SL.Add(Format('"Total","%d","%m","%d","%m"',[TotalIssTxn,TotalIssVal,TotalPaidTxn,TotalPaidVal]));
+                  ReportLines.CommaText:=SL.CommaText;
+                finally
+                  SL.Free;
+                  Free;
+                end;
+              end; //with TStringList.Create
+              ReportLines.SaveToFile('C:\Botswana\Database\CentralRepMonthlyCert.csv');
+              UIEventSink.GetComponentReference('Report.CentralRepMonthlyCert');
+              If not DeleteFile('C:\Botswana\Database\CentralRepMonthlyCert.csv') then
+                RaiseGUIDError('{2E625CD0-5CAD-4A30-AF1C-714008D3E1BA}', 'Unable to delete temp report file');
+            end //If SUMMARY
+            else // JOURNAL
+            begin
+              LocalSharedData.SetVariable('FromPeriod',StrToPeriod(ProdForm.StartDomainEdit.Text));
+              LocalSharedData.SetVariable('ToPeriod',  StrToPeriod(ProdForm.EndDomainEdit.Text));
+              LocalSharedData.SetVariable('FromDate',  ProdForm.StartDomainEdit.Text);
+              LocalSharedData.SetVariable('ToDate',    ProdForm.EndDomainEdit.Text);
+              UIEventSink.GetComponentReference('Report.CentralRepCertJournal');
+              ReportLines.Free;
+            end;  //if summary/journal
+          finally
+            Free; //QueryMap
+          end;
+        end; //With TQueryMap.Create
+        LocalSharedData.Free;
+        LocalSharedData:=nil;
+      except
+        On E : Exception do
+          RaiseGUIDException('{B6B7DC38-299D-4A9F-9155-3E3DAD787958}', E);
+      end;
+    *]}
+   }
+  CentralRepMonthlyCertLOGVAR {
+    InsertBetween  { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+    CodeBlock  { [*
+      var
+        SL,
+        ReportLines               : TStringList;
+        TotalIssVal,TotalPaidVal  : Currency;
+        i, LineCount, TotalIssTxn,
+        TotalPaidTxn,RepMonth     : Integer;
+        FromDate,ToDate           : String;
+        Year,Month,Day            : Word;
+    *]}
+   }
+   CentralRepParcelsAccLOG {
+     InsertBetween  { '{LogTransactionStart}','{LogTransactionEnd}' }
+     CodeBlock  { [*
+       try
+          ReportLines := TStringList.Create;
+
+          if TStringObject(ProdForm.DomIntReport.Items.Objects[ProdForm.DomIntReport.Items.IndexOf(ProdForm.DomIntReport.Text)]).Value = 'Domestic' then
+          begin
+             PLURange := '50010000,50010002';
+             CountrySearch := ' where DestinationCountry = ''Botswana''';
+          end
+          else
+          begin
+             PLURange := '50010000,50010002,50010001,50010003';
+             CountrySearch := ' where DestinationCountry <> ''Botswana''';
+          end;
+          RepMonth := ProdForm.ReportingMonth.Items.IndexOf(ProdForm.ReportingMonth.Text)+1;
+          DecodeDate(Now, Year, Month, Day);
+          If RepMonth > Month then
+             Dec(Year);
+          FromDate := DateToStr(EncodeDate(Year, RepMonth, 01));
+          FromDate := Copy(FromDate,1,6) + Copy(FromDate,9,2);   // Convert to 2 digit year to use with StrToPeriod
+
+          if RepMonth = 12 then
+             ToDate := DateToStr(EncodeDate(Year+1, 01, 01))
+          else
+             ToDate := DateToStr(EncodeDate(Year, RepMonth+1, 01));
+          ToDate := Copy(ToDate,1,6) + Copy(ToDate,9,2);
+
+          SetSharedVariable('CorvusReportShare', 'FromPeriod',StrToPeriod(FromDate));
+          SetSharedVariable('CorvusReportShare', 'ToPeriod'  ,StrToPeriod(ToDate));
+          SetSharedVariable('CorvusReportShare', 'ReportMonth' , ProdForm.ReportingMonth.Text);
+
+          Lines := TTxnTranslate.TranslateQuery('',
+                ReplaceParams(':',
+                           ' select * from txnlog'
+                         + ' where PLU IN(' + PLURange + ')'
+                         + ' and :TellerCondition: '
+                         + ' and :OfficeCondition: '
+                         + ' and (Period >= ' + StrToPeriod(FromDate) + ' and Period < ' + StrToPeriod(ToDate) + ')'));
+          Lines.ConvertToTable('C:\Botswana\Database','ReportResult');
+          If Lines.Count <> 0 then
+             With TQueryMap.Create do
+             begin
+                try
+                   DataAlias           := 'C:\Botswana\DataBase';
+                   SelectFields        := 'accountingperiod,parcount,postageval,otherfees,Remark';
+                   ResultFields        := 'accountingperiod,parcount,postageval,otherfees,Remark';
+                   TotalFields         := 'parcount,postageval,otherfees';
+                   SQL                 :=
+                        ' select AccountingPeriod, count(*) AS ParCount, sum(StandardFee) AS PostageVal, (sum(TotalFee) - sum(StandardFee)) AS OtherFees, cast('''' as char(20)) as Remark from ReportResult'
+                      + CountrySearch
+                      + ' group by AccountingPeriod'
+                      + ' order by AccountingPeriod';
+                   ClearMaps;
+                   ReportLines.CommaText := Execute;
+                finally
+                   Free;
+                end;
+             end;
+          Lines.Free;
+          with TStringList.Create do
+          begin
+            if ReportLines.Count = 0 then  // no data - so add total line
+            begin
+              ReportLines.Add('Total,0,0,"",""');
+            end
+            else
+            begin                         // change last line
+              CommaText := ReportLines[ReportLines.Count-1];
+              Strings[0] := 'Total';
+              Strings[4] := '';
+              ReportLines[ReportLines.Count-1] := CommaText;
+            end;
+            linecount:=0;
+            SL:=TStringList.Create;
+            for i:=StrToIntDef(StrToPeriod(FromDate),0) to StrToIntDef(StrToPeriod(ToDate),0)-1 do
+            begin
+              SL.Add(PeriodToDateStr(i) + ',0,0,0,""');
+              if ReportLines.Count > 1 then // as we added last line if count was 0 - else is no data
+              begin
+                CommaText:=ReportLines[linecount];
+                if i=StrToIntDef(Strings[0],0) then
+                begin
+                  Strings[0]  := PeriodToDateStr(StrToIntDef(Strings[0],0));
+                  Strings[4] := '';
+                  SL[SL.Count-1]:= CommaText;
+                  if LineCount < ReportLines.Count-1 then
+                    inc(linecount);
+                end;
+              end;
+            end;
+            SL.Add(ReportLines[ReportLines.Count-1]);
+            ReportLines.CommaText:=SL.CommaText;
+            SL.Free;
+          end;
+          ReportLines.SaveToFile('C:\Botswana\Database\CentralRepParcelsAcc.csv');
+          {ReportNameStart}
+          if TStringObject(ProdForm.DomIntReport.Items.Objects[ProdForm.DomIntReport.Items.IndexOf(ProdForm.DomIntReport.Text)]).Value = 'Domestic' then
+            FUIEventSink.GetComponentReference('Report.PParcelsAcceptedDom')
+          else
+            FUIEventSink.GetComponentReference('Report.PParcelsAcceptedInt');
+          {ReportNameEnd}
+          If not DeleteFile('C:\Botswana\Database\CentralRepParcelsAcc.csv') then
+            RaiseGUIDError('{617E77A1-834D-492B-A48C-28DA0DDE137D}', 'Unable to delete temp report file');
+          ReportLines.Free;
+       except
+          On E : Exception do
+            RaiseGUIDException('{92C6A5D2-EE86-4D67-9B0C-39EFFEFFE6E1}', E);
+       end;
+    *]
+      }
+   }
+   CentralRepParcelsAccLOGVAR {
+      InsertBetween  { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock  { [*
+      var
+        SL,
+        ReportLines       : TStringList;
+        i,
+        linecount,
+        RepMonth          : Integer;
+        PLURange,
+        CountrySearch,
+        FromDate,
+        ToDate            : String;
+        Year,
+        Month,
+        Day               : Word;
+        Lines             : TTransactionLines;
+    *]
+      }
+   }
+  CentralRepPRELOG {
+    InsertBetween  { '{PreLogTransactionStart}','{PreLogTransactionEnd}' }
+    CodeBlock  { [*
+      try
+        if ProdForm.ReportType.Text = 'Summary' then
+        begin
+          RepMonth := ProdForm.ReportingMonth.Items.IndexOf(ProdForm.ReportingMonth.Text)+1;
+          DecodeDate(Now, Year, Month, Day);
+          If RepMonth > Month then
+            Dec(Year);
+          FromDate := DateToStr(EncodeDate(Year, RepMonth, 01));
+          FromDate := Copy(FromDate,1,6) + Copy(FromDate,9,2);   // Convert to 2 digit year to use with StrToPeriod
+
+          if RepMonth = 12 then
+            ToDate := DateToStr(EncodeDate(Year+1, 01, 01))
+          else
+            ToDate := DateToStr(EncodeDate(Year, RepMonth+1, 01));
+          ToDate := Copy(ToDate,1,6) + Copy(ToDate,9,2);
+          SetSharedVariable('CorvusReportShare', 'FromPeriod',StrToPeriod(FromDate));
+          SetSharedVariable('CorvusReportShare', 'ToPeriod'  ,StrToPeriod(ToDate));
+        end
+        else
+        begin
+          SetSharedVariable('CorvusReportShare', 'FromPeriod',StrToPeriod(ProdForm.StartDomainEdit.Text));
+          SetSharedVariable('CorvusReportShare', 'ToPeriod'  ,StrToPeriod(ProdForm.StartDomainEdit.Text));
+        end;
+
+        //if LocalSharedData = nil then
+        //  LocalSharedData:=TSharedData.Create('CorvusReportShare',False);
+
+        //Shared data for reports
+        if ProdForm.PostOffice.Text = 'All' then
+        begin
+          //LocalSharedData.SetVariable('OfficeCondition',' (Office is not null) ');
+          SetSharedVariable('CorvusReportShare', 'OfficeCondition', ' (Office is not null) ');
+          //LocalSharedData.SetVariable('Office'    ,0);
+          SetSharedVariable('CorvusReportShare', 'Office' ,0);
+        end
+        else
+        begin
+          //LocalSharedData.SetVariable('NotOfficeCondition',' (Office <> '+Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99)+')' );
+          //LocalSharedData.SetVariable('OfficeCondition',' (Office = '+Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99)+')' );
+          //LocalSharedData.SetVariable('Office',Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99));
+          SetSharedVariable('CorvusReportShare', 'NotOfficeCondition',' (Office <> '+Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99)+')' );
+          SetSharedVariable('CorvusReportShare', 'OfficeCondition',' (Office = '+Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99)+')' );
+          SetSharedVariable('CorvusReportShare', 'Office',Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99));
+        end;
+
+        if ProdForm.UserName.Text = 'All' then
+        begin
+          //LocalSharedData.SetVariable('TellerCondition',' (Teller is not null) ');
+          //LocalSharedData.SetVariable('Teller'    ,'')
+          SetSharedVariable('CorvusReportShare', 'TellerCondition',' (Teller is not null) ');
+          SetSharedVariable('CorvusReportShare', 'Teller'    ,'All');
+        end
+        else
+        begin
+          //LocalSharedData.SetVariable('NotTellerCondition',' (Teller <> '+ProdForm.UserName.Text+') ');
+          //LocalSharedData.SetVariable('TellerCondition',' (Teller = '''+ProdForm.UserName.Text+''') ');
+          //LocalSharedData.SetVariable('Teller'    ,ProdForm.UserName.Text);
+          SetSharedVariable('CorvusReportShare', 'NotTellerCondition',' (Teller <> '+ProdForm.UserName.Text+') ');
+          SetSharedVariable('CorvusReportShare', 'TellerCondition',' (Teller = '''+ProdForm.UserName.Text+''') ');
+          SetSharedVariable('CorvusReportShare', 'Teller'    ,ProdForm.UserName.Text);
+        end;
+        //LocalSharedData.SetVariable('ReportMonth' , ProdForm.ReportingMonth.Text);
+        SetSharedVariable('CorvusReportShare', 'ReportMonth' , ProdForm.ReportingMonth.Text);
+
+
+      except
+        On E : Exception do
+          RaiseGUIDException('{242767DB-1616-4F5A-AC36-EAD3DA6C0F88}', E);
+      end;
+    *] }
+  }
+
+  CentralRepPensionLOG {
+    InsertBetween  { '{LogTransactionStart}','{LogTransactionEnd}' }
+    CodeBlock  { [*
+      try
+        ReportLines := TStringList.Create;
+        if ProdForm.ReportType.Text = 'Summary' then
+        begin
+          Lines := TTxnTranslate.TranslateQuery('',ReplaceParams(':',
+                      ' select * from txnlog'
+                    + ' where PLU IN(50040001,50040002)'
+                    + ' and :TellerCondition: '
+                    + ' and :OfficeCondition: '
+                    + ' and (Period >= ' + StrToPeriod(FromDate) + ' and Period < ' + StrToPeriod(ToDate) + ')'));
+          Lines.ConvertToTable('C:\Botswana\Database','ReportResult');
+          if Lines.Count <> 0 then
+          begin
+            With TQuery.Create(Nil) do
+            begin
+              try
+                DatabaseName := 'C:\Botswana\DataBase';
+                Sql.Clear;
+                try
+                  Sql.Add('Drop Table TempPension');
+                  ExecSql;
+                except
+                  on E:Exception do
+                  begin
+                    // swallow exception for when table does not exist
+                  end;
+                end;
+                Sql.Clear;
+                Sql.Add('create table TempPension (Nqty integer, Npay money, AccountingPeriod integer, Aqty integer, Apay money)');
+                ExecSql;
+                Sql.Clear;
+                Sql.Add('insert into TempPension');
+                Sql.Add('select ItemQuantity, Amount, AccountingPeriod, cast(''0'' as integer), cast(''0'' as money) from ReportResult');
+                Sql.Add('where PLU = 50040001');
+                ExecSql;
+                Sql.Clear;
+                Sql.Add('insert into TempPension');
+                Sql.Add('select cast(''0'' as integer), cast(''0'' as money), AccountingPeriod, ItemQuantity, Amount from ReportResult');
+                Sql.Add('where PLU = 50040002');
+                ExecSql;
+                With TQueryMap.Create do
+                begin
+                  try
+                    DataAlias           := 'C:\Botswana\DataBase';
+                    SelectFields        := 'paycount,payval,accountingperiod,ArrearsPay,ArrearsVal,Remark';
+                    ResultFields        := 'paycount,payval,accountingperiod,ArrearsPay,ArrearsVal,Remark';
+                    TotalFields         := 'paycount,payval,ArrearsPay,ArrearsVal';
+                    SQL                 :=
+                        ' select sum(Nqty) AS PayCount, sum(Npay) AS PayVal, AccountingPeriod, sum(Aqty) as ArrearsPay, sum(Apay) as ArrearsVal, cast('''' as char(20)) as Remark from TempPension'
+                      + ' group by AccountingPeriod'
+                      + ' order by AccountingPeriod';
+                    ClearMaps;
+                    //AddMap('PLU',mcEquals,'50040002','PayCount,PayVal','ArrearsPay,ArrearsVal');
+                    ReportLines.CommaText := Execute;
+                  finally
+                    Free;
+                  end;
+                end;
+                Sql.Clear;
+                Sql.Add('Drop Table TempPension');
+                ExecSql;
+              finally
+                Free;
+              end;
+            end;
+          end;
+          with TStringList.Create do
+          begin
+            try
+              if ReportLines.Count = 0 then  // no data - so add total line
+              begin
+                ReportLines.Add('0,0,Total,0,0');
+              end
+              else
+              begin                         // change last line
+                CommaText := ReportLines[ReportLines.Count-1];
+                Strings[2] := 'Total';
+                ReportLines[ReportLines.Count-1] := CommaText;
+              end;
+
+              linecount:=0;
+              SL:=TStringList.Create;
+              for i:=StrToIntDef(StrToPeriod(FromDate),0) to StrToIntDef(StrToPeriod(ToDate),0) -1 do
+              begin    // build list for whole month and then modify line where result data exists
+                SL.Add('0,0,' + PeriodToDateStr(i) + ',0,0');
+                if ReportLines.Count > 1 then // as we added last line if count was 0 - else is no data
+                begin
+                  CommaText:=ReportLines[linecount];
+                  if i=StrToIntDef(Strings[2],0) then
+                  begin
+                    Strings[2]  := PeriodToDateStr(StrToIntDef(Strings[2],0));
+                    SL[SL.Count-1]:= CommaText;
+                    if LineCount < ReportLines.Count-1 then
+                      inc(linecount);
+                  end;
+                end;
+              end;
+              SL.Add(ReportLines[ReportLines.Count-1]);
+              ReportLines.CommaText:=SL.CommaText;
+              SL.Free;
+            finally
+              Free;
+            end;
+          end;
+          ReportLines.SaveToFile('C:\Botswana\Database\CentralRepMonthlyPension.csv');
+          UIEventSink.GetComponentReference('Report.PSummaryPayments');
+          If not DeleteFile('C:\Botswana\Database\CentralRepMonthlyPension.csv') then
+            RaiseGUIDError('{C2A497A2-AEB3-49FE-A065-B1E0A1CDC0D3}', 'Unable to delete temp report file');
+        end
+        // JOURNAL
+        else if TStringObject(ProdForm.PensionType.Items.Objects[ProdForm.PensionType.Items.IndexOf(ProdForm.PensionType.Text)]).Value = 'Normal' then
+        begin
+        {ReportNameStart}
+          FUIEventSink.GetComponentReference('Report.PNormalPayments');
+        {ReportNameEnd}
+        end
+        else
+        begin
+        {ReportNameStart}
+          FUIEventSink.GetComponentReference('Report.PArrearsPayments');
+        {ReportNameEnd}
+        end; // if
+        ReportLines.Free;
+      except
+        On E : Exception do
+          RaiseGUIDException('{4965F7F3-1F6D-4B51-B8D2-B8EF532B32D8}', E);
+      end;
+    *]
+    }
+  }
+
+  CentralRepPensionLOGNew {
+    InsertBetween  { '{LogTransactionStart}','{LogTransactionEnd}' }
+    CodeBlock  { [*
+        if ProdForm.ReportType.Text = 'Summary' then
+        begin
+{ReportNameStart}
+          FUIEventSink.GetComponentReference('Report.PSummaryPayments');
+{ReportNameEnd}
+        end
+        // Journal
+        else if TStringObject(ProdForm.PensionType.Items.Objects[ProdForm.PensionType.Items.IndexOf(ProdForm.PensionType.Text)]).Value = 'Normal' then
+        begin
+{ReportNameStart}
+          FUIEventSink.GetComponentReference('Report.PNormalPayments');
+{ReportNameEnd}
+        end
+        else
+        begin
+{ReportNameStart}
+          FUIEventSink.GetComponentReference('Report.PArrearsPayments');
+{ReportNameEnd}
+        end;
+    *]
+      }
+   }
+
+   CentralRepPensionLOGVAR {
+      InsertBetween  { '{LogTransactionVarStart}','{LogTransactionVarEnd}' }
+      CodeBlock  { [*
+      var
+        SL,
+        ReportLines       : TStringList;
+        i,
+        linecount,
+        RepMonth          : Integer;
+        FromDate,
+        ToDate            : String;
+        Year,
+        Month,
+        Day               : Word;
+        Lines             : TTransactionLines;
+    *]
+      }
+   }
+
+  CentralGenericPRELOG {
+    InsertBetween  { '{PreLogTransactionStart}','{PreLogTransactionEnd}' }
+    CodeBlock  { [*
+      try
+        //Shared data for reports
+        if ProdForm.PostOffice.Text = 'All' then
+        begin
+          SetSharedVariable('CorvusReportShare', 'OfficeCondition', ' (Office is not null) ');
+          SetSharedVariable('CorvusReportShare', 'Office' ,0);
+        end
+        else
+        begin
+          SetSharedVariable('CorvusReportShare', 'NotOfficeCondition',' (Office <> '+Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99)+')' );
+          SetSharedVariable('CorvusReportShare', 'OfficeCondition',' (Office = '+Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99)+')' );
+          SetSharedVariable('CorvusReportShare', 'Office',Copy(TStringObject(ProdForm.PostOffice.Items.Objects[ProdForm.PostOffice.ItemIndex]).Value,2,99));
+        end;
+
+        if ProdForm.UserName.Text = 'All' then
+        begin
+          SetSharedVariable('CorvusReportShare', 'TellerCondition',' (Teller is not null) ');
+          SetSharedVariable('CorvusReportShare', 'Teller'    ,'All');
+        end
+        else
+        begin
+          SetSharedVariable('CorvusReportShare', 'NotTellerCondition',' (Teller <> '+ProdForm.UserName.Text+') ');
+          SetSharedVariable('CorvusReportShare', 'TellerCondition',' (Teller = '''+ProdForm.UserName.Text+''') ');
+          SetSharedVariable('CorvusReportShare', 'Teller'    ,ProdForm.UserName.Text);
+        end;
+        // cant put following in as may not be generic
+        //SetSharedVariable('CorvusReportShare', 'FromPeriod',StrToPeriod(ProdForm.StartDomainEdit.Text));
+        //SetSharedVariable('CorvusReportShare', 'ToPeriod'  ,StrToPeriod(ProdForm.StartDomainEdit.Text));
+        //SetSharedVariable('CorvusReportShare', 'ReportMonth' , ProdForm.ReportingMonth.Text);
+
+      except
+        On E : Exception do
+          RaiseGUIDException('{5C087A95-15ED-44AE-9118-8DF4D56034CB}', E);
+      end;
+    *] }
+  }
+
+   CentralRepPostOrdLOG {
+     InsertBetween  { '{PreLogTransactionStart}','{PreLogTransactionEnd}' }
+     CodeBlock  { [*
+
+	      try
+	        ReportLines := TStringList.Create;
+	        TotalPOVal :=0;
+	        TotalComm  :=0;
+	        TotalVal   :=0;
+	        if ProdForm.UserName.text = 'All' then
+	        begin
+	          Lines := TTxnTranslate.TranslateQuery('',
+	                         ' select * from Txnlog'
+	                       + ' where PLU IN(5101000,50021051) OR PLU IN(100021)'
+	                       + ' or Prod = ''Product.FinPostalOrd'''
+	                       + ' and Period = ' + StrToPeriod(ProdForm.StartDomainEdit.Text));
+	        end
+	        else
+	        begin
+	          Lines := TTxnTranslate.TranslateQuery('',
+	 	                       ' select * from Txnlog'
+	 		                   + ' where PLU IN(5101000,50021051) OR PLU IN(100021)'
+	         	             + ' or Prod = ''Product.FinPostalOrd'''
+	 	                     + ' and Teller = ''' + ProdForm.UserName.Text + ''''
+	 	                     + ' and Period = ' + StrToPeriod(ProdForm.StartDomainEdit.Text));
+	        end;
+	        Lines.ConvertToTable('C:\Botswana\Database','ReportResult');
+	        ReportLines.CommaText := '';
+	        if TStringObject(ProdForm.IssuePaid.Items.Objects[ProdForm.IssuePaid.Items.IndexOf(ProdForm.IssuePaid.Text)]).Value = 'Issued' then
+	        begin
+	          if Lines.Count <> 0 then
+	            With TQueryMap.Create do
+	            begin
+	              try
+	                //Test
+	                DataAlias           := 'C:\Botswana\DataBase';
+	                SelectFields        := 'serialnumber,postalordervalue,Commission,totalfee';
+	                ResultFields        := 'serialnumber,postalordervalue,Commission,totalfee';
+	                ResultTableName     := 'ReportResult';
+	                if ProdForm.UserName.Text = 'All' then
+	                begin
+	                  SQL               :=
+	                       ' select serialnumber,postalordervalue,Commission,totalfee from ReportResult'
+	                     + ' where ProgramID = ''Product.FinPostalOrd'''
+	                     + ' and AccountingPeriod = ' + StrToPeriod(ProdForm.StartDomainEdit.Text);
+	                end
+	 		            else
+	 		            begin
+	                  SQL               :=
+                        ' select serialnumber,postalordervalue,Commission,totalfee from ReportResult'
+                      + ' where ProgramID = ''Product.FinPostalOrd'''
+                      + ' and Teller = ''' + ProdForm.UserName.Text + ''''
+                      + ' and AccountingPeriod = ' + StrToPeriod(ProdForm.StartDomainEdit.Text);
+	                end;
+	                ClearMaps;
+	                ReportLines.CommaText := Execute;
+	              finally
+	                Free;
+	              end;
+	            end;
+           with TStringList.Create do
+           begin
+             for i:=0 to ReportLines.Count-1 do
+             begin
+               CommaText:=ReportLines[i];
+               TotalPOVal := TotalPOVal + StrToCurrDef (Strings[1],0);
+               TotalComm  := TotalComm  + StrToCurrDef (Strings[2],0);
+               TotalVal   := TotalVal   + StrToCurrDef (Strings[3],0);
+               Strings[0]  := '<' + Strings[0];
+               Strings[1]  := '>' + CurrToStrF(StrToCurrDef(Strings[1],0),ffNumber,2);
+               Strings[2]  := '>' + CurrToStrF(StrToCurrDef(Strings[2],0),ffNumber,2);
+               Strings[3]  := '>' + CurrToStrF(StrToCurrDef(Strings[3],0),ffNumber,2);
+               ReportLines[i]:= CommaText;
+             end;
+             Free;
+           end;
+           A4ReportPrint(ProdForm.UserName.Text, // User
+                         IntToStr(FUIEventSink.Office), // Office
+                         '"<Postal Orders Issued Journal : ' + ProdForm.StartDomainEdit.Text, // Report Title
+                         '"<Serial",">PO Value",">PO Comm",">Total Fee"',  // Column Headers
+                         '"<Total",">' + CurrToStrF(TotalPOVal,ffNumber,2) + '",">' + CurrToStrF(TotalComm,ffNumber,2) + '",">' + CurrToStrF(TotalVal,ffNumber,2) + '"',  // Total Line
+                         '-300,-450,-350,-250,-150,-200,-300',  // Column Widths
+                         ReportLines.CommaText);  // Report Lines
+         end
+         else if TStringObject(ProdForm.IssuePaid.Items.Objects[ProdForm.IssuePaid.Items.IndexOf(ProdForm.IssuePaid.Text)]).Value = 'Paid' then
+         begin
+           if Lines.Count <> 0 then   // Dom POrds paid
+             With TQueryMap.Create do
+             begin
+               try
+                 DataAlias           := 'C:\Botswana\DataBase';
+                 SelectFields        := 'SerialNumber, postalordervalue, TotalFee, issuingoffice';
+                 ResultFields        := 'SerialNumber, postalordervalue, TotalFee, issuingoffice';
+                 ResultTableName     := 'ReportResult';
+                 if ProdForm.UserName.Text <> 'All' then
+                 begin
+                   SQL               :=
+                        ' select SerialNumber, IssuingOffice,postalordervalue, TotalFee from ReportResult'
+                      + ' where PLU IN(100021,50021051)'
+                      + ' and Teller = ''' + ProdForm.UserName.Text + ''''
+                      + ' and AccountingPeriod = ' + StrToPeriod(ProdForm.StartDomainEdit.Text);
+                 end
+                 else
+                 begin
+                   SQL               :=
+                      ' select SerialNumber, IssuingOffice, postalordervalue, TotalFee from ReportResult'
+                      + ' where PLU IN(100021,50021051)'
+                      + ' and AccountingPeriod = ' + StrToPeriod(ProdForm.StartDomainEdit.Text);
+                 end;
+                 ClearMaps;
+                 ReportLines.CommaText := Execute;
+               finally
+                 Free;
+               end;
+             end;
+             with TStringList.Create do
+             begin
+               for i:=0 to ReportLines.Count-1 do
+               begin
+                 CommaText:=ReportLines[i];
+                 TotalPOVal   := TotalPOVal   + StrToCurrDef (Strings[1],0);
+                 TotalVal   := TotalVal   + StrToCurrDef (Strings[3],0);
+                 Strings[0]  := '<' + Strings[0];
+                 Strings[1]  := '>' + Strings[1];
+                 Strings[2]  := '<' + CurrToStrF(StrToCurrDef(Strings[2],0),ffNumber,2);
+                 Strings[3]  := '>' + CurrToStrF(StrToCurrDef(Strings[3],0),ffNumber,2);
+                 ReportLines[i]:= CommaText;
+               end;
+               Free;
+             end;
+             A4ReportPrint(ProdForm.UserName.Text, // User
+                           IntToStr(FUIEventSink.Office), // Office
+                           '"<Postal Orders Paid Journal : ' + ProdForm.StartDomainEdit.Text, // Report Title
+                           '"<Serial","<Issuing Location",">PO Value",">Total"',  // Column Headers
+                           '"<Total","," ",">' + CurrToStrF(TotalPOVal,ffNumber,2) + '","  ",">' + CurrToStrF(TotalVal,ffNumber,2) + '"',  // Total Line
+                           '-300,-450,-100,-450',  // Column Widths
+                           ReportLines.CommaText);  // Report Lines
+
+         end;
+         Lines.Free;
+         ReportLines.Free;
+	      except
+	        On E : Exception do
+	          RaiseGUIDException('{F416F830-A8DB-4D96-BE88-91516FFD843B}', E);
+	      end;
+
+     *]
+     }
+   }
+
+   CentralRepPostOrdLOGNew {
+     InsertBetween  { '{LogTransactionStart}','{LogTransactionEnd}' }
+     CodeBlock  { [*
+        SetSharedVariable('CorvusReportShare', 'FromPeriod',StrToPeriod(ProdForm.StartDomainEdit.Text));
+        SetSharedVariable('CorvusReportShare', 'ToPeriod'  ,StrToPeriod(ProdForm.StartDomainEdit.Text));
+        if TStringObject(ProdForm.IssuePaid.Items.Objects[ProdForm.IssuePaid.Items.IndexOf(ProdForm.IssuePaid.Text)]).Value = 'Issued' then
+        begin
+{ReportNameStart}
+          FUIEventSink.GetComponentReference('Report.PPostalOrderIssue');
+{ReportNameEnd}
+        end
+        else if TStringObject(ProdForm.IssuePaid.Items.Objects[ProdForm.IssuePaid.Items.IndexOf(ProdForm.IssuePaid.Text)]).Value = 'Paid' then
+        begin
+{ReportNameStart}
+          FUIEventSink.GetComponentReference('Report.PPostalOrderPay');
+{ReportNameEnd}
+        end;
+     *]
+     }
+   }
+
+   CentralRepPostOrdLOGInt {
+     InsertBetween  { '{LogTransactionStart}','{LogTransactionEnd}' }
+     CodeBlock  { [*
+        SetSharedVariable('CorvusReportShare', 'FromPeriod',StrToPeriod(ProdForm.StartDomainEdit.Text));
+        SetSharedVariable('CorvusReportShare', 'ToPeriod'  ,StrToPeriod(ProdForm.StartDomainEdit.Text));
+{ReportNameStart}
+        FUIEventSink.GetComponentReference('Report.PIntPostalOrderPay');
+{ReportNameEnd}
+     *]
+     }
+   }
+
+   CentralRepTxnTranslateUSES {
+      InsertBetween  { '{UsesStart}','{UsesEnd}' }
+      CodeBlock  { [*
+        uses
+          StringUtil,
+          ExternalFunc,
+          QueryMapU,
+          TxnTranslateU,
+          ReportIDSU,
+          ShareDataU,
+          DBTables;
+     *]
+      }
+   }
+}
+
